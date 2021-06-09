@@ -1,6 +1,8 @@
 #include <iostream>
 #include <iomanip>
 #include <math.h>
+#include <sstream>
+
 
 using namespace std;
 
@@ -48,19 +50,40 @@ double pullHi16 (uint32_t& seed, int divisor){
     X = X/divisor;
     return X;
 }
+float stupidFloatRounding(float inputF12,float inputF10,float inputF9){
+      
+      /*For whatever reason, multiplying the floats together in this way is as close as I can get to the actual number.
+      Seems to still be off on the last (17th) digit. The Hex value lines up so it doesn't appear to affect the 
+      results in any way, so I'm leaving it at this. Trying to condense or rewrite any other way causes the 
+      rounding to be off by more, up to the final hex digit being different. I suspect the issue lies in F12 being 19 digits,
+      but that is a task for someone smarter than me.*/
+      float factor1 = 0;
+      float factor2 = 0; 
+      float subtrahend = 0;
 
+      factor1 = inputF12 * inputF10;
+      factor2 = inputF9 * inputF10;
+
+      subtrahend = factor2* inputF9;
+
+      return -(inputF12*factor1 - subtrahend);
+}
 
 int main(){
 
-    //WAITING INTERVAL LENGTH
+    //My math is still flawed for other movements.
 
     const int divisor = 65536; //4780 and 40F0 ....
-    const double piApprox = 3.1415927410125732421875;
-    const double AnchorX = 4; //Unique to NPC
-    const double AnchorY = 24;
+    //sort out these Pi approxes man
+    const double loosePiApprox = 3.1415927410125732421875; //40490FDB
+    const double altPiApprox = 3.141592653589793115997963468544185161590576171875; //There also exists an exact double float of this that is almost as long as the below number
+    const float floatPi = 3.1415927410125732;
+    const double absurdlySpecificNumber = 0.000000000000000122464679914735320717376402945839660462569212467758006379625612680683843791484832763671875;
+
+    const float fps30 = 1.0/30;
+    const float fps60 = 1.0/60;
     double firstCallX = 0; //can these ever be floats?
     double secondCallX = 0;
-
     float fworkingX = 0;
     double dworkingX = 0; //Stupid rounding smh
     float intendedX = 0;
@@ -69,15 +92,18 @@ int main(){
     double cycleVariance = 0; 
     int factorTime = 3; //Common value
     int baseTimeS = 5;  //Common Value
-    float fps30 = 1.0/30;
-    float fps60 = 1.0/60;
-    
-    
     float timer1 = 0;
+    float nextXPos = 0;
+    float nextYpos = 0;
+    double intervalValueX = 0.001057701651006937;
+    double intervalValueY = 0.29032066464424133; //Ints instead?
+    bool adjustmentNeeded = 0;
 
     //~~~~~~~~~~~~~~ CONFIG ~~~~~~~~~~~~~~~
-    int cycleCount = 5;
+    int cycleCount = 1;
     uint32_t seed = 0x0; //INITIAL SEED
+    const double AnchorX = 4; //Starting Location
+    const double AnchorY = 24;
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     for (int i = 0; i<cycleCount;i++){
 
@@ -85,7 +111,7 @@ int main(){
     
     //Initial Arithmetic
     fworkingX = pullHi16(seed,divisor);
-    fworkingX = (fworkingX * 2) * piApprox;
+    fworkingX = (fworkingX * 2) * loosePiApprox;
  
     dworkingX = fworkingX;  //F31 copy
 
@@ -108,8 +134,97 @@ int main(){
     cout << "NEW X POS: " << setprecision(17) << intendedX << endl;
     cout << "NEW Y POS: " << setprecision(17) << intendedY << endl;
     
+    
 
 
+    //WALKING
+
+    //TempValue for starting position:
+    nextXPos = AnchorX;
+    nextYpos = AnchorY;
+
+
+
+    //hopefully we don't need to track turn frames...
+    double preAngle1 = abs(AnchorX - intendedX); //No proof on this, just a hunch
+    double preAngle2 = abs(AnchorY - intendedY); //need abs?
+
+    double workingAngle = atan(abs(preAngle1/preAngle2));
+
+    //Some kind of angle adjustment - possibly running into wall fix?
+    if (adjustmentNeeded){
+    workingAngle -= absurdlySpecificNumber;
+    workingAngle = altPiApprox - workingAngle; 
+    }
+    //alt (double) pi is better than float pi here. makes a difference
+    
+    // cout << "pre-round: " << workingAngle << endl;
+    float wAngleAsFloat = static_cast<float>(workingAngle);
+
+
+
+    // cout << "Math test: " << workingAngle << endl;
+    cout << "Walking Angle: " << wAngleAsFloat << endl;
+    // cout << "Atan Res: " << atan(8.389027889602486) << endl; //YAY WORKS
+
+
+    //creates ANGLE YAY!
+
+    double angleInput =  wAngleAsFloat; //3B6E C2CD
+    //Loaded from 0x809E5418 WHICH IS A TURNING ANGLE STORED IN THE NPC DATA!!
+    
+    angleInput = angleInput/2; //3AEE C2CD
+
+    float sinResult = static_cast<float>(sin(angleInput)); //"TanF" NOT EVEN A TAN FUNCTION LMAO - dolphin why you lie to me.
+    const float adjustment = 0.9999999403953552; //Constant 3F7FFFFF
+    float cosResult = static_cast<float>(cos(angleInput)); //FE4
+
+    sinResult = sinResult * adjustment; //C2C3
+
+    
+    const float factorC = 0.29032257199287415; //0x3E94A529 CONSTANT YAAAAAAAAAY
+    float factorA = sinResult; //C2C3 --- Variable. addr: 0x8048e568
+    float factorB = cosResult; //FE4 --- Variable. addr:  0x8048E570
+
+      
+      
+      //Reference function: zz_800dfeec_, lot of math here boils down to just this:
+
+      intervalValueX = 2*factorA*factorB*factorC; // I'll be damned
+      intervalValueY = stupidFloatRounding(factorA,factorC,factorB);
+
+
+      //Debug:
+      cout << "Computed interval X: " << setprecision(17)<<intervalValueX << endl;
+      cout << "Computed interval Y: " << intervalValueY << endl;
+
+      
+
+
+      //This doesn't consider turn frames...
+      //Initial step is only *1 instead of *2
+      nextXPos = intervalValueX * 1 + nextXPos;
+      nextYpos = intervalValueY * 1 + nextYpos;
+      cout << endl << "Next X POS: " << setprecision(17) << nextXPos << endl;
+      cout << "Next Y POS: " << nextYpos << endl << endl;
+   
+
+   //Calculate the actual steps.
+    int framesWalked = 0;
+    while(nextXPos <= intendedX && nextYpos <= intendedY){
+      nextXPos = intervalValueX * 2 + nextXPos;
+      nextYpos = intervalValueY * 2 + nextYpos;
+
+      cout << "Next X POS: " << setprecision(17) << nextXPos << endl;
+      cout << "Next Y POS: " << nextYpos << endl;
+      cout << endl;
+      framesWalked++;
+      //movement occurs once per 30fps frame
+    }
+    cout << "It took " << framesWalked*2 << " 60fps frames to arrive.\n"; 
+    cout << "It took " << framesWalked << " 30fps frames to arrive.\n";
+
+    
 
     //TIMER
 
@@ -127,59 +242,235 @@ int main(){
     }
 
 
-    /*Speed:
 
-    initial pos 4,24
+    /*
 
-    ROUGHLY 0.5806408 when in a straight line. 
 
-    somewhere between 0.25 and 0.40 units per frame at 30Fps?
-
+Keep an eye out for 4081BFAD intended x pos
+and 421BFFE6 intended y pos
 
 
 
-    INSTRUCTION SET BEGINS AT 0x8018854c
-    ENDS AT 0x80188590
-
-    Sp is 16 less than Target addr
-    Sets up 0x4330 in R0
 
 
-    stores 0002 in 8048E57C from R3
-
-    load float 4330 into f1 (changes?)
-
-    Moved 809e53d8 from r29 into R3
-
-    Store 4330 from r0 into 0x8048E578
-
-    R4 adds 16 to it to get target addr in r4
-
-    Read float from 0x8048E558, store in f3
-
-    add 809e53d8 + 156 store in r5
-
-    4330.... and the 2 from earlier in 0x8048E578 loaded into f0
-    (4330000000000002)
-
-    Load Float from 0x8048E540 into F2 (previous location?)
-
-    4330...2 - 4330 = 2. Store in F4
-
-    Load float from 0x8048E560, store in F1
-
-    Load float from 0x8048E548, store in F0
-
-    F3 * F4 + F2, store in F2
-    F1 * F4 + F0, store in F0
-
-    This basically boils down to F1 or F3 * 2 + Previous location
-
-    Store f2 in 0x8048E540 and f0 in 8048E548
-    (This will later be memcpy'ed into other areas, and eventually end up in the npc data.)
 
 
-    Question is, what is F1 and F3? What are these numbers?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+load Double BFDA13E000000000 F2 AND F0???? (BED09F00)
+80184ed4: bl	->0x800CE2D8
+
+800cb21c: lfs	f1, 0x0020 (sp)
+Loads 
+state2: 405AC41A from 0x8048E600 (interesting mem location)
+state1: 3D5FD680 instead. diff of current new pos?
+
+
+800cb220: lfs	f0, 0x0028 (sp)
+Loads 
+state2: BED09F00 from 0x8048E608
+state1: 416FFF98
+
+what are these values?
+
+Value carried forward for a whiiile.
+
+800cb224:fdiv	f0,f1,f0
+Divide: 
+405AC41A / BED09F00 = C1063975 (negative number)
+
+Absoluted into : 41063975 = f1
+
+atan(f1) = 3FB9E025
+
+store/update address that stores this number.
+
+
+Load 250D3132 from 8047C578 into f0 Double
+Load 40490FDB from 8047C528 into f2 double - loads Pi
+
+2 fsubs: (blue func)
+
+f1 - f0 = f0
+3FB9E025 - 250D3132 = 3FB9E025  subtracts such a small amount that it almost doesn't even register at all. a difference of just 2 bits!
+f2 - f0 = f1
+3FB9E025 - 40490FDB = 3FD83F90 When seen as a double, kinda makes a small difference at the tiniest decimal places but as floats it gets wiped anyway.
+This is f1 - pi basically.
+
+BLR to earlier:
+```````````````````````````````````````````
+
+
+After blr and value is in the register, it follows this path to being put in the addr. 
+
+
+
+80184ed8: frsp	f1,f1
+Round double to single precision (static cast float) from dbl.
+F0 gets zeroed so prob not impactful?
+
+
+
+
+AFTER THIS, IT IS JUST COPIED AROUND UNTIL PUT INTO THE TARGET ADDR. This is the code if needed:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+z_80184edc starts:
+
+f2 loads 40C90FDB, nothing changes
+40C90FDB = 2xPi ?
+Fsub
+f1 - 0 = f0
+3FD83F90 - 0 = 3FD83F90 
+basically just a copy into f0;
+
+Fadd
+f2 + f0 = f1
+40C90FDB + 3FD83F90 = 40FF1FBF
+
+FMOD func.
+
+Check if Pi and angle are valid numbers:
+comparison to check if both 3FD83F90 and 40490FDB are valid numbers TRUE
+comparison to check if both 3FD83F90 and C0490FDB are valid numbers TRUE 
+40490FDB is positive Pi
+C0490FDB is negative Pi
+f1 gets put into f31 and later returned so that it can be stored in memory. No further changes.
+
+
+
+
+
+
+
+
+
+******
+
+80185074: fmadds	f1,f3,f1,f31
+40C90FDB * 0 + 3FD83F90 = 3FD83F90
+2*Pi
+basically just copies f31 into f1
+
+stfs	f1, 0x0040 (r28)
+stores result in 0x809e5418
+
+
+
+F31 comes from earlier F1
+
+
+zz_800a3cb0_
+
+Recurring Values for beginning direction: 
+3f6dd859a0000000 - 3B6EC2CD
+3fd294a520000000 - 3E94A529 - F10, inputC
+3f5dd85880000000 - 3AEEC2C4
+
+
+
+800a3cb0: mflr	r0
+800a3cb4: stw	r0, 0x0004 (sp)
+800a3cb8: stwu	sp, -0x0038 (sp)
+Update stackpointer
+
+SP = 0x8048e4e8
+
+800a3cbc: stfd	f31, 0x0030 (sp)
+Store double
+
+800a3cc0: stfd	f30, 0x0028 (sp)
+Store double
+
+800a3cc4: fmr	f30, f1
+3E94A529 !!! -- Factor C? -- THIS THING IS EVERYWHERE, constant no matter what angle.
+
+800a3cc8: stw	r31, 0x0024 (sp)
+3B6EC2CD into 0x8048E50C
+???
+
+
+800a3ccc: addi	r31, r3, 0
+800a3cd0: addi	r3, r4, 0
+800a3cd4: addi	r4, sp, 20
+just stores addr in r3 into r31
+replaces with r4, who in turn is given the sp with an offset of +20
+
+
+
+800a3cd8: bl	->0x800A3ADC ----DO I EVEN CARE ABOUT THIS?
+Ton of paired singles math.
+
+
+800a3cdc: lfs	f0, -0x73D0 (rtoc)
+ Result: 0.5  addr: 0x8047C2D0
+
+At this pt f30 = f31
+800a3ce0: fmuls	f30,f0,f30
+result: 3AEEC2CD
+
+800a3ce4: fmr	f1, f30
+moved 3AEEC2CD into F1
+
+
+800a3ce8: bl	->0x800CE6AC tanf() math function. Params?
+
+First, F1 is run thru sin() function.
+
+
+
+
+
+
+800a3cec: fmr	f31, f1
+800a3cf0: fmr	f1, f30
+Store result of first tan in f31, use old value from F30 for tan #2
+
+800a3cf4: bl	->0x800CE6D0
+
+
+F31 comes from first TanF, F1 comes from 2nd TanF
+
+
+
+800a3d04: lfs	f0, 0x0018 (sp)
+Result: 3F7FFFFF addr: 8048E500
+loads constant!
+
+800a3d08: fmuls	f0,f31,f0
+produces: 3AEEC2C3
+
+800a3d0c: stfs	f0, 0x0004 (r31)
+Places input A (c2c3) in 0x8048e568
+
+
+800a3d1c: stfs	f1, 0x000C (r31)
+Places input B (FE4) in 0x8048E570
+
+
+
+
+
+
+
+
+
+
+
 
 
 

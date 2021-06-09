@@ -39,7 +39,10 @@ uint32_t LCGn(uint32_t seed, const uint32_t n)
     return seed;
   }
 
-
+uint32_t rollToGeneration(uint32_t seed, uint32_t n){
+   //Pokeball animation calls, done at 72-32-32 pattern for 11 frames.
+    return seed = LCGn(seed,n);
+}
 void findQuil(uint32_t inputSeed){
 //   uint32_t TID = 0;
   uint32_t PID = 0;
@@ -79,8 +82,7 @@ void findQuil(uint32_t inputSeed){
     // TID = LCG(seed) >> 16; //YAY FIGURED IT OUT
     // seed = LCGn(seed,3);
 
-    //Pokeball animation calls, done at 72-32-32 pattern for 11 frames.
-    seed = LCGn(seed,544);
+   
 
     //Some tid/sid stuff?
     seed = LCGn(seed,4);
@@ -128,7 +130,7 @@ void findQuil(uint32_t inputSeed){
 
 int main(){
     uint32_t userInputSeed = 0xE1FE660D;
-
+    userInputSeed = rollToGeneration(userInputSeed,544);
     findQuil(userInputSeed);
 
     return 0;
