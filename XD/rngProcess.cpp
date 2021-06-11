@@ -72,7 +72,7 @@ vector<uint32_t> readNumbersFromFile(string fileName)
 }
 int main(){
     const string FILE_EXTENSION = ".txt";
-    const string FILE_NAME = "p0";
+    const string FILE_NAME = "swirlRecord1";
     uint32_t seed = 0x0;
     int rolls = 0;
 

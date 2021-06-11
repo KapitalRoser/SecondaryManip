@@ -1,6 +1,9 @@
 #include <iostream>
 #include <iomanip>
 #include <string>
+#include <vector>
+#include <fstream>
+#include <sstream>
 using namespace std;
 uint32_t LCG(uint32_t& seed){
   seed = seed * 214013 + 2531011;
@@ -39,6 +42,61 @@ uint32_t LCGn(uint32_t seed, const uint32_t n)
     return seed;
   }
 
+vector<int> readNumbersFromFile(string fileName)
+{
+    uint32_t value;
+    int lineRead = 0;
+    vector<int> data; //Setup
+    ifstream file(fileName);
+            cout << "Read some data! \n";
+    if (file.fail())
+    {
+        cout << "File inaccessible";
+        exit(EXIT_FAILURE);
+    }
+    while (!(file.fail()))
+    {   /*Keeping the pattern in raw ints of rolls is a bigger filesize than
+          encoding everything as individual chars. However this makes it easy to import
+          patterns with odd or new values */
+        file >> lineRead; 
+        data.push_back(lineRead);
+    }
+    file.close();
+    return data;
+}
+void exhaustGuaranteed(string pattern,uint32_t& seed){
+  //Is it better to have a list of these predetermined values
+  //Or do I pass in the vector of values an sum the calls?
+  //would make it easier to accept new or modified patterns
+  //The code would verify the pattern automatically.
+  int n = 0;
+    if (pattern == "leadingAs"){
+      n = 61386;
+    } else if (pattern == "leadingSevens"){
+      n = 0;
+    } else if (pattern == "leadingEights"){
+      n = 0;
+    }
+    seed = LCGn(seed,n);
+
+    //REMEMBER TO TEST THIS AND REPLACE!!!
+    //vs this:
+    // const int minFrames = 764; //Works for any pattern, the condition statement may be off though. 
+    // for (int i = 0; i<(minFrames);i++){
+    //   seed = LCGn(seed,vPattern.at(i));
+    // }
+
+    //exhaust guaranteed calls according to previous pattern tests. Any deviations work themselves out by the time all footsteps are completed.
+}
+uint32_t seekTarget(uint32_t& seed,int target,vector<int>pattern){
+    for (int i = 0;i<target;i++){ // Seek target
+      seed = LCGn(seed,pattern.at(i));
+    }
+    return seed;
+}
+int seekFrame(int startF,int minF, int target){
+  return startF+minF+target*2; //60 fps to 30fp conversion.
+}
 void blurDirection(uint32_t seed){
   //burns 2 calls.
     uint32_t leftRightHi = 0;
@@ -51,49 +109,84 @@ void blurDirection(uint32_t seed){
     leftRightHi = seed >> 16;
     leftRight = (leftRightHi << 16) | leftRightLo;
     if (leftRight% 2 == 1){
-        blurDirection = "CounterClockwise - 1";
+        blurDirection = "Clockwise - 1";
     } else {
-        blurDirection = "ClockWise - 0";
+        blurDirection = "CounterClockWise - 0";
     }
     //replace with return statement later.
     cout << blurDirection << endl;
 }
-void rollToGeneration(uint32_t&seed, uint32_t x, bool early){
-   
+int dummyCam(uint32_t& seed){
+  uint32_t v1 = 0;
+  int count = 0;
+  //burns X calls
 
-  const uint32_t blurCalls = 9600;
+  //Sim calls up to this point
+
+  do{
+    count++;
+    LCG(seed);
+    v1 = seed >> 16;
+    v1 = v1 % 10; //is this ever % 12?
+   } while(v1 == 3);
+
+    //Some physics stuff
+    LCG(seed);
+    return count+1;
+}
+void rollToGeneration(uint32_t&seed){ 
+  const int blurCalls = 9600;
   string version = "Modern";
   int n = 0;
+  int blurBeforeCam = 0;
+  int blurAfterCam = 0;
+  int blurDuration = 46;
+  int battleCameraCalls = 0;
 
     //THE HOLY EQUATION for post txtbox. 
-  if(version == "LUA"){
+  // if(version == "LUA"){
+  //   blurDuration = 41; //Isn't represented until 3 frames in, as the first two frames overlap the background noise pattern.
+    
+  // } else if (version == "Modern"){
+  //   blurDuration = 49;
+  //   blurBeforeCam = 41;
 
-  n = 9600*41 + 249 + x;
+  //   if (framesShortened > 0){ //Some kind of relationship between the short blur frame beginning and the hiFrame loFrame problem. Not just a houndour thing.
+  //     blurDuration -= framesShortened;
+  //     blurAfterCam = blurDuration-blurBeforeCam;
+  //   } else {
+  //     blurAfterCam = 8;
+  //   }
+  // }
+  // cout << blurBeforeCam + blurAfterCam << endl;
+  // blurDuration--;
 
-  } else if (version == "Modern"){
 
-    n = blurCalls*48;
+  //bit wonky, because dummy cam calls are determined by the point value part-way through the blur.
+  //could just suck it up and loop this. - gonna do that.
 
-    if (early){ //Some kind of relationship between the early blur frame beginning and the hiFrame loFrame problem. Not just a houndour thing.
-      n += blurCalls + 1;
+
+    for (int i = 0; i<blurDuration; i++){
+        seed = LCGn(seed,blurCalls);
+        // cout << hex << seed << endl;
+        if (i == 39){ //is this constant?
+          // cout << "Seed entering dummycam: " << hex << seed << dec << endl;
+          battleCameraCalls = dummyCam(seed);
+          // cout << "CAM: " << battleCameraCalls << endl; 
+        }
     }
-
-    n += 181 + 2 + x; //The 181 may be variable here. 
-  }
-  seed = LCGn(seed,n);
+    seed = LCGn(seed,4); // These occur between the lag frame before the outSeed.
 
 
 
-
-
-
-
-
-
-
+  
+  // seed = LCGn(seed,blurBeforeCam*blurCalls);
+  // battleCameraCalls = dummyCam(seed);
+  //  cout << "BattleCamCalls " << battleCameraCalls << endl;
+  // seed = LCGn(seed,(blurAfterCam+battleCameraCalls)*blurCalls);
+  // n = blurDuration*blurCalls + dummyCam(seed) + 4; //is 4 const?
+  // seed = LCGn(seed,n);
 }
-
-
 void generateMon(uint32_t inputSeed){
 //   uint32_t TID = 0;
   uint32_t PID = 0;
@@ -155,7 +248,7 @@ void generateMon(uint32_t inputSeed){
     cout << "Seed " 
     //<< hiOrLow << setw(4) 
     << ": " << hex << outSeed
-    << " PID: " << setw(5) << PID
+    << " PID: " << setw(5) << PID << dec
     << " IVs: " << setw(2) << hp << " " << setw(2) << atk << " " << setw(2) << def << " " << setw(2)
     << spa << " " << setw(2) << spd << " " << setw(2) << spe << " "
     << "Nature: " << displayNature << " Gender: " << displayGender << endl;
@@ -164,16 +257,80 @@ void generateMon(uint32_t inputSeed){
 
 
 int main(){
-    uint32_t blurSeed = 0x0; //Final normal seed -1 frame. Can be stored or can be determined from an XDLNGR operation if I ever figure out how that works. 
-    uint32_t userInputSeed = 0x3C3D8EF5; //Final normal seed.
-    bool early = 0;
+  //~~~~~~~~~~~~ CONFIG INPUTS ~~~~~~~~~~~~~~~~~~~~
+    
+    uint32_t userInputSeed = 0x920457b9; //CALC SEED
+    int aToBlur = 20;
+    const string PATTERN = "leadingAs"; //Pattern - step calls built in.
+    int target = 278; //151
+    const int VISUAL_START_FRAME = 38181;
+    const uint32_t INITIAL_SEED = 0x0;
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    const int VISUAL_MIN_FRAMES = 1527; //60fps, adjust for not -5?
+    const string FILE_EXTENSION = ".txt";
+    int patternPosition = target;
+    
+
+
+    //17, 19, 20
+    
+    uint32_t seed = INITIAL_SEED;
+    vector<uint32_t>toEndOfOverlap; //+2f from normal (?)
+    uint32_t blurSeed = 0;
+    // vector<uint32_t>LastNormal;
+
+    vector<int>noisePattern = readNumbersFromFile(PATTERN + FILE_EXTENSION);
+    int targetVisualFrame = seekFrame(VISUAL_START_FRAME,VISUAL_MIN_FRAMES,target);
+    exhaustGuaranteed(PATTERN,seed); //test alt solution and put this into seekTarget()
+    
+    uint32_t targetValue = seekTarget(seed,target,noisePattern);
+
+    for (int i = 0;i<=aToBlur;i++){
+      seed = LCGn(seed,noisePattern.at(patternPosition+i));
+      if (i == aToBlur-3){
+        blurSeed = seed;
+      }
+      // if (i == 16 || i == 17){ //I theorize that this is the same as the blur frame.
+      //   LastNormal.push_back(seed);
+      // }
+      if (i == aToBlur){
+        toEndOfOverlap.push_back(seed);
+      }
+    }
+
+    //BlurFrames == last normal? does last normal even matter at all?
+    //Printouts:
+    cout<< "Seek frame: " << targetVisualFrame << endl
+        << "Target: " << target << ". Reached: " << hex << targetValue << endl
+        << "Blur Frame: " << blurSeed << endl
+        << "Frames used for calculation: " << toEndOfOverlap.at(0)
+       << endl; 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // int framesShort = 5;
     blurDirection(blurSeed);
-    rollToGeneration(userInputSeed,1,early);
+    rollToGeneration(userInputSeed);
     generateMon(userInputSeed);
-
-
-
-
 
 
     return 0;

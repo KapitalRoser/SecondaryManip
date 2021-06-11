@@ -64,23 +64,97 @@ vector<int> readNumbersFromFile(string fileName)
     file.close();
     return data;
 }
-
-
-
+uint32_t exhaustGuaranteed(string pattern,uint32_t& seed){
+    if (pattern == "leadingAs"){
+      seed = LCGn(seed,61386);
+    } else if (pattern == "leadingSevens"){
+      seed = LCGn(seed,0);
+    } else if (pattern == "leadingEights"){
+      seed = LCGn(seed,0);
+    }
+    //exhaust guaranteed calls according to previous pattern tests. Any deviations work themselves out by the time all footsteps are completed.
+}
 
 int main(){
     //~~~~~~~~~~~~ CONFIG ~~~~~~~~~~~~~~~~~~~~
-    const string FILE_NAME = "leadingAs";
-    // const string FILE_NAME = "13NTSCOld";
+    const string PATTERN = "leadingAs"; //Pattern
     const string FILE_EXTENSION = ".txt";
     const uint32_t INITIAL_SEED = 0x0;
     // const int steps = 13;
-    int target = 786;
+    // bool earlyFrame = 0;
+    int target =161;
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+    const int VISUAL_START_FRAME = 38181;
+    const int VISUAL_MIN_FRAMES = 1527; //60fps
+    int targetVisualFrame = VISUAL_START_FRAME + VISUAL_MIN_FRAMES + target*2;
+    int patternPosition = target;
+    uint32_t targetValue = 0;
     uint32_t seed = INITIAL_SEED;
+    vector<int>noisePattern = readNumbersFromFile(PATTERN + FILE_EXTENSION);
+    vector<uint32_t>LastNormal;
+    vector<uint32_t>blurFrames; //-1f from  normal
+    vector<uint32_t>toEndOfOverlap; //+2f from normal (?)
+
+    exhaustGuaranteed(PATTERN,seed);
     
-     //Frames at 30fps to shoot for, will eventually come from finding a good teddy.
+    for (int i = 0;i<target;i++){ // Seek target
+      seed = LCGn(seed,noisePattern.at(i));
+    }
+    targetValue = seed;
+
+    for (int i = 0;i<=19;i++){
+      seed = LCGn(seed,noisePattern.at(patternPosition+i));
+      if (i == 15 || i == 16){
+        blurFrames.push_back(seed);
+      }
+      if (i == 16 || i == 17){
+        LastNormal.push_back(seed);
+      }
+      if (i == 18 || i == 19){
+        toEndOfOverlap.push_back(seed);
+      }
+    }
+
+    //BlurFrames == last normal? does last normal even matter at all?
+    //Printouts:
+    cout<< "Seek frame: " << targetVisualFrame << endl
+        << "Target: " << target << ". Reached: " << hex << targetValue << endl
+        << "Blur Frames: " << blurFrames.at(0) << ", " << blurFrames.at(1) << endl
+        << "Last Normal Frames: " << LastNormal.at(0) << ", " << LastNormal.at(1) << endl
+        << "Frames used for calculation: " << toEndOfOverlap.at(0) << ", " << toEndOfOverlap.at(1) << endl; 
+
+    //Time for hiFrameLoFrame bullshit.
+    //A is pressed on target frame, fadeoutCalcs:
+    
+    
+
+  
+
+    // for(int i = 0; i<19;i++){
+    //   seed = LCGn(seed,noisePattern.at(patternPosition+i));
+    //   if (i == 16 || i == 17){
+    //     lastNormal;
+    //   }
+    //   if (i >=15){
+    //     cout << seed << ",";
+    //   }
+    //   // cout << seed << endl;
+    //   }
+    //   cout << endl;
+    //   cout << "Last normal frame: " << seed;
+    //   seed = LCGn(seed,noisePattern.at(patternPosition+17));
+    //   cout << " or " << seed;
+
+
+
+
+
+    return 0;
+}
+
+
+ 
+     /*Frames at 30fps to shoot for, will eventually come from finding a good teddy.
 
      //every 1500f theres a 100 call frame. 
      //Every 500F there is an 87 call frame. 
@@ -96,55 +170,4 @@ int main(){
      //For now, document leading A's and 7's pattern as a confidence boost.
      //For what it's worth, an A's pattern is on even frames for newdolphin.
 
-
-
-
-
-
-
-    //For A's pattern:
-    if (FILE_NAME == "leadingAs"){
-      seed = LCGn(seed,61386);
-      //exhaust guaranteed calls according to previous pattern tests. Any deviations work themselves out by the time all footsteps are completed.
-    }
-
-    vector<int>noisePattern = readNumbersFromFile(FILE_NAME + FILE_EXTENSION);
-
-    int patternPosition = 0; //This lets us reuse this variable for after
-    while(patternPosition <target){
-       seed = LCGn(seed,noisePattern.at(patternPosition));
-       patternPosition++;
-        // cout << hex <<seed << " : " << dec << noisePattern.at(patternPosition) << endl;
-    }
-
-
-    //Frame Calculation (Modern)
-    const int startingFrame = 38181;
-    const int minFrames = 1527; //60fps
-    int targetFrame = startingFrame + minFrames + target*2;
-    cout << "Seek frame: " << targetFrame << endl;
-
-
-    cout << "Target: " << target << ". Reached: " << hex << seed << endl;
-
-    //A is pressed on target frame, fadeoutCalcs:
-    //Sometimes its one frame early or late?
-    cout << "Blur Frames are: ";
-    for(int i = 0; i<17;i++){
-      seed = LCGn(seed,noisePattern.at(patternPosition+i));
-      if (i >=15){
-        cout << seed << ",";
-      }
-      // cout << seed << endl;
-      }
-      cout << endl;
-      cout << "Last normal frame:" << seed;
-      seed = LCGn(seed,noisePattern.at(patternPosition+17));
-      cout << " or " << seed;
-
-
-
-
-
-    return 0;
-}
+    X frames of overlap may exist*/

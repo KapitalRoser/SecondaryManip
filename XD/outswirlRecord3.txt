@@ -1,0 +1,161 @@
+ 6d0a485 :        SEVENS :  77
+6a68a240 :           OFF :  89
+273eff3b :            BA :  79
+9447eaa8 :        SEVENS :  77
+ c426167 :           OFF :  89
+e0ed1e66 :            BA :  79
+ 5931caf :        SEVENS :  77
+7391dba2 :           OFF :  89
+63dedbd5 :            BA :  79
+49b8944a :        SEVENS :  77
+1a4704e1 :           OFF :  89
+e6edb5b8 :            BA :  79
+b062a369 :        SEVENS :  77
+5b22b454 :           OFF :  89
+9464387f :            BA :  79
+82df673c :        SEVENS :  77
+6b49bb6b :           OFF :  89
+35fb59da : OTHER ------- : 9683
+da921367 : OTHER ------- : 9677
+68c9cf7a : OTHER ------- :   0
+68c9cf7a : OTHER ------- :   0
+68c9cf7a : OTHER ------- : 28800
+889ba7fa : OTHER ------- : 9600
+6b56457a : OTHER ------- : 9600
+2975e2fa : OTHER ------- : 9600
+b8fa807a : OTHER ------- : 9600
+ fe41dfa : OTHER ------- : 9600
+2432bb7a : OTHER ------- : 9600
+ebe658fa : OTHER ------- :   0
+ebe658fa : OTHER ------- : 19200
+6d7c93fa : OTHER ------- : 9600
+135f317a : OTHER ------- : 9600
+44a6cefa : OTHER ------- : 9600
+f7536c7a : OTHER ------- : 9600
+216509fa : OTHER ------- : 9600
+b8dba77a : OTHER ------- : 9600
+b3b744fa : OTHER ------- : 9600
+ 7f7e27a : OTHER ------- :   0
+ 7f7e27a : OTHER ------- : 19200
+94a81d7a : OTHER ------- : 9600
+b917bafa : OTHER ------- : 9600
+ eec587a : OTHER ------- : 9600
+8c25f5fa : OTHER ------- : 9600
+26c4937a : OTHER ------- : 9600
+d4c830fa : OTHER ------- : 9600
+8c30ce7a : OTHER ------- : 9600
+42fe6bfa : OTHER ------- : 9600
+ef31097a : OTHER ------- : 9600
+86c8a6fa : OTHER ------- : 9600
+ffc5447a : OTHER ------- : 9600
+5026e1fa : OTHER ------- : 9600
+6ded7f7a : OTHER ------- : 9600
+4f191cfa : OTHER ------- : 9600
+e9a9ba7a : OTHER ------- : 9600
+339f57fa : OTHER ------- : 9600
+22f9f57a : OTHER ------- : 9600
+adb992fa : OTHER ------- : 9600
+c9de307a : OTHER ------- : 9602
+ee935c44 : OTHER ------- : 9600
+90f2e5c4 : OTHER ------- : 9600
+49df6f44 : OTHER ------- : 9600
+bf58f8c4 : OTHER ------- : 9600
+975f8244 : OTHER ------- : 9600
+77f30bc4 : OTHER ------- : 9600
+ 7139544 : OTHER ------- : 9600
+eac11ec4 : OTHER ------- :   0
+
+eac11ec4 : OTHER ------- : 19209
+9c85c19f : OTHER ------- : 9600
+ ab3d51f : OTHER ------- : 9600
+6fdae89f : OTHER ------- : 9600
+99fafc1f : OTHER ------- : 9600
+57140f9f : OTHER ------- : 9600
+7526231f : OTHER ------- : 9600
+c231369f : OTHER ------- : 9601
+e193fc66 : OTHER ------- : 9600
+164ac1e6 : OTHER ------- : 9600
+a4168766 : OTHER ------- : 9600
+20f74ce6 : OTHER ------- : 9600
+22ed1266 : OTHER ------- : 9600
+3ff7d7e6 : OTHER ------- : 9600
+ e179d66 : OTHER ------- : 9600
+234c62e6 : OTHER ------- : 9600
+15962866 : OTHER ------- : 9600
+7af4ede6 : OTHER ------- : 9600
+e968b366 : OTHER ------- : 9600
+f6f178e6 : OTHER ------- : 9600
+398f3e66 : OTHER ------- : 9607
+bd89b0c7 : OTHER ------- : 9601
+
+Camera^
+8e301dee : OTHER ------- : 9601
+34545c79 : OTHER ------- : 9601
+2cdd0ed8 : OTHER ------- : 9601
+40aeadbb : OTHER ------- : 9601
+ca12af12 : OTHER ------- : 9601
+c008110d : OTHER ------- : 9601
+3dbfb91c : OTHER ------- : 9601
+3bdd56ef : OTHER ------- : 9601
+9192bb76 : OTHER ------- : 9601
+16b3d3e1 : OTHER ------- : 9601
+c948b8a0 : OTHER ------- : 9601
+c56d8063 : OTHER ------- : 9601
+fff0c71a : OTHER ------- : 9601
+9bbe18f5 : OTHER ------- : 9601
+15ccb164 : OTHER ------- : 9601
+ 8c93e17 : OTHER ------- : 9601
+a7b695fe : OTHER ------- : 9601
+29319449 : OTHER ------- : 9601
+70338768 : OTHER ------- : 9601
+de20e40b : OTHER ------- : 9601
+d39b2c22 : OTHER ------- : 9601
+351139dd : OTHER ------- : 9601
+ 3fc5eac : OTHER ------- : 9601
+6a5f063f : OTHER ------- : 9601
+2ea6cd86 : OTHER ------- : 9601
+40ec3db1 : OTHER ------- : 9601
+54819b30 : OTHER ------- : 9601
+5b5c78b3 : OTHER ------- :   1
+e839c0aa : OTHER ------- :   1
+e0a484c5 : OTHER ------- :   1
+9fcc6474 : OTHER ------- :   1
+98cc4167 : OTHER ------- :   1
+3b56368e : OTHER ------- :   1
+d84bb319 : OTHER ------- :   1
+ac212978 : OTHER ------- :   1
+472f025b : OTHER ------- :   1
+ae4ac3b2 : OTHER ------- :   1
+1c579bad : OTHER ------- :   1
+c380bfbc : OTHER ------- :   1
+27c64f8f : OTHER ------- :   1
+24a2ac16 : OTHER ------- :   1
+cc367281 : OTHER ------- :   1
+69708b40 : OTHER ------- :   1
+4a91fd03 : OTHER ------- :   1
+deae73ba : OTHER ------- :   1
+1606ab95 : OTHER ------- :   1
+86653004 : OTHER ------- :   1
+ddc41eb7 : OTHER ------- :   1
+db27de9e : OTHER ------- :   1
+a1aafae9 : OTHER ------- :   1
+76869208 : OTHER ------- :   1
+117508ab : OTHER ------- :   1
+fc15f0c2 : OTHER ------- :   1
+b21e547d : OTHER ------- :   1
+f5b3d54c : OTHER ------- :   1
+63974edf : OTHER ------- :   1
+f2f0ee26 : OTHER ------- :   1
+f107ec51 : OTHER ------- :   1
+ cc75dd0 : OTHER ------- :   1
+e82bc553 : OTHER ------- :   1
+38065aca : OTHER ------- :   1
+188f3665 : OTHER ------- :   1
+641acf94 : OTHER ------- :   1
+61b58007 : OTHER ------- :   1
+911cfaae : OTHER ------- :   1
+ef6fe6b9 : OTHER ------- :   1
+9f4b0e98 : OTHER ------- :   1
+3dedd2fb : OTHER ------- :   0
+Anomalies: 139.
+Step frames: .
