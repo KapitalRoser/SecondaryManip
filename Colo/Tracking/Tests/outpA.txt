@@ -1,0 +1,1203 @@
+       0 : OTHER ------- :   0
+       0 : OTHER ------- :   0
+       0 : OTHER ------- :   0
+       0 : OTHER ------- :   0
+       0 : OTHER ------- :   0
+       0 : OTHER ------- :   0
+       0 : OTHER ------- :   0
+       0 : OTHER ------- :   1
+  269ec3 : OTHER ------- :   0
+  269ec3 : OTHER ------- :   0
+  269ec3 : OTHER ------- :   0
+  269ec3 : OTHER ------- :   0
+  269ec3 : OTHER ------- :   0
+  269ec3 : OTHER ------- :   0
+  269ec3 : OTHER ------- :   0
+  269ec3 : OTHER ------- :   1
+1e278e7a : OTHER ------- :   0
+1e278e7a : OTHER ------- :   0
+1e278e7a : OTHER ------- :   0
+1e278e7a : OTHER ------- :   0
+1e278e7a : OTHER ------- :   0
+1e278e7a : OTHER ------- :   0
+1e278e7a : OTHER ------- :   0
+1e278e7a : OTHER ------- :   1
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   0
+d2f65b55 : OTHER ------- :   6
+a8d2826b : OTHER ------- :   0
+a8d2826b :          HIGH : 116
+387a0fcf :          HIGH : 116
+91ef8f73 :           LOW :  76
+6a60cf8f :          HIGH : 116
+911a8b33 :          HIGH : 116
+3dbedd17 :           LOW :  76
+22dbc6f3 :          HIGH : 116
+a97014d7 :           LOW :  76
+ ef342b3 :          HIGH : 116
+e69b8c97 :          HIGH : 116
+ddb110bb :           LOW :  76
+b9014457 :          HIGH : 116
+1952847b :           LOW :  76
+24613c17 :          HIGH : 116
+2b52383b :          HIGH : 116
+1131529f :           LOW :  76
+d3702bfb :          HIGH : 116
+ 752c25f :           LOW :  76
+116c5fbb :          HIGH : 116
+3af6721f :          HIGH : 116
+aa11c6c3 :           LOW :  76
+27dc61df :          HIGH : 116
+42fef283 :           LOW :  76
+89c4919f : OTHER ------- : 124
+f03971eb : OTHER ------- : 120
+f73490c3 :           LOW :  76
+8f4c8bdf :          HIGH : 116
+4587bc83 :           LOW :  76
+863abb9f :          HIGH : 116
+e8c12843 :          HIGH : 116
+68ec3b27 :           LOW :  76
+d8a0d403 :          HIGH : 116
+ec32e2e7 :           LOW :  76
+4ce6bfc3 :          HIGH : 116
+fc03caa7 :          HIGH : 116
+ eb91fcb :           LOW :  76
+cc1ef267 :          HIGH : 116
+c3f7038b :           LOW :  76
+d0445a27 :          HIGH : 116
+8ba3274b :          HIGH : 116
+7a9c22af :           LOW :  76
+957d8b0b :          HIGH : 116
+e7d1026f :           LOW :  76
+51462ecb :          HIGH : 116
+5f98222f :          HIGH : 116
+8db867d3 :           LOW :  76
+cdb181ef :          HIGH : 116
+9da00393 :           LOW :  76
+5ddd21af :          HIGH : 116
+867ddf53 :          HIGH : 116
+dfb75337 :           LOW :  76
+b011fb13 :          HIGH : 116
+39896af7 :           LOW :  76
+c21c56d3 :          HIGH : 116
+b4f5c2b7 :          HIGH : 116
+306c88db :           LOW :  76
+f5bc5a77 :          HIGH : 116
+cb9cdc9b :           LOW :  76
+df9d3237 :          HIGH : 116
+2f4b705b :          HIGH : 116
+c7b9ecbf :           LOW :  76
+fb38441b :          HIGH : 116
+7bb83c7f :           LOW :  76
+ f2357db :          HIGH : 116
+2158cc3f :          HIGH : 116
+e7b3a2e3 :           LOW :  76
+145b9bff :          HIGH : 116
+b7abaea3 :           LOW :  76
+f080abbf :          HIGH : 116
+88a9fa63 :          HIGH : 116
+b5040f47 :           LOW :  76
+326e8623 :          HIGH : 116
+979d9707 :           LOW :  76
+ccb951e3 :          HIGH : 116
+14e15ec7 :          HIGH : 116
+398fd5eb :           LOW :  76
+408f6687 :          HIGH : 116
+1cae99ab :           LOW :  76
+6e67ae47 :          HIGH : 116
+a25b9d6b :          HIGH : 116
+6559dacf :           LOW :  76
+da56e12b :          HIGH : 116
+2ddd9a8f :           LOW :  76
+146064eb :          HIGH : 116
+33139a4f :          HIGH : 116
+31a741f3 :           LOW :  76
+40bbda0f :          HIGH : 116
+772bbdb3 :           LOW :  76
+629659cf :          HIGH : 116
+89c67973 :          HIGH : 116
+4a636f57 :           LOW :  76
+b1377533 :          HIGH : 116
+8f006717 :           LOW :  76
+753eb0f3 :          HIGH : 116
+cb579ed7 :          HIGH : 116
+e1c406fb :           LOW :  76
+83291697 :          HIGH : 116
+ 5cd3abb :           LOW :  76
+7a34ce57 :          HIGH : 116
+ca74ae7b :          HIGH : 116
+922cecdf :           LOW :  76
+af7a623b :          HIGH : 116
+43f21c9f :           LOW :  76
+749e55fb :          HIGH : 116
+e1798c5f :          HIGH : 116
+72544503 :           LOW :  76
+a6833c1f : OTHER ------- : 117
+55bfd87a :           LOW :  76
+5efd5726 :          HIGH : 116
+ 285553a :          HIGH : 116
+520fa08e :           LOW :  76
+b99811fa :          HIGH : 116
+e049694e :           LOW :  76
+93b80eba :          HIGH : 116
+3d24720e :          HIGH : 116
+3afc36a2 :           LOW :  76
+8d60bace :          HIGH : 116
+aeec4b62 :           LOW :  76
+35be438e :          HIGH : 116
+e3d1a022 :          HIGH : 116
+88ceb1f6 :           LOW :  76
+ a6c34e2 :          HIGH : 116
+7635d2b6 :           LOW :  76
+937c09a2 :          HIGH : 116
+  263376 :          HIGH : 116
+ de1a68a :           LOW :  76
+235fd436 :          HIGH : 116
+f64c934a :           LOW :  76
+1ca2b4f6 :          HIGH : 116
+1414c00a :          HIGH : 116
+493ce85e :           LOW :  76
+effa2cca :          HIGH : 116
+54c4611e :           LOW :  76
+52bcd98a :          HIGH : 116
+ffbd19de :          HIGH : 116
+55a98b72 :           LOW :  76
+1ee7129e : OTHER ------- : 117
+46f2f62d :           LOW :  76
+293eb4a9 :          HIGH : 116
+7c0be7ed :          HIGH : 116
+51e78b71 :           LOW :  76
+a79519ad :          HIGH : 116
+cbaa1931 :           LOW :  76
+674e8b6d :          HIGH : 116
+5460e6f1 :          HIGH : 116
+2713f6b5 :           LOW :  76
+e5cbf4b1 :          HIGH : 116
+687a2075 :           LOW :  76
+b9ab4271 : OTHER ------- : 118
+e195f257 :          HIGH : 116
+4144127b :           LOW :  76
+d257ea17 :          HIGH : 116
+ cc5c63b :           LOW :  76
+add421d7 :          HIGH : 116
+5c65b9fb :          HIGH : 116
+a0d3305f :           LOW :  76
+2fe3edbb :          HIGH : 116
+8018e01f :           LOW :  76
+c700617b :          HIGH : 116
+e6a0cfdf :          HIGH : 116
+cc5c4083 :           LOW :  76
+902aff9f :          HIGH : 116
+2ff1ac43 :           LOW :  76
+78776f5f :          HIGH : 116
+a42d5803 :          HIGH : 116
+5a83a6e7 :           LOW :  76
+60cf43c3 :          HIGH : 116
+5c708ea7 :           LOW :  76
+dd976f83 :          HIGH : 116
+22a7b667 :          HIGH : 116
+58c8078b :           LOW :  76
+20e91e27 :          HIGH : 116
+20502b4b :           LOW :  76
+ af4c5e7 :          HIGH : 116
+6e068f0b :          HIGH : 116
+8666466f :           LOW :  76
+b1ab32cb :          HIGH : 116
+a7c9662f :           LOW :  76
+9afe168b :          HIGH : 116
+437ec5ef :          HIGH : 116
+517d8793 : OTHER ------- :  78
+ 63439a1 :          HIGH : 116
+66a7c465 :           LOW :  76
+7a831761 :          HIGH : 116
+875ebe25 :          HIGH : 116
+ 16c8d29 :           LOW :  76
+c23df7e5 : OTHER ------- : 117
+238e9a08 :           LOW :  76
+10351dd4 :          HIGH : 116
+14bd98c8 :          HIGH : 116
+56bf4efc :           LOW :  76
+4727d788 :          HIGH : 116
+ 186b9bc :           LOW :  76
+f58d5648 : OTHER ------- : 118
+afb276d6 :          HIGH : 116
+c26abfea :           LOW :  76
+21a5b796 :          HIGH : 116
+cf894caa :           LOW :  76
+ b023856 :          HIGH : 116
+6965196a :          HIGH : 116
+8f7577be :           LOW :  76
+b8be262a :          HIGH : 116
+b60a907e :           LOW :  76
+265472ea :          HIGH : 116
+2970e93e :          HIGH : 116
+a2c6f0d2 :           LOW :  76
+5e6881fe :          HIGH : 116
+6dd75592 :           LOW :  76
+ 9b15abe :          HIGH : 116
+cb0cfa52 :          HIGH : 116
+74737f26 : OTHER ------- :  77
+8325c98d :          HIGH : 116
+bc61e711 :           LOW :  76
+2fe85b4d :          HIGH : 116
+cd93d4d1 :          HIGH : 116
+8213e295 :           LOW :  76
+1b5a0291 :          HIGH : 116
+fe672c55 :           LOW :  76
+ff747051 :          HIGH : 116
+ a12b615 :          HIGH : 116
+55ce1419 :           LOW :  76
+1ad67fd5 :          HIGH : 116
+c4dcb9d9 :           LOW :  76
+e6728995 :          HIGH : 116
+2c079f99 :          HIGH : 116
+5fbe91dd :           LOW :  76
+1d0ec559 :          HIGH : 116
+c56a539d :           LOW :  76
+69b22b19 :          HIGH : 116
+8c36555d :          HIGH : 116
+ffa15fe1 :           LOW :  76
+21e2971d :          HIGH : 116
+dca7fda1 :           LOW :  76
+342f18dd :          HIGH : 116
+c812db61 :          HIGH : 116
+dca6c225 :           LOW :  76
+cba1f921 :          HIGH : 116
+a861fbe5 :           LOW :  76
+311556e1 :          HIGH : 116
+f80575a5 :          HIGH : 116
+bbf73ca9 :           LOW :  76
+31512f65 :          HIGH : 116
+ba1cd269 :           LOW :  76
+fa052925 :          HIGH : 116
+3deea829 :          HIGH : 116
+f377936d :           LOW :  76
+c92cbde9 :          HIGH : 116
+25d9452d : OTHER ------- :  77
+ 39547c8 :          HIGH : 116
+cfc2edfc :          HIGH : 116
+4ed94370 :           LOW :  76
+bbb358bc :          HIGH : 116
+2cdd9a30 :           LOW :  76
+ff13037c :          HIGH : 116
+320530f0 : OTHER ------- : 117
+1a4669d7 :           LOW :  76
+ 61147b3 :          HIGH : 116
+a1b4e197 :           LOW :  76
+25520373 : OTHER ------- : 118
+c3614a89 :          HIGH : 116
+c84dfbcd :           LOW :  76
+15c20049 :          HIGH : 116
+555c4d8d :           LOW :  76
+61aef609 :          HIGH : 116
+d07adf4d :          HIGH : 116
+1b4a98d1 :           LOW :  76
+3769b10d :          HIGH : 116
+452cc691 :           LOW :  76
+c7e8c2cd :          HIGH : 116
+ 9633451 :          HIGH : 116
+e2a9ba15 :           LOW :  76
+ 1ade211 :          HIGH : 116
+7d4983d5 :           LOW :  76
+ 7cccfd1 : OTHER ------- : 117
+ce3c8a04 :          HIGH : 116
+a51d97f8 :           LOW :  76
+54e2acc4 :          HIGH : 116
+1e7b26b8 :           LOW :  76
+8d800f84 :          HIGH : 116
+3a03f578 :          HIGH : 116
+ e2cc6ac :           LOW :  76
+c2780438 :          HIGH : 116
+d7cb016c :           LOW :  76
+c29752f8 :          HIGH : 116
+30887c2c :          HIGH : 116
+f6f784a0 :           LOW :  76
+4f2536ec :          HIGH : 116
+ 81d2b60 :           LOW :  76
+aa6131ac :          HIGH : 116
+48961220 :          HIGH : 116
+a39505d4 :           LOW :  76
+1b2238e0 :          HIGH : 116
+27b4d894 :           LOW :  76
+22819fa0 :          HIGH : 116
+a29beb54 :          HIGH : 116
+20b3be48 :           LOW :  76
+630a3e14 :          HIGH : 116
+762c7d08 :           LOW :  76
+f7bfd0d4 :          HIGH : 116
+65207bc8 : OTHER ------- : 118
+8bbe6056 :           LOW :  76
+129c5d42 :          HIGH : 116
+65dc2116 :           LOW :  76
+be98d202 :          HIGH : 116
+d8e321d6 :          HIGH : 116
+3bdb1aea :           LOW :  76
+81936296 : OTHER ------- : 118
+da588374 :           LOW :  76
+ b3e7c80 :          HIGH : 116
+f835b634 :          HIGH : 116
+46cb5728 :           LOW :  76
+fc7a28f4 :          HIGH : 116
+3b5c35e8 :           LOW :  76
+95e5dbb4 :          HIGH : 116
+b84854a8 :          HIGH : 116
+4885e8dc :           LOW :  76
+d84fb368 :          HIGH : 116
+719c739c :           LOW :  76
+f6325228 :          HIGH : 116
+e3023e5c :          HIGH : 116
+cc5939d0 :           LOW :  76
+2377491c :          HIGH : 116
+468c3090 :           LOW :  76
+f9bb93dc :          HIGH : 116
+ac426750 : OTHER ------- : 118
+77e49c9e :           LOW :  76
+ca38dd0a :          HIGH : 116
+54a5d55e :           LOW :  76
+565949ca :          HIGH : 116
+b9184e1e :          HIGH : 116
+806bc3b2 :           LOW :  76
+39fc06de :          HIGH : 116
+1e0a4872 :           LOW :  76
+ac10ff9e :          HIGH : 116
+96ae0d32 :          HIGH : 116
+7ebee006 :           LOW :  76
+8b1711f2 :          HIGH : 116
+3e6b70c6 :           LOW :  76
+dc0556b2 :          HIGH : 116
+25b14186 : OTHER ------- : 117
+d734f5f5 :           LOW :  76
+68e23ff1 :          HIGH : 116
+7af1dfb5 :           LOW :  76
+1a6c4db1 :          HIGH : 116
+1f670975 :          HIGH : 116
+9e903d79 :           LOW :  76
+da547335 :          HIGH : 116
+d4c28339 :           LOW :  76
+ 17a1cf5 :          HIGH : 116
+6a7108f9 :          HIGH : 116
+4191313d :           LOW :  76
+915bceb9 :          HIGH : 116
+3bba92fd :           LOW :  76
+bb42d479 :          HIGH : 116
+546434bd :          HIGH : 116
+32c9d541 :           LOW :  76
+994e167d :          HIGH : 116
+99481301 :           LOW :  76
+5838383d :          HIGH : 116
+818a90c1 :          HIGH : 116
+77a06d85 :           LOW :  76
+95514e81 :          HIGH : 116
+836d4745 :           LOW :  76
+be5c4c41 :          HIGH : 116
+9c826105 :          HIGH : 116
+14d37e09 :           LOW :  76
+c89fbac5 :          HIGH : 116
+ 544b3c9 :           LOW :  76
+4d855485 :          HIGH : 116
+7ac22989 :          HIGH : 116
+773dcacd :           LOW :  76
+970bdf49 :          HIGH : 116
+23c51c8d :           LOW :  76
+bbe1d509 :          HIGH : 116
+bd5cae4d :          HIGH : 116
+dcda57d1 :           LOW :  76
+41c4800d :          HIGH : 116
+22c58591 :           LOW :  76
+eebc91cd :          HIGH : 116
+f204f351 :          HIGH : 116
+ 2086915 :           LOW :  76
+e458a111 :          HIGH : 116
+ce4132d5 :           LOW :  76
+d3808ed1 :          HIGH : 116
+78523c95 :          HIGH : 116
+970f8299 :           LOW :  76
+f5fb8655 :          HIGH : 116
+4bdba859 :           LOW :  76
+7cfd1015 :          HIGH : 116
+af440e19 :          HIGH : 116
+41e3685d :           LOW :  76
+d308b3d9 : OTHER ------- : 118
+9a99517f :           LOW :  76
+88601cdb :          HIGH : 116
+59bce13f : OTHER ------- : 117
+84bbd31a :           LOW :  76
+285f47c6 :          HIGH : 116
+1c19afda :           LOW :  76
+3cd61886 :          HIGH : 116
+ba64cc9a :          HIGH : 116
+156b2dee :           LOW :  76
+d85d295a :          HIGH : 116
+b74496ae :           LOW :  76
+2ec2c61a :          HIGH : 116
+331f3f6e :          HIGH : 116
+1e927a02 :           LOW :  76
+4dbb282e :          HIGH : 116
+ 73c2ec2 :           LOW :  76
+ bd850ee :          HIGH : 116
+523b2382 :          HIGH : 116
+94c90b56 : OTHER ------- :  77
+ab701dfd :          HIGH : 116
+73b31281 :           LOW :  76
+c6f6bfbd :          HIGH : 116
+35da1041 :          HIGH : 116
+8c986505 :           LOW :  76
+3b054e01 :          HIGH : 116
+8b91bec5 :           LOW :  76
+ecf4cbc1 :          HIGH : 116
+27535885 :          HIGH : 116
+ 9ec6d89 :           LOW :  76
+e59d3245 :          HIGH : 116
+d2d22349 :           LOW :  76
+8c2f4c05 :          HIGH : 116
+28441909 :          HIGH : 116
+5c1f324d :           LOW :  76
+ac024ec9 :          HIGH : 116
+c2e3040d :           LOW :  76
+3fccc489 :          HIGH : 116
+163715cd :          HIGH : 116
+4d23b751 :           LOW :  76
+d3db678d :          HIGH : 116
+73936511 :           LOW :  76
+b98ff94d :          HIGH : 116
+9ad752d1 :          HIGH : 116
+7cd14095 : OTHER ------- :  78
+7449fb93 :          HIGH : 116
+ce10f377 :           LOW :  76
+b16fd753 :          HIGH : 116
+bad0cb37 :          HIGH : 116
+aabf995b :           LOW :  76
+5d6ae2f7 :          HIGH : 116
+a17b6d1b : OTHER ------- :  78
+4fbef6e9 :          HIGH : 116
+67f60e2d :          HIGH : 116
+2275d5b1 :           LOW :  76
+d736ffed :          HIGH : 116
+fbac2371 :           LOW :  76
+d4e831ad :          HIGH : 116
+4216b131 :          HIGH : 116
+550424f5 :           LOW :  76
+af757ef1 :          HIGH : 116
+55da0eb5 :           LOW :  76
+3d888cb1 :          HIGH : 116
+b6683875 :          HIGH : 116
+88d55c79 :           LOW :  76
+8c6ea235 :          HIGH : 116
+12b0a239 :           LOW :  76
+2dad4bf5 :          HIGH : 116
+4b0827f9 :          HIGH : 116
+9edb403d :           LOW :  76
+639bedb9 :          HIGH : 116
+9c3da1fd :           LOW :  76
+ce2bf379 :          HIGH : 116
+f72043bd :          HIGH : 116
+d597d441 :           LOW :  76
+bd43257d :          HIGH : 116
+37df1201 :           LOW :  76
+3c66473d :          HIGH : 116
+4aea8fc1 :          HIGH : 116
+ed615c85 :           LOW :  76
+b87a4d81 :          HIGH : 116
+c6873645 :           LOW :  76
+6a4e4b41 :          HIGH : 116
+cbf55005 :          HIGH : 116
+84e65d09 :           LOW :  76
+ 36ba9c5 :          HIGH : 116
+7d4092c9 :           LOW :  76
+b2aa4385 :          HIGH : 116
+ 9a70889 :          HIGH : 116
+71f199cd :           LOW :  76
+4bd9be49 :          HIGH : 116
+59f1eb8d :           LOW :  76
+a598b409 :          HIGH : 116
+2e027d4d :          HIGH : 116
+1a6e16d1 :           LOW :  76
+ebe34f0d :          HIGH : 116
+58624491 :           LOW :  76
+d15460cd :          HIGH : 116
+ eaab251 :          HIGH : 116
+11ab1815 :           LOW :  76
+d7076011 :          HIGH : 116
+ab7ce1d5 :           LOW :  76
+8b384dd1 :          HIGH : 116
+ 226eb95 :          HIGH : 116
+7de02199 :           LOW :  76
+ b693555 :          HIGH : 116
+7ed54759 :           LOW :  76
+fd03bf15 : OTHER ------- : 117
+55383b78 :          HIGH : 116
+ca1f6cac :           LOW :  76
+3cb64a38 :          HIGH : 116
+1967a76c :           LOW :  76
+c1df98f8 :          HIGH : 116
+7dcf222c :          HIGH : 116
+cfc28aa0 :           LOW :  76
+2e15dcec :          HIGH : 116
+23323160 : OTHER ------- :  77
+8980c7bf :          HIGH : 116
+bf0fd663 :          HIGH : 116
+516bab47 :           LOW :  76
+73186223 :          HIGH : 116
+1e893307 :           LOW :  76
+b3a72de3 : OTHER ------- : 117
+cc258a6e :          HIGH : 116
+53927502 :           LOW :  76
+c2de732e :          HIGH : 116
+dd2929c2 : OTHER ------- :  77
+951202f9 :          HIGH : 116
+db87cb3d :          HIGH : 116
+512053c1 : OTHER ------- :  78
+a97aeb5f :          HIGH : 116
+6b6c9403 :           LOW :  76
+b3ed9b1f :          HIGH : 116
+25f27fc3 :          HIGH : 116
+720b8aa7 :           LOW :  76
+9c9eab83 :          HIGH : 116
+6c66b267 :           LOW :  76
+87311743 :          HIGH : 116
+5acc1a27 :          HIGH : 116
+cee6e74b :           LOW :  76
+f0fbc1e7 : OTHER ------- : 118
+e583a9dd :           LOW :  76
+62da5d59 :          HIGH : 116
+33576b9d :          HIGH : 116
+cde59a21 :           LOW :  76
+7a4b6d5d :          HIGH : 116
+c0eff7e1 :           LOW :  76
+281faf1d :          HIGH : 116
+109e95a1 :          HIGH : 116
+62dbe065 :           LOW :  76
+86b17361 :          HIGH : 116
+5d96da25 : OTHER ------- :  78
+d2c610a3 :          HIGH : 116
+3af34987 :          HIGH : 116
+424dacab :           LOW :  76
+f0909147 :          HIGH : 116
+270fb06b :           LOW :  76
+8f181907 :          HIGH : 116
+411ff42b :          HIGH : 116
+ f04dd8f :           LOW :  76
+e03e77eb :          HIGH : 116
+d59fdd4f :           LOW :  76
+942b3bab :          HIGH : 116
+57ad1d0f :          HIGH : 116
+b0ce30b3 :           LOW :  76
+a0ec9ccf :          HIGH : 116
+1c1dec73 :           LOW :  76
+fd1e5c8f :          HIGH : 116
+7f43e833 :          HIGH : 116
+84410a17 :           LOW :  76
+620023f3 :          HIGH : 116
+359d41d7 :           LOW :  76
+8c129fb3 :          HIGH : 116
+7573b997 :          HIGH : 116
+b2ff0dbb :           LOW :  76
+ 7847157 :          HIGH : 116
+ddfb817b :           LOW :  76
+ef8f6917 :          HIGH : 116
+6c56353b :          HIGH : 116
+41981f9f : OTHER ------- :  78
+5d29f74d :          HIGH : 116
+ ad330d1 :           LOW :  76
+f240c90d :          HIGH : 116
+1d5d5e91 :          HIGH : 116
+72c44855 :           LOW :  76
+e23bcc51 :          HIGH : 116
+2773d215 :           LOW :  76
+f32e7a11 :          HIGH : 116
+bd3b9bd5 :          HIGH : 116
+55f795d9 :           LOW :  76
+e9dba595 :          HIGH : 116
+aa667b99 :           LOW :  76
+a313ef55 :          HIGH : 116
+24b1a159 :          HIGH : 116
+29deef9d :           LOW :  76
+96990719 : OTHER ------- : 117
+59cd7eac :           LOW :  76
+6f053c38 :          HIGH : 116
+faf3b96c :          HIGH : 116
+ a6155e0 :           LOW :  76
+6339342c :          HIGH : 116
+8efbbca0 :           LOW :  76
+c95deeec : OTHER ------- : 117
+a02ff4a3 :          HIGH : 116
+a7976d87 :           LOW :  76
+  384063 :          HIGH : 116
+78f0b547 :           LOW :  76
+5f06cc23 :          HIGH : 116
+97343d07 :          HIGH : 116
+895a582b :           LOW :  76
+d62204c7 :          HIGH : 116
+ bf4dbeb :           LOW :  76
+497a0c87 :          HIGH : 116
+475d9fab :          HIGH : 116
+ e21c10f :           LOW :  76
+ b54a36b :          HIGH : 116
+3e9d40cf :           LOW :  76
+6799e72b :          HIGH : 116
+660b008f :          HIGH : 116
+34d6cc33 : OTHER ------- :  78
+9c8ea941 :          HIGH : 116
+6a9d8e05 :           LOW :  76
+4498e701 :          HIGH : 116
+bb65e7c5 :          HIGH : 116
+4f60b0c9 :           LOW :  76
+21f68185 :          HIGH : 116
+f6392689 :           LOW :  76
+240f5b45 :          HIGH : 116
+d0dddc49 :          HIGH : 116
+cbd9e98d :           LOW :  76
+410ed209 :          HIGH : 116
+eb7c7b4d :           LOW :  76
+e88c07c9 :          HIGH : 116
+52ef4d0d :          HIGH : 116
+90f02291 :           LOW :  76
+3ff25ecd :          HIGH : 116
+75ea9051 :           LOW :  76
+3045b08d :          HIGH : 116
+aaf93e11 :          HIGH : 116
+c56e9fd5 : OTHER ------- :  78
+ 36e00d3 :          HIGH : 116
+bdf80cb7 :           LOW :  76
+ed349c93 :          HIGH : 116
+b8a4a477 :          HIGH : 116
+9cffc69b :           LOW :  76
+c66b7c37 :          HIGH : 116
+3cf45a5b :           LOW :  76
+ b0c93f7 :          HIGH : 116
+4f272e1b :          HIGH : 116
+abebc67f :           LOW :  76
+b35841db :          HIGH : 116
+2032563f :           LOW :  76
+8947959b :          HIGH : 116
+8bdb25ff :          HIGH : 116
+b7d9d8a3 :           LOW :  76
+8aa635bf :          HIGH : 116
+efde2463 :           LOW :  76
+f853857f :          HIGH : 116
+4aa8b023 :          HIGH : 116
+cd906107 :           LOW :  76
+dff97be3 :          HIGH : 116
+b03a28c7 :           LOW :  76
+ 79087a3 :          HIGH : 116
+2b4e3087 :          HIGH : 116
+4cd003ab :           LOW :  76
+928c7847 :          HIGH : 116
+fc43076b :           LOW :  76
+79b50007 :          HIGH : 116
+e8044b2b :          HIGH : 116
+8537a48f :           LOW :  76
+5fd3ceeb :          HIGH : 116
+9e93a44f :           LOW :  76
+f37192ab :          HIGH : 116
+ea61e40f :          HIGH : 116
+356867b3 :           LOW :  76
+746263cf :          HIGH : 116
+cc892373 :           LOW :  76
+8855238f :          HIGH : 116
+42801f33 :          HIGH : 116
+5069b117 :           LOW :  76
+1f0d5af3 :          HIGH : 116
+67a6e8d7 :           LOW :  76
+29f0d6b3 :          HIGH : 116
+645e6097 :          HIGH : 116
+ad4d24bb :           LOW :  76
+ a501857 :          HIGH : 116
+e93a987b :           LOW :  76
+5d3c1017 :          HIGH : 116
+4f864c3b : OTHER ------- : 117
+590de6e6 :           LOW :  76
+b1458ad2 :          HIGH : 116
+b47497a6 :           LOW :  76
+cb6bef92 :          HIGH : 116
+f4548866 :          HIGH : 116
+b0265a7a :           LOW :  76
+a56db926 :          HIGH : 116
+eed9d73a :           LOW :  76
+948029e6 :          HIGH : 116
+59da93fa :          HIGH : 116
+65720b4e :           LOW :  76
+ 9e890ba :          HIGH : 116
+c91b140e :           LOW :  76
+57c3cd7a :          HIGH : 116
+62255cce :          HIGH : 116
+a2990d62 :           LOW :  76
+9550e58e :          HIGH : 116
+ 12c6222 :           LOW :  76
+ 75dae4e :          HIGH : 116
+b374f6e2 :          HIGH : 116
+f248b4b6 : OTHER ------- :  77
+628b43dd :          HIGH : 116
+1de6b661 :           LOW :  76
+6e75059d :          HIGH : 116
+8782d421 :          HIGH : 116
+fd5586e5 :           LOW :  76
+1e0331e1 :          HIGH : 116
+a1d600a5 :           LOW :  76
+6b27cfa1 :          HIGH : 116
+aafeba65 :          HIGH : 116
+faf80d69 :           LOW :  76
+be8fb425 :          HIGH : 116
+ba76e329 :           LOW :  76
+c248ede5 :          HIGH : 116
+ac61f8e9 :          HIGH : 116
+df07302d : OTHER ------- :  78
+8bbbfa6b :          HIGH : 116
+838307cf :           LOW :  76
+e5b23e2b :          HIGH : 116
+72b1c78f :          HIGH : 116
+20830333 : OTHER ------- :  77
+404c44d6 :          HIGH : 116
+21936dea :           LOW :  76
+11818596 :          HIGH : 116
+8013faaa :          HIGH : 116
+7a392cfe :           LOW :  76
+7951c76a :          HIGH : 116
+bc3f05be :           LOW :  76
+360cd42a :          HIGH : 116
+ 4561e7e :          HIGH : 116
+47523a12 :           LOW :  76
+873e773e :          HIGH : 116
+869f5ed2 :           LOW :  76
+b9b80ffe :          HIGH : 116
+e551c392 :          HIGH : 116
+df439c66 :           LOW :  76
+a4296852 :          HIGH : 116
+65a8cd26 :           LOW :  76
+43e64d12 :          HIGH : 116
+7e073de6 :          HIGH : 116
+753ee7fa :           LOW :  76
+351eeea6 :          HIGH : 116
+ab58e4ba :           LOW :  76
+d7afdf66 :          HIGH : 116
+1340217a :          HIGH : 116
+ 192f0ce :           LOW :  76
+45b49e3a :          HIGH : 116
+378a798e :           LOW :  76
+1b765afa : OTHER ------- : 117
+a3838fd9 :          HIGH : 116
+1b71461d : OTHER ------- :  80
+61f9262d :          HIGH : 116
+80926db1 :           LOW :  76
+ b6217ed :          HIGH : 116
+ e70bb71 :          HIGH : 116
+8f9c9335 :           LOW :  76
+21834931 : OTHER ------- : 118
+67cb3b17 :           LOW :  76
+f59044f3 :          HIGH : 116
+2fae72d7 :          HIGH : 116
+ed341afb :           LOW :  76
+870bea97 :          HIGH : 116
+9d894ebb :           LOW :  76
+31a3a257 : OTHER ------- : 117
+a3ca0352 :          HIGH : 116
+12981826 :           LOW :  76
+26d3e812 :          HIGH : 116
+161388e6 :           LOW :  76
+d6830cd2 :          HIGH : 116
+f34839a6 :          HIGH : 116
+14abdfba :           LOW :  76
+f6f62a66 :          HIGH : 116
+f2801c7a : OTHER ------- :  77
+d436a551 :          HIGH : 116
+26e33b15 :          HIGH : 116
+ef41e919 :           LOW :  76
+623a04d5 :          HIGH : 116
+7f138ed9 :           LOW :  76
+ed690e95 :          HIGH : 116
+ec017499 :          HIGH : 116
+47a0b6dd :           LOW :  76
+c7cb9a59 :          HIGH : 116
+613f789d :           LOW :  76
+e4320019 :          HIGH : 116
+10fe7a5d :          HIGH : 116
+ece6d4e1 :           LOW :  76
+c49dbc1d :          HIGH : 116
+b41072a1 :           LOW :  76
+29dd3ddd :          HIGH : 116
+ e9e5061 :          HIGH : 116
+c6948725 :           LOW :  76
+ 6506e21 :          HIGH : 116
+85a2c0e5 :           LOW :  76
+e4e6cbe1 :          HIGH : 116
+9d993aa5 :          HIGH : 116
+ef2251a9 :           LOW :  76
+7437f465 :          HIGH : 116
+eccae769 :           LOW :  76
+af3eee25 :          HIGH : 116
+951fbd29 :          HIGH : 116
+76c4f86d :           LOW :  76
+69e0d2e9 :          HIGH : 116
+e7d9aa2d :           LOW :  76
+2cce28a9 :          HIGH : 116
+e59e9bed :          HIGH : 116
+c6717f71 : OTHER ------- :  78
+1174118f :          HIGH : 116
+f15fed33 :           LOW :  76
+f43b114f :          HIGH : 116
+372f28f3 :          HIGH : 116
+3ed796d7 :           LOW :  76
+d954a4b3 :          HIGH : 116
+44f10e97 :           LOW :  76
+df906073 :          HIGH : 116
+ 244c657 :          HIGH : 116
+768c267b :           LOW :  76
+7a92be17 :          HIGH : 116
+3659da3b :           LOW :  76
+f19af5d7 :          HIGH : 116
+ce45cdfb :          HIGH : 116
+1120845f :           LOW :  76
+3e1001bb :          HIGH : 116
+8572341f :           LOW :  76
+c578757b :          HIGH : 116
+150623df : OTHER ------- : 118
+d6ca3f15 :           LOW :  76
+40231711 :          HIGH : 116
+cbfd08d5 :           LOW :  76
+f2a504d1 :          HIGH : 116
+55081295 :          HIGH : 116
+b50cb899 :           LOW :  76
+67ab5c55 :          HIGH : 116
+9472de59 :           LOW :  76
+39a6e615 :          HIGH : 116
+38754419 :          HIGH : 116
+d4b1fe5d :           LOW :  76
+b2d3e9d9 :          HIGH : 116
+31ad401d :           LOW :  76
+554ecf99 :          HIGH : 116
+ 448c1dd :          HIGH : 116
+fabe1461 :           LOW :  76
+3a44839d :          HIGH : 116
+5d8c3221 :           LOW :  76
+ 160855d :          HIGH : 116
+ab3e8fe1 :          HIGH : 116
+30293ea5 :           LOW :  76
+6d952da1 :          HIGH : 116
+ fa3f865 :           LOW :  76
+6e500b61 :          HIGH : 116
+9786f225 :          HIGH : 116
+e0640129 :           LOW :  76
+ad922be5 :          HIGH : 116
+f7c116e9 : OTHER ------- :  77
+ a8481d4 :          HIGH : 116
+871f3cc8 :          HIGH : 116
+581732fc :           LOW :  76
+8bc57b88 :          HIGH : 116
+3cda9dbc :           LOW :  76
+f066fa48 :          HIGH : 116
+ce0d487c :          HIGH : 116
+4e7ec5f0 :           LOW :  76
+726f333c :          HIGH : 116
+6a8c9cb0 :           LOW :  76
+d0c05dfc :          HIGH : 116
+b83db370 : OTHER ------- : 117
+5125ea57 :           LOW :  76
+8a754033 :          HIGH : 116
+  2fe217 :           LOW :  76
+17197bf3 :          HIGH : 116
+11f419d7 : OTHER ------- : 118
+a280484d :           LOW :  76
+ 4b804c9 :          HIGH : 116
+e8fe1a0d :           LOW :  76
+669c7a89 :          HIGH : 116
+120c2bcd :          HIGH : 116
+24f42d51 :           LOW :  76
+9b6a7d8d :          HIGH : 116
+58bddb11 :           LOW :  76
+42d90f4d :          HIGH : 116
+e35bc8d1 :          HIGH : 116
+b8e71695 :           LOW :  76
+de8df691 :          HIGH : 116
+cd666055 :           LOW :  76
+a4146451 :          HIGH : 116
+e53dea15 :          HIGH : 116
+8cf88819 :           LOW :  76
+762db3d5 :          HIGH : 116
+d2f32dd9 :           LOW :  76
+35f5bd95 :          HIGH : 116
+c50a1399 :          HIGH : 116
+22f445dd :           LOW :  76
+f4fd3959 :          HIGH : 116
+4a4c079d :           LOW :  76
+348c9f19 :          HIGH : 116
+c6c4095d :          HIGH : 116
+39d653e1 :           LOW :  76
+ 61c4b1d : OTHER ------- : 117
+a75d8de0 :           LOW :  76
+cae9ec2c : OTHER ------- : 118
+9308281a :          HIGH : 116
+6598c16e :           LOW :  76
+cea904da : OTHER ------- : 118
+76ca3a18 :           LOW :  76
+69564ce4 :          HIGH : 116
+9bbca8d8 :          HIGH : 116
+2139500c :           LOW :  76
+9efa5798 :          HIGH : 116
+ec9b2acc :           LOW :  76
+2b434658 :          HIGH : 116
+ e7c458c :          HIGH : 116
+c29a8400 :           LOW :  76
+5d9ca04c :          HIGH : 116
+6cddcac0 :           LOW :  76
+f0bc3b0c :          HIGH : 116
+63d45180 :          HIGH : 116
+e673db34 :           LOW :  76
+aa3e1840 :          HIGH : 116
+62ab4df4 :           LOW :  76
+82db1f00 :          HIGH : 116
+a90a00b4 :          HIGH : 116
+3da9c9a8 :           LOW :  76
+a84ff374 :          HIGH : 116
+4bd42868 :           LOW :  76
+8f3d2634 :          HIGH : 116
+dcd9c728 :          HIGH : 116
+d2cc035c :           LOW :  76
+8b7aa5e8 :          HIGH : 116
+4a940e1c :           LOW :  76
+3276c4a8 :          HIGH : 116
+2d2b58dc :          HIGH : 116
+ef097c50 :           LOW :  76
+8151e39c :          HIGH : 116
+7685f310 :           LOW :  76
+8dc7ae5c :          HIGH : 116
+b405a9d0 :          HIGH : 116
+32646884 :           LOW :  76
+da48a090 :          HIGH : 116
+20d80b44 :           LOW :  76
+5c0ed750 : OTHER ------- : 117
+da22e4b7 :          HIGH : 116
+e289cadb :           LOW :  76
+19377c77 :          HIGH : 116
+d2e81e9b :           LOW :  76
+c3665437 :          HIGH : 116
+6dc4b25b :          HIGH : 116
+8fc54ebf :           LOW :  76
+52df861b :          HIGH : 116
+81d19e7f :           LOW :  76
+61f899db :          HIGH : 116
+67802e3f :          HIGH : 116
+782f24e3 :           LOW :  76
+9c90fdff :          HIGH : 116
+5d1530a3 :           LOW :  76
+bcc40dbf :          HIGH : 116
+65017c63 :          HIGH : 116
+4291b147 :           LOW :  76
+67b40823 :          HIGH : 116
+def93907 :           LOW :  76
+7cecd3e3 :          HIGH : 116
+580b00c7 :          HIGH : 116
+3cf197eb :           LOW :  76
+c1870887 :          HIGH : 116
+2cbe5bab :           LOW :  76
+6f2d5047 :          HIGH : 116
+21195f6b :          HIGH : 116
+7d71bccf :           LOW :  76
+29c2a32b :          HIGH : 116
+33837c8f :           LOW :  76
+967a26eb :          HIGH : 116
+a8477c4f :          HIGH : 116
+257743f3 :           LOW :  76
+a77dbc0f :          HIGH : 116
+a769bfb3 :           LOW :  76
+3ce63bcf :          HIGH : 116
+98727b73 :          HIGH : 116
+2b0d9157 :           LOW :  76
+40517733 :          HIGH : 116
+48f88917 :           LOW :  76
+26c6b2f3 : OTHER ------- : 117
+c80b783e :          HIGH : 116
+b0db6fd2 :           LOW :  76
+4bbc10fe :          HIGH : 116
+9d34d492 :           LOW :  76
+ 4bde9be :          HIGH : 116
+cab37952 :          HIGH : 116
+ce62ee26 :           LOW :  76
+ba175e12 :          HIGH : 116
+e9d85ee6 : OTHER ------- :  78
+492977dc :          HIGH : 116
+372a8b50 :          HIGH : 116
+fd65e204 :           LOW :  76
+f2e00210 :          HIGH : 116
+75f404c4 :           LOW :  76
+a398b8d0 :          HIGH : 116
+78796784 :          HIGH : 116
+ca3acd78 :           LOW :  76
+a3b60a44 :          HIGH : 116
+2b16dc38 :           LOW :  76
+d669ed04 :          HIGH : 116
+5b9e2af8 :          HIGH : 116
+3224d42c :           LOW :  76
+a690b9b8 :          HIGH : 116
+f7a98eec :           LOW :  76
+96ae8878 :          HIGH : 116
+d1cd89ac :          HIGH : 116
+496fea20 :           LOW :  76
+7750c46c :          HIGH : 116
+f96410e0 :           LOW :  76
+def33f2c :          HIGH : 116
+362b77a0 :          HIGH : 116
+ 60b4354 :           LOW :  76
+e2861e60 :          HIGH : 116
+c2619614 :           LOW :  76
+21340520 :          HIGH : 116
+2aff28d4 :          HIGH : 116
+3bfd53c8 :           LOW :  76
+ ea3fb94 :          HIGH : 116
+41949288 :           LOW :  76
+7c100e54 : OTHER ------- : 117
+4a208aeb :          HIGH : 116
+7270204f :           LOW :  76
+c2224eab :          HIGH : 116
+ 4e2600f :           LOW :  76
+a1b2526b : OTHER ------- : 118
+7d9584c1 :          HIGH : 116
+95e6a185 :           LOW :  76
+a3c84281 :          HIGH : 116
+eedf7b45 : OTHER ------- :  78
+a67738c3 :          HIGH : 116
+6ac2d3a7 :          HIGH : 116
+e0ffb8cb :           LOW :  76
+bbccfb67 :          HIGH : 116
+971c9c8b :           LOW :  76
+99e16327 :          HIGH : 116
+48a7c04b :          HIGH : 116
+c3f14baf :           LOW :  76
+2561240b :          HIGH : 116
+b2f52b6f :           LOW :  76
+9d08c7cb :          HIGH : 116
+258b4b2f :          HIGH : 116
+aa5520d3 :           LOW :  76
+ 773aaef :          HIGH : 116
+fbfbbc93 :           LOW :  76
+846e4aaf :          HIGH : 116
+2f989853 :          HIGH : 116
+b4649c37 :           LOW :  76
+acebb413 : OTHER ------- : 117
+63281ede :           LOW :  76
+f4b47b4a :          HIGH : 116
+de65179e :          HIGH : 116
+ 12ba532 :           LOW :  76
+f793505e :          HIGH : 116
+813ca9f2 :           LOW :  76
+ 372c91e :          HIGH : 116
+75d2eeb2 :          HIGH : 116
+65c05986 :           LOW :  76
+ffae7372 :          HIGH : 116
+af876a46 :           LOW :  76
+7f8f3832 :          HIGH : 116
+d267bb06 :          HIGH : 116
+937e171a :           LOW :  76
+bb214bc6 :          HIGH : 116
+7f77f3da :           LOW :  76
+96741c86 :          HIGH : 116
+f65f109a : OTHER ------- :   0
+Anomalies: 195.
+Step frames: .

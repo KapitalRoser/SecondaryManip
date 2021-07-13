@@ -1,0 +1,225 @@
+Aldelaro has said in the past that he believes the background pattern to be based on whether or not the lab is loaded on that frame.
+However, I've also heard that the fountains in phenac also call rng rapidly. Given that there are fountains in Xd's scene too, I suspect
+that it is actually them that forces the calls.
+However, it is not purely based on this. Roughly ever 120ish frames, the point value of the seed is called on and influences the transition to the next pattern.
+It appears that different seeds cause different lengths of patterns. Even the specific transition between patterns will be reversed.
+By chance, some sections may not deviate. Yet to prove if all pattern changes check the current rng value.
+
+
+
+
+
+Bascially 5 objects are passed via an array of pointers into green. Some physics happens then passes them into purple.
+Purple then has some conditions and checks before it passes the current object into blue for the loop.
+
+
+
+13 unique calls for RNG on any cycle.
+Purple Func. 801335e0 - roughly 4-6 times per frame.
+
+Red Func. x2 + 2 80134610
+Blue Func. x5 + 13? -^ goes back to the red function again.
+~~~~~~~~~~~~~~~~~~~~~~~
+On 68 frame: C FRAME
+Purple - 23
+2 reds.
+5 Blue
+2 more reds
+5 Blue
+8 BlueLate.
+
+Purple - 23
+2 reds
+5 blue
+2 reds
+13 blue
+
+Purple - 11
+1 red
+9 blue
+
+Purple - 10 
+2
+7 blue
+
+Purple - 1
+
+
+
+~~~~~~~~~~~~~~~~~~~~~
+On 79 B FRAME
+
+Purple -- obj1
+2 within red
+5 within blue
+
+2 within red
+5 blue
+
+8 blueLate - 2 sets of 4 calls.
+
+Back into purple --0bj2
+2 w/in red
+5 w/in blue
+
+2 w/in red
+5 w/in blue
+
+2 w/in red
+5 blue
+
+12 = 3 sets of 4 blue late
+
+Back into purple -- obj3
+1 w/in red
+5 blue.
+
+4 = 1 set of 4 blue late.
+
+1 Purple -- obj 4
+2 red
+3 Blue
+
+4 = 1 set of 4 blue late.
+
+End on Purple -- 0bj5
+...
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+on 98 A FRAME
+Same start -23
+
+1 purple
+2 red
+5 blue
+2 red
+13 blue
+
+same middle as 79 - 34
+purple
+2 red
+5 blue
+2 red
+
+5 blue
+2 red
+17 blue
+
+purple - 21??
+1 red
+5 blue
+1 red
+13 Blue
+
+Purple - 10?
+2 red
+7 blue
+
+Purple - 10?
+2 red
+7 blue
+
+Does Not end on purple.
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~
+88 EIGHTS FRAME
+Purple
+
+2 Red
+5 Blue
+
+2 Red
+5 Blue
+
+8 = 2 sets of blueLate.
+
+Purple
+2r
+5b
+
+2r
+5b
+
+2r
+5b
+
+12bl 3 sets of 4 bl.
+
+
+
+
+
+
+
+F31 values change at the green level!!!! 
+
+3fa1157200000000
+3fa1156c40000000
+3fa11568e0000000
+3fa11572c0000000
+3fa1157140000000
+3fa11573c0000000
+3fa1156fa0000000
+3fa1156de0000000
+3fa1157cc0000000
+3fa1155c80000000
+
+In hex it is a 3D08A -- number, where the last 2-3 digits change.
+Occurs after the final object is accounted for, somewhere in the between frame period.
+
+
+
+
+
+Pattern redefinition:
+
+C-Eights-Off CEO (instead of EOC)
+B-Sevens-Off BSO (instead of SOB)
+
+
+801335e0 - purple
+80134610 - red
+80134668 - red
+80133e08 - blu
+80133e58 - blue
+80133eb0 - blue
+80133f68 - blue
+80133f84 - blue
+8012ecc0 - blue
+8012ed4c - blue
+8012ed28 - blue
+8012ed04 - blue
+80133ee8 - blue
+804e8610 - memory
+
+
+Biggest issues summary:
+
+1. The 3 intervals after input variance, and why they occur.
+2. The 3 main patterns (sevens, eights and As) an why they change
+3. The impact of the seed on the length of the patterns (why sometimes the pattern lasts 120f vs 125+ frames).
+    ^This isn't totally determined by rng. Two examples of leading 7s can have different pattern lengths again. 
+    Sometimes this is massive, at every 123ish frame intervals.
+    Could sack frames to avoid shooting for a frame that isn't valid. 
+    However this will reduce the possible teddies and the overall effectiveness of the manip.
+    On the other hand, including them will increase the teddy count  (and therefore the time spent waiting)
+    at the cost of an "igt failure" so to speak.
+
+1. Begins at low 12 pattern, then increments up to pattern 20 before resetting down to pattern 12 again.
+at 4 frame intervals. 
+
+
+CAN IGT TRACK TO SOLVE FOR PATTERN!!!!!!!!!!!!!!!!!!!
+Basically will start movement on a particular second(?)/interval (half second? less?) on the livesplit timer and that will guarantee a pattern.
+LETS GOOOOOOOOOOOOOOOOOOOOO
+
+Pattern appears to cycle fully every 2 seconds, since each averages out to a half second.
+
+or just do it on the fly and be extremely observant? Livesplit tracking less work lmao.
+
+
+When loading in, the seed at the time is used to determine a starting point for animations in the scene.
+-- observed variances: 
+First 3 rng calling objects are the fountains. 
+
+2 & 3 are partially explained by the movement in the flappy bits of the cipher guards but not fully.

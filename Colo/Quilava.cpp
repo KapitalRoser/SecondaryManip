@@ -38,6 +38,14 @@ uint32_t LCGn(uint32_t seed, const uint32_t n)
     seed = (seed * modpow32(0x343fd, n)) + (sum + factor) * 0x269EC3;
     return seed;
   }
+uint32_t LCGPercentage(uint32_t& seed){
+  float percentResult = 0;
+  uint32_t hiSeed = 0;
+  LCG(seed);
+  hiSeed = seed >> 16;
+  percentResult = hiSeed/65536;
+  return percentResult;
+}
 
 uint32_t rollToGeneration(uint32_t seed, uint32_t n){
    //Pokeball animation calls, done at 72-32-32 pattern for 11 frames.

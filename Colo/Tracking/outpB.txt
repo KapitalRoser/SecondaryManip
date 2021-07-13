@@ -1,0 +1,1204 @@
+7079be9b : OTHER ------- : -104 hi  TRUE 28793
+7079be9b : OTHER ------- :  12 lo  TRUE 35965
+8c7df437 : OTHER ------- :  12 hi  TRUE  5302
+14b6525b : OTHER ------- : -28 hi  TRUE 39143
+98e70bf7 : OTHER ------- : 168 lo  TRUE 10653
+299d3e7f : OTHER ------- : -104 hi  TRUE 10653
+299d3e7f : OTHER ------- : -26 lo  TRUE 38899
+97f3e6a5 : OTHER ------- : -104 hi  TRUE 38899
+97f3e6a5 : OTHER ------- : -104 hi  TRUE 38899
+97f3e6a5 : OTHER ------- : -64 lo  TRUE 38899
+97f3e6a5 : OTHER ------- : -104 hi  TRUE 38899
+97f3e6a5 : OTHER ------- : -64 lo  TRUE 38899
+97f3e6a5 : OTHER ------- : -104 hi  TRUE 38899
+97f3e6a5 : OTHER ------- : -104 hi  TRUE 38899
+97f3e6a5 : OTHER ------- : -64 lo  TRUE 38899
+97f3e6a5 : OTHER ------- : -104 hi  TRUE 38899
+97f3e6a5 : OTHER ------- : -64 lo  TRUE 38899
+97f3e6a5 : OTHER ------- : -104 hi  TRUE 38899
+97f3e6a5 : OTHER ------- : -104 hi  TRUE 38899
+97f3e6a5 : OTHER ------- : -64 lo  TRUE 38899
+97f3e6a5 : OTHER ------- : -104 hi  TRUE 38899
+97f3e6a5 : OTHER ------- : -64 lo  TRUE 38899
+97f3e6a5 : OTHER ------- : -104 hi  TRUE 38899
+97f3e6a5 : OTHER ------- : -104 hi  TRUE 38899
+97f3e6a5 : OTHER ------- : -64 lo  TRUE 38899
+97f3e6a5 : OTHER ------- : -104 hi  TRUE 38899
+97f3e6a5 : OTHER ------- : -64 lo  TRUE 38899
+97f3e6a5 : OTHER ------- : -104 hi  TRUE 38899
+97f3e6a5 : OTHER ------- : -104 hi  TRUE 38899
+97f3e6a5 : OTHER ------- : -64 lo  TRUE 38899
+97f3e6a5 : OTHER ------- : -104 hi  TRUE 38899
+97f3e6a5 : OTHER ------- : -64 lo  TRUE 38899
+97f3e6a5 : OTHER ------- : -104 hi  TRUE 38899
+97f3e6a5 : OTHER ------- : -104 hi  TRUE 38899
+97f3e6a5 : OTHER ------- : -64 lo  TRUE 38899
+97f3e6a5 : OTHER ------- : -104 hi  TRUE 38899
+97f3e6a5 : OTHER ------- : -64 lo  TRUE 38899
+97f3e6a5 : OTHER ------- : -32 hi  TRUE 12641
+3161a4cd : OTHER ------- : -72 hi  TRUE 47650
+ba224a6d : OTHER ------- : -32 lo  TRUE  2082
+ 822800d : OTHER ------- : -32 hi  TRUE 41515
+a22b0f35 : OTHER ------- : -32 lo  TRUE 14106
+371a18d5 : OTHER ------- : -72 hi  TRUE 22194
+56b2b275 : OTHER ------- : -32 hi FALSE 58619
+e4fbb29d : OTHER ------- :  65 lo FALSE 62422
+f3d6f76c : OTHER ------- : -72 hi  TRUE 45570
+b202ee8c : OTHER ------- :   8 lo  TRUE 20783
+512ff714 : OTHER ------- : -72 hi  TRUE 26650
+681a7234 : OTHER ------- : -72 hi  TRUE 32164
+7da43d54 : OTHER ------- : -32 lo  TRUE  7893
+1ed55874 : OTHER ------- : -32 hi  TRUE 32938
+80aa81fc : OTHER ------- : -32 lo  TRUE 47730
+ba72a11c : OTHER ------- : -72 hi  TRUE  8548
+2164103c : OTHER ------- : -29 hi  TRUE 10871
+2a7794a9 : OTHER ------- : -32 lo FALSE 59893
+e9f57049 : OTHER ------- : -72 hi  TRUE 39777
+9b61dbe9 : OTHER ------- :   8 lo  TRUE 44922
+af7abc91 : OTHER ------- : -72 hi  TRUE  2730
+ aaabc31 : OTHER ------- : -72 hi  TRUE 42899
+a7934bd1 : OTHER ------- : -32 lo  TRUE 23900
+5d5c6b71 : OTHER ------- : -32 hi  TRUE 35232
+89a0b119 : OTHER ------- : -32 lo  TRUE 16327
+3fc7e4b9 :       --ALL-- :   0 hi  TRUE 51755
+ca2bef01 : OTHER ------- : -72 hi  TRUE 16484
+406446a1 : OTHER ------- : -32 lo  TRUE 11729
+2dd12e41 :       --ALL-- :   0 hi FALSE 55441
+d8911189 :       --ALL-- :   0 lo  TRUE 38220
+954cb8c9 :       --ALL-- :   0 hi  TRUE 43093
+a8559511 :       --ALL-- :   0 hi  TRUE 24850
+61126259 :           ONE :   1 lo  TRUE 46343
+b50775f8 : OTHER ------- :  11 hi  TRUE  9956
+26e42bdd :           ONE :   1 lo FALSE 61181
+eefdcd6c :           ONE :   1 hi FALSE 61949
+f1fd4787 :           ONE :   1 hi  TRUE 24166
+5e66c616 :           ONE :   1 lo  TRUE  3446
+ d76e3c1 :           ONE :   1 hi  TRUE 39749
+9b451da8 :           ONE :   1 lo  TRUE 40230
+9d26470b :           ONE :   1 hi  TRUE 41715
+a2f3ca0a :           ONE :   1 hi FALSE 59916
+ea0c8c6d :           ONE :   1 lo  TRUE 16683
+412bfbbc :           ONE :   1 hi  TRUE 39125
+98d5ee97 :           ONE :   1 lo  TRUE 21955
+55c3f73e :           ONE :   1 hi  TRUE 51402
+c8ca5551 :           ONE :   1 hi  TRUE 14297
+37d902f8 :           ONE :   1 lo  TRUE 29135
+71cfa71b :           ONE :   1 hi  TRUE 13596
+351cf3da :           ONE :   1 lo  TRUE 32983
+80d74e75 :           ONE :   1 hi  TRUE 51206
+c8069e0c :           ONE :   1 hi  TRUE 12417
+3081b9a7 :           ONE :   1 lo  TRUE  5328
+14d0660e :           ONE :   1 hi  TRUE 34618
+873a8ae1 :           ONE :   1 lo FALSE 55037
+d6fde460 :           ONE :   1 hi  TRUE 28480
+6f406b2b :           ONE :   1 hi  TRUE 16222
+3f5e71aa :           ONE :   1 lo  TRUE 17206
+43366505 :           ONE :   1 hi  TRUE 20002
+4e22b45c :           ONE :   1 lo  TRUE  8100
+1fa4a6ef :           ONE :   1 hi  TRUE 13076
+331468de :           ONE :   1 hi  TRUE 15440
+3c508471 :           ONE :   1 lo  TRUE  4136
+102847b0 :           ONE :   1 hi  TRUE 10601
+2969933b :           ONE :   1 lo  TRUE 23829
+5d155d52 :           ONE :   1 hi  TRUE  1577
+ 6297f95 :           ONE :   1 hi  TRUE 29013
+71553eac :           ONE :   1 lo  TRUE 43731
+aad317ff :           ONE :   1 hi  TRUE  3756
+ eacffae :           ONE :   1 lo  TRUE 11440
+2cb0eef9 :           ONE :   1 hi  TRUE 49658
+c1fa5f00 :           ONE :   1 hi  TRUE 50812
+c67c1f4b :           ONE :   1 lo FALSE 53178
+cfba8922 :           ONE :   1 hi  TRUE 12937
+32899e25 :           ONE :   1 lo  TRUE  4667
+123b1e94 :           ONE :   1 hi  TRUE 49251
+c0632d0f :           ONE :   1 hi  TRUE 27383
+6af72a7e :           ONE :   1 lo  TRUE  1470
+ 5befe89 :           ONE :   1 hi  TRUE 42329
+a5592a50 :           ONE :   1 lo  TRUE 20334
+4f6ea913 :           ONE :   1 hi  TRUE 34660
+876488f2 :           ONE :   1 hi FALSE 60783
+ed6fc0b5 :           ONE :   1 lo  TRUE 14346
+380a06e4 :           ONE :   1 hi  TRUE  5205
+1455e61f :           ONE :   1 lo  TRUE  8501
+2135f8a6 :           ONE :   1 hi  TRUE 24677
+60655219 :           ONE :   1 hi  TRUE 47721
+ba69a9a0 :           ONE :   1 lo  TRUE 18036
+46743b23 :           ONE :   1 hi  TRUE  4352
+11005cc2 :           ONE :   1 lo  TRUE 47200
+b860dbbd :           ONE :   1 hi FALSE 57711
+e16fe334 :           ONE :   1 hi  TRUE 20716
+50ec432f :           ONE :   1 lo  TRUE 45804
+b2ecb176 :           ONE :   1 hi  TRUE 31756
+7c0ce9a9 :           ONE :   1 lo FALSE 56502
+dcb6f008 :           ONE :   1 hi  TRUE 31065
+7959b133 :           ONE :   1 hi FALSE 62139
+f2bb0492 :           ONE :   1 lo  TRUE  4982
+1376744d :           ONE :   1 hi FALSE 60065
+eaa1b384 :           ONE :   1 lo  TRUE  9980
+26fcb177 :           ONE :   1 hi  TRUE  1417
+ 5897e46 :           ONE :   1 hi  TRUE 22622
+585ec539 :           ONE :   1 lo  TRUE 17063
+42a7ad58 :           ONE :   1 hi FALSE 52528
+cd300b43 :           ONE :   1 lo  TRUE 35386
+8a3a5d3a :           ONE :   1 hi  TRUE 33196
+81ac90dd :           ONE :   1 hi  TRUE 11028
+2b1477d4 :           ONE :   1 lo  TRUE 21852
+555c7487 :           ONE :   1 hi  TRUE 37321
+91c95f16 :           ONE :   1 lo  TRUE  8468
+211418c1 :           ONE :   1 hi  TRUE  8530
+21529ea8 :           ONE :   1 hi  TRUE 49480
+c1484953 :           ONE :   1 lo  TRUE 39384
+99d8730a :           ONE :   1 hi  TRUE  4604
+11fc316d :           ONE :   1 lo  TRUE 12478
+30be0cbc :           ONE :   1 hi  TRUE 25406
+633e5b97 :           ONE :   1 hi  TRUE 40361
+9da953e6 :           ONE :   1 lo FALSE 65186
+fea2ca51 :       --ALL-- :   0 hi  TRUE 38536
+96887f99 :       --ALL-- :   0 lo  TRUE 47029
+b7b5f6d9 :       --ALL-- :   0 hi  TRUE 35266
+89c2e521 :       --ALL-- :   0 hi FALSE 59680
+e9200469 :       --ALL-- :   0 lo  TRUE 19403
+4bcb0ba9 :       --ALL-- :   0 hi  TRUE 34448
+8690a3f1 :       --ALL-- :   0 lo  TRUE 38043
+949b1331 :       --ALL-- :   0 hi  TRUE  9610
+258a4479 :       --ALL-- :   0 hi  TRUE 30337
+768106c1 :       --ALL-- :   0 lo  TRUE 15343
+3bef0601 :       --ALL-- :   0 hi  TRUE 40712
+9f08a149 :       --ALL-- :   0 lo  TRUE 38949
+98250889 :       --ALL-- :   0 hi  TRUE 23598
+5c2e9cd1 :       --ALL-- :   0 hi  TRUE 32411
+7e9b2219 :       --ALL-- :   0 lo  TRUE 31041
+79411959 :           ONE :   1 hi  TRUE 42851
+a763dbe0 :           ONE :   1 lo  TRUE 44818
+af12e463 :           ONE :   1 hi  TRUE 27431
+6b272902 :           ONE :   1 hi  TRUE 23317
+5b152a85 :           ONE :   1 lo FALSE 62265
+f3395974 :           ONE :   1 hi FALSE 58582
+e4d6c86f :           ONE :   1 lo  TRUE 48881
+bef161b6 :           ONE :   1 hi  TRUE 48082
+bbd200e9 :           ONE :   1 hi  TRUE  1249
+ 4e11f30 :           ONE :   1 lo  TRUE 33478
+82c62a73 :           ONE :   1 hi  TRUE 42842
+a75a60d2 :           ONE :   1 lo  TRUE 32839
+80479f8d :           ONE :   1 hi  TRUE 25322
+62ea39c4 :           ONE :   1 hi  TRUE 52158
+cbbe997f :           ONE :   1 lo FALSE 58519
+e497be86 :           ONE :   1 hi  TRUE 19521
+4c412c79 :           ONE :   1 lo  TRUE 23870
+5d3eb798 :           ONE :   1 hi  TRUE  4286
+10be5483 :           ONE :   1 hi  TRUE  9117
+239d6ca2 :           ONE :   1 lo  TRUE 43224
+a8d80c1d :           ONE :   1 hi FALSE 58112
+e3000e14 :           ONE :   1 lo  TRUE 20282
+4f3af1c7 :           ONE :   1 hi  TRUE 22181
+56a52f56 :           ONE :   1 hi  TRUE 49015
+bf779c09 :           ONE :   1 lo  TRUE 35333
+8a05b8e8 :           ONE :   1 hi FALSE 58700
+e54c6293 :           ONE :   1 lo  TRUE 12820
+3214674a :           ONE :   1 hi FALSE 62197
+f2f5fcad :           ONE :   1 hi  TRUE 30511
+772fd664 :           ONE :   1 lo  TRUE 19351
+4b97a8d7 :           ONE :   1 hi  TRUE 25622
+6416b426 :           ONE :   1 lo FALSE 56381
+dc3de991 :           ONE :   1 hi  TRUE 21103
+526fee38 :           ONE :   1 hi  TRUE 30465
+770154a3 :           ONE :   1 lo FALSE 52736
+ce00611a :           ONE :   1 hi  TRUE 50906
+c6da713d :           ONE :   1 lo  TRUE   288
+ 120dd4c :       --ALL-- :   0 hi  TRUE 41639
+a2a7f8f4 :       --ALL-- :   0 hi  TRUE 21739
+54ebd19c :       --ALL-- :   0 lo  TRUE  2126
+ 84e7fdc :       --ALL-- :   0 hi  TRUE 38924
+980cbd84 :       --ALL-- :   0 lo  TRUE 38993
+9851b3c4 :           ONE :   1 hi  TRUE 22204
+56bc6b7f :           ONE :   1 hi FALSE 64267
+fb0b352e :           ONE :   1 lo  TRUE 29261
+724dce79 :           ONE :   1 hi FALSE 52837
+ce657080 :           ONE :   1 lo  TRUE  5658
+161a4683 :           ONE :   1 hi  TRUE 11496
+2ce8d6a2 :           ONE :   1 hi  TRUE 44733
+aebd25a5 :           ONE :   1 lo  TRUE 21890
+55820814 :           ONE :   1 hi  TRUE 25566
+63de608f :           ONE :   1 lo  TRUE 22036
+56143956 :           TWO :   2 hi FALSE 56241
+dbb1c8a8 :           TWO :   2 hi  TRUE 15194
+3b5a88ca :           TWO :   2 lo FALSE 58417
+e43133d4 :           TWO :   2 hi  TRUE 23414
+5b76fad6 :           TWO :   2 lo  TRUE 40003
+9c43d240 :           TWO :   2 hi  TRUE 24038
+5de62222 :           TWO :   2 hi  TRUE 46332
+b4fc1954 :           TWO :   2 lo  TRUE 29170
+71f24aae :           TWO :   2 hi  TRUE 27229
+6a5d1fc0 :           TWO :   2 lo  TRUE 10039
+2737007a :           TWO :   2 hi  TRUE 40456
+9e08456c :           TWO :   2 hi  TRUE  4032
+ fc0dc2e :           TWO :   2 lo FALSE 56670
+dd5e3658 :           TWO :   2 hi  TRUE 17983
+463f39fa :           TWO :   2 lo  TRUE 44634
+ae5ade84 :           TWO :   2 hi  TRUE 32008
+7d087106 :           TWO :   2 hi  TRUE 16177
+3f31d3d8 :           TWO :   2 lo  TRUE 39526
+9a668d52 : OTHER ------- :   9 hi  TRUE 36666
+8f3a187d :           TWO :   2 lo  TRUE 37323
+91cb581f :           TWO :   2 hi  TRUE  7092
+1bb4dcd9 :           TWO :   2 hi FALSE 59753
+e969daa3 :           TWO :   2 lo  TRUE 52153
+cbb91975 :           TWO :   2 hi FALSE 59757
+e96d779f :           TWO :   2 lo  TRUE  5562
+15ba6a51 :           TWO :   2 hi  TRUE  7918
+1eeed2db :           TWO :   2 hi  TRUE 49324
+c0ac2cf5 :           TWO :   2 lo  TRUE 20136
+4ea82857 :           ONE :   1 hi FALSE 63722
+f8eae5a6 :           ONE :   1 lo FALSE 63044
+f644d511 :           ONE :   1 hi  TRUE   724
+ 2d45bb8 :       --ALL-- :   0 hi  TRUE 35891
+8c33e0e0 :       --ALL-- :   0 lo  TRUE 33831
+8427c320 :       --ALL-- :   0 hi  TRUE 38960
+98303d48 :       --ALL-- :   0 lo  TRUE 41108
+a094e788 :       --ALL-- :   0 hi  TRUE 47118
+b80ef6b0 :       --ALL-- :   0 hi  TRUE 28085
+6db5b2d8 :       --ALL-- :   0 lo  TRUE 23701
+5c95ad18 :       --ALL-- :   0 hi  TRUE 39802
+9b7a3e40 :       --ALL-- :   0 lo  TRUE  4734
+127e0080 :       --ALL-- :   0 hi  TRUE 47045
+b7c506a8 :       --ALL-- :   0 hi FALSE 56394
+dc4a99d0 :       --ALL-- :   0 lo  TRUE 30615
+7797ac10 :           ONE :   1 hi  TRUE 36673
+8f41a21b :           ONE :   1 lo  TRUE 50894
+c6ce90b2 :           ONE :   1 hi  TRUE 37617
+92f18175 :           ONE :   1 hi  TRUE 19347
+4b93e50c :           ONE :   1 lo  TRUE 50954
+c70a04df :           ONE :   1 hi FALSE 58317
+e3cdc50e :           ONE :   1 lo  TRUE 51156
+c7d47ed9 :           ONE :   1 hi  TRUE 49271
+c0771b60 :           ONE :   1 hi  TRUE 42595
+a663262b :           ONE :   1 lo  TRUE 11742
+2dded482 :           ONE :   1 hi  TRUE 44767
+aedf5805 : OTHER ------- :  66 lo FALSE 54689
+d5a18927 : OTHER ------- :  75 hi  TRUE 48301
+bcadb268 : OTHER ------- :  83 hi  TRUE  4559
+11cf1f35 : OTHER ------- :  91 lo  TRUE 49373
+c0dd0ed6 : OTHER ------- :  99 hi  TRUE 27381
+6af53a2b : OTHER ------- : 107 lo FALSE 53957
+d2c54eb4 : OTHER ------- : 115 hi  TRUE  2591
+ a1f7d51 : OTHER ------- : 123 hi  TRUE  3768
+ eb886aa : OTHER ------- : 131 lo  TRUE 26373
+6705c727 : OTHER ------- : 139 hi  TRUE  3808
+ ee0f2a8 : OTHER ------- : 153 lo  TRUE 49831
+c2a7b783 : OTHER ------- :   9 hi  TRUE 48111
+bbef39aa : OTHER ------- :   7 hi  TRUE 39433
+9a0997e3 : OTHER ------- :   7 lo  TRUE 34600
+872844a8 : OTHER ------- :   7 hi FALSE 56620
+dd2c68b9 : OTHER ------- :   7 lo FALSE 57626
+e11aee76 : OTHER ------- :   7 hi  TRUE 23804
+5cfc309f : OTHER ------- :   7 hi  TRUE 39328
+99a060fc : OTHER ------- :   7 lo  TRUE  4382
+111ee115 : OTHER ------- :   7 hi  TRUE  1273
+ 4f9ecaa : OTHER ------- :   7 lo  TRUE 17711
+452fcf9b : OTHER ------- :   7 hi  TRUE 14249
+37a93fa8 : OTHER ------- :   7 hi FALSE 55433
+d889ffb9 : OTHER ------- :   7 lo  TRUE 32748
+7fecf176 : OTHER ------- :   7 hi  TRUE 28759
+70576f9f : OTHER ------- :   7 lo  TRUE 30163
+75d38d94 :         THREE :   3 hi  TRUE 30550
+7756e701 :         THREE :   3 hi FALSE 55462
+d8a6c9a2 :         THREE :   3 lo FALSE 60003
+ea63f47f :         THREE :   3 hi FALSE 63746
+f9024a18 :         THREE :   3 lo  TRUE 17251
+4363860d :         THREE :   3 hi  TRUE 18096
+46b076de :         THREE :   3 hi  TRUE 36135
+8d276473 :         THREE :   3 lo  TRUE  8998
+23266d74 :         THREE :   3 hi  TRUE 38565
+96a51661 :         THREE :   3 lo  TRUE  6108
+17dc5f5a :         THREE :   3 hi  TRUE  5995
+176ba8df :         THREE :   3 hi  TRUE 10391
+28975ff8 :           TWO :   2 lo FALSE 55254
+d7d61a72 :           ONE :   1 hi  TRUE 11571
+2d33fc35 :           ONE :   1 lo FALSE 63938
+f9c2d464 :           ONE :   1 hi  TRUE 19321
+4b79ed9f :           ONE :   1 hi  TRUE 28670
+6ffe82ce :           ONE :   1 lo  TRUE 25061
+61e50599 :           ONE :   1 hi  TRUE 37760
+9380bf20 :           ONE :   1 lo  TRUE 43334
+a9467aa3 :           ONE :   1 hi  TRUE 25255
+62a74e42 :           ONE :   1 hi  TRUE   309
+ 13502c5 :       --ALL-- :   0 lo  TRUE 10045
+273df605 :       --ALL-- :   0 hi  TRUE  5887
+16ff25cd :       --ALL-- :   0 lo  TRUE 39165
+98fd010d :       --ALL-- :   0 hi  TRUE 40489
+9e29b9d5 :       --ALL-- :   0 hi  TRUE 40580
+9e84739d :       --ALL-- :   0 lo  TRUE 10852
+2a64dedd :       --ALL-- :   0 hi  TRUE  8688
+21f061a5 :       --ALL-- :   0 lo  TRUE 32164
+7da4b4e5 :       --ALL-- :   0 hi FALSE 52428
+cccc20ad :       --ALL-- :   0 hi FALSE 61718
+f116ed75 :       --ALL-- :   0 lo  TRUE 23411
+5b73d0b5 :       --ALL-- :   0 hi  TRUE 22871
+5957c67d :       --ALL-- :   0 lo  TRUE  9735
+260791bd :       --ALL-- :   0 hi  TRUE 33723
+83bbd085 :       --ALL-- :   0 hi  TRUE 35180
+896cd04d :           ONE :   1 lo FALSE 58621
+e4fd901c :           ONE :   1 hi  TRUE  2725
+ aa56d77 :           ONE :   1 lo  TRUE 27718
+6c46da9e :           ONE :   1 hi  TRUE  9987
+27034731 :           ONE :   1 hi  TRUE  3866
+ f1ad958 :           ONE :   1 lo  TRUE   109
+  6d03fb :       --ALL-- :   0 hi  TRUE  3926
+ f560083 :       --ALL-- :   0 lo  TRUE  3118
+ c2e39c3 :       --ALL-- :   0 hi FALSE 60453
+ec25d74b :       --ALL-- :   0 hi  TRUE 10599
+2967cdd3 :       --ALL-- :   0 lo FALSE 63684
+f8c41713 :       --ALL-- :   0 hi  TRUE 37799
+93a7ee9b :       --ALL-- :   0 lo  TRUE 23695
+5c8fdfdb :       --ALL-- :   0 hi FALSE 59347
+e7d3b863 :       --ALL-- :   0 hi  TRUE 12080
+2f3049eb :       --ALL-- :   0 lo  TRUE 15218
+3b724b2b :       --ALL-- :   0 hi  TRUE 21306
+533a1db3 :       --ALL-- :   0 lo FALSE 64302
+fb2ec6f3 :       --ALL-- :   0 hi  TRUE 10763
+2a0bfa7b :       --ALL-- :   0 hi  TRUE 43796
+ab144703 :       --ALL-- :   0 lo  TRUE 42361
+a5790043 :           TWO :   2 hi  TRUE  1151
+ 47f629d :           TWO :   2 lo  TRUE  2750
+ abe933f :           TWO :   2 hi  TRUE 36026
+8cba14f9 :           TWO :   2 hi  TRUE 32878
+806e97c3 :           TWO :   2 lo  TRUE  7998
+1f3e5f95 :           TWO :   2 hi FALSE 57448
+e06872bf :           TWO :   2 lo  TRUE 15885
+3e0dde71 :           TWO :   2 hi  TRUE 38691
+97232bfb :           TWO :   2 hi  TRUE 20979
+51f33315 :           TWO :   2 lo  TRUE 16950
+4236ff77 :           TWO :   2 hi FALSE 57137
+df3139f1 :           TWO :   2 lo FALSE 56806
+dde66933 :           TWO :   2 hi  TRUE 26171
+663bd10d :           TWO :   2 hi  TRUE 34488
+86b8eef7 : OTHER ------- :  67 lo  TRUE 46726
+b6862fc8 : OTHER ------- :  76 hi  TRUE 26135
+6617e43c : OTHER ------- :  84 lo  TRUE 44084
+ac34eed0 : OTHER ------- :  92 hi FALSE 56164
+db64c354 : OTHER ------- : 100 hi  TRUE 11463
+2cc7a2e0 : OTHER ------- : 108 lo  TRUE 35415
+8a57a68c : OTHER ------- : 116 hi  TRUE 16583
+40c70b28 : OTHER ------- : 124 lo  TRUE 13519
+34cff1e4 : OTHER ------- : 132 hi  TRUE 37054
+90be0990 : OTHER ------- : 140 hi  TRUE 51881
+caa9b0c4 : OTHER ------- : 154 lo  TRUE  2571
+ a0bb3b6 : OTHER ------- :  10 hi  TRUE 11591
+2d476dd0 : OTHER ------- :   8 lo  TRUE  6161
+1811d8d8 : OTHER ------- :   8 hi  TRUE 12947
+3293a0c8 : OTHER ------- :   8 hi  TRUE 46804
+b6d43cb8 : OTHER ------- :   8 lo  TRUE  2803
+ af3e8c0 : OTHER ------- :   8 hi  TRUE 32294
+7e26eeb0 : OTHER ------- :   8 lo  TRUE 40261
+9d4525b8 : OTHER ------- :   8 hi FALSE 62268
+f33c55a8 : OTHER ------- :   8 hi  TRUE 41808
+a3505998 : OTHER ------- :   8 lo  TRUE  5389
+150d51a0 : OTHER ------- :   8 hi  TRUE 32962
+80c2bf90 : OTHER ------- :   8 lo FALSE 61638
+f0c6c298 : OTHER ------- :   8 hi  TRUE 15503
+3c8f5a88 : OTHER ------- :   8 hi  TRUE 36818
+8fd2c678 : OTHER ------- :   8 lo  TRUE 34303
+85ff0a80 : OTHER ------- :   4 hi  TRUE 11860
+2e5425ec : OTHER ------- :   4 lo FALSE 55140
+d76412b0 : OTHER ------- :   4 hi  TRUE  8515
+2143931c : OTHER ------- :   4 hi FALSE 60704
+ed2096c8 : OTHER ------- :   4 lo  TRUE   164
+  a4b44c :         THREE :   3 hi  TRUE 35582
+8afebc99 :         THREE :   3 lo  TRUE 30411
+76cb2f72 :         THREE :   3 hi  TRUE 24581
+6005dd57 :         THREE :   3 hi  TRUE 13697
+35811a50 :         THREE :   3 lo  TRUE 14184
+3768e825 :         THREE :   3 hi  TRUE 25750
+64968556 :         THREE :   3 lo  TRUE 18721
+49210c83 :           TWO :   2 hi  TRUE 49326
+c0aed8dd :           ONE :   1 hi  TRUE 33050
+811a9fd4 :           TWO :   2 lo  TRUE 13017
+32d9852e :           TWO :   2 hi  TRUE 27292
+6a9c7e40 :           TWO :   2 lo  TRUE 30781
+783dd2fa :           TWO :   2 hi FALSE 65382
+ff66fbec :           TWO :   2 hi  TRUE 27723
+6c4b16ae :           TWO :   2 lo  TRUE 25138
+6232c4d8 :           TWO :   2 hi FALSE 65081
+fe390c7a :           TWO :   2 lo  TRUE 42195
+a4d3c504 :           TWO :   2 hi  TRUE 50404
+c4e45b86 :           TWO :   2 hi FALSE 56769
+ddc16258 :           TWO :   2 lo  TRUE 44719
+aeaf0fd2 :           TWO :   2 hi FALSE 52849
+ce714a84 :           TWO :   2 lo  TRUE  5552
+15b0755e :           TWO :   2 hi  TRUE  6071
+17b715f0 :           TWO :   2 hi FALSE 55111
+d7471952 :           TWO :   2 lo  TRUE 52233
+cc09309c :           TWO :   2 hi  TRUE 43974
+abc6a6de :           TWO :   2 lo  TRUE 10493
+28fd4688 :           TWO :   2 hi  TRUE 18982
+4a26f1aa :           TWO :   2 hi FALSE 57370
+e01a061c :           TWO :   2 lo  TRUE 15797
+3db5c5b6 :           TWO :   2 hi  TRUE 34101
+85358408 :           TWO :   2 lo  TRUE 17818
+459a2f02 :           TWO :   2 hi  TRUE 19953
+4df16934 :           TWO :   2 hi  TRUE 11337
+2c49c736 :           TWO :   2 lo  TRUE 14925
+3a4de1a0 :           TWO :   2 hi  TRUE 35336
+8a08d882 :           TWO :   2 lo  TRUE 35502
+8aae594c :           TWO :   2 hi  TRUE  3123
+ c334b0e :           TWO :   2 hi  TRUE 28898
+70e26f20 :           TWO :   2 lo  TRUE  2862
+ b2eaada :           TWO :   2 hi  TRUE  7722
+1e2acecc :           ONE :   1 lo FALSE 52772
+ce24079f :           ONE :   1 hi  TRUE 24920
+615874ce :           ONE :   1 hi  TRUE 18482
+483296a1 :           ONE :   1 lo  TRUE 39342
+99ae8120 :           ONE :   1 hi  TRUE 33071
+812f8ceb :           ONE :   1 lo  TRUE 12209
+2fb16042 :           ONE :   1 hi  TRUE 43722
+aaca0cc5 :           ONE :   1 hi  TRUE  9643
+25ab951c :           ONE :   1 lo  TRUE 30067
+7573c4af :           ONE :   1 hi FALSE 52556
+cd4ca79e :           ONE :   1 lo  TRUE  9113
+23992729 :           ONE :   1 hi  TRUE 16160
+3f209470 :           ONE :   1 hi  TRUE 21775
+550fa4fb :           ONE :   1 lo FALSE 65033
+fe09e812 :           ONE :   1 hi  TRUE 38233
+95599755 :           TWO :   2 lo  TRUE 23911
+5d67c5b7 :           TWO :   2 hi FALSE 59138
+e7027a31 :           TWO :   2 hi  TRUE 14714
+397a9dbb :           TWO :   2 lo  TRUE 15048
+3ac82d4d :           TWO :   2 hi  TRUE 40025
+9c593537 :           TWO :   2 lo FALSE 56372
+dc34cca9 :           TWO :   2 hi  TRUE 41081
+a07922f3 :           TWO :   2 hi  TRUE 49082
+bfba10cd :           TWO :   2 lo  TRUE  5063
+13c722ef :           TWO :   2 hi  TRUE  8716
+220c3829 :           TWO :   2 lo  TRUE 21970
+55d2312b :           TWO :   2 hi FALSE 60119
+ead727c5 :           TWO :   2 hi  TRUE 35358
+8a1ea26f :           TWO :   2 lo  TRUE  6145
+18017ba1 :           TWO :   2 hi  TRUE 26643
+681378ab :         THREE :   3 lo  TRUE  9945
+26d9a38c :         THREE :   3 hi  TRUE  2990
+ bae48d9 :         THREE :   3 hi  TRUE 21478
+53e676da :         THREE :   3 lo  TRUE 38843
+97bb0797 :         THREE :   3 hi  TRUE 40202
+9d0a4d90 :         THREE :   3 lo  TRUE 39398
+99e6c065 :         THREE :   3 hi  TRUE 50448
+c5101e96 : OTHER ------- :  14 hi  TRUE  3368
+ d28df74 :           TWO :   2 lo  TRUE 36436
+8e54e1ce :           TWO :   2 hi  TRUE 41632
+a2a013e0 :           TWO :   2 lo FALSE 55479
+d8b7359a :           TWO :   2 hi FALSE 55773
+d9dd878c :           TWO :   2 hi FALSE 61363
+efb3334e :           TWO :   2 lo FALSE 60943
+ee0fe678 :           TWO :   2 hi FALSE 56115
+db332f1a :           TWO :   2 lo  TRUE 25889
+65211ca4 :           TWO :   2 hi  TRUE 30651
+77bb2426 :           TWO :   2 hi  TRUE  9521
+253143f8 :           TWO :   2 lo FALSE 57811
+e1d31e72 :           TWO :   2 hi  TRUE  8069
+1f856224 :           TWO :   2 lo  TRUE 47704
+ba5869fe :           TWO :   2 hi FALSE 53743
+d1ef0390 :           TWO :   2 hi  TRUE 22739
+58d3e7f2 :           TWO :   2 lo FALSE 53306
+d03a943c :           ONE :   1 hi  TRUE 47859
+baf37517 :           ONE :   1 lo FALSE 64831
+fd3fe3be :           ONE :   1 hi  TRUE 35460
+8a845fd1 :           ONE :   1 hi  TRUE  8963
+23037378 :           ONE :   1 lo  TRUE 24070
+5e06d59b :           TWO :   2 hi  TRUE 14761
+39a91db5 :           TWO :   2 lo  TRUE 40006
+9c465f17 :           TWO :   2 hi FALSE 62923
+f5cb4a91 :           TWO :   2 hi  TRUE 35744
+8ba03d1b :         THREE :   3 lo  TRUE  2399
+ 95f9bbc :         THREE :   3 hi  TRUE 18608
+48b069c9 :         THREE :   3 lo  TRUE 10786
+2a225b62 :         THREE :   3 hi  TRUE  4011
+ faba107 :         THREE :   3 hi  TRUE 16723
+415374c0 :           TWO :   2 lo FALSE 63024
+f630fd7a :           TWO :   2 hi  TRUE  7983
+1f2fca6c :           TWO :   2 lo  TRUE 42577
+a651bc86 :           TWO :   2 hi  TRUE  7547
+1d7beb58 :           TWO :   2 hi  TRUE 26863
+68ef36fa : OTHER ------- :  67 lo FALSE 62598
+f4868177 : OTHER ------- :  76 hi FALSE 61531
+f05b64db : OTHER ------- :  84 lo  TRUE  1748
+ 6d423df : OTHER ------- :  92 hi  TRUE 21164
+52ac4613 : OTHER ------- : 100 hi  TRUE 26936
+693866af : OTHER ------- : 108 lo FALSE 58514
+e49218eb : OTHER ------- : 116 hi FALSE 58769
+e591f957 : OTHER ------- : 123 lo  TRUE 37667
+93238f20 : OTHER ------- : 131 hi FALSE 62901
+f5b5973d : OTHER ------- : 139 hi FALSE 62107
+f29b72d6 : OTHER ------- : 155 lo FALSE 54873
+d659d87b : OTHER ------- :  10 hi  TRUE 16688
+41307c7d : OTHER ------- :   8 lo  TRUE 21360
+537071a5 : OTHER ------- :   8 hi  TRUE 45970
+b3921d55 : OTHER ------- :   8 hi  TRUE  1608
+ 648ed05 : OTHER ------- :   8 lo  TRUE  9270
+2436e72d : OTHER ------- :   9 hi  TRUE 11410
+2c92782c : OTHER ------- :   9 lo  TRUE 27926
+6d16a0a7 : OTHER ------- :   9 hi  TRUE 41613
+a28d653e : OTHER ------- :   9 hi  TRUE 27461
+6b4525b9 : OTHER ------- :   9 lo  TRUE 40687
+9eef49a0 : OTHER ------- :   9 hi  TRUE 49644
+c1ecb813 : OTHER ------- :   9 lo  TRUE 20960
+51e0ddd2 : OTHER ------- :   9 hi  TRUE 19309
+4b6d06fd : OTHER ------- :   9 hi  TRUE 29467
+731be4bc : OTHER ------- :   9 lo FALSE 65175
+fe97ecf7 : OTHER ------- :   5 hi  TRUE 45950
+b37eaa6a : OTHER ------- :   5 lo  TRUE 10027
+272b8919 : OTHER ------- :   5 hi  TRUE 36811
+8fcbf764 : OTHER ------- :   5 hi  TRUE 19143
+4ac7a713 : OTHER ------- :   5 lo  TRUE  5887
+16ff69ae : OTHER ------- :   5 hi  TRUE 14593
+3901f515 : OTHER ------- :   5 lo  TRUE 31777
+7c21b7c8 : OTHER ------- :   5 hi FALSE 55518
+d8dedea7 : OTHER ------- :   5 hi  TRUE 33427
+82936e5a : OTHER ------- :   5 lo FALSE 61126
+eec6bc49 : OTHER ------- :   5 hi  TRUE 37040
+90b07ed4 : OTHER ------- :   5 lo  TRUE 13769
+35c98a7b : OTHER ------- :   4 hi FALSE 62010
+f23a18b7 :         THREE :   3 hi  TRUE 36031
+8cbf5330 :         THREE :   3 lo  TRUE 22150
+56864885 :         THREE :   3 hi  TRUE 27417
+6b19f736 :         THREE :   3 lo  TRUE 29062
+718669e3 :           TWO :   2 hi  TRUE 24165
+5e650d3d :           TWO :   2 hi  TRUE 43785
+ab09b2a7 :           TWO :   2 lo  TRUE  7015
+1b67e599 :           TWO :   2 hi FALSE 61182
+eefec163 :           TWO :   2 lo  TRUE  1580
+ 62cf635 :           TWO :   2 hi FALSE 60316
+eb9c525f :           TWO :   2 hi  TRUE  9510
+25267119 :           TWO :   2 lo  TRUE 36930
+9042619b :           TWO :   2 hi FALSE 62906
+f5ba89b5 :           TWO :   2 lo  TRUE 41823
+a35f2b17 :           TWO :   2 hi FALSE 58571
+e4cbf691 :           TWO :   2 hi  TRUE 12291
+3003c91b :           TWO :   2 lo FALSE 59662
+e90e93ad :           TWO :   2 hi  TRUE 33727
+83bfda97 :           TWO :   2 lo  TRUE 40310
+9d767d09 :           TWO :   2 hi  TRUE 28474
+6f3aa253 :           TWO :   2 hi  TRUE 24285
+5eddb72d :           TWO :   2 lo  TRUE 43450
+a9badc4f :           TWO :   2 hi  TRUE 45047
+aff72889 :           TWO :   2 lo  TRUE 43913
+ab89848b :           TWO :   2 hi  TRUE 43281
+a911c225 :           TWO :   2 hi  TRUE 45465
+b1999bcf :           TWO :   2 lo  TRUE  6718
+1a3e2001 :           TWO :   2 hi  TRUE 19838
+4d7e0c0b :         THREE :   3 lo  TRUE  7769
+1e59f86c :         THREE :   3 hi  TRUE 33551
+830f4139 :         THREE :   3 hi  TRUE 45343
+b11fe0ba :         THREE :   3 lo FALSE 65287
+ff073cf7 :         THREE :   3 hi FALSE 54199
+d3b76870 :         THREE :   3 lo  TRUE 12844
+322c4ac5 :         THREE :   3 hi  TRUE 26523
+679b6276 :         THREE :   3 hi  TRUE 51031
+c757626b :         THREE :   3 lo FALSE 53154
+cfa2bc4c :         THREE :   3 hi FALSE 64256
+fb00e499 :         THREE :   3 lo  TRUE   536
+ 218f772 :           TWO :   2 hi  TRUE  9019
+233b2324 :           TWO :   2 hi FALSE 52517
+cd252ea6 :           TWO :   2 lo  TRUE 50917
+c6e53490 :           TWO :   2 hi  TRUE 20823
+5157c0f2 :           TWO :   2 lo  TRUE  5346
+14e2353c :           TWO :   2 hi  TRUE 30522
+773a247e :           TWO :   2 hi FALSE 58444
+e44ce210 :           TWO :   2 lo  TRUE 10082
+2762e54a :           TWO :   2 hi  TRUE 38671
+970fcabc :           TWO :   2 lo  TRUE 47893
+bb15cf56 :           TWO :   2 hi FALSE 60182
+eb16cea8 :           TWO :   2 hi  TRUE 33356
+824c7eca :           TWO :   2 lo FALSE 61488
+f030d9d4 :           TWO :   2 hi FALSE 60652
+ecec90d6 :           TWO :   2 lo  TRUE 46596
+b6041840 :           TWO :   2 hi  TRUE 31989
+7cf55822 :           TWO :   2 hi FALSE 59471
+e84fbf54 :           TWO :   2 lo FALSE 58193
+e35120ae :           TWO :   2 hi  TRUE 36913
+903165c0 :           TWO :   2 lo  TRUE 26427
+673b767a : OTHER ------- :  67 hi  TRUE  8303
+206f11bf : OTHER ------- :  76 hi  TRUE 50937
+c6f959a3 : OTHER ------- :  84 lo  TRUE  6305
+18a1b127 : OTHER ------- :  92 hi  TRUE 28516
+6f6471db : OTHER ------- :  99 lo FALSE 57361
+e01158dc : OTHER ------- : 107 hi  TRUE 41609
+a2891bb1 : OTHER ------- : 115 hi  TRUE 46400
+b540a082 : OTHER ------- : 123 lo  TRUE 44374
+ad567537 : OTHER ------- : 131 hi FALSE 65388
+ff6c0630 : OTHER ------- : 139 lo  TRUE 20410
+4fba2ced : OTHER ------- : 154 hi FALSE 56378
+dc3a3fcf : OTHER ------- :   9 hi  TRUE  9891
+26a39dc6 : OTHER ------- :   7 lo  TRUE 50776
+c658f167 : OTHER ------- :   8 hi  TRUE  5522
+1592d297 : OTHER ------- :   8 lo  TRUE 41313
+a161d3ff : OTHER ------- :   8 hi FALSE 61725
+f11d572f : OTHER ------- :   8 hi  TRUE 17350
+43c69e5f : OTHER ------- :   8 lo  TRUE 45204
+b0942cc7 : OTHER ------- :   8 hi  TRUE 10859
+2a6b55f7 : OTHER ------- :   8 lo  TRUE 47910
+bb26b35f : OTHER ------- :   8 hi  TRUE  4034
+ fc27e8f : OTHER ------- :   8 hi  TRUE 49042
+bf920dbf : OTHER ------- :   8 lo  TRUE 29543
+73677827 : OTHER ------- :   8 hi FALSE 57607
+e107e957 : OTHER ------- :   8 lo  TRUE 25241
+6299a2bf : OTHER ------- :   8 hi  TRUE  8641
+21c1b5ef : OTHER ------- :   4 hi  TRUE 36026
+8cba12eb : OTHER ------- :   4 lo  TRUE 20830
+515ef25f : OTHER ------- :   4 hi  TRUE 14936
+3a58505b : OTHER ------- :   4 lo  TRUE   134
+  8612cf :         THREE :   3 hi FALSE 53226
+cfea59a8 :         THREE :   3 hi  TRUE 23487
+5bbf0165 :         THREE :   3 lo  TRUE 24860
+611c89ee :         THREE :   3 hi  TRUE 51760
+ca305bc3 :         THREE :   3 lo FALSE 62162
+f2d26804 :         THREE :   3 hi  TRUE  1864
+ 748d331 :         THREE :   3 hi  TRUE 48818
+beb2ae92 :         THREE :   3 lo  TRUE 37823
+93bfff2f :           TWO :   2 hi FALSE 61196
+ef0cfe69 :           TWO :   2 lo FALSE 60010
+ea6a696b :           TWO :   2 hi  TRUE 49093
+bfc5aa05 :           TWO :   2 hi FALSE 64506
+fbfafeaf :           TWO :   2 lo  TRUE 41711
+a2eff9e1 :           TWO :   2 hi FALSE 54295
+d41730eb :           TWO :   2 lo  TRUE 13538
+34e2c9fd :           TWO :   2 hi FALSE 59405
+e80d6d67 :           TWO :   2 hi  TRUE  9101
+238d7561 :           TWO :   2 lo  TRUE 44233
+acc93023 :           TWO :   2 hi FALSE 54552
+d5184d7d :           TWO :   2 lo  TRUE 19788
+4d4c351f :           TWO :   2 hi FALSE 55734
+d9b641d9 :           TWO :   2 hi FALSE 57521
+e0b107a3 :           TWO :   2 lo FALSE 59522
+e882ae75 :           TWO :   2 hi  TRUE 19684
+4ce4549f :           TWO :   2 lo  TRUE 35873
+8c212f51 :           ONE :   1 hi  TRUE 45604
+b224b4f8 :           ONE :   1 hi  TRUE 29894
+74c63863 :           ONE :   1 lo  TRUE 24898
+614275da :           ONE :   1 hi  TRUE 31584
+7b602afd :           ONE :   1 lo  TRUE 17150
+42fe700c :           ONE :   1 hi FALSE 63461
+f7e583a7 :           ONE :   1 hi  TRUE  1558
+ 61625b6 :           ONE :   1 lo  TRUE 51651
+c9c3e4e1 :           ONE :   1 hi  TRUE 48293
+bca54e48 :           ONE :   1 lo  TRUE 13053
+32fdd52b :           ONE :   1 hi  TRUE   976
+ 3d073aa :       --ALL-- :   0 hi  TRUE 26833
+68d17112 :       --ALL-- :   0 lo FALSE 62608
+f4903d52 :       --ALL-- :   0 hi  TRUE 49673
+c209b7ba :       --ALL-- :   0 lo FALSE 53482
+d0ea8bfa :           ONE :   1 hi  TRUE 24512
+5fc03c9d :           ONE :   1 hi  TRUE 24943
+616fcc94 :           ONE :   1 lo  TRUE 44696
+ae983647 :           ONE :   1 hi  TRUE 17522
+447231d6 :           ONE :   1 lo FALSE 56525
+dccd6081 :           TWO :   2 hi  TRUE 50026
+c36a608b :           TWO :   2 hi  TRUE 10108
+277cfe25 :           TWO :   2 lo  TRUE  4542
+11bef307 :           TWO :   2 hi  TRUE 18339
+47a39c01 :           TWO :   2 lo  TRUE 28998
+7146abc3 :           TWO :   2 hi FALSE 56892
+de3cda1d :           TWO :   2 hi  TRUE 31800
+7c38c287 :           TWO :   2 lo  TRUE 41245
+a11dd479 :           TWO :   2 hi FALSE 63853
+f96d4343 :           TWO :   2 lo FALSE 62439
+f3e7e715 :           TWO :   2 hi  TRUE   708
+ 2c4263f :           TWO :   2 hi  TRUE  7904
+1ee09ff9 :         THREE :   3 lo  TRUE  9670
+25c61452 :         THREE :   3 hi FALSE 62627
+f4a3a5b7 :         THREE :   3 lo FALSE 62548
+f454bf48 :         THREE :   3 hi  TRUE 41099
+a08b6d85 :         THREE :   3 hi  TRUE 30187
+75eb3036 :         THREE :   3 lo  TRUE 12042
+2f0a66e3 :         THREE :   3 hi FALSE 59074
+e6c21c0c : OTHER ------- :   4 lo  TRUE 16080
+3ed092d0 : OTHER ------- :   4 hi  TRUE   914
+ 392013c : OTHER ------- :   4 hi FALSE 55195
+d79b12e8 : OTHER ------- :   4 lo  TRUE 23861
+5d359a6c : OTHER ------- :   4 hi  TRUE 11239
+2be78118 : OTHER ------- :   4 lo  TRUE 47999
+bb7fe79c : OTHER ------- :   4 hi  TRUE 19285
+4b556348 : OTHER ------- :   4 hi  TRUE 26127
+660f0e34 :         THREE :   3 lo  TRUE 32937
+80a98319 :         THREE :   3 hi  TRUE 42725
+a6e5fa1a :         THREE :   3 lo  TRUE  1486
+ 5ce6fd7 :         THREE :   3 hi FALSE 59335
+e7c7b6d0 :         THREE :   3 hi  TRUE 20389
+4fa58f2d :         THREE :   3 lo  TRUE 39884
+9bcc3dd6 :         THREE :   3 hi  TRUE 25460
+6374bb4b :         THREE :   3 lo  TRUE 46551
+b5d7bcac :         THREE :   3 hi  TRUE 43114
+a86a7679 :         THREE :   3 hi  TRUE  5367
+14f7cafa :         THREE :   3 lo  TRUE 36818
+8fd2c837 :         THREE :   3 hi  TRUE 30530
+774200b0 :         THREE :   3 lo  TRUE 28821
+70957c05 :         THREE :   3 hi FALSE 59827
+e9b338b6 :         THREE :   3 hi  TRUE 13007
+32cff1ab :         THREE :   3 lo  TRUE 29901
+74cde08c :         THREE :   3 hi  TRUE 51406
+c8cef9d9 :         THREE :   3 lo  TRUE 41772
+a32cf9b2 :         THREE :   3 hi  TRUE 45534
+b1de3097 :         THREE :   3 hi FALSE 55671
+d9779a90 :         THREE :   3 lo  TRUE 14520
+38b8a165 :         THREE :   3 hi  TRUE 30459
+76fb0396 :         THREE :   3 lo  TRUE 23644
+5c5cfbc3 :         THREE :   3 hi  TRUE 26270
+669e546c :         THREE :   3 hi  TRUE 16111
+3eef0d39 :         THREE :   3 lo  TRUE  5896
+1708ce92 :         THREE :   3 hi  TRUE 41032
+a048a8f7 :         THREE :   3 lo FALSE 63603
+f873a788 :         THREE :   3 hi  TRUE 27330
+6ac256c5 :         THREE :   3 hi  TRUE 16283
+3f9b9e76 :         THREE :   3 lo  TRUE  5492
+15740623 :         THREE :   3 hi  TRUE 26497
+6781184c :         THREE :   3 lo  TRUE 25074
+61f22a91 :         THREE :   3 hi  TRUE 23524
+5be47372 :         THREE :   3 hi  TRUE 45930
+b36a3157 :         THREE :   3 lo  TRUE   265
+ 1092568 :           TWO :   2 hi  TRUE 30968
+78f8e38a :           TWO :   2 lo  TRUE 18910
+49de2494 :           TWO :   2 hi FALSE 60162
+eb020996 :           TWO :   2 hi FALSE 61029
+ee65a2e8 :           TWO :   2 lo  TRUE 51996
+cb1ca4e2 :           TWO :   2 hi FALSE 57307
+dfdb8a14 :           TWO :   2 lo  TRUE 33031
+8107016e :           TWO :   2 hi  TRUE  4042
+ fcae480 :           TWO :   2 hi  TRUE 28817
+70918e62 :         THREE :   3 lo  TRUE 16578
+40c2f43f :         THREE :   3 hi FALSE 63516
+f81ce8d8 :         THREE :   3 lo  TRUE 50344
+c4a887cd :         THREE :   3 hi  TRUE 28492
+6f4c1f9e :         THREE :   3 hi  TRUE  1902
+ 76ed033 :         THREE :   3 lo  TRUE 50826
+c68ad034 :         THREE :   3 hi  TRUE 30191
+75ef2421 :         THREE :   3 lo  TRUE 37523
+9293ac1a :         THREE :   3 hi  TRUE 27059
+69b3489f :           TWO :   2 hi  TRUE  5621
+15f56159 :           TWO :   2 lo  TRUE 23356
+5b3c13db :           TWO :   2 hi  TRUE 28545
+6f8195f5 :           TWO :   2 lo  TRUE 32893
+807dd957 :           TWO :   2 hi  TRUE 43175
+a8a75ed1 : OTHER ------- :  12 hi  TRUE  2838
+ b160c95 :           TWO :   2 lo  TRUE 49788
+c27c24f7 : OTHER ------- : 212 hi  TRUE 20210
+4ef2ad83 : OTHER ------- :  38 lo  TRUE  5886
+16fe7a49 : OTHER ------- : 248 hi  TRUE 43555
+aa230a29 : OTHER ------- :  86 hi  TRUE 37998
+946e5bb7 : OTHER ------- : 284 lo  TRUE 31543
+7b373ce3 : OTHER ------- : 122 hi FALSE 64468
+fbd4ddd5 : OTHER ------- : 320 lo  TRUE 46601
+b6093155 : OTHER ------- : 158 hi FALSE 53865
+d2696d6b : OTHER ------- : 357 hi  TRUE 10886
+2a86fa2e : OTHER ------- : 207 lo  TRUE 45661
+b25d0fd7 : OTHER ------- : 393 hi  TRUE 27643
+6bfb1d2e : OTHER ------- : 243 lo  TRUE 15186
+3b528b6b : OTHER ------- : 441 hi  TRUE 17207
+433720a2 : OTHER ------- : 279 hi  TRUE 50253
+c44d558b : OTHER ------- : 477 lo  TRUE 36070
+8ce6c81e : OTHER ------- : 315 hi  TRUE 10254
+280e884b : OTHER ------- : 513 lo  TRUE 15472
+3c703022 : OTHER ------- : 351 hi  TRUE 13468
+349c3cf3 : OTHER ------- : 549 hi  TRUE 38324
+95b46dd6 : OTHER ------- : 387 lo  TRUE  1660
+ 67c1e83 : OTHER ------- : 585 hi  TRUE 38127
+94ef6aea : OTHER ------- : 411 lo  TRUE  1925
+ 78536df : OTHER ------- : 597 hi  TRUE 29577
+73898f82 : OTHER ------- : 423 hi  TRUE 38985
+984982bb : OTHER ------- : 609 lo  TRUE 32917
+8095fb32 : OTHER ------- : 435 hi FALSE 53501
+d0fddf87 : OTHER ------- : 621 lo  TRUE 25595
+63fbdbfa : OTHER ------- : 447 hi  TRUE  8555
+216bf08b : OTHER ------- : 633 hi  TRUE 50447
+c50ff602 : OTHER ------- : 459 lo  TRUE  2764
+ acc0447 : OTHER ------- : 645 hi  TRUE 40902
+9fc605fa : OTHER ------- : 471 lo  TRUE 41250
+a122843b : OTHER ------- : 657 hi  TRUE 13649
+3551920a : OTHER ------- : 477 hi FALSE 63628
+f88c8639 : OTHER ------- : 657 lo  TRUE 35715
+8b835168 : OTHER ------- : 477 hi  TRUE  3860
+ f14d5ff : OTHER ------- : 657 lo FALSE 58570
+e4ca5996 : OTHER ------- : 477 hi FALSE 56760
+ddb81855 : OTHER ------- : 657 hi  TRUE 22365
+575dcc7c : OTHER ------- : 477 lo  TRUE 39984
+9c304abb : OTHER ------- : 657 hi FALSE 65293
+ff0dee8a : OTHER ------- : 477 lo  TRUE 47477
+b9752eb1 : OTHER ------- : 657 hi FALSE 59426
+e82259e8 : OTHER ------- : 477 hi  TRUE 12354
+3042447f : OTHER ------- : 656 lo  TRUE 44896
+af60798f : OTHER ------- : 476 hi  TRUE 49052
+bf9cca43 : OTHER ------- : 656 lo  TRUE 35950
+8c6ec853 : OTHER ------- : 476 hi  TRUE   111
+  6f8a47 : OTHER ------- : 655 hi  TRUE 24815
+60ef9f8c : OTHER ------- : 475 lo  TRUE 43118
+a86e33c9 : OTHER ------- : 655 hi  TRUE  6878
+1ade1576 : OTHER ------- : 475 lo  TRUE 23258
+5ada43db : OTHER ------- : 655 hi FALSE 60955
+ee1b3730 : OTHER ------- : 476 hi  TRUE  3023
+ bcf6f34 : OTHER ------- : 656 lo  TRUE 38252
+956c3f84 : OTHER ------- : 476 hi  TRUE  5030
+13a6b5c8 : OTHER ------- : 656 lo  TRUE 47375
+b90f6318 : OTHER ------- : 476 hi  TRUE  1952
+ 7a0db9c : OTHER ------- : 656 hi  TRUE 40706
+9f027f54 : OTHER ------- : 476 lo  TRUE 35000
+88b834b0 : OTHER ------- : 656 hi  TRUE 21112
+5278b7e8 : OTHER ------- : 476 lo FALSE 61474
+f0225504 : OTHER ------- : 656 hi  TRUE  8423
+20e7efbc : OTHER ------- : 477 hi  TRUE 18432
+4800f043 : OTHER ------- : 657 lo  TRUE 17740
+454c5fca : OTHER ------- : 477 hi  TRUE 11235
+2be3f8f9 : OTHER ------- : 657 lo  TRUE 43540
+aa146928 : OTHER ------- : 477 hi  TRUE 29334
+72960abf : OTHER ------- : 657 hi  TRUE 45606
+b22671fe : OTHER ------- : 477 lo  TRUE 16501
+40753f15 : OTHER ------- : 657 hi FALSE 61852
+f19c403c : OTHER ------- : 477 lo  TRUE 25264
+62b0137b : OTHER ------- : 656 hi  TRUE  7271
+1c6724d3 : OTHER ------- : 476 hi  TRUE   531
+ 2134ec7 : OTHER ------- : 655 lo  TRUE 42820
+a7444da4 : OTHER ------- : 475 hi  TRUE 10211
+27e3bc49 : OTHER ------- : 655 lo  TRUE 40948
+9ff4724e : OTHER ------- : 475 hi  TRUE 29268
+7254b05b : OTHER ------- : 655 hi FALSE 53503
+d0ff2db0 : OTHER ------- : 475 lo  TRUE 25370
+631a537d : OTHER ------- : 655 hi  TRUE  5691
+163bb1ba : OTHER ------- : 475 lo FALSE 60842
+edaab22f : OTHER ------- : 655 hi  TRUE 37364
+91f47a94 : OTHER ------- : 476 hi  TRUE 17136
+42f0b5d8 :           ONE :   1 lo FALSE 55069
+d71dee7b :           ONE :   1 hi  TRUE 44002
+abe239ba :           ONE :   1 lo FALSE 55187
+d793dcd5 :           TWO :   2 hi  TRUE 16629
+40f501ff :         THREE :   3 hi FALSE 56043
+daebcd98 :         THREE :   3 lo  TRUE 28824
+7098278d :         THREE :   3 hi  TRUE 37673
+9329de5e :         THREE :   3 lo  TRUE 33989
+84c590ab :         THREE :   3 hi  TRUE 38608
+96d098f4 :         THREE :   3 hi  TRUE 21945
+55b92fe1 :         THREE :   3 lo  TRUE   337
+ 1512eda :           TWO :   2 hi FALSE 56457
+dc89f2cc :           TWO :   2 lo  TRUE 40138
+9cca07e6 :           TWO :   2 hi  TRUE 47342
+b8ee3db8 :           TWO :   2 hi  TRUE 47398
+b926a85a :           TWO :   2 lo  TRUE 22360
+57589fe4 :           TWO :   2 hi  TRUE  2878
+ b3ea966 :           TWO :   2 lo  TRUE 12678
+31864550 :           TWO :   2 hi  TRUE 33467
+82bbefb2 :           TWO :   2 hi  TRUE 39522
+9a626564 :         THREE :   3 lo  TRUE  3189
+ c75c109 :         THREE :   3 hi  TRUE  2672
+ a7017ca :         THREE :   3 lo  TRUE 32160
+7da03e47 :         THREE :   3 hi  TRUE 48710
+be466700 :         THREE :   3 hi  TRUE  7575
+1d97481d :         THREE :   3 lo  TRUE 49006
+bf6eec86 :         THREE :   3 hi FALSE 60824
+ed982cbb :         THREE :   3 lo  TRUE 16562
+40b275dc :         THREE :   3 hi  TRUE 27445
+6b35dc69 :         THREE :   3 hi  TRUE 37433
+9239b0aa :         THREE :   3 lo  TRUE 21482
+53ea7ea7 :         THREE :   3 hi  TRUE 31738
+7bfa38e0 :         THREE :   3 lo  TRUE 27226
+6a5afef5 :         THREE :   3 hi  TRUE 39427
+9a032f66 :         THREE :   3 hi  TRUE 43073
+a841cb1b :         THREE :   3 lo  TRUE 29995
+752ba1bc :         THREE :   3 hi  TRUE   949
+ 3b587c9 :           TWO :   2 lo FALSE 62353
+f3911dcb :           TWO :   2 hi  TRUE 19468
+4c0ccd65 :           TWO :   2 hi  TRUE 51485
+c91de90f :           TWO :   2 lo  TRUE 25937
+65511741 :           TWO :   2 hi  TRUE 34207
+859f254b :           TWO :   2 lo FALSE 56403
+dc53415d :           TWO :   2 hi  TRUE  3462
+ d86cbc7 :           TWO :   2 hi  TRUE 52333
+cc6dd2c1 :           TWO :   2 lo  TRUE 47530
+b9aa5883 :         THREE :   3 hi FALSE 55020
+d6ec442c :         THREE :   3 lo  TRUE 30520
+7738e9f1 :         THREE :   3 hi  TRUE 21061
+52454052 :         THREE :   3 hi  TRUE  3553
+ de181b7 :         THREE :   3 lo  TRUE 11322
+2c3a8b48 :         THREE :   3 hi  TRUE 11450
+2cba6985 :         THREE :   3 lo  TRUE 24136
+5e482e8e :         THREE :   3 hi  TRUE 44961
+afa182e3 :         THREE :   3 hi FALSE 63583
+f85fa80c :         THREE :   3 lo  TRUE 33529
+82f9c151 :         THREE :   3 hi  TRUE 34860
+882c8532 :         THREE :   3 lo  TRUE 44394
+ad6a7c4f :         THREE :   3 hi  TRUE 51838
+ca7ea928 :           TWO :   2 hi  TRUE 16101
+3ee57d4a :           TWO :   2 lo  TRUE 11646
+2d7e4c54 :           TWO :   2 hi  TRUE 17242
+435ae756 :           TWO :   2 lo  TRUE 16713
+4149a2c0 :           TWO :   2 hi  TRUE 42799
+a72f86a2 :           TWO :   2 hi  TRUE  1360
+ 55031d4 :           TWO :   2 lo  TRUE 32037
+7d25a72e :           TWO :   2 hi  TRUE 19833
+4d79f040 :           TWO :   2 lo FALSE 56528
+dcd0d4fa :           TWO :   2 hi FALSE 62174
+f2de4dec :           TWO :   2 hi  TRUE 50995
+c73338ae :           TWO :   2 lo  TRUE 43541
+aa15f6d8 :           ONE :   1 hi FALSE 57425
+e0511ec3 :           ONE :   1 lo  TRUE 43220
+a8d4a2ba :           ONE :   1 hi  TRUE 43127
+a877305d :           TWO :   2 hi  TRUE 23794
+5cf212c7 :           TWO :   2 lo  TRUE   564
+ 234e6b9 :           ONE :   1 hi  TRUE 46116
+b4244fc0 :           ONE :   1 lo  TRUE 11571
+2d33e8c3 :           ONE :   1 hi FALSE 60526
+ec6e57e2 :           ONE :   1 hi FALSE 59734
+e95669e5 :           TWO :   2 lo  TRUE 17244
+435c7cc7 :           TWO :   2 hi FALSE 60861
+edbd2bc1 :           TWO :   2 lo  TRUE 49913
+c2f97983 :           TWO :   2 hi  TRUE 48918
+bf164ddd :           TWO :   2 hi  TRUE 27078
+69c6cc47 :         THREE :   3 lo  TRUE 46911
+b73ffe18 :         THREE :   3 hi  TRUE  9105
+2391df95 :         THREE :   3 lo FALSE 64160
+faa08ade :         THREE :   3 hi  TRUE 48373
+bcf5c873 :         THREE :   3 hi  TRUE 14525
+38bd5bdc :         THREE :   3 lo  TRUE 36128
+8d205a61 :         THREE :   3 hi  TRUE 31139
+79a31a82 :         THREE :   3 lo  TRUE 30252
+762cccdf :         THREE :   3 hi  TRUE 47123
+b81313f8 :         THREE :   3 hi  TRUE 33458
+82b21cf5 :         THREE :   3 lo  TRUE 15225
+3b79f1be :         THREE :   3 hi  TRUE 29359
+72af1ad3 :         THREE :   3 lo  TRUE 42475
+a5eb1154 :         THREE :   3 hi  TRUE 49106
+bfd219c1 :         THREE :   3 hi  TRUE  9114
+239ae762 :           TWO :   2 lo  TRUE 23762
+5cd23f2c :         THREE :   3 hi  TRUE 23442
+5b92c2f9 :           TWO :   2 lo FALSE 52601
+cd79a27b :           TWO :   2 hi  TRUE 23723
+5cab2d95 :           TWO :   2 hi FALSE 53449
+d0c970bf :           TWO :   2 lo  TRUE  4700
+125ccc71 :           TWO :   2 hi  TRUE 15483
+3c7b49fb :           TWO :   2 lo  TRUE 38925
+980d7b8d :           TWO :   2 hi  TRUE 17444
+44243d77 :           TWO :   2 hi  TRUE  5060
+13c427f1 :           TWO :   2 lo  TRUE 16678
+4126c733 :           TWO :   2 hi  TRUE 20958
+51dedf0d :           TWO :   2 lo  TRUE 39691
+9b0ba32f :           TWO :   2 hi  TRUE 12738
+31c24269 :           TWO :   2 hi  TRUE 52423
+ccc77eb3 :         THREE :   3 lo  TRUE  2372
+ 944e8b4 :         THREE :   3 hi  TRUE  4406
+11365ea1 :         THREE :   3 lo  TRUE 36993
+9081009a :           TWO :   2 hi FALSE 57409
+e0410a8c :           TWO :   2 hi  TRUE 29573
+73852e4e :           TWO :   2 lo  TRUE 23600
+5c30b978 :           TWO :   2 hi  TRUE  1846
+ 736fa1a :           TWO :   2 lo  TRUE  9362
+24923fa4 :           TWO :   2 hi FALSE 63099
+f67bbf26 :           TWO :   2 hi  TRUE 21756
+54fc16f8 :           TWO :   2 lo  TRUE  3755
+ eab8972 :           TWO :   2 hi  TRUE 13056
+33008524 :         THREE :   3 lo  TRUE 29081
+719927c9 :         THREE :   3 hi  TRUE 17659
+44fb398a :         THREE :   3 hi  TRUE  2237
+ 8bd33cf :         THREE :   3 lo  TRUE 17510
+44667ac0 :         THREE :   3 hi  TRUE 28949
+71154add :         THREE :   3 lo  TRUE 42252
+a50c6246 :         THREE :   3 hi  TRUE 13468
+349c197b :         THREE :   3 hi  TRUE 15710
+3d5e7d04 :         THREE :   3 lo  TRUE 15840
+3de06329 :         THREE :   3 hi FALSE 56088
+db18726a :         THREE :   3 lo  TRUE 26326
+66d6cf67 :         THREE :   3 hi  TRUE  2768
+ ad0eca0 :         THREE :   3 hi FALSE 64308
+fb34543d :         THREE :   3 lo  TRUE 18338
+47a24526 :         THREE :   3 hi FALSE 63933
+f9bdd7db :         THREE :   3 lo  TRUE 36704
+8f60097c :         THREE :   3 hi  TRUE 24087
+5e172e89 :         THREE :   3 hi  TRUE 19515
+4c3b7b4a :           TWO :   2 lo  TRUE 30570
+776a3a54 :           TWO :   2 hi  TRUE 40152
+9cd80556 :           TWO :   2 lo FALSE 62773
+f535b0c0 :           TWO :   2 hi  TRUE 22897
+5971c4a2 :           TWO :   2 hi  TRUE  9600
+25801fd4 :           TWO :   2 lo  TRUE  8683
+21eb052e :           TWO :   2 hi  TRUE 34153
+8569fe40 :           TWO :   2 lo FALSE 55543
+d8f752fa :           TWO :   2 hi  TRUE 48668
+be1c7bec :         THREE :   3 hi  TRUE 15137
+3b2112b9 :         THREE :   3 lo  TRUE 50065
+c391ba12 :         THREE :   3 hi  TRUE 35286
+89d68277 :         THREE :   3 lo  TRUE 43473
+a9d13708 :         THREE :   3 hi  TRUE 49005
+bf6d6445 :         THREE :   3 hi  TRUE 16135
+3f0721f6 :         THREE :   3 lo  TRUE  8178
+1ff2a7a3 :         THREE :   3 hi FALSE 62828
+f56c7fcc :         THREE :   3 lo FALSE 64071
+fa47c011 :         THREE :   3 hi  TRUE 38256
+95709ef2 :         THREE :   3 hi  TRUE  8936
+22e84ad7 :         THREE :   3 lo  TRUE 37199
+914ff4e8 :         THREE :   3 hi  TRUE 43363
+a963e9a5 :         THREE :   3 lo  TRUE 41935
+a3cf4b2e :         THREE :   3 hi  TRUE  8208
+20100203 :         THREE :   3 hi FALSE 62182
+f2e6d3ac :         THREE :   3 lo  TRUE 34941
+887d4771 :           TWO :   2 hi FALSE 60384
+ebe0fcfb :           TWO :   2 lo  TRUE 24247
+5eb7c68d :           TWO :   2 hi  TRUE 26492
+677c4077 :           TWO :   2 hi  TRUE 11710
+2dbea2f1 :           TWO :   2 lo  TRUE  1332
+ 5341a33 :           TWO :   2 hi  TRUE 33731
+83c32a0d :           TWO :   2 lo FALSE 62945
+f5e1462f :           TWO :   2 hi  TRUE  9883
+269b5d69 :           TWO :   2 hi  TRUE 29054
+717ed1b3 :         THREE :   3 lo  TRUE 50614
+c5b627b4 :         THREE :   3 hi  TRUE 44107
+ac4b19a1 :         THREE :   3 lo  TRUE 10976
+2ae0479a :         THREE :   3 hi  TRUE 33691
+839b921f :         THREE :   3 hi  TRUE  4516
+11a4ce38 :         THREE :   3 lo  TRUE 26523
+679b36ad :         THREE :   3 hi  TRUE 23919
+5d6fd9fe :         THREE :   3 lo  TRUE 18617
+48b926cb :         THREE :   3 hi  TRUE 13715
+3593b794 :           TWO :   2 hi  TRUE 42072
+a4589496 :           TWO :   2 lo  TRUE 35712
+8b80fa00 :           TWO :   2 hi  TRUE 28771
+7063ffe2 :           TWO :   2 lo  TRUE 14626
+39229bac :           TWO :   2 hi  TRUE 42074
+a45a2c6e :           TWO :   2 hi  TRUE  4462
+116ec780 :           TWO :   2 lo  TRUE 43738
+aadaa63a :           TWO :   2 hi  TRUE 24068
+5e04512c :           TWO :   2 lo FALSE 57122
+df223946 :         THREE :   3 hi FALSE 62155
+f2cbcc7b :         THREE :   3 hi  TRUE  8921
+22d97c04 :         THREE :   3 lo  TRUE  6570
+19aa7e29 :         THREE :   3 hi  TRUE 33843
+8433796a :           TWO :   2 lo  TRUE  5065
+13c9c974 :           TWO :   2 hi  TRUE  6894
+1aeeb176 :           TWO :   2 hi  TRUE 19293
+4b5dc5c8 :           TWO :   2 lo  TRUE  8923
+22db3ec2 :           TWO :   2 hi  TRUE 20479
+4fff6ef4 :           TWO :   2 lo  TRUE 51753
+ca296d4e :           TWO :   2 hi  TRUE 51383
+c8b76b60 :           TWO :   2 hi  TRUE  5326
+14ce6842 :           TWO :   2 lo  TRUE 41581
+a26d270c :           TWO :   2 hi  TRUE 11512
+2cf8bece :           TWO :   2 lo  TRUE 33431
+82974df8 :           TWO :   2 hi  TRUE 44375
+ad57c29a :           TWO :   2 hi FALSE 61714
+f1121c8c :           TWO :   2 lo  TRUE 35378
+8a323fa6 :         THREE :   3 hi  TRUE 44805
+af057c5b :         THREE :   3 lo FALSE 65156
+fe842ffc :         THREE :   3 hi  TRUE 19589
+4c85af09 :         THREE :   3 hi  TRUE 39076
+98a4bdca :         THREE :   3 lo FALSE 58272
+e3a0bc47 :         THREE :   3 hi  TRUE 17157
+4305dd00 :         THREE :   3 lo  TRUE  5660
+161c4f95 :         THREE :   3 hi  TRUE 50402
+c4e2b286 :         THREE :   3 hi FALSE 58500
+e4840abb :         THREE :   3 lo  TRUE  3000
+ bb80bdc :         THREE :   3 hi  TRUE 10418
+28b2ca69 :         THREE :   3 lo  TRUE 25160
+62484a82 :         THREE :   3 hi  TRUE 13295
+33effca7 :         THREE :   3 hi  TRUE 27218
+6a52aee0 :         THREE :   3 lo  TRUE 25892
+65248cf5 :         THREE :   3 hi  TRUE  1095
+ 447f566 :         THREE :   3 lo  TRUE 36110
+8d0e0ad3 :         THREE :   3 hi  TRUE 34426
+867a37bc :         THREE :   3 hi  TRUE 36383
+8e1f75c9 :         THREE :   3 lo  TRUE 16712
+41481762 :         THREE :   3 hi  TRUE  2050
+ 8024d07 :         THREE :   3 lo FALSE 58343
+e3e729d8 :         THREE :   3 hi  TRUE 14935
+3a575a55 :         THREE :   3 hi  TRUE 29274
+725a0846 :         THREE :   3 lo  TRUE 25797
+64c56d33 :         THREE :   3 hi  TRUE  2306
+ 902b39c :         THREE :   3 lo  TRUE 46072
+b3f8d921 :         THREE :   3 hi  TRUE 50267
+c45bb442 :         THREE :   3 hi  TRUE 48687
+be2fad67 :         THREE :   3 lo  TRUE 46260
+b4b4dfb8 :         THREE :   3 hi  TRUE 49484
+c14cb7b5 :         THREE :   3 lo  TRUE 36171
+8d4b5f7e :         THREE :   3 hi  TRUE 15530
+3caadf93 :         THREE :   3 hi  TRUE 41353
+a1897f7c :         THREE :   3 lo  TRUE 26741
+6875b881 :         THREE :   3 hi  TRUE 18427
+47fb2122 :         THREE :   3 lo FALSE 52696
+cdd839ff :         THREE :   3 hi  TRUE 18479
+482fe598 :         THREE :   3 hi  TRUE 10652
+299ca515 :         THREE :   3 lo  TRUE 33549
+830d365e :         THREE :   3 hi  TRUE 34710
+879661f3 :         THREE :   3 lo  TRUE 36441
+8e5930f4 :         THREE :   3 hi  TRUE 45128
+b04827e1 :         THREE :   3 hi FALSE 64670
+fc9e5e02 :         THREE :   3 lo  TRUE  8514
+21422e5f :         THREE :   3 hi  TRUE  2832
+ b103b78 :         THREE :   3 lo  TRUE 38158
+950ef0ed :         THREE :   3 hi  TRUE 32649
+7f89dd3e :         THREE :   3 hi  TRUE 40031
+9c5ff453 :         THREE :   3 lo FALSE 60055
+ea97a0d4 :           TWO :   2 hi  TRUE 20636
+509c6fd6 :           TWO :   2 lo  TRUE 40837
+9f85ef40 :           TWO :   2 hi FALSE 52570
+cd5ac722 :           TWO :   2 hi  TRUE 22328
+57388654 :           TWO :   2 lo  TRUE 34203
+859b1fae :           TWO :   2 hi  TRUE 24341
+5f153cc0 :           TWO :   2 lo  TRUE 35113
+8929057a :           TWO :   2 hi  TRUE 20633
+5099126c :           TWO :   2 hi  TRUE  4079
+ fefb12e :         THREE :   3 lo  TRUE 41043
+a053e4bb :         THREE :   3 hi  TRUE 51686
+c9e65544 :         THREE :   3 lo  TRUE   467
+ 1d3d469 :         THREE :   3 hi  TRUE 34883
+884388aa :         THREE :   3 hi FALSE 63549
+f83d6f6f :         THREE :   3 lo  TRUE 48245
+bc7550e0 :         THREE :   3 hi FALSE 64832
+fd40a97d :         THREE :   3 lo FALSE 64357
+fb658766 :         THREE :   3 hi  TRUE 39601
+9ab1831b :           TWO :   2 hi  TRUE  6839
+1ab7e735 :           TWO :   2 lo  TRUE  7942
+1f06f497 :           TWO :   2 hi  TRUE 11596
+2d4c3c11 :           TWO :   2 lo  TRUE  8373
+20b51c53 :           TWO :   2 hi  TRUE 49335
+c0b7412d :           TWO :   2 hi  TRUE 19324
+4b7ca417 :           TWO :   2 lo  TRUE  4693
+12551289 :           TWO :   2 hi  TRUE 16777
+418993d3 :           TWO :   2 lo  TRUE 31838
+7c5e0c25 :         THREE :   3 hi  TRUE 49430
+c1163956 :         THREE :   3 hi  TRUE 39519
+9a5fe4cb :         THREE :   3 lo  TRUE 10861
+2a6ddc2c :         THREE :   3 hi FALSE 61960
+f20853f9 :         THREE :   3 lo  TRUE 41594
+a27a1852 :         THREE :   3 hi  TRUE 26157
+662db9b7 :         THREE :   3 hi FALSE 56050
+daf2f830 :         THREE :   3 lo  TRUE   100
+  64e185 : OTHER ------- :  11 hi  TRUE 38681
+9719dabe :           ONE :   1 lo  TRUE 42826
+a74a2dc9 :           ONE :   1 hi  TRUE 44550
+ae062490 :           ONE :   1 hi  TRUE 17579
+44ab889b :           ONE :   1 lo  TRUE  5445
+15455d32 :           ONE :   1 hi  TRUE 17926
+4606ebf5 :           ONE :   1 lo  TRUE 33398
+8276c524 :           ONE :   1 hi  TRUE 10755
+2a03935f :           ONE :   1 hi  TRUE  6972
+1b3c298e :           TWO :   2 lo FALSE 57313
+dfe1ceb8 :           TWO :   2 hi FALSE 60798
+ed7ee15a :           TWO :   2 lo  TRUE 48983
+bf57a0e4 :           TWO :   2 hi  TRUE  2059
+ 80bd266 :           TWO :   2 hi  TRUE 43022
+a80eac38 :           TWO :   2 lo  TRUE 23399
+5b6708b2 :           TWO :   2 hi FALSE 61903
+f1cf6664 :         THREE :   3 lo  TRUE  3123
+ c33a609 :         THREE :   3 hi FALSE 63229
+f6fd10ca :         THREE :   3 hi  TRUE 16329
+3fc9480f :         THREE :   3 lo  TRUE 21171
+52b39800 :         THREE :   3 hi  TRUE  5250
+1482bd1d :         THREE :   3 lo  TRUE 39546
+9a7a9586 :         THREE :   3 hi  TRUE 52047
+cb4ff9bb :         THREE :   3 hi FALSE 56306
+dbf23e44 :         THREE :   3 lo  TRUE 18455
+48174169 :         THREE :   3 hi  TRUE  1464
+ 5b829aa :         THREE :   3 lo  TRUE  3944
+ f68bba7 :         THREE :   3 hi  TRUE 43980
+abcce9e0 :         THREE :   3 hi FALSE 57948
+e25c267d :         THREE :   3 lo  TRUE  8520
+21485866 :         THREE :   3 hi  TRUE 47449
+b959181b :         THREE :   3 lo  TRUE 10255
+280f82bc :           TWO :   2 hi  TRUE 30964
+78f48dfe :           TWO :   2 hi  TRUE 52104
+cb88c790 :           TWO :   2 lo FALSE 54309
+d42576ca :           TWO :   2 hi  TRUE 18698
+490a183c : OTHER ------- : -64 lo  TRUE 18698
+Anomalies: 288.
+Step frames: .
