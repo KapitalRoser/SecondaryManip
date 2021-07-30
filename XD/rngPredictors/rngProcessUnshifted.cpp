@@ -5,6 +5,7 @@
 #include <fstream>
 #include <sstream>
 #include <algorithm>
+#include <cmath>
 //XD TOOL NOT COLO
 using namespace std;
 
@@ -70,7 +71,64 @@ vector<uint32_t> readNumbersFromFile(string fileName)
     file.close();
     return data;
 }
+
+int alignTrio (vector<int>changeFrames, int currentFrame, int oldAlign, bool toDecrement){
+  int alignment = oldAlign;
+  if (binary_search(changeFrames.begin(),changeFrames.end(),currentFrame)){ //If current frame is special, adjust alignment.
+    if (toDecrement){
+      alignment--;
+      alignment = alignment % 3;     
+    } else {
+      alignment++;
+    }
+    //Over/underflow correction:
+    if (alignment >=3){ //has to be this way. Would need euclidean mod implementation to handle negative values.
+      alignment = 0;
+    } else if (alignment < 0){
+      alignment = 2;
+    }
+  }
+  return alignment;
+}
+
 int main(){
+  
+  //delegate this to func() just before it is called in the mystObject alignment.
+  vector<int>mysteryObjCFEights;
+  vector<int>mysteryObjCFAs;
+  vector<int>mysteryObjCFSevens {552,649,1151,1248,1750}; //97/502
+  vector<int>mysteryObj;
+  //saves me mindless typing + helps if I ever need to change the default sevens values.
+  for (int i = 0; i < mysteryObjCFSevens.size();i++){
+    mysteryObjCFEights.push_back(mysteryObjCFSevens.at(i)+1);
+    mysteryObjCFAs.push_back(mysteryObjCFSevens.at(i)+5);
+  }
+   //for eights just +1 to all values.
+   //woah, some alignment onto the changevalues mod 3 as well.
+  vector<int>midFountCF {122,246,373,497,621,748,872,996,1123,1247,1371,1498,1622,1746,1873,1997}; //124 or 127 between changes.
+  //{131,255,379,506,630,754,881,1005,1129,1256,1380,1504,1631,1755,1879}
+  vector<int>northFountCF {248,499,750,998,1249,1500,1748,1999};
+  //{258,508,757,1008,1258,1507,1758}
+  /*
+  122-121
+  245-246 == 248-249
+  373-372 == 499-500
+          == 750-751
+          == 998-999
+          == 1249-1250
+          == 1500-1501
+          == 1748-1749
+          == 1999-2000
+
+  260-261
+  508-509
+  759-760
+  1010-1011
+  1258-1259
+  1509-1510
+  1760-1761
+  */
+  // vector<int>northFountCF ;
     const string FILE_EXTENSION = ".txt";
     string FILE_NAME = "";
     cout << "Enter filename: ";
@@ -80,9 +138,9 @@ int main(){
     uint32_t seed = 0x0;
     int rolls = 0;
 
-    int AFrame = 98;
-    int BFrame = 79;
-    int CAFrame = 68;
+    int AFrame = 98; //78
+    int BFrame = 79; //59
+    int CAFrame = 68; //48
 
     int CBFrame = 78; //Occasionally sprinkled in, doesn't seem intentional
     int CCFrame = 57; //Only seen during initial loading in. 
@@ -96,8 +154,25 @@ int main(){
 
     int back1 = 11;
     int back2 = 20;
-    
-    vector<int> stepValues = {98+2,79+2,68+2,78+2,57+2,89+2,67+2,77+2,88+2};
+
+    //Aligning the two mystery objects, possibly camera related.
+    string leadingPattern = "Sevens";
+
+    int backAlignment = 0;
+    int northFountAlign = 1;
+    int midFountAlign = 2; //doesn't change with pattern
+      if (leadingPattern == "Sevens"){
+        mysteryObj = mysteryObjCFSevens;
+        backAlignment = 2;
+        } else if(leadingPattern == "As"){
+          mysteryObj = mysteryObjCFAs;
+          backAlignment = 1;
+        } else {
+          mysteryObj = mysteryObjCFEights;
+        }
+      // else if (leadingPattern == "Eights"){
+      //   backAlignment = 0;
+      //   }
 
     int anomalies = 0;
     bool npcsON = 0;
@@ -123,6 +198,9 @@ int main(){
             LCG(seed);
             rolls++;
         }
+
+        //Filtering on rolls pre-classification goes here:
+        
         //For output document only
         if (rolls == AFrame){
             frameType = "AA";
@@ -156,6 +234,85 @@ int main(){
               anomalies++;
             }
         }
+         
+
+        /*experimental.
+
+
+       Sevens and eights patterns are the same, assuming backAlignment is correct.
+        
+
+
+
+        south Fountain, 23 per frame always.
+        rolls -= 23;
+
+        middle fountain, 34 - 34 - 23 -- subject to changing order?
+       
+        north fountain 11 - 11 - 21
+               
+        N+S expected: 
+
+        34 - 34 - 44
+
+
+        leading back follows 90/91 into 501/502 pattern
+
+        common denominator ?
+        rolls -= 11;
+
+        the rest depends on loaded fountains.
+      */
+
+      //FULL MODEL
+      //500F Rule
+      if (i % 500 == (503-10)){
+        rolls -= 11;
+      }
+      //South
+      rolls -= 23; //produces a couple extra anomaly frames. Same on sevens
+
+      //   //THIS ASSUMES LUA SCRIPT FOR PERFECT INPUTS.
+      //NORTH: -- condense this into int alignPattern(int rolls, vector<int>pattern,vector<int>changeFrames ) function?
+      rolls -= 11;
+      northFountAlign = alignTrio(northFountCF,i,northFountAlign,true);
+      if (i % 3 == northFountAlign){
+        rolls -= 10;
+      }
+
+        //MIDDLE: VARIES W PATTERN
+        rolls -= 23;
+      midFountAlign = alignTrio(midFountCF,i,midFountAlign,false);
+      if (i % 3 != midFountAlign){
+        rolls -= 11;
+      }
+
+
+
+
+      //Does leading as even exist in lua core. yes but rare?
+
+        //MYSTERY OBJECT PAIR:
+        backAlignment = alignTrio(mysteryObj,i,backAlignment,false);
+        if (i % 3 == backAlignment){
+            rolls -= 20;
+            // frameType = "TWENTY";
+          } else {
+            rolls -= 11;
+            // frameType = "ONES";
+          }
+        
+
+        //redesign this eventually. Disable this for original pattern.
+        if (rolls == 0){ 
+          frameType = " ";
+          anomalies --;
+          } else if (rolls == 9){
+            frameType = "POSITIVE";
+          } else if (rolls == -9){
+            frameType = "NEGATIVE";
+          }
+        
 
         //write results
         refinedPattern << " : " << setw(13) << frameType << " : " << setw(3) <<  rolls;

@@ -70,20 +70,21 @@ vector<int> readNumbersFromFile(string fileName)
     file.close();
     return data;
 }
-void exhaustGuaranteed(string pattern,uint32_t& seed,vector<int>vPattern){
+void exhaustGuaranteed(uint32_t& seed,string pattern,vector<int>vPattern){
   int n = 0;
     if (pattern == "As"){
       n = 61386; // == 36ee3742
     } else if (pattern == "Sevens"){
-      n = 61414;
-      //gets us 8895893E
+      n = 61443;
+      //gets us 3b7a8b55 == 61443 from 0
     } else if (pattern == "Eights"){
       n = 61511; // == E2550DE9
     } // assumes 2f of delay for 7s and 4f for 8s.
     seed = LCGn(seed,n);
 }
-uint32_t seekTarget(uint32_t& seed,int target,vector<int>pattern){
-    for (int i = 0;i<target;i++){ // Seek target
+uint32_t seekTarget(uint32_t& seed,int target,string patternLabel,vector<int>pattern){
+    exhaustGuaranteed(seed,patternLabel,pattern);
+    for (int i = 0;i<target;i++){
       seed = LCGn(seed,pattern.at(i));
     }
     return seed;
@@ -109,7 +110,8 @@ void blurDirection(uint32_t& seed){
         blurDirection = "Counter ClockWise - 0";
     }
     //replace with return statement later.
-    cout<< setw(21) << blurDirection << "  ";
+
+    cout << left << setw(21) << blurDirection << "  ";
 }
 void selectBlurStyle(uint32_t& seed){
   //similar process to blurDirection, will only fill this out if there's demand for it.
@@ -192,10 +194,7 @@ void generateMon(uint32_t inputSeed){
   const uint32_t clockWise = 36; //F at 30fps blur duration.
   const uint32_t counterClockWise = 30;
 
-
-
-
-    //Some tid/sid stuff?
+    //Some tid/sid stuff? Shiny Check?
     seed = LCGn(seed,4);
 
     outSeed = seed;
@@ -238,27 +237,33 @@ void generateMon(uint32_t inputSeed){
     << spa << " " << setw(2) << spd << " " << setw(2) << spe << "  "
     << setw(7) << displayNature << "  " << displayGender << endl;
 }
+void updatePreamble (int vStartF, int vMinF, int target,uint32_t& seed,vector<int>loadedPattern,uint32_t targetValue){
 
+    int targetVisualFrame = seekFrame(vStartF,vMinF,target);
+    cout<< "Seek frame: " << targetVisualFrame << endl
+        << "Target: " << target << ". Reached: " << hex << targetValue << endl 
+        << "GENERATED:" << endl;
+}
 
 
 int main(){
 
+    //REMEMBER TO SUBTRACT 2 FRAMES FROM MINIMUM FROM BETTER TEXTBOXES.
   //~~~~~~~~~~~~ CONFIG INPUTS ~~~~~~~~~~~~~~~~~~~~
-    int target = 0;
-    const string PATTERN ="Sevens"; //Pattern - step calls built in.
-    const int VISUAL_START_FRAME = 29540; //38616 for sevens, 38231 for eights, 38181 for A's.
-    const uint32_t INITIAL_SEED = 0x0;
+    int target = 258; //151
+    string patternLabel =""; //Pattern - step calls built in.
+    const int VISUAL_START_FRAME = 39034; //38616 for sevens, 38231 for eights, 38181 for A's.
+    const uint32_t INITIAL_SEED = 0x948A2AA1;
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    int aToBlur = 0; //17,19,20
-    int blurDuration = 0; //46,47,48,49
+    int aToBlur = 0; //17,19,20 -- 18?
+    int blurDuration = 0; //46,47,48,49, 50????
     int camFrame = blurDuration - 0; //9,8
     uint32_t listSeed = 0;
     int VISUAL_MIN_FRAMES = 1527; //60fps, adjust for not -5? -- for sevens, add 2f of lag. 1527 vs 1529
-    if (PATTERN == "Sevens"){ //Any correlation between odd and even frames?
-      VISUAL_MIN_FRAMES+= 2;
-    } else if (PATTERN == "Eights"){
-      VISUAL_MIN_FRAMES+= 4;
-    }
+    vector<string>allLeadPatterns{"As","Eights","Sevens"};
+
+
+    
     const string FILE_EXTENSION = ".txt";
     const string FILE_LOCATION = "Patterns\\leading";
     int patternPosition = target;
@@ -269,42 +274,59 @@ int main(){
     uint32_t sim = 0; //The last frame of overlap
     // vector<uint32_t>LastNormal;
 
-    //preprocessing
-    vector<int>noisePattern = readNumbersFromFile(FILE_LOCATION + PATTERN + FILE_EXTENSION);
-    int targetVisualFrame = seekFrame(VISUAL_START_FRAME,VISUAL_MIN_FRAMES,target);
-    exhaustGuaranteed(PATTERN,seed,noisePattern); //test alt solution and put this into seekTarget()
-    uint32_t targetValue = seekTarget(seed,target,noisePattern);
+  
 
-     //Printouts:
-    cout<< "Seek frame: " << targetVisualFrame << endl
-        << "Target: " << target << ". Reached: " << hex << targetValue << endl 
-        << "GENERATED: " << endl;
+  for (int currentPattern = 0; currentPattern < 3; currentPattern++){
+    seed = INITIAL_SEED;
+    blurSeed = 0;
+    // sim = 0;
+    patternPosition = target;
+
+    patternLabel = allLeadPatterns.at(currentPattern);
+    cout << patternLabel << endl;
+
+    if (patternLabel == "Sevens"){ //Any correlation between odd and even frames? May need to revisit this with new savestates.
+      VISUAL_MIN_FRAMES += 2;
+    } else if (patternLabel == "Eights"){
+      VISUAL_MIN_FRAMES += 4;
+    }
+
+    //preprocessing -- Important!
+    vector<int>noisePattern = readNumbersFromFile(FILE_LOCATION + patternLabel + FILE_EXTENSION);
+    uint32_t targetValue = seekTarget(seed,target,patternLabel,noisePattern);
+    updatePreamble(VISUAL_START_FRAME,VISUAL_MIN_FRAMES,target,seed,noisePattern,targetValue);
+
+
 
     listSeed = seed;
-    for (int i = 0; i <= 23; i++){
+    //NESTED LIST LOOP
+    for (int i = 0; i <= 29; i++){
       seed = listSeed;
       //Decode block.
-      if (i % 8  < 2){
+      if (i % 10 < 2){
         blurDuration = 46;
-      } else if (i % 8 < 4){
+      } else if (i % 10 < 4){
         blurDuration = 47;
-      } else if (i % 8 < 6){
-      blurDuration = 48;
-      } else {
+      } else if (i % 10 < 6){
+        blurDuration = 48;
+      } else if (i % 10 < 8){
         blurDuration = 49;
+      } else {
+        blurDuration = 50;
       }
       if (i % 2){
         camFrame = blurDuration - 9;
       } else {
         camFrame = blurDuration - 8;
       }
-      if (i >= 8 && i < 16){
+      if (i >= 10 && i < 20){
         aToBlur = 19;
-      } else if (i >= 16){
+      } else if (i >= 20){
         aToBlur = 20;
       } else {
         aToBlur = 17;
       }
+      cout << aToBlur << " / " << blurDuration << " / " << blurDuration - camFrame << ". ";
 
       //generate list item and roll between user input and generation
     for (int i = 0;i<aToBlur;i++){
@@ -315,11 +337,11 @@ int main(){
         blurDirection(seed);
         selectBlurStyle(seed);
       }
-      if (i == aToBlur-1){
-        // This if statement is only for visual debugging.
-        sim = seed;
-        sim = LCGn(sim,2*9600);
-      }
+      // if (i == aToBlur-1){
+      //   // This if statement is only for visual debugging.
+      //   sim = seed;
+      //   sim = LCGn(sim,2*9600);
+      // }
     }
 
     cout << setw(2) << i << ": ";
@@ -330,6 +352,18 @@ int main(){
     
     //debug
     }
+  for (int dash = 0; dash < 100; dash++){
+    cout << "-";
+  }
+  cout << endl;
+
+
+
+
+
+  }
+
+    
 
     return 0;
 }
@@ -357,8 +391,12 @@ Difference in initial set of extra calls.
     Alt: 19/46/9 156
     20/46/9 157-165+
 
-    20/47/8 -WoW - 235
-
+    20/47/8 -WoW - 235 - 239 pattern 18
+    20/48/8 240 - 244 ptn 20 new 24.
+    245 - 253 ptn 12, new 14.
+    254 - new old ptn 14
+    255 - new ptn 9
+     256++ ptn 15/neww 17
       SBO
       ACB
       19/49/9
@@ -372,7 +410,7 @@ Difference in initial set of extra calls.
       20/46/8
 
 
-      ALL COMBOS:
+      ALL COMBOS: (old) wow, still no evidence for 17 actually existing.
       0  17/46/8
       1  17/46/9
       2  17/47/8 
@@ -387,7 +425,7 @@ Difference in initial set of extra calls.
       11 19/47/9 -- seen
       12 19/48/8 -- seen
       13 19/48/9 -- seen
-      14 19/49/8
+      14 19/49/8 -- seen 254
       15 19/49/9 -- seen
       16 20/46/8 -- seen
       17 20/46/9 -- seen
@@ -397,6 +435,47 @@ Difference in initial set of extra calls.
       21 20/48/9 -- seen
       22 20/49/8
       23 20/49/9
+
+
+     ALL COMBOS: (new)
+      0  17/46/8
+      1  17/46/9
+      2  17/47/8 
+      3  17/47/9
+      4  17/48/8
+      5  17/48/9
+      6  17/49/8
+      7  17/49/9
+      8  17/50/8
+      9  17/50/9
+      10 19/46/8
+      11 19/46/9 -- seen
+      12 19/47/8 -- maybe seen
+      13 19/47/9 -- seen -152 -- eights 56.
+      14 19/48/8 -- seen == old 12. frame 253
+      15 19/48/9 -- seen
+      16 19/49/8 -- seen frame 254
+      17 19/49/9 -- seen frame 256. -- 257? -- 256 on eights too.
+      18 19/50/8
+      19 19/50/9 -- seen frame 255
+      20 20/46/8 -- seen
+      21 20/46/9 -- seen
+      22 20/47/8 -- seen == old ptn 18
+      23 20/47/9 -- seen
+      24 20/48/8 -- seen == old ptn 20 153 154
+      25 20/48/9 -- seen
+      26 20/49/8
+      27 20/49/9
+      28 20/50/8
+      29 20/50/9
+  
+  try 111 next.
+
+
+
+
+
+      21??????????? 50????????
  
       Frame lengths independent of rng seed. Will try to find, otherwise need to record with scripts. 
       */

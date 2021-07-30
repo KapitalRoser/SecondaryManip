@@ -321,7 +321,7 @@ int main(){
     obj2.comparisonMainVal = 80;
 
     RNG_ObjData obj3;
-    obj3.startAddr = 0x8102D720; //top fountain
+    obj3.startAddr = 0x8102D720; //North fountain
     obj3.comparisonAddr = 0x8102BF1C;
     obj3.comparisonMainVal = 40;
 

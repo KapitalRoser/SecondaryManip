@@ -260,15 +260,15 @@ int main(){
     
     int target = 111; //151
     
-    int aToBlur = 21; //17,19,20
-    int blurDuration = 48; //46,48,49 -- 47?
-    int camFrame = blurDuration - 9; //9,8
+    int aToBlur = 18; //17,19,20
+    int blurDuration = 49; //46,48,49 -- 47?
+    int camFrame = blurDuration - 8; //9,8
 
-    const string PATTERN = "leadingEights"; //Pattern - step calls built in.
-    const int VISUAL_START_FRAME = 38231;
+    const string PATTERN = "leadingAs"; //Pattern - step calls built in.
+    const int VISUAL_START_FRAME = 38181;
     const uint32_t INITIAL_SEED = 0x0;
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    const int VISUAL_MIN_FRAMES = 1531; //60fps, adjust for not -5?
+    const int VISUAL_MIN_FRAMES = 1527; //60fps, adjust for not -5?
     const string FILE_EXTENSION = ".txt";
     int patternPosition = target;
        

@@ -11,7 +11,8 @@ int main(){
     cout << modpow << " ";
     //an & is equivalen to a MOD 2^whatever is being
 
-    cout << (input & 2) << " " << (input >> modpow) << " " << (input % 3 );
+    cout << (input & 2) << " " << (input >> modpow) << " " << (input % 3 ) << endl;
+    cout << fmod(2,3);
 
     return 0;
 }

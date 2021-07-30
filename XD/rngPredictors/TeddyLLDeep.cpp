@@ -41,12 +41,12 @@ uint32_t LCGn(uint32_t seed, const uint32_t n)
     seed = (seed * modpow32(0x343fd, n)) + (sum + factor) * 0x269EC3;
     return seed;
   }
-uint32_t LCGPercentage(uint32_t& seed){
+float LCGPercentage(uint32_t& seed){
   float percentResult = 0;
   uint32_t hiSeed = 0;
   LCG(seed);
   hiSeed = seed >> 16;
-  percentResult = hiSeed/65536;
+  percentResult = static_cast<float>(hiSeed)/65536;
   return percentResult;
 }
 vector<int> readNumbersFromFile(string fileName)
@@ -72,13 +72,15 @@ vector<int> readNumbersFromFile(string fileName)
 }
 void exhaustGuaranteed(uint32_t& seed,string pattern,vector<int>vPattern){
   int n = 0;
-    if (pattern == "As"){
-      n = 61386; // == 36ee3742
-    } else if (pattern == "Sevens"){
-      n = 61443;
-      //gets us 3b7a8b55 == 61443 from 0
-    } else if (pattern == "Eights"){
-      n = 61511; // == E2550DE9
+    if (pattern == "LuaAs"){
+      //n = 61386; // == 36ee3742
+      n= 61497; // 7909ED5B
+    } else if (pattern == "LuaSevens"){
+      // n = 61443; gets us 3b7a8b55 == 61443 from 0
+        n = 61237; // == 70350767 frame, necessary for lua.
+    } else if (pattern == "LuaEights"){
+      // n = 61511; // == E2550DE9
+      n = 61305; // == 780599B
     } // assumes 2f of delay for 7s and 4f for 8s.
     seed = LCGn(seed,n);
 }
@@ -118,36 +120,44 @@ void selectBlurStyle(uint32_t& seed){
   LCG(seed);
   LCG(seed);
 }
-int dummyCam(uint32_t& seed){
+int dummyCam(uint32_t& seed,int camAngle1,int camAngle2){
+  bool rareFailure = false;
   uint32_t v1 = 0;
   int count = 0;
   int seedPercent = 0;
-  /*This function is WEIRD because after it determines new default battle camera
-  It uses the result of the rng math do jump somewhere different in the code!!*/
+  int totalRNGCalls = 0;
+  /*The order of the camera angles doesn't actually matter, just that there are two of them.
+  Under what condition is a angle of 10,11,or 12 possible?*/
 
   do{
     count++;
     LCG(seed);
+    totalRNGCalls++;
     v1 = seed >> 16;
-    v1 = v1 % 10; //is this ever % 12? even if so, v1 cant be 12 or greater.
-    // cout << "v1 " << v1 << endl;
-   } while(v1 == 3 || v1 >= 10); //What to do if v1 == or >= 11?
-
+    v1 = v1 % 10; 
+   } while(v1 == 3 || v1 >= 10 || v1 == camAngle1 || v1 == camAngle2);
   LCG(seed);
-    if (v1 == 8){
-      seed = LCGn(seed, 4); //LCGPercentages that lead to branches, but dont affect # of calls.
-   } else if (v1 >= 5 && v1 < 10){
-    if (LCGPercentage(seed) >= 0.5){ //Why they do this, idk - burns a call here too.
+  totalRNGCalls++;
+  if (v1 == 5 || v1 == 7){
+    if(!rareFailure){
       LCG(seed);
+      totalRNGCalls++;
     }
-   }
+  } else if (v1 == 6 || v1 == 9){
+    LCG(seed);
+    totalRNGCalls++;
+  } else if (v1 == 8){
+    seed = LCGn(seed, 4);
+    totalRNGCalls += 4;
+  }
   
-
+    // cout << "Total RNG from dummycam: " << totalRNGCalls << endl;
+    // cout << "CAM: " << count << endl;
     //Some physics stuff
     // LCG(seed);
     return count+1;
 }
-void rollToGeneration(uint32_t&seed,int blurDuration, int camFrame){ 
+void rollToGeneration(uint32_t&seed,int blurDuration, int camFrame,int cA1,int cA2){ 
   const int BLUR_CALLS = 9600;
   int battleCameraCalls = 0;
   // string version = "Modern";
@@ -162,7 +172,7 @@ void rollToGeneration(uint32_t&seed,int blurDuration, int camFrame){
         // cout << hex << seed << endl;
         if (i == camFrame){ //is this constant?
           // cout << "Seed entering dummycam: " << hex << seed << dec << endl;
-          battleCameraCalls = dummyCam(seed);
+          battleCameraCalls = dummyCam(seed,cA1,cA2);
           // cout << "CAM: " << battleCameraCalls << endl; 
         }
     }
@@ -244,8 +254,7 @@ void updatePreamble (int vStartF, int vMinF, int target,uint32_t& seed,vector<in
 
     int targetVisualFrame = seekFrame(vStartF,vMinF,target);
     cout<< "Seek frame: " << targetVisualFrame << endl
-        << "Target: " << target << ". Reached: " << hex << targetValue << endl 
-        << "GENERATED:" << endl;
+        << "GENERATED:"  << endl;
 }
 
 
@@ -253,17 +262,19 @@ int main(){
 
     //REMEMBER TO SUBTRACT 2 FRAMES FROM MINIMUM FROM BETTER TEXTBOXES.
   //~~~~~~~~~~~~ CONFIG INPUTS ~~~~~~~~~~~~~~~~~~~~
-    int target = 3; //151
+    int target = 0; //151 -- starts at 3.
     string patternLabel =""; //Pattern - step calls built in.
     const int VISUAL_START_FRAME = 39034; //38616 for sevens, 38231 for eights, 38181 for A's.
     const uint32_t INITIAL_SEED = 0x0;
+    int cameraAngleCurrent = 0;
+    int cameraAnglePrevious = 5;
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    int aToBlur = 0; //17,19,20 -- 18?
-    int blurDuration = 0; //46,47,48,49, 50????
-    int camFrame = blurDuration - 0; //9,8
+    int aToBlur = 18; //18/41/8 appears to be standard for sevens across all seeds. LUA ONLY.
+    int blurDuration = 41;
+    int camFrame = blurDuration - 8;
     uint32_t listSeed = 0;
     int VISUAL_MIN_FRAMES = 1527; //60fps, adjust for not -5? -- for sevens, add 2f of lag. 1527 vs 1529
-    vector<string>allLeadPatterns{"As","Eights","Sevens"};
+    vector<string>allLeadPatterns{"LuaAs","LuaEights","LuaSevens"};
 
 
     
@@ -288,7 +299,7 @@ int main(){
     patternLabel = allLeadPatterns.at(currentPattern);
     cout << patternLabel << endl;
 
-    if (patternLabel == "Sevens"){ //Any correlation between odd and even frames? May need to revisit this with new savestates.
+    if (patternLabel == "LuaSevens"){ //Any correlation between odd and even frames? May need to revisit this with new savestates.
       VISUAL_MIN_FRAMES += 2;
     } else if (patternLabel == "Eights"){
       VISUAL_MIN_FRAMES += 4;
@@ -303,39 +314,20 @@ int main(){
 
     listSeed = seed;
     //NESTED LIST LOOP
-    for (int i = 0; i <= 29; i++){
-      seed = listSeed;
-      //Decode block.
-      if (i % 10 < 2){
-        blurDuration = 46;
-      } else if (i % 10 < 4){
-        blurDuration = 47;
-      } else if (i % 10 < 6){
-        blurDuration = 48;
-      } else if (i % 10 < 8){
-        blurDuration = 49;
-      } else {
-        blurDuration = 50;
-      }
-      if (i % 2){
-        camFrame = blurDuration - 9;
-      } else {
-        camFrame = blurDuration - 8;
-      }
-      if (i >= 10 && i < 20){
-        aToBlur = 19;
-      } else if (i >= 20){
-        aToBlur = 20;
-      } else {
-        aToBlur = 17;
-      }
-      cout << aToBlur << " / " << blurDuration << " / " << blurDuration - camFrame << ". ";
+    for (int i = 0; i < 100; i++){
+      seed = INITIAL_SEED;
+      targetValue = seekTarget(seed,target+i,patternLabel,noisePattern);
+      patternPosition = target+i;
+      
+      // cout << aToBlur << " / " << blurDuration << " / " << blurDuration - camFrame << ". ";
 
       //generate list item and roll between user input and generation
-    for (int i = 0;i<aToBlur;i++){
-      seed = LCGn(seed,noisePattern.at(patternPosition+i));
-      if (i == aToBlur-3){
-        blurSeed = seed;
+    for (int j = 0;j<aToBlur;j++){
+      seed = LCGn(seed,noisePattern.at(patternPosition+j));
+      // cout << "SEED: " << hex << seed << endl;
+      if (j == aToBlur-3){
+        // cout<< "TAPPED" << endl;
+        blurSeed = seed; // wrong.
         //The following are 2 calls each
         blurDirection(seed);
         selectBlurStyle(seed);
@@ -346,27 +338,19 @@ int main(){
       //   sim = LCGn(sim,2*9600);
       // }
     }
-
+    cout << "Reached: " << hex << setw(8)<< targetValue << dec << " ";
     cout << setw(2) << i << ": ";
-
     //Find the bear.
-    rollToGeneration(seed,blurDuration,camFrame);
-    generateMon(seed);
-    
-    //debug
+    rollToGeneration(seed,blurDuration,camFrame,cameraAngleCurrent,cameraAnglePrevious);
+    generateMon(seed);  
     }
+  //Highlighter dashlines.
   for (int dash = 0; dash < 100; dash++){
     cout << "-";
   }
   cout << endl;
 
-
-
-
-
   }
-
-    
 
     return 0;
 }
@@ -374,112 +358,9 @@ int main(){
 
 
 /*
-There is a slight re-interpretation of the calls depending on how I retrieve them from the game. Manually I get a nice even distribution. Automatically, much more chaotic. 
-
-The generation process appears slightly different depending on if the textbox has finished printing or not.
-If a is pressed on the first available frame, it is buffered
-Then there are 3 frames before the textbox concludes, they all have similar lengths. 
+FOR LUA EVERYTHANG IS DIFFERENT
 
 
-in modern emu, fadeout lasts for 16f instead of 15. 
-Difference in initial set of extra calls.
-*/
-
-  //This formula applies starting on the first divergent frame (rotation is determined 1 frame earlier). Registered a press is followed by 15 frames of fadeout using the main pattern, then this begins.
-  //Figure out clockwise/Counterclockwise determinism OR track it like regular rng calls. 18th frame on modern is where fadeout ends. 
-  //ClockWise or CounterClockwise is determined on frame 17 (modern) or frame 16 (past). DB1A2A3C on manually found.
-  //X = This is dependent on rng, but how. 
-
-  /*SOB pattern consistent at 19/48/9? 151-155. Also @ 200
-    Alt: 19/46/9 156
-    20/46/9 157-165+
-
-    20/47/8 -WoW - 235 - 239 pattern 18
-    20/48/8 240 - 244 ptn 20 new 24.
-    245 - 253 ptn 12, new 14.
-    254 - new old ptn 14
-    255 - new ptn 9
-     256++ ptn 15/neww 17
-      SBO
-      ACB
-      19/49/9
-      20/48/9
-      20/48/8
-      ABC
-      19/48/8
-      EOC
-      ECO
-
-      20/46/8
-
-
-      ALL COMBOS: (old) wow, still no evidence for 17 actually existing.
-      0  17/46/8
-      1  17/46/9
-      2  17/47/8 
-      3  17/47/9
-      4  17/48/8
-      5  17/48/9
-      6  17/49/8
-      7  17/49/9
-      8  19/46/8
-      9  19/46/9 -- seen
-      10 19/47/8
-      11 19/47/9 -- seen
-      12 19/48/8 -- seen
-      13 19/48/9 -- seen
-      14 19/49/8 -- seen 254
-      15 19/49/9 -- seen
-      16 20/46/8 -- seen
-      17 20/46/9 -- seen
-      18 20/47/8 -- seen
-      19 20/47/9 -- seen
-      20 20/48/8 -- seen
-      21 20/48/9 -- seen
-      22 20/49/8
-      23 20/49/9
-
-
-     ALL COMBOS: (new)
-      0  17/46/8
-      1  17/46/9
-      2  17/47/8 
-      3  17/47/9
-      4  17/48/8
-      5  17/48/9
-      6  17/49/8
-      7  17/49/9
-      8  17/50/8
-      9  17/50/9
-      10 19/46/8
-      11 19/46/9 -- seen
-      12 19/47/8 -- maybe seen
-      13 19/47/9 -- seen -152 -- eights 56.
-      14 19/48/8 -- seen == old 12. frame 253
-      15 19/48/9 -- seen
-      16 19/49/8 -- seen frame 254
-      17 19/49/9 -- seen frame 256. -- 257? -- 256 on eights too.
-      18 19/50/8
-      19 19/50/9 -- seen frame 255
-      20 20/46/8 -- seen
-      21 20/46/9 -- seen
-      22 20/47/8 -- seen == old ptn 18
-      23 20/47/9 -- seen
-      24 20/48/8 -- seen == old ptn 20 153 154
-      25 20/48/9 -- seen
-      26 20/49/8
-      27 20/49/9
-      28 20/50/8
-      29 20/50/9
-  
-  try 111 next.
-
-
-
-
-
-      21??????????? 50????????
- 
-      Frame lengths independent of rng seed. Will try to find, otherwise need to record with scripts. 
+18/41/x is standard...
       */
     
