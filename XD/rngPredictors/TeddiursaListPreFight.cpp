@@ -266,11 +266,11 @@ int main(){
 
     //REMEMBER TO SUBTRACT 2 FRAMES FROM MINIMUM FROM BETTER TEXTBOXES.
   //~~~~~~~~~~~~ CONFIG INPUTS ~~~~~~~~~~~~~~~~~~~~
-    int target = 586; //151
+    int target = 40; //151
     string patternLabel =""; //Pattern - step calls built in.
-    const int VISUAL_START_FRAME = 38181; //38616 for sevens, 38231 for eights, 38181 for A's.
+    const int VISUAL_START_FRAME = 45082; //38616 for sevens, 38231 for eights, 38181 for A's.
     const uint32_t INITIAL_SEED = 0x0;
-    int cameraAngleCurrent = 10;
+    int cameraAngleCurrent = 4;
     int cameraAnglePrevious = 11; 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     int aToBlur = 0; //,19,20 -- 18? 17? No evidence that these exist.
@@ -294,7 +294,7 @@ int main(){
 
   
 
-  for (int currentPattern = 0; currentPattern < 1; currentPattern++){
+  for (int currentPattern = 0; currentPattern < 3; currentPattern++){
     seed = INITIAL_SEED;
     blurSeed = 0;
     // sim = 0;
@@ -318,26 +318,22 @@ int main(){
 
     listSeed = seed;
     //NESTED LIST LOOP
-    for (int i = 0; i <= 19; i++){
+    for (int i = 0; i <= 11; i++){
       seed = listSeed;
       //Decode block.
-      if (i % 10 < 2){
-        blurDuration = 46;
-      } else if (i % 10 < 4){
-        blurDuration = 47;
-      } else if (i % 10 < 6){
-        blurDuration = 48;
-      } else if (i % 10 < 8){
-        blurDuration = 49;
+      if (i % 6 < 2){
+        blurDuration = 29;
+      } else if (i % 6 < 4) {
+        blurDuration = 30;
       } else {
-        blurDuration = 50;
+        blurDuration = 32;
       }
       if (i % 2){
         camFrame = blurDuration - 9;
       } else {
         camFrame = blurDuration - 8;
       }
-      if (i >= 10){
+      if (i >= 6){
         aToBlur = 20;
       } else {
         aToBlur = 19;

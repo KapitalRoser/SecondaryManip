@@ -1,0 +1,53 @@
+36ee3742 :            CA :  68
+302e4ce6 :        EIGHTS :  88
+eee359be :           OFF :  89
+b53b6401 :            CA :  68
+ed0d1855 :        EIGHTS :  88
+bcd2a14d :           OFF :  89
+ba05e0f4 :            CA :  68
+c7c02838 :        EIGHTS :  88
+88e416d0 :           OFF :  89
+8d0b778b :            CA :  68
+2e45e8ff :        EIGHTS :  88
+fd7038b7 :           OFF :  89
+fe44f676 :            CA :  68
+7661b05a :        EIGHTS :  88
+c28ac6b2 :           OFF :  89
+8bbc60a5 :            CA :  68
+9bb39c39 :        EIGHTS :  88
+caa8c0b1 :           OFF :  89
+aa389048 :            CA :  68
+c97e25cc :        EIGHTS :  88
+5f3599e4 :           OFF :  89
+a2b6bdcf :            CA :  68
+ 464d883 :        EIGHTS :  88
+69950fbb :           OFF :  89
+6f239aea :            CA :  68
+230cdd0e :        EIGHTS :  88
+878454e6 :           OFF :  89
+a7ddf189 :            CA :  68
+6274485d :        EIGHTS :  88
+8fb18055 :           OFF :  89
+b7f7f6dc :            CA :  68
+ f045ea0 :        EIGHTS :  88
+29277038 :           OFF :  89
+960ec253 :            CA :  68
+5b393a47 :        EIGHTS :  88
+ceba90ff :           OFF :  89
+55bc989e :            CA :  68
+214a8702 :        EIGHTS :  88
+ad8c385a :           OFF :  89
+35e6faad :            CA :  68
+ 39140c1 :        EIGHTS :  88
+87828439 :           OFF :  89
+c668a8b0 :            CA :  68
+f3a9a6b4 :        EIGHTS :  88
+5dededcc :           OFF :  89
+ae3e0917 :            CA :  68
+  2ad24b :        EIGHTS :  88
+6ea80083 :           OFF :  89
+dc7ba392 :            CA :  68
+2892a236 :        EIGHTS :  88
+f093e50e : OTHER ------- :   0
+Anomalies: 1.
+Step frames: .

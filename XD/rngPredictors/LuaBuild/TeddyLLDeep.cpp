@@ -127,7 +127,9 @@ int dummyCam(uint32_t& seed,int camAngle1,int camAngle2){
   int seedPercent = 0;
   int totalRNGCalls = 0;
   /*The order of the camera angles doesn't actually matter, just that there are two of them.
-  Under what condition is a angle of 10,11,or 12 possible?*/
+  Under what condition is a angle of 10,11,or 12 possible? 
+  When is rareFailure due to dpad sens possible?
+  */
 
   do{
     count++;

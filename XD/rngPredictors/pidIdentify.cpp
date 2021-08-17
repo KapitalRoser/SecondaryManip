@@ -5,6 +5,18 @@
 #include <fstream>
 #include <sstream>
 using namespace std;
+
+
+struct frameData{
+  int visFrame; //expecting single value per frame.
+  int reached;
+  vector<int> outSeed; //expecting 20 of each per frame.
+  vector<int> PID;
+  vector<int> aToBlur;
+  vector<int> blurDuration;
+  vector<int> camOffset;
+};
+
 uint32_t LCG(uint32_t& seed){
   seed = seed * 214013 + 2531011;
   return seed;
@@ -49,7 +61,7 @@ float LCGPercentage(uint32_t& seed){
   percentResult = static_cast<float>(hiSeed)/65536;
   return percentResult;
 }
-vector<int> readNumbersFromFile(string fileName)
+vector<int> decimalReadNumbersFromFile(string fileName)
 {
     uint32_t value;
     int lineRead = 0;
@@ -66,6 +78,31 @@ vector<int> readNumbersFromFile(string fileName)
           patterns with odd or new values */
         file >> lineRead; 
         data.push_back(lineRead);
+    }
+    file.close();
+    return data;
+}
+vector<uint32_t> hexReadNumbersFromFile(string fileName)
+{
+    uint32_t value;
+    string lineRead = "";
+    stringstream hexConvert;
+    vector<uint32_t> data; //Setup
+    ifstream file(fileName);
+            cout << "Read some data! \n";
+    if (file.fail())
+    {
+        cout << "File inaccessible";
+        exit(EXIT_FAILURE);
+    }
+    while (!(file.fail()))
+    {                 
+        getline(file,lineRead); 
+        hexConvert << hex << lineRead; //cuz i just HAD to have my docs in hexa and not int...;
+        hexConvert >> value;
+        hexConvert.clear();
+        hexConvert.str("");
+        data.push_back(value);
     }
     file.close();
     return data;
@@ -113,7 +150,7 @@ void blurDirection(uint32_t& seed){
     }
     //replace with return statement later.
 
-    cout << left << setw(21) << blurDirection << "  ";
+    // cout << left << setw(21) << blurDirection << "  ";
 }
 void selectBlurStyle(uint32_t& seed){
   //similar process to blurDirection, will only fill this out if there's demand for it.
@@ -187,7 +224,7 @@ void rollToGeneration(uint32_t&seed,int blurDuration, int camFrame,int cA1,int c
   // n = blurDuration*BLUR_CALLS + dummyCam(seed) + 4; //is 4 const?
   // seed = LCGn(seed,n);
 }
-void generateMon(uint32_t inputSeed){
+void generateMon(uint32_t inputSeed,frameData &curF){
 //   uint32_t TID = 0;
   uint32_t PID = 0;
   uint32_t seed = inputSeed;
@@ -199,7 +236,7 @@ void generateMon(uint32_t inputSeed){
   const string naturesList[25] = {"Hardy","Lonely","Brave","Adamant","Naughty","Bold","Docile","Relaxed",
     "Impish","Lax","Timid","Hasty","Serious","Jolly","Naive","Modest","Mild","Quiet","Bashful",
     "Rash","Calm","Gentle","Sassy","Careful","Quirky"};
-  cout << left;
+  // cout << left;
 
 
 //   XD:
@@ -238,35 +275,38 @@ void generateMon(uint32_t inputSeed){
     uint32_t lId = LCG(seed) >> 16;
     PID = (hId << 16) | (lId);
     string displayNature = naturesList[PID % 25];
-    bool pidGender = genderRatio > (PID & 0xFF) ? 1 : 0;
+    bool pidGender = genderRatio > (PID & 0xFF) ? 1 : 0; //Hell if I know what these bitwise operations mean, I put my trust in the code that came before me.
     string displayGender;
     if (pidGender){
         displayGender = "Female";
     } else {
         displayGender = "Male";
     }
-    cout << "Seed" 
-    //<< hiOrLow << setw(4) 
-    << ": " << hex << setw(8) << outSeed
-    << " PID: " << setw(8) << PID << dec
-    << "  " << setw(2) << hp << " " << setw(2) << atk << " " << setw(2) << def << " " << setw(2)
-    << spa << " " << setw(2) << spd << " " << setw(2) << spe << "  "
-    << setw(7) << displayNature << "  " << displayGender << endl;
-}
-void updatePreamble (int vStartF, int vMinF, int target,uint32_t& seed,vector<int>loadedPattern,uint32_t targetValue){
+    // cout << "Seed" 
+    // //<< hiOrLow << setw(4) 
+    // << ": " << hex << setw(8) << outSeed
+    // << " PID: " << setw(8) << PID << dec
+    // << "  " << setw(2) << hp << " " << setw(2) << atk << " " << setw(2) << def << " " << setw(2)
+    // << spa << " " << setw(2) << spd << " " << setw(2) << spe << "  "
+    // << setw(7) << displayNature << "  " << displayGender << endl;
 
+
+    //This should get called 20 times to output the important stuff to the greater frame data struct.
+    curF.outSeed.push_back(outSeed);
+    curF.PID.push_back(PID);
+}
+int updatePreamble (int vStartF, int vMinF, int target,uint32_t& seed,vector<int>loadedPattern,uint32_t targetValue){
     int targetVisualFrame = seekFrame(vStartF,vMinF,target);
-    cout<< "Seek frame: " << targetVisualFrame << endl
-        << "Target: " << target << ". Reached: " << hex << targetValue << endl 
-        << "GENERATED:" << dec << endl;
-}
-
-
-int main(){
-
+//     cout<< "Seek frame: " << targetVisualFrame << endl
+//         << "Target: " << target << ". Reached: " << hex << targetValue << endl 
+//         << "GENERATED:" << dec << endl;
+return targetVisualFrame;
+ }
+void trackToInput(vector<frameData>&outFrame, int target){
+  
     //REMEMBER TO SUBTRACT 2 FRAMES FROM MINIMUM FROM BETTER TEXTBOXES.
   //~~~~~~~~~~~~ CONFIG INPUTS ~~~~~~~~~~~~~~~~~~~~
-    int target = 586; //151
+    // int target = 0; //151
     string patternLabel =""; //Pattern - step calls built in.
     const int VISUAL_START_FRAME = 38181; //38616 for sevens, 38231 for eights, 38181 for A's.
     const uint32_t INITIAL_SEED = 0x0;
@@ -292,16 +332,20 @@ int main(){
     uint32_t sim = 0; //The last frame of overlap
     // vector<uint32_t>LastNormal;
 
+
+    
+
   
 
-  for (int currentPattern = 0; currentPattern < 1; currentPattern++){
+  for (int currentPattern = 0; currentPattern < 1; currentPattern++){ //this only runs 1 per frame, expanding it would get weird.
+    frameData curF; //Current Frame. redefined per frame.
     seed = INITIAL_SEED;
     blurSeed = 0;
     // sim = 0;
     patternPosition = target;
 
     patternLabel = allLeadPatterns.at(currentPattern);
-    cout << patternLabel << endl;
+    // cout << patternLabel << endl;
 
     if (patternLabel == "Sevens"){ //Any correlation between odd and even frames? May need to revisit this with new savestates.
       VISUAL_MIN_FRAMES += 2;
@@ -310,9 +354,10 @@ int main(){
     }
 
     //preprocessing -- Important! -- point value of seed does not have an impact on blurduration or atoblur.
-    vector<int>noisePattern = readNumbersFromFile(FILE_LOCATION + patternLabel + FILE_EXTENSION);
+    vector<int>noisePattern = decimalReadNumbersFromFile(FILE_LOCATION + patternLabel + FILE_EXTENSION);
     uint32_t targetValue = seekTarget(seed,target,patternLabel,noisePattern);
-    updatePreamble(VISUAL_START_FRAME,VISUAL_MIN_FRAMES,target,seed,noisePattern,targetValue);
+    curF.reached = targetValue;
+    curF.visFrame = updatePreamble(VISUAL_START_FRAME,VISUAL_MIN_FRAMES,target,seed,noisePattern,targetValue);
 
 
 
@@ -342,7 +387,12 @@ int main(){
       } else {
         aToBlur = 19;
       }
-      cout << aToBlur << " / " << blurDuration << " / " << blurDuration - camFrame << ". ";
+      //OUTPUT PATTERN. if matching these vectors gets weird then i'll restructure with pattern IDs.
+      curF.aToBlur.push_back(aToBlur);
+      curF.blurDuration.push_back(blurDuration);
+      curF.camOffset.push_back(blurDuration - camFrame);
+
+      // cout << aToBlur << " / " << blurDuration << " / " << blurDuration - camFrame << ". ";
 
       //generate list item and roll between user input and generation
     for (int i = 0;i<aToBlur;i++){
@@ -360,32 +410,72 @@ int main(){
       // }
     }
 
-    cout << setw(2) << i << ": ";
+    // cout << setw(2) << i << ": ";
 
     //Find the bear.
     rollToGeneration(seed,blurDuration,camFrame,cameraAngleCurrent,cameraAnglePrevious);
-    generateMon(seed);
+    generateMon(seed,curF);
     
     //debug
     }
-  for (int dash = 0; dash < 100; dash++){
-    cout << "-";
+  // for (int dash = 0; dash < 100; dash++){
+  //   cout << "-";
+  // }
+  // cout << endl;
+  // }
+  outFrame.push_back(curF);
+}
+}
+int matchPIDs(vector<int>candidatePIDS,int sourcePID){
+  for (unsigned int i = 0; i < candidatePIDS.size()-1; i++){
+    if (candidatePIDS.at(i) == sourcePID){
+      return i; //YAY!
+    }
   }
-  cout << endl;
+  return -1; //error, no pid found on frame. May be missing in original recording or is a weird edge case not seen before.
+ }
+
+int main(){
+    const string FILE_EXTENSION = ".txt";
+    string FILE_NAME = "";
+    cout << "Enter filename: ";
+    getline(cin, FILE_NAME);
+    vector<uint32_t>sourcePIDS = hexReadNumbersFromFile(FILE_NAME + FILE_EXTENSION);
+    cout << sourcePIDS.size() << endl;
+    ofstream outputData ("out" + FILE_NAME + FILE_EXTENSION);
+
+    vector<frameData> singleFrame;
+    int correctPID = 0;
 
 
+for (int i = 0; i<1025;i++){ //PER FRAME BASIS
+//THIS SHOULD BE LIMITED BY sourcePIDS.size()-1 HOWEVER current leading As pattern is too small lmao.
+//file out: Frame# Visual - Reached - outSeed - PID - Pattern.
 
-
-
-  }
-
-    
-
-    return 0;
+//Alt: Pattern
+//alt2: pid - pattern. 
+trackToInput(singleFrame,i); //Builds a frame's worth of data for output -- comparison.
+correctPID = matchPIDs(singleFrame.at(i).PID,sourcePIDS.at(i));
+if (correctPID == -1){  //error case
+  outputData << "ERROR - MISSING?\n";
+  continue;
 }
 
-
-
+//print block
+outputData
+// << singleFrame.at(i).visFrame 
+// << hex
+// << ": - Reached: "<< setw(8) << singleFrame.at(i).reached
+// << " - Seed: "    << setw(8) << singleFrame.at(i).outSeed.at(correctPID)
+// << " - PID:  "    << setw(8) << singleFrame.at(i).PID.at(correctPID) 
+// << dec
+// s
+ << singleFrame.at(i).aToBlur.at(correctPID)
+// << "/" << singleFrame.at(i).blurDuration.at(correctPID) 
+// << "/" << singleFrame.at(i).camOffset.at(correctPID)
+<< endl;
+} //end of loop
+}
 /*
 There is a slight re-interpretation of the calls depending on how I retrieve them from the game. Manually I get a nice even distribution. Automatically, much more chaotic. 
 

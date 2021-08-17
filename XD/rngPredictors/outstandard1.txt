@@ -1,0 +1,86 @@
+36ee3742 :            CA :  68
+302e4ce6 :        EIGHTS :  88
+eee359be :           OFF :  89
+b53b6401 :            CA :  68
+ed0d1855 :        EIGHTS :  88
+bcd2a14d :           OFF :  89
+ba05e0f4 :            CA :  68
+c7c02838 :        EIGHTS :  88 -- Battle func starts. Does some looping.
+88e416d0 :           OFF :  89
+8d0b778b :            CA :  68
+2e45e8ff :        EIGHTS :  88  
+fd7038b7 :           OFF :  89 --EITHER THIS FRAME:
+fe44f676 :            CA :  68 -- OR THIS FRAME WILL VARY.
+7661b05a :        EIGHTS :  88 --Variance range ends.
+c28ac6b2 :           OFF :  89
+8bbc60a5 :            CA :  68 -- more calculations
+9bb39c39 :        EIGHTS :  88
+caa8c0b1 :           OFF :  89 -- Camera gets refreshed and set. 
+aa389048 : OTHER ------- : 9672
+e71b47d0 : OTHER ------- : 9688
+ 26194e8 : OTHER ------- :   0 -- again
+ 26194e8 : OTHER ------- :   0
+ 26194e8 : OTHER ------- : 28800
+56c85968 : OTHER ------- : 9600
+3d249ae8 : OTHER ------- : 9600
+929ddc68 : OTHER ------- : 9600
+dd341de8 : OTHER ------- : 9600
+a2e75f68 : OTHER ------- :   0 --again
+a2e75f68 : OTHER ------- : 19200
+b7a4e268 : OTHER ------- : 9600
+12af23e8 : OTHER ------- : 9600
+  d66568 : OTHER ------- : 9600
+ 81aa6e8 : OTHER ------- : 9600
+ae7be868 : OTHER ------- : 9600
+79fa29e8 : OTHER ------- : 9600
+f0956b68 : OTHER ------- : 9600
+984dace8 : OTHER ------- : 9600
+f722ee68 : OTHER ------- :   0 --again
+f722ee68 : OTHER ------- : 19200
+f2247168 : OTHER ------- : 9600
+9a50b2e8 : OTHER ------- : 9600
+1199f468 : OTHER ------- : 9600
+de0035e8 : OTHER ------- : 9600
+85837768 : OTHER ------- : 9600
+8e23b8e8 : OTHER ------- : 9600
+7de0fa68 : OTHER ------- : 9600 -- again.
+dabb3be8 : OTHER ------- : 9600
+2ab27d68 : OTHER ------- : 9600
+f3c6bee8 : OTHER ------- : 9600
+bbf80068 : OTHER ------- : 9600
+
+VV This section gets completely buggered until teddy generation.
+ 94641e8 : OTHER ------- : 9600
+61b18368 : OTHER ------- : 9600
+4b39c4e8 : OTHER ------- : 9600
+4bdf0668 : OTHER ------- : 9600 -- again.
+e9a147e8 : OTHER ------- : 9600
+aa808968 : OTHER ------- : 9600
+147ccae8 : OTHER ------- : 9600
+ad960c68 : OTHER ------- : 9600
+fbcc4de8 : OTHER ------- : 9600
+851f8f68 : OTHER ------- : 9603 --again, after cam func occurs.
+63f332dd : OTHER ------- : 9600
+fd4f4a5d : OTHER ------- : 9600
+f09c61dd : OTHER ------- : 9600
+1bda795d : OTHER ------- : 9600
+5d0990dd : OTHER ------- : 9600
+9229a85d : OTHER ------- : 9600
+993abfdd : OTHER ------- :   0
+993abfdd : OTHER ------- : 19209
+
+
+
+14c7ec74 : OTHER ------- : 9600
+50fb15f4 : OTHER ------- : 9600
+147b3f74 : OTHER ------- : 9600
+854868f4 : OTHER ------- : 9600
+c9629274 : OTHER ------- : 9600
+ 6c9bbf4 : OTHER ------- : 9601
+f6fbbe67 : OTHER ------- : 9600
+dc7e41e7 : OTHER ------- : 9600
+f419c567 : OTHER ------- : 9600
+cbce48e7 : OTHER ------- : 9600
+f19bcc67 : OTHER ------- :   0
+Anomalies: 61.
+Step frames: .

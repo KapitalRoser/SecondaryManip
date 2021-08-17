@@ -1,0 +1,2004 @@
+b679c333 : OTHER ------- :   0
+b679c333 : OTHER ------- :   0
+b679c333 : OTHER ------- :   0
+b679c333 : OTHER ------- :   0
+b679c333 : OTHER ------- :   0
+b679c333 : OTHER ------- :   0
+b679c333 : OTHER ------- :   0
+b679c333 : OTHER ------- :   0
+b679c333 : OTHER ------- :   0
+b679c333 : OTHER ------- :   0
+b679c333 : OTHER ------- :   0
+b679c333 : OTHER ------- :   0
+b679c333 : OTHER ------- :   0
+b679c333 : OTHER ------- :   0
+b679c333 : OTHER ------- :   0
+b679c333 : OTHER ------- :   0
+b679c333 : OTHER ------- :   0
+b679c333 : OTHER ------- :   0
+b679c333 : OTHER ------- :   0
+b679c333 : OTHER ------- :   0
+b679c333 : OTHER ------- :   0
+b679c333 : OTHER ------- :   0
+b679c333 : OTHER ------- :   0
+b679c333 : OTHER ------- :   0
+b679c333 : OTHER ------- :   0
+b679c333 : OTHER ------- :   0
+b679c333 : OTHER ------- :   0
+b679c333 : OTHER ------- :   0
+b679c333 : OTHER ------- :   0
+b679c333 : OTHER ------- :   0
+b679c333 : OTHER ------- :   0
+b679c333 : OTHER ------- :   0
+b679c333 : OTHER ------- :   0
+b679c333 : OTHER ------- :   0
+b679c333 : OTHER ------- :   0
+b679c333 : OTHER ------- :   0
+b679c333 : OTHER ------- :   0
+b679c333 : OTHER ------- :   0
+b679c333 : OTHER ------- :   0
+b679c333 : OTHER ------- :   0
+b679c333 : OTHER ------- :   0
+b679c333 : OTHER ------- :   0
+b679c333 : OTHER ------- :   0
+b679c333 : OTHER ------- :   1
+7e2be12a : OTHER ------- :   1
+d0f02345 : OTHER ------- :   0
+d0f02345 : OTHER ------- :   1
+c08388f4 : OTHER ------- :   1
+49d8d3e7 : OTHER ------- :   0
+49d8d3e7 : OTHER ------- :   2
+e340d999 : OTHER ------- :   3
+3d0db432 : OTHER ------- :   0
+3d0db432 : OTHER ------- :   0
+3d0db432 : OTHER ------- :   1
+ 970ca2d : OTHER ------- :   0
+ 970ca2d : OTHER ------- :   1
+380f343c : OTHER ------- :   0
+380f343c : OTHER ------- :   0
+380f343c : OTHER ------- :   1
+fe8cf20f : OTHER ------- :   0
+fe8cf20f : OTHER ------- :   0
+fe8cf20f : OTHER ------- :   1
+4af8c496 : OTHER ------- :   3
+afb36783 : OTHER ------- :   4
+e41ed137 : OTHER ------- :  12
+77394fd3 : OTHER ------- :  23
+edba0ba8 : OTHER ------- :  27
+f5b66d55 : OTHER ------- :  46
+c7f655b3 :            CC :  57
+20592fe2 : OTHER ------- :  61
+3aa432c9 :            CC :  57
+6af4e9e0 :            CA :  68
+ab0cb6e4 :            CB :  78
+4f8bbeea : OTHER ------- :  25
+29b3f1bd : OTHER ------- :  35
+88a65886 : OTHER ------- :  46
+6efa655c : OTHER ------- :  25
+173f4b27 : OTHER ------- :  35
+c2f0e758 : OTHER ------- :  46
+4c98999e : OTHER ------- :  25
+37207921 : OTHER ------- :  35
+2ad392fa : OTHER ------- :  46
+f03a6430 : OTHER ------- :  25
+72a3122b : OTHER ------- :  35
+ffe2bbec : OTHER ------- :  46
+d0002192 : OTHER ------- :  25
+4a8130c5 : OTHER ------- :  35
+ea9cd6ae : OTHER ------- :  46
+acfba244 : OTHER ------- :  25
+db00136f : OTHER ------- :  35
+18358bc0 : OTHER ------- :  46
+d6624ac6 : OTHER ------- :  25
+4645bca9 : OTHER ------- :  35
+1eddd7a2 : OTHER ------- :  46
+57543398 : OTHER ------- :   0
+57543398 : OTHER ------- :  60
+1c112ad4 : OTHER ------- :  46
+e480493a :            CC :  57
+ad68a66d :            CA :  68
+248d5881 :            CB :  78
+40e02a1f :            CC :  57
+5d7a8d1e : OTHER ------- :  70
+255ede0c :            CB :  78
+cb1a80d2 :            CC :  57
+e10c5ca5 :            CA :  68
+318e5839 :            CB :  78
+f681c817 : OTHER ------- :  59
+d0fa2460 :            CA :  68
+6554b964 :            CB :  78
+fdb8ed6a :            CC :  57
+fe22d3dd :            CA :  68
+b9bb68f1 :            CB :  78
+2c1f6f0f :            CC :  57
+280f404e : OTHER ------- :  70
+4b4491bc :            CB :  78
+ a87ef02 :            CC :  57
+7ddaec15 :            CA :  68
+a4496aa9 :            CB :  78
+3cb6ff07 :            CC :  57
+f7e12166 :            CA :  68
+c9c8764a : OTHER ------- :  80
+88c7e59a :            CC :  57
+33a7854d :            CA :  68
+1bf13d61 :            CB :  78
+ caa57ff :            CC :  57
+bac4877e :            CA :  68
+3d1c7be2 : OTHER ------- :  80
+824d3132 :            CC :  57
+e0bf7f85 :            CA :  68
+ba6fc119 :            CB :  78
+993f59f7 : OTHER ------- :  59
+bf26e5c0 :            CA :  68
+bca5c8c4 :            CB :  78
+2d0031ca :            CC :  57
+d79dbabd :            CA :  68
+c405d5d1 : OTHER ------- :  80
+ e8bb2e1 :            CC :  57
+794eb698 :            CA :  68
+2f37551c :            CB :  78
+f45d4762 : OTHER ------- :  59
+1130e517 :            CA :  68
+99ee6e4b :            CB :  78
+7e520699 :            CC :  57
+bc485470 :            CA :  68
+b663be74 :            CB :  78
+d2f4d1fa : OTHER ------- :  58
+13c4363c : OTHER ------- :  69
+ff1fbac3 :            CB :  78
+5ae5eb51 :            CC :  57
+61b51f48 :            CA :  68
+b61a64cc :            CB :  78
+fbeb3192 :            CC :  57
+5c26b265 :            CA :  68
+ad1a39f9 :            CB :  78
+fe857bd7 : OTHER ------- :  59
+50aa7720 :            CA :  68
+f7fea824 :            CB :  78
+d478c62a :            CC :  57
+e6bab19d :            CA :  68
+ 26752b1 :            CB :  78
+9586eacf :            CC :  57
+f285d50e :            CA :  68
+3def5672 : OTHER ------- :  80
+3d69efc2 :            CC :  57
+94f751d5 :            CA :  68
+984c5c69 :            CB :  78
+278142c7 :            CC :  57
+ 5c65e26 :            CA :  68
+c5b26f0a :            CB :  78
+29a6b8e0 :            CC :  57
+acc636bb :            CA :  68
+e7a4d72f :            CB :  78
+2bf33a5d :            CC :  57
+659578a4 :            CA :  68
+3afe16e8 : OTHER ------- :  80
+9de205b8 :            CC :  57
+ac558533 :            CA :  68
+81f04327 :            CB :  78
+a00c0295 :            CC :  57
+197828fc :            CA :  68
+ e01dac0 :            CB :  78
+bd1e11e6 :            CC :  57
+a7731ee9 :            CA :  68
+b80b83bd :            CB :  78
+dbedf97b :            CC :  57
+b39fbb8a :            CA :  68
+70c54fae :            CB :  78
+1b528664 :            CC :  57
+86a0d5af :            CA :  68
+b26ac663 :            CB :  78
+801f69f1 :            CC :  57
+bd298f68 :            CA :  68
+ba657eec : OTHER ------- :  80
+6963bebc :            CC :  57
+e701f1a7 :            CA :  68
+c85fb7db :            CB :  78
+2e744ba9 :            CC :  57
+2329c340 :            CA :  68
+a9a55e44 :            CB :  78
+4369db4a :            CC :  57
+ 7608e3d :            CA :  68
+bba04151 :            CB :  78
+ac28b46f :            CC :  57
+bdb2042e :            CA :  68
+ce00df92 :            CB :  78
+fb7b2928 :            CA :  68
+3521e4ac :            CC :  57
+e72be1d7 :            CB :  78
+a04d83c5 :            CA :  68
+6c5a5959 :            CC :  57
+3ce38430 :            CB :  78
+6fa8a7d6 :            CA :  68
+ab44afba : OTHER ------- :  59
+ 7aa90cf :            CB :  78
+ d98f6fd :            CA :  68
+ddd72611 :            CC :  57
+e4289708 :            CB :  78
+ 4a44fee :            CA :  68
+13bf9752 :            CC :  57
+38c54925 :            CB :  78
+ 79087a3 :            CA :  68
+f802b897 :            CC :  57
+ 246a2b6 :            CB :  78
+eb58052c :            CA :  68
+bf67f5f0 :            CC :  57
+6b7bbd8b :            CB :  78
+6c5e7bd9 :            CA :  68
+342b1bad :            CC :  57
+84360ab4 :            CB :  78
+9ca4dc3a :            CA :  68
+b4b8975e :            CC :  57
+cbba6f81 :            CB :  78
+8748091f :            CA :  68
+7f45bcd3 :            CC :  57
+6bd5d682 :            CB :  78
+79616098 :            CA :  68
+3e611f1c :            CC :  57
+779f0487 :            CB :  78
+306c68f5 :            CA :  68
+81b74d89 :            CC :  57
+e306c1a0 :            CB :  78
+ d5231c6 :            CA :  68
+8ca984aa :            CC :  57
+7a8ba61d :            CB :  78
+ fed38db :            CA :  68
+b1fa234f :            CC :  57
+842c1b8e :            CB :  78
+4713e344 :            CA :  68
+24d1f388 :            CC :  57
+7d4b61c3 :            CB :  78
+9e1fda51 :            CA :  68
+3c1d97a5 :            CC :  57
+ 701a7cc :            CB :  78
+e431dc92 :            CA :  68
+ebafab36 :            CC :  57
+b2df88f9 :            CB :  78
+b79fd2d7 :            CA :  68
+3076680b :            CC :  57
+7fbe7dda :            CB :  78
+8ba23930 :            CA :  68
+cf3edf34 :            CC :  57
+8fce113f :            CB :  78
+905a2bed :            CA :  68
+f4181601 :            CC :  57
+3dbce938 :            CB :  78
+961ea89e :            CA :  68
+7c219702 :            CC :  57
+f608f415 :            CB :  78
+2ae9d313 :            CA :  68
+bbef4707 :            CC :  57
+a41f4966 :            CB :  78
+ 7124e5c :            CA :  68
+53438e20 :            CC :  57
+c1c68efb :            CB :  78
+c9dcf9c9 :            CA :  68
+7f95249d :            CC :  57
+6229f1e4 :            CB :  78
+8a14a1ea :            CA :  68
+c91b140e :            CC :  57
+9be30371 :            CB :  78
+26bb758f :            CA :  68
+5b33bc43 :            CC :  57
+ a4a0a32 :            CB :  78
+b8294ec8 :            CA :  68
+cb3eec4c :            CC :  57
+b4a296f7 :            CB :  78
+26e61fe5 :            CA :  68
+58135f79 :            CC :  57
+7e016dd0 :            CB :  78
+453d1476 :            CA :  68
+8a492e5a :            CC :  57
+1ded130d :            CB :  78
+58a7364b :            CA :  68
+19a903bf :            CC :  57
+ca2f8c3e :            CB :  78
+5197a674 :            CA :  68
+653f25b8 :            CC :  57
+f65a2533 :            CB :  78
+4b0bba41 :            CA :  68
+893da295 :            CC :  57
+326f48fc :            CB :  78
+c43a8c42 :            CA :  68
+80f631e6 :            CC :  57
+ 6a6bee9 :            CB :  78
+e15dd147 :            CA :  68
+5c86997b :            CC :  57
+1b81db8a :            CB :  78
+9a650160 :            CA :  68
+212da664 :            CC :  57
+e96b75af :            CB :  78
+a75824dd :            CA :  68
+cbc709f1 :            CC :  57
+93feaf68 :            CB :  78
+4db4d54e :            CA :  68
+f255aab2 :            CC :  57
+e12be305 :            CB :  78
+f56a4283 :            CA :  68
+ a523977 :            CC :  57
+37c04416 :            CB :  78
+259c4b8c :            CA :  68
+6a3b1a50 :            CC :  57
+3317046b :            CB :  78
+f4a5fbb9 :            CA :  68
+a886f18d :            CC :  57
+65c60d14 :            CB :  78
+4a24fb9a :            CA :  68
+ b1064be :            CC :  57
+c5109b61 :            CB :  78
+582dc5ff :            CA :  68
+  9bdfb3 :            CA :  68
+bf7365a7 :        250 !! :  67
+ d37b0f8 :            CA :  68
+f78b6d7c :            CB :  78
+80fbccc2 :            CC :  57
+7e3c1ad5 :            CA :  68
+bfd4f569 :            CB :  78
+c07993c7 :            CC :  57
+ece14b26 :            CA :  68
+b8106c0a :            CB :  78
+bf1b4de0 :            CC :  57
+ad1bd7bb :            CA :  68
+93f9c82f :            CB :  78
+1b41235d :            CC :  57
+9c4c9da4 :            CA :  68
+a021cbe8 :            CB :  78
+c7814dce :            CC :  57
+d8a99e31 :            CA :  68
+9124f185 :            CB :  78
+90261d03 :            CC :  57
+ba694ff2 :            CA :  68
+c08d0c96 :            CB :  78
+a07b100c :            CC :  57
+db3633b7 :            CA :  68
+16446eeb :            CB :  78
+cb815239 :            CC :  57
+1477bd90 :            CA :  68
+ e0ca194 :            CB :  78
+ef752c1a :            CC :  57
+e0e1e1cd :            CA :  68
+5ee301e1 :            CB :  78
+9464387f :            CC :  57
+37f1d5fe :            CA :  68
+2d56d262 :            CB :  78
+8f036d78 :            CC :  57
+fec8d5f3 :            CA :  68
+9f128fe7 :            CB :  78
+ad604955 :            CC :  57
+fa88fcbc :            CA :  68
+7cd19a80 :            CB :  78
+8fe5b3a6 :            CC :  57
+1f9881a9 :            CA :  68
+ a8f827d :            CB :  78
+4b3f623b :            CC :  57
+5030e94a :            CA :  68
+4963896e :            CB :  78
+a2c1d224 :            CC :  57
+a565fa6f :            CA :  68
+92752723 :            CB :  78
+fe4524b1 :            CC :  57
+966f8728 :            CA :  68
+ef19a2ac :            CB :  78
+c18a7072 :            CC :  57
+ecdd59c5 :            CA :  68
+ 51b0f59 :            CB :  78
+e8d15637 :            CC :  57
+3969d5d6 :            CA :  68
+c79a3dba :            CB :  78
+a6caea10 :            CC :  57
+50221d2b :            CA :  68
+a1f3709f :            CB :  78
+727b404d :            CC :  57
+9265c8d4 :            CA :  68
+879ce618 :            CB :  78
+ 6502e7e :            CC :  57
+eff88621 :            CA :  68
+af828475 :            CB :  78
+60fe1073 :            CC :  57
+e8b927a2 :            CA :  68
+d9df3b46 :            CB :  78
+dde6a13c :            CC :  57
+780ffa27 :            CA :  68
+43c6e85b :            CB :  78
+f08e3829 :            CC :  57
+e55d6dc0 :            CA :  68
+f14ed0c4 :            CB :  78
+6624f9ca :            CC :  57
+d78662bd :            CA :  68
+c7aafdd1 :            CB :  78
+3b6fccef :            CC :  57
+5ea0aaae :            CA :  68
+45600e12 :            CB :  78
+7a7c23a8 :            CC :  57
+90fc8d63 :            CA :  68
+dc574a57 :            CB :  78
+8ce5e845 :            CC :  57
+74ab61ec :            CA :  68
+ 2ca0eb0 :            CB :  78
+8d041e56 :            CC :  57
+65d38b99 :            CA :  68
+bd7dd76d :            CB :  78
+2dd307ab :            CC :  57
+58d36afa :            CA :  68
+c01f821e :            CB :  78
+b5bddd54 :            CC :  57
+c66b12df :            CA :  68
+15f69293 :            CB :  78
+61a26ca1 :            CC :  57
+18f3d158 :            CA :  68
+ 8fc8bdc :            CB :  78
+f6422822 :            CC :  57
+2d78dcb5 :            CA :  68
+ c44ad49 :            CB :  78
+b8527ca7 :            CC :  57
+3541b486 :            CA :  68
+23c1a36a :            CB :  78
+b2157a40 :            CC :  57
+6ed1069b :            CA :  68
+22dcfd0f :            CB :  78
+1eb8213d :            CC :  57
+f2562804 :            CA :  68
+65137448 :            CB :  78
+7118e32e :            CC :  57
+9a377211 :            CA :  68
+f4455b65 :            CB :  78
+405327e3 :            CC :  57
+12651352 :            CA :  68
+4197bdf6 :            CB :  78
+94cfe66c :            CC :  57
+71122497 :            CA :  68
+e56505cb :            CB :  78
+6e4ba219 :            CC :  57
+37d911f0 :            CA :  68
+69a733f4 :            CB :  78
+8a735b7a :            CA :  68
+c0f91a9e :            CC :  57
+309dfdc1 :            CB :  78
+6570455f :            CA :  68
+e8540d13 :            CC :  57
+63ec5dc2 :            CB :  78
+83094dd8 :            CA :  68
+9fe3705c :            CC :  57
+3a8768c7 :            CB :  78
+894dcb35 :            CA :  68
+2ca8a3c9 :            CC :  57
+a32776e0 :            CB :  78
+a7f9dd06 :            CA :  68
+ b9cf3ea :            CC :  57
+8560f05d :            CB :  78
+8cb7511b :            CA :  68
+6a2b0f8f :            CC :  57
+c88f4ece :            CB :  78
+6dd91c84 :            CA :  68
+f63550c8 :            CC :  57
+e2972203 :            CB :  78
+9857b891 :            CA :  68
+477829e5 :            CC :  57
+f787290c :            CB :  78
+e05df3d2 :            CA :  68
+edc54676 :            CC :  57
+41f0cf39 :            CB :  78
+de240717 :            CA :  68
+f9b6304b :            CC :  57
+a0a19d1a :            CB :  78
+d9bdfe70 :            CA :  68
+48e08874 :            CC :  57
+c43d6d7f :            CB :  78
+bcc6c62d :            CA :  68
+e36e2441 :            CC :  57
+49287678 :            CB :  78
+dce66bde :            CA :  68
+e3f49e42 :            CC :  57
+139c7655 :            CB :  78
+305c6353 :            CA :  68
+d7062b47 :            CC :  57
+61a194a6 :            CB :  78
+ d49df9c :            CA :  68
+1bccc360 :            CC :  57
+85b5c73b :            CB :  78
+de189009 :            CA :  68
+c1f4eedd :            CC :  57
+8908cb24 :            CB :  78
+503b512a :            CA :  68
+e6b2c74e :            CC :  57
+c47b01b1 :            CB :  78
+9eaca1cf :            BA :  79
+3aebd2cc :            CC :  57
+25aa1377 :            CB :  78
+ fa3f865 :            CA :  68
+dcab5ff9 :            CC :  57
+a2905c50 :            CB :  78
+b5cfcef6 :            CA :  68
+a2d6b0da :            CC :  57
+ba473b8d :            CB :  78
+b8585acb :            CA :  68
+b8d8103f :            CC :  57
+ee3fd6be :            CB :  78
+16aedcf4 :            CA :  68
+c5c3e438 :            CC :  57
+9eaf19b3 :            CB :  78
+46274ac1 :            CA :  68
+ b54db15 :            CC :  57
+56a98f7c :            CB :  78
+f689dec2 :            CA :  68
+1367cc66 :            CC :  57
+f1219f69 :            CB :  78
+ff45edc7 :            CA :  68
+75321dfb :            CC :  57
+ed1dbe0a :            CB :  78
+ba370fe0 :            CA :  68
+b148bce4 :            CC :  57
+b002622f :            CB :  78
+d261ed5d :            CA :  68
+ 495fa71 :            CC :  57
+cc2acde8 :            CB :  78
+9b133fce :            CA :  68
+9a45dd32 :            CC :  57
+d6a7fb85 :            CB :  78
+eba5d703 :            CA :  68
+19feb5f7 :            CC :  57
+9cca3e96 :            CB :  78
+6c37b20c :            CA :  68
+5f0308d0 :            CC :  57
+20dc68eb :            CB :  78
+3b667c39 :            CA :  68
+e8fe1a0d :            CC :  57
+18028394 :            CB :  78
+7afcfe1a :            CA :  68
+42b1af3e :            CC :  57
+63a66be1 :            CB :  78
+7451527f :            CA :  68
+65c5d433 :            CC :  57
+b5f5e462 :            CB :  78
+7002ef78 :            CA :  68
+92eeb3fc :            CC :  57
+1833e9e7 :            CB :  78
+6333d355 :            CA :  68
+e11cd5e9 :            CC :  57
+e2965c80 :            CB :  78
+a33565a6 :            CA :  68
+ aad4e8a :            CC :  57
+39fd4c7d :            CB :  78
+ 4b3dc3b :            CA :  68
+ a95b4af :            CC :  57
+65767b6e :            CB :  78
+a0863424 :            CA :  68
+1f66ea68 :            CC :  57
+ 379e123 :            CB :  78
+f5910eb1 :            CA :  68
+1d1e0a05 :            CC :  57
+7d6f44ac :            CB :  78
+74540272 :            CA :  68
+15080716 :            CC :  57
+f4fd3959 :            CB :  78
+d8473037 :            CA :  68
+ac3ed36b :            CC :  57
+52130fba :            CB :  78
+ db62c10 :            CA :  68
+f0521814 :            CC :  57
+f7958a9f :            CB :  78
+9f298a4d :            CA :  68
+70a5d261 :            CA :  68
+777ae4b5 :        250 !! :  67
+6a25a07e :            CA :  68
+a8aa64e2 :            CB :  78
+6227abf8 :            CC :  57 `` STEP FRAME ``
+644f4a73 :            CA :  68
+a0cfec67 :            CB :  78
+b71501d5 :            CC :  57
+a13ac33c :            CA :  68
+a18de900 :            CB :  78 `` STEP FRAME ``
+bceace26 :            CC :  57
+28e8e229 :            CA :  68
+66ec8afd :            CB :  78
+af4c66bb :            CC :  57
+18784bca :            CA :  68
+492233ee :            CB :  78
+8c4468a4 :            CC :  57 `` STEP FRAME ``
+8bd666ef :            CA :  68
+ef51fba3 :            CB :  78
+d8999531 :            CC :  57
+765b25a8 :            CA :  68
+ c9b492c :            CB :  78
+7d9622f2 :            CC :  57
+d396f245 :            CA :  68 `` STEP FRAME ``
+eb1acfd9 :            CB :  78
+7b8752b7 :            CC :  57
+29275056 :            CA :  68
+746e803a :            CB :  78
+43425890 :            CC :  57
+99e901ab :            CA :  68
+48c43d1f :            CB :  78
+f3dfe8cd :            CC :  57
+d129bf54 :            CA :  68
+798a6498 :            CB :  78 `` STEP FRAME ``
+e714f8fe :            CC :  57
+8fb3d6a1 :            CA :  68
+e0e57cf5 :            CB :  78
+8a5984f3 :            CC :  57
+67673a22 :            CA :  68 `` STEP FRAME ``
+d20b95c6 :            CB :  78
+1ec167bc :            CC :  57
+3e11d6a7 :            CA :  68
+f7582cdb :            CB :  78 `` STEP FRAME ``
+dfab98a9 :            CC :  57
+e0f03c40 :            CA :  68
+5f26a744 :            CB :  78
+1a6d5c4a :            CC :  57
+ed93eb3d :            CA :  68
+4969ae51 :            CB :  78 `` STEP FRAME ``
+e8e5396f :            CC :  57
+2451d52e :            CA :  68
+df3f0092 :            CB :  78
+1480c228 :            CC :  57
+ 715e1e3 :            CA :  68
+ffed86d7 :            CB :  78
+491c80c5 :            CC :  57
+b9db886c :            CA :  68
+de62bd30 :            CB :  78 `` STEP FRAME ``
+a73298d6 :            CC :  57
+e1bbcc19 :            CA :  68
+d048bfed :            CB :  78
+46ceec2b :            CC :  57
+80b22d7a :            CA :  68
+64a38c9e :            CB :  78
+e78ad3d4 :            CC :  57
+17f05f5f :            CA :  68 `` STEP FRAME ``
+f1ce4713 :            CB :  78
+438abd21 :            CC :  57
+31e7cfd8 :            CA :  68
+6504925c :            CB :  78
+4ed13aa2 :            CC :  57
+b97c5535 :            CA :  68
+dd044dc9 :            CB :  78
+8ab95927 :            CC :  57
+68108f06 :            CA :  68
+40f545ea :            CB :  78
+e2a148c0 :            CC :  57
+130ecb1b :            CA :  68 `` STEP FRAME ``
+20aaa98f :            CB :  78
+10a2a9bd :            CC :  57
+8d0c7e84 :            CA :  68
+239152c8 :            CB :  78
+a11b0dae :            CC :  57
+dbcea291 :            CA :  68
+849a33e5 :            CB :  78
+65017c63 :            CC :  57
+48fe85d2 :            CA :  68
+551d7876 :            CB :  78
+49e90cec :            CC :  57
+77cce117 :            CA :  68
+44d52a4b :            CB :  78
+3cc0e299 :            CC :  57
+24a84070 :            CA :  68
+42796a74 :            CB :  78
+fe131dfa :            CC :  57
+3270102d :            CA :  68 `` STEP FRAME ``
+f7608e41 :            CB :  78
+9cba91df :            CC :  57
+d6a2ddde :            CA :  68
+9d7eb042 :            CB :  78
+2fd64c58 :            CC :  57
+ee309d53 :            CA :  68
+bdbe8547 :            CB :  78
+6b8e43b5 :            CC :  57
+762d019c :            CA :  68
+ 2848560 :            CB :  78
+c8f9b786 :            CC :  57
+573e3a09 :            CA :  68
+4721b8dd :            CB :  78
+12ea159b :            CC :  57
+5f85a32a :            CA :  68
+c480b94e :            CB :  78
+99587304 :            CC :  57
+3ce63bcf :            CA :  68
+f2b1b683 :            CB :  78
+70dbe911 :            CC :  57 `` STEP FRAME ``
+450bee08 :            CA :  68
+347d8f8c :            CB :  78
+d8986652 :            CC :  57
+e1d2fc25 :            CA :  68
+a1784fb9 :            CB :  78
+b803c397 :            CC :  57
+859c21b6 :            CA :  68
+ba5c9f9a :            CB :  78
+1d462cf0 :            CA :  68
+873bbef4 :            CC :  57
+8dcff9ff :            CB :  78
+91bf2ead :            CA :  68
+a8ddb4c1 :            CC :  57
+b41eb4f8 :            CB :  78
+70cdf65e :            CA :  68
+25e7f0c2 :            CC :  57
+5a6b2ed5 :            CB :  78
+efa597d3 :            CA :  68
+cf2247c7 :            CC :  57
+1e28af26 :            CB :  78
+6b09661c :            CA :  68
+3aa2d1e0 :            CC :  57
+8d4ccbbb :            CB :  78
+ 9edb089 :            CA :  68
+9412b75d :            CC :  57
+d23d61a4 :            CB :  78
+515a73aa :            CA :  68
+d37531ce :            CC :  57
+63497231 :            CB :  78
+1e93ce4f :            CA :  68
+2f359103 :            CC :  57
+842473f2 :            CB :  78
+648b4a88 :            CA :  68
+7044540c :            CC :  57
+66e9e7b7 :            CB :  78
+31594aa5 :            CA :  68
+34dba639 :            CC :  57
+da364190 :            CB :  78
+a5eb2a36 :            CA :  68
+e654d01a :            CC :  57
+ 9c675cd :            CB :  78
+5ef4e30b :            CA :  68
+a34e6c7f :            CC :  57
+e544b9fe :            CB :  78
+b7604634 :            CA :  68
+8c527178 :            CC :  57
+b9b349f3 :            CB :  78
+de0c1901 :            CA :  68
+b1975d55 :            CC :  57
+1e9940bc :            CB :  78
+e366a602 :            CA :  68
+e15517a6 :            CC :  57
+1b55d5a9 :            CB :  78
+96cd9207 :            CA :  68
+8438563b :            CC :  57
+c3ff8d4a :            CB :  78
+21340520 :            CA :  68
+2c9a9624 :            CC :  57
+49fb2e6f :            CB :  78
+de44779d :            CA :  68
+246cf8b1 :            CC :  57
+39158b28 :            CB :  78
+de78b30e :            CA :  68
+6ced9472 :            CC :  57
+c8c76dc5 :            CB :  78
+6cbcd743 :            CA :  68
+14cd0a37 :            CC :  57
+d25839d6 :            CB :  78
+cb75734c :            CA :  68
+a5f16e10 :            CC :  57
+4396112b :            CB :  78
+a6d10279 :            CA :  68
+3267d44d :            CC :  57
+69a58cd4 :            CB :  78
+a75e5d5a :            CA :  68
+fecb127e :            CC :  57
+e6235a21 :            CB :  78
+d6f7eebf :            CA :  68
+4bb08473 :            CC :  57
+252b4ba2 :            CB :  78
+6a42bcb8 :            CA :  68
+88dee53c :            CC :  57
+fe56ae27 :            CB :  78
+91ac9595 :            CA :  68
+86d38c29 :            CC :  57
+40faf1c0 :            CB :  78
+f6f1f0e6 :            CA :  68
+b69b9dca :            CC :  57
+62c5f6bd :            CB :  78
+4086547b :            CA :  68
+674d00ef :            CC :  57
+40ba8eae :            CB :  78
+ a954d64 :            CA :  68
+d98a27a8 :            CC :  57
+c0ca0163 :            CB :  78
+48da4cf1 :            CA :  68
+8ed7fc45 :            CC :  57
+ 22aa5ec :            CB :  78
+38f6f9b2 :            CA :  68
+3c1a8256 :            CC :  57
+15bbdf99 :            CB :  78
+80bdc477 :            CA :  68
+480efbab :            CC :  57
+8a790efa :            CB :  78
+bbadd150 :            CA :  68
+e6e5a154 :            CC :  57
+3d3346df :            CB :  78
+3981848d :            CA :  68
+115540a1 :            CC :  57
+6798d558 :            CB :  78
+7fa643be :            CA :  68
+aa5c4c22 :            CC :  57
+3a5df0b5 :            CB :  78
+20fe3ab3 :            CA :  68
+cce130a7 :            CC :  57
+ec171886 :            CB :  78
+7fc0347c :            CA :  68
+ed1afe40 :            CC :  57
+c4c7fa9b :            CB :  78
+2b49d869 :            CA :  68
+7effb53d :            CC :  57
+b724ec04 :            CB :  78
+ec79db0a :            CA :  68
+d45ac72e :            CC :  57
+392d4611 :            CB :  78
+acadf32f :            CA :  68
+ade89be3 :            CC :  57
+b3ce3752 :            CB :  78
+2fdfa2e8 :            CA :  68
+ef372a6c :            CC :  57
+6d2bd897 :            CB :  78
+57f72485 :            CA :  68
+16bbf619 :            CC :  57
+519595f0 :            CB :  78
+5a390b96 :            CA :  68
+6ec0ff7a :            CA :  68
+ 11dfe9e :        250 !! :  67
+ 77569eb :            CA :  68
+9180795f :            CB :  78
+8ba2630d :            CC :  57
+3f2a8894 :            CA :  68
+741651d8 :            CB :  78
+532a1c3e :            CC :  57
+9f4584e1 :            CA :  68
+3a3adf35 :            CB :  78
+696ef533 :            CC :  57
+54446162 :            CA :  68
+eaf74106 :            CB :  78
+60c758fc :            CC :  57
+ 5bb5ae7 :            CA :  68
+5776451b :            CB :  78
+e90f0ee9 :            CC :  57
+89369180 :            CA :  68
+128fe084 :            CB :  78
+fcfb6b8a :            CC :  57
+b305557d :            CA :  68
+8ed58c91 :            CB :  78
+6bfb45af :            CC :  57
+a721a86e :            CA :  68
+ f6f17d2 :            CB :  78
+b8bdbf68 :            CC :  57
+c360c223 :            CA :  68
+d685bb17 :            CB :  78
+e0973305 :            CC :  57
+97bca9ac :            CA :  68
+f8e28270 :            CB :  78
+2b48d416 :            CC :  57
+57773259 :            CA :  68
+c6a95a2d :            CB :  78
+94f1d46b :            CC :  57
+1647ecba :            CA :  68
+992f4fde :            CB :  78
+7ffc1d14 :            CC :  57
+74bcdb9f :            CA :  68
+8814d753 :            CB :  78
+8cceeb61 :            CC :  57
+ b84fd18 :            CA :  68
+db60239c :            CB :  78
+d7aae1e2 :            CC :  57
+13e7f775 :            CA :  68
+2df3e409 :            CB :  78
+47d15d67 :            CC :  57
+ 32b7a46 :            CA :  68
+729ff52a :            CB :  78
+65901e00 :            CC :  57
+add9235b :            CA :  68
+de2fd5cf :            CB :  78
+e8de93fd :            CC :  57
+1492f7c4 :            CA :  68
+f659f008 :            CB :  78
+ 55f60ee :            CC :  57
+ef8cc0d1 :            CA :  68
+58af0625 :            CB :  78
+9a12dca3 :            CC :  57
+1189dd12 :            CA :  68
+4b9653b6 :            CB :  78
+5b2aae2c :            CC :  57
+5bed5557 :            CA :  68
+3fc5328b :            CB :  78
+68dec8d9 :            CC :  57
+259145b0 :            CA :  68
+ f4c53b4 :            CB :  78
+2f155d3a :            CC :  57
+169eea6d :            CA :  68
+8c6cdc81 :            CB :  78
+bc258e1f :            CC :  57
+14f5e11e :            CA :  68
+9ea0f782 :            CB :  78
+f60bf998 :            CC :  57
+ed1b6d93 :            CA :  68
+e721a987 :            CB :  78
+827465f5 :            CC :  57
+4e7dd2dc :            CA :  68
+a14afaa0 :            CB :  78
+25f922c6 :            CC :  57
+83b81049 :            CA :  68
+c273c31d :            CB :  78
+58aaeddb :            CC :  57
+d3a3926a :            CA :  68
+6f93ac8e :            CB :  78
+5f2f6c44 :            CC :  57
+626ba80f :            CA :  68
+1eac36c3 :            CB :  78
+c1ac8751 :            CC :  57
+ea95cb48 :            CA :  68
+a0acd0cc :            CB :  78
+6e003d92 :            CC :  57
+ 96e0e65 :            CA :  68
+5e1a55f9 :            CB :  78
+25f2b7d7 :            CC :  57
+6a743cf6 :            CA :  68
+4f537eda :            CB :  78
+feb7b230 :            CC :  57
+480880cb :            CA :  68
+97e2163f :            CB :  78
+461888ed :            CC :  57
+8d819af4 :            CA :  68
+81f80238 :            CB :  78
+6375799e :            CC :  57
+582f00c1 :            CA :  68
+f3637115 :            CB :  78
+25b6e813 :            CC :  57
+5e426cc2 :            CA :  68
+70e2ba66 :            CB :  78
+4e9ab75c :            CC :  57
+cfbab3c7 :            CA :  68
+d892c3fb :            CB :  78
+c42a06c9 :            CC :  57
+5bc0ede0 :            CA :  68
+700dfae4 :            CB :  78
+b5c4e2ea :            CC :  57
+dc5d435d :            CA :  68
+b9da3071 :            CB :  78
+4f17ba8f :            CC :  57
+a66dedce :            CA :  68
+dbaceb32 :            CB :  78
+808da7c8 :            CC :  57
+89a53d03 :            CA :  68
+fa5bfbf7 :            CB :  78
+66cedce5 :            CA :  68
+14202c79 :            CC :  57
+dd9766d0 :            CB :  78
+ 387c576 :            CA :  68
+f3f82f5a :            CC :  57
+87adf00d :            CB :  78
+9ed7ab4b :            CA :  68
+823f08bf :            CC :  57
+ 712dd3e :            CB :  78
+e330ef74 :            CA :  68
+62043eb8 :            CC :  57
+3865ba33 :            CB :  78
+2d4d2741 :            CA :  68
+4f4a1f95 :            CC :  57
+ddb031fc :            CB :  78
+a3d0ad42 :            CA :  68
+1f33a2e6 :            CC :  57
+710e4be9 :            CB :  78
+c9d77647 :            CA :  68
+ 8b4ce7b :            CC :  57
+6b369c8a :            CB :  78
+327c3a60 :            CA :  68
+8ffbaf64 :            CC :  57
+ 75e3aaf :            CB :  78
+a15f41dd :            CA :  68
+1c5036f1 :            CC :  57
+efd38868 :            CB :  78
+e8b7664e :            CA :  68
+46928bb2 :            CC :  57
+67c72005 :            CB :  78
+ dd21783 :            CA :  68
+7c4d9e77 :            CC :  57
+d3077516 :            CB :  78
+3f6a748c :            CA :  68
+bd1b1350 :            CC :  57
+b3b5f96b :            CB :  78
+ 18fc8b9 :            CA :  68
+40b9ce8d :            CC :  57
+2b07d614 :            CB :  78
+6724fc9a :            CA :  68
+562db5be :            CC :  57
+771c8861 :            CB :  78
+dc58caff :            CA :  68
+47c974b3 :            CC :  57
+7b8df2e2 :            CB :  78
+9ae5c9f8 :            CA :  68
+7276567c :            CC :  57
+c21bb267 :            CB :  78
+3bd597d5 :            CA :  68
+c68e8269 :            CA :  68
+52fb7f3d :            CB :  78
+19e7d8fb :            CA :  68
+c22a6d6f :            CC :  57
+ 133b92e :            CB :  78
+f03e63e4 :            CA :  68
+4e96c628 :            CC :  57
+b4cb55e3 :            CB :  78
+ 76f3d71 :            CA :  68
+ea3694c5 :            CC :  57
+b4e2cc6c :            CB :  78
+bfc52c32 :            CA :  68
+2a10fcd6 :            CC :  57
+8d4c2019 :            CB :  78
+34c040f7 :            CA :  68
+1bf2e02b :            CC :  57
+d49fd17a :            CB :  78
+5823bfd0 :            CA :  68
+b73a97d4 :            CC :  57
+5220935f :            CB :  78
+fa5ead0d :            CA :  68
+e3e59121 :            CC :  57
+c994d3d8 :            CB :  78
+5b458e3e :            CA :  68
+ee335ea2 :            CC :  57
+8b896935 :            CB :  78
+641e2f33 :            CA :  68
+4fb00d27 :            CC :  57
+b0adf306 :            CB :  78
+c2f17afc :            CA :  68
+ 7aeccc0 :            CC :  57
+d9edbf1b :            CB :  78
+2d97b8e9 :            CA :  68
+5b123dbd :            CC :  57
+7e634284 :            CB :  78
+a634bd8a :            CA :  68
+4f24f1ae :            CC :  57
+316c7691 :            CB :  78
+30dfdfaf :            CA :  68
+e07ef063 :            CC :  57
+b3afa9d2 :            CB :  78
+2512c168 :            CA :  68
+e1d850ec :            CC :  57
+7a4e9517 :            CB :  78
+2b963d05 :            CA :  68
+f0d93699 :            CC :  57
+d66cc470 :            CB :  78
+f6f20616 :            CA :  68
+54a8c1fa :            CC :  57
+f972a42d :            CB :  78
+70a5ce6b :            CA :  68
+1c32c5df :            CC :  57
+a48bc1de :            CB :  78
+537dff14 :            CA :  68
+39eb5058 :            CC :  57
+7e091153 :            CB :  78
+ 54e5561 :            CA :  68
+f1a357b5 :            CC :  57
+bce3459c :            CB :  78
+36f5f3e2 :            CA :  68
+edbf1b86 :            CC :  57
+e2398e09 :            CB :  78
+d64eb767 :            CA :  68
+de91099b :            CC :  57
+ 98a472a :            CB :  78
+aa20e000 :            CA :  68
+3a973704 :            CC :  57
+ 2896fcf :            CB :  78
+b6485dfd :            CA :  68
+2e01bd11 :            CC :  57
+e6f7f208 :            CB :  78
+8b5e52ee :            CA :  68
+20f18a52 :            CC :  57
+7c1b1025 :            CB :  78
+c0b396a3 :            CA :  68
+46cd7797 :            CA :  68
+781148cb :        250 !! :  67
+a98c502c :            CA :  68
+a472b0f0 :            CB :  78
+7d72ce96 :            CC :  57
+1cfcf2d9 :            CA :  68
+fbc9c2ad :            CB :  78
+845738eb :            CC :  57
+a2ba2f3a :            CA :  68
+c5deda5e :            CB :  78
+1a589394 :            CC :  57
+ 3a3a81f :            CA :  68
+db460bd3 :            CB :  78
+1404bbe1 :            CC :  57
+37e07b98 :            CA :  68
+14a7aa1c :            CB :  78
+ef3d7462 :            CC :  57
+e370eff5 :            CA :  68
+7b710489 :            CB :  78
+ebc9b9e7 :            CC :  57
+7415d4c6 :            CA :  68
+540717aa :            CB :  78
+9e736c80 :            CC :  57
+a72067db :            CA :  68
+d77f024f :            CB :  78
+36fe9c7d :            CC :  57
+70f8ce44 :            CA :  68
+dedf4e88 :            CB :  78
+7eed0b6e :            CC :  57
+f4117151 :            CA :  68
+7da95ea5 :            CB :  78
+1cfab123 :            CC :  57
+7b46cf92 :            CA :  68
+92d78e36 :            CB :  78
+ fe354ac :            CC :  57
+d8d991d7 :            CA :  68
+a05ed70b :            CB :  78
+7ff18959 :            CC :  57
+31d7f430 :            CA :  68
+666e0a34 :            CB :  78
+ 2489fba :            CC :  57
+56cfd2ed :            CA :  68
+a53ced01 :            CB :  78
+17d15a9f :            CC :  57
+be77eb9e :            CA :  68
+36f6ca02 :            CB :  78
+39407818 :            CC :  57
+8be92213 :            CA :  68
+9aaa4607 :            CB :  78
+373a5e75 :            CC :  57
+cb53d95c :            CA :  68
+22bf8920 :            CB :  78
+50147d46 :            CC :  57
+927db0c9 :            CA :  68
+a12a0b9d :            CB :  78
+2ae7325b :            CC :  57
+28f534ea :            CA :  68
+b8d0970e :            CB :  78
+1f5e42c4 :            CC :  57
+82cf548f :            CA :  68
+dfc04b43 :            CB :  78
+7c1e37d1 :            CC :  57
+8801a9c8 :            CA :  68
+bb02b74c :            CB :  78
+345e3012 :            CC :  57
+ee68e6e5 :            CA :  68
+9aff5679 :            CB :  78
+7d03f457 :            CC :  57
+ 737f776 :            CA :  68
+f062015a :            CB :  78
+84b760b0 :            CC :  57
+bfaea54b :            CA :  68
+8c9622bf :            CB :  78
+f9e6716d :            CC :  57
+f161d174 :            CA :  68
+e515c0b8 :            CB :  78
+ae08841e :            CC :  57
+30379141 :            CA :  68
+3577a995 :            CB :  78
+c4d99c93 :            CC :  57
+b032bf42 :            CA :  68
+424554e6 :            CB :  78
+1419bddc :            CC :  57
+96c7d047 :            CA :  68
+a6f3487b :            CB :  78
+a13ca749 :            CC :  57
+  4bfc60 :            CA :  68
+f3b21164 :            CB :  78
+ 197856a :            CC :  57
+b2040bdd :            CA :  68
+b75620f1 :            CB :  78
+eb00670f :            CC :  57
+a7dd584e :            CA :  68
+69fe1db2 :            CB :  78
+de928648 :            CC :  57
+df35d183 :            CA :  68
+d4ed7877 :            CB :  78
+c1c6b565 :            CC :  57
+a49b168c :            CA :  68
+3fd85550 :            CB :  78
+6d3c7ff6 :            CC :  57
+ecb8f2b9 :            CA :  68
+3e82188d :            CB :  78
+9232cfcb :            CC :  57
+c700ce9a :            CA :  68
+2d8527be :            CB :  78
+189a25f4 :            CC :  57
+fde9e4ff :            CA :  68
+62a4aeb3 :            CB :  78
+2002b7c1 :            CC :  57
+50194bf8 :            CA :  68
+d97c787c :            CB :  78
+8a21ffc2 :            CC :  57
+d2ad21d5 :            CA :  68
+17632c69 :            CB :  78
+c1c992c7 :            CC :  57
+34436e26 :            CA :  68
+86147f0a :            CB :  78
+428048e0 :            CC :  57
+c6e786bb :            CA :  68
+523f272f :            CB :  78
+e3630a5d :            CC :  57
+70ac08a4 :            CA :  68
+2b71a6e8 :            CB :  78
+a6f7d0ce :            CA :  68
+4004be32 :            CC :  57
+947d3885 :            CB :  78
+2e77ac03 :            CA :  68
+f9841af7 :            CC :  57
+ a336f96 :            CB :  78
+2817db0c :            CA :  68
+ 39501d0 :            CC :  57
+72255deb :            CB :  78
+78aa4939 :            CA :  68
+ffaaf70d :            CC :  57
+7e964c94 :            CB :  78
+a7beff1a :            CA :  68
+8431003e :            CC :  57
+ 24c58e1 :            CB :  78
+dd46577f :            CA :  68
+f2dd6933 :            CC :  57
+a5028562 :            CB :  78
+63a30878 :            CA :  68
+b96b9cfc :            CC :  57
+b57e0ee7 :            CB :  78
+c4875055 :            CA :  68
+c7b062e9 :            CC :  57
+88401580 :            CB :  78
+36d5d6a6 :            CA :  68
+2b3e0f8a :            CC :  57
+9360e97d :            CB :  78
+1cd1113b :            CA :  68
+30d479af :            CC :  57
+e6c78c6e :            CB :  78
+4fff3d24 :            CA :  68
+68b7c368 :            CC :  57
+4aea3623 :            CB :  78
+42713bb1 :            CA :  68
+1b254705 :            CC :  57
+6fe7edac :            CB :  78
+5343e372 :            CA :  68
+296b3816 :            CC :  57
+60bb8659 :            CB :  78
+10c19537 :            CA :  68
+3e69c86b :            CC :  57
+7ab990ba :            CB :  78
+96112510 :            CA :  68
+914fe114 :            CC :  57
+2d810f9f :            CB :  78
+ebc3674d :            CA :  68
+ 15dbf61 :            CC :  57
+f8160118 :            CB :  78
+8845f17e :            CA :  68
+581105e2 :            CC :  57
+da690b75 :            CB :  78
+4b8bdf73 :            CA :  68
+1ddc1167 :            CC :  57
+8e0cde46 :            CB :  78
+c170ac3c :            CA :  68
+3c01a200 :            CC :  57
+2c0c175b :            CB :  78
+ 3196f29 :            CA :  68
+764227fd :            CC :  57
+b68dbbc4 :            CB :  78
+5a1a0cca :            CA :  68
+fe2d44ee :            CC :  57
+445e94d1 :            CB :  78
+326a2bef :            CA :  68
+776450a3 :            CC :  57
+343f0112 :            CB :  78
+8854fea8 :            CA :  68
+783df22c :            CC :  57
+a2830957 :            CB :  78
+1feb2f45 :            CA :  68
+c2ab1cd9 :            CC :  57
+87b9c9b0 :            CB :  78
+b40b8156 :            CA :  68
+fe2f013a :            CC :  57
+1b957e6d :            CB :  78
+2798f6ab :            CA :  68
+c231c21f :            CC :  57
+14a2c51e :            CB :  78
+b2c08854 :            CA :  68
+7d04fd98 :            CC :  57
+61c7e193 :            CB :  78
+1668c3a1 :            CA :  68
+c4fd79f5 :            CC :  57
+a95816dc :            CB :  78
+63bedb22 :            CA :  68
+750286c6 :            CC :  57
+7f676449 :            CB :  78
+b6d2fba7 :            CA :  68
+63a5e1db :            CC :  57
+ed2c366a :            CB :  78
+ccecf540 :            CA :  68
+59123044 :            CC :  57
+81a2dc0f :            CB :  78
+9796883d :            CA :  68
+c6065b51 :            CC :  57
+2865cf48 :            CB :  78
+edbde62e :            CA :  68
+d65d6192 :            CC :  57
+fb2a2265 :            CB :  78
+400d36e3 :            CA :  68
+  d06bd7 :            CC :  57
+b67ca0f6 :            CB :  78
+10f7316c :            CA :  68
+5e483630 :            CC :  57
+18fe74cb :            CB :  78
+a5a91919 :            CA :  68
+b6171ced :            CC :  57
+8e4b5ef4 :            CB :  78
+4743ae7a :            CA :  68
+d24a5d9e :            CC :  57
+4c0bd4c1 :            CB :  78
+dc72e45f :            CA :  68
+7e2b5c13 :            CC :  57
+752e90c2 :            CB :  78
+33cb68d8 :            CA :  68
+b45cfb5c :            CC :  57
+186367c7 :            CB :  78
+38a15235 :            CA :  68
+ee615ac9 :            CC :  57
+f94871e0 :            CB :  78
+41488006 :            CA :  68
+8ff586ea :            CC :  57
+ff2ed75d :            CB :  78
+79a1801b :            CA :  68
+6996ee8f :            CC :  57
+ 461d1ce :            CB :  78
+ 1510784 :            CA :  68
+bec5abc8 :            CA :  68
+7f41594c :        250 !! :  67
+af284f91 :            CA :  68
+d292f0e5 :            CB :  78
+949ad163 :            CC :  57
+b0cde6d2 :            CA :  68
+ 9b82976 :            CB :  78
+a82eb5ec :            CC :  57
+6724c617 :            CA :  68
+ca959f4b :            CB :  78
+32802f99 :            CC :  57
+f3d6b970 :            CA :  68
+41e2b374 :            CB :  78
+ 3be9efa :            CC :  57
+e7ab6d2d :            CA :  68
+eeb1fb41 :            CB :  78
+fabf16df :            CC :  57
+a06aaede :            CA :  68
+9664d142 :            CB :  78
+ 743e558 :            CC :  57
+d232b253 :            CA :  68
+94c82a47 :            CB :  78
+446540b5 :            CC :  57
+32be6a9c :            CA :  68
+736bbe60 :            CB :  78
+48aba886 :            CC :  57
+1db84709 :            CA :  68
+6d38d5dd :            CB :  78
+37deca9b :            CC :  57
+1716e42a :            CA :  68
+ebd34a4e :            CB :  78
+3b86fc04 :            CC :  57
+eba780cf :            CA :  68
+38a98b83 :            CB :  78
+77c79611 :            CC :  57
+a4694708 :            CA :  68
+621bb88c :            CB :  78
+c841c752 :            CC :  57
+e798b925 :            CA :  68
+ 1721cb9 :            CB :  78
+ec9da897 :            CC :  57
+4037d2b6 :            CA :  68
+26aca09a :            CB :  78
+5cbea5f0 :            CC :  57
+b441ad8b :            CA :  68
+ e8afeff :            CB :  78
+e66c8bad :            CC :  57
+ff63bab4 :            CA :  68
+609ccdf8 :            CB :  78
+7dcfc75e :            CC :  57
+f02edf81 :            CA :  68
+a214abd5 :            CB :  78
+e1c9acd3 :            CC :  57
+  ec0682 :            CA :  68
+a3772026 :            CB :  78
+2444cf1c :            CC :  57
+ab1df487 :            CA :  68
+97d000bb :            CB :  78
+4db9bd89 :            CC :  57
+ 6d171a0 :            CA :  68
+5fb46aa4 :            CB :  78
+4185b4aa :            CC :  57
+4911161d :            CA :  68
+b01f9f31 :            CB :  78
+c657134f :            CC :  57
+46974b8e :            CA :  68
+b4e254f2 :            CB :  78
+f6f2a388 :            CC :  57
+da7351c3 :            CA :  68
+d26a4cb7 :            CB :  78
+e45107a5 :            CC :  57
+5e1957cc :            CA :  68
+63af3a90 :            CB :  78
+2880db36 :            CC :  57
+70e5f8f9 :            CA :  68
+65f652cd :            CB :  78
+139c580b :            CC :  57
+9aaeadda :            CA :  68
+83530afe :            CB :  78
+6e4c8f34 :            CC :  57
+fe8f013f :            CA :  68
+1a95def3 :            CB :  78
+6bec8601 :            CC :  57
+9fd19938 :            CA :  68
+810d29bc :            CB :  78
+d217c702 :            CC :  57
+6a006415 :            CA :  68
+aabc62a9 :            CB :  78
+53ce3707 :            CC :  57
+c7c47966 :            CA :  68
+a1af4e4a :            CB :  78
+8cee3e20 :            CC :  57
+c3107efb :            CA :  68
+56d4f36f :            CB :  78
+5b7a949d :            CC :  57
+a3eba1e4 :            CA :  68
+ c6d6428 :            CB :  78
+ee66440e :            CC :  57
+7d3b7371 :            CA :  68
+a5f1aac5 :            CB :  78
+46bbac43 :            CC :  57
+9bd43a32 :            CA :  68
+236a6ad6 :            CB :  78
+ a369c4c :            CC :  57
+526586f7 :            CA :  68
+6a2c062b :            CB :  78
+3d79cf79 :            CC :  57
+21201dd0 :            CA :  68
+e9ba55d4 :            CB :  78
+8a195e5a :            CC :  57
+8516830d :            CA :  68
+af4e4721 :            CB :  78
+a0c9f3bf :            CC :  57
+13cebc3e :            CA :  68
+3fd0eca2 :            CB :  78
+6133d5b8 :            CC :  57
+b3861533 :            CA :  68
+289dd327 :            CB :  78
+9e951295 :            CC :  57
+159af8fc :            CA :  68
+2695aac0 :            CB :  78
+eb7b61e6 :            CC :  57
+dd112ee9 :            CA :  68
+76de93bd :            CB :  78
+6030897b :            CA :  68
+ea28c5ef :            CC :  57
+ce949fae :            CB :  78
+8ecf5664 :            CA :  68
+50ec00a8 :            CC :  57
+49e75663 :            CB :  78
+287f79f1 :            CA :  68
+4e343945 :            CC :  57
+4c044eec :            CB :  78
+ cbfdab2 :            CA :  68
+5e26b356 :            CC :  57
+815f2c99 :            CB :  78
+f4752977 :            CA :  68
+8186f0ab :            CC :  57
+29988ffa :            CB :  78
+ab39ca50 :            CA :  68
+bb646a54 :            CC :  57
+167bcbdf :            CB :  78
+c510618d :            CA :  68
+4e922da1 :            CC :  57
+135a6e58 :            CB :  78
+ff8f94be :            CA :  68
+ f5bed22 :            CC :  57
+54d8edb5 :            CB :  78
+b427cfb3 :            CA :  68
+88ea55a7 :            CC :  57
+3ffd0986 :            CB :  78
+ca971d7c :            CA :  68
+417fb740 :            CC :  57
+cac0af9b :            CB :  78
+e59f6569 :            CA :  68
+ab0a523d :            CC :  57
+6a677504 :            CB :  78
+c5d49c0a :            CA :  68
+7feed82e :            CC :  57
+f17cf311 :            CB :  78
+5cdeb82f :            CA :  68
+ 9a7f0e3 :            CC :  57
+e66b9852 :            CB :  78
+d0ea7be8 :            CA :  68
+8c3ad36c :            CC :  57
+ec89bd97 :            CB :  78
+4aa06185 :            CA :  68
+30314319 :            CC :  57
+f2e20ef0 :            CB :  78
+6bc63c96 :            CA :  68
+b8fa807a :            CC :  57
+72c098ad :            CB :  78
+99725eeb :            CA :  68
+204afe5f :            CC :  57
+b0a3085e :           OFF :  89
+5f3f1421 :            CA :  68
+86eb7275 :            CC :  57
+89b61d5c :            CB :  78
+b8f3eda2 :            CA :  68
+98e5e146 :            CC :  57
+57d504c9 :            CB :  78
+5a77d827 :            CA :  68
+aeca265b :            CC :  57
+6ac5d8ea :            CB :  78
+7daec3c0 :            CA :  68
+6dc906c4 :            CC :  57
+836e888f :            CB :  78
+1c8f10bd :            CA :  68
+ff200bd1 :            CC :  57
+a4d9adc8 :            CB :  78
+570610ae :            CA :  68
+4e035412 :            CC :  57
+934cfae5 :            CB :  78
+45198b63 :            CA :  68
+e649a857 :            CC :  57
+8b085b76 :            CB :  78
+f1e657ec :            CA :  68
+244fe4b0 :            CC :  57
+3f8c994b :            CB :  78
+414c5999 :            CA :  68
+ 20d056d :            CC :  57
+54b39574 :            CB :  78
+76c970fa :            CA :  68
+cda5681e :            CC :  57
+e8bc6541 :            CB :  78
+613b30df :            CA :  68
+29361093 :            CC :  57
+d666e342 :            CB :  78
+8e0e6758 :            CA :  68
+ad6401dc :            CC :  57
+43d88447 :            CB :  78
+502fcab5 :            CA :  68
+a51bfb49 :            CC :  57
+ bdb8060 :            CB :  78
+86ce5a86 :            CA :  68
+5410296a :            CC :  57
+52fd9fdd :            CB :  78
+3872449b :            CA :  68
+76e79b0f :            CC :  57
+34993c4e :            CB :  78
+d1e65e04 :            CA :  68
+cbd28a48 :            CC :  57
+9a2d4583 :            CB :  78
+731a8011 :            CA :  68
+f0b2c965 :            CC :  57
+f7ec5a8c :            CB :  78
+bc2e5952 :            CA :  68
+fb34e3f6 :            CC :  57
+bfbb46b9 :            CB :  78
+ 2c28297 :            CA :  68
+fcd8c3cb :            CC :  57
+ 628729a :            CB :  78
+ea14e7f0 :            CA :  68
+a9d3e9f4 :            CC :  57
+8e3c18ff :            CB :  78
+cc31d5ad :            CA :  68
+b60f8bc1 :            CC :  57
+4c704ff8 :            CB :  78
+5c18395e :            CA :  68
+dbfe23c2 :            CC :  57
+2a0c35d5 :            CB :  78
+9a59e6d3 :            CA :  68
+812246c7 :            CC :  57
+dd7ad226 :            CB :  78
+ 6d3f11c :            CA :  68
+c177cce0 :            CC :  57
+4ec87abb :            CB :  78
+ b3b6789 :            CA :  68
+3d649e5d :            CC :  57
+7d0ccca4 :            CB :  78
+1a9c06aa :            CA :  68
+28dbb4ce :            CB :  78
+42e55284 :            CC :  57
+998cad4f :            CA :  68
+6b372003 :            CB :  78
+10a6c691 :            CC :  57
+45dca588 :            CA :  68
+9c511f0c :            CB :  78
+cb4339d2 :            CC :  57
+a33911a5 :            CA :  68
+e8349d39 :            CB :  78
+69606517 :            CC :  57
+5ab70d36 :            CA :  68
+cd8ea31a :            CB :  78
+efb5d470 :            CC :  57
+9f11520b :            CA :  68
+26e08b7f :            CB :  78
+ed8ff42d :            CC :  57
+1b937134 :            CA :  68
+16620c78 :            CB :  78
+458e51de :            CC :  57
+3c44f001 :            CA :  68
+23ee6455 :            CB :  78
+c145e153 :            CC :  57
+5b9fd902 :            CA :  68
+60353aa6 :            CB :  78
+b403559c :            CC :  57
+f47c9107 :            CA :  68
+dd7a053b :            CB :  78
+4889de09 :            CC :  57
+67740020 :            CA :  68
+10480124 :            CB :  78
+768bd72a :            CC :  57
+3dad5e9d :            CA :  68
+48c90fb1 :            CB :  78
+16c13fcf :            CC :  57
+9f52360e :            CA :  68
+6f970772 :            CB :  78
+1bff0208 :            CC :  57
+12fd6643 :            CA :  68
+c16d4937 :            CB :  78
+e4ee6025 :            CC :  57
+9fbd3e4c :            CA :  68
+bca7a910 :            CB :  78
+1af115b6 :            CC :  57
+8c50f979 :            CA :  68
+40dffb4d :            CB :  78
+b120fc8b :            CC :  57
+165b305a :            CA :  68
+7ab0d57e :            CB :  78
+6f0545b4 :            CC :  57
+c2590dbf :            CA :  68
+67ee5373 :            CB :  78
+31af9681 :            CC :  57
+c05d57b8 :            CA :  68
+f4d8f03c :            CB :  78
+9c2c9982 :            CC :  57
+d93a9c95 :            CA :  68
+138ec329 :            CB :  78
+1511d387 :            CC :  57
+dce513e6 :            CA :  68
+1d80b0ca :            CB :  78
+bc09cca0 :            CC :  57
+ce27037b :            CA :  68
+ecf75fef :            CB :  78
+ab73dd1d :            CC :  57
+e91db864 :            CA :  68
+40d302a8 :            CB :  78
+aef22e8e :            CC :  57
+1c7d63f1 :            CA :  68
+b10d4345 :            CB :  78
+a15ac0c3 :            CC :  57
+95036cb2 :            CA :  68
+3f11e556 :            CB :  78
+7d4382cc :            CC :  57
+8d4d0377 :            CA :  68
+dd84eaab :            CB :  78
+f2f1cff9 :            CC :  57
+d70f0c50 :            CA :  68
+7e584c54 :            CB :  78
+3706e0da :            CC :  57
+1850ab8d :            CA :  68
+9a4b97a1 :            CB :  78
+45d9003f :            CC :  57
+aa3f06be :            CA :  68
+4cc8ff22 :            CB :  78
+7f189438 :            CC :  57
+b7bb09b3 :            CA :  68
+2411afa7 :            CB :  78
+f38c4b15 :            CC :  57
+a5353f7c :            CA :  68
+53627940 :            CB :  78
+3c4cfc66 :            CC :  57
+  6c0f69 :            CA :  68
+410e1c3d :            CB :  78
+50bc0dfb :            CC :  57
+ a61ee0a :            CA :  68
+ceefca2e :            CB :  78
+f64a6ce4 :            CC :  57
+4667522f :            CA :  68
+7352aae3 :            CB :  78
+b62e6a71 :            CC :  57
+80737de8 :            CA :  68
+d7ce756c :            CB :  78
+fd100d32 :            CC :  57
+a1a36b85 :            CA :  68
+3c496d19 :            CB :  78
+8e01a5f7 :            CC :  57
+1f836e96 :            CA :  68
+e281527a :            CB :  78
+f161b8d0 :            CC :  57
+598a58eb :            CA :  68
+eb33185f :            CB :  78
+bc678a0d :            CC :  57
+3ab83394 :            CA :  68
+22486cd8 :            CB :  78
+6990df3e :            CC :  57
+a5c2dbe1 :            CA :  68
+acbe6635 :            CB :  78
+3531c433 :            CC :  57
+17541462 :            CA :  68
+6435e406 :            CB :  78
+915a63fc :            CC :  57
+611ad9e7 :            CA :  68
+f410741b :            CB :  78
+ffc745e9 :            CA :  68
+c516dabd :            CC :  57
+a477cb84 :            CB :  78
+94d17e8a :            CA :  68
+2e9b02ae :            CC :  57
+6dd62391 :            CB :  78
+615aa4af :            CA :  68
+35a84563 :            CC :  57
+d8cf0ad2 :            CB :  78
+b58f9a68 :            CA :  68
+2bedf9ec :            CC :  57
+8c367a17 :            CB :  78
+f1797a05 :            CA :  68
+71a88399 :            CC :  57
+826b3d70 :            CB :  78
+e6a13716 :            CA :  68
+c1a442fa :            CC :  57
+eebe012d :            CB :  78
+ f4cc36b :            CA :  68
+eec74adf :            CC :  57
+5ea392de :            CB :  78
+ 6e7c814 :            CA :  68
+8828e958 :            CC :  57
+839b2653 :            CB :  78
+16224261 :            CA :  68
+ c8a54b5 :            CC :  57
+5144ae9c :            CB :  78
+1ae894e2 :            CA :  68
+67c10c86 :            CC :  57
+cfc39b09 :            CB :  78
+de16dc67 :            CA :  68
+5715be9b :            CC :  57
+346b882a :            CB :  78
+8e409900 :            CA :  68
+ae95c004 :            CC :  57
+61dab4cf :            CB :  78
+19f9fafd :            CA :  68
+3dfd6a11 :            CC :  57
+e9254b08 :            CB :  78
+5a3563ee :            CA :  68
+edeaeb52 :            CC :  57
+9ff0cd25 :            CB :  78
+ dc1eba3 :            CA :  68
+3df75c97 :            CC :  57
+a14c36b6 :            CB :  78
+421af92c :            CA :  68
+e0bb29f0 :            CC :  57
+f273a18b :            CB :  78
+79293fd9 :            CA :  68
+30871fad :            CC :  57
+36597eb4 :            CB :  78
+f786b03a :            CA :  68
+e330ab5e :            CC :  57
+56e7b381 :            CB :  78
+784d2d1f :            CA :  68
+8efa20d3 :            CC :  57
+4a242a82 :            CB :  78
+37871498 :            CA :  68
+c5b3131c :            CC :  57
+b342a887 :            CB :  78
+1864ecf5 :            CA :  68
+864d1189 :            CC :  57
+35c4f5a0 :            CB :  78
+9f58c5c6 :            CA :  68
+d78258aa :            CC :  57
+66feaa1d :            CB :  78
+80ea1cdb :            CA :  68
+cfd2474f :            CC :  57
+40172f8e :            CB :  78
+62505744 :            CA :  68
+3416a788 :            CC :  57
+a13ec5c3 :            CB :  78
+69ca1e51 :            CA :  68
+eeb11ba5 :            CC :  57
+888e9bcc :            CB :  78
+ 3f13092 :            CA :  68
+7bbd3f36 :            CC :  57
+839c4cf9 :            CB :  78
+357876d7 :            CA :  68
+c4964c0b :            CC :  57
+545a51da :            CB :  78
+10696d30 :            CA :  68
+7b2a5334 :            CC :  57
+1f75353f :            CB :  78
+f9fa2fed :            CA :  68
+f82d5a01 :            CC :  57
+4b0c9d38 :            CB :  78
+52eabc9e :            CA :  68
+aef7eb02 :            CC :  57
+77d37815 :            CB :  78
+1e423713 :            CA :  68
+763aeb07 :            CC :  57
+7d3fdd66 :            CB :  78
+8c98425c :            CA :  68
+5749c220 :            CC :  57
+f44572fb :            CB :  78
+8176bdc9 :            CA :  68
+fa70289d :            CC :  57
+1af065e4 :            CB :  78
+   175ea :            CA :  68
+c50e280e :            CC :  57
+a93f4771 :            CB :  78
+77f7998f :            CA :  68
+174f2043 :            CC :  57
+58835e32 :            CB :  78
+946202c8 :            CA :  68
+fd93e04c :            CC :  57
+98dd3af7 :            CB :  78
+d63da3e5 :            CA :  68
+34b82379 :            CC :  57
+78b2a1d0 :            CB :  78
+b11ea876 :            CA :  68
+926d025a :            CC :  57
+231f170d :            CB :  78
+d3eb1a4b :            CA :  68
+82f827bf :            CC :  57
+16d5a03e :            CB :  78
+8d371a74 :            CA :  68
+ead6d9b8 :            CC :  57
+56f48933 :            CB :  78
+59a4fe41 :            CA :  68
+7c702695 :            CC :  57
+f03f3cfc :            CB :  78
+57a4e042 :            CA :  68
+ 91ec5e6 :            CA :  68
+80ec02ca :        250 !! :  67
+5a8d7547 :            CA :  68
+522d7d7b :            CB :  78
+f387b449 :            CC :  57
+a4df3560 :            CA :  68
+61bc1a64 :            CB :  78
+8f3dc66a :            CC :  57
+be7728dd :            CA :  68
+180b4df1 :            CB :  78
+4f2aac0f :            CC :  57
+c2fbe94e :            CA :  68
+7316feb2 :            CB :  78
+6bfcdf48 :            CC :  57
+2c29a683 :            CA :  68
+c334dd77 :            CB :  78
+dccd7265 :            CC :  57
+49253f8c :            CA :  68
+c4344e50 :            CB :  78
+7d1d30f6 :            CC :  57
+434ebfb9 :            CA :  68
+a220f58d :            CB :  78
+a25144cb :            CC :  57
+385ccf9a :            CA :  68
+95be78be :            CB :  78
+95d96ef4 :            CC :  57
+9be0e9ff :            CA :  68
+ef5e43b3 :            CB :  78
+7e8224c1 :            CC :  57
+a2c364f8 :            CA :  68
+3423617c :            CB :  78
+40ee20c2 :            CC :  57
+bd329ed5 :            CA :  68
+10c8b969 :            CB :  78
+f05137c7 :            CC :  57
+dbdddf26 :            CA :  68
+4abf400a :            CB :  78
+92dd81e0 :            CC :  57
+40e6bbbb :            CA :  68
+ affec2f :            CB :  78
+38c8275d :            CC :  57
+ff8f11a4 :            CA :  68
+274c7fe8 :            CB :  78
+d4d061ce :            CC :  57
+ e71e231 :            CA :  68
+3d367585 :            CB :  78
+170d8103 :            CC :  57
+f6bea3f2 :            CA :  68
+5a10a096 :            CB :  78
+ ccc040c :            CC :  57
+19fcd7b7 :            CA :  68
+abb252eb :            CB :  78
+1e121639 :            CC :  57
+57e4f190 :            CA :  68
+da7e1594 :            CB :  78
+e935001a :            CC :  57
+e5bfe5cd :            CA :  68
+879645e1 :            CB :  78
+e9bf5c7f :            CC :  57
+66f3e9fe :            CA :  68
+a1432662 :            CB :  78
+b4d72178 :            CC :  57
+3f2f39f3 :            CA :  68
+50cc33e7 :            CB :  78
+d5becd55 :            CC :  57
+5b54f0bc :            CA :  68
+cffdce80 :            CB :  78
+85ea47a6 :            CC :  57
+e19045a9 :            CA :  68
+7328867d :            CB :  78
+5a32463b :            CC :  57
+c3f3bd4a :            CA :  68
+d40c9d6e :            CB :  78
+25cc4624 :            CC :  57
+ddd01e6f :            CA :  68
+aa1e8b23 :            CB :  78
+6af568b1 :            CC :  57
+b08e3b28 :            CA :  68
+c53496ac :            CB :  78
+ 867c472 :            CC :  57
+73b2ddc5 :            CA :  68
+569dd359 :            CB :  78
+343ffa37 :            CC :  57
+ 4c169d6 :            CA :  68
+621411ba :            CB :  78
+61801e10 :            CC :  57
+7ab4012b :            CA :  68
+58f0949f :            CB :  78
+e3c1444d :            CC :  57
+548b3cd4 :            CA :  68
+cb9a9a18 :            CB :  78
+cb5a427e :            CC :  57
+212fca21 :            CA :  68
+7cb30875 :            CB :  78
+e78c7473 :            CC :  57
+b3397ba2 :            CA :  68
+4dfdcf46 :            CB :  78
+557a953c :            CC :  57
+b6ad9e27 :            CA :  68
+273bcc5b :            CB :  78
+bc6dfc29 :            CC :  57
+44fda1c0 :            CA :  68
+70e344c4 :            CB :  78
+ 36fcdca :            CC :  57
+fa6366bd :            CA :  68
+510d41d1 :            CB :  78
+1b81f0ef :            CC :  57
+f89dbeae :            CA :  68
+ 1b76212 :            CB :  78
+12e2d7a8 :            CC :  57
+1149f163 :            CA :  68
+f127ee57 :            CB :  78
+a3236c45 :            CC :  57
+e1fa55ec :            CA :  68
+226942b0 :            CB :  78
+9d63b256 :            CC :  57
+675a4f99 :            CA :  68
+7555db6d :            CB :  78
+ 98cebab :            CC :  57
+ f613efa :            CA :  68
+6c03961e :            CB :  78
+a5ab5154 :            CC :  57
+65cc36df :            CA :  68
+bcc6f693 :            CB :  78
+ fc1b0a1 :            CC :  57
+b2e58558 :            CA :  68
+37da7fdc :            CB :  78
+294a7c22 :            CA :  68
+a56d77c6 :            CC :  57
+da967149 :            CB :  78
+d99820a7 :            CA :  68
+ f3796db :            CC :  57
+f346776a :            CB :  78
+b6fdae40 :            CA :  68
+fb51b944 :            CC :  57
+bc11210f :            CB :  78
+93fd253d :            CA :  68
+a8470851 :            CC :  57
+51242848 :            CB :  78
+1f1df72e :            CA :  68
+55afc292 :            CC :  57
+3ad4df65 :            CB :  78
+7cc88be3 :            CA :  68
+66b750d7 :            CC :  57
+ 99151f6 :            CB :  78
+66e6da6c :            CA :  68
+8341af30 :            CC :  57
+3520e9cb :            CB :  78
+ffba6619 :            CA :  68
+314979ed :            CC :  57
+f39ea7f4 :            CB :  78
+ 8892f7a :            CA :  68
+f6e52e9e :            CC :  57
+8eef41c1 :            CB :  78
+c279695f :            CA :  68
+994c7113 :            CC :  57
+6deeb1c2 :            CB :  78
+ 94301d8 :            CA :  68
+b989645c :            CC :  57
+8caf0cc7 :            CB :  78
+b5aa4f35 :            CA :  68
+28e267c9 :            CC :  57
+9279aae0 :            CB :  78
+5bf47106 :            CA :  68
+b8a9c7ea :            CC :  57
+5cb7f45d :            CB :  78
+a378351b :            CA :  68
+2f07338f :            CC :  57
+66ee62ce :            CB :  78
+b1e99084 :            CA :  68
+f48e04c8 :            CC :  57
+eece8603 :            CB :  78
+cc25fc91 : OTHER ------- :   0
+Anomalies: 109.
+Step frames: .
