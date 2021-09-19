@@ -1,0 +1,69 @@
+a2b6bdcf :            CA :  68
+ 464d883 :        EIGHTS :  88
+69950fbb :           OFF :  89
+6f239aea :            CA :  68
+230cdd0e :        EIGHTS :  88
+878454e6 :           OFF :  89
+a7ddf189 :            CA :  68
+6274485d :        EIGHTS :  88
+8fb18055 :           OFF :  89
+b7f7f6dc :            CA :  68
+ f045ea0 :        EIGHTS :  88
+29277038 :           OFF :  89
+960ec253 :            CA :  68
+5b393a47 :        EIGHTS :  88
+ceba90ff :           OFF :  89
+55bc989e :            CA :  68
+214a8702 :        EIGHTS :  88
+ad8c385a : OTHER ------- : 9693
+5b995101 : OTHER ------- : 9668
+ 7173cd5 : OTHER ------- :   0
+ 7173cd5 : OTHER ------- :   0
+ 7173cd5 : OTHER ------- : 28800
+cb68b355 : OTHER ------- : 9600
+fb25dad5 : OTHER ------- : 9600
+7eb40255 : OTHER ------- : 9600
+741329d5 : OTHER ------- : 9600
+f9435155 : OTHER ------- :   0
+f9435155 : OTHER ------- : 19200
+2b16a055 : OTHER ------- : 9600
+13b9c7d5 : OTHER ------- : 9600
+ 42def55 : OTHER ------- : 9600
+1a7316d5 : OTHER ------- : 9600
+74893e55 : OTHER ------- : 9600
+307065d5 : OTHER ------- : 9600
+6c288d55 : OTHER ------- : 9600
+45b1b4d5 : OTHER ------- :   0
+45b1b4d5 : OTHER ------- : 19200
+4a3703d5 : OTHER ------- : 9600
+b1332b55 : OTHER ------- : 9600
+2e0052d5 : OTHER ------- : 9600
+de9e7a55 : OTHER ------- : 9600
+e10da1d5 : OTHER ------- : 9600
+534dc955 : OTHER ------- : 9600
+535ef0d5 : OTHER ------- : 9600
+ff411855 : OTHER ------- : 9600
+74f43fd5 : OTHER ------- : 9600
+d2786755 : OTHER ------- : 9600
+35cd8ed5 : OTHER ------- : 9600
+bcf3b655 : OTHER ------- : 9600
+85eaddd5 : OTHER ------- : 9600
+aeb30555 : OTHER ------- : 9600
+554c2cd5 : OTHER ------- : 9600
+97b65455 : OTHER ------- : 9600
+93f17bd5 : OTHER ------- : 9600
+67fda355 : OTHER ------- : 9600
+31dacad5 : OTHER ------- : 9600
+ f88f255 : OTHER ------- : 9600
+1f0819d5 : OTHER ------- : 9603
+9e4a135e : OTHER ------- : 9600
+ a94e8de : OTHER ------- : 9600
+a3d4be5e : OTHER ------- : 9600
+400993de : OTHER ------- : 9600
+b533695e : OTHER ------- : 9600
+d9523ede : OTHER ------- : 9600
+8266145e : OTHER ------- : 9600
+866ee9de : OTHER ------- :   0
+866ee9de : OTHER ------- : 19209
+Anomalies: 62.
+Step frames: .

@@ -159,7 +159,6 @@ void selectBlurStyle(uint32_t& seed){
   //Only 3 or 4 types of splotches?
 }
 int dummyCam(uint32_t& seed,int camAngle1,int camAngle2){
-  bool rareFailure = false;
   uint32_t v1 = 0;
   int count = 0;
   int seedPercent = 0;
@@ -179,10 +178,10 @@ int dummyCam(uint32_t& seed,int camAngle1,int camAngle2){
   LCG(seed);
   totalRNGCalls++;
   if (v1 == 5 || v1 == 7){
-    if(!rareFailure){
+    //This is dependent on wDpad sens being set to 1. Addr: 804eb8e0
+    //If 0, or if trainerperside is != 0, then skip.
       LCG(seed);
       totalRNGCalls++;
-    }
   } else if (v1 == 6 || v1 == 9){
     LCG(seed);
     totalRNGCalls++;
@@ -426,10 +425,16 @@ void trackToInput(vector<frameData>&outFrame, int target){
   outFrame.push_back(curF);
 }
 }
-int matchPIDs(vector<int>candidatePIDS,int sourcePID){
-  for (unsigned int i = 0; i < candidatePIDS.size()-1; i++){
-    if (candidatePIDS.at(i) == sourcePID){
-      return i; //YAY!
+int matchPIDs(vector<int>candidatePIDS,int sourcePID, bool &dblMatch){
+  for (unsigned int i = 0; i < candidatePIDS.size()-1; i++){ //Loop all candidates
+    if (candidatePIDS.at(i) == sourcePID){ //evaluate.
+      if (candidatePIDS.at(i+1) == sourcePID){
+        dblMatch = true; //means an 8 or 9 camframe makes no impact on pid.
+        // cout << "dbl match happened\n";
+      } else {
+        dblMatch = false;
+      }
+      return i; //YAY! Correct PID found!
     }
   }
   return -1; //error, no pid found on frame. May be missing in original recording or is a weird edge case not seen before.
@@ -441,11 +446,13 @@ int main(){
     cout << "Enter filename: ";
     getline(cin, FILE_NAME);
     vector<uint32_t>sourcePIDS = hexReadNumbersFromFile(FILE_NAME + FILE_EXTENSION);
+    vector<int>sourceCamFrames = decimalReadNumbersFromFile("outCamFrameOnly.txt");
     cout << sourcePIDS.size() << endl;
     ofstream outputData ("out" + FILE_NAME + FILE_EXTENSION);
 
     vector<frameData> singleFrame;
     int correctPID = 0;
+    bool dblMatch = false;
 
 
 for (int i = 0; i<1025;i++){ //PER FRAME BASIS
@@ -455,7 +462,7 @@ for (int i = 0; i<1025;i++){ //PER FRAME BASIS
 //Alt: Pattern
 //alt2: pid - pattern. 
 trackToInput(singleFrame,i); //Builds a frame's worth of data for output -- comparison.
-correctPID = matchPIDs(singleFrame.at(i).PID,sourcePIDS.at(i));
+correctPID = matchPIDs(singleFrame.at(i).PID,sourcePIDS.at(i),dblMatch);
 if (correctPID == -1){  //error case
   outputData << "ERROR - MISSING?\n";
   continue;
@@ -463,19 +470,42 @@ if (correctPID == -1){  //error case
 
 //print block
 outputData
-// << singleFrame.at(i).visFrame 
-// << hex
-// << ": - Reached: "<< setw(8) << singleFrame.at(i).reached
-// << " - Seed: "    << setw(8) << singleFrame.at(i).outSeed.at(correctPID)
-// << " - PID:  "    << setw(8) << singleFrame.at(i).PID.at(correctPID) 
-// << dec
-// s
- << singleFrame.at(i).aToBlur.at(correctPID)
-// << "/" << singleFrame.at(i).blurDuration.at(correctPID) 
-// << "/" << singleFrame.at(i).camOffset.at(correctPID)
-<< endl;
-} //end of loop
+<< singleFrame.at(i).visFrame 
+<< hex
+ << ": - Reached: "<< setw(8) 
+<< singleFrame.at(i).reached
+<< " - Seed: "    << setw(8) << singleFrame.at(i).outSeed.at(correctPID)
+<< " - PID:  "    << setw(8) << singleFrame.at(i).PID.at(correctPID) 
+<< dec 
+<< " - Pattern: "
+<< singleFrame.at(i).aToBlur.at(correctPID)
+<< "/" 
+<< singleFrame.at(i).blurDuration.at(correctPID) 
+<< "/";
+if (dblMatch){
+  outputData << sourceCamFrames.at(i);
+  // << " *";
+} else {
+  outputData << singleFrame.at(i).camOffset.at(correctPID);
 }
+outputData << endl;
+} //end of loop
+// vector<uint32_t>dupes;
+// for (unsigned int i = 0; i < sourcePIDS.size() -1 ;i++){
+//   if (sourcePIDS.at(i) == sourcePIDS.at(i+1)){
+//     dupes.push_back(sourcePIDS.at(i));
+//   } 
+// }
+// outputData << " Tripes found: " << dupes.size() << endl;
+// outputData << "List: \n";
+// for (unsigned int i = 0; i < dupes.size() - 1; i++){
+//   outputData << hex << dupes.at(i) << endl;
+// }
+
+}
+
+
+
 /*
 There is a slight re-interpretation of the calls depending on how I retrieve them from the game. Manually I get a nice even distribution. Automatically, much more chaotic. 
 

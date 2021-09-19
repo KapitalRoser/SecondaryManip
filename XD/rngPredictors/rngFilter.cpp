@@ -75,8 +75,9 @@ vector<uint32_t> readNumbersFromFile(string fileName)
 
 int alignTrio (vector<int>changeFrames, int currentFrame, int oldAlign, bool toDecrement){
   int alignment = oldAlign;
-  if (binary_search(changeFrames.begin(),changeFrames.end(),currentFrame)){ //If current frame is special, adjust alignment.
-    if (toDecrement){ //reorganize original pattern so that there is no need to decrememnt? Would simplify things.
+  if (binary_search(changeFrames.begin(),changeFrames.end(),currentFrame)){ 
+    //If current frame is special, adjust alignment by returning which i % 3 value gets unique treatment.
+    if (toDecrement){ //reorganize original pattern so that there is no need to decrement? Would simplify things.
       alignment--;
       alignment = alignment % 3;     
     } else {
@@ -289,6 +290,7 @@ int main(){
       if (binary_search(fiveHundoRule.begin(),fiveHundoRule.end(),i)){
         rolls -= 11;
       }
+      //may need to rework for performance reasons? Is binary search slow?
 
 
 

@@ -5,7 +5,7 @@ b53b6401 :            CA :  68
 ed0d1855 :        EIGHTS :  88
 bcd2a14d :           OFF :  89
 ba05e0f4 :            CA :  68
-c7c02838 :        EIGHTS :  88 -- Battle func starts. Does some looping. -- culprits + culprit4 triggers. Deck_archive is loaded ON THIS FRAME.
+c7c02838 :        EIGHTS :  88 -- Battle func starts. Does some looping. -- culprits + culprit4 triggers.
 88e416d0 :           OFF :  89
 8d0b778b :            CA :  68
 2e45e8ff :        EIGHTS :  88  
@@ -15,18 +15,18 @@ fe44f676 :            CA :  68 -- OR THIS FRAME WILL VARY.
 c28ac6b2 :           OFF :  89
 8bbc60a5 :            CA :  68 -- more calculations
 9bb39c39 :        EIGHTS :  88
-caa8c0b1 :           OFF :  89 -- Camera transition gets refreshed and set. 
+caa8c0b1 :           OFF :  89 -- Camera gets refreshed and set. 
 aa389048 : OTHER ------- : 9672
 e71b47d0 : OTHER ------- : 9688
  26194e8 : OTHER ------- :   0 
  26194e8 : OTHER ------- :   0
- 26194e8 : OTHER ------- : 28800 -- again. always 2 9600's before zeroes. Fight_common is loaded.V
+ 26194e8 : OTHER ------- : 28800 -- again. always 2 9600's before zeroes.
 56c85968 : OTHER ------- : 9600 
 3d249ae8 : OTHER ------- : 9600
 929ddc68 : OTHER ------- : 9600
 dd341de8 : OTHER ------- : 9600
 a2e75f68 : OTHER ------- :   0 
-a2e75f68 : OTHER ------- : 19200 --again unknown reason. Load map after V
+a2e75f68 : OTHER ------- : 19200 --again unknown reason.
 b7a4e268 : OTHER ------- : 9600
 12af23e8 : OTHER ------- : 9600
   d66568 : OTHER ------- : 9600
@@ -37,27 +37,27 @@ f0956b68 : OTHER ------- : 9600
 984dace8 : OTHER ------- : 9600
 f722ee68 : OTHER ------- :   0 
 f722ee68 : OTHER ------- : 19200
-f2247168 : OTHER ------- : 9600 --again -- LOADS MAP/ROOM DATA for battle. -- first section of variance, so far seen up to 2 frames. 7,8, or 9 combined with 288 from above. Waza/Move sequence loaded V.
+f2247168 : OTHER ------- : 9600 --again -- LOADS MAP/ROOM DATA for battle. -- first section of variance, so far seen up to 2 frames. 7,8, or 9 combined with 288 from above.
 9a50b2e8 : OTHER ------- : 9600
 1199f468 : OTHER ------- : 9600
 de0035e8 : OTHER ------- : 9600
 85837768 : OTHER ------- : 9600
 8e23b8e8 : OTHER ------- : 9600
-7de0fa68 : OTHER ------- : 9600 -- again. -- This is static (right?)  'Camera Shake' V.
+7de0fa68 : OTHER ------- : 9600 -- again. -- This is static (right?)
 dabb3be8 : OTHER ------- : 9600
 2ab27d68 : OTHER ------- : 9600
 f3c6bee8 : OTHER ------- : 9600
-bbf80068 : OTHER ------- : 9600 (if deleting camera data then this section is destroyed from here until teddy generation.)
+bbf80068 : OTHER ------- : 9600 VV This section gets completely buggered until teddy generation.
  94641e8 : OTHER ------- : 9600
 61b18368 : OTHER ------- : 9600
 4b39c4e8 : OTHER ------- : 9600
-4bdf0668 : OTHER ------- : 9600 -- again. --culprit4 triggers. deck_archive again.
+4bdf0668 : OTHER ------- : 9600 -- again. --culprit4 triggers.
 e9a147e8 : OTHER ------- : 9600
 aa808968 : OTHER ------- : 9600
 147ccae8 : OTHER ------- : 9600
 ad960c68 : OTHER ------- : 9600
 fbcc4de8 : OTHER ------- : 9600
-851f8f68 : OTHER ------- : 9603 -- again, after cam func occurs. 'PKx_Klein_2101'
+851f8f68 : OTHER ------- : 9603 --again, after cam func occurs.
 63f332dd : OTHER ------- : 9600
 fd4f4a5d : OTHER ------- : 9600
 f09c61dd : OTHER ------- : 9600
@@ -65,7 +65,7 @@ f09c61dd : OTHER ------- : 9600
 5d0990dd : OTHER ------- : 9600
 9229a85d : OTHER ------- : 9600
 993abfdd : OTHER ------- :   0
-993abfdd : OTHER ------- : 19209 --again, after teddy generated -- pkx agent3male -- model for naps.
+993abfdd : OTHER ------- : 19209 --again, after teddy generated
 ^^ Teddy generated.
 
 

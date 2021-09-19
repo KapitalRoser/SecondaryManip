@@ -1,0 +1,67 @@
+97318ccd :            BA :  79
+27d244a2 :        SEVENS :  77
+2d0b9c59 :           OFF :  89
+85daac50 :            BA :  79
+99f319e1 :        SEVENS :  77
+99813f6c :           OFF :  89
+3849f037 :            BA :  79
+f3278554 :        SEVENS :  77 -- c4 triggers
+4a2f5da3 :           OFF :  89
+e7f6b832 :            BA :  79
+72fd186b :        SEVENS :  77
+c47c77ae :           OFF :  89
+b31d2431 :            BA :  79
+e78fc9d6 :        SEVENS :  77
+ c7a1a7d :           OFF :  89
+e49d4764 :            BA :  79
+ 6d0a485 :        SEVENS :  77
+6a68a240 : OTHER ------- : 9693
+16d3c5ef : OTHER ------- : 9679
+75fc52ec : OTHER ------- :   0
+75fc52ec : OTHER ------- :   0
+75fc52ec : OTHER ------- : 28800 c4
+995bff6c : OTHER ------- : 9600
+922b38ec : OTHER ------- : 9600
+d627726c : OTHER ------- : 9600
+cb50abec : OTHER ------- : 9600
+d7a6e56c : OTHER ------- :   0
+d7a6e56c : OTHER ------- : 19200 c4
+cdda586c : OTHER ------- : 9600
+83b791ec : OTHER ------- : 9600
+e8c1cb6c : OTHER ------- : 9600
+62f904ec : OTHER ------- : 9600
+585d3e6c : OTHER ------- : 9600
+2eee77ec : OTHER ------- : 9600
+4cacb16c : OTHER ------- : 9600
+1797eaec : OTHER ------- : 9600
+f5b0246c : OTHER ------- :   0
+f5b0246c : OTHER ------- : 19200
+8367976c : OTHER ------- : 9600 -- c4 wat?
+ff06d0ec : OTHER ------- : 9600
+25d30a6c : OTHER ------- : 9600
+5dcc43ec : OTHER ------- : 9600
+ cf27d6c : OTHER ------- : 9600
+9945b6ec : OTHER ------- : 9600
+68c5f06c : OTHER ------- : 9600 -- c4
+e17329ec : OTHER ------- : 9600
+694d636c : OTHER ------- : 9600
+66549cec : OTHER ------- : 9600
+3e88d66c : OTHER ------- : 9600
+57ea0fec : OTHER ------- : 9600
+1878496c : OTHER ------- : 9600
+e63382ec : OTHER ------- : 9600
+271bbc6c : OTHER ------- : 9600 -- c4
+4130f5ec : OTHER ------- : 9600
+9a732f6c : OTHER ------- : 9600
+98e268ec : OTHER ------- : 9600
+a27ea26c : OTHER ------- : 9600
+1d47dbec : OTHER ------- : 9600
+6f3e156c : OTHER ------- : 9603 -- c4
+fca39871 : OTHER ------- : 9600
+e40f87f1 : OTHER ------- : 9600
+8fbc7771 : OTHER ------- : 9600
+3daa66f1 : OTHER ------- : 9600
+2bd95671 : OTHER ------- : 9600
+984945f1 : OTHER ------- : 9600
+c0fa3571 : OTHER ------- :   0
+c0fa3571 : OTHER ------- : 19209

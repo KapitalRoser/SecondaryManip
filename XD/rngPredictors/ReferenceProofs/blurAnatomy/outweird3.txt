@@ -1,0 +1,69 @@
+  2ad24b :        EIGHTS :  88
+6ea80083 : OTHER ------- :   0
+6ea80083 :           OFF :  89
+dc7ba392 :            CA :  68
+2892a236 :        EIGHTS :  88
+f093e50e :           OFF :  89
+83f6a011 :            CA :  68
+f5f8e965 :        EIGHTS :  88
+8255b05d :           OFF :  89
+28da79c4 :            CA :  68
+b6b41208 :        EIGHTS :  88
+b244a6a0 :           OFF :  89
+e311561b :            CA :  68
+8537a48f :        EIGHTS :  88
+4e72e247 :           OFF :  89
+65b9afc6 :            CA :  68
+ 2ae62aa :        EIGHTS :  88
+58360f02 :           OFF :  89
+372845b5 :            CA :  68
+49a9e649 : OTHER ------- : 9692
+86627d55 : OTHER ------- : 9689
+5d50395c : OTHER ------- :   0
+5d50395c : OTHER ------- :   0
+5d50395c : OTHER ------- : 28800
+eab545dc : OTHER ------- : 9600
+1a5b9f5c : OTHER ------- : 9600
+1eeef8dc : OTHER ------- : 9600
+de6f525c : OTHER ------- : 9600
+3edcabdc : OTHER ------- : 9600
+2637055c : OTHER ------- : 9600
+7a7e5edc : OTHER ------- :   0
+7a7e5edc : OTHER ------- : 19200
+ 1d411dc : OTHER ------- : 9600
+  e26b5c : OTHER ------- : 9600
+ 4ddc4dc : OTHER ------- : 9600
+f3c61e5c : OTHER ------- : 9600
+b39b77dc : OTHER ------- : 9600
+2a5dd15c : OTHER ------- : 9600
+3e0d2adc : OTHER ------- : 9600
+d4a9845c : OTHER ------- : 9600
+d432dddc : OTHER ------- :   0
+d432dddc : OTHER ------- : 19200
+a60c90dc : OTHER ------- : 9600
+445cea5c : OTHER ------- : 9600
+e39a43dc : OTHER ------- : 9600
+69c49d5c : OTHER ------- : 9600
+bcdbf6dc : OTHER ------- : 9600
+c2e0505c : OTHER ------- : 9600
+61d1a9dc : OTHER ------- : 9600
+7fb0035c : OTHER ------- : 9600
+ 27b5cdc : OTHER ------- : 9600
+d033b65c : OTHER ------- : 9600
+ced90fdc : OTHER ------- : 9600
+e46b695c : OTHER ------- : 9600
+f6eac2dc : OTHER ------- : 9600
+ec571c5c : OTHER ------- : 9600
+aab075dc : OTHER ------- : 9600
+17f6cf5c : OTHER ------- : 9600
+1a2a28dc : OTHER ------- : 9600
+974a825c : OTHER ------- : 9600
+7557dbdc : OTHER ------- : 9605
+79ffd623 : OTHER ------- : 9600
+5a23e1a3 : OTHER ------- : 9600
+4750ed23 : OTHER ------- : 9600
+ef86f8a3 : OTHER ------- : 9600
+  c60423 : OTHER ------- : 9600
+290e0fa3 : OTHER ------- : 9600
+165f1b23 : OTHER ------- :   0
+165f1b23 : OTHER ------- : 19209

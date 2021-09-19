@@ -1,0 +1,68 @@
+ 39140c1 :        EIGHTS :  88
+87828439 :           OFF :  89
+c668a8b0 :            CA :  68
+f3a9a6b4 :        EIGHTS :  88
+5dededcc :           OFF :  89
+ae3e0917 :            CA :  68
+  2ad24b :        EIGHTS :  88
+6ea80083 :           OFF :  89
+dc7ba392 :            CA :  68
+2892a236 :        EIGHTS :  88
+f093e50e :           OFF :  89
+83f6a011 :            CA :  68
+f5f8e965 :        EIGHTS :  88
+8255b05d :           OFF :  89
+28da79c4 :            CA :  68
+b6b41208 :        EIGHTS :  88
+b244a6a0 :           OFF :  89
+e311561b :            CA :  68
+8537a48f : OTHER ------- : 9692
+3505c4bb : OTHER ------- : 9689
+61f6196a : OTHER ------- :   0
+61f6196a : OTHER ------- :   0
+61f6196a : OTHER ------- : 28800
+40d851ea : OTHER ------- : 9600
+92c30f6a : OTHER ------- : 9600
+57d2ccea : OTHER ------- : 9600
+ 6078a6a : OTHER ------- : 9600
+136147ea : OTHER ------- : 9600
+f5e0056a : OTHER ------- : 9600
+2383c2ea : OTHER ------- :   0
+2383c2ea : OTHER ------- : 19200
+383a3dea : OTHER ------- : 9600
+ b4cfb6a : OTHER ------- : 9600
+ 184b8ea : OTHER ------- : 9600
+90e1766a : OTHER ------- : 9600
+2f6333ea : OTHER ------- : 9600
+5309f16a : OTHER ------- : 9600
+71d5aeea : OTHER ------- : 9600
+ 1c66c6a : OTHER ------- :   0
+ 1c66c6a : OTHER ------- : 19200
+4d16e76a : OTHER ------- : 9600
+f476a4ea : OTHER ------- : 9600
+e4fb626a : OTHER ------- : 9600
+94a51fea : OTHER ------- : 9600
+7973dd6a : OTHER ------- : 9600
+ 9679aea : OTHER ------- : 9600
+ba80586a : OTHER ------- : 9600
+ 2be15ea : OTHER ------- : 9600
+5820d36a : OTHER ------- : 9600
+30a890ea : OTHER ------- : 9600
+ 2554e6a : OTHER ------- : 9600
+43270bea : OTHER ------- : 9600
+691dc96a : OTHER ------- : 9600
+ea3986ea : OTHER ------- : 9600
+3c7a446a : OTHER ------- : 9600
+d5e001ea : OTHER ------- : 9600
+2c6abf6a : OTHER ------- : 9600
+b61a7cea : OTHER ------- : 9600
+e8ef3a6a : OTHER ------- : 9603
+67d06da7 : OTHER ------- : 9600
+dc247127 : OTHER ------- : 9600
+7f9174a7 : OTHER ------- : 9600
+e0177827 : OTHER ------- : 9600
+8bb67ba7 : OTHER ------- : 9600
+106e7f27 : OTHER ------- : 9600
+fc3f82a7 : OTHER ------- : 9600
+dd298627 : OTHER ------- :   0
+dd298627 : OTHER ------- : 19209

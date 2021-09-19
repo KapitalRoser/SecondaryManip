@@ -75,49 +75,147 @@ int main(){
     vector<int>inputValues = decimalReadNumbersFromFile(FILE_NAME + FILE_EXTENSION);
     cout << inputValues.size() << endl;
     ofstream outputData ("out" + FILE_NAME + FILE_EXTENSION);
+    vector<int>segmentLengths;
+    vector<vector<int>>variances;
+    vector<int> immediateVarSeg;
+    int segment = 0;
+    int current = 0;
+
+    bool filterApress = false;
+    bool filterDuration = false;
+    bool filterCamera = true;
+
 
     string frameLabel = "";
     string comment = "";
     //Will need to reverse this to figure out where the pattern starts. 
-    int positionOffset = 37;
+    int positionOffset = 18;
     int nineteenLength = 30;
 
-    int filterAmt = 20; //OBVIOUSLY CHANGE THIS AS NEEDED.
+    int filterAmt = 0; //OBVIOUSLY CHANGE THIS AS NEEDED.
+
     int frames = 0;
+    int varSegCount = 0;
+
 
     for (unsigned int i = 0; i < inputValues.size();i++){
+
+      //segment tracking - works for binary values like 19/20 or 8/9.
       frames = inputValues.at(i);
-      if (inputValues.at(i) == 19){
-        frameLabel = "Nineteen";
-      } else if (inputValues.at(i) == 20) {
-        frameLabel = "Twenty";
-      } else {
-        frameLabel = "---- WEIRD CASE ----";
+      if (i == 0){
+        current = frames;
       }
+      if (current == inputValues.at(i)){
+        segment++;
+      } else {
+        current = inputValues.at(i);
+        segmentLengths.push_back(segment);
+        segment = 0;
+      }
+      
+      if (filterApress){
+        //visual Labelling. The 'processor' of sorts.
+        if (inputValues.at(i) == 19){
+          frameLabel = "Nineteen";
+        } else if (inputValues.at(i) == 20) {
+          frameLabel = "Twenty";
+        } else {
+          frameLabel = "---- WEIRD CASE ----";
+        }
+        
+        //alignment changes, will expand with more data:
+        if(i == 576){
+          positionOffset--;
+        }
+        //debug + actual filtering.
+        if (i % 60 == positionOffset){ 
+          filterAmt = 20;
+          comment = "60F align!";
+        } else if (i % 60 == positionOffset - nineteenLength - 2) {
+          filterAmt = 19;
+        } else {
+          comment = "";
+        }
+        //Special cases.
+        if (i == 604 || i == 664){ //accounts for weird extra frame expansion for these two sections only. One 19 frame becomes a 20 frame.
+          frames --;
+        }
+      }
+      
+      if (filterDuration){ //replace with switch case lol.
+        if (inputValues.at(i) == 46){
+          frameLabel = "Six";
+        } else if (inputValues.at(i) == 47) {
+          frameLabel = "Seven";
+          } else if (inputValues.at(i) == 48) {
+          frameLabel = "Eight";
+          } else if (inputValues.at(i) == 49) {
+          frameLabel = "Nine";
+          } else if (inputValues.at(i) == 50) {
+          frameLabel = "Fifty ---- ";
+        } else {
+          frameLabel = "---- WEIRD CASE ----";
+        }
+
+        if (i % 60 == 32){ 
+          comment = "60F align!";
+        } else {
+          comment = "";
+        }
+        
+      }
+      if (filterCamera){
+        if (inputValues.at(i) == 8){
+          frameLabel = "Eight ~~~~";
+        } else if (inputValues.at(i) == 9) {
+          frameLabel = "Nine";
+        } else {
+          frameLabel = "---- WEIRD CASE ----";
+        }
+
+        // if (i % 60 == 46){ 
+        //   comment = "60F align!";
+        //   comment += " Begin Eights!";
+        // } else if (i % 60 == 17){
+        //   comment = "End Eights!";
+        // } else {
+        //   comment = "";
+        // }
+        if (i % 60 == 0){
+          comment = "60F align!";
+        } else if (i % 60 > 0 && i % 60 < 27){
+          comment = "safe 9";
+        } else if (i % 60 == 30){
+          comment = "Eights Align!";
+        } else if (i % 60 > 30 && i % 60 < 57){
+          comment = "safe 8";
+        } else {
+          comment = "----- Variance!";
+          immediateVarSeg.push_back(inputValues.at(i));
+          if (immediateVarSeg.size() == 3){
+            variances.push_back(immediateVarSeg);
+            immediateVarSeg.clear();
+           
+          }
+          
+        }
+        // if (i % 60 == 27 || i % 60 == 57){
+        //   comment = "~ ~ ~ ~ Align!";
+        // }
+        // if (i % 63 == 31 || i % 63 == 58){
+        //   comment = "Safe Eights!";
+        // } else if (i % 63 == 0 || i % 63 == 26) {
+        //   comment = "Safe Nines!";
+        // } else if (i % 63 > 26 && i % 63 < 31 || i % 63 > 58){
+        //     comment = "Variance Frame";
+        // } else {
+        //   comment = "~~";
+        // }
+      }
+      
 
 
-    // if (i == 576){
-    //   positionOffset--;
-    // }
-  
-    //Changes and special cases:
-    if(i == 576){
-      positionOffset--;
-    }
     
-    
-
-    if (i % 60 == positionOffset){ 
-      filterAmt = 20;
-      comment = "60F align!";
-    } else if (i % 60 == positionOffset - nineteenLength - 2) {
-      filterAmt = 19;
-    } else {
-      comment = "";
-    }
-    if (i == 604 || i == 664){
-      frames --;
-    }
 
     frames -= filterAmt;
 
@@ -127,6 +225,38 @@ int main(){
     outputData << left << setw(10)   << frameLabel << " - "<< frames << " - " << comment << endl;
     }
 
+    outputData << "All segment lengths: \nEights: ";
+    for (unsigned int i = 0; i < segmentLengths.size();i++){
+      if (i % 2 == 0){
+        outputData << segmentLengths.at(i) <<", ";
+      }
+    }
+
+
+    outputData << "\nNines: ";
+    for (unsigned int i = 0; i < segmentLengths.size();i++){
+      if (i % 2 == 1){
+        outputData << segmentLengths.at(i) <<", ";
+      }
+    }
+    outputData << endl
+    << "Variance patterns: \n";
+    cout << variances.size();
+    for (unsigned int i = 0; i < variances.size();i++){
+      for (unsigned int j = 0; j < 3;j++){
+        outputData << variances.at(i).at(j);
+        if (j < 2){
+          outputData << ",";
+        }
+     }
+      outputData << ".\n";
+    }
+
+    // outputData << "All segment lengths: ";
+    // for (unsigned int i = 0; i < segmentLengths.size();i++){
+    //     outputData << segmentLengths.at(i) <<", ";
+    // }
+    // outputData << endl;
 
 
 

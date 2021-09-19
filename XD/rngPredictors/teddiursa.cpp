@@ -258,11 +258,11 @@ void generateMon(uint32_t inputSeed){
 int main(){
   //~~~~~~~~~~~~ CONFIG INPUTS ~~~~~~~~~~~~~~~~~~~~
     
-    int target = 111; //151
+    int target = 169; //151
     
-    int aToBlur = 18; //17,19,20
-    int blurDuration = 49; //46,48,49 -- 47?
-    int camFrame = blurDuration - 8; //9,8
+    int aToBlur = 19; //17,19,20
+    int blurDuration = 48; //46,48,49 -- 47?
+    int camFrame = blurDuration - 9; //9,8
 
     const string PATTERN = "leadingAs"; //Pattern - step calls built in.
     const int VISUAL_START_FRAME = 38181;

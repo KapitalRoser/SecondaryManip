@@ -1,0 +1,66 @@
+e584bf33 :        SEVENS :  77
+c0f650d6 :           OFF :  89
+920457b9 :            BA :  79
+2da517fe :        SEVENS :  77
+1852bf85 :           OFF :  89
+86984b4c :            BA :  79
+285dfa8d :        SEVENS :  77
+debf89a8 :           OFF :  89 c4
+9538e003 :            BA :  79
+ab288f10 :        SEVENS :  77
+e2056faf :           OFF :  89
+6d6ade8e :            BA :  79
+309a83f7 :        SEVENS :  77
+89cd0b4a :           OFF :  89
+563f7bdd :            BA :  79
+ea4708f2 :        SEVENS :  77
+85adee69 :           OFF :  89
+c0709c20 :            BA :  79
+742fcdf1 : OTHER ------- : 9681
+d5d8db40 : OTHER ------- : 9689
+e6778fbb : OTHER ------- :   0
+e6778fbb : OTHER ------- :   0
+e6778fbb : OTHER ------- : 28800 c4
+e013223b : OTHER ------- : 9600
+1a18fdbb : OTHER ------- : 9600
+2987d93b : OTHER ------- : 9600
+fc5fb4bb : OTHER ------- : 9600
+80a0903b : OTHER ------- :   0
+80a0903b : OTHER ------- : 19200 c4
+555d473b : OTHER ------- : 9600
+81d922bb : OTHER ------- : 9600
+17bdfe3b : OTHER ------- : 9600
+ 50bd9bb : OTHER ------- : 9600
+37c2b53b : OTHER ------- : 9600
+9de290bb : OTHER ------- : 9600
+256b6c3b : OTHER ------- : 9600
+bc5d47bb : OTHER ------- : 9600
+50b8233b : OTHER ------- :   0
+50b8233b : OTHER ------- : 19200
+29a8da3b : OTHER ------- : 9600 c4
+4a3eb5bb : OTHER ------- : 9600
+203d913b : OTHER ------- : 9600
+99a56cbb : OTHER ------- : 9600
+a476483b : OTHER ------- : 9600
+2eb023bb : OTHER ------- : 9600
+2652ff3b : OTHER ------- : 9600 c4
+795edabb : OTHER ------- : 9600
+15d3b63b : OTHER ------- : 9600
+e9b191bb : OTHER ------- : 9600
+e2f86d3b : OTHER ------- : 9600
+efa848bb : OTHER ------- : 9600
+fdc1243b : OTHER ------- : 9600
+fb42ffbb : OTHER ------- : 9600 c4
+d62ddb3b : OTHER ------- : 9600
+7c81b6bb : OTHER ------- : 9600
+dc3e923b : OTHER ------- : 9600
+e3646dbb : OTHER ------- : 9600
+7ff3493b : OTHER ------- : 9603 c4
+78919f9c : OTHER ------- : 9600
+c514791c : OTHER ------- : 9600
+ d84529c : OTHER ------- : 9600
+37e12c1c : OTHER ------- : 9600
+2a2b059c : OTHER ------- : 9600
+ca61df1c : OTHER ------- : 9600
+fe85b89c : OTHER ------- :   0
+fe85b89c : OTHER ------- : 19209 c4

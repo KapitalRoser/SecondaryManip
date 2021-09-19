@@ -95,8 +95,9 @@ int main(){
             LCG(seed);
             rolls++;
         }
+        
     //write results
-    refinedPattern <<  rolls;
+    refinedPattern << rolls;
     refinedPattern << endl;
     }
     cout << "Output file produced! All done!";

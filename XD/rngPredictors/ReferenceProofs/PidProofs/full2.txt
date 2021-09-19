@@ -1,0 +1,1025 @@
+39708: - Reached: 36ee3742 - Seed: c733e5b1 - PID:  e1079a48 - Pattern: 20/48/8 - DOUBLE MATCH! ~~~~ 
+39710: - Reached: 302e4ce6 - Seed: fb7998bd - PID:  e7fce91a - Pattern: 20/48/8
+39712: - Reached: eee359be - Seed: 1244e6cc - PID:  5aa5b796 - Pattern: 20/48/8
+39714: - Reached: b53b6401 - Seed: d0b15549 - PID:  74fe1eab - Pattern: 20/48/8
+39716: - Reached: ed0d1855 - Seed: 22361bfc - PID:  3166e840 - Pattern: 20/48/8
+39718: - Reached: bcd2a14d - Seed: 22361bfc - PID:  3166e840 - Pattern: 19/48/8
+39720: - Reached: ba05e0f4 - Seed:  1e56583 - PID:  87504465 - Pattern: 19/48/8
+39722: - Reached: c7c02838 - Seed: ca88d79c - PID:  52963270 - Pattern: 19/48/8
+39724: - Reached: 88e416d0 - Seed: db6a99a7 - PID:  fe9c7f81 - Pattern: 19/48/8
+39726: - Reached: 8d0b778b - Seed: 6775c60e - PID:  f19ff458 - Pattern: 19/48/8
+39728: - Reached: 2e45e8ff - Seed: f3761de6 - PID:  5156673d - Pattern: 19/48/8
+39730: - Reached: fd7038b7 - Seed: cec70abe - PID:  631c38c9 - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+39732: - Reached: fe44f676 - Seed: bc464322 - PID:  c9984289 - Pattern: 19/48/8
+39734: - Reached: 7661b05a - Seed: 7daf307a - PID:  289fb096 - Pattern: 19/48/8
+39736: - Reached: c28ac6b2 - Seed: 6eff5e4d - PID:  5d7d32f7 - Pattern: 19/48/8
+39738: - Reached: 8bbc60a5 - Seed: 4451e661 - PID:  770ce213 - Pattern: 19/48/8
+39740: - Reached: 9bb39c39 - Seed: 9814a138 - PID:  89358e66 - Pattern: 19/48/8
+39742: - Reached: caa8c0b1 - Seed: a89ee3d3 - PID:  212a4279 - Pattern: 19/47/8
+39744: - Reached: aa389048 - Seed: 929f1747 - PID:  9fda418f - Pattern: 19/48/9
+39746: - Reached: c97e25cc - Seed: 4f82cdff - PID:  66482c3b - Pattern: 19/48/9
+39748: - Reached: 5f3599e4 - Seed: 8f7d17ab - PID:  b9d44ff6 - Pattern: 19/48/9
+39750: - Reached: a2b6bdcf - Seed: d5d48002 - PID:  55c0d476 - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+39752: - Reached:  464d883 - Seed: 9517f323 - PID:  18f0b589 - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+39754: - Reached: 69950fbb - Seed: e497cfad - PID:   4c67a8f - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+39756: - Reached: 6f239aea - Seed: 7f1df056 - PID:  40c330f9 - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+39758: - Reached: 230cdd0e - Seed: a8e0e9b9 - PID:  45ffd3b2 - Pattern: 19/47/9
+39760: - Reached: 878454e6 - Seed: 166e8830 - PID:  c4dd1c47 - Pattern: 19/47/8 - DOUBLE MATCH! ~~~~ 
+39762: - Reached: a7ddf189 - Seed: 20d6de34 - PID:  ccbd0a20 - Pattern: 19/47/8 - DOUBLE MATCH! ~~~~ 
+39764: - Reached: 6274485d - Seed: af69354c - PID:  1d2a3c81 - Pattern: 19/47/8 - DOUBLE MATCH! ~~~~ 
+39766: - Reached: 8fb18055 - Seed: 95c60297 - PID:  3d6448c8 - Pattern: 19/47/8 - DOUBLE MATCH! ~~~~ 
+39768: - Reached: b7f7f6dc - Seed: 2df218ec - PID:  c9fc106a - Pattern: 19/47/8 - DOUBLE MATCH! ~~~~ 
+39770: - Reached:  f045ea0 - Seed: 32467440 - PID:   1e33f6b - Pattern: 19/47/9
+39772: - Reached: 29277038 - Seed: eb010192 - PID:  4fc269bf - Pattern: 19/46/8 - DOUBLE MATCH! ~~~~ 
+39774: - Reached: 960ec253 - Seed: fe443e2f - PID:  545c0d59 - Pattern: 19/46/9
+39776: - Reached: 5b393a47 - Seed: e68407e7 - PID:  85dc889b - Pattern: 19/46/8 - DOUBLE MATCH! ~~~~ 
+39778: - Reached: ceba90ff - Seed: b512e611 - PID:  1454d792 - Pattern: 19/46/8 - DOUBLE MATCH! ~~~~ 
+39780: - Reached: 55bc989e - Seed: e91467ca - PID:  ed9fc09d - Pattern: 19/46/9
+39782: - Reached: 214a8702 - Seed: 8c8e87c4 - PID:  7d477c71 - Pattern: 20/46/8 - DOUBLE MATCH! ~~~~ 
+39784: - Reached: ad8c385a - Seed: 8aad8308 - PID:  90566ff4 - Pattern: 20/48/9
+39786: - Reached: 35e6faad - Seed: 5091ce61 - PID:  67c4438a - Pattern: 20/48/9
+39788: - Reached:  39140c1 - Seed: 496dc31b - PID:  391d0200 - Pattern: 20/48/9
+39790: - Reached: 87828439 - Seed: 179a6540 - PID:  dbc3c212 - Pattern: 20/48/9
+39792: - Reached: c668a8b0 - Seed: 7fe03cee - PID:  b994b0c3 - Pattern: 20/48/9
+39794: - Reached: f3a9a6b4 - Seed: b734f8c6 - PID:  4a3f345d - Pattern: 20/48/8 - DOUBLE MATCH! ~~~~ 
+39796: - Reached: 5dededcc - Seed: c7920be7 - PID:  188c2a9d - Pattern: 20/49/9
+39798: - Reached: ae3e0917 - Seed:  8d9663d - PID:  460400f8 - Pattern: 20/49/9
+39800: - Reached:   2ad24b - Seed: 14f4a6d7 - PID:  ea3a00f7 - Pattern: 20/48/8
+39802: - Reached: 6ea80083 - Seed: 6030eb49 - PID:  253d0748 - Pattern: 20/48/8
+39804: - Reached: dc7ba392 - Seed: 1fa32d56 - PID:  70fb7bc4 - Pattern: 20/46/8
+39806: - Reached: 2892a236 - Seed: dbd97239 - PID:  88cb95b2 - Pattern: 20/46/8
+39808: - Reached: f093e50e - Seed: 265d429c - PID:  573bc3ab - Pattern: 20/46/8
+39810: - Reached: 83f6a011 - Seed: 145cfcb4 - PID:  a5353c73 - Pattern: 20/46/8
+39812: - Reached: f5f8e965 - Seed: 5d37d6df - PID:  86766345 - Pattern: 20/47/8
+39814: - Reached: 8255b05d - Seed: 12e3bdd4 - PID:  49125d70 - Pattern: 20/47/8
+39816: - Reached: 28da79c4 - Seed: a9bc6bcb - PID:  3e0753bc - Pattern: 20/47/8
+39818: - Reached: b6b41208 - Seed: 6a9b9bb7 - PID:  7bb301ce - Pattern: 20/47/8
+39820: - Reached: b244a6a0 - Seed: 222256eb - PID:   4a1ee2c - Pattern: 20/47/8
+39822: - Reached: e311561b - Seed: 4258b123 - PID:  67cd9aed - Pattern: 20/47/8
+39824: - Reached: 8537a48f - Seed: 9b5f608e - PID:  c45163ec - Pattern: 20/47/8 - DOUBLE MATCH! ~~~~ 
+39826: - Reached: 4e72e247 - Seed: baaaf8ed - PID:  147a46b8 - Pattern: 20/47/8
+39828: - Reached: 65b9afc6 - Seed: a0a8df94 - PID:  1d3e8454 - Pattern: 20/48/8
+39830: - Reached:  2ae62aa - Seed: 5791ad5d - PID:  3d6d606b - Pattern: 20/48/8
+39832: - Reached: 58360f02 - Seed: 1171ba71 - PID:  5c536016 - Pattern: 20/48/8
+39834: - Reached: 372845b5 - Seed: 4686cb08 - PID:  9e958e55 - Pattern: 20/48/8 - DOUBLE MATCH! ~~~~ 
+39836: - Reached: 49a9e649 - Seed:  ef16797 - PID:  beaf8cfb - Pattern: 20/48/8
+39838: - Reached: 14ed28c1 - Seed:  ef16797 - PID:  beaf8cfb - Pattern: 19/48/8
+39840: - Reached: 909c7e18 - Seed: 559f64d7 - PID:  fda040bc - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+39842: - Reached: bf6cf49c - Seed: 6e1641bc - PID:  995e61cf - Pattern: 19/48/8
+39844: - Reached: 12026eb4 - Seed: 44526747 - PID:  92965e9a - Pattern: 19/48/8
+39846: - Reached: 2fbbad5f - Seed: f3fc1c52 - PID:   4d1ca5b - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+39848: - Reached: a4f7f513 - Seed: eb6203aa - PID:  8d037dd0 - Pattern: 19/48/8
+39850: - Reached: f202fa4b - Seed: 30aa76bd - PID:  23d2d80f - Pattern: 19/48/8
+39852: - Reached: 32b0f13a - Seed: 70492d50 - PID:  a185f473 - Pattern: 19/48/8
+39854: - Reached:  2ec3c5e - Seed: 5f2ecadd - PID:  a1db8256 - Pattern: 19/48/8
+39856: - Reached: c06aaa36 - Seed: f79d75c1 - PID:  7f62d1fe - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+39858: - Reached: dcf78f99 - Seed: 9e977615 - PID:  4c431328 - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+39860: - Reached: fc571b6d - Seed: 993298f6 - PID:   d5e1f1a - Pattern: 19/48/8
+39862: - Reached: f0b75165 - Seed:  54f2427 - PID:  20b4e4a4 - Pattern: 19/47/8
+39864: - Reached: da1109ac - Seed: e2c73af8 - PID:  e2045941 - Pattern: 19/48/9
+39866: - Reached: c474e270 - Seed: 45e38125 - PID:  d3b7eeff - Pattern: 19/48/9
+39868: - Reached: 94ed5a08 - Seed: 35cd9ce2 - PID:  afb81872 - Pattern: 19/48/9
+39870: - Reached: abda52e3 - Seed: 9443c945 - PID:  2e980c8d - Pattern: 19/48/9
+39872: - Reached: a0e247d7 - Seed: 3ac44ea9 - PID:  398d7c94 - Pattern: 19/48/9
+39874: - Reached: 49d64c8f - Seed:  82ad035 - PID:  25ec19a4 - Pattern: 19/48/9
+39876: - Reached: cbb0dbee - Seed: 83e62597 - PID:  7d7ff282 - Pattern: 19/48/9
+39878: - Reached: e293e352 - Seed: 94296ffc - PID:  f5a4b2d7 - Pattern: 19/47/9
+39880: - Reached: 9f7aeaaa - Seed: 5685be14 - PID:  cf28e54f - Pattern: 19/47/9
+39882: - Reached: 3ce461bd - Seed: 7201bf58 - PID:  38867cfd - Pattern: 19/47/8 - DOUBLE MATCH! ~~~~ 
+39884: - Reached: 624bacd1 - Seed: 6614b2f1 - PID:  190c160e - Pattern: 19/47/9
+39886: - Reached: 4832ce49 - Seed: 2445485f - PID:  43af0620 - Pattern: 19/47/9
+39888: - Reached: cd01b080 - Seed: bbfe4b0c - PID:  1962c511 - Pattern: 19/47/9
+39890: - Reached: 2a57af84 - Seed: 2af26957 - PID:  69cc0e89 - Pattern: 19/47/9
+39892: - Reached: 42cebc9c - Seed: b6092803 - PID:  f0e82be6 - Pattern: 19/46/9
+39894: - Reached: 6eb8caa7 - Seed: fd8ae143 - PID:  e198d75c - Pattern: 19/46/8 - DOUBLE MATCH! ~~~~ 
+39896: - Reached: ddcf60db - Seed: eb60c952 - PID:  14bc2bcf - Pattern: 19/46/9
+39898: - Reached: 97051d13 - Seed:  42f10aa - PID:  6cf440b0 - Pattern: 19/46/9
+39900: - Reached: 5d9223e2 - Seed: f633ba59 - PID:  8dc59cf2 - Pattern: 19/46/9
+39902: - Reached: 769a4b86 - Seed:  4754de8 - PID:  fd13fd58 - Pattern: 20/46/9
+39904: - Reached: fd35445e - Seed: 4d72fcb8 - PID:   d2865bb - Pattern: 20/46/9
+39906: - Reached:  e56e021 - Seed: c1c81e37 - PID:  7710b700 - Pattern: 20/46/9
+39908: - Reached: 878efe75 - Seed: 7429ebf5 - PID:  6e901807 - Pattern: 20/46/9
+39910: - Reached: a392836d - Seed: cd7dbe6c - PID:  43643189 - Pattern: 20/46/8 - DOUBLE MATCH! ~~~~ 
+39912: - Reached: 24334694 - Seed: 1f32bedb - PID:  ef5cbf10 - Pattern: 20/46/8 - DOUBLE MATCH! ~~~~ 
+39914: - Reached: 2d606fd8 - Seed: 7a9e798a - PID:  8e1a8e51 - Pattern: 20/46/8 - DOUBLE MATCH! ~~~~ 
+39916: - Reached: bac72a70 - Seed: a15fb8da - PID:  55b84a9c - Pattern: 20/46/9
+39918: - Reached: 80d4d8ab - Seed: b37c9186 - PID:  63e34836 - Pattern: 20/46/9
+39920: - Reached: 42be441f - Seed: be28b729 - PID:  c47a05af - Pattern: 20/47/9
+39922: - Reached: 4985efd7 - Seed: 6d59042e - PID:  53cfb2ce - Pattern: 20/47/8 - DOUBLE MATCH! ~~~~ 
+39924: - Reached: 806abd16 - Seed: 72618d64 - PID:  e12ef4a3 - Pattern: 20/46/8
+39926: - Reached: f295a8fa - Seed: 49338600 - PID:  c6b2ac27 - Pattern: 20/46/8
+39928: - Reached: cf616b52 - Seed: a1d3c57d - PID:   bc012e1 - Pattern: 20/46/8
+39930: - Reached: f6c36ec5 - Seed: 47675ef9 - PID:  7deefa5a - Pattern: 20/46/8 - DOUBLE MATCH! ~~~~ 
+39932: - Reached: ad48b459 - Seed: 60c78db4 - PID:  8f3d391f - Pattern: 20/47/8
+39934: - Reached: c9a194d1 - Seed: 713c4001 - PID:  4f94a3b1 - Pattern: 20/47/8 - DOUBLE MATCH! ~~~~ 
+39936: - Reached: 7039dfe8 - Seed: c8f7959f - PID:  4afe1a0a - Pattern: 20/47/8
+39938: - Reached: aaad776c - Seed: e7b486be - PID:   101b30d - Pattern: 20/47/8 - DOUBLE MATCH! ~~~~ 
+39940: - Reached: 11e27784 - Seed: 7b7147e7 - PID:  88eed467 - Pattern: 20/47/8 - DOUBLE MATCH! ~~~~ 
+39942: - Reached: 5fa280ef - Seed: bb6d6277 - PID:  556f0515 - Pattern: 20/47/8
+39944: - Reached: eee1f06c - Seed: 1c803ed2 - PID:  fee8b1e1 - Pattern: 20/47/8
+39946: - Reached: 1cb188db - Seed: 255c7022 - PID:  caad5680 - Pattern: 20/47/8
+39948: - Reached: 1b81db8a - Seed: f3a7d1ce - PID:  65603522 - Pattern: 20/48/8
+39950: - Reached:  9751aa3 - Seed: 7fc5bd50 - PID:  e4efe476 - Pattern: 20/48/8
+39952: - Reached: 2f745386 - Seed: b8b2a7f6 - PID:  fa939738 - Pattern: 20/48/8
+39954: - Reached: f40eb1a9 - Seed: 6c18806c - PID:   cfb30cb - Pattern: 20/48/8
+39956: - Reached: bc4cd0ae - Seed: bd526084 - PID:  c63a1359 - Pattern: 20/48/8
+39958: - Reached: a0e76675 - Seed: bd526084 - PID:  c63a1359 - Pattern: 19/48/8
+39960: - Reached: a98cd07c - Seed: 60978425 - PID:  849c85dc - Pattern: 19/48/8
+39962: - Reached: e0e95f7d - Seed: 49149160 - PID:  45152ddc - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+39964: - Reached: 7cebb7d8 - Seed: 609f030f - PID:  4bba13c2 - Pattern: 19/48/8
+39966: - Reached: d7900773 - Seed: 292fc56b - PID:   3e9f14e - Pattern: 19/48/8
+39968: - Reached: bb3ae340 - Seed: fea3de07 - PID:   4b9ef6d - Pattern: 19/48/8
+39970: - Reached: f606ec1f - Seed: 5414a486 - PID:  a6f140d8 - Pattern: 19/48/8
+39972: - Reached: 5a83f33e - Seed: cd9c52d6 - PID:  330838f4 - Pattern: 19/48/8
+39974: - Reached: 6ef86e67 - Seed:  40d444c - PID:  1ac31373 - Pattern: 19/48/8
+39976: - Reached: 1d8430fa - Seed: 3d0fe864 - PID:  23c8abbf - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+39978: - Reached: 97318ccd - Seed: 11f25985 - PID:  6fa85dbf - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+39980: - Reached: 27d244a2 - Seed: 29027340 - PID:  d40f7064 - Pattern: 19/48/8
+39982: - Reached: 2d0b9c59 - Seed: 9b09bb9c - PID:  ae9eb3e8 - Pattern: 19/47/8
+39984: - Reached: 85daac50 - Seed: 32b1109d - PID:  7e1f3781 - Pattern: 19/48/9
+39986: - Reached: 99f319e1 - Seed: 4cb1fa78 - PID:   1a2e123 - Pattern: 19/48/9
+39988: - Reached: 99813f6c - Seed: 93e6511f - PID:  5f9fb0d4 - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+39990: - Reached: 3849f037 - Seed: 7d2ecdb6 - PID:  4be7c4b3 - Pattern: 19/48/9
+39992: - Reached: f3278554 - Seed: ec0854a2 - PID:  79f82e70 - Pattern: 19/48/9
+39994: - Reached: 4a2f5da3 - Seed: 627ad0d5 - PID:  78cece50 - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+39996: - Reached: e7f6b832 - Seed: 7ab02d4a - PID:  e820aeef - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+39998: - Reached: 72fd186b - Seed: 81a4ff1a - PID:  2b57c3f8 - Pattern: 19/47/9
+40000: - Reached: c47c77ae - Seed:  5c7a9d9 - PID:  c6ec94fc - Pattern: 19/47/9
+40002: - Reached: b31d2431 - Seed:  bb2cf9e - PID:  d25c9b8f - Pattern: 19/49/8 - DOUBLE MATCH! ~~~~ 
+40004: - Reached: e78fc9d6 - Seed: aa8aa6a5 - PID:  c2d2dd04 - Pattern: 19/49/9
+40006: - Reached:  c7a1a7d - Seed: 358981ec - PID:  18b4be65 - Pattern: 19/49/9
+40008: - Reached: e49d4764 - Seed: c0278e2d - PID:  aa4a3c3f - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+40010: - Reached:  6d0a485 - Seed: 83791cc8 - PID:  cf0d6d14 - Pattern: 19/48/9
+40012: - Reached: 6a68a240 - Seed: ea6957be - PID:  8c87143e - Pattern: 19/48/9
+40014: - Reached: 273eff3b - Seed: ccd2c630 - PID:  8ff4daf8 - Pattern: 19/48/9
+40016: - Reached: 9447eaa8 - Seed: 2db3404f - PID:  c506d174 - Pattern: 19/48/9
+40018: - Reached:  c426167 - Seed: 58a01cb9 - PID:  6e6f48b0 - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+40020: - Reached: e0ed1e66 - Seed: 55a26197 - PID:  70ce0785 - Pattern: 19/46/9
+40022: - Reached:  5931caf - Seed: bdc1e87d - PID:  2a095a11 - Pattern: 20/46/9
+40024: - Reached: 7391dba2 - Seed: 490d711c - PID:  31022251 - Pattern: 20/46/9
+40026: - Reached: 63dedbd5 - Seed:  7a4f7a8 - PID:  ba7396bd - Pattern: 20/46/8 - DOUBLE MATCH! ~~~~ 
+40028: - Reached: 49b8944a - Seed: 92414d04 - PID:  e33b7249 - Pattern: 20/46/9
+40030: - Reached: 1a4704e1 - Seed: ca17bd10 - PID:  890cadfc - Pattern: 20/46/9
+40032: - Reached: e6edb5b8 - Seed: 778e85af - PID:  a3b5882d - Pattern: 20/46/9
+40034: - Reached: b062a369 - Seed: eccbff78 - PID:  c66e6555 - Pattern: 20/46/9
+40036: - Reached: 5b22b454 - Seed:  4d61c44 - PID:  55d59f59 - Pattern: 20/46/9
+40038: - Reached: 9464387f - Seed: 241c3887 - PID:  21961b81 - Pattern: 20/46/8 - DOUBLE MATCH! ~~~~ 
+40040: - Reached: 82df673c - Seed: 2bf0f95d - PID:  eb54d9e6 - Pattern: 20/47/9
+40042: - Reached: 6b49bb6b - Seed: 2b2d66f2 - PID:  581c77f6 - Pattern: 20/46/8
+40044: - Reached: 35fb59da - Seed:  e3e2588 - PID:  c161249c - Pattern: 20/46/8
+40046: - Reached: e584bf33 - Seed: eae94a20 - PID:  ba5ff340 - Pattern: 20/46/8 - DOUBLE MATCH! ~~~~ 
+40048: - Reached: c0f650d6 - Seed: 54f913f1 - PID:  ac9e655a - Pattern: 20/46/8
+40050: - Reached: 920457b9 - Seed: 56d29a2d - PID:  be2892d2 - Pattern: 20/46/8 - DOUBLE MATCH! ~~~~ 
+40052: - Reached: 2da517fe - Seed: 9fa073d4 - PID:  13a87b87 - Pattern: 20/47/8 - DOUBLE MATCH! ~~~~ 
+40054: - Reached: 1852bf85 - Seed: 15d3e1b5 - PID:  3c63ef46 - Pattern: 20/47/8
+40056: - Reached: 86984b4c - Seed: 708413b0 - PID:  75c6617a - Pattern: 20/47/8
+40058: - Reached: 285dfa8d - Seed: 2105cc02 - PID:  3c19ec9b - Pattern: 20/47/8
+40060: - Reached: debf89a8 - Seed:  bcd0952 - PID:  eafc7a0e - Pattern: 20/47/8
+40062: - Reached: 9538e003 - Seed: 1efab817 - PID:  6a49fbad - Pattern: 20/47/8 - DOUBLE MATCH! ~~~~ 
+40064: - Reached: ab288f10 - Seed: 203f81c1 - PID:  f268671c - Pattern: 20/47/8
+40066: - Reached: e2056faf - Seed: ed5bd250 - PID:  62fbb524 - Pattern: 20/47/8
+40068: - Reached: 6d6ade8e - Seed: bff7ca8d - PID:  b1ab403d - Pattern: 20/48/8 - DOUBLE MATCH! ~~~~ 
+40070: - Reached: 309a83f7 - Seed: dc605d34 - PID:  9bee3a08 - Pattern: 20/48/8 - DOUBLE MATCH! ~~~~ 
+40072: - Reached: 89cd0b4a - Seed: 7f49daba - PID:  d583cbb4 - Pattern: 20/48/8
+40074: - Reached: 563f7bdd - Seed: 30d41f10 - PID:  874765d3 - Pattern: 20/48/8 - DOUBLE MATCH! ~~~~ 
+40076: - Reached: ea4708f2 - Seed: f336f6cb - PID:  3e3d9ac6 - Pattern: 20/48/8
+40078: - Reached: 85adee69 - Seed: f336f6cb - PID:  3e3d9ac6 - Pattern: 19/48/8
+40080: - Reached: c0709c20 - Seed: 9158a178 - PID:  278d557f - Pattern: 19/48/8
+40082: - Reached: 742fcdf1 - Seed: e82a9e44 - PID:  2a32454a - Pattern: 19/48/8
+40084: - Reached: 7df2763c - Seed: b7d7dcb6 - PID:  a11428e6 - Pattern: 19/48/8
+40086: - Reached: 2a0a79c7 - Seed: 8c115706 - PID:  a32dcc2d - Pattern: 19/48/8
+40088: - Reached: f9e93624 - Seed: 9f999bed - PID:  73ec0c6f - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+40090: - Reached: 5cefc233 - Seed: 54c12c4a - PID:  38313a39 - Pattern: 19/48/8
+40092: - Reached: faae6082 - Seed: f0261b9a - PID:  5e99c0e4 - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+40094: - Reached: 521f2efb - Seed: b9ae9df1 - PID:  bb2fa4d0 - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+40096: - Reached: c35e7efe - Seed: de4d6d2b - PID:  6ef7a8a3 - Pattern: 19/48/8
+40098: - Reached: e14a6c41 - Seed: 4d04f50d - PID:  459d4250 - Pattern: 19/48/8
+40100: - Reached: addd5b26 - Seed: 81c80bb5 - PID:  87c4c2ca - Pattern: 19/49/9
+40102: - Reached:  53d758d - Seed: 4f05a796 - PID:  3b18c677 - Pattern: 19/48/9
+40104: - Reached: a5e57c34 - Seed: 6abcd59f - PID:  de6714ce - Pattern: 19/48/9
+40106: - Reached: 90218195 - Seed: 5bc6cdd2 - PID:  81ebc293 - Pattern: 19/48/9
+40108: - Reached: 68660e10 - Seed: ee87852a - PID:  c2d99f14 - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+40110: - Reached: 3178c9cb - Seed: 3c832e00 - PID:  ff6654aa - Pattern: 19/48/9
+40112: - Reached: c0467078 - Seed: 4748cfdf - PID:  eaa5ff1c - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+40114: - Reached: 7a8136f7 - Seed: c46686c9 - PID:  ff4bd94b - Pattern: 19/48/9
+40116: - Reached: 9f15d3b6 - Seed: 62a31c4e - PID:  bfabacac - Pattern: 19/48/9
+40118: - Reached: d3a3c43f - Seed: 8cf23484 - PID:  960cad33 - Pattern: 19/47/8 - DOUBLE MATCH! ~~~~ 
+40120: - Reached: 518c5ff2 - Seed: 8fa6a19c - PID:  3623b3f2 - Pattern: 19/47/9
+40122: - Reached: cc0b8ce5 - Seed: fc7f571d - PID:  87eb4a76 - Pattern: 19/47/8 - DOUBLE MATCH! ~~~~ 
+40124: - Reached:  ae8429a - Seed: 845e7699 - PID:  a7dfc9b7 - Pattern: 19/47/9
+40126: - Reached: f89e78f1 - Seed: 51d07590 - PID:  7ba7f94e - Pattern: 19/47/9
+40128: - Reached: e9d4ff88 - Seed: 5585bc21 - PID:  c57e4ef2 - Pattern: 19/47/9
+40130: - Reached: 2ebcb979 - Seed: df3d9886 - PID:  87265e08 - Pattern: 19/47/9
+40132: - Reached: dd502524 - Seed: 17ee4329 - PID:  5bbc7c1b - Pattern: 19/46/9
+40134: - Reached:  e39d40f - Seed: 74f7be7b - PID:  62f31d1a - Pattern: 19/46/9
+40136: - Reached: 56d8920c - Seed: a84fbff5 - PID:  ecc8beaf - Pattern: 19/46/8 - DOUBLE MATCH! ~~~~ 
+40138: - Reached: 29b491fb - Seed: 939853fc - PID:  8afa4065 - Pattern: 19/46/9
+40140: - Reached: 87c26c2a - Seed: 287117cc - PID:  fcf161f7 - Pattern: 19/46/9
+40142: - Reached: d40387c3 - Seed: 3b64adf0 - PID:  bccb3df4 - Pattern: 20/46/9
+40144: - Reached: 5685a226 - Seed: 7aca4c01 - PID:  ad4628cb - Pattern: 20/46/9
+40146: - Reached: f3f981c9 - Seed: 759a2f0c - PID:  a6f59de7 - Pattern: 20/46/8 - DOUBLE MATCH! ~~~~ 
+40148: - Reached: a65d334e - Seed: c94ce3f1 - PID:  dc238e0c - Pattern: 20/46/8 - DOUBLE MATCH! ~~~~ 
+40150: - Reached: 334a5c95 - Seed: 67030783 - PID:  26503eec - Pattern: 20/46/9
+40152: - Reached: bca07a1c - Seed: c0f4569f - PID:  fd479eb2 - Pattern: 20/46/9
+40154: - Reached: 186f599d - Seed: 76c1be4b - PID:  73fea461 - Pattern: 20/46/9
+40156: - Reached: ff45cf78 - Seed: 62d81045 - PID:  9ab234d9 - Pattern: 20/46/8 - DOUBLE MATCH! ~~~~ 
+40158: - Reached: c31ddc93 - Seed: d1133b3d - PID:  dde0f337 - Pattern: 20/46/8 - DOUBLE MATCH! ~~~~ 
+40160: - Reached: 13ff2ee0 - Seed: b11e1acd - PID:  279eb1c4 - Pattern: 20/47/9
+40162: - Reached: 2acad73f - Seed: aa433368 - PID:  e570fa95 - Pattern: 20/46/8
+40164: - Reached: 1cda9dde - Seed: c6c11a0c - PID:  92b603d2 - Pattern: 20/46/8
+40166: - Reached: 28a7fd87 - Seed:  138a926 - PID:  6c281094 - Pattern: 20/46/8
+40168: - Reached: afba799a - Seed: 691dff76 - PID:    617aea - Pattern: 20/46/8
+40170: - Reached: 47bf2eed - Seed: 7ff86fc3 - PID:  d44a90bf - Pattern: 20/46/8 - DOUBLE MATCH! ~~~~ 
+40172: - Reached: 3b1ae142 - Seed:  744ae37 - PID:  d07a6503 - Pattern: 20/47/8
+40174: - Reached: e9fac479 - Seed: e3051d25 - PID:  70194e48 - Pattern: 20/47/8
+40176: - Reached:  b807ff0 - Seed: e7865cb4 - PID:   34c77ad - Pattern: 20/47/8
+40178: - Reached: cf6f8601 - Seed: bbec0ff8 - PID:  443b186f - Pattern: 20/47/8 - DOUBLE MATCH! ~~~~ 
+40180: - Reached: e74f610c - Seed: b24382c8 - PID:  76f881ed - Pattern: 20/47/8
+40182: - Reached: 89536757 - Seed: d7d7191d - PID:  9950e651 - Pattern: 20/47/8
+40184: - Reached: e9751af4 - Seed: 14187dbf - PID:  30d1e940 - Pattern: 20/47/8 - DOUBLE MATCH! ~~~~ 
+40186: - Reached: 364f4ac3 - Seed: 75f8cd00 - PID:  504dbff0 - Pattern: 20/47/8
+40188: - Reached: 4e1fdc57 - Seed: 94802da1 - PID:  84b41fd7 - Pattern: 20/48/8 - DOUBLE MATCH! ~~~~ 
+40190: - Reached: 69a733f4 - Seed: 74daa6e4 - PID:  67f7fd6e - Pattern: 20/48/8
+40192: - Reached: ce8eafc3 - Seed: ec0244b4 - PID:  3f01e830 - Pattern: 20/48/8
+40194: - Reached: 49efcdd2 - Seed: 9d80ec87 - PID:  4eb320fa - Pattern: 20/48/8
+40196: - Reached: 11c2ee8b - Seed: f2c94e79 - PID:  634325d9 - Pattern: 20/48/8 - DOUBLE MATCH! ~~~~ 
+40198: - Reached: 271214c3 - Seed: f2c94e79 - PID:  634325d9 - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+40200: - Reached: d9827551 - Seed: b96aa228 - PID:  14c667ae - Pattern: 19/48/8
+40202: - Reached: d2174176 - Seed:  9c0422b - PID:  3bdc5fc7 - Pattern: 19/48/8
+40204: - Reached: 934db700 - Seed: dc23e30c - PID:  6cc7ed41 - Pattern: 19/48/8
+40206: - Reached: 48223e04 - Seed: f3e0f060 - PID:  ce6faaca - Pattern: 19/48/8
+40208: - Reached: c0ea6fa5 - Seed: ab59cd01 - PID:  61fe5128 - Pattern: 19/48/8
+40210: - Reached: 65d5ff27 - Seed: 69b13c7a - PID:  6d055195 - Pattern: 19/48/8
+40212: - Reached: 83ff7d5b - Seed: aacfe653 - PID:  20f33c65 - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+40214: - Reached: f1429348 - Seed: f4f55445 - PID:  b7351662 - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+40216: - Reached: 4c012e62 - Seed: 4830f159 - PID:  69141363 - Pattern: 19/49/8
+40218: - Reached: b6ed1e06 - Seed: fdb40bb7 - PID:  396fe25b - Pattern: 19/50/9
+40220: - Reached: 22c324cf - Seed: 6952e8e8 - PID:  8ca12a9a - Pattern: 19/49/9
+40222: - Reached: c2de48a1 - Seed: dfec5d7f - PID:  850799fd - Pattern: 19/49/9
+40224: - Reached: 3c3d8ef5 - Seed: 35069032 - PID:  a976972d - Pattern: 19/49/9
+40226: - Reached: 787a15ea - Seed: dc5b1d9c - PID:  65fe1450 - Pattern: 19/49/9
+40228: - Reached: 928df514 - Seed: d8476160 - PID:  a528c0e1 - Pattern: 19/49/8 - DOUBLE MATCH! ~~~~ 
+40230: - Reached: d0d62658 - Seed: 3b0d1c31 - PID:  3349f79b - Pattern: 19/49/9
+40232: - Reached: e8667089 - Seed: 16b84c8a - PID:  31364dca - Pattern: 19/49/9
+40234: - Reached: b56e952b - Seed: 7827c57b - PID:  6056e08f - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+40236: - Reached: 68bd689f - Seed: 567b4997 - PID:  95efafc1 - Pattern: 19/47/9
+40238: - Reached: eceda9dc - Seed: d07f2fa9 - PID:  1eff7044 - Pattern: 19/47/8 - DOUBLE MATCH! ~~~~ 
+40240: - Reached: 9a52af96 - Seed: c437214c - PID:  2012c17a - Pattern: 19/47/9
+40242: - Reached: d671e37a - Seed: 55b44a12 - PID:  d0a4bc7b - Pattern: 19/47/8 - DOUBLE MATCH! ~~~~ 
+40244: - Reached: 60571953 - Seed: 12f1b67c - PID:  628a847e - Pattern: 19/47/9
+40246: - Reached: aadc9f45 - Seed: d092eb81 - PID:  e418d292 - Pattern: 19/47/9
+40248: - Reached: 32bf8cd9 - Seed: f66feb66 - PID:  851865ed - Pattern: 19/47/8 - DOUBLE MATCH! ~~~~ 
+40250: - Reached: 2b92439e - Seed: a6e386f0 - PID:  8abd4400 - Pattern: 19/46/8 - DOUBLE MATCH! ~~~~ 
+40252: - Reached: c311b668 - Seed:  27dc3e7 - PID:  aea1b33d - Pattern: 19/46/8 - DOUBLE MATCH! ~~~~ 
+40254: - Reached: 7744d5ec - Seed: a92bdd55 - PID:  1e3bac7b - Pattern: 19/46/9
+40256: - Reached: b0c8e9ad - Seed: ca06fb89 - PID:  f6cc04fb - Pattern: 19/46/9
+40258: - Reached: 3235456f - Seed: 95ceef8b - PID:  b54f07d4 - Pattern: 19/46/9
+40260: - Reached: 658ae223 - Seed: 496dc31b - PID:  391d0200 - Pattern: 19/46/9
+40262: - Reached: 337d0bb0 - Seed: 140c0e76 - PID:  6b64319d - Pattern: 20/46/8 - DOUBLE MATCH! ~~~~ 
+40264: - Reached: 7095360a - Seed: b734f8c6 - PID:  4a3f345d - Pattern: 20/46/8 - DOUBLE MATCH! ~~~~ 
+40266: - Reached: 6451922e - Seed: c6118565 - PID:  3f5a1846 - Pattern: 20/46/9
+40268: - Reached: b5995017 - Seed: 844dfcf9 - PID:  36462aca - Pattern: 20/46/9
+40270: - Reached: 95aa2a29 - Seed: f4cdb6a8 - PID:  c1083d7c - Pattern: 20/46/9
+40272: - Reached: 253c52fd - Seed: 100e1ab7 - PID:  1d9ddd8b - Pattern: 20/46/9
+40274: - Reached: dcfb7e92 - Seed: 55bf85eb - PID:  490c6525 - Pattern: 20/46/8 - DOUBLE MATCH! ~~~~ 
+40276: - Reached: 16784efc - Seed: c08f2f18 - PID:  5672fed7 - Pattern: 20/46/9
+40278: - Reached: 935be0c0 - Seed: 38a8c0b2 - PID:  4e6fed43 - Pattern: 20/46/8 - DOUBLE MATCH! ~~~~ 
+40280: - Reached: 69a0ff11 - Seed: 3737694f - PID:  eba70ab6 - Pattern: 20/47/8 - DOUBLE MATCH! ~~~~ 
+40282: - Reached: eda053f3 - Seed: 91e078d3 - PID:  d87ad55c - Pattern: 20/46/8
+40284: - Reached: 5e876de7 - Seed: 17613ac5 - PID:  6ce16c38 - Pattern: 20/46/8
+40286: - Reached: bef08cc4 - Seed: dd4c5cce - PID:  32e0bc4e - Pattern: 20/46/8
+40288: - Reached:  1dd35be - Seed:  dabb583 - PID:  ea0fdd67 - Pattern: 20/46/8
+40290: - Reached: 7328de22 - Seed: e08aa3e4 - PID:  7cb6a5a5 - Pattern: 20/46/8
+40292: - Reached: 15468d1b - Seed: ce3f2c9d - PID:   2d6cfcc - Pattern: 20/47/8
+40294: - Reached: c287cd4d - Seed: 77dd4b8e - PID:  f698d242 - Pattern: 20/47/8
+40296: - Reached: 29100561 - Seed: a927dd8d - PID:  6cd13097 - Pattern: 20/47/8
+40298: - Reached: 613ebac6 - Seed: 388915af - PID:  6ffcd596 - Pattern: 20/47/8
+40300: - Reached: 921852d0 - Seed:  afe042c - PID:   906229a - Pattern: 20/47/8
+40302: - Reached: fc441ad4 - Seed: 58ed9991 - PID:  911fa1c0 - Pattern: 20/47/8
+40304: - Reached: a87a14b5 - Seed: 2c20e5d3 - PID:  5bec2b39 - Pattern: 20/47/8 - DOUBLE MATCH! ~~~~ 
+40306: - Reached: c0e444b7 - Seed: a346e2a0 - PID:  b7242392 - Pattern: 20/48/8
+40308: - Reached: 7844cfeb - Seed: 901a2155 - PID:  60dfdfa0 - Pattern: 20/48/8
+40310: - Reached: 4a474118 - Seed: 50d183e9 - PID:  9f1f9553 - Pattern: 20/48/8
+40312: - Reached: da9862b2 - Seed: 10282b12 - PID:  249ec890 - Pattern: 20/48/8
+40314: - Reached: f711bb56 - Seed: 7177a1d9 - PID:  df1ac854 - Pattern: 20/48/8 - DOUBLE MATCH! ~~~~ 
+40316: - Reached: bc81d45f - Seed: 4ad52dbc - PID:  2f877105 - Pattern: 20/48/8
+40318: - Reached: ab2eacb1 - Seed: 4ad52dbc - PID:  2f877105 - Pattern: 19/48/8
+40320: - Reached: f2e30805 - Seed: 79d425bd - PID:  a1b314aa - Pattern: 19/48/8
+40322: - Reached: 46c62c3a - Seed: 2be5a6ec - PID:  b26cdc52 - Pattern: 19/48/8
+40324: - Reached: 639395e4 - Seed: 8b90b3b3 - PID:  f0c2b9de - Pattern: 19/48/8
+40326: - Reached: 4f359828 - Seed: 9461a480 - PID:  db52ca02 - Pattern: 19/48/8
+40328: - Reached: 4a3fce99 - Seed: f62a3f23 - PID:  3b7b1d1b - Pattern: 19/48/8
+40330: - Reached: a777dbbb - Seed: 4343e27e - PID:  ea493084 - Pattern: 19/48/8
+40332: - Reached: af8b0c2f - Seed: 626f2ea7 - PID:  90a00e4c - Pattern: 19/48/8
+40334: - Reached: ce937cac - Seed: 90f3b539 - PID:  c80a3a81 - Pattern: 19/48/8
+40336: - Reached: bc41b0e6 - Seed: 8236a99c - PID:  f03509da - Pattern: 19/48/8
+40338: - Reached: ad975dca - Seed: 4e3bc64b - PID:  bc1bf82b - Pattern: 19/48/8
+40340: - Reached: 3bd869e3 - Seed: 4d900f7d - PID:  ef744dee - Pattern: 19/49/9
+40342: - Reached: d2f42c55 - Seed: bb28fd90 - PID:  f32a78e5 - Pattern: 19/48/9
+40344: - Reached: 750dfee9 - Seed: d0060636 - PID:  8b27e412 - Pattern: 19/48/9
+40346: - Reached: 6e1146ee - Seed: 471cd983 - PID:  4e1b27d2 - Pattern: 19/48/9
+40348: - Reached: 20ab2c38 - Seed: d0ef0077 - PID:   6d23664 - Pattern: 19/48/9
+40350: - Reached: 258bacbc - Seed: a0647a94 - PID:   d0a08dc - Pattern: 19/48/9
+40352: - Reached: 34e210bd - Seed: 7d1fd3db - PID:  a8f0b929 - Pattern: 19/48/9
+40354: - Reached: bbd81cff - Seed: 248c2e4f - PID:  bc09b723 - Pattern: 19/48/9
+40356: - Reached:  75c66b3 - Seed: e18f812b - PID:   91f8c7a - Pattern: 19/47/8 - DOUBLE MATCH! ~~~~ 
+40358: - Reached: f34ed380 - Seed: bde319a2 - PID:  78c067ab - Pattern: 19/47/8 - DOUBLE MATCH! ~~~~ 
+40360: - Reached: 6655545a - Seed: 1cd2cef1 - PID:  37f29fca - Pattern: 19/47/9
+40362: - Reached: 56ea397e - Seed: 8b1ea50f - PID:  febd5a43 - Pattern: 19/47/9
+40364: - Reached: 4a85d1a7 - Seed: c2a5aae1 - PID:  d875332a - Pattern: 19/47/9
+40366: - Reached: 922df039 - Seed: 70c90324 - PID:  bef65202 - Pattern: 19/47/9
+40368: - Reached: 8e3dce0d - Seed: a0926b45 - PID:   419a791 - Pattern: 19/47/9
+40370: - Reached: 9728bee2 - Seed: 80705bd8 - PID:  bdedf978 - Pattern: 19/46/9
+40372: - Reached:  65369cc - Seed: 19155618 - PID:  1e14cc0c - Pattern: 19/46/8 - DOUBLE MATCH! ~~~~ 
+40374: - Reached: 4e18ec90 - Seed: 1282bb49 - PID:  52202fdf - Pattern: 19/46/8 - DOUBLE MATCH! ~~~~ 
+40376: - Reached: 7d38ff21 - Seed: b5928902 - PID:  7ab1ea48 - Pattern: 19/46/8 - DOUBLE MATCH! ~~~~ 
+40378: - Reached: 9a8c4c83 - Seed: f3eeeaa6 - PID:  eacbfa72 - Pattern: 19/46/9
+40380: - Reached: 51396377 - Seed: 9282a0f6 - PID:  ea300cc2 - Pattern: 19/46/8 - DOUBLE MATCH! ~~~~ 
+40382: - Reached: c5ee1994 - Seed: e746f184 - PID:  e8ec8e08 - Pattern: 20/46/9
+40384: - Reached: 4084c10e - Seed: 8db9e925 - PID:  270ec29a - Pattern: 20/46/9
+40386: - Reached: 74540272 - Seed: 87c6fe05 - PID:  86d80101 - Pattern: 20/46/9
+40388: - Reached: a7f7cfab - Seed: 40234799 - PID:  c175c0b8 - Pattern: 20/46/9
+40390: - Reached: 41d5dc5d - Seed: a8c1755e - PID:  f20ae7fb - Pattern: 20/46/9
+40392: - Reached: 6c579971 - Seed: fe519628 - PID:  1a1a0d84 - Pattern: 20/46/9
+40394: - Reached: 58528816 - Seed: 40549e31 - PID:  b589dfe3 - Pattern: 20/46/9
+40396: - Reached: 4b07e2a0 - Seed: 29bb9a4f - PID:  c5ca6d8f - Pattern: 20/46/9
+40398: - Reached: 5dbb2ba4 - Seed: 8837c436 - PID:  a045bab3 - Pattern: 20/46/8 - DOUBLE MATCH! ~~~~ 
+40400: - Reached: d528fdc5 - Seed: 75455663 - PID:  5311d855 - Pattern: 20/47/9
+40402: - Reached: 2f69ee47 - Seed: 96b35473 - PID:  2833a46e - Pattern: 20/46/8
+40404: - Reached: d3a4c67b - Seed: 98e52365 - PID:  77affcbf - Pattern: 20/46/8
+40406: - Reached: 4cb562e8 - Seed: cfedf575 - PID:  b10f1170 - Pattern: 20/46/8
+40408: - Reached: 1a2aab02 - Seed: 168bf062 - PID:  f288ef0e - Pattern: 20/46/8
+40410: - Reached: ffebaca6 - Seed: 971fce7d - PID:  629fcae8 - Pattern: 20/46/8
+40412: - Reached: 8f9267ef - Seed: d93eb779 - PID:  96399f1b - Pattern: 20/47/8
+40414: - Reached: 6b6e14c1 - Seed: ca9f194d - PID:  8a77a074 - Pattern: 20/47/8
+40416: - Reached: 879cc515 - Seed: b82d220f - PID:  4a6217c6 - Pattern: 20/47/8 - DOUBLE MATCH! ~~~~ 
+40418: - Reached: 3205d68a - Seed: c840f80c - PID:  238bafca - Pattern: 20/47/8 - DOUBLE MATCH! ~~~~ 
+40420: - Reached: d85f6ab4 - Seed: dc655253 - PID:  16fbc600 - Pattern: 20/47/8
+40422: - Reached: 2b2f7df8 - Seed: e5971833 - PID:   7b004e6 - Pattern: 20/47/8
+40424: - Reached: 6606b0a9 - Seed: 84afc97a - PID:  f6a09d79 - Pattern: 20/47/8
+40426: - Reached: 3118c64b - Seed: 3ca2f62b - PID:  79d72aa6 - Pattern: 20/48/8
+40428: - Reached: 52e793bf - Seed: eee044e8 - PID:  9f1bb69c - Pattern: 20/48/8
+40430: - Reached: c8cc037c - Seed: 415bf9d9 - PID:  a9d9e574 - Pattern: 20/49/8
+40432: - Reached: 72ff0636 - Seed: 13a5f9ad - PID:  2b622465 - Pattern: 20/49/8
+40434: - Reached: d1896c1a - Seed: db09131c - PID:  6240de1e - Pattern: 20/49/8 - DOUBLE MATCH! ~~~~ 
+40436: - Reached: 82b3de73 - Seed: a66a669d - PID:  b0a3604c - Pattern: 20/49/8 - DOUBLE MATCH! ~~~~ 
+40438: - Reached: e124fd65 - Seed: a66a669d - PID:  b0a3604c - Pattern: 19/49/8 - DOUBLE MATCH! ~~~~ 
+40440: - Reached: 5a0ef4f9 - Seed: 34c0c7aa - PID:  9d3f4a2c - Pattern: 19/49/8
+40442: - Reached: b41f1e3e - Seed: d5786193 - PID:  4b86c639 - Pattern: 19/49/8
+40444: - Reached: ffe01608 - Seed: 268097e0 - PID:   fcb5514 - Pattern: 19/49/8 - DOUBLE MATCH! ~~~~ 
+40446: - Reached: 41e1d1f9 - Seed: e32f1a7e - PID:  cd35909d - Pattern: 19/49/8
+40448: - Reached: 7b3afbcd - Seed: a31c41eb - PID:   224eace - Pattern: 19/49/8
+40450: - Reached: ced6d88f - Seed: afeb1736 - PID:  e6f2b577 - Pattern: 19/48/8
+40452: - Reached: 7df9308c - Seed: ce785464 - PID:  5b933c11 - Pattern: 19/48/8
+40454: - Reached: bb908f50 - Seed: d93dcb72 - PID:  2634c581 - Pattern: 19/48/8
+40456: - Reached:  10b06aa - Seed: 5cce8eca - PID:  90b5cb76 - Pattern: 19/48/8
+40458: - Reached: c99e7443 - Seed: 880466ee - PID:  702602b7 - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+40460: - Reached: 6cf8b737 - Seed: bbfa14b4 - PID:  ad69e435 - Pattern: 19/49/9
+40462: - Reached: e2393a49 - Seed: dabc15c2 - PID:  2c1258b6 - Pattern: 19/48/9
+40464: - Reached: 76b895ce - Seed:  36d1c91 - PID:  d9676073 - Pattern: 19/48/9
+40466: - Reached: e8541332 - Seed:   162ccb - PID:  dbbd0a1e - Pattern: 19/48/9
+40468: - Reached: ff13389c - Seed:  2b685bc - PID:  71549cff - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+40470: - Reached: 55793a1d - Seed: 49bef380 - PID:  17886a1c - Pattern: 19/48/9
+40472: - Reached: a1270331 - Seed: 9ac5037b - PID:  3976d926 - Pattern: 19/48/9
+40474: - Reached: 547c6913 - Seed: bb0ea7aa - PID:  91e393c0 - Pattern: 19/48/9
+40476: - Reached: 8c13f560 - Seed: fc88b04e - PID:  9b8f1951 - Pattern: 19/47/8 - DOUBLE MATCH! ~~~~ 
+40478: - Reached:  32cda64 - Seed: 5442f651 - PID:  e75d38d8 - Pattern: 19/47/9
+40480: - Reached: 67dd205e - Seed: 6c01e7c9 - PID:  34c59ee2 - Pattern: 19/47/9
+40482: - Reached: 7f86f207 - Seed: f3377471 - PID:  dc0324ef - Pattern: 19/47/9
+40484: - Reached: 66bfb63b - Seed: 24a18b04 - PID:   90f10c6 - Pattern: 19/47/8 - DOUBLE MATCH! ~~~~ 
+40486: - Reached: af9daf6d - Seed: 2bf1a38d - PID:  1688ed88 - Pattern: 19/47/9
+40488: - Reached: 74636565 - Seed: 1edf8323 - PID:  7e15ec5c - Pattern: 19/47/9
+40490: - Reached: 3295dcf9 - Seed: 5b5b8adb - PID:  ec053247 - Pattern: 19/46/9
+40492: - Reached: 66d96670 - Seed: aa88958a - PID:  c3ed8349 - Pattern: 19/46/9
+40494: - Reached: fc995e08 - Seed: 6341bb07 - PID:  52bc9358 - Pattern: 19/46/9
+40496: - Reached: 6dedff8c - Seed: 367b79bf - PID:   4e356fb - Pattern: 19/46/9
+40498: - Reached: c8bffbd7 - Seed: 8b6ef76b - PID:  a787ac3a - Pattern: 19/46/9
+40500: - Reached: fff5808f - Seed: a30d447d - PID:  e7a1dcb9 - Pattern: 19/46/9
+40502: - Reached: f3d03743 - Seed: bb675cd6 - PID:  d966c701 - Pattern: 20/46/9
+40504: - Reached: 54fd0752 - Seed: 8d01dd16 - PID:  731c35ff - Pattern: 20/46/9
+40506: - Reached: 80578eaa - Seed: abd761d8 - PID:  a5661226 - Pattern: 20/46/8 - DOUBLE MATCH! ~~~~ 
+40508: - Reached: 8799bcce - Seed: 74c29771 - PID:  30f9bc18 - Pattern: 20/46/9
+40510: - Reached: 34dd80d1 - Seed: d409c674 - PID:    2d8192 - Pattern: 20/46/9
+40512: - Reached: 41422249 - Seed: 8cb9b066 - PID:  5aff55cb - Pattern: 20/46/9
+40514: - Reached: 7b2d751d - Seed: d1ca75a8 - PID:  e9b0cdfe - Pattern: 20/46/9
+40516: - Reached: b9fe7384 - Seed: f6e3992c - PID:  d63a03d2 - Pattern: 20/46/9
+40518: - Reached: c8f5009c - Seed: 918a6afa - PID:  b8c57e50 - Pattern: 20/46/9
+40520: - Reached: bdaf3460 - Seed: 6c03dad2 - PID:  ac4c6623 - Pattern: 20/47/8 - DOUBLE MATCH! ~~~~ 
+40522: - Reached: c9ba54db - Seed: f4e020ef - PID:  afcba1f8 - Pattern: 20/46/8
+40524: - Reached: bb099113 - Seed: e1f80e59 - PID:  2d249a27 - Pattern: 20/46/8
+40526: - Reached: 32806507 - Seed:  861aed1 - PID:  c63d5759 - Pattern: 20/46/8
+40528: - Reached: 759faf86 - Seed:  4d2d158 - PID:  f04c32f1 - Pattern: 20/46/8
+40530: - Reached: aca6285e - Seed: 4a08896c - PID:  3fbee527 - Pattern: 20/46/8 - DOUBLE MATCH! ~~~~ 
+40532: - Reached: 6ef9c2c2 - Seed: c5dc5304 - PID:  a328d19a - Pattern: 20/47/8
+40534: - Reached: a9401275 - Seed: 8f660f48 - PID:  ae4e305c - Pattern: 20/47/8
+40536: - Reached: ff59176d - Seed: 9b827be0 - PID:  c8a44419 - Pattern: 20/47/8
+40538: - Reached: 8c6e1981 - Seed: c15fbbbc - PID:  6fbe1198 - Pattern: 20/47/8
+40540: - Reached: d70d73d8 - Seed: 67cd70cf - PID:  25f7d3a2 - Pattern: 20/47/8
+40542: - Reached: 4babae70 - Seed:  b1c4139 - PID:  8e9e2ef4 - Pattern: 20/47/8
+40544: - Reached: e2053874 - Seed: 5a0df53f - PID:  9154f555 - Pattern: 20/47/8
+40546: - Reached: 2baa781f - Seed: 2483af6a - PID:  fa965fa5 - Pattern: 20/48/8
+40548: - Reached: 6de3a3d7 - Seed:  bde8ddf - PID:  2b66e2d1 - Pattern: 20/48/8
+40550: - Reached:  898890b - Seed: c068ef75 - PID:  3c18293d - Pattern: 20/48/8
+40552: - Reached: f99b4cfa - Seed: 16da3e3e - PID:  fdc8cb56 - Pattern: 20/48/8 - DOUBLE MATCH! ~~~~ 
+40554: - Reached: 744a8f52 - Seed: d0056681 - PID:   2c11603 - Pattern: 20/48/8
+40556: - Reached: c23ff9f6 - Seed: c2be6cd8 - PID:   cf11532 - Pattern: 20/48/8 - DOUBLE MATCH! ~~~~ 
+40558: - Reached: 4d2d0859 - Seed: c2be6cd8 - PID:   cf11532 - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+40560: - Reached:  cb368d1 - Seed: 5e139bcd - PID:  189cbd4e - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+40562: - Reached: a2f22e25 - Seed: e1c39b8e - PID:  217792e4 - Pattern: 19/48/8
+40564: - Reached:  164bb6c - Seed:  1f9dd1f - PID:  c38ef936 - Pattern: 19/48/8
+40566: - Reached: b8093b84 - Seed: 326e384a - PID:  63b251e6 - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+40568: - Reached: 84f21fc8 - Seed: d646d4dd - PID:  c996404d - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+40570: - Reached: 1df9a9a3 - Seed: 36ce1443 - PID:  cccb140e - Pattern: 19/48/8
+40572: - Reached:  d1c7cdb - Seed: ea77351e - PID:  48b808d1 - Pattern: 19/48/8
+40574: - Reached: 20a2a74f - Seed: 20af0af6 - PID:  5d5e69e2 - Pattern: 19/48/8
+40576: - Reached: 979b53ae - Seed: c4dbb5ce - PID:  ea0c88b0 - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+40578: - Reached: c8f9b786 - Seed: 17224d2d - PID:  cc50d8a8 - Pattern: 19/48/8
+40580: - Reached: 1351966a - Seed: 725452a5 - PID:  53618806 - Pattern: 19/49/9
+40582: - Reached: a7d0467d - Seed: 7a99da1d - PID:  343fc908 - Pattern: 19/48/9
+40584: - Reached: 7b187a75 - Seed: d299a331 - PID:  89f06143 - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+40586: - Reached: ad245709 - Seed: 1f8fd8c8 - PID:  90ffc030 - Pattern: 19/48/9
+40588: - Reached: 9d89de40 - Seed: fe341560 - PID:  e94da142 - Pattern: 19/48/9
+40590: - Reached: e518bbd8 - Seed: 82f6fa64 - PID:  65851bd1 - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+40592: - Reached: 4a3b3e5c - Seed: 31c135d6 - PID:  86a41b2c - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+40594: - Reached: da7f6d67 - Seed: 998e84fb - PID:  4e30edbe - Pattern: 19/48/9
+40596: - Reached: 6b73201f - Seed: 9fb1d70d - PID:  92f10edd - Pattern: 19/47/9
+40598: - Reached: 448303d3 - Seed: 637e5905 - PID:  fd4bc091 - Pattern: 19/47/9
+40600: - Reached: 469477a2 - Seed: 6fd9be42 - PID:  f69ca7f9 - Pattern: 19/47/8 - DOUBLE MATCH! ~~~~ 
+40602: - Reached: a709d4fa - Seed: afe4ab11 - PID:  3943fa58 - Pattern: 19/47/8 - DOUBLE MATCH! ~~~~ 
+40604: - Reached: 15590c1e - Seed:  b2d8489 - PID:  15cd0e9b - Pattern: 19/47/8 - DOUBLE MATCH! ~~~~ 
+40606: - Reached: e8fdf0e1 - Seed: fc3e7f01 - PID:  bffa32fb - Pattern: 19/47/9
+40608: - Reached: 4d6ff059 - Seed: e917a355 - PID:  3fb58a26 - Pattern: 19/47/9
+40610: - Reached:  be3782d - Seed: b59f91e0 - PID:   cb8a735 - Pattern: 19/46/9
+40612: - Reached: f4bdb054 - Seed: 98b76b67 - PID:  93b7da59 - Pattern: 19/46/8 - DOUBLE MATCH! ~~~~ 
+40614: - Reached: d6b8836c - Seed: 5615fd9b - PID:  921f2923 - Pattern: 19/46/8 - DOUBLE MATCH! ~~~~ 
+40616: - Reached: 72bd2830 - Seed: 5328a1d3 - PID:  641fef91 - Pattern: 19/46/8 - DOUBLE MATCH! ~~~~ 
+40618: - Reached: 2305876b - Seed: fde8d33f - PID:  f0f420ed - Pattern: 19/46/9
+40620: - Reached: ded0d1a3 - Seed:  807d146 - PID:  e81ef664 - Pattern: 19/46/9
+40622: - Reached:  7bc2297 - Seed: d4cd9ee1 - PID:  1f59984d - Pattern: 20/46/8 - DOUBLE MATCH! ~~~~ 
+40624: - Reached: 2078acd6 - Seed: a13d1935 - PID:   285797d - Pattern: 20/46/9
+40626: - Reached: 99a65bae - Seed: 59c1c62d - PID:  3d95c73c - Pattern: 20/46/9
+40628: - Reached: 553a0f12 - Seed: 71712425 - PID:  3b7897c9 - Pattern: 20/46/9
+40630: - Reached: 53566b85 - Seed: c9fddb98 - PID:  3bdfe383 - Pattern: 20/46/9
+40632: - Reached: 3565ae7d - Seed: 6ad72df4 - PID:  8002076f - Pattern: 20/46/9
+40634: - Reached: 2766b591 - Seed: 51b6da82 - PID:  ea2641ed - Pattern: 20/46/9
+40636: - Reached: 93d045a8 - Seed: 11a8d3d0 - PID:  ee5133ea - Pattern: 20/46/9
+40638: - Reached: f9ee2640 - Seed: 2b1e208b - PID:  81ad3ffc - Pattern: 20/46/9
+40640: - Reached: 76ffb144 - Seed:  cdac0cf - PID:  382dfa3f - Pattern: 20/47/8 - DOUBLE MATCH! ~~~~ 
+40642: - Reached: 110bfbaf - Seed: cd87c7c2 - PID:  f4251844 - Pattern: 20/46/8
+40644: - Reached: 6f8d1567 - Seed: e901e375 - PID:  ecbd951e - Pattern: 20/46/8
+40646: - Reached: 6ff2c79b - Seed: f8968885 - PID:  894af112 - Pattern: 20/48/8
+40648: - Reached: 222b274a - Seed: 4a4ec783 - PID:  fd48c905 - Pattern: 20/49/8
+40650: - Reached: f443ffa2 - Seed: aeffee92 - PID:  107b41c8 - Pattern: 20/49/8
+40652: - Reached: 8b459346 - Seed: 461f7ea8 - PID:  4268247b - Pattern: 20/48/8 - DOUBLE MATCH! ~~~~ 
+40654: - Reached: d2aa5a69 - Seed:  3dc3f40 - PID:  56b99598 - Pattern: 20/48/8 - DOUBLE MATCH! ~~~~ 
+40656: - Reached: 754dd8e1 - Seed: 9dcb9266 - PID:  7648cc7a - Pattern: 20/48/8 - DOUBLE MATCH! ~~~~ 
+40658: - Reached: bc617335 - Seed: 5a14a0af - PID:  1d93d87d - Pattern: 20/48/8 - DOUBLE MATCH! ~~~~ 
+40660: - Reached: 1934f23c - Seed: 35d5b381 - PID:   4ba1fce - Pattern: 20/48/8 - DOUBLE MATCH! ~~~~ 
+40662: - Reached: 687a7854 - Seed: bc87bbde - PID:  e34e2488 - Pattern: 20/48/8
+40664: - Reached: 2d09ed98 - Seed: b6bacc53 - PID:  68263565 - Pattern: 20/49/8
+40666: - Reached: fbcd0e33 - Seed: 4eeb8a74 - PID:  aadc0a95 - Pattern: 20/48/8
+40668: - Reached: d5f1af6b - Seed:  ec3a859 - PID:  5fb04deb - Pattern: 20/48/8
+40670: - Reached: 1fb1f6df - Seed: dd79451e - PID:  c15f2f1c - Pattern: 20/48/8 - DOUBLE MATCH! ~~~~ 
+40672: - Reached: bcb45afe - Seed: 332df1a2 - PID:  20efc680 - Pattern: 20/48/8 - DOUBLE MATCH! ~~~~ 
+40674: - Reached: 3554b4d6 - Seed: 4fb52546 - PID:  6c35696d - Pattern: 20/48/8
+40676: - Reached: 3a2dccba - Seed: d3923b3c - PID:  7a10d85f - Pattern: 20/48/8
+40678: - Reached: 229ea18d - Seed: d3923b3c - PID:  7a10d85f - Pattern: 19/48/8
+40680: - Reached: ca48d385 - Seed: 26fd54ef - PID:  7748fa4f - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+40682: - Reached: 301fe540 - Seed: 99d30dda - PID:  a7c6b447 - Pattern: 19/48/8
+40684: - Reached: 8438563b - Seed: cd988333 - PID:  76938b6a - Pattern: 19/48/8
+40686: - Reached: c7ad8da8 - Seed: 64cc6825 - PID:  7c980377 - Pattern: 19/48/8
+40688: - Reached: 8b0b0867 - Seed: fb9f7bb9 - PID:  6feca935 - Pattern: 19/48/8
+40690: - Reached:  67fc966 - Seed: 60d90bfe - PID:  b9f356eb - Pattern: 19/48/8
+40692: - Reached: c9fea3af - Seed: 9e50096b - PID:  e45e12fe - Pattern: 19/48/8
+40694: - Reached: 259abd67 - Seed: 7c341f4c - PID:  687ecb2d - Pattern: 19/48/8
+40696: - Reached: b119cad5 - Seed: 66fa1b61 - PID:  c9d58d0d - Pattern: 19/48/8
+40698: - Reached: 463baf4a - Seed: efcf347c - PID:  fdff5718 - Pattern: 19/48/8
+40700: - Reached: e847a974 - Seed: 92f1ef83 - PID:  cd67b946 - Pattern: 19/49/8 - DOUBLE MATCH! ~~~~ 
+40702: - Reached: 5d4718b8 - Seed: 6b8aa310 - PID:  a04756e3 - Pattern: 19/48/9
+40704: - Reached: 82a74269 - Seed: 4a7bd86a - PID:  61eba6ca - Pattern: 19/48/9
+40706: - Reached:  6a5060b - Seed: bdefd28e - PID:  65a50ab8 - Pattern: 19/48/9
+40708: - Reached: c0007f7f - Seed: 7a1ba2de - PID:  304b78b0 - Pattern: 19/48/9
+40710: - Reached: 967aba3c - Seed: b0f5f73e - PID:  b15d03f9 - Pattern: 19/48/9
+40712: - Reached: 513812f6 - Seed: d496dfdd - PID:  395a4eae - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+40714: - Reached: 968834da - Seed: 4be1849b - PID:  6ab588fe - Pattern: 19/48/9
+40716: - Reached: 696e3633 - Seed: 212376dc - PID:  ec066a3c - Pattern: 19/47/8 - DOUBLE MATCH! ~~~~ 
+40718: - Reached: 2c363325 - Seed: aa349164 - PID:  78321da7 - Pattern: 19/47/9
+40720: - Reached: da17b6b9 - Seed: b1628271 - PID:  6e029228 - Pattern: 19/47/8 - DOUBLE MATCH! ~~~~ 
+40722: - Reached: 8c8162fe - Seed: c1e44253 - PID:  6f25b142 - Pattern: 19/47/9
+40724: - Reached: c62220c8 - Seed: ae3966d4 - PID:  8afc4ad5 - Pattern: 19/47/9
+40726: - Reached:  2c35e4c - Seed: 6b8fc0a4 - PID:  7590f3ea - Pattern: 19/47/9
+40728: - Reached: 248e098d - Seed: c96d60b7 - PID:  44a23894 - Pattern: 19/47/9
+40730: - Reached: 386b744f - Seed: 894fe29f - PID:  71fed4bd - Pattern: 19/46/9
+40732: - Reached: 3e3f1703 - Seed: f3b5bbfb - PID:  dec9ec50 - Pattern: 19/46/8 - DOUBLE MATCH! ~~~~ 
+40734: - Reached: fecc9210 - Seed: c5bec196 - PID:  89c99bcc - Pattern: 19/46/9
+40736: - Reached: 3995bf6a - Seed: d9347141 - PID:  1340ac13 - Pattern: 19/46/8 - DOUBLE MATCH! ~~~~ 
+40738: - Reached: 664ce98e - Seed: 6dd8dcdf - PID:  15496de4 - Pattern: 19/46/9
+40740: - Reached: b7f8eaf7 - Seed: 8a59b931 - PID:  9e975ea6 - Pattern: 19/46/9
+40742: - Reached: c3d12c09 - Seed: 6bc21695 - PID:  e8675d7c - Pattern: 20/46/9
+40744: - Reached: a30a4add - Seed: 47589864 - PID:  6bc8ce80 - Pattern: 20/46/8 - DOUBLE MATCH! ~~~~ 
+40746: - Reached:   4783f2 - Seed: f9d796cb - PID:  e9106cce - Pattern: 20/46/9
+40748: - Reached:  fd9cf5c - Seed: 249a2b19 - PID:  4eab6264 - Pattern: 20/46/9
+40750: - Reached: d2005f20 - Seed: 3f16dc3b - PID:  7258d844 - Pattern: 20/46/9
+40752: - Reached: 48da4cf1 - Seed: bd77fcb6 - PID:  52bea467 - Pattern: 20/46/9
+40754: - Reached: aa5520d3 - Seed: 3429d1b1 - PID:  48969149 - Pattern: 20/46/9
+40756: - Reached: d131a0c7 - Seed: 80c11766 - PID:  7a87c051 - Pattern: 20/46/9
+40758: - Reached: 7e18e924 - Seed: 4b834c4a - PID:  d59d7a74 - Pattern: 20/46/9
+40760: - Reached: 2c92451e - Seed: c89b991a - PID:  157e7cec - Pattern: 20/47/9
+40762: - Reached: 86709b82 - Seed: 823540d5 - PID:  55ccd917 - Pattern: 20/46/8 - DOUBLE MATCH! ~~~~ 
+40764: - Reached: 7dd985fb - Seed: aef7fb69 - PID:  f723fee6 - Pattern: 20/46/8
+40766: - Reached: 944e1d2d - Seed: bfae3d6e - PID:  496a5d82 - Pattern: 20/46/8
+40768: - Reached: 9c1bab41 - Seed: 31d9ba9b - PID:  891e599a - Pattern: 20/46/8 - DOUBLE MATCH! ~~~~ 
+40770: - Reached: bbfd0626 - Seed: ed01f10f - PID:  b368cf72 - Pattern: 20/46/8
+40772: - Reached: ccdb4930 - Seed:  c8eccbd - PID:  bbf1fc0a - Pattern: 20/47/8 - DOUBLE MATCH! ~~~~ 
+40774: - Reached: c91cef34 - Seed: ef22ac70 - PID:  fcf008be - Pattern: 20/47/8
+40776: - Reached: 8e457095 - Seed: 6a6de2aa - PID:  96743877 - Pattern: 20/47/8
+40778: - Reached: 71348f97 - Seed: 10408043 - PID:  efbf0ae2 - Pattern: 20/47/8
+40780: - Reached: 6067e0cb - Seed: f9d19d3e - PID:  bcbdd372 - Pattern: 20/47/8
+40782: - Reached: f934d378 - Seed: 8422cfe8 - PID:  1999aece - Pattern: 20/47/8
+40784: - Reached: c4215812 - Seed: 9ddfeda7 - PID:  dbfc06b3 - Pattern: 20/47/8 - DOUBLE MATCH! ~~~~ 
+40786: - Reached: 60733eb6 - Seed: a596df98 - PID:  84890f94 - Pattern: 20/48/8 - DOUBLE MATCH! ~~~~ 
+40788: - Reached:  8910b3f - Seed: 41d7418d - PID:  278f8feb - Pattern: 20/48/8
+40790: - Reached: fbb42a91 - Seed: bd02bd9d - PID:  1b0725fe - Pattern: 20/48/8 - DOUBLE MATCH! ~~~~ 
+40792: - Reached: 8ca23be5 - Seed: a3bfc0df - PID:  6697a78a - Pattern: 20/48/8 - DOUBLE MATCH! ~~~~ 
+40794: - Reached: b9521d9a - Seed: 1977a093 - PID:  53f9015c - Pattern: 20/48/8
+40796: - Reached: cd3e6244 - Seed: 986642e0 - PID:  33e66cef - Pattern: 20/48/8 - DOUBLE MATCH! ~~~~ 
+40798: - Reached: 4aa72288 - Seed: 986642e0 - PID:  33e66cef - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+40800: - Reached: c8c91879 - Seed: c8c7f403 - PID:  b307a6ba - Pattern: 19/48/8
+40802: - Reached: 30fe849b - Seed: ae1c91de - PID:    46bbf9 - Pattern: 19/48/8
+40804: - Reached: 7e87db0f - Seed: 55557439 - PID:  b7a78a24 - Pattern: 19/48/8
+40806: - Reached:  f68a50c - Seed: 7664af19 - PID:  f4fffb79 - Pattern: 19/48/8
+40808: - Reached: fea3ec46 - Seed: 956f92ed - PID:  22cfcb21 - Pattern: 19/48/8
+40810: - Reached:  4a6072a - Seed: 27a0a72b - PID:  6a6cf02b - Pattern: 19/48/8
+40812: - Reached: 91eabec3 - Seed: 80e321b0 - PID:  4a39d758 - Pattern: 19/48/8
+40814: - Reached: 5186b835 - Seed: cd6304f1 - PID:  f074021e - Pattern: 19/48/8
+40816: - Reached: bf84a0c9 - Seed: 9fe32a01 - PID:  51847e89 - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+40818: - Reached: af6c3e4e - Seed: 286f6ae4 - PID:  f3493088 - Pattern: 19/48/8
+40820: - Reached: 5f9a2e98 - Seed: 5c320aa4 - PID:   609c0a6 - Pattern: 19/49/9
+40822: - Reached: a9b04d1c - Seed: cb1faa32 - PID:  e5872461 - Pattern: 19/48/9
+40824: - Reached: d143289d - Seed: f2b7a279 - PID:  83ec4730 - Pattern: 19/48/9
+40826: - Reached: 978e03df - Seed: da1efdfb - PID:  68b6248f - Pattern: 19/48/9
+40828: - Reached: 7551d393 - Seed: 9e622d8b - PID:  3145efe8 - Pattern: 19/48/9
+40830: - Reached: c0c3f1e0 - Seed:  abc393d - PID:  edb956a6 - Pattern: 19/48/9
+40832: - Reached: eddc35ba - Seed: 38005c51 - PID:  c02a0708 - Pattern: 19/48/9
+40834: - Reached: 295f68de - Seed: c744b476 - PID:  2e31ced0 - Pattern: 19/48/9
+40836: - Reached: 51402487 - Seed: 2a517944 - PID:  61ed3f04 - Pattern: 19/47/9
+40838: - Reached: e0296a19 - Seed: e4732f84 - PID:  994cbce1 - Pattern: 19/47/8 - DOUBLE MATCH! ~~~~ 
+40840: - Reached: 3fddbded - Seed: 1536ce6e - PID:  75f00ab4 - Pattern: 19/47/9
+40842: - Reached: 465a1c42 - Seed: a096b6b4 - PID:  5399452f - Pattern: 19/47/9
+40844: - Reached: 6619022c - Seed: b04a89f8 - PID:  a2400549 - Pattern: 19/47/9
+40846: - Reached: 192102f0 - Seed: 66bcaca9 - PID:  6283822b - Pattern: 19/47/9
+40848: - Reached: 9959c501 - Seed: 3780a24b - PID:  33a4f2fe - Pattern: 19/47/8 - DOUBLE MATCH! ~~~~ 
+40850: - Reached: 1da85163 - Seed: 9b464606 - PID:   e9d0d1a - Pattern: 19/46/8 - DOUBLE MATCH! ~~~~ 
+40852: - Reached: cbe44e57 - Seed: fb376ccf - PID:  ed4003b8 - Pattern: 19/46/8 - DOUBLE MATCH! ~~~~ 
+40854: - Reached: bbb18df4 - Seed: bed0d0a1 - PID:  7828b188 - Pattern: 19/46/9
+40856: - Reached: a721a86e - Seed: dcf6ede4 - PID:  e81909a3 - Pattern: 19/46/9
+40858: - Reached:  f6f17d2 - Seed: d54f8d05 - PID:  2cbdb10d - Pattern: 19/46/9
+40860: - Reached: 7afd008b - Seed: e978d079 - PID:  c76b0869 - Pattern: 20/48/9
+40862: - Reached: 1e84243d - Seed:  1bedfbe - PID:  2117b0ae - Pattern: 20/48/9
+40864: - Reached: a9e0b751 - Seed: ba1efbfd - PID:   6143ffe - Pattern: 20/48/9
+40866: - Reached: 13c7ab76 - Seed: 835efd0c - PID:  b49adf30 - Pattern: 20/48/9
+40868: - Reached: decc7100 - Seed: a4acef4d - PID:   5b7810a - Pattern: 20/48/9
+40870: - Reached: 524d1804 - Seed: 973ba296 - PID:  f79cfe56 - Pattern: 20/48/9
+40872: - Reached: 679f51a5 - Seed:  d0f6477 - PID:  c852c575 - Pattern: 20/48/9
+40874: - Reached: 1240f127 - Seed: bb703853 - PID:  2b4dd79f - Pattern: 20/48/9
+40876: - Reached: 8b400f5b - Seed: 181e6daa - PID:  2bc0983f - Pattern: 20/49/9
+40878: - Reached: e5cb8d48 - Seed: e4c0564e - PID:  d30ad476 - Pattern: 20/48/8
+ERROR - MISSING?
+40882: - Reached: bfd20806 - Seed: bd9b1e68 - PID:  92b25ffd - Pattern: 20/46/8
+40884: - Reached: b26356cf - Seed: 7d86bdec - PID:  c69427b5 - Pattern: 20/46/8
+40886: - Reached: cde70aa1 - Seed: f534f1ad - PID:  3f1e610f - Pattern: 20/46/8 - DOUBLE MATCH! ~~~~ 
+40888: - Reached: 73fcf0f5 - Seed: adfd8d6f - PID:   7824ac4 - Pattern: 20/46/8
+40890: - Reached: 14f21fea - Seed: b011aa23 - PID:  f4235e4d - Pattern: 20/46/8
+40892: - Reached: 33414f14 - Seed: 4cd52530 - PID:  6f642da4 - Pattern: 20/47/8
+40894: - Reached: 86c7a058 - Seed: 54815b8a - PID:  83843a9d - Pattern: 20/47/8 - DOUBLE MATCH! ~~~~ 
+40896: - Reached: 5ff67289 - Seed: a748efae - PID:  b6d17b38 - Pattern: 20/47/8
+40898: - Reached: 33fda72b - Seed: 60892664 - PID:   2850381 - Pattern: 20/47/8
+40900: - Reached: c50c1a9f - Seed: 6ca831a9 - PID:  56987e7f - Pattern: 20/47/8
+40902: - Reached: f3ef43dc - Seed: 19c0a6c2 - PID:  f8d41535 - Pattern: 20/47/8 - DOUBLE MATCH! ~~~~ 
+40904: - Reached: 29141996 - Seed: 93c8923b - PID:  1172cccc - Pattern: 20/47/8
+40906: - Reached: 56a66d7a - Seed: 35b2a856 - PID:  c7510c2f - Pattern: 20/48/8
+40908: - Reached: b18f6b53 - Seed: fbd5b6fd - PID:  305691a6 - Pattern: 20/48/8 - DOUBLE MATCH! ~~~~ 
+40910: - Reached: e02e8145 - Seed: eadc038a - PID:  c2b37baf - Pattern: 20/48/8
+40912: - Reached: d4420ed9 - Seed: 9f92f2f3 - PID:  39fc50cd - Pattern: 20/48/8 - DOUBLE MATCH! ~~~~ 
+40914: - Reached: 99dbed9e - Seed: 3690f4c0 - PID:  251e63fd - Pattern: 20/48/8
+40916: - Reached: e353b068 - Seed: 4ae787c4 - PID:  877041f6 - Pattern: 20/48/8
+40918: - Reached: 7176efec - Seed: 4ae787c4 - PID:  877041f6 - Pattern: 19/48/8
+40920: - Reached: bc360bad - Seed:  3ce88be - PID:   3dba385 - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+40922: - Reached: 5cfa776f - Seed: 1ee871e7 - PID:  54c2b292 - Pattern: 19/48/8
+40924: - Reached: 2099b423 - Seed: e38aa638 - PID:  461d9a43 - Pattern: 19/48/8
+40926: - Reached: 259145b0 - Seed: dc7f6336 - PID:   d9e18a3 - Pattern: 19/48/8
+40928: - Reached:  1ae400a - Seed: 6a391222 - PID:  e51c5aba - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+40930: - Reached: 4f5fbc2e - Seed: 42bcceff - PID:  7af31ec0 - Pattern: 19/48/8
+40932: - Reached: 2bbbc217 - Seed: 6c120f94 - PID:  28861f3c - Pattern: 19/48/8
+40934: - Reached: 4a272c29 - Seed: 86362a1a - PID:  cfb6c908 - Pattern: 19/48/8
+40936: - Reached: a603f4fd - Seed: 90a7de5a - PID:  71c4b5cf - Pattern: 19/48/8
+40938: - Reached: d5c0c892 - Seed: 4b51c904 - PID:  1c322753 - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+40940: - Reached: 5f42e8fc - Seed: ff06de25 - PID:  17f78631 - Pattern: 19/49/9
+40942: - Reached: 9ae89ac0 - Seed:  fb814cd - PID:  3a762e24 - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+40944: - Reached: 590d4111 - Seed: b4d9cc5b - PID:  6ff02c4c - Pattern: 19/48/9
+40946: - Reached:  4cda5f3 - Seed: 4f488e48 - PID:  ada8b3c9 - Pattern: 19/48/9
+40948: - Reached: a91923c0 - Seed: 975383cc - PID:  68553f7b - Pattern: 19/48/9
+40950: - Reached: 775166c4 - Seed: bce66106 - PID:  9fb57fbc - Pattern: 19/48/9
+40952: - Reached: 2d57dfbe - Seed: fd572543 - PID:  6279c7c7 - Pattern: 19/48/9
+40954: - Reached:  21e14e7 - Seed: 2e170f3a - PID:  1059ae45 - Pattern: 19/48/9
+40956: - Reached: 2dc51f1b - Seed: 4d5ed897 - PID:  419f3a6d - Pattern: 19/47/9
+40958: - Reached: 2631ef4d - Seed: c8122485 - PID:  34278ced - Pattern: 19/47/9
+40960: - Reached: 78349922 - Seed: e896758e - PID:  544e02c7 - Pattern: 19/47/9
+40962: - Reached: 88c9a4c6 - Seed: ec0a7fd8 - PID:  d0f35af8 - Pattern: 19/47/9
+40964: - Reached: 25058cd0 - Seed: ce728e62 - PID:  95e05e7e - Pattern: 19/47/9
+40966: - Reached: 47bcc461 - Seed: f707f43f - PID:  5d1e3174 - Pattern: 19/47/9
+40968: - Reached: 7b2776b5 - Seed: a66d141f - PID:  963361a5 - Pattern: 19/47/8 - DOUBLE MATCH! ~~~~ 
+40970: - Reached: 9ccbb6b7 - Seed: 1c6121dc - PID:   4f9038f - Pattern: 19/46/9
+40972: - Reached: 8a410dd4 - Seed: c829f9a0 - PID:  432f0f4f - Pattern: 19/46/9
+40974: - Reached: e0cebb18 - Seed: 84853455 - PID:  19b042f9 - Pattern: 19/46/8 - DOUBLE MATCH! ~~~~ 
+40976: - Reached:  a1eacb2 - Seed: b4650265 - PID:  41d5454a - Pattern: 19/46/9
+40978: - Reached:  b5b66eb - Seed: 179e5947 - PID:  373ea96b - Pattern: 19/46/9
+40980: - Reached: 80ee865f - Seed: 388523e9 - PID:  70f5be52 - Pattern: 20/46/9
+40982: - Reached: cb27eeb1 - Seed: 3f5018bd - PID:  e6db867f - Pattern: 20/46/8 - DOUBLE MATCH! ~~~~ 
+40984: - Reached: 8010a656 - Seed: 2a87c573 - PID:  e0bbcd1b - Pattern: 20/46/9
+40986: - Reached: 7700b63a - Seed: 26987940 - PID:  ec673275 - Pattern: 20/46/9
+40988: - Reached: 74dd6fe4 - Seed: 402b3b80 - PID:  9e4aeaf3 - Pattern: 20/46/9
+40990: - Reached: 13cd3705 - Seed: 6de0fc5a - PID:  2c3769ef - Pattern: 20/46/9
+40992: - Reached: f0905099 - Seed: 44b14b74 - PID:  79bedd73 - Pattern: 20/46/9
+40994: - Reached:  a8b6dbb - Seed: 3ac519a7 - PID:  f23f4e9a - Pattern: 20/46/9
+40996: - Reached: 86e53b28 - Seed: 3ec37839 - PID:  f0b6b907 - Pattern: 20/46/8 - DOUBLE MATCH! ~~~~ 
+40998: - Reached: 71bb96ac - Seed: 9538027e - PID:   287c849 - Pattern: 20/46/9
+41000: - Reached: d51d9ae6 - Seed: 16871ccb - PID:  507967aa - Pattern: 20/47/8 - DOUBLE MATCH! ~~~~ 
+41002: - Reached: 5338932f - Seed: 553d2afd - PID:  5a510b83 - Pattern: 20/46/8 - DOUBLE MATCH! ~~~~ 
+41004: - Reached: d3e53be3 - Seed: b39fc30d - PID:  4ef8e876 - Pattern: 20/46/8
+41006: - Reached: bb7e8e55 - Seed: 74fb8721 - PID:  be34397f - Pattern: 20/46/8
+41008: - Reached: 21f478ca - Seed: d91f1483 - PID:  f840e7d0 - Pattern: 20/46/8 - DOUBLE MATCH! ~~~~ 
+41010: - Reached: a08570ee - Seed: 7511fd25 - PID:  cc2cdd8f - Pattern: 20/46/8
+41012: - Reached: 312ba638 - Seed: 974e0039 - PID:  b70c1428 - Pattern: 20/47/8
+41014: - Reached: 30e49de9 - Seed: bd025e8e - PID:  5a431d0d - Pattern: 20/47/8
+41016: - Reached: f257b2bd - Seed: a7518e44 - PID:  e084b614 - Pattern: 20/47/8
+41018: - Reached: c4a9ceff - Seed: 9eb40e88 - PID:  66808964 - Pattern: 20/47/8
+41020: - Reached: 7310ffbc - Seed: 2690fbdd - PID:  363c2e75 - Pattern: 20/47/8
+41022: - Reached: 62318d80 - Seed: 9978c09b - PID:  fe4fa920 - Pattern: 20/47/8
+41024: - Reached: 1370de5a - Seed: 45eedc83 - PID:  8c7e8e35 - Pattern: 20/47/8
+41026: - Reached: 5ba7ddb3 - Seed: 695ceda0 - PID:  3c8e0902 - Pattern: 20/48/8 - DOUBLE MATCH! ~~~~ 
+41028: - Reached: ae04c3a7 - Seed: ee1a3d71 - PID:  539435de - Pattern: 20/48/8
+41030: - Reached: 90ab7239 - Seed: 9a053474 - PID:  c91abb81 - Pattern: 20/48/8
+41032: - Reached: 4440847e - Seed: 1f9a0df9 - PID:   da8a569 - Pattern: 20/48/8
+41034: - Reached: 6f0088e2 - Seed: 3ef87fa4 - PID:  56640be8 - Pattern: 20/48/8 - DOUBLE MATCH! ~~~~ 
+41036: - Reached: bd8483cc - Seed:  d1e4de8 - PID:  8a8c78ed - Pattern: 20/48/8 - DOUBLE MATCH! ~~~~ 
+41038: - Reached: 921fdd0d - Seed:  d1e4de8 - PID:  8a8c78ed - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+41040: - Reached: 6a75c121 - Seed: ba3d0891 - PID:  bef14585 - Pattern: 19/48/8
+41042: - Reached: 55ce1e83 - Seed: 2eebfc18 - PID:  74df2544 - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+41044: - Reached: fb46ef90 - Seed: e0a58420 - PID:  130d471d - Pattern: 19/48/8
+41046: - Reached: 6a457394 - Seed: c57c2f80 - PID:  2528b42c - Pattern: 19/48/8
+41048: - Reached: dc69eb0e - Seed: 80b3935f - PID:  af05bacb - Pattern: 19/48/8
+41050: - Reached: fc19ca77 - Seed: 4c75bb13 - PID:  c4282a7b - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+41052: - Reached: 70dae1ab - Seed: 20787da7 - PID:  4b42e322 - Pattern: 19/48/8
+41054: - Reached: 46c87e5d - Seed: 18441f3a - PID:  2d9b12bf - Pattern: 19/48/8
+41056: - Reached: a96e7d72 - Seed: d737dbc8 - PID:  2b186b71 - Pattern: 19/48/8
+41058: - Reached: 4c57f216 - Seed: 2ff1054b - PID:  8b24b78c - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+41060: - Reached: f1039ca0 - Seed: 42cb3378 - PID:  886d5626 - Pattern: 19/49/8 - DOUBLE MATCH! ~~~~ 
+41062: - Reached: 18d41871 - Seed: 2c331e7c - PID:  68bc6b89 - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+41064: - Reached: 81eedfc5 - Seed: 77d17936 - PID:  c3777a70 - Pattern: 19/48/9
+41066: - Reached: 49ede047 - Seed: cd0217bf - PID:  18dbf48b - Pattern: 19/48/9
+41068: - Reached: e514dea4 - Seed: d382a070 - PID:  478c42b9 - Pattern: 19/48/9
+41070: - Reached: f4db5ce8 - Seed:  ded10ca - PID:  a1fce2a9 - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+41072: - Reached: 39037502 - Seed: 6e183f64 - PID:  eb9c1920 - Pattern: 19/48/9
+41074: - Reached: f8011d7b - Seed: a0336dd7 - PID:  d047a56c - Pattern: 19/48/9
+41076: - Reached: ebeb99ef - Seed: 28887f88 - PID:  f5073010 - Pattern: 19/47/9
+41078: - Reached: 8c77d6c1 - Seed: d166f879 - PID:  6e462079 - Pattern: 19/49/9
+41080: - Reached: d7c557a6 - Seed: 7cb8aa4d - PID:  50de4404 - Pattern: 19/49/8 - DOUBLE MATCH! ~~~~ 
+41082: - Reached: 56a2e08a - Seed: eb8abb0f - PID:  31d0ac62 - Pattern: 19/49/8 - DOUBLE MATCH! ~~~~ 
+41084: - Reached: 6fdfc4b4 - Seed: a386ef3d - PID:  e8bc1b73 - Pattern: 19/49/9
+41086: - Reached: ffb2b415 - Seed: 8e42c2d1 - PID:  64b52a43 - Pattern: 19/48/9
+41088: - Reached: 9b37b2a9 - Seed: 191e55b3 - PID:  5b331215 - Pattern: 19/48/9
+41090: - Reached: c9d0d84b - Seed: 31d1d343 - PID:  a5aa2fec - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+41092: - Reached: 3ae7e0f8 - Seed: 58fcc637 - PID:  1b3a3124 - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+41094: - Reached:  1ba9d7c - Seed: 37164149 - PID:  78ad7d4f - Pattern: 19/48/9
+41096: - Reached:  c957036 - Seed: 2f1abdce - PID:  327d6f7c - Pattern: 19/46/8 - DOUBLE MATCH! ~~~~ 
+41098: - Reached: f796dabf - Seed:  deabb32 - PID:  6c170d74 - Pattern: 19/46/9
+41100: - Reached: 46b53073 - Seed: 20b35e46 - PID:  c5757b11 - Pattern: 20/46/9
+41102: - Reached: fb07df65 - Seed: 35ad8e86 - PID:  e77327fa - Pattern: 20/46/8 - DOUBLE MATCH! ~~~~ 
+41104: - Reached: ae4d471a - Seed: 2ac13113 - PID:  38e8e512 - Pattern: 20/46/9
+41106: - Reached: 255dc83e - Seed: 1aec5d60 - PID:  4e1cb7f6 - Pattern: 20/46/9
+41108: - Reached:   3f1008 - Seed: e96dc264 - PID:  279a54b1 - Pattern: 20/46/9
+41110: - Reached:  22d53f9 - Seed: ab65bda9 - PID:  e051fd83 - Pattern: 20/46/9
+41112: - Reached: 1cd91dcd - Seed: dbfb7098 - PID:  96ab7bf3 - Pattern: 20/46/8 - DOUBLE MATCH! ~~~~ 
+41114: - Reached: 68d50a8f - Seed:  9322ad8 - PID:  c4f00b2d - Pattern: 20/46/9
+41116: - Reached: 37204a8c - Seed: 7a5cf077 - PID:   d9b51c9 - Pattern: 20/46/9
+41118: - Reached: cae1c950 - Seed: f67953c2 - PID:  d85357ec - Pattern: 20/46/9
+41120: - Reached: 3ac910aa - Seed: 423996e6 - PID:  d9ff9fa6 - Pattern: 20/47/9
+41122: - Reached: a6de4643 - Seed: fd37f171 - PID:  b03a10bc - Pattern: 20/46/8
+41124: - Reached: 44f42937 - Seed:  3dc3f40 - PID:  56b99598 - Pattern: 20/46/8
+41126: - Reached: 5ad73c49 - Seed: 5e489bfa - PID:  bf42441b - Pattern: 20/46/8 - DOUBLE MATCH! ~~~~ 
+41128: - Reached: 9b03bfce - Seed: dfa1a3a4 - PID:  e329bc2b - Pattern: 20/46/8
+41130: - Reached: d3de5d32 - Seed: 1a477174 - PID:  d420e9e5 - Pattern: 20/46/8
+41132: - Reached: ae4ad29c - Seed:  4570238 - PID:  27863578 - Pattern: 20/47/8
+41134: - Reached: a419dc1d - Seed: 98aae92f - PID:  994846c1 - Pattern: 20/47/8
+41136: - Reached: b0544531 - Seed: 76929c68 - PID:  f2614de8 - Pattern: 20/47/8
+41138: - Reached: e8f2bb13 - Seed: b6027aff - PID:   dbeb30d - Pattern: 20/47/8 - DOUBLE MATCH! ~~~~ 
+41140: - Reached:  265af60 - Seed:  b1379d0 - PID:  86ef17a6 - Pattern: 20/47/8 - DOUBLE MATCH! ~~~~ 
+41142: - Reached: 811ab464 - Seed: 66a4c076 - PID:  93548594 - Pattern: 20/47/8
+41144: - Reached: feccca5e - Seed: 98578bd7 - PID:  7f14a87b - Pattern: 20/47/8
+41146: - Reached: fee8e407 - Seed: 3a42ec15 - PID:  ac638b9f - Pattern: 20/48/8
+41148: - Reached: 2927483b - Seed: 830766f6 - PID:  bc13bd32 - Pattern: 20/48/8
+41150: - Reached: 57f8d16d - Seed: ada5c8da - PID:   ce3c55b - Pattern: 20/48/8 - DOUBLE MATCH! ~~~~ 
+41152: - Reached: a64f75c2 - Seed: ca69c784 - PID:  d3d2f3af - Pattern: 20/48/8 - DOUBLE MATCH! ~~~~ 
+41154: - Reached: c5079366 - Seed: 241c7725 - PID:  fa9d0925 - Pattern: 20/48/8
+41156: - Reached: d383a070 - Seed: 241c7725 - PID:  fa9d0925 - Pattern: 19/48/8
+41158: - Reached: 3d967081 - Seed: 9b57ca89 - PID:  a30ee2f3 - Pattern: 19/48/8
+41160: - Reached: d9468cd5 - Seed: a48c98db - PID:  5aea20ce - Pattern: 19/48/8
+41162: - Reached: f9006dd7 - Seed:   e694c8 - PID:  3c30578b - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+41164: - Reached: 993ae374 - Seed: aed22aa3 - PID:  36b4fcdd - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+41166: - Reached: b3ce72b8 - Seed: 87602386 - PID:  fa84eb9b - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+41168: - Reached: a7c85152 - Seed: 31b391d6 - PID:  e313dd4f - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+41170: - Reached: fd5a780b - Seed: 2e4b9e07 - PID:  c4cd2e32 - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+41172: - Reached: b953917f - Seed: 583cf675 - PID:  815ea506 - Pattern: 19/48/8
+41174: - Reached: 4b17c2d1 - Seed: 4d1fc727 - PID:  69a875d5 - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+41176: - Reached: c7b45cf6 - Seed: e008044c - PID:  511abb6f - Pattern: 19/48/8
+41178: - Reached: d43d9eda - Seed: cfabe8f9 - PID:  7cbe2513 - Pattern: 19/48/8
+41180: - Reached: 55554d84 - Seed: 6c620c1d - PID:  123778e8 - Pattern: 19/47/8
+41182: - Reached: af2d7525 - Seed: e9ee3a81 - PID:  23ac6092 - Pattern: 19/48/9
+41184: - Reached:  8cd98b9 - Seed: 99fafc1f - PID:  16994c11 - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+41186: - Reached: 3136e6db - Seed: 77182fcd - PID:  dd4f6b86 - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+41188: - Reached: 6ada4225 - Seed: a58e7e67 - PID:  c6b47f2e - Pattern: 19/48/9
+41190: - Reached:  3b375b9 - Seed: 8d7500fa - PID:  26de595b - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+41192: - Reached: 4c9d2bdb - Seed: 62fe44d3 - PID:  86a78803 - Pattern: 19/48/9
+41194: - Reached: 30aa23c8 - Seed: b37d14a2 - PID:  51e9d99e - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+41196: - Reached: 493d52b9 - Seed: 3a3d2a1b - PID:  d3ec1aad - Pattern: 19/47/9
+41198: - Reached: 3b2dda86 - Seed: c0594be9 - PID:  8f950710 - Pattern: 19/47/9
+41200: - Reached: 745ddb4f - Seed: bce1bf1a - PID:  2590284d - Pattern: 19/47/9
+41202: - Reached: f58537ae - Seed: e313a99d - PID:  8421045e - Pattern: 19/47/8 - DOUBLE MATCH! ~~~~ 
+41204: - Reached: 86e08175 - Seed: e3def216 - PID:  f0a0a448 - Pattern: 19/47/9
+41206: - Reached: ca1a3a6a - Seed: 44666bd4 - PID:  1bcb36fd - Pattern: 19/47/8 - DOUBLE MATCH! ~~~~ 
+41208: - Reached: 527bda7d - Seed: 67bd39b5 - PID:  bab785a8 - Pattern: 19/47/8 - DOUBLE MATCH! ~~~~ 
+41210: - Reached: d2ae56d8 - Seed: c943d033 - PID:  52d6f254 - Pattern: 19/46/9
+41212: - Reached: 142fab09 - Seed: 307c316b - PID:  c8d76a34 - Pattern: 19/46/8 - DOUBLE MATCH! ~~~~ 
+41214: - Reached: 13cf6240 - Seed: a844dcae - PID:  d397b31a - Pattern: 19/46/8 - DOUBLE MATCH! ~~~~ 
+41216: - Reached: a5883f1f - Seed:  16cac97 - PID:  b83f97dc - Pattern: 19/46/9
+41218: - Reached: 832d825c - Seed: 8df4994f - PID:  4c83f4e1 - Pattern: 19/46/8 - DOUBLE MATCH! ~~~~ 
+41220: - Reached:  58a2167 - Seed: df089112 - PID:  537ea088 - Pattern: 20/46/8 - DOUBLE MATCH! ~~~~ 
+41222: - Reached: 889ba7fa - Seed:  1ce0234 - PID:  1230c859 - Pattern: 20/46/9
+41224: - Reached: b5e377d3 - Seed: 68e4cf40 - PID:  6b6e41b7 - Pattern: 20/46/9
+41226: - Reached: bc069ba2 - Seed: b699630a - PID:   7f62d24 - Pattern: 20/46/9
+41228: - Reached: 7bbde759 - Seed: 292c1909 - PID:  8d42b0ce - Pattern: 20/46/8 - DOUBLE MATCH! ~~~~ 
+41230: - Reached: 5775f01e - Seed: efe90174 - PID:  593e28c9 - Pattern: 20/46/9
+41232: - Reached: 41c4c4e1 - Seed: 628a8fd5 - PID:  aa7a0fc9 - Pattern: 20/46/9
+41234: - Reached: 340f4e6c - Seed: 884e45af - PID:  1c60fd2a - Pattern: 20/46/9
+41236: - Reached: fb660c2d - Seed: f9187e0b - PID:  8d9d8064 - Pattern: 20/46/9
+41238: - Reached: 34d57454 - Seed: 2a947b38 - PID:  fdc96d12 - Pattern: 20/47/8 - DOUBLE MATCH! ~~~~ 
+41240: - Reached: bf1960a3 - Seed: c4a1c153 - PID:   5ca5ace - Pattern: 20/47/9
+41242: - Reached: f12dac30 - Seed: eda475e1 - PID:  47835eab - Pattern: 20/46/8
+41244: - Reached: 316d7b6b - Seed: 47193546 - PID:  e7de0eb2 - Pattern: 20/46/8
+41246: - Reached:   e8deae - Seed: ec45761e - PID:   e4a599d - Pattern: 20/46/8
+41248: - Reached: 8535d697 - Seed: 9a146b25 - PID:  d651efd8 - Pattern: 20/46/8
+41250: - Reached: b59710d6 - Seed: 2c8a2d35 - PID:  182896e3 - Pattern: 20/46/8
+41252: - Reached: eeb0957d - Seed: b1ddd1ad - PID:  d68dae43 - Pattern: 20/47/8
+41254: - Reached: f58f3312 - Seed: 2b231b02 - PID:  490f1a75 - Pattern: 20/47/8
+41256: - Reached: 3f0c7f85 - Seed: 257bb95c - PID:  9e3b89e7 - Pattern: 20/47/8
+41258: - Reached: 56512140 - Seed: 7e387faa - PID:  8da0f3e8 - Pattern: 20/47/8
+41260: - Reached: dff48991 - Seed: 440d9480 - PID:  3bb9d08d - Pattern: 20/47/8
+41262: - Reached: bb7e49a8 - Seed: c94edda6 - PID:  771726da - Pattern: 20/47/8
+41264: - Reached: 7d181467 - Seed:   127817 - PID:  4ecd8d22 - Pattern: 20/47/8
+41266: - Reached: d1727544 - Seed: 8b0c4f85 - PID:  e7be8852 - Pattern: 20/48/8
+41268: - Reached: 38c52faf - Seed:  da00cb7 - PID:   26b7feb - Pattern: 20/48/8
+41270: - Reached: 303a32a2 - Seed: 8297f412 - PID:  7fcce2a9 - Pattern: 20/48/8
+41272: - Reached: e139bb9b - Seed: c6d7d9a8 - PID:  3e2dd818 - Pattern: 20/48/8
+41274: - Reached: eb59cb4a - Seed: 9f53cd8e - PID:  f9b773ed - Pattern: 20/48/8 - DOUBLE MATCH! ~~~~ 
+41276: - Reached:  6fcafe1 - Seed: 9f53cd8e - PID:  f9b773ed - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+41278: - Reached: f4f6f746 - Seed: a2eadf10 - PID:  fc7ac13a - Pattern: 19/48/8
+41280: - Reached:  563ae69 - Seed: ede3f7e0 - PID:  d43c4540 - Pattern: 19/48/8
+41282: - Reached: 2764a354 - Seed: bcbad606 - PID:  817e4eb5 - Pattern: 19/48/8
+41284: - Reached: 69ce8735 - Seed: 2c6d5e44 - PID:  df5190ee - Pattern: 19/48/8
+41286: - Reached: 3c7d363c - Seed: 9a75efd3 - PID:  cdf47e48 - Pattern: 19/48/8
+41288: - Reached:  23e1e6b - Seed: aab0fde4 - PID:  14f8f346 - Pattern: 19/48/8
+41290: - Reached: 5c42f198 - Seed: 7ea5d8f2 - PID:  f2d8d28a - Pattern: 19/48/8
+41292: - Reached: a40b8233 - Seed:  3caa82b - PID:  330686e0 - Pattern: 19/48/8
+41294: - Reached: 50b197d6 - Seed: 821b1847 - PID:  2566e96e - Pattern: 19/49/8
+41296: - Reached: 19ba2adf - Seed: 4e014dc6 - PID:  8676c38c - Pattern: 19/49/8
+41298: - Reached: 3e973efe - Seed:  13b3c0f - PID:  b5f86a6b - Pattern: 19/48/8
+41300: - Reached: 4db29a85 - Seed: 3e353fbd - PID:   28c5387 - Pattern: 19/49/8 - DOUBLE MATCH! ~~~~ 
+41302: - Reached: 949f70ba - Seed: 70ec4fa4 - PID:  8589b5ba - Pattern: 19/49/9
+41304: - Reached: 33af358d - Seed: b278bdb3 - PID:  b94ed564 - Pattern: 19/49/8 - DOUBLE MATCH! ~~~~ 
+41306: - Reached: 1bc9e8a8 - Seed: 4815cec1 - PID:  3846bd35 - Pattern: 19/49/8 - DOUBLE MATCH! ~~~~ 
+41308: - Reached: 92c7a919 - Seed: 616ccc18 - PID:  e0a1cd3f - Pattern: 19/49/9
+41310: - Reached: b37cce10 - Seed: 1683e47e - PID:  c0293fea - Pattern: 19/49/8 - DOUBLE MATCH! ~~~~ 
+41312: - Reached: 6ffb82af - Seed: df1bfb4e - PID:   89adcdc - Pattern: 19/48/9
+41314: - Reached: 7079752c - Seed: c4f12b26 - PID:  80298799 - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+41316: - Reached: 6db8f6f7 - Seed: f6ad5d92 - PID:  820b9253 - Pattern: 19/47/8 - DOUBLE MATCH! ~~~~ 
+41318: - Reached: 3a62424a - Seed: b7d7ea1d - PID:  e9e2285e - Pattern: 19/47/9
+41320: - Reached: 806c6863 - Seed:  9df6a15 - PID:  c6475eeb - Pattern: 19/47/9
+41322: - Reached: 3f311ff2 - Seed:  3fc6c90 - PID:  a1c0aa5f - Pattern: 19/47/9
+41324: - Reached: b412f969 - Seed: 1fcd7d36 - PID:  a774e088 - Pattern: 19/47/9
+41326: - Reached: 2210136e - Seed: d7459ef8 - PID:  59413f18 - Pattern: 19/47/9
+41328: - Reached: e78c38f1 - Seed: 9b2cd1c8 - PID:  c27a2423 - Pattern: 19/47/9
+41330: - Reached: aca4453c - Seed: cca5b014 - PID:  38e430e4 - Pattern: 19/46/9
+41332: - Reached: 5037d33d - Seed: 134cd306 - PID:  87bfaa66 - Pattern: 19/46/9
+41334: - Reached: ebb2e524 - Seed: 654ffc9b - PID:  8429f282 - Pattern: 19/46/8 - DOUBLE MATCH! ~~~~ 
+41336: - Reached: bc7a8533 - Seed: ba1efbfd - PID:   6143ffe - Pattern: 19/46/9
+41338: - Reached: cbd79400 - Seed: 85198663 - PID:  74345dab - Pattern: 19/46/9
+41340: - Reached: a0c851fb - Seed: 973ba296 - PID:  f79cfe56 - Pattern: 20/46/9
+41342: - Reached: 2484a5fe - Seed: 29ce2358 - PID:  db7117ca - Pattern: 20/46/9
+41344: - Reached: 6433f827 - Seed: 6cbae224 - PID:  2d2d7657 - Pattern: 20/46/8 - DOUBLE MATCH! ~~~~ 
+41346: - Reached: 7b566226 - Seed: 7980302a - PID:  c5f7e5e5 - Pattern: 20/46/8 - DOUBLE MATCH! ~~~~ 
+41348: - Reached: 2a32b08d - Seed: ba4b019f - PID:  4c237a4a - Pattern: 20/46/9
+41350: - Reached: 8ed99362 - Seed: 73830698 - PID:  517164f7 - Pattern: 20/46/9
+41352: - Reached: 70741c95 - Seed: 544f75c9 - PID:  63afff5c - Pattern: 20/46/9
+41354: - Reached: 590e4d10 - Seed: 5fb14e77 - PID:  9cad950c - Pattern: 20/46/9
+41356: - Reached: 20df29a1 - Seed: f342fbdf - PID:  568d1a15 - Pattern: 20/46/9
+41358: - Reached: 53b48f78 - Seed: 195df920 - PID:  34fae5aa - Pattern: 20/47/9
+41360: - Reached: a2e3a9f7 - Seed: 10910dce - PID:  31ecf26e - Pattern: 20/47/9
+41362: - Reached:  a9a2214 - Seed: 7306cdba - PID:   d3ce9d5 - Pattern: 20/46/8
+41364: - Reached: d97a973f - Seed: 65f1f093 - PID:  6fad3f82 - Pattern: 20/46/8
+41366: - Reached: 6bea76f2 - Seed: d0b4ba9d - PID:  f8687c4e - Pattern: 20/46/8
+41368: - Reached: 9aa69e2b - Seed: 87852219 - PID:  1133ba28 - Pattern: 20/46/8
+41370: - Reached: fc77399a - Seed: 2213b129 - PID:  d5f34a2b - Pattern: 20/46/8 - DOUBLE MATCH! ~~~~ 
+41372: - Reached: 69dee3f1 - Seed: 2d1f2d60 - PID:  2130f1fa - Pattern: 20/47/8
+41374: - Reached: ef49e496 - Seed: e0c513bf - PID:  4c4dc425 - Pattern: 20/47/8 - DOUBLE MATCH! ~~~~ 
+41376: - Reached: 3f208479 - Seed: c414cd41 - PID:  24fd064c - Pattern: 20/47/8
+41378: - Reached: 7eadd424 - Seed: 899d1cae - PID:  74835155 - Pattern: 20/47/8 - DOUBLE MATCH! ~~~~ 
+41380: - Reached: 630a1045 - Seed: df2654e3 - PID:  2449fbe5 - Pattern: 20/47/8
+41382: - Reached: 108a210c - Seed: fb495e73 - PID:  d4cccbcb - Pattern: 20/47/8 - DOUBLE MATCH! ~~~~ 
+41384: - Reached: f1e1b4fb - Seed: 68b177ab - PID:  71662abf - Pattern: 20/47/8 - DOUBLE MATCH! ~~~~ 
+41386: - Reached:  24d3368 - Seed: 1735c558 - PID:  b9dc7c13 - Pattern: 20/48/8
+41388: - Reached: 6c5b0ac3 - Seed: 847d0257 - PID:  75776a6e - Pattern: 20/48/8
+41390: - Reached: d2b2a926 - Seed: 8484353a - PID:  5ec2baa2 - Pattern: 20/48/8
+41392: - Reached: 1bd05e6f - Seed: b35b0b3d - PID:  1799cd4c - Pattern: 20/48/8 - DOUBLE MATCH! ~~~~ 
+41394: - Reached: e5791a4e - Seed: bb3eae36 - PID:   495ee6b - Pattern: 20/48/8
+41396: - Reached: d9c0f795 - Seed: bb3eae36 - PID:   495ee6b - Pattern: 19/48/8
+41398: - Reached: 96603b0a - Seed: b6b86af4 - PID:  a857d9e6 - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+41400: - Reached: 752f549d - Seed: 8eae5a7a - PID:  1c7b36a9 - Pattern: 19/48/8
+41402: - Reached: 9d87ee78 - Seed: c6658b51 - PID:  3ddef228 - Pattern: 19/48/8
+41404: - Reached: 96f52b29 - Seed: dba785bf - PID:  ff937d1b - Pattern: 19/48/8
+41406: - Reached: 64032de0 - Seed: 12042b7a - PID:  aaf39308 - Pattern: 19/48/8
+41408: - Reached: bc65aa3f - Seed: 92031ab7 - PID:  cc2225fc - Pattern: 19/48/8
+41410: - Reached: 4be01bfc - Seed: c0a51076 - PID:  d66e6588 - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+41412: - Reached: 37833087 - Seed: 147a0b4e - PID:  405d35d3 - Pattern: 19/48/8
+41414: - Reached: ed3d709a - Seed: 81d9c0b2 - PID:  c6f0c7c0 - Pattern: 19/48/8
+41416: - Reached: 74377cf3 - Seed: 63a132a5 - PID:  d2b4ad8d - Pattern: 19/48/8
+41418: - Reached: 662ab842 - Seed: 8fc8519d - PID:  f5cb1602 - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+41420: - Reached: acc28f79 - Seed: 4a6cf12a - PID:  1c303ebe - Pattern: 19/47/8
+41422: - Reached: c3010abe - Seed: 3a8b8feb - PID:  66bc113f - Pattern: 19/48/9
+41424: - Reached: b906b101 - Seed: c3e4dea1 - PID:  49e08397 - Pattern: 19/48/9
+41426: - Reached: db14f00c - Seed: c9acf17e - PID:  3736ad76 - Pattern: 19/48/9
+41428: - Reached: f1715e4d - Seed: 3ab864fc - PID:  606f10c9 - Pattern: 19/48/9
+41430: - Reached: ba4a89f4 - Seed: 40641314 - PID:  f4110268 - Pattern: 19/48/9
+41432: - Reached: 30aacdc3 - Seed: ffe311bb - PID:   e2d5c5b - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+41434: - Reached: 10f96fd0 - Seed: 6a4b9ea7 - PID:  805f68ce - Pattern: 19/48/9
+41436: - Reached: 621ecc8b - Seed: 8b002bc2 - PID:  227dc0cd - Pattern: 19/47/8 - DOUBLE MATCH! ~~~~ 
+41438: - Reached: b060414e - Seed:  d383b1f - PID:  71aa875b - Pattern: 19/47/9
+41440: - Reached: 11207db7 - Seed: d06ba63e - PID:  bd4ac670 - Pattern: 19/47/9
+41442: - Reached: 77f80776 - Seed: 60621816 - PID:  2bff41c3 - Pattern: 19/47/9
+41444: - Reached: de08224e - Seed: 7f2873fa - PID:  4195e881 - Pattern: 19/47/8 - DOUBLE MATCH! ~~~~ 
+41446: - Reached: 126a07b2 - Seed: 9343e3cd - PID:  bb63fa1a - Pattern: 19/47/9
+41448: - Reached: 31f8fda5 - Seed: e31f4dc5 - PID:  36f567c8 - Pattern: 19/47/8 - DOUBLE MATCH! ~~~~ 
+41450: - Reached: ca78bc9d - Seed: 262d486d - PID:  820e8afc - Pattern: 19/46/9
+41452: - Reached: e2c7cdb1 - Seed: 53c8e5d0 - PID:  ce162de1 - Pattern: 19/46/9
+41454: - Reached: f2ba4948 - Seed: 6228aa8b - PID:  ad23fcc3 - Pattern: 19/46/9
+41456: - Reached: 8b8b75e0 - Seed: e54a0bff - PID:  cfb31bf3 - Pattern: 19/46/9
+41458: - Reached: 708b02e4 - Seed: 69e7f5ab - PID:  5d04f0dd - Pattern: 19/46/8 - DOUBLE MATCH! ~~~~ 
+41460: - Reached: 8e2fe2cf - Seed: 37337cd7 - PID:  8cfbaf0a - Pattern: 20/46/9
+41462: - Reached: d864d887 - Seed: 48cc1dad - PID:  c3b32601 - Pattern: 20/46/9
+41464: - Reached: ab1224bb - Seed: 5de58ba5 - PID:   5245c21 - Pattern: 20/46/9
+41466: - Reached: 17de3bea - Seed: dfd35452 - PID:  ad6a8971 - Pattern: 20/46/9
+41468: - Reached: 6c9e4042 - Seed: 57edafb0 - PID:  12f0de6b - Pattern: 20/46/9
+41470: - Reached: 2be625e6 - Seed: e7f7ff48 - PID:  5f7bdc95 - Pattern: 20/46/9
+41472: - Reached: d0a8de89 - Seed: 29e1a550 - PID:  88439e19 - Pattern: 20/46/9
+41474: - Reached: ba4a9901 - Seed: c37bce7e - PID:   9ba07df - Pattern: 20/46/9
+41476: - Reached: 75dddd55 - Seed: cb1cf9fc - PID:  e9d23973 - Pattern: 20/46/8 - DOUBLE MATCH! ~~~~ 
+41478: - Reached: b7efbfdc - Seed: d21485ba - PID:  b213ce2f - Pattern: 20/47/9
+41480: - Reached: b56b51f4 - Seed: c9353012 - PID:  be4c1a19 - Pattern: 20/47/8 - DOUBLE MATCH! ~~~~ 
+41482: - Reached:  ea5e938 - Seed: 39f861ea - PID:  89cb1211 - Pattern: 20/46/8
+41484: - Reached: 4092b753 - Seed: bcead40e - PID:  82088e54 - Pattern: 20/46/8 - DOUBLE MATCH! ~~~~ 
+41486: - Reached: e01ef48b - Seed: 4ac6248a - PID:  25175586 - Pattern: 20/46/8
+41488: - Reached: 529975ff - Seed: d64ad4e2 - PID:  60d755f5 - Pattern: 20/46/8
+41490: - Reached: f19fc99e - Seed: 451118ac - PID:  4af7f758 - Pattern: 20/46/8
+41492: - Reached:  bd80f76 - Seed: b288bff7 - PID:  b4d04f29 - Pattern: 20/47/8
+41494: - Reached: 59c1995a - Seed: 709e2f5c - PID:  b3024069 - Pattern: 20/47/8 - DOUBLE MATCH! ~~~~ 
+41496: - Reached: 47ad37ad - Seed: 2b42e163 - PID:  98badb06 - Pattern: 20/47/8
+41498: - Reached: bf1f65a5 - Seed: 15213c9b - PID:  495e87e2 - Pattern: 20/47/8 - DOUBLE MATCH! ~~~~ 
+41500: - Reached: ab993139 - Seed: dff09f50 - PID:  d720ba6a - Pattern: 20/47/8
+41502: - Reached: fb1f81b0 - Seed: 155ecf54 - PID:  75fa37bd - Pattern: 20/47/8
+41504: - Reached: ce3b9148 - Seed: 9e50077f - PID:  3db0a3ab - Pattern: 20/47/8
+41506: - Reached: a38e76cc - Seed: c190102b - PID:  86fc949e - Pattern: 20/49/8
+41508: - Reached: 8341ce17 - Seed: 1c3a1682 - PID:  c46c3e0b - Pattern: 20/49/8
+41510: - Reached: e5768acf - Seed: 83ddff35 - PID:  194edbba - Pattern: 20/49/8
+41512: - Reached: e34db583 - Seed: 1b7f240f - PID:  55f5ce16 - Pattern: 20/49/8
+41514: - Reached: b0386492 - Seed: 431f6ed6 - PID:  3e4491b0 - Pattern: 20/49/8
+41516: - Reached: e532c3ea - Seed: 431f6ed6 - PID:  3e4491b0 - Pattern: 19/49/8
+41518: - Reached:  37dd60e - Seed: 6be60998 - PID:  d6b5bab8 - Pattern: 19/49/8
+41520: - Reached: 58752d11 - Seed:  f7b3a33 - PID:  717ff902 - Pattern: 19/49/8
+41522: - Reached: 6c19c689 - Seed: f87da234 - PID:  61c16824 - Pattern: 19/49/8
+41524: - Reached: 3683ad5d - Seed: 7d8f794c - PID:   886557f - Pattern: 19/49/8
+41526: - Reached: e6a962c4 - Seed:  8d11249 - PID:  6519d3cf - Pattern: 19/48/8
+41528: - Reached: a11987dc - Seed: a6917c4b - PID:  c2194807 - Pattern: 19/48/8
+41530: - Reached: 9e103fa0 - Seed: aeba2b3a - PID:  a0b4f7a1 - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+41532: - Reached:  5d9eb1b - Seed: fb4f2592 - PID:  bfbb8463 - Pattern: 19/48/8
+41534: - Reached: 73c7df53 - Seed: c09a722f - PID:  8de27396 - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+41536: - Reached: e1146747 - Seed: 18a1c70e - PID:  bfdb8227 - Pattern: 19/48/8
+41538: - Reached: 679100c6 - Seed: 8ed7fee6 - PID:  309e8969 - Pattern: 19/48/8
+41540: - Reached: d8f0d19e - Seed: daf8c62e - PID:  2dfc1451 - Pattern: 19/47/8
+41542: - Reached: 3d459002 - Seed: 2d1c5a30 - PID:  717cc6b1 - Pattern: 19/48/9
+41544: - Reached: 586c22b5 - Seed: c9e24bc4 - PID:  4e085b3e - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+41546: - Reached: 7e509fad - Seed: 90821026 - PID:  4b924373 - Pattern: 19/48/9
+41548: - Reached: 3aaf75c1 - Seed: 4d90ab64 - PID:  d676d042 - Pattern: 19/48/9
+41550: - Reached: dbec7718 - Seed: 8e84801b - PID:  735f34af - Pattern: 19/48/9
+41552: - Reached: 87b9c9b0 - Seed: bc69ee8f - PID:  d507554a - Pattern: 19/48/9
+41554: - Reached: 2d1217b4 - Seed: edd6b5ee - PID:  1161c7c2 - Pattern: 19/48/9
+41556: - Reached: 405e125f - Seed: 6f7151f1 - PID:  620ab50f - Pattern: 19/47/9
+41558: - Reached: 438d7617 - Seed: ccf3672a - PID:  f79b3154 - Pattern: 19/47/8 - DOUBLE MATCH! ~~~~ 
+41560: - Reached:  3a54f4b - Seed: 61f29c3d - PID:  21de9d42 - Pattern: 19/47/8 - DOUBLE MATCH! ~~~~ 
+41562: - Reached: cb73d23a - Seed: 42269835 - PID:  65166f45 - Pattern: 19/47/9
+41564: - Reached: 4e8dec92 - Seed: 51478068 - PID:  c8dd3004 - Pattern: 19/47/8 - DOUBLE MATCH! ~~~~ 
+41566: - Reached: e0a0bb36 - Seed: 75665f7a - PID:  99450ae1 - Pattern: 19/47/9
+41568: - Reached: 125dbc99 - Seed: c3ed52fb - PID:  888f10d8 - Pattern: 19/47/8 - DOUBLE MATCH! ~~~~ 
+41570: - Reached: a9b31511 - Seed: aa79d39c - PID:  8095ca61 - Pattern: 19/46/9
+41572: - Reached: f5daee65 - Seed: 1afd6db4 - PID:  70495d7c - Pattern: 19/46/9
+41574: - Reached: 505b12ac - Seed: 5f5e3550 - PID:  d1ac7c1c - Pattern: 19/46/9
+41576: - Reached: dcfc2ac4 - Seed: 66ee8813 - PID:  17712255 - Pattern: 19/46/9
+41578: - Reached: 446a1308 - Seed: dfe8e57f - PID:  e66eebe8 - Pattern: 19/46/9
+41580: - Reached: 5c3b87e3 - Seed: 83e7f35e - PID:  d2988f49 - Pattern: 20/46/8 - DOUBLE MATCH! ~~~~ 
+41582: - Reached: dae4131b - Seed: c75b02a3 - PID:  e5803fd8 - Pattern: 20/46/9
+41584: - Reached: f44e718f - Seed: 801542f8 - PID:   23474d0 - Pattern: 20/46/9
+41586: - Reached: 27c04cee - Seed: 48d0a66d - PID:  271e4842 - Pattern: 20/46/9
+41588: - Reached: 1e7308c6 - Seed: ef480cb9 - PID:  a491be08 - Pattern: 20/46/9
+41590: - Reached: e2688baa - Seed: 329de35d - PID:  272a1f0c - Pattern: 20/46/9
+41592: - Reached: 6819debd - Seed: 15913170 - PID:  2a78e4ba - Pattern: 20/46/8 - DOUBLE MATCH! ~~~~ 
+41594: - Reached: 9e2c8ab5 - Seed: 30083c4c - PID:  7aab1b9a - Pattern: 20/46/9
+41596: - Reached: 73d4bb49 - Seed: 999d7da0 - PID:  1dfb2ef9 - Pattern: 20/46/9
+41598: - Reached: 9dcec980 - Seed: 45832e57 - PID:  4a2a7b02 - Pattern: 20/47/9
+41600: - Reached: 7abfbf18 - Seed: a1ae2201 - PID:  583dd23f - Pattern: 20/47/8 - DOUBLE MATCH! ~~~~ 
+41602: - Reached: 70f1859c - Seed: a40552ee - PID:  aa302e47 - Pattern: 20/46/8 - DOUBLE MATCH! ~~~~ 
+41604: - Reached: e78dcfa7 - Seed: 97a5dcaf - PID:  bf47b651 - Pattern: 20/46/8 - DOUBLE MATCH! ~~~~ 
+41606: - Reached: 304eba5f - Seed: 2926dd74 - PID:  ee912e42 - Pattern: 20/46/8
+41608: - Reached:  1f81213 - Seed: 84bc7e02 - PID:  2e875918 - Pattern: 20/46/8
+41610: - Reached: 4ddf24e2 - Seed: 9cd35cd0 - PID:  b8964bbe - Pattern: 20/47/8
+41612: - Reached: 48ea5a3a - Seed: 871368c9 - PID:  bc9f55d9 - Pattern: 20/47/8 - DOUBLE MATCH! ~~~~ 
+41614: - Reached: d9fb755e - Seed: 51ded100 - PID:  c15526ea - Pattern: 20/47/8 - DOUBLE MATCH! ~~~~ 
+41616: - Reached: 5858ad21 - Seed:  ffd7804 - PID:  4e354f88 - Pattern: 20/47/8
+41618: - Reached: 6908a499 - Seed: 3acceea0 - PID:  804e4645 - Pattern: 20/47/8
+41620: - Reached: b31fc06d - Seed: 2c42874e - PID:  f18c6235 - Pattern: 20/47/8 - DOUBLE MATCH! ~~~~ 
+41622: - Reached: 1a1c6f94 - Seed: 927cef5b - PID:  687e38ae - Pattern: 20/47/8
+41624: - Reached: 16f6daac - Seed: 5ecfdb93 - PID:  9c543eb8 - Pattern: 20/47/8
+41626: - Reached: 8fd90370 - Seed: c63ab36c - PID:   ebd25d1 - Pattern: 20/48/8
+41628: - Reached: 96a2adab - Seed: 2c1079bf - PID:  49085e8c - Pattern: 20/48/8
+41630: - Reached: 13baafe3 - Seed:  77ba65e - PID:  e944cb92 - Pattern: 20/48/8
+41632: - Reached: cf68b4d7 - Seed: 83447324 - PID:  bb048396 - Pattern: 20/48/8
+41634: - Reached: eb764e16 - Seed: 9e599a1a - PID:  15edbc25 - Pattern: 20/48/8 - DOUBLE MATCH! ~~~~ 
+41636: - Reached: 6e5354ee - Seed: 9e599a1a - PID:  15edbc25 - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+41638: - Reached: edb12c52 - Seed: 2ce19a7c - PID:  aab17d99 - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+41640: - Reached: 4cde8bc5 - Seed: abaef365 - PID:  aa8af36e - Pattern: 19/48/8
+41642: - Reached: 969746bd - Seed: e493caf9 - PID:  aebdaf9f - Pattern: 19/48/8
+41644: - Reached: ddd721d1 - Seed: dab4dc70 - PID:   531d0ba - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+41646: - Reached:  9e818e8 - Seed: 4ad282ab - PID:  464acdbe - Pattern: 19/48/8
+41648: - Reached: 93fb1180 - Seed: 8fd49e3b - PID:  8902fc4d - Pattern: 19/48/8
+41650: - Reached: bd3c6084 - Seed: d68cd471 - PID:  18067664 - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+41652: - Reached: 97be25ef - Seed: 4ed74295 - PID:  33dac5d3 - Pattern: 19/48/8
+41654: - Reached: 61c377a7 - Seed: 7526231f - PID:  c4707aa7 - Pattern: 19/48/8
+41656: - Reached: 3fc91ddb - Seed: 9dc8c2b5 - PID:  e62e7de9 - Pattern: 19/48/8
+41658: - Reached: fe5cfc8a - Seed: dc7cb4aa - PID:  7cc539ce - Pattern: 19/48/8
+41660: - Reached: 3c96ace2 - Seed: 518e6ce6 - PID:  60b7f9d6 - Pattern: 19/47/8
+41662: - Reached: 988ea486 - Seed: be189718 - PID:  176cd589 - Pattern: 19/48/9
+41664: - Reached: d4e01ea9 - Seed: a8119049 - PID:  71e15e6f - Pattern: 19/48/9
+41666: - Reached: b8109521 - Seed: 6292d2eb - PID:  12f8a316 - Pattern: 19/48/9
+41668: - Reached: 7ad24375 - Seed: b889c3a6 - PID:  aa999aea - Pattern: 19/48/9
+41670: - Reached: 42b9197c - Seed: a15bcaef - PID:  3e0c8add - Pattern: 19/48/8 - DOUBLE MATCH! ~~~~ 
+41672: - Reached: 98213794 - Seed: 2826ddfa - PID:  d135384b - Pattern: 19/48/9
+41674: - Reached:  df6b0d8 - Seed: 2704f23a - PID:  478d89b2 - Pattern: 19/48/9
+41676: - Reached: 3d1e7c73 - Seed: c48ba00a - PID:  e7ab9d78 - Pattern: 19/47/9
+41678: - Reached: 4536d5ab - Seed: c57cbb85 - PID:  1b11460c - Pattern: 19/47/9
+41680: - Reached: 2568511f - Seed: df590b78 - PID:  8ccf2c62 - Pattern: 19/47/9
+41682: - Reached: 59cfa43e - Seed: cca4d8de - PID:  f8950fa9 - Pattern: 19/47/8 - DOUBLE MATCH! ~~~~ 
+41684: - Reached: 45da5616 - Seed: 67fe55a8 - PID:  c61af841 - Pattern: 19/47/8 - DOUBLE MATCH! ~~~~ 
+41686: - Reached:  40701bd - Seed: 75cab106 - PID:  28f31d44 - Pattern: 19/47/8 - DOUBLE MATCH! ~~~~ 
+41688: - Reached: 80e3c9a4 - Seed: 703748fc - PID:  10d58d26 - Pattern: 19/47/8 - DOUBLE MATCH! ~~~~ 
+41690: - Reached: 31b8f3c5 - Seed: 168a37a3 - PID:  7f00b2ac - Pattern: 19/46/8 - DOUBLE MATCH! ~~~~ 
+41692: - Reached: aabbd080 - Seed:  6ecb81a - PID:   7d931d7 - Pattern: 19/46/8 - DOUBLE MATCH! ~~~~ 
+41694: - Reached: a97b4c7b - Seed: 77f71a73 - PID:  d6853b91 - Pattern: 19/46/9
+41696: - Reached:   8d60e8 - Seed: c9e41965 - PID:  af3bfcf3 - Pattern: 19/46/9
+41698: - Reached: 2f275980 - Seed: 2c7b4fd8 - PID:  a5a48823 - Pattern: 19/46/9
+41700: - Reached: 52c4faa6 - Seed: 3da1c54c - PID:  3a109010 - Pattern: 20/46/9
+41702: - Reached:  ad8cdef - Seed: bafd638c - PID:  67414816 - Pattern: 20/46/8 - DOUBLE MATCH! ~~~~ 
+41704: - Reached: 4d34aac1 - Seed: 42d14b5c - PID:  11ee5e15 - Pattern: 20/46/8 - DOUBLE MATCH! ~~~~ 
+41706: - Reached:  a703b15 - Seed:  3629d16 - PID:  63b94728 - Pattern: 20/46/9
+41708: - Reached: f475848a - Seed:  3834b43 - PID:  fc516dd7 - Pattern: 20/46/9
+41710: - Reached: 7ff588b4 - Seed: fd236cd3 - PID:  c0e941de - Pattern: 20/46/9
+41712: - Reached: b714fbf8 - Seed:  55df2b3 - PID:  5f63fa77 - Pattern: 20/46/9
+41714: - Reached: 754506a9 - Seed: 8b251459 - PID:  c043c7e2 - Pattern: 20/46/9
+41716: - Reached: b69ecc4b - Seed: 97d5b337 - PID:  daed743f - Pattern: 20/46/9
+41718: - Reached: 74fd79bf - Seed: defa55c9 - PID:  c9c0e8aa - Pattern: 20/47/9
+41720: - Reached:  346e17c - Seed:  1927762 - PID:  d2c9a3e8 - Pattern: 20/47/9
+41722: - Reached: c961d436 - Seed: 5ee4dadb - PID:  a3775930 - Pattern: 20/48/8 - DOUBLE MATCH! ~~~~ 
+41724: - Reached: 7c229a1a - Seed: 43215920 - PID:  19ccf4b6 - Pattern: 20/48/8
+41726: - Reached: 4b67a473 - Seed: a7f9dca1 - PID:   5e59281 - Pattern: 20/49/8
+41728: - Reached: 7d13f365 - Seed: 6b298306 - PID:  9b93b9ab - Pattern: 20/49/8
+41730: - Reached: 9688caf9 - Seed: 3eb10954 - PID:   11f4c38 - Pattern: 20/48/8
+41732: - Reached: 9024ac3e - Seed: 197ebaae - PID:  de46d984 - Pattern: 20/48/8
+41734: - Reached: 1acb1408 - Seed: 2286e297 - PID:  2c6bef33 - Pattern: 20/48/8
+41736: - Reached: f146958c - Seed:  b08d75e - PID:  f74036e1 - Pattern: 20/48/8 - DOUBLE MATCH! ~~~~ 
+41738: - Reached:  c7db1cd - Seed: c50d8e4c - PID:  f8fa6ef5 - Pattern: 20/48/8
+41740: - Reached: 5c543e8f - Seed: 2267293b - PID:  29d0c18f - Pattern: 20/48/8
+41742: - Reached: 2d505543 - Seed: f24f42ed - PID:  bc96d48d - Pattern: 20/47/8 - DOUBLE MATCH! ~~~~ 
+41744: - Reached: 148c4d50 - Seed: b31fcbc0 - PID:  5a80e2b3 - Pattern: 20/47/8
+41746: - Reached: 4185b4aa - Seed: 3686c066 - PID:  19e15565 - Pattern: 20/48/8
+41748: - Reached: 5581c2ce - Seed: 6280a471 - PID:  c12bb236 - Pattern: 20/48/8
+41750: - Reached: 6fdfdd37 - Seed: c5632bc5 - PID:  25ce09b4 - Pattern: 20/48/8
+41752: - Reached: a8469049 - Seed: 41f45af7 - PID:  1b4c2fa1 - Pattern: 20/48/8
+41754: - Reached: 780a431d - Seed: e460faa4 - PID:  d7e3fed8 - Pattern: 20/48/8
+41756: - Reached: 887d8132 - Seed: e460faa4 - PID:  d7e3fed8 - Pattern: 19/48/8
