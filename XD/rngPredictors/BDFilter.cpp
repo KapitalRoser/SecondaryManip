@@ -7,7 +7,6 @@
 #include <algorithm>
 #include <cmath>
 #include <numeric>
-//XD TOOL NOT COLO
 using namespace std;
 
 uint32_t LCG(uint32_t& seed){
@@ -110,9 +109,6 @@ void checkChangeFrame(vector<int>segments,int currentFrame, bool &delayFrame){
   }
 }
 
-
-
-
 std::vector<int>convertFrom3LSegmentToFrames(std::vector<std::vector<std::vector<int>>> cFV,int initialOffset){ //Accomplishes 2 things: consolidates data into 1 long vec of segments, then converts them to a specific frame.
   int frame = initialOffset;
   std::vector<int>framesList;
@@ -187,15 +183,22 @@ std::vector<int> buildChangeFrameVectorForFightCommon(){
     std::vector<std::vector<int>>set;
     std::vector<int> interruptLengths{9,10};
     std::vector<int> mainLengths{97,98,99};
+    
+     std::vector<int>SplitSegLengths = {3,7,4,6,7,3,1,8,7,3,2,7,9,1,3,6,5,4,8,1,9,1}; //THESE ARE NOT KNOWN, only a couple rules exist:
+    //if it sums to 9, it goes Eight then Nine. if it sums to 10, it leads nine into eight.
+    //also if the main segement length pattern is right then there must be at least 1 of each value in the split,
+    //so at worst it is 8 frames of 50/50 variance.
+
     std::vector<int>group; //just handles lengths, not values.
     const int NUM_GROUPS = 9;
     
     for (int sets = 0; sets < NUM_GROUPS; sets++)
     {
-        group = {97,9,98,9,97,9,97,10,97,10}; //add to declaration statement later.
+        group = {97,9,98,-1,97,9,97,10,97,-1}; //add to declaration statement later.
+        //-1 represents a split segment
         set.push_back(group);
     }
-    //add standard variance block:
+    //add standard delayFrame variance block:
     //assumes 9 groups, if need more just add more vectors.
     std::vector<int> dfSet0 = {1,2,4,6,8};
     std::vector<int> dfSet1 = {1,2,4,4,8};
@@ -210,16 +213,29 @@ std::vector<int> buildChangeFrameVectorForFightCommon(){
     std::vector<std::vector<int>> allDelayFrames = {dfSet0,dfSet1,dfSet2,dfSet3,
                                                     dfSet4,dfSet5,dfSet6,dfSet7,dfSet8};
 
+
+    //customize pattern as outlined in dfSets.
     for (unsigned int i = 0; i < set.size(); i++)
     { //iterates through dfSets
      for (unsigned int j = 0; j < set.at(i).size(); j++)
      { //iterates through set values.
+      if (set.at(i).at(j) == -1){
+        // set.at(i).insert(set.at(i).begin()+i,SplitSegLengths.at(1));
+        // set.at(i).insert(set.at(i).begin()+i,SplitSegLengths.at(0));
+        set.at(i).insert(set.at(i).begin()+i,{SplitSegLengths.at(0),SplitSegLengths.at(1)});
+        SplitSegLengths.erase(SplitSegLengths.begin(),SplitSegLengths.begin()+1);
+        set.at(i).erase(set.at(i).begin()+i+2);
+      }
         while (std::binary_search(allDelayFrames.at(i).begin(),allDelayFrames.at(i).end(),j)){
             set.at(i).at(j)++;
             allDelayFrames.at(i).erase(allDelayFrames.at(i).begin());
         }
      }
     }
+    
+
+
+
     return convertFrom2LSegmentToFrames(set,-59);
     //reference chart:
     /*
@@ -240,6 +256,54 @@ std::vector<int> buildChangeFrameVectorForFightCommon(){
     */
         
 }
+std::vector<int> buildCFVFightCommonValues(){
+  std::vector<std::vector<int>> sets; //uses a 2 layer, then converted into one layer for the simplicity in adding the split segments.
+  //could be consolidated into 1 I suppose.
+  std::vector<int>outputVal;
+  //placements do not account for split 8 & 9 segments.
+  for (int i = 0; i < 9; i++)
+  {
+    for (int j = 0; j < 5; j++)
+    {
+      switch (j)
+      {
+      case 0: //assumes splits are worth 9, will add 8 before or after the 9 as needed.
+        sets.at(i).push_back(9);
+        break;
+      case 1:
+        sets.at(i).push_back(9);
+        break;
+      case 2:
+        sets.at(i).push_back(8);
+        break;
+      case 3:
+        sets.at(i).push_back(8);
+        break;
+      case 4:
+        sets.at(i).push_back(9);
+        break;
+      }
+      
+    }
+    //adds back the 2nd component of the split segments.
+    if (i < 5 || i == 8){
+    sets.at(i).push_back(8);  //appears after the 9
+    }else {
+      sets.at(i).insert(sets.at(i).begin()+1,8); //appears before the 9.
+    }
+  }
+  for (unsigned int i = 0; i < sets.size(); i++)
+  {
+    for (unsigned int j = 0; j < sets.at(i).size(); j++)
+    {
+      outputVal.push_back(sets.at(i).at(j));
+    }
+  }
+  
+  return outputVal;
+}
+
+
 std::vector<int> establishCFVMap(int initialOffset)
 {
   //Primary fault in this pattern is that I don't know if these sets repeat, however getting more data without lua is extremely time consuming.
@@ -275,26 +339,31 @@ std::vector<int> establishCFVMap(int initialOffset)
 }
 
 int main(){
-    const string FILE_EXTENSION = ".txt";
-    string FILE_NAME = "";
-    cout << "Enter filename: ";
+    const std::string FILE_EXTENSION = ".txt";
+    std::string FILE_NAME = "";
+    std::cout << "Enter filename: ";
     getline(cin, FILE_NAME);
-    vector<int>inputValues = decimalReadNumbersFromFile(FILE_NAME + FILE_EXTENSION);
-    cout << inputValues.size() << endl;
+    std::vector<int>inputValues = decimalReadNumbersFromFile(FILE_NAME + FILE_EXTENSION);
+    std::cout << inputValues.size() << endl;
     ofstream outputData ("out" + FILE_NAME + FILE_EXTENSION);
-    vector<int>segmentLengths;
-    vector<vector<int>>variances;
-    vector<int> immediateVarSeg;
-
+    std::vector<int>segmentLengths;
+    std::vector<vector<int>>variances;
+    std::vector<int> immediateVarSeg;
+    std::vector<int> segVals;
     
 
     //FOR FIRST:
-    //closest thing I have to a guaranteed pattern that I've found yet.
-    //1 == 9, 0 == 8, 2 == other. For use in function to determine pattern.
-    vector<int>fightCommonInterruptTypes {1,1,0,0,2}; //This is a set pattern with that one caveat.
-    vector<int>fightCommonInterruptLengths = {10,9,9,10,10,10,9,9,10,10,9}; //PATTERN FOUND?? POG? -- aaaaallllmost.
-    //still some variance here. hmm. might be 99-98-98-99 followed by 97-99-99-97?
-    vector<int>fightCommonMainLengths {38,99,98,98,98,97,99,99,97,98,98,84};
+    std::vector<int>fightCommonLengths = buildChangeFrameVectorForFightCommon();
+    std::vector<int>fightCommonValues = buildCFVFightCommonValues();
+    
+    std::vector<int>fightCommonInterruptLengths;
+    std::vector<int>fightCommonMainLengths;
+
+    for (unsigned int i = 0; i < fightCommonLengths.size(); i++)
+    {
+      /* code */
+    }
+    
 
     //FOR MAP:
     int mapOffset = 16;
@@ -345,11 +414,14 @@ int main(){
       if (current == inputValues.at(i)){
         segment++;
       } else {
+        segVals.push_back(current);
         current = inputValues.at(i);
         segmentLengths.push_back(segment);
+        
         segment = 1;
       }
       if (i == inputValues.size()-1){
+        segVals.push_back(current);
         segmentLengths.push_back(segment);
       }
       
@@ -661,12 +733,13 @@ int main(){
   for (unsigned int i = 0; i < segmentLengths.size(); i++)
   {
     int sum = 0;
-    if (segmentLengths.at(i) + segmentLengths.at(i+1) == 10 || segmentLengths.at(i) + segmentLengths.at(i+1) == 9){
-      segmentLengths.insert(segmentLengths.begin()+i,segmentLengths.at(i)+segmentLengths.at(i+1));
-      segmentLengths.erase(segmentLengths.begin()+i+1,segmentLengths.begin()+i+3);
-      //should collapse split segments into their correct pairs.
-    }
-        outputData << segmentLengths.at(i);   
+    if (i < segmentLengths.size()-1){
+      if (segmentLengths.at(i) + segmentLengths.at(i+1) == 10 || segmentLengths.at(i) + segmentLengths.at(i+1) == 9){
+        segmentLengths.insert(segmentLengths.begin()+i,segmentLengths.at(i)+segmentLengths.at(i+1));
+        segmentLengths.erase(segmentLengths.begin()+i+1,segmentLengths.begin()+i+3);
+        //should collapse split segments into their correct pairs.
+      }
+      outputData << segmentLengths.at(i);   
       if (i < segmentLengths.size()-1){
         outputData << ", ";
       }
@@ -676,6 +749,7 @@ int main(){
        outputData << endl;
      }
 
+    }
   }
   
   // outputData << "\nEdited:\n";
@@ -687,6 +761,19 @@ int main(){
   //       }
   //   }
   // }
+
+  outputData << "\nValues:\n";
+  
+  for (unsigned int i = 0; i < segVals.size(); i++)
+  {
+        outputData << segVals.at(i);   
+      if (i < segVals.size()-1){
+        outputData << ", ";
+      }
+     if (i % 11 == 10){
+       outputData << endl;
+     }
+  }
 
        
         // if (i % numPossibleValues == 0){
@@ -1025,10 +1112,33 @@ Mixed:
 9	  98,  98,  97,	 98,  98, 98, 98, 97,  96,
 10	(10),(10),(10),(10),(10), 10, 10, 10,(10),
 
+Values:
+7, 9, 7, 9, 7, 8, 7, 8, 7, 9, 8, 
+7, 9, 7, 9, 7, 8, 7, 8, 7, 9, 8, 
+7, 9, 7, 9, 7, 8, 7, 8, 7, 9, 8,
 
+7, 9, 7, 8, 9, 7, 8, 7, 8, 7, 9, 8,
+7, 9, 7, 8, 9, 7, 8, 7, 8, 7, 9, 8,
 
+7, 9, 7, 8, 9, 7, 8, 7, 8, 7, 9,
+7, 9, 7, 8, 9, 7, 8, 7, 8, 7, 9,
+7, 9, 7, 8, 9, 7, 8, 7, 8, 7, 9,
 
+7, 9, 7, 8, 9, 7, 8, 7, 8, 7, 9, 8,
 
+3, 7,
+4, 6,
+7, 3,
+1, 8,
+7, 3,
+2, 7,
+9, 1,
+3, 6,
+5, 4,
+8, 1,
+9, 1,
+
+3, 7, 4, 6, 7, 3, 1, 8, 7, 3, 2, 7, 9, 1, 3, 6, 5, 4, 8, 1, 9, 1,
 
 
 37,   10, 

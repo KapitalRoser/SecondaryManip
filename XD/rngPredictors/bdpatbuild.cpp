@@ -2,7 +2,6 @@
 #include <vector>
 #include <algorithm>
 
-
 std::vector<std::vector<int>> buildChangeFrameVectorForMap(int headerIdx, int nudgePairA, int nudgePairB,int numGroups){
     std::vector<std::vector<int>>set;
     std::vector<int>group;
@@ -74,7 +73,7 @@ std::vector<int>convertFrom2LSegmentToFrames(std::vector<std::vector<int>> cFV,i
 //   std::cout << "FList: " << framesList.size();
   return framesList;
 }
-std::vector<int> buildChangeFrameVectorForFC(){
+std::vector<int> buildChangeFrameVectorForFightCommon(){
     std::vector<std::vector<int>>set;
     std::vector<int> interruptLengths{9,10};
     std::vector<int> mainLengths{97,98,99};
@@ -131,11 +130,56 @@ std::vector<int> buildChangeFrameVectorForFC(){
     */
         
 }
- 
+std::vector<int> buildCFVFightCommonValues(){
+  std::vector<std::vector<int>> sets; //uses a 2 layer, then converted into one layer for the simplicity in adding the split segments.
+  //could be consolidated into 1 I suppose.
+  std::vector<int>outputVal;
+  //placements do not account for split 8 & 9 segments.
+  for (int i = 0; i < 9; i++)
+  {
+    for (int j = 0; j < 5; j++)
+    {
+      switch (j)
+      {
+      case 0: //assumes splits are worth 9, will add 8 before or after the 9 as needed.
+        sets.at(i).push_back(9);
+        break;
+      case 1:
+        sets.at(i).push_back(9);
+        break;
+      case 2:
+        sets.at(i).push_back(8);
+        break;
+      case 3:
+        sets.at(i).push_back(8);
+        break;
+      case 4:
+        sets.at(i).push_back(9);
+        break;
+      }
+      
+    }
+    //adds back the 2nd component of the split segments.
+    if (i < 5 || i == 8){
+    sets.at(i).push_back(8);  //appears after the 9
+    }else {
+      sets.at(i).insert(sets.at(i).begin()+1,8); //appears before the 9.
+    }
+  }
+  for (unsigned int i = 0; i < sets.size(); i++)
+  {
+    for (unsigned int j = 0; j < sets.at(i).size(); j++)
+    {
+      outputVal.push_back(sets.at(i).at(j));
+    }
+  }
+  
+  return outputVal;
+}
 int main(){
 
     int initialOffset = 0;
-    std::vector<int> fullSequence = buildChangeFrameVectorForFC();
+    std::vector<int> fullSequence = buildChangeFrameVectorForFightCommon();
 
 
 
