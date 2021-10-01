@@ -9,6 +9,7 @@
 #include <numeric>
 using namespace std;
 
+
 uint32_t LCG(uint32_t& seed){
   seed = seed * 214013 + 2531011;
   return seed;
@@ -66,6 +67,16 @@ vector<int> decimalReadNumbersFromFile(string fileName)
     file.close();
     return data;
 }
+
+vector<int> debugPrint2DVec(vector<vector<int>>set){
+  //FOR DEBUG:
+        for (unsigned int i = 0; i < set.size(); i++){
+          for (unsigned int j = 0; j < set.at(i).size(); j++){
+            std::cout << set.at(i).at(j) << ", ";
+          }
+          std::cout << std::endl;
+        }
+}
 vector<int> buildChangeFrameVector(string fountain, unsigned int size){ 
   //This function takes a predetermined set of pattern intervals for manipulation on a macro level.
   //It populates an array to convert from a list of durations -> a list of specific frames.
@@ -109,7 +120,7 @@ void checkChangeFrame(vector<int>segments,int currentFrame, bool &delayFrame){
   }
 }
 
-std::vector<int>convertFrom3LSegmentToFrames(std::vector<std::vector<std::vector<int>>> cFV,int initialOffset){ //Accomplishes 2 things: consolidates data into 1 long vec of segments, then converts them to a specific frame.
+std::vector<int>convertFrom3DSegmentToFrames(std::vector<std::vector<std::vector<int>>> cFV,int initialOffset){ //Accomplishes 2 things: consolidates data into 1 long vec of segments, then converts them to a specific frame.
   int frame = initialOffset;
   std::vector<int>framesList;
   //3 layer vec:
@@ -128,7 +139,7 @@ std::vector<int>convertFrom3LSegmentToFrames(std::vector<std::vector<std::vector
   //cout << "FList: " << framesList.size();
   return framesList;
 }
-std::vector<int>convertFrom2LSegmentToFrames(std::vector<std::vector<int>> cFV,int initialOffset){ 
+std::vector<int>convertFrom2DSegmentToFrames(std::vector<std::vector<int>> cFV,int initialOffset){ 
 //Accomplishes 2 things: consolidates data into 1 long vec of segments, then converts them to a specific frame.
   int frame = initialOffset;
   std::vector<int>framesList;
@@ -184,7 +195,7 @@ std::vector<int> buildChangeFrameVectorForFightCommon(){
     std::vector<int> interruptLengths{9,10};
     std::vector<int> mainLengths{97,98,99};
     
-     std::vector<int>SplitSegLengths = {3,7,4,6,7,3,1,8,7,3,2,7,9,1,3,6,5,4,8,1,9,1}; //THESE ARE NOT KNOWN, only a couple rules exist:
+    std::vector<int>SplitSegLengths = {3,7,4,6,7,3,1,8,7,3,2,7,9,1,3,6,5,4,5,4,8,1,9,1}; //THESE ARE NOT KNOWN, only a couple rules exist:
     //if it sums to 9, it goes Eight then Nine. if it sums to 10, it leads nine into eight.
     //also if the main segement length pattern is right then there must be at least 1 of each value in the split,
     //so at worst it is 8 frames of 50/50 variance.
@@ -192,12 +203,20 @@ std::vector<int> buildChangeFrameVectorForFightCommon(){
     std::vector<int>group; //just handles lengths, not values.
     const int NUM_GROUPS = 9;
     
-    for (int sets = 0; sets < NUM_GROUPS; sets++)
+    for (int ithSet = 0; ithSet < NUM_GROUPS; ithSet++)
     {
         group = {97,9,98,-1,97,9,97,10,97,-1}; //add to declaration statement later.
         //-1 represents a split segment
+        //constants block
+        if (ithSet < 3){
+          group.at(3) = 9;
+        } else if (ithSet >= 5 && ithSet < 8){
+          group.at(9) = 10;
+        }
+
         set.push_back(group);
-    }
+    }    
+
     //add standard delayFrame variance block:
     //assumes 9 groups, if need more just add more vectors.
     std::vector<int> dfSet0 = {1,2,4,6,8};
@@ -213,85 +232,85 @@ std::vector<int> buildChangeFrameVectorForFightCommon(){
     std::vector<std::vector<int>> allDelayFrames = {dfSet0,dfSet1,dfSet2,dfSet3,
                                                     dfSet4,dfSet5,dfSet6,dfSet7,dfSet8};
 
-
+    
     //customize pattern as outlined in dfSets.
+    
     for (unsigned int i = 0; i < set.size(); i++)
     { //iterates through dfSets
+    int countOfSpec = 0;
      for (unsigned int j = 0; j < set.at(i).size(); j++)
      { //iterates through set values.
-      if (set.at(i).at(j) == -1){
-        // set.at(i).insert(set.at(i).begin()+i,SplitSegLengths.at(1));
-        // set.at(i).insert(set.at(i).begin()+i,SplitSegLengths.at(0));
-        set.at(i).insert(set.at(i).begin()+i,{SplitSegLengths.at(0),SplitSegLengths.at(1)});
-        SplitSegLengths.erase(SplitSegLengths.begin(),SplitSegLengths.begin()+1);
-        set.at(i).erase(set.at(i).begin()+i+2);
-      }
-        while (std::binary_search(allDelayFrames.at(i).begin(),allDelayFrames.at(i).end(),j)){
+        while (std::binary_search(allDelayFrames.at(i).begin(),allDelayFrames.at(i).end(),j)){ 
+          //When i.at(j) reaches a modify slot, modify the value there and remove from DF set.
             set.at(i).at(j)++;
             allDelayFrames.at(i).erase(allDelayFrames.at(i).begin());
         }
      }
+     //All single slot changes for a row need to occur first before any insertion of split segments can happen.
+     //as such the j loop is run twice.
+     for (unsigned int j = 0; j < set.at(i).size(); j++)
+     {
+       if (set.at(i).at(j) == -1){
+        countOfSpec++;
+        set.at(i).insert(set.at(i).begin()+j,{SplitSegLengths.at(0),SplitSegLengths.at(1)});
+        //Adds a pair of split lengths into row i at position j.
+
+        SplitSegLengths.erase(SplitSegLengths.begin(),SplitSegLengths.begin()+2);
+        //removes that item from the vec so that it iterates through all pairs.
+
+        set.at(i).erase(set.at(i).begin()+j+2);
+        //Erases the '-1' flag.
+      }
+     }
     }
-    
 
+    //ONE OFF CHANGES:
+    set.at(8).at(7) -= 52;
+    set.at(8).at(9)--;
+    //Why the hell is it like this T_T
 
-
-    return convertFrom2LSegmentToFrames(set,-59);
+    return convertFrom2DSegmentToFrames(set,-60);
     //reference chart:
     /*
-    0   1   2     3  4    5  6   7   8   9
-    37, 10, 99,   9, 98,  9, 98, 10, 98, (10),
-    97, 10, 99,   9, 99,  9, 97, 10, 98, (10),
-    98,  9, 99,   9, 98,  9, 98, 10, 97, (10), 
+  ixj 0   1   2  3/4 4/5 5/6  6/7 7/8 8/9 9/10/11 
+   0 37, 10, 99,   9, 98,  9, 98, 10, 98, (10),
+   1 97, 10, 99,   9, 99,  9, 97, 10, 98, (10),
+   2 98,  9, 99,   9, 98,  9, 98, 10, 97, (10), 
 
-    99,  9, 99, (9), 99,  9, 97, 10, 98, (10),
-    99,  9, 98, (9), 99,  9, 97, 10, 98, (10),
+   3 99,  9, 99, (9), 99,  9, 97, 10, 98, (10),
+   4 99,  9, 98, (9), 99,  9, 97, 10, 98, (10),
 
-    99,  9, 98, (9), 99,  9, 97, 10, 98, 10,
-    98,  9, 99, (9), 99,  9, 97, 10, 98, 10, 
-    99,  9, 99, (9), 97, 10, 98, 10, 97, 10,
+   5 99,  9, 98, (9), 99,  9, 97, 10, 98, 10,
+   6 98,  9, 99, (9), 99,  9, 97, 10, 98, 10, 
+   7 99,  9, 99, (9), 97, 10, 98, 10, 97, 10,
 
-    99,  9, 98, (9), 98, 10, 45, 10, 96, (10),
-    73
+   8 99,  9, 98, (9), 98, 10, 45, 10, 96, (10),
+     73
     */
-        
 }
 std::vector<int> buildCFVFightCommonValues(){
-  std::vector<std::vector<int>> sets; //uses a 2 layer, then converted into one layer for the simplicity in adding the split segments.
-  //could be consolidated into 1 I suppose.
+  //THIS IS THE PATTERN OF 8 AND 9 VALUES.
+  //VALUES OF 7 OCCUR ON MAIN LENGTHS, EVERY 2ND (or 3rd for split segments) LENGTH. 
+  std::vector<std::vector<int>> sets; 
+  //uses a 2 layer, then converted into one layer for the simplicity in adding the split segments.
   std::vector<int>outputVal;
+  int NUM_ROWS = 9;
   //placements do not account for split 8 & 9 segments.
-  for (int i = 0; i < 9; i++)
+  for (int i = 0; i < NUM_ROWS; i++)
   {
-    for (int j = 0; j < 5; j++)
-    {
-      switch (j)
-      {
-      case 0: //assumes splits are worth 9, will add 8 before or after the 9 as needed.
-        sets.at(i).push_back(9);
-        break;
-      case 1:
-        sets.at(i).push_back(9);
-        break;
-      case 2:
-        sets.at(i).push_back(8);
-        break;
-      case 3:
-        sets.at(i).push_back(8);
-        break;
-      case 4:
-        sets.at(i).push_back(9);
-        break;
-      }
-      
-    }
+    //Assumes split values are 9, unless otherwise changed. broadly speaking a 9x88x
+    sets.push_back({7,9,7,9,7,8,7,8,7,9});
+
     //adds back the 2nd component of the split segments.
     if (i < 5 || i == 8){
-    sets.at(i).push_back(8);  //appears after the 9
-    }else {
-      sets.at(i).insert(sets.at(i).begin()+1,8); //appears before the 9.
+      sets.at(i).push_back(8);  //appears after the 9
     }
+    if (i >= 3){
+      sets.at(i).insert(sets.at(i).begin()+3,8);
+    }
+
   }
+  //convert from 2d to 1d. may be a simpler way with arrays...
   for (unsigned int i = 0; i < sets.size(); i++)
   {
     for (unsigned int j = 0; j < sets.at(i).size(); j++)
@@ -302,8 +321,6 @@ std::vector<int> buildCFVFightCommonValues(){
   
   return outputVal;
 }
-
-
 std::vector<int> establishCFVMap(int initialOffset)
 {
   //Primary fault in this pattern is that I don't know if these sets repeat, however getting more data without lua is extremely time consuming.
@@ -335,8 +352,66 @@ std::vector<int> establishCFVMap(int initialOffset)
 
   //F it, 3 layered vectors are too much headache. Prep the vec for conversion to frames.
   
-  return convertFrom3LSegmentToFrames(fullSequence,initialOffset);
+  return convertFrom3DSegmentToFrames(fullSequence,initialOffset);
 }
+std::vector<int> buildCFVCamShake(){
+  //How come new data is weird while old data is stable???
+  std::vector<std::vector<int>>set;
+  std::vector<int>group;
+  const int NUM_GROUPS = 9;
+  const int NUM_ROWS = 9;
+
+
+  //Create standard format:
+  for (int i = 0; i < NUM_GROUPS; i++)
+  {
+    for (int j = 0; j < NUM_ROWS; j++)
+    {
+      if (j == 0){ //header pair
+        group.push_back(30);
+        group.push_back(30);
+      } else {
+        group.push_back(32);
+        group.push_back(28);
+      }
+    }
+    set.push_back(group);
+    group.clear();
+  }
+  //30-30 followed by 8 rows of 32-28 to make the group.
+  
+  //BEYOND THIS POINT THESE ARE RECORDED VALUES, AND NOT FULLY UNDERSTOOD YET.
+  std::vector<int>lagLocation =  {5, -1, 3, 3, 3, 5, 5, 5, 4}; //row in group where the 27 lies.
+  std::vector<int>dropFrameLoc = {4, -1, 2,17,-1,-1, 1,16,-1}; //in raw position in group, since single value changed.
+  //(-1 == skip)
+  for (unsigned int i = 0; i < set.size(); i++)
+  {
+    //Add 27-33 lags. 27 is always the 2nd in the pair and 33 is always immediately after.
+    if (lagLocation.at(i)>=0){
+      int first = lagLocation.at(i)*2+1;
+      int second = (lagLocation.at(i)+1)*2;
+      set.at(i).at(first)--; //becomes 27
+      set.at(i).at(second)++; //becomes 33
+    }
+    //remove the weird dropped frames (semi pattern: -1 0 -1 -1 0 0 -1 -1  0)
+    if (dropFrameLoc.at(i)>=0){
+      int position = dropFrameLoc.at(i);
+      set.at(i).at(position)--;
+    }
+
+  }
+      //remove the dropped whole rows.
+      set.at(5).erase(set.at(5).begin(),set.at(5).begin()+2); //2 dropped rows in group 6
+      
+      set.at(5).pop_back();
+      set.at(5).pop_back(); //remove final pair.
+
+      //Add in starting pre-pattern values.
+      set.insert(set.begin(),{31,28,32,28});
+      return convertFrom2DSegmentToFrames(set,0); //lucky lol.
+}
+
+
 
 int main(){
     const std::string FILE_EXTENSION = ".txt";
@@ -352,36 +427,40 @@ int main(){
     std::vector<int> segVals;
     
 
-    //FOR FIRST:
-    std::vector<int>fightCommonLengths = buildChangeFrameVectorForFightCommon();
+    //FOR FIGHT_COMMON
+    std::vector<int>fightCommonFrames = buildChangeFrameVectorForFightCommon();
     std::vector<int>fightCommonValues = buildCFVFightCommonValues();
-    
-    std::vector<int>fightCommonInterruptLengths;
-    std::vector<int>fightCommonMainLengths;
-
-    for (unsigned int i = 0; i < fightCommonLengths.size(); i++)
-    {
-      /* code */
-    }
+    fightCommonValues.push_back(0); 
+    //This 0 is because I cannot erase the final value, so I leave a pointless value to compensate.
     
 
     //FOR MAP:
     int mapOffset = 16;
-    bool delayFrame = 0; //1 == 12
-    vector<int>mapSegments = establishCFVMap(mapOffset); //yeah it's a 3 layer nested vector, sue me.
+    bool mapDelayFrame = 0; //1 == 12
+    vector<int>mapSegments = establishCFVMap(mapOffset);
     int unexplainedVariant = 1123;
 
+    //FOR CAMERA_SHAKE
+    std::vector<int>camShakeSegments = buildCFVCamShake();
+    bool camShakeDelayFrame = 0;//1 == 7;
 
     int segment = 0;
     int current = 0;
-    int numPossibleValues = 6;
+    int numPossibleValues = 2;
 
     bool filterApress = false; //a2b == deckArchive 1, presumably the player.
    
-    bool filterFightCommon = true; //Fight_Common
+    //Done for now:
+    bool filterFightCommon = false; //Fight_Common
     bool filterMAP = false; //M5_Out_bf
+
+    //Still snafu:
     bool filterCameraShake = false; //camera_shake.fsys
-    bool filterDeckArchive = false; // == deckArchive 2, presumably naps.
+    bool filterDeckArchive = true; // == deckArchive 2, Opponent
+    bool filterPkxKlein = false; //The model for Krane. Nap's actual data including teddy is loaded immediately after.
+
+    bool filterTwoCombo = false;
+
 
     bool filterSum = false;
 
@@ -465,6 +544,23 @@ int main(){
           frameLabel = "OTHER --- ";
         }
         
+        
+        if (binary_search(fightCommonFrames.begin(),fightCommonFrames.end(),i) || i == 0){        
+          filterAmt = fightCommonValues.at(0);
+          if (fightCommonValues.size() == 1){
+            filterAmt = 7;
+          } else {
+            fightCommonValues.erase(fightCommonValues.begin());
+          }                
+        }
+        
+        
+         //can also use a seperate increment value.
+
+
+
+
+        //if struggling, make a struct.
 
         // if (filterAmt == 7){ //default case
         //   fightCommonMainLengths.at(0)--;
@@ -539,8 +635,8 @@ int main(){
         //exact organization of pairs within a group varies, hence the existence of 3 unique sets at least. No repetetion of sets yet,
         //will need more testing eventually to confirm.
 
-        checkChangeFrame(mapSegments,i,delayFrame);
-        if (delayFrame){
+        checkChangeFrame(mapSegments,i,mapDelayFrame);
+        if (mapDelayFrame){
           filterAmt = 12;
         } else {
           filterAmt = 11;
@@ -562,7 +658,17 @@ int main(){
         } else {
           frameLabel = "---- WEIRD CASE ----";
         }
+
+        checkChangeFrame(camShakeSegments,i,camShakeDelayFrame);
+        if (camShakeDelayFrame){
+          filterAmt = 7;
+        } else {
+          filterAmt = 8;
+        } 
+        
       }
+
+     
       if (filterCamera){
         if (inputValues.at(i) == 8){
           frameLabel = "Eight ~~~~";
@@ -642,13 +748,37 @@ int main(){
         //}
         
       }
-
-
+      if (filterPkxKlein){
+        if (inputValues.at(i) == 7){
+          frameLabel = "Seven";
+        } else if (inputValues.at(i) == 8) {
+          frameLabel = "Eight";
+        } else {
+          frameLabel = "---- WEIRD CASE ----";
+        }
+      }
+      
+      
+      if (filterTwoCombo){
+        if (inputValues.at(i) == 0){
+          frameLabel = "SEVEN_FIVE";
+        } else if (inputValues.at(i) == 1) {
+          frameLabel = "SEVEN_SIX";
+        } else if (inputValues.at(i) == 2) {
+          frameLabel = "EIGHT_FIVE";
+        } else if (inputValues.at(i) == 3) {
+          frameLabel = "EIGHT_SIX";
+        } else {
+          frameLabel = "---- WEIRD CASE ----";
+        }
+      }
+      
+      
     
 
     frames -= filterAmt;
 
-    if (frames == 0){
+    if (frames == 0 && filterTwoCombo == false){
       frameLabel = "";
     }
     outputData << left << setw(10)   << frameLabel << " - "<< frames << " - " << comment << endl;
@@ -678,79 +808,79 @@ int main(){
   //         outputData << endl;
   //       }
   // }
-  outputData << "Lows:\n";
+  // outputData << "Lows:\n";
 
-  int line = 0;
-  for (unsigned int i = 0; i < segmentLengths.size(); i++)
-  {
-    if (segmentLengths.at(i) < 11){
-      outputData << segmentLengths.at(i);
+  // int line = 0;
+  // for (unsigned int i = 0; i < segmentLengths.size(); i++)
+  // {
+  //   if (segmentLengths.at(i) < 11){
+  //     outputData << segmentLengths.at(i);
       
-      if (i < segmentLengths.size()-1){
-        outputData << ", ";
-      }
-      if (line == 5){
-        outputData << endl;
-        line = 0;
-      }
-      line++;
-    }
-  }
-  outputData << "\nHighs:\n";
-  line = 1;
-  segmentLengths.erase(segmentLengths.begin());
-  for (unsigned int i = 0; i < segmentLengths.size(); i++)
-  {
-    if (segmentLengths.at(i) > 11){
-        outputData << segmentLengths.at(i);   
-      if (i < segmentLengths.size()-1){
-        outputData << ", ";
-      }
-      if (line == 5){
-        outputData << endl;
-        line = 0;
-      }
-      line++;
-    }
-  }
-  outputData << "\nMixed:\n";
-  line = 1;
-  segmentLengths.erase(segmentLengths.begin());
-  for (unsigned int i = 0; i < segmentLengths.size(); i++)
-  {
-        outputData << segmentLengths.at(i);   
-      if (i < segmentLengths.size()-1){
-        outputData << ", ";
-      }
-      if (line == 7){
-        outputData << endl;
-        line = 0;
-      }
-      line++;
-  }
-  outputData << "\n\nPairs:\n";
+  //     if (i < segmentLengths.size()-1){
+  //       outputData << ", ";
+  //     }
+  //     if (line == 5){
+  //       outputData << endl;
+  //       line = 0;
+  //     }
+  //     line++;
+  //   }
+  // }
+  // outputData << "\nHighs:\n";
+  // line = 1;
+  // segmentLengths.erase(segmentLengths.begin());
+  // for (unsigned int i = 0; i < segmentLengths.size(); i++)
+  // {
+  //   if (segmentLengths.at(i) > 11){
+  //       outputData << segmentLengths.at(i);   
+  //     if (i < segmentLengths.size()-1){
+  //       outputData << ", ";
+  //     }
+  //     if (line == 5){
+  //       outputData << endl;
+  //       line = 0;
+  //     }
+  //     line++;
+  //   }
+  // }
+  // outputData << "\nMixed:\n";
+  // line = 1;
+  // segmentLengths.erase(segmentLengths.begin());
+  // for (unsigned int i = 0; i < segmentLengths.size(); i++)
+  // {
+  //       outputData << segmentLengths.at(i);   
+  //     if (i < segmentLengths.size()-1){
+  //       outputData << ", ";
+  //     }
+  //     if (line == 7){
+  //       outputData << endl;
+  //       line = 0;
+  //     }
+  //     line++;
+  // }
+  // outputData << "\n\nPairs:\n";
   
-  for (unsigned int i = 0; i < segmentLengths.size(); i++)
-  {
-    int sum = 0;
-    if (i < segmentLengths.size()-1){
-      if (segmentLengths.at(i) + segmentLengths.at(i+1) == 10 || segmentLengths.at(i) + segmentLengths.at(i+1) == 9){
-        segmentLengths.insert(segmentLengths.begin()+i,segmentLengths.at(i)+segmentLengths.at(i+1));
-        segmentLengths.erase(segmentLengths.begin()+i+1,segmentLengths.begin()+i+3);
-        //should collapse split segments into their correct pairs.
-      }
-      outputData << segmentLengths.at(i);   
-      if (i < segmentLengths.size()-1){
-        outputData << ", ";
-      }
-     if (i % 2 == 1){
-       sum = segmentLengths.at(i) + segmentLengths.at(i-1);
-       outputData << " : " << sum;
-       outputData << endl;
-     }
+  // for (unsigned int i = 0; i < segmentLengths.size(); i++)
+  // {
+  //   int sum = 0;
+  //   if (i < segmentLengths.size()-1){
+  //     if (segmentLengths.at(i) + segmentLengths.at(i+1) == 10 || segmentLengths.at(i) + segmentLengths.at(i+1) == 9){
+  //       segmentLengths.insert(segmentLengths.begin()+i,segmentLengths.at(i)+segmentLengths.at(i+1));
+  //       segmentLengths.erase(segmentLengths.begin()+i+1,segmentLengths.begin()+i+3);
+  //       //should collapse split segments into their correct pairs.
+  //     }
+  //     outputData << segmentLengths.at(i);   
+  //     if (i < segmentLengths.size()-1){
+  //       outputData << ", ";
+  //     }
+  //    if (i % 2 == 1){
+  //      sum = segmentLengths.at(i) + segmentLengths.at(i-1);
+  //      outputData << " : " << sum;
+  //      outputData << endl;
+  //    }
 
-    }
-  }
+  //   }
+  // }
   
   // outputData << "\nEdited:\n";
   // for (unsigned int i = 0; i < segmentLengths.size();i++){
@@ -762,28 +892,30 @@ int main(){
   //   }
   // }
 
-  outputData << "\nValues:\n";
+  // outputData << "\nValues:\n";
   
-  for (unsigned int i = 0; i < segVals.size(); i++)
-  {
-        outputData << segVals.at(i);   
-      if (i < segVals.size()-1){
-        outputData << ", ";
-      }
-     if (i % 11 == 10){
-       outputData << endl;
-     }
-  }
+  // for (unsigned int i = 0; i < segVals.size(); i++)
+  // {
+  //       outputData << segVals.at(i);   
+  //     if (i < segVals.size()-1){
+  //       outputData << ", ";
+  //     }
+  //    if (i % 11 == 10){
+  //      outputData << endl;
+  //    }
+  // }
 
        
         // if (i % numPossibleValues == 0){
         //   outputData << segmentLengths.at(i) <<", ";
 
-    // outputData << "All segment lengths: ";
-    // for (unsigned int i = 0; i < segmentLengths.size();i++){
-    //     outputData << segmentLengths.at(i) <<", ";
-    // }
-    // outputData << endl;
+    outputData << "All segment lengths: ";
+    for (unsigned int i = 0; i < segmentLengths.size();i++){
+        outputData << segmentLengths.at(i) <<", ";
+        if(i % 2 == 1){
+          outputData << endl;
+        }
+    }
 
 
 
@@ -880,26 +1012,33 @@ Full sequence:
 33, 28,  32, 28,  32, 28,  32, 28, 32, 28, 
 
 32, 28,  32, 28,  32, 28,  32, 28, 32, 28,  
-32, 28,  32, 28,  32, 28,  32, 27, 32, 28, 
--1       0        -1       0       0??
+32, 28,  32, 28,  32, 28,  32, 27? 32, 28, 
+-1       0        -1       0(-1)    0??
                                     --missing??? where 3030?
+                                    
                                     --missing??? where 3228?
                                     32, 28, 
+                                    
                                     32, 28, 
                                     32, 28, 
+                                    
                                     32, 27, 
                                     33, 28, 
+                                    
                                     32, 28, 
                                     32, 28, 
                                     0??
 
                                     30, 29, --weird 3030?
+                                   
                                     32, 28, 
                                     32, 28, 
+                                   
                                     32, 28, 
                                     32, 28, 
                                     32, 27, 
                                     33, 28, 
+                                  
                                     32, 28, 
                                     32, 28,
                                     -1??
@@ -910,12 +1049,19 @@ Full sequence:
 
 32, 28,  32, 28, 
 32, 28,  32, 27, 
+
 32, 27,  33, 28,
 33, 28,  32, 28,
 
 32, 28,  32, 28, 
 31, 28,  0 ===
 -1
+
+-1 0 -1 -1 0 0 -1 -1  0
+
+
+
+
 
 B4 CAM PATTERN:
 Full sequence:

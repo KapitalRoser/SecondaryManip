@@ -156,8 +156,6 @@ int dummyCam(uint32_t& seed,int camAngle1,int camAngle2){
   
     // cout << "Total RNG from dummycam: " << totalRNGCalls << endl;
     // cout << "CAM: " << count << endl;
-    //Some physics stuff
-    // LCG(seed);
     return count+1;
 }
 void rollToGeneration(uint32_t&seed,int blurDuration, int camFrame,int cA1,int cA2){ 

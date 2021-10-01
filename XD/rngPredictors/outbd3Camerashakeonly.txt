@@ -1647,6 +1647,7 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Eight      - 1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -1674,6 +1675,7 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Seven ~~~~ - -1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -1705,6 +1707,7 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Eight      - 1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -1732,6 +1735,7 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Seven ~~~~ - -1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -1761,6 +1765,7 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Eight      - 1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -1790,6 +1795,7 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Seven ~~~~ - -1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -1821,6 +1827,8 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Eight      - 1 - 
+Eight      - 1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -1847,6 +1855,8 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -1877,6 +1887,8 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Eight      - 1 - 
+Eight      - 1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -1903,6 +1915,8 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -1933,6 +1947,8 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Eight      - 1 - 
+Eight      - 1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -1958,6 +1974,8 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -1989,6 +2007,8 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Eight      - 1 - 
+Eight      - 1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -2015,6 +2035,8 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -2045,6 +2067,8 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Eight      - 1 - 
+Eight      - 1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -2071,6 +2095,8 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -2101,6 +2127,8 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Eight      - 1 - 
+Eight      - 1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -2127,6 +2155,8 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -2157,6 +2187,8 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Eight      - 1 - 
+Eight      - 1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -2183,6 +2215,8 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -2213,6 +2247,8 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Eight      - 1 - 
+Eight      - 1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -2238,6 +2274,8 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -2266,7 +2304,10 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Eight      - 1 - 
+Eight      - 1 - 
            - 0 - 
+Eight      - 1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -2293,6 +2334,8 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -2323,6 +2366,8 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Eight      - 1 - 
+Eight      - 1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -2349,6 +2394,8 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -2379,6 +2426,8 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Eight      - 1 - 
+Eight      - 1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -2405,6 +2454,8 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -2435,6 +2486,8 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Eight      - 1 - 
+Eight      - 1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -2460,6 +2513,8 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -2491,6 +2546,8 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Eight      - 1 - 
+Eight      - 1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -2517,6 +2574,8 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -2547,6 +2606,8 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Eight      - 1 - 
+Eight      - 1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -2573,6 +2634,8 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -2603,6 +2666,8 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Eight      - 1 - 
+Eight      - 1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -2629,6 +2694,8 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -2659,6 +2726,8 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Eight      - 1 - 
+Eight      - 1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -2685,6 +2754,8 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -2715,6 +2786,8 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Eight      - 1 - 
+Eight      - 1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -2741,6 +2814,10 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -2769,6 +2846,10 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -2793,6 +2874,11 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -2820,6 +2906,11 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -2843,6 +2934,11 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -2870,6 +2966,12 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -2892,6 +2994,12 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -2918,6 +3026,14 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -2938,6 +3054,13 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -2963,6 +3086,15 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -2981,6 +3113,18 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -3002,6 +3146,18 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -3018,6 +3174,20 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -3036,6 +3206,21 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -3049,6 +3234,21 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -3064,6 +3264,22 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -3077,6 +3293,22 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -3093,6 +3325,22 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -3105,6 +3353,23 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -3120,6 +3385,23 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -3131,6 +3413,25 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -3144,6 +3445,26 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -3152,6 +3473,26 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -3164,6 +3505,26 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -3172,6 +3533,26 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -3184,12 +3565,54 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
            - 0 - 
            - 0 - 
            - 0 - 
            - 0 - 
            - 0 - 
            - 0 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -3202,11 +3625,57 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
            - 0 - 
            - 0 - 
            - 0 - 
            - 0 - 
            - 0 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -3216,11 +3685,57 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
            - 0 - 
            - 0 - 
            - 0 - 
            - 0 - 
            - 0 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -3230,11 +3745,57 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
            - 0 - 
            - 0 - 
            - 0 - 
            - 0 - 
            - 0 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -3242,39 +3803,276 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
            - 0 - 
            - 0 - 
            - 0 - 
            - 0 - 
            - 0 - 
            - 0 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
            - 0 - 
            - 0 - 
            - 0 - 
            - 0 - 
            - 0 - 
            - 0 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
            - 0 - 
            - 0 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
            - 0 - 
            - 0 - 
            - 0 - 
            - 0 - 
            - 0 - 
            - 0 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
            - 0 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
            - 0 - 
            - 0 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
            - 0 - 
            - 0 - 
            - 0 - 
            - 0 - 
            - 0 - 
            - 0 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
            - 0 - 
            - 0 - 
            - 0 - 
            - 0 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -3286,6 +4084,27 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -3293,6 +4112,26 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -3308,6 +4147,24 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -3318,6 +4175,24 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -3335,6 +4210,21 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -3349,6 +4239,20 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -3367,6 +4271,19 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -3383,6 +4300,18 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -3402,6 +4331,17 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -3419,6 +4359,19 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -3436,6 +4389,21 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -3452,6 +4420,18 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -3474,6 +4454,16 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -3493,6 +4483,15 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -3516,6 +4515,15 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -3536,6 +4544,14 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -3562,6 +4578,12 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -3584,6 +4606,11 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -3645,6 +4672,8 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -3675,6 +4704,15 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -3694,6 +4732,16 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -3716,6 +4764,24 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -3726,6 +4792,25 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -3739,6 +4824,25 @@
            - 0 - 
            - 0 - 
            - 0 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
+Eight      - 1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -3748,1050 +4852,25 @@
            - 0 - 
            - 0 - 
            - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
-           - 0 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
+Seven ~~~~ - -1 - 
            - 0 - 
            - 0 - 
            - 0 - 
@@ -4800,108 +4879,88 @@
            - 0 - 
            - 0 - 
 All segment lengths:
-Segment 0: 37, 98, 10, 10, 99, 97, 1, 98, 2, 98, 3, 98, 4, 10, 97, 99, 10, 73, 
-Segment 1: 10, 10, 99, 98, 9, 7, 8, 7, 7, 9, 6, 10, 99, 99, 10, 9, 45, 
-Segment 2: 99, 98, 9, 4, 98, 3, 99, 3, 99, 1, 99, 98, 9, 9, 98, 98, 10, 
-Segment 3: 9, 3, 99, 6, 9, 99, 9, 99, 9, 99, 9, 9, 97, 99, 10, 8, 96, 
-Segment 4: 98, 7, 9, 98, 98, 9, 97, 9, 97, 9, 97, 99, 10, 5, 97, 1, 9, 
-Segment 5: 9, 97, 97, 9, 10, 99, 10, 98, 10, 98, 10, 5, 98, 4, 10, 98, 1, 
+Segment 0: 31, 32, 30, 32, 31, 32, 32, 32, 33, 32, 32, 30, 32, 32, 32, 32, 32, 32, 32, 32, 30, 31, 32, 32, 33, 32, 32, 33, 32, 30, 33, 32, 32, 33, 32, 32, 32, 32, 30, 1, 32, 32, 32, 33, 32, 32, 32, 32, 32, 32, 33, 34, 34, 33, 33, 31, 32, 32, 33, 32, 33, 35, 32, 32, 31, 32, 33, 36, 35, 35, 35, 32, 31, 30, 34, 32, 34, 38, 39, 40, 32, 7, 
+Segment 1: 28, 28, 30, 28, 28, 28, 28, 27, 28, 28, 28, 30, 28, 28, 28, 28, 28, 28, 28, 28, 30, 28, 28, 27, 28, 28, 28, 28, 28, 30, 28, 28, 27, 28, 28, 28, 28, 27, 1, 28, 28, 28, 27, 28, 28, 28, 28, 30, 29, 28, 28, 27, 30, 30, 28, 29, 29, 30, 28, 28, 27, 28, 28, 28, 32, 28, 31, 30, 28, 28, 29, 29, 28, 31, 29, 29, 28, 30, 29, 29, 28, 
 
-Lows:
-10, 9, 9, 10, 3, 7, 
-10, 9, 9, 10, 4, 
-6, 9, 9, 9, 10, 
-7, 3, 9, 1, 8, 
-9, 10, 7, 3, 9, 
-2, 7, 9, 10, 9, 
-1, 9, 3, 6, 9, 
-10, 10, 9, 5, 4, 
-9, 10, 10, 9, 5, 
-4, 10, 10, 10, 9, 
-8, 1, 10, 10, 9, 
-1, 
-Highs:
-99, 98, 98, 98, 97, 
-99, 99, 97, 98, 98, 
-99, 98, 98, 97, 99, 
-99, 99, 97, 98, 99, 
-98, 99, 97, 98, 99, 
-98, 99, 97, 98, 98, 
-99, 99, 97, 98, 99, 
-99, 97, 98, 97, 99, 
-98, 98, 45, 96, 73
-
-Mixed:
-99, 9, 98, 9, 98, 10, 98, 
-3, 7, 97, 10, 99, 9, 99, 
-9, 97, 10, 98, 4, 6, 98, 
-9, 99, 9, 98, 9, 98, 10, 
-97, 7, 3, 99, 9, 99, 1, 
-8, 99, 9, 97, 10, 98, 7, 
-3, 99, 9, 98, 2, 7, 99, 
-9, 97, 10, 98, 9, 1, 99, 
-9, 98, 3, 6, 99, 9, 97, 
-10, 98, 10, 98, 9, 99, 5, 
-4, 99, 9, 97, 10, 98, 10, 
-99, 9, 99, 5, 4, 97, 10, 
-98, 10, 97, 10, 99, 9, 98, 
-8, 1, 98, 10, 45, 10, 96, 
-9, 1, 73
-
-Pairs:
-99, 9,  : 108
-98, 9,  : 107
-98, 10,  : 108
-98, 10,  : 108
-97, 10,  : 107
-99, 9,  : 108
-99, 9,  : 108
-97, 10,  : 107
-98, 10,  : 108
-98, 9,  : 107
-99, 9,  : 108
-98, 9,  : 107
-98, 10,  : 108
-97, 10,  : 107
-99, 9,  : 108
-99, 9,  : 108
-99, 9,  : 108
-97, 10,  : 107
-98, 10,  : 108
-99, 9,  : 108
-98, 9,  : 107
-99, 9,  : 108
-97, 10,  : 107
-98, 10,  : 108
-99, 9,  : 108
-98, 9,  : 107
-99, 9,  : 108
-97, 10,  : 107
-98, 10,  : 108
-98, 9,  : 107
-99, 9,  : 108
-99, 9,  : 108
-97, 10,  : 107
-98, 10,  : 108
-99, 9,  : 108
-99, 9,  : 108
-97, 10,  : 107
-98, 10,  : 108
-97, 10,  : 107
-99, 9,  : 108
-98, 9,  : 107
-98, 10,  : 108
-45, 10,  : 55
-96, 10,  : 106
-
-Values:
-7, 9, 7, 9, 7, 8, 7, 8, 7, 9, 8, 
-7, 9, 7, 9, 7, 8, 7, 8, 7, 9, 8, 
-7, 9, 7, 9, 7, 8, 7, 8, 7, 9, 8, 
-7, 9, 7, 8, 9, 7, 8, 7, 8, 7, 9, 
-8, 7, 9, 7, 8, 9, 7, 8, 7, 8, 7, 
-9, 8, 7, 9, 7, 8, 9, 7, 8, 7, 8, 
-7, 9, 7, 9, 7, 8, 9, 7, 8, 7, 8, 
-7, 9, 7, 9, 7, 8, 9, 7, 8, 7, 8, 
-7, 9, 7, 9, 7, 8, 9, 7, 8, 7, 8, 
-7, 9, 8, 7
+All segment lengths: 31, 28, 
+32, 28, 
+30, 30, 
+32, 28, 
+31, 28, 
+32, 28, 
+32, 28, 
+32, 27, 
+33, 28, 
+32, 28, 
+32, 28, 
+30, 30, 
+32, 28, 
+32, 28, 
+32, 28, 
+32, 28, 
+32, 28, 
+32, 28, 
+32, 28, 
+32, 28, 
+30, 30, 
+31, 28, 
+32, 28, 
+32, 27, 
+33, 28, 
+32, 28, 
+32, 28, 
+33, 28, 
+32, 28, 
+30, 30, 
+33, 28, 
+32, 28, 
+32, 27, 
+33, 28, 
+32, 28, 
+32, 28, 
+32, 28, 
+32, 27, 
+30, 1, 
+1, 28, 
+32, 28, 
+32, 28, 
+32, 27, 
+33, 28, 
+32, 28, 
+32, 28, 
+32, 28, 
+32, 30, 
+32, 29, 
+32, 28, 
+33, 28, 
+34, 27, 
+34, 30, 
+33, 30, 
+33, 28, 
+31, 29, 
+32, 29, 
+32, 30, 
+33, 28, 
+32, 28, 
+33, 27, 
+35, 28, 
+32, 28, 
+32, 28, 
+31, 32, 
+32, 28, 
+33, 31, 
+36, 30, 
+35, 28, 
+35, 28, 
+35, 29, 
+32, 29, 
+31, 28, 
+30, 31, 
+34, 29, 
+32, 29, 
+34, 28, 
+38, 30, 
+39, 29, 
+40, 29, 
+32, 28, 
+7, 

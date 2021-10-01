@@ -126,6 +126,7 @@ int main (){
     ofstream mapDoc ("bd3MapOnly.txt");
     ofstream CamShakeDoc ("bd3CameraShakeOnly.txt");
     ofstream deckArchDoc ("bd3DeckArchiveOnly.txt");
+    // ofstream comboValDoc ("bd3LastTwoValuesOnly.txt");
     if (srcBlurDuration.empty()){
         cout << "File read unsuccessful";
     } else {
@@ -231,6 +232,9 @@ int main (){
          mapDoc   << allBlurDurations.at(i).at(3) << endl;
          CamShakeDoc << allBlurDurations.at(i).at(5) << endl;
          deckArchDoc << allBlurDurations.at(i).at(6) << endl;
+
+        //  comboValDoc << allBlurDurations.at(i).at(5) << "," << allBlurDurations.at(i).at(6) << endl;
+
         }
 
 

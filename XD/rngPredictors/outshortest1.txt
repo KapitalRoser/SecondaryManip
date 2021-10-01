@@ -1,0 +1,6 @@
+39710:     0: - Reached: 36ee3742 - Pattern: 2,7,12,6,8,6,7
+--SKIPPED SEED: Reached: 302e4ce6
+39712:     1: - Reached: 302e4ce6 - Pattern: 2,7,12,6,8,6,7
+39714:     2: - Reached: caa8c0b1 - Pattern: 2,7,11,6,8,6,7
+39716:     3: - Reached: aa389048 - Pattern: 2,7,11,6,8,6,8
+
