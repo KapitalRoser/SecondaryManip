@@ -46,6 +46,8 @@ uint32_t LCGn(uint32_t& seed, const uint32_t n)
     seed = (seed * modpow32(0x343fd, n)) + (sum + factor) * 0x269EC3;
     return seed;
   }
+
+
 vector<int> decimalReadNumbersFromFile(string fileName)
 {
     uint32_t value;
@@ -68,7 +70,7 @@ vector<int> decimalReadNumbersFromFile(string fileName)
     return data;
 }
 
-vector<int> debugPrint2DVec(vector<vector<int>>set){
+void debugPrint2DVec(vector<vector<int>>set){
   //FOR DEBUG:
         for (unsigned int i = 0; i < set.size(); i++){
           for (unsigned int j = 0; j < set.at(i).size(); j++){

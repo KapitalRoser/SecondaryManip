@@ -163,6 +163,7 @@ for (unsigned int i = 0; i < allSets.size();i++){
         results << endl;
     }
     // results << endl;
+    // cout<<"Processed:" << i << endl;
 }
 cout << "Values out: " << valuesOut << endl;
 cout << "Values removed: " << srcBlurDuration.size() - valuesOut; 

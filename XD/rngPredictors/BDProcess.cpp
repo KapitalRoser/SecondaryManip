@@ -104,6 +104,7 @@ vector<uint32_t> hexReadNumbersFromFile(string fileName)
         hexConvert.clear();
         hexConvert.str("");
         data.push_back(value);
+        // cout << "Lines read: " << data.size() << endl;
     }
     file.close();
     return data;
@@ -168,18 +169,19 @@ int main (){
     
     //File write blocks
     int ij = 0; //srcReached increment because weird out of bounds errors happen if I don't keep this seperate.
-    bool splitFiles = true;
+    bool splitFiles = false;
     const int VISUAL_FRAMES_START = 39710;
     int currentVisual = VISUAL_FRAMES_START;
 
     for (int i = 0; i < allBlurDurations.size();i++){ //Frames list.
       results << dec << currentVisual << ": ";
       currentVisual+=2;
+      bool checkForModified = false;
       bool modified = false;
       bool oddVal = false;
       results << setw(5) << i << ": - Reached: " << setw(8) << hex << allBlurDurations.at(i).at(0) << " - Pattern: " << dec;
 
-        if (allBlurDurations.at(i).at(1) != 2){
+        if (allBlurDurations.at(i).at(1) != 2 && checkForModified == true){
           allBlurDurations.at(i).insert(allBlurDurations.at(i).begin()+1,2);
           allBlurDurations.at(i).pop_back();
           modified = true;
@@ -225,7 +227,6 @@ int main (){
         // sums = allBlurDurations.at(i).at(2) + allBlurDurations.at(i).at(4) + allBlurDurations.at(i).at(5);
         // results << sums;
         results << endl;
-
         //SPLIT FILE WRITE BLOCK:
         if (splitFiles){
          fightCommonDoc << allBlurDurations.at(i).at(2) << endl;
@@ -234,9 +235,8 @@ int main (){
          deckArchDoc << allBlurDurations.at(i).at(6) << endl;
 
         //  comboValDoc << allBlurDurations.at(i).at(5) << "," << allBlurDurations.at(i).at(6) << endl;
-
         }
-
+        
 
 
     }
