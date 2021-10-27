@@ -5,25 +5,120 @@
 #include "../processCore.h"
 
 using namespace std;
-
-u32 rollTransition(u32 seed, u32 n){
+void printResults(uint32_t seed,int fcount, int i,bool stepFrame){
+        cout << dec << setw(3) << i << ": "
+        << setw(8) << hex << seed << " : "
+         << dec << fcount + (stepFrame*2);
+         if (stepFrame){
+          cout << " : " << "STEP";
+         } 
+         cout << endl;
+}
+bool checkStepPath(vector<int>secondarySteps,uint32_t& seed,int i){
+  if (binary_search(secondarySteps.begin(),secondarySteps.end(),i)){
+        LCGn(seed,2);
+        return true;
+  } else {
+        return false;
+  }
+}
+void rollTransition(u32 &seed, u32 n){
    //Pokeball animation calls, done at 72-32-32 pattern for 11 frames.
    //only need to seperate these calls if npcs can interrupt 
    //Currently I don't think they can.
-    return LCGn(seed,n);
+  LCGn(seed,n);
 }
-void seekTarget(){
+int rollBackground(u32 &seed,int i, region gameRegion){    
+      //initialNoAudio pre-pattern
+      int fcount = 0;
+      const int loFrame = 76;
+      const int hiFrame = 116;
 
+      const int xframe = 114;
+      const int yframe = 154;
+
+      if (gameRegion == USA){
+        //PRE-PATTERN
+        if (i<=3 && i % 3 == 0){
+          fcount = loFrame;
+        } else {
+          fcount = hiFrame;
+        }
+        //MAIN NOISE PATTERN
+        if (i>3){
+          if (i % 5 == 1 || i % 5 == 3){
+              fcount = loFrame;
+          } else {
+              fcount = hiFrame;
+          }
+        }
+      }
+      LCGn(seed,fcount); //application of rules.
+      return fcount;
 }
+void advanceFrame(u32 &seed,int currentFrame, bool trackSteps, bool trackNPCs,vector<int>listOfSteps, region gameRegion){
+  int rollsApplied = 0; 
+  //refers to all the logic involved in handling a visual frame, not an rng frame.
+  //Still not sure on the exact ordering of these things, wouldn't matter if not for the NPCs...
+  if (trackNPCs){ //probably gonna need a lot more params for the NPCs.
+    // handleNPCs();
+    //rollsApplied += something
+  }
+  bool stepFrame = 0;
+  if (trackSteps){
+    stepFrame = checkStepPath(listOfSteps,seed,currentFrame);
+    rollsApplied += 2;
+  }
+  
+  rollsApplied += rollBackground(seed,currentFrame, gameRegion);
+  printResults(seed,rollsApplied,currentFrame,stepFrame);
+}
+
+
 int main(){
+  //~~~~~~~~~~~~ CONFIG INPUTS ~~~~~~~~~~~~~~~~~~~~
+    int target = 0;
+    coloSecondary pokemon = QUILAVA;
+    region gameRegion = USA;
+    const int VISUAL_START_FRAME = 0; //38616 for sevens, 38231 for eights, 38181 for A's.
+    const uint32_t INITIAL_SEED = 0x5C60397F;
+    const int SEARCH_WINDOW = 10;
+    bool trackSteps = true;
+    bool trackNPCs = true;
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    const int QUIL_GENDER_RATIO = 0x1F;
+
+    // //unknown if these are needed yet:
+    // int cameraAngleCurrent = 0;
+    // int cameraAnglePrevious = 5;
+    uint32_t listSeed = 0;
+    uint32_t seed = INITIAL_SEED;
+
+    //starting from same position as loop
+    vector<int>quilavaSteps{5,10,15,20,25,30,35,39,44,49,54,67,88,100,111,119,
+    126,132,138,143,148,153,158,163,168,173,177,182,187,192,197,202,210,217,
+    227,237,252,268,284,292,297,302,307,312,316,321,326,331};
+    vector<int>croconawSteps{};
+    vector<int>bayleefSteps{};
+    vector<int>secondarySteps{};
+
+    switch (pokemon) {
+      case QUILAVA : 
+      secondarySteps = quilavaSteps;
+      break;
+      case CROCONAW : 
+      secondarySteps = croconawSteps;
+      break;
+      case BAYLEEF : 
+      secondarySteps = bayleefSteps;
+      break;
+    }
 
 
 
     
-    const int QUIL_GENDER_RATIO = 0x1F;
-    uint32_t userInputSeed = 0x5C60397F;
-    userInputSeed = rollTransition(userInputSeed,480); //batch calls.
-    generateMon(userInputSeed,QUIL_GENDER_RATIO);
+    rollTransition(seed,480); //batch calls.
+    generateMon(seed,QUIL_GENDER_RATIO);
     return 0;
 }
 
