@@ -49,6 +49,7 @@ float LCGPercentage(uint32_t& seed){
   percentResult = static_cast<float>(hiSeed)/65536;
   return percentResult;
 }
+
 vector<int> readNumbersFromFile(string fileName)
 {
     uint32_t value;
@@ -201,22 +202,14 @@ void generateMon(uint32_t inputSeed){
 
 
 //   XD:
-  
-  const uint32_t clockWise = 36; //F at 30fps blur duration.
-  const uint32_t counterClockWise = 30;
-
-
-
-
     //Some tid/sid stuff?
     seed = LCGn(seed,4);
 
     outSeed = seed;
-
     //Would be High bits/Secret ID, used for Shiny.
 
     // LCG(seed); These do not appear on shadow generation.
-    // LCG(seed); //Dummy ID, leftover, no connection to other parts of program except for the impact on rng.
+    // LCG(seed); //originally from Dummy ID, leftover.
 
     //IVS
     LCG(seed);

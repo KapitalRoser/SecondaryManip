@@ -268,6 +268,7 @@ int main(){
     string patternLabel =""; //Pattern - step calls built in.
     const int VISUAL_START_FRAME = 39034; //38616 for sevens, 38231 for eights, 38181 for A's.
     const uint32_t INITIAL_SEED = 0x0;
+    const int SEARCH_WINDOW = 100;
     int cameraAngleCurrent = 0;
     int cameraAnglePrevious = 5;
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -316,7 +317,7 @@ int main(){
 
     listSeed = seed;
     //NESTED LIST LOOP
-    for (int i = 0; i < 100; i++){
+    for (int i = 0; i < SEARCH_WINDOW; i++){
       seed = INITIAL_SEED;
       targetValue = seekTarget(seed,target+i,patternLabel,noisePattern);
       patternPosition = target+i;
