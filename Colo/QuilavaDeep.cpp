@@ -6,13 +6,13 @@
 
 using namespace std;
 void printResults(uint32_t seed,int fcount, int i,bool stepFrame){
-        cout << dec << setw(3) << i << ": "
+        std::cout << dec << setw(3) << i << ": "
         << setw(8) << hex << seed << " : "
          << dec << fcount + (stepFrame*2);
          if (stepFrame){
-          cout << " : " << "STEP";
+          std::cout << " : " << "STEP";
          } 
-         cout << endl;
+         std::cout << endl;
 }
 bool checkStepPath(vector<int>secondarySteps,uint32_t& seed,int i){
   if (binary_search(secondarySteps.begin(),secondarySteps.end(),i)){
@@ -62,7 +62,8 @@ void advanceFrame(u32 &seed,int currentFrame, bool trackSteps, bool trackNPCs,ve
   //Still not sure on the exact ordering of these things, wouldn't matter if not for the NPCs...
   if (trackNPCs){ //probably gonna need a lot more params for the NPCs.
     // handleNPCs();
-    //rollsApplied += something
+    LCGn(seed,6); //initial npc movements. 
+    rollsApplied += 6;
   }
   bool stepFrame = 0;
   if (trackSteps){
@@ -114,7 +115,11 @@ int main(){
       break;
     }
 
-
+    for (int i = 0; i < 300; i++)
+    {
+      advanceFrame(seed,i,trackSteps,trackNPCs,secondarySteps,gameRegion);
+    }
+    
 
     
     rollTransition(seed,480); //batch calls.
