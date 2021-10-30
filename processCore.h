@@ -22,7 +22,6 @@ typedef int64_t s64;
 enum region {USA,EUR,JPN};
 enum emuVer {STABLE,MODERN}; //Stable == 5.0, only matters for xd so far.
 enum coloSecondary {QUILAVA,CROCONAW,BAYLEEF}; //xd only has teddy
-
 //Useful functions block
 u32 LCG(u32& seed){
   seed = seed * 214013 + 2531011;

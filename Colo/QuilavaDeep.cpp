@@ -6,7 +6,7 @@
 
 using namespace std;
 void printResults(uint32_t seed,int fcount, int i,bool stepFrame){
-        std::cout << dec << setw(3) << i << ": "
+        std::cout << dec << setw(3) << i+1 << ": "
         << setw(8) << hex << seed << " : "
          << dec << fcount + (stepFrame*2);
          if (stepFrame){
@@ -15,7 +15,7 @@ void printResults(uint32_t seed,int fcount, int i,bool stepFrame){
          std::cout << endl;
 }
 bool checkStepPath(vector<int>secondarySteps,uint32_t& seed,int i){
-  if (binary_search(secondarySteps.begin(),secondarySteps.end(),i)){
+  if (binary_search(secondarySteps.begin(),secondarySteps.end(),i+1)){
         LCGn(seed,2);
         return true;
   } else {
@@ -39,14 +39,14 @@ int rollBackground(u32 &seed,int i, region gameRegion){
 
       if (gameRegion == USA){
         //PRE-PATTERN
-        if (i<=3 && i % 3 == 0){
+        if (i<=2 && i % 3 == 2){
           fcount = loFrame;
         } else {
           fcount = hiFrame;
         }
         //MAIN NOISE PATTERN
         if (i>3){
-          if (i % 5 == 1 || i % 5 == 3){
+          if (i % 5 == 0 || i % 5 == 2){
               fcount = loFrame;
           } else {
               fcount = hiFrame;
@@ -62,16 +62,18 @@ void advanceFrame(u32 &seed,int currentFrame, bool trackSteps, bool trackNPCs,ve
   //Still not sure on the exact ordering of these things, wouldn't matter if not for the NPCs...
   if (trackNPCs){ //probably gonna need a lot more params for the NPCs.
     // handleNPCs();
-    LCGn(seed,6); //initial npc movements. 
+    if (currentFrame == 0){
+      LCGn(seed,6); //initial npc movements. 
     rollsApplied += 6;
+    }
+    
   }
   bool stepFrame = 0;
   if (trackSteps){
-    stepFrame = checkStepPath(listOfSteps,seed,currentFrame);
-    rollsApplied += 2;
+    stepFrame = checkStepPath(listOfSteps,seed,currentFrame);   
   }
   
-  rollsApplied += rollBackground(seed,currentFrame, gameRegion);
+  rollsApplied += rollBackground(seed,currentFrame,gameRegion);
   printResults(seed,rollsApplied,currentFrame,stepFrame);
 }
 
@@ -81,8 +83,8 @@ int main(){
     int target = 0;
     coloSecondary pokemon = QUILAVA;
     region gameRegion = USA;
-    const int VISUAL_START_FRAME = 0; //38616 for sevens, 38231 for eights, 38181 for A's.
-    const uint32_t INITIAL_SEED = 0x5C60397F;
+    const int VISUAL_START_FRAME = 0; //
+    const uint32_t INITIAL_SEED = 0x354FCCC3; //LONG, PRE-6 SEED.
     const int SEARCH_WINDOW = 10;
     bool trackSteps = true;
     bool trackNPCs = true;
@@ -115,7 +117,7 @@ int main(){
       break;
     }
 
-    for (int i = 0; i < 300; i++)
+    for (int i = 0; i < 400; i++)
     {
       advanceFrame(seed,i,trackSteps,trackNPCs,secondarySteps,gameRegion);
     }
