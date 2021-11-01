@@ -9,7 +9,7 @@ if you have found some information that you feel could help the project.
  
 For more info on my progress, please see this pastebin: https://pastebin.com/NuC46x6y.
 or for periodic snapshots you can follow my Twitter at: https://twitter.com/KapitalSR.
-This will take many, many months of work, especially as I balance University and Work.
+This will take many, many months of work, especially as I balance University and work.
 Please be patient, I'm working on it!
 
 :)
