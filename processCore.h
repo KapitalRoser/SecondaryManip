@@ -84,7 +84,7 @@ void generateMon(uint32_t inputSeed, int genderRatio){
   
   std::cout << std::left;
 
-    //Some tid/sid stuff?
+    //Some tid/sid stuff, possibly a dummy pid
     seed = LCGn(seed,4);
 
     outSeed = seed;
@@ -118,13 +118,19 @@ void generateMon(uint32_t inputSeed, int genderRatio){
     } else {
         displayGender = "Male";
     }
-    std::cout << "Seed" 
-    //<< hiOrLow << setw(4) 
-    << ": " << std::hex << std::setw(8) << outSeed
-    << " PID: " << std::setw(8) << PID << std::dec
-    << "  " << std::setw(2) << hp << " " << std::setw(2) << atk << " " << std::setw(2) << def << " " << std::setw(2)
-    << spa << " " << std::setw(2) << spd << " " << std::setw(2) << spe << "  "
-    << std::setw(7) << displayNature << "  " << displayGender << std::endl;
+    std::cout 
+    // << "Seed" 
+    // //<< hiOrLow << setw(4) 
+    // << ": " 
+    << std::hex 
+    //<< std::setw(8) << outSeed
+    // << " PID: " 
+    << std::setw(8) << PID 
+    // << std::dec
+    // << "  " << std::setw(2) << hp << " " << std::setw(2) << atk << " " << std::setw(2) << def << " " << std::setw(2)
+    // << spa << " " << std::setw(2) << spd << " " << std::setw(2) << spe << "  "
+    // << std::setw(7) << displayNature << "  " << displayGender 
+    << std::endl;
 }
 
 

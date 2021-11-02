@@ -5,28 +5,26 @@
 #include "../processCore.h"
 
 using namespace std;
-void printResults(uint32_t seed,int fcount, int i,bool stepFrame){
+void printResults(uint32_t seed,int fcount, int i,bool stepFrame,bool halfSteps){
         std::cout << dec << setw(3) << i+1 << ": "
         << setw(8) << hex << seed << " : "
-         << dec << fcount + (stepFrame*2);
+         << dec << fcount + (stepFrame + !halfSteps);
          if (stepFrame){
           std::cout << " : " << "STEP";
          } 
          std::cout << endl;
 }
-bool checkStepPath(vector<int>secondarySteps,uint32_t& seed,int i){
+bool checkStepPath(vector<int>secondarySteps,uint32_t& seed,int i,bool halfSteps){
   if (binary_search(secondarySteps.begin(),secondarySteps.end(),i+1)){
-        LCGn(seed,2);
+        if (halfSteps){
+          LCGn(seed,1);
+        } else {
+          LCGn(seed,2);
+        }
         return true;
   } else {
         return false;
   }
-}
-void rollTransition(u32 &seed, u32 n){
-   //Pokeball animation calls, done at 72-32-32 pattern for 11 frames.
-   //only need to seperate these calls if npcs can interrupt 
-   //Currently I don't think they can.
-  LCGn(seed,n);
 }
 int rollBackground(u32 &seed,int i, region gameRegion){    
       //initialNoAudio pre-pattern
@@ -56,7 +54,8 @@ int rollBackground(u32 &seed,int i, region gameRegion){
       LCGn(seed,fcount); //application of rules.
       return fcount;
 }
-void advanceFrame(u32 &seed,int currentFrame, bool trackSteps, bool trackNPCs,vector<int>listOfSteps, region gameRegion){
+void advanceFrame(u32 &seed,int currentFrame, bool trackSteps, bool trackNPCs,vector<int>listOfSteps, 
+region gameRegion,bool halfSteps){
   int rollsApplied = 0; 
   //refers to all the logic involved in handling a visual frame, not an rng frame.
   //Still not sure on the exact ordering of these things, wouldn't matter if not for the NPCs...
@@ -70,26 +69,52 @@ void advanceFrame(u32 &seed,int currentFrame, bool trackSteps, bool trackNPCs,ve
   }
   bool stepFrame = 0;
   if (trackSteps){
-    stepFrame = checkStepPath(listOfSteps,seed,currentFrame);   
+    stepFrame = checkStepPath(listOfSteps,seed,currentFrame,halfSteps);   
   }
   
   rollsApplied += rollBackground(seed,currentFrame,gameRegion);
-  printResults(seed,rollsApplied,currentFrame,stepFrame);
+  //printResults(seed,rollsApplied,currentFrame,stepFrame,halfSteps);
 }
+void rollTransition(u32 &seed,int target,vector<int>secondarySteps,region gameRegion){
+//Post-A press
+    for (int i = target-1; i < target+4; i++) //5 more frames worth of calls happen after a press?
+    {
+      advanceFrame(seed,i,false,false,secondarySteps,gameRegion,false); //can npc movements happen during this? TBD.
+    }
+    LCGn(seed,38); //what does this do?
+    
+    LCGn(seed,448); //72-32-32 X2 + 32 + 72, pretty reliable.
+    LCGn(seed,4); //generation related? Shiny related? another reason why maybe I shouldn't have generateMon in the header.
 
+  
+   //Pokeball animation calls, done at 72-32-32 pattern for 11 frames.
+   //only need to seperate these calls if npcs can interrupt 
+   //Currently I don't think they can.
+}
+// void updatePreamble (int vStartF, int vMinF, int target,uint32_t& seed,uint32_t targetValue){
+
+//     int targetVisualFrame = seekFrame(vStartF,vMinF,target);
+//     cout<< "Seek frame: " << targetVisualFrame << endl
+//         << "GENERATED:"  << endl;
+// }
 
 int main(){
   //~~~~~~~~~~~~ CONFIG INPUTS ~~~~~~~~~~~~~~~~~~~~
-    int target = 0;
+    int target = 0; //+441.
     coloSecondary pokemon = QUILAVA;
     region gameRegion = USA;
-    const int VISUAL_START_FRAME = 0; //
-    const uint32_t INITIAL_SEED = 0x354FCCC3; //LONG, PRE-6 SEED.
-    const int SEARCH_WINDOW = 10;
+    const int VISUAL_START_FRAME = 99757; //99757 for weird Seed
+    const uint32_t INITIAL_SEED = 0x7B016A28; //LONG, PRE-6 SEED.
+    const int SEARCH_WINDOW = 49; //optional, default 10
     bool trackSteps = true;
     bool trackNPCs = true;
+    bool weirdHalfStep = true; //why tho? rare?
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     const int QUIL_GENDER_RATIO = 0x1F;
+    
+    const int MIN_FRAMES_BEFORE_A_PRESS = 440; //Assuming standard buffered movement. (down-right -> right).
+    int visualTarget = target+VISUAL_START_FRAME;
+    target += MIN_FRAMES_BEFORE_A_PRESS;
 
     // //unknown if these are needed yet:
     // int cameraAngleCurrent = 0;
@@ -117,15 +142,30 @@ int main(){
       break;
     }
 
-    for (int i = 0; i < 400; i++)
+    //Simulate up to target.
+    for (int i = 0; i < target; i++)
     {
-      advanceFrame(seed,i,trackSteps,trackNPCs,secondarySteps,gameRegion);
+      advanceFrame(seed,i,trackSteps,trackNPCs,secondarySteps,gameRegion,weirdHalfStep);
+    }
+    //Do debug statements here. 
+    //Reached! blah blah blah.
+    cout << "Reached: " << hex << seed << " - " << dec <<visualTarget << std::endl;
+    for (unsigned int i = target-1; i < SEARCH_WINDOW+target; i++)
+    {
+      listSeed = seed;
+      rollTransition(listSeed,target,secondarySteps,gameRegion);
+      if (i == target+1 || i == target + 3){
+        LCGn(listSeed,38); //No idea what this is but it FOLLOWS THE HHLHL pattern! Wacky!
+        LCGn(listSeed,2);
+      }
+      generateMon(listSeed,QUIL_GENDER_RATIO);
+      
+      advanceFrame(seed,i,trackSteps,trackNPCs,secondarySteps,gameRegion,weirdHalfStep);
     }
     
 
     
-    rollTransition(seed,480); //batch calls.
-    generateMon(seed,QUIL_GENDER_RATIO);
+    //generateMon(seed,QUIL_GENDER_RATIO);
     return 0;
 }
 
