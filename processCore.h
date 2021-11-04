@@ -70,7 +70,7 @@ float LCGPercentage(u32& seed){
 
 //basic generation -- only asks for gender ratio does not account for xd anti-shiny.
 void generateMon(uint32_t inputSeed, int genderRatio){
-//   uint32_t TID = 0;
+//   uint32_t TID = 0; //Tid isn't important here since TID is already set. *might matter for shiny check on quil.
   uint32_t PID = 0;
   uint32_t seed = inputSeed;
   uint32_t outSeed = 0;
@@ -119,17 +119,16 @@ void generateMon(uint32_t inputSeed, int genderRatio){
         displayGender = "Male";
     }
     std::cout 
-    // << "Seed" 
-    // //<< hiOrLow << setw(4) 
-    // << ": " 
+    << "Seed"  
+    << ": " 
     << std::hex 
-    //<< std::setw(8) << outSeed
-    // << " PID: " 
+    << std::setw(8) << outSeed
+    << " PID: " 
     << std::setw(8) << PID 
-    // << std::dec
-    // << "  " << std::setw(2) << hp << " " << std::setw(2) << atk << " " << std::setw(2) << def << " " << std::setw(2)
-    // << spa << " " << std::setw(2) << spd << " " << std::setw(2) << spe << "  "
-    // << std::setw(7) << displayNature << "  " << displayGender 
+    << std::dec
+    << "  " << std::setw(2) << hp << " " << std::setw(2) << atk << " " << std::setw(2) << def << " " << std::setw(2)
+    << spa << " " << std::setw(2) << spd << " " << std::setw(2) << spe << "  "
+    << std::setw(7) << displayNature << "  " << displayGender 
     << std::endl;
 }
 
