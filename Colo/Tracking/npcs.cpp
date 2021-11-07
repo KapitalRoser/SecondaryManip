@@ -1,57 +1,13 @@
-#include <iostream>
-#include <iomanip>
-#include <math.h>
-#include <sstream>
+#include "../../processCore.h"
 
-
-using namespace std;
-
-uint32_t LCG(uint32_t& seed){
-  seed = seed * 214013 + 2531011;
-  return seed;
-}
-uint32_t modpow32(uint32_t base, uint32_t exp)
-{
-  uint32_t result = 1;
-  while (exp > 0)
-  {
-    if (exp & 1)
-      result = result * base;
-    base = base * base;
-    exp >>= 1;
-  }
-  return result;
-}
-uint32_t LCGn(uint32_t seed, const uint32_t n)
-  {
-    uint32_t ex = n - 1;
-    uint32_t q = 0x343fd;
-    uint32_t factor = 1;
-    uint32_t sum = 0;
-    while (ex > 0)
-    {
-      if (!(ex & 1))
-      {
-        sum = sum + (factor * modpow32(q, ex));
-        ex--;
-      }
-      factor *= (1 + q);
-      q *= q;
-      ex /= 2;
-    }
-    seed = (seed * modpow32(0x343fd, n)) + (sum + factor) * 0x269EC3;
-    return seed;
-  }
-
-double pullHi16 (uint32_t& seed, int divisor){
+double pullHi16 (uint32_t &seed, int divisor){
     double X = 0;
     LCG(seed);
     X = seed >> 16;
     X = X/divisor;
     return X;
 }
-float stupidFloatRounding(float inputF12,float inputF10,float inputF9){
-      
+float stupidFloatRounding(float inputF12,float inputF10,float inputF9){   
       /*For whatever reason, multiplying the floats together in this way is as close as I can get to the actual number.
       Seems to still be off on the last (17th) digit. The Hex value lines up so it doesn't appear to affect the 
       results in any way, so I'm leaving it at this. Trying to condense or rewrite any other way causes the 
@@ -68,167 +24,36 @@ float stupidFloatRounding(float inputF12,float inputF10,float inputF9){
 
       return -(inputF12*factor1 - subtrahend);
 }
-
-int main(){
-
-    //My math is still flawed for other movements.
-
-    const int divisor = 65536; //4780 and 40F0 ....
-    //sort out these Pi approxes man
-    const double loosePiApprox = 3.1415927410125732421875; //40490FDB
-    const double altPiApprox = 3.141592653589793115997963468544185161590576171875; //There also exists an exact double float of this that is almost as long as the below number
-    const float floatPi = 3.1415927410125732;
-    const double absurdlySpecificNumber = 0.000000000000000122464679914735320717376402945839660462569212467758006379625612680683843791484832763671875;
-
-    const float fps30 = 1.0/30;
-    const float fps60 = 1.0/60;
-    double firstCallX = 0; //can these ever be floats?
-    double secondCallX = 0;
+void InitialXY(float &intendedX, float &intendedY, u32 &seed, int divisor, double loosePiApprox, double anchorX, double anchorY){
     float fworkingX = 0;
-    double dworkingX = 0; //Stupid rounding smh
-    float intendedX = 0;
-    float intendedY = 0;
-    double restoreX = 0;
-    double cycleVariance = 0; 
-    int factorTime = 3; //Common value
-    int baseTimeS = 5;  //Common Value
-    float timer1 = 0;
-    float nextXPos = 0;
-    float nextYpos = 0;
-    double intervalValueX = 0.001057701651006937;
-    double intervalValueY = 0.29032066464424133; //Ints instead?
-    bool adjustmentNeeded = 0;
-
-    //~~~~~~~~~~~~~~ CONFIG ~~~~~~~~~~~~~~~
-    int cycleCount = 1;
-    uint32_t seed = 0x0; //INITIAL SEED
-    const double AnchorX = 4; //Starting Location
-    const double AnchorY = 24;
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    for (int i = 0; i<cycleCount;i++){
-
-    
-    
+    double dworkingX = 0; //Stupid rounding smh, makes a difference.
     //Initial Arithmetic
     fworkingX = pullHi16(seed,divisor);
     fworkingX = (fworkingX * 2) * loosePiApprox;
  
     dworkingX = fworkingX;  //F31 copy
 
-    
     dworkingX = sin(dworkingX);
     intendedX = dworkingX * 15; //Memaddr 0x8048e60c
     
-    
     dworkingX = fworkingX; //Restore from copy
    
-
     dworkingX = cos(dworkingX);
     intendedY = dworkingX*15;  //MemAddr 0x
     
-
-    intendedX += AnchorX;
-    intendedY += AnchorY;
+    intendedX += anchorX; //anchors are const.
+    intendedY += anchorY;
 
     //Done!
-    cout << "NEW X POS: " << setprecision(17) << intendedX << endl;
-    cout << "NEW Y POS: " << setprecision(17) << intendedY << endl;
-    
-    
-
-
-    //WALKING
-
-    //TempValue for starting position:
-    nextXPos = AnchorX;
-    nextYpos = AnchorY;
-
-
-
-    //hopefully we don't need to track turn frames...
-    double preAngle1 = abs(AnchorX - intendedX); //No proof on this, just a hunch
-    double preAngle2 = abs(AnchorY - intendedY); //need abs?
-
-    double workingAngle = atan(abs(preAngle1/preAngle2));
-
-    //Some kind of angle adjustment - possibly running into wall fix?
-    if (adjustmentNeeded){
-    workingAngle -= absurdlySpecificNumber;
-    workingAngle = altPiApprox - workingAngle; 
-    }
-    //alt (double) pi is better than float pi here. makes a difference
-    
-    // cout << "pre-round: " << workingAngle << endl;
-    float wAngleAsFloat = static_cast<float>(workingAngle);
-
-
-
-    // cout << "Math test: " << workingAngle << endl;
-    cout << "Walking Angle: " << wAngleAsFloat << endl;
-    // cout << "Atan Res: " << atan(8.389027889602486) << endl; //YAY WORKS
-
-
-    //creates ANGLE YAY!
-
-    double angleInput =  wAngleAsFloat; //3B6E C2CD
-    //Loaded from 0x809E5418 WHICH IS A TURNING ANGLE STORED IN THE NPC DATA!!
-    
-    angleInput = angleInput/2; //3AEE C2CD
-
-    float sinResult = static_cast<float>(sin(angleInput)); //"TanF" NOT EVEN A TAN FUNCTION LMAO - dolphin why you lie to me.
-    const float adjustment = 0.9999999403953552; //Constant 3F7FFFFF
-    float cosResult = static_cast<float>(cos(angleInput)); //FE4
-
-    sinResult = sinResult * adjustment; //C2C3
-
-    
-    const float factorC = 0.29032257199287415; //0x3E94A529 CONSTANT YAAAAAAAAAY
-    float factorA = sinResult; //C2C3 --- Variable. addr: 0x8048e568
-    float factorB = cosResult; //FE4 --- Variable. addr:  0x8048E570
-
-      
-      
-      //Reference function: zz_800dfeec_, lot of math here boils down to just this:
-
-      intervalValueX = 2*factorA*factorB*factorC; // I'll be damned
-      intervalValueY = stupidFloatRounding(factorA,factorC,factorB);
-
-
-      //Debug:
-      cout << "Computed interval X: " << setprecision(17)<<intervalValueX << endl;
-      cout << "Computed interval Y: " << intervalValueY << endl;
-
-      
-
-
-      //This doesn't consider turn frames...
-      //Initial step is only *1 instead of *2
-      nextXPos = intervalValueX * 1 + nextXPos;
-      nextYpos = intervalValueY * 1 + nextYpos;
-      cout << endl << "Next X POS: " << setprecision(17) << nextXPos << endl;
-      cout << "Next Y POS: " << nextYpos << endl << endl;
-   
-
-   //Calculate the actual steps.
-    int framesWalked = 0;
-    while(nextXPos <= intendedX && nextYpos <= intendedY){
-      nextXPos = intervalValueX * 2 + nextXPos;
-      nextYpos = intervalValueY * 2 + nextYpos;
-
-      cout << "Next X POS: " << setprecision(17) << nextXPos << endl;
-      cout << "Next Y POS: " << nextYpos << endl;
-      cout << endl;
-      framesWalked++;
-      //movement occurs once per 30fps frame
-    }
-    cout << "It took " << framesWalked*2 << " 60fps frames to arrive.\n"; 
-    cout << "It took " << framesWalked << " 30fps frames to arrive.\n";
-
-    
-
-    //TIMER
-
-
+    std::cout << "NEW X POS: " << std::setprecision(17) << intendedX << std::endl;
+    std::cout << "NEW Y POS: " << std::setprecision(17) << intendedY << std::endl;
+}
+void walkTimerCalculation(u32 &seed, int factorTime, int baseTimeS,float timer1,int divisor, int currentCycle){
+    double firstCallX = 0;
+    double secondCallX = 0;
+    double cycleVariance = 0;
+    const float fps30 = 1.0/30;
+    const float fps60 = 1.0/60;
     //Processing:
     firstCallX = pullHi16(seed,divisor);
     secondCallX = pullHi16(seed,divisor);
@@ -236,13 +61,129 @@ int main(){
     timer1 = cycleVariance * factorTime + baseTimeS;
 
     //Display
-    cout << "Cycle: " << i << ": Timer1 is: " << setprecision(17) << timer1 << endl;
-    cout << "At 60fps, this is: " << round(timer1/fps60) << " frames.\n";
-    cout << "At 30fps, this is: " << round(timer1/fps30) << " frames.\n";
+    std::cout << "Cycle: " << currentCycle << ": Timer1 is: " << std::setprecision(17) << timer1 << std::endl;
+    std::cout << "At 60fps, this is: " << round(timer1/fps60) << " frames.\n";
+    std::cout << "At 30fps, this is: " << round(timer1/fps30) << " frames.\n";
+}
+double computeAngle(float &intendedX, float &intendedY,double anchorX, double anchorY,bool adjustmentNeeded,double altPiApprox){
+    //hopefully we don't need to track turn frames...
+    const double absurdlySpecificNumber = 0.000000000000000122464679914735320717376402945839660462569212467758006379625612680683843791484832763671875;
+    
+    double preAngle1 = abs(anchorX - intendedX); //No proof on this, just a hunch
+    double preAngle2 = abs(anchorY - intendedY); //need abs?
+    double workingAngle = atan(abs(preAngle1/preAngle2));
+
+    //Some kind of angle adjustment - possibly running into wall fix?
+    if (adjustmentNeeded){
+    workingAngle -= absurdlySpecificNumber;
+    workingAngle = altPiApprox - workingAngle; 
+    }
+    //alt pi (double) is better than float pi here. seriously.
+
+    float wAngleAsFloat = static_cast<float>(workingAngle);
+    double returnAngle =  wAngleAsFloat; //3B6E C2CD
+    //Loaded from 0x809E5418 WHICH IS A TURNING ANGLE STORED IN THE NPC DATA!!
+    returnAngle = returnAngle/2; //3AEE C2CD
+    return returnAngle;
+}
+void computeInterval(double angleInput, double &intervalValueX, double &intervalValueY){
+ //Interval Computation
+    float sinResult = static_cast<float>(sin(angleInput)); //"TanF" NOT EVEN A TAN FUNCTION LMAO - dolphin why you lie to me.
+    const float adjustment = 0.9999999403953552; //Constant 3F7FFFFF
+    float cosResult = static_cast<float>(cos(angleInput)); //FE4
+
+    sinResult = sinResult * adjustment; //C2C3
+    
+    const float factorC = 0.29032257199287415; //0x3E94A529 CONSTANT YAAAAAAAAAY
+    float factorA = sinResult; //C2C3 --- Variable. addr: 0x8048e568
+    float factorB = cosResult; //FE4 --- Variable. addr:  0x8048E570
+
+    //Reference function: zz_800dfeec_, lot of math here boils down to just this:
+    intervalValueX = 2*factorA*factorB*factorC; // I'll be damned
+    intervalValueY = stupidFloatRounding(factorA,factorC,factorB);
+
+    //Debug:
+    std::cout << "Computed interval X: " << std::setprecision(17)<<intervalValueX << std::endl;
+    std::cout << "Computed interval Y: " << intervalValueY << std::endl;
+}
+void takeStep (float &nextXPos, float &nextYPos,double intervalValueX, double intervalValueY, bool initialStep){
+      int factor = 1;
+      if (!initialStep){
+          factor = 2;
+      }
+      nextXPos = intervalValueX * factor + nextXPos;
+      nextYPos = intervalValueY * factor + nextYPos;
+     
+      //debug:
+      std::cout << std::endl << "Next X POS: " << std::setprecision(17) << nextXPos << std::endl;
+      std::cout << "Next Y POS: " << nextYPos << std::endl;
+}
+
+
+int main(){
+
+    //My math is still flawed for other movements.
+
+    //CONSTANTS: (could make these global)
+    const int divisor = 65536; //4780 and 40F0 ....
+    //sort out these Pi approxes man
+    const double loosePiApprox = 3.1415927410125732421875; //40490FDB
+    const double altPiApprox = 3.141592653589793115997963468544185161590576171875; //There also exists an exact double float of this that is almost as long as the absurdly long number in computeAngle()
+    const float floatPi = 3.1415927410125732;
+    
+      //~~~~~~~~~~~~~~ CONFIG ~~~~~~~~~~~~~~~
+    int cycleCount = 1;
+    uint32_t seed = 0x0; //INITIAL SEED 
+    const double anchorX = 4; //Starting Location 
+    const double anchorY = 24;
+    bool adjustmentNeeded = 0;
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    
+    float intendedX = 0;
+    float intendedY = 0;
+    int factorTime = 3; //Common value
+    int baseTimeS = 5;  //Common Value
+    float timer1 = 0;
+    float nextXPos = anchorX;
+    float nextYPos = anchorY;
+    double intervalValueX = 0; //Why are these set values?
+    double intervalValueY = 0;
+    double angleInput = 0;
+
+    //phenac grandma pink = -140, -10
+
+    //Rng -> intended X and Y positions -> walking angle -> distance interval for steps -> time to reach destination.
+
+    for (int i = 0; i<cycleCount;i++){
+
+    InitialXY(intendedX,intendedY,seed,divisor,loosePiApprox,anchorX,anchorY); //Rolls RNG to find a destination, affects intendedX and intendedY
+    angleInput = computeAngle(intendedX,intendedY,anchorX,anchorY,adjustmentNeeded,altPiApprox); //Walking angle
+    computeInterval(angleInput,intervalValueX,intervalValueY);
+    takeStep(nextXPos,nextYPos,intervalValueX,intervalValueY,true);  //first step
+
+   //Calculate the actual steps.
+    int framesWalked = 0;
+    while(nextXPos <= intendedX && nextYPos <= intendedY){
+      takeStep(nextXPos,nextYPos,intervalValueX,intervalValueY,false);
+      framesWalked++;
+      //movement occurs once per 30fps frame
+    }
+    
+    std::cout << std::endl;
+    std::cout << "It took " << framesWalked*2 << " 60fps frames to arrive.\n"; 
+    std::cout << "It took " << framesWalked << " 30fps frames to arrive.\n\n";
+    // /std::cout << "Returned angle: " << angleInput << std::endl;
+    //TIMER
+    walkTimerCalculation(seed,factorTime,baseTimeS,timer1,divisor,i);
     }
 
 
 
+
+
+
+    return 0;
+}
     /*
 
 
@@ -562,5 +503,3 @@ Places input B (FE4) in 0x8048E570
 
     */
 
-    return 0;
-}

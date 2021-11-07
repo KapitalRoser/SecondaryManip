@@ -7,6 +7,7 @@
 #include <chrono>
 #include <algorithm>
 #include <cmath>
+#include <math.h>
 #include <numeric>
 
 //TODO: before launching, move this into the game specific folders and update the paths.
@@ -68,7 +69,11 @@ float LCGPercentage(u32& seed){
   return percentResult;
 }
 
+//LCG BACK GOES HERE!
+
+
 //basic generation -- only asks for gender ratio does not account for xd anti-shiny.
+//Still unsure if I should put this here in the header, might need to modify it too much.
 void generateMon(uint32_t inputSeed, int genderRatio){
 //   uint32_t TID = 0; //Tid isn't important here since TID is already set. *might matter for shiny check on quil.
   uint32_t PID = 0;
@@ -130,6 +135,17 @@ void generateMon(uint32_t inputSeed, int genderRatio){
     << spa << " " << std::setw(2) << spd << " " << std::setw(2) << spe << "  "
     << std::setw(7) << displayNature << "  " << displayGender 
     << std::endl;
+}
+
+
+u16 rollRNGwithHiSeed(u32 &seed)
+{ //mostly used in the naming screen, may have uses elsewhere, like blink.
+  LCG(seed);
+  u16 hiSeed = seed >> 16;
+  if (static_cast<double>(hiSeed) / 65536.0 < 0.1){
+    LCGn(seed, 4);
+  }
+  return hiSeed; //debugging.
 }
 
 
