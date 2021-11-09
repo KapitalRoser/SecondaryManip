@@ -12,7 +12,7 @@
 
 //TODO: before launching, move this into the game specific folders and update the paths.
 
-//Typedef block -- thx aldelaro5
+//Typedef block
 typedef uint8_t u8;
 typedef int8_t s8;
 typedef uint16_t u16;
@@ -23,6 +23,7 @@ typedef int64_t s64;
 enum region {USA,EUR,JPN};
 enum emuVer {STABLE,MODERN}; //Stable == 5.0, only matters for xd so far.
 enum coloSecondary {QUILAVA,CROCONAW,BAYLEEF}; //xd only has teddy
+//enum secondaryMon {TEDDIURSA, QUILAVA, CROCONAW, BAYLEEF};
 //Useful functions block
 u32 LCG(u32& seed){
   seed = seed * 214013 + 2531011;
@@ -69,8 +70,15 @@ float LCGPercentage(u32& seed){
   return percentResult;
 }
 
-//LCG BACK GOES HERE!
-
+//Pokemon Generation tools:
+bool isPidShiny(const u16 TID, const u16 SID, const u32 PID)
+  {
+    return ((TID ^ SID ^ (PID & 0xFFFF) ^ (PID >> 16)) < 8);
+  }
+int getPidGender(const u8 genderRatio, const u32 pid)
+  {
+    return genderRatio > (pid & 0xff) ? 1 : 0;
+  }
 
 //basic generation -- only asks for gender ratio does not account for xd anti-shiny.
 //Still unsure if I should put this here in the header, might need to modify it too much.
