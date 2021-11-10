@@ -98,36 +98,29 @@ bool foundRunnable(PokemonProperties candidate, PokemonRequirements reqs){
         candidate.speedIV >= reqs.speedIV &&
         candidate.hiddenPowerPower >= reqs.hiddenPowerPower &&
         reqs.validHPTypes[candidate.hiddenPowerTypeIndex] &&
-        reqs.validNatures[candidate.natureIndex]
+        reqs.validNatures[candidate.natureIndex] && 
+        reqs.isShiny == candidate.isShiny
     );
 }
-void determineInstructions(int instructions[4], int remainingCalls){
-//Instruction determiner.
-
-    while (remainingCalls > 0){
-        if (remainingCalls >= 1009){
-            instructions[0] = remainingCalls / 1009;
-            remainingCalls -= instructions[0] * 1009;
-        } else {
-            if (remainingCalls >= 40){
-              
-                instructions[1] = remainingCalls / 40; //integer division intentional, want to always round down for safety.
-                remainingCalls -= instructions[1]*40;
-            } else {
-              std::cout <<"REM: " << remainingCalls << "\n";
-                if (remainingCalls > 1){
-                  
-                    instructions[2] = remainingCalls / 2;
-                    remainingCalls -= instructions[2]*2;
-                } else {
-                    std::cout << "Rip - uneven, target is impossible, continuing to search.\n";
-                    remainingCalls = 0;
-                }
-            }
-        }
+void determineFinalInstructions(int instructions[4], int &remainingCalls){
+  //ASSUMES EVEN
+  while (remainingCalls > 0){
+    if (remainingCalls >= 40){
+      instructions[1] = remainingCalls / 40; //integer division intentional, want to always round down for safety.
+      remainingCalls -= instructions[1]*40;
+    } else {
+      //std::cout <<"REM: " << remainingCalls << "\n";
+      if (remainingCalls > 1){
+        instructions[2] = remainingCalls / 2;
+        remainingCalls -= instructions[2]*2;
+        //std::cout << "BACKOUTS: " << instructions[2]*2;
+      } else {
+          std::cout << "ERROR: REM IS UNEVEN\n";
+          remainingCalls = 0;
+      }
     }
+  }
 }
-
 std::array<u8, 6> generateEVs(u32& seed, const bool allowUnfilledEV, const bool endPrematurely)
 {
   std::array<u8, 6> EVs = {0};
@@ -330,6 +323,7 @@ std::vector<u32> autoRollN(u32&seed,int n,std::vector<int>m_criteria){
     //std::cout << std::hex << "Seed: "<< seed << std::dec << "\n\n";
     m_criteria = {-1, -1, -1, -1, -1, -1}; //refresh criteria slots.
   }
+  return rerollSeeds;
 }
 u32 singleRoll(u32&seed,std::vector<int>m_criteria){
   generateBattleTeam(seed,m_criteria,m_criteria);
@@ -363,7 +357,7 @@ int main(){
     u32 debugSeed = 0;
     int instructions[4] = {0,0,0,0};
     const int eeveeGenderRatio = 0x1F;
-    std::vector<u32> rerollSeeds;
+    std::string commands[255] = {"Reject","Restore","Reset","Settings","Skip"};
 
     PokemonProperties eevee;
     PokemonRequirements requirements;
@@ -378,7 +372,7 @@ int main(){
     requirements.validNatures[Mild] = true;
     requirements.validNatures[Modest] = true;
     requirements.validNatures[Rash] = true;
-
+    requirements.isShiny = false;
 
     //search for runnable eevee.
     while(!foundRunnable(eevee,requirements)){
@@ -388,15 +382,15 @@ int main(){
     }
     std::cout << "Reached: " << std::hex << listingSeed << std::endl;
     LCGn_BACK(seed,1002);
-    std::cout << "Target (seed at title screen): " << seed << std::endl;
     titleSeed = seed;
+    std::cout << "Target (seed at title screen): " << titleSeed << std::endl;
+   
 
     //find calls to target.
-    u32 searchSeed = userInputRerollSeed;
     int callsToTarget = 0;
-    callsToTarget = findGap(searchSeed,seed,1);
+    callsToTarget = findGap(userInputRerollSeed,titleSeed,1);
     
-    std::cout << "First valid eevee found at: " << std::hex << searchSeed << std::dec<< " which is " << callsToTarget << " calls away\n";
+    std::cout << "First valid eevee found at: " << std::hex << listingSeed << std::dec<< " which is " << callsToTarget << " calls away\n";
     std::cout << "TID: " << eevee.trainerId 
     <<  "\n" << eevee.hpIV
     << " / " << eevee.atkIV
@@ -407,10 +401,17 @@ int main(){
     << " \nHidden Power: " << hpTypes[eevee.hiddenPowerTypeIndex]
     << ": " << eevee.hiddenPowerPower
     << "\nNature: " << naturesList[eevee.natureIndex];
-    if (!eevee.genderIndex){
-        std::cout << "\nFemale";
+    std::cout<<"\nGender: ";
+    if (eevee.genderIndex){
+        std::cout << "Male";
     } else {
-        std::cout << "\nMale";
+        std::cout << "Female";
+    }
+    std::cout << "\nShiny: ";
+    if (eevee.isShiny){
+      std::cout << "True";
+    } else {
+      std::cout << "False";
     }
     std::cout << "\n";
 
@@ -418,104 +419,79 @@ int main(){
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //~~~~~~~~~~~~~~~~~~~Now find a path to target.~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+seed = userInputRerollSeed; //MUST RESET SEED BACK TO MENU SO THAT PATHFINDING WORKS.
+
 //Assume starting in reroll menu
 //Starting off with a reroll focused system, may eventually move to memcard focused.
 //lets just see what happens.
 
 //0.73s vs 3.73, memcard is worth 5x rerolls, ish in time, but less than that in calls, typically.
 //plus no benefit of seeing where you are exactly.
-
-
+//std::cout << "INITIAL CTT: " << callsToTarget << "\n";
+std::vector<u32> rerollSeeds = {seed};
 //goal, bring findGap(seed,titleSeed,1) to zero.
-while (true)
-{
-  if (findGap(seed,titleSeed,1) > 0){
-    rerollSeeds.push_back(generateBattleTeam(seed,m_criteria,m_criteria));
-    m_criteria = {-1, -1, -1, -1, -1, -1};
+u32 testSeed = seed;
+int distance = 0;
+bool maxedOut = false;
+while(!maxedOut){
+  // std::cout << "rem CTT: " << callsToTarget << "\n";
+  // std::cout << "rerolls done: " << instructions[3] << "\n"; 
+  generateBattleTeam(testSeed,m_criteria,m_criteria);
+  distance = findGap(rerollSeeds.back(),testSeed,1);
+  if (distance <= callsToTarget){
+    //success,apply rolls
+    rerollSeeds.push_back(testSeed);
+    //std::cout << "Seed ctt before application:" << findGap(seed,titleSeed,1) << std::endl;
+    seed = testSeed;
+    //std::cout << "Seed ctt after application:" << findGap(seed,titleSeed,1) << std::endl;
+    callsToTarget -= distance;
+    instructions[3]++;
+  } else {
+    //break case
+    maxedOut = true;
+  }
+}
+//error check
+//std::cout << "Approach error Check! " << std::hex << seed;
+if (findGap(seed,titleSeed,1) != callsToTarget){
+  std::cout << "ERROR! CTT: " << callsToTarget << " WHILE SEED IS: " << findGap(seed,titleSeed,1) << " CALLS AWAY!";
+} else {
+  std::cout <<"PASSED ERROR CHECK!\n";
+}
+
+int rem = callsToTarget;
+//ex 6197
+//1197
+//ex 3045
+
+while(rem > 0){
+  std::cout << "Post-Reroll ctt:" << rem << "\n";
+  if (rem % 2 == 0){//if rem is even
+    while (rem >= 2018){
+      instructions[0] += 2; // will continue to stay even at this rate.
+      rem-= 2018;
+    }
+  determineFinalInstructions(instructions,rem);
+  } else { //rem is odd
+    if (rem >=1009){
+      instructions[0]++; //congratulations, now the count is even
+      rem-= 1009; //on next loop will not trigger because is now even.
+    } else {
+      //subtract a reroll and try again
+      instructions[3]--;
+      rem += findGap(rerollSeeds.back(),rerollSeeds.at(rerollSeeds.size()-2),0); 
+      rerollSeeds.pop_back();
+      seed = rerollSeeds.back();
+    }   
   }
 }
 
 
-//before applying to seed, simulate the next roll to ensure we don't overshoot.
-
-
-// int lastViableDistance;
-// while (true)
-// {
-//   u32 preSeed = seed;
-//   rerollSeeds.push_back(generateBattleTeam(seed,m_criteria,m_criteria));
-//   m_criteria = {-1, -1, -1, -1, -1, -1};
-//   int distance = findGap(preSeed,seed,1);
-//   if (distance <= callsToTarget){
-//     callsToTarget-= distance;
-//     instructions[3]++;
-//     lastViableDistance = distance;
-//   } else {
-//     std::cout << "Roll would have caused: " << distance << " calls to occur, putting the count at " << callsToTarget - distance << std::endl;
-//     while(callsToTarget % 2 == 1 && callsToTarget < 1009){
-//       rerollSeeds.pop_back();
-
-//     }
-//     rerollSeeds.pop_back();
-//     seed = rerollSeeds.back();
-//     break;
-//   }
-// }
-
-// callsToTarget = findGap(seed,target,1);
-
-
-
-
-
-
-
-
-
-
-// //guaranteed calls
-// while(callsToTarget > 2269){
-//   rerollSeeds.push_back(generateBattleTeam(seed,m_criteria,m_criteria));
-//   m_criteria = {-1, -1, -1, -1, -1, -1};
-// } //highest observed reroll amount, should be safe.
-
-// u32 testSeed = seed;
-// while(callsToTarget > 0){
-//   rerollSeeds.push_back(generateBattleTeam(testSeed,m_criteria,m_criteria));
-//   if(findGap(testSeed,seed,1) < callsToTarget){
-//     instructions[4]++;
-//   }
-// }
-
-
-// //shoot first and ask questions later method:
-// while(callsToTarget > 0){
-//   u32 preSeed = seed;
-//   rerollSeeds.push_back(generateBattleTeam(seed,m_criteria,m_criteria));
-//   callsToTarget -= findGap(preSeed,seed,1);
-// }
-// if (callsToTarget < 0){
-//   rerollSeeds.pop_back();
-//   callsToTarget+= (rerollSeeds.back(),seed);
-//   seed = rerollSeeds.back();
-// }
-
-
-
-//This is an area to target for a performance boost.
-//I know, I know, I took out the counter function from LCG() because I thought it was superfluous but now
-//it actually matters. This manip works a bit differently than NTSC, since ntsc simply scans until it gets lucky, so the
+// This manip works a bit differently than NTSC, since ntsc simply scans until it gets lucky, so the
 //specific counter isn't that important, except for debugging.
 //This manip identifies a target in the vast swirling ocean of RNG and hunts it down directly.
-  //std::cout << "Debug seed: " << debugSeed << " at target: " << std::dec << target + 115 << std::endl << std::endl;
-    std::cout <<"REM1: " << callsToTarget << std::endl;
-    if (callsToTarget >= 0){
-      determineInstructions(instructions,callsToTarget-2);
-    } else {
-      std::cout << "ERROR! OVERSHOT!";
-    }
     
-    std::cout << instructions[3] << "/" << instructions[0] 
+    std::cout << "Instruction set: " << instructions[3] << "/" << instructions[0] 
     << "/" << instructions[1] << "/" << instructions[2] << std::endl;
     
 
@@ -530,7 +506,11 @@ while (true)
     std::cout << std::hex << LCGn(debugSeed,memcardValue*instructions[0]);
     std::cout << "\n" << LCGn(debugSeed,rumbleValue*instructions[1]);
     std::cout << "\n" << LCGn(debugSeed,namingValue*instructions[2]);
+    
 
+    //temp measure
+    // system("pause");
+    getchar();
     return 0;
 }
 

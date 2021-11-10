@@ -444,6 +444,7 @@ std::vector<u32> autoRollN(u32&seed,int n,std::vector<int>m_criteria){
     //std::cout << std::hex << "Seed: "<< seed << std::dec << "\n\n";
     m_criteria = {-1, -1, -1, -1, -1, -1};
   }
+  return rerollSeeds;
 }
 
 int main(){
