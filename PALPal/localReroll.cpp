@@ -1,19 +1,5 @@
 #include "../processCore.h"
-struct PokemonProperties
-  {
-    int hpIV = 0;
-    int atkIV = 0;
-    int defIV = 0;
-    int spAtkIV = 0;
-    int spDefIV = 0;
-    int speedIV = 0;
-    int hpStartingStat = 0;
-    int hiddenPowerTypeIndex = 0;
-    int hiddenPowerPower = 0;
-    int genderIndex = 0;
-    int natureIndex = 0;
-    bool isShiny = false;
-  };
+
 struct Stats
   {
     int hp;
@@ -39,34 +25,23 @@ static const std::array<std::array<int, 2>, 10> s_quickBattleTeamMaxBaseHPStat =
                                                                                    {{290, 250}},
                                                                                    {{320, 270}},
                                                                                    {{270, 230}}}};
-
-std::vector<int> m_lastObtainedCriterias = {-1, -1, -1, -1, -1, -1};
-
-
-void fillStarterGenHiddenPowerInfo(PokemonProperties& starter)
+enum BattleNowTeamLeaderPlayer
   {
-    int typeSum = (starter.hpIV & 1) + 2 * (starter.atkIV & 1) + 4 * (starter.defIV & 1) +
-                  8 * (starter.speedIV & 1) + 16 * (starter.spAtkIV & 1) +
-                  32 * (starter.spDefIV & 1);
-    starter.hiddenPowerTypeIndex = typeSum * 15 / 63;
-    int powerSum = ((starter.hpIV & 2) >> 1) + 2 * ((starter.atkIV & 2) >> 1) +
-                   4 * ((starter.defIV & 2) >> 1) + 8 * ((starter.speedIV & 2) >> 1) +
-                   16 * ((starter.spAtkIV & 2) >> 1) + 32 * ((starter.spDefIV & 2) >> 1);
-    starter.hiddenPowerPower = (powerSum * 40 / 63) + 30;
-  }
-void extractIVs(PokemonProperties& properties, u32& seed)
+    Mewtwo = 0,
+    Mew,
+    Deoxys,
+    Rayquaza,
+    Jirachi
+  };
+
+  enum BattleNowTeamLeaderEnemy
   {
-    // HP, ATK, DEF IV
-    LCG(seed);
-    properties.hpIV = (seed >> 16) & 31;
-    properties.atkIV = (seed >> 21) & 31;
-    properties.defIV = (seed >> 26) & 31;
-    // SPEED, SPATK, SPDEF IV
-    LCG(seed);
-    properties.speedIV = (seed >> 16) & 31;
-    properties.spAtkIV = (seed >> 21) & 31;
-    properties.spDefIV = (seed >> 26) & 31;
-  }
+    Articuno = 0,
+    Zapdos,
+    Moltres,
+    Kangaskhan,
+    Latias
+  };
 u32 generatePokemonPID(u32& seed, const u32 hTrainerId,
                                                      const u32 lTrainerId, const u32 dummyId,
                                                      const WantedShininess shininess,
@@ -207,7 +182,7 @@ u32 rollRNGToBattleMenu(u32 seed)
   // Before getting to the quick battle menu, the reason this is deterministic is because the only
   // thing that is consequential is a dummy pokemon generation, but there's no criteria on the pid
   // meaning the first pid generated will always be the one used
-  seed = LCGn(seed, 1139); //Something's happening here.
+  seed = LCGn(seed, 1139);
   // Some dummy team gen going on...
   for (int i = 0; i < 4; i++)
   {
@@ -229,11 +204,46 @@ u32 rollRNGToBattleMenu(u32 seed)
       generateEVs(seed, true, true);
     }
   }
-
-
   return seed;
 }
-bool generateBattleTeam(u32& seed, const std::vector<int> criteria)
+u32 myRollRNGToBattleMenu(u32 &seed, bool fromBoot, bool validMemcard)
+{
+  // bool fromBoot = false; //false would be from title screen.
+  // bool validMemcard = true;
+  if (fromBoot){
+    LCGn(seed, 1137);
+  }
+  if (!validMemcard){
+    LCGn(seed,1009); //w no memcard.
+  }
+  LCG(seed);
+  LCG(seed);
+  
+  // Some dummy team gen going on...
+  for (int i = 0; i < 4; i++)
+  {
+    // The player trainer ID is generated, low then high 16 bits
+    u32 lTrainerId = LCG(seed) >> 16;
+    u32 hTrainerId = LCG(seed) >> 16;
+    for (int j = 0; j < 2; j++)
+    {
+      // Dummy personality ID (doesn't matter)
+      LCG(seed);
+      LCG(seed);
+      // HP, ATK, DEF IV
+      LCG(seed);
+      // SPEED, SPATK, SPDEF IV
+      LCG(seed);
+      // Ability
+      LCG(seed);
+      generatePokemonPID(seed, hTrainerId, lTrainerId, 0, WantedShininess::notShiny,-1,0,-1);
+      generateEVs(seed, true, true);
+    }
+  }
+  return seed;
+}
+
+bool generateBattleTeam(u32 &seed, const std::vector<int> criteria,std::vector<int>m_criteria)
 {
   // Player trainer name generation
   LCG(seed);
@@ -304,18 +314,13 @@ bool generateBattleTeam(u32& seed, const std::vector<int> criteria)
       return false;
     obtainedPlayerHP.push_back(hp);
   }
-
-#pragma omp critical
-  {
-    m_lastObtainedCriterias.clear();
-    m_lastObtainedCriterias.push_back(playerTeamIndex);
-    m_lastObtainedCriterias.push_back(enemyTeamIndex);
-    m_lastObtainedCriterias.insert(m_lastObtainedCriterias.end(), obtainedPlayerHP.begin(),
+    m_criteria.clear();
+    m_criteria.push_back(playerTeamIndex);
+    m_criteria.push_back(enemyTeamIndex);
+    m_criteria.insert(m_criteria.end(), obtainedPlayerHP.begin(),
                                    obtainedPlayerHP.end());
-    m_lastObtainedCriterias.insert(m_lastObtainedCriterias.end(), obtainedEnemyHP.begin(),
+    m_criteria.insert(m_criteria.end(), obtainedEnemyHP.begin(),
                                    obtainedEnemyHP.end());
-  }
-
   return true;
 }
 std::vector<int> obtainTeamGenerationCritera(u32& seed)
@@ -378,13 +383,169 @@ std::vector<int> obtainTeamGenerationCritera(u32& seed)
   }
   return criteria;
 }
+std::string getLastObtainedCriteriasString(std::vector<int>m_criteria)
+{
+  std::string criteriasString = "Player team leader: ";
+  switch (m_criteria[0])
+  {
+  case Mewtwo:
+    criteriasString += "MEWTWO";
+    break;
+  case Mew:
+    criteriasString += "MEW";
+    break;
+  case Deoxys:
+    criteriasString += "DEOXYS";
+    break;
+  case Rayquaza:
+    criteriasString += "RAYQUAZA";
+    break;
+  case Jirachi:
+    criteriasString += "JIRACHI";
+    break;
+  }
 
+  criteriasString += "\nComputer team leader: ";
+  switch (m_criteria[1])
+  {
+  case Articuno:
+    criteriasString += "ARTICUNO";
+    break;
+  case Zapdos:
+    criteriasString += "ZAPDOS";
+    break;
+  case Moltres:
+    criteriasString += "MOLTRES";
+    break;
+  case Kangaskhan:
+    criteriasString += "KANGASKHAN";
+    break;
+  case Latias:
+    criteriasString += "LATIAS";
+    break;
+  }
+
+  criteriasString += "\nPlayer Pokemon's HP: " + std::to_string(m_criteria[2]) + " " +
+                     std::to_string(m_criteria[3]) + "\n";
+  criteriasString += "Computer Pokemon's HP: " + std::to_string(m_criteria[4]) + " " +
+                     std::to_string(m_criteria[5]);
+
+  return criteriasString;
+}
+
+std::vector<u32> autoRollN(u32&seed,int n,std::vector<int>m_criteria){
+  //Reroll loop!
+  std::vector<u32>rerollSeeds;
+  for (int i = 0; i < n; i++)
+  { 
+    generateBattleTeam(seed,m_criteria,m_criteria);
+    //std::cout << getLastObtainedCriteriasString() << "\n";
+    rerollSeeds.push_back(seed);
+    //std::cout << std::hex << "Seed: "<< seed << std::dec << "\n\n";
+    m_criteria = {-1, -1, -1, -1, -1, -1};
+  }
+}
 
 int main(){
-  u32 initialSeed = 0x0;
-  u16*counter = 0;
+  std::vector<int> m_criteria = {-1, -1, -1, -1, -1, -1};
+  // std::vector<int> dummy_criteria = {-1, -1, -1, -1, -1, -1}; //ill be honest why are these even here?
+  u32 initialSeed = 0x652ECBBD;
+  u32 postMenuSeed = 0x0;
+  //for some reason seed == 0 doesn't work from title screen? should be A0281F1C.
+  int rollsToRun = 108;
   u32 seed = initialSeed;
-  std::cout << "Seed after battle menu calls: " << std::hex << rollRNGToBattleMenu(seed);
-  //should be A0281F1C.
+  bool fromBoot = false;
+  bool validMemcard = true;
+  std::vector<u32> rerollSeeds;
+  std::vector<int>rollsRaw;
+  std::vector<int>rollsSorted;
+
+  postMenuSeed = myRollRNGToBattleMenu(seed,fromBoot,validMemcard);
+  std::cout << "Seed after battle menu calls: " << std::hex << seed << "\n\n" << std::dec;
+  
+
+rerollSeeds = autoRollN(seed,rollsToRun,m_criteria);
+
+
+//distance finder:
+seed = postMenuSeed;
+for (unsigned int i = 0; i < rerollSeeds.size(); i++)
+{
+  rollsRaw.push_back(findGap(seed,rerollSeeds.at(i),true));
+}
+
+
+
+//debugPrintVec(rollsRaw);
+
+//STATS:
+rollsSorted = rollsRaw;
+std::sort(rollsSorted.begin(),rollsSorted.end());
+int max = rollsSorted.back();
+int min = rollsSorted.front();
+u32 minSeed = 0;
+u32 maxSeed = 0;
+float mean = 0;
+int prev = max;
+int mode;
+int maxcount = 0;
+int currcount = 0;
+for (const auto n : rollsSorted) {
+    if (n == prev) {
+        ++currcount;
+        if (currcount > maxcount) {
+            maxcount = currcount;
+            mode = n;
+        }
+    } else {
+        currcount = 1;
+    }
+    prev = n;
+}
+for (unsigned int i = 0; i < rollsSorted.size(); i++)
+{
+  mean += rollsSorted.at(i);
+}
+mean = mean / rollsSorted.size();
+
+for (unsigned int i = 0; i < rollsRaw.size(); i++)
+{
+  if (rollsRaw.at(i) == min){
+    minSeed = rerollSeeds.at(i-1);
+  }
+  if (rollsRaw.at(i) == max){
+    maxSeed = rerollSeeds.at(i-1);
+  }
+}
+
+;
+
+
+
+std::cout << "Final Seed: " <<std::hex << rerollSeeds.back() << std::dec
+<< "\nMax calls: " << max << " at " << std::hex << maxSeed << std::dec << "\nMin calls: " << min << " at " << std::hex<< minSeed << std::dec 
+<< "\nMean: " << mean << "\nMode: " << mode << " ("<< maxcount << ")"; 
+//max always appears to be 2269 and min appears to be 73
+//601 standard mode and 732.xxx is the mean.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     return 0;
 }
+
+/*
+2 calls followed by X
+
+
+*/

@@ -1,14 +1,16 @@
 #include <iostream>
 #include <iomanip>
-#include <string>
+#include <array>
 #include <vector>
+#include <string>
 #include <fstream>
 #include <sstream>
 #include <chrono>
 #include <algorithm>
+#include <numeric>
 #include <cmath>
 #include <math.h>
-#include <numeric>
+
 
 //TODO: before launching, move this into the game specific folders and update the paths.
 
@@ -24,11 +26,40 @@ enum region {USA,EUR,JPN};
 enum emuVer {STABLE,MODERN}; //Stable == 5.0, only matters for xd so far.
 enum coloSecondary {QUILAVA,CROCONAW,BAYLEEF}; //xd only has teddy
 //enum secondaryMon {TEDDIURSA, QUILAVA, CROCONAW, BAYLEEF};
-//Useful functions block
-u32 LCG(u32& seed){
-  seed = seed * 214013 + 2531011;
-  return seed;
-}
+
+struct PokemonProperties
+  {
+    int hpIV = 0;
+    int atkIV = 0;
+    int defIV = 0;
+    int spAtkIV = 0;
+    int spDefIV = 0;
+    int speedIV = 0;
+    int hpStartingStat = 0;
+    int hiddenPowerTypeIndex = 0;
+    int hiddenPowerPower = 0;
+    int genderIndex = 0;
+    int natureIndex = 0;
+    bool isShiny = false;
+    u32 trainerId = 0;
+  };
+struct PokemonRequirements
+{
+    int hpIV = 0;
+    int atkIV = 0;
+    int defIV = 0;
+    int spAtkIV = 0;
+    int spDefIV = 0;
+    int speedIV = 0;
+    int hpStartingStat = 0;
+    std::array<bool,16> validHPTypes;
+    int hiddenPowerPower = 0;
+    int genderIndex = 0;
+    std::array<bool,25> validNatures;
+    bool isShiny = false;  
+};
+
+//extra functions block
 u32 modpow32(u32 base, u32 exp)
 {
   u32 result = 1;
@@ -40,6 +71,22 @@ u32 modpow32(u32 base, u32 exp)
     exp >>= 1;
   }
   return result;
+}
+int median(std::vector<int> &v)
+{
+    size_t n = v.size() / 2;
+    nth_element(v.begin(), v.begin()+n, v.end());
+    return v[n];
+}
+
+//RNG Block
+u32 LCG(u32& seed){
+  seed = seed * 214013 + 2531011;
+  return seed;
+}
+u32 LCG_BACK(u32 &seed) {
+    seed = seed * 0xB9B33155 + 0xA170F641;
+    return seed;
 }
 u32 LCGn(u32& seed, const u32 n)
   {
@@ -61,6 +108,25 @@ u32 LCGn(u32& seed, const u32 n)
     seed = (seed * modpow32(0x343fd, n)) + (sum + factor) * 0x269EC3;
     return seed;
   }
+u32 LCGn_BACK(u32&seed, const u32 n){
+    u32 ex = n - 1;
+    u32 q = 0xB9B33155;
+    u32 factor = 1;
+    u32 sum = 0;
+    while (ex > 0)
+    {
+      if (!(ex & 1))
+      {
+        sum = sum + (factor * modpow32(q, ex));
+        ex--;
+      }
+      factor *= (1 + q);
+      q *= q;
+      ex /= 2;
+    }
+    seed = (seed * modpow32(0xB9B33155, n)) + (sum + factor) * 0xA170F641;
+    return seed;
+}
 float LCGPercentage(u32& seed){
   float percentResult = 0;
   u32 hiSeed = 0;
@@ -69,15 +135,59 @@ float LCGPercentage(u32& seed){
   percentResult = static_cast<float>(hiSeed)/65536;
   return percentResult;
 }
+u16 rollRNGwithHiSeed(u32 &seed)
+{ //mostly used in the NTSC naming screen, may have uses elsewhere, like blink.
+  LCG(seed);
+  u16 hiSeed = seed >> 16;
+  if (static_cast<double>(hiSeed) / 65536.0 < 0.1){
+    LCGn(seed, 4);
+  }
+  return hiSeed; //debugging.
+}
 
-//Pokemon Generation tools:
+
+
+u32 simplePID (u32 &seed){
+    u32 hId = LCG(seed) >> 16;
+    u32 lId = LCG(seed) >> 16;
+    u32 PID = (hId << 16) | (lId);
+    return PID;
+}
 bool isPidShiny(const u16 TID, const u16 SID, const u32 PID)
   {
     return ((TID ^ SID ^ (PID & 0xFFFF) ^ (PID >> 16)) < 8);
   }
+void setIDs (u32 &seed, u32 &TID, u32 &SID){
+    TID = LCG(seed) >> 16; //lTrainerId
+    SID = LCG(seed) >> 16; //hTrainerId
+}
 int getPidGender(const u8 genderRatio, const u32 pid)
   {
     return genderRatio > (pid & 0xff) ? 1 : 0;
+  }
+void extractIVs(PokemonProperties& properties, u32& seed)
+  {
+    // HP, ATK, DEF IV
+    LCG(seed);
+    properties.hpIV = (seed >> 16) & 31;
+    properties.atkIV = (seed >> 21) & 31;
+    properties.defIV = (seed >> 26) & 31;
+    // SPEED, SPATK, SPDEF IV
+    LCG(seed);
+    properties.speedIV = (seed >> 16) & 31;
+    properties.spAtkIV = (seed >> 21) & 31;
+    properties.spDefIV = (seed >> 26) & 31;
+  }
+void fillStarterGenHiddenPowerInfo(PokemonProperties& starter)
+  {
+    int typeSum = (starter.hpIV & 1) + 2 * (starter.atkIV & 1) + 4 * (starter.defIV & 1) +
+                  8 * (starter.speedIV & 1) + 16 * (starter.spAtkIV & 1) +
+                  32 * (starter.spDefIV & 1);
+    starter.hiddenPowerTypeIndex = typeSum * 15 / 63;
+    int powerSum = ((starter.hpIV & 2) >> 1) + 2 * ((starter.atkIV & 2) >> 1) +
+                   4 * ((starter.defIV & 2) >> 1) + 8 * ((starter.speedIV & 2) >> 1) +
+                   16 * ((starter.spAtkIV & 2) >> 1) + 32 * ((starter.spDefIV & 2) >> 1);
+    starter.hiddenPowerPower = (powerSum * 40 / 63) + 30;
   }
 
 //basic generation -- only asks for gender ratio does not account for xd anti-shiny.
@@ -94,6 +204,8 @@ void generateMon(uint32_t inputSeed, int genderRatio){
   const std::string naturesList[25] = {"Hardy","Lonely","Brave","Adamant","Naughty","Bold","Docile","Relaxed",
     "Impish","Lax","Timid","Hasty","Serious","Jolly","Naive","Modest","Mild","Quiet","Bashful",
     "Rash","Calm","Gentle","Sassy","Careful","Quirky"};
+  const std::string hpTypes[16] = {"Fighting", "Flying", "Poison", "Ground", "Rock", "Bug", "Ghost", 
+    "Steel", "Fire", "Water", "Grass", "Electric",  "Psychic", "Ice","Dragon","Dark"};
   
   std::cout << std::left;
 
@@ -119,10 +231,11 @@ void generateMon(uint32_t inputSeed, int genderRatio){
 
     
     LCG(seed); //Ability call
-    //PID STUFF:
+    //PID STUFF blind, considers no weights:
     uint32_t hId = LCG(seed) >> 16;
     uint32_t lId = LCG(seed) >> 16;
     PID = (hId << 16) | (lId);
+
     std::string displayNature = naturesList[PID % 25];
     bool pidGender = genderRatio > (PID & 0xFF) ? 1 : 0;
     std::string displayGender;
@@ -144,18 +257,7 @@ void generateMon(uint32_t inputSeed, int genderRatio){
     << std::setw(7) << displayNature << "  " << displayGender 
     << std::endl;
 }
-
-
-u16 rollRNGwithHiSeed(u32 &seed)
-{ //mostly used in the naming screen, may have uses elsewhere, like blink.
-  LCG(seed);
-  u16 hiSeed = seed >> 16;
-  if (static_cast<double>(hiSeed) / 65536.0 < 0.1){
-    LCGn(seed, 4);
-  }
-  return hiSeed; //debugging.
-}
-
+//implement condensed generation
 
 //File Reading
 std::vector<int> decimalReadNumbersFromFile(std::string fileName)
@@ -225,6 +327,21 @@ std::vector<std::string> readStringFromFile(std::string fileName)
 }
 
 //Debugging
+int findGap(u32 behind, u32 ahead, bool forward){
+  int counter = 0;
+  if (forward){ //what happens when the origin/behind is actually ahead of target/ahead? infinite loop?
+    while(behind != ahead){
+      LCG(behind);
+      counter++;
+    }
+  } else { //do i need to swap the params here? I just want to prevent an infinite loop.
+    while(behind != ahead){
+      LCG_BACK(behind);
+      counter++;
+    }
+  }
+  return counter;
+}
 void debugPrint2DVec(std::vector<std::vector<int>>set){
   //FOR DEBUG:
         for (unsigned int i = 0; i < set.size(); i++){
@@ -237,7 +354,9 @@ void debugPrint2DVec(std::vector<std::vector<int>>set){
 void debugPrintVec(std::vector<int>set){
     for (unsigned int i = 0; i < set.size(); i++)
     {
-        std::cout << set.at(i) << ", ";
+        if(i <set.size()-1){
+          std::cout << set.at(i) << ", ";
+        }
     }
     std::cout << std::endl;
 }

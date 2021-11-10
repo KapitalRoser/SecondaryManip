@@ -179,7 +179,7 @@ u32 rollRNGToBattleMenu(u32 seed, u16* counter)
 
 int main(){
 
-
+  std::cout << "Success!";
 
 
 
