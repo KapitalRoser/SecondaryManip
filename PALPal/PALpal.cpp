@@ -1,4 +1,17 @@
 #include "../processCore.h"
+const std::string hpTypes[16] = {"Fighting", "Flying", "Poison", "Ground", "Rock", "Bug", "Ghost", 
+    "Steel", "Fire", "Water", "Grass", "Electric",  "Psychic", "Ice","Dragon","Dark"};
+    enum hpTypeID {Fighting, Flying, Poison, Ground, Rock, Bug, 
+     Ghost, Steel, Fire, Water, Grass, Electric, Psychic, Ice, 
+     Dragon, Dark}; //could remake this into a map lol.
+
+    const std::string naturesList[25] = {"Hardy","Lonely","Brave","Adamant","Naughty","Bold","Docile","Relaxed",
+    "Impish","Lax","Timid","Hasty","Serious","Jolly","Naive","Modest","Mild","Quiet","Bashful",
+    "Rash","Calm","Gentle","Sassy","Careful","Quirky"};
+    enum natureID {Hardy,Lonely,Brave,Adamant,Naughty,Bold,Docile,
+    Relaxed,Impish,Lax,Timid,Hasty,Serious,Jolly,Naive,Modest,Mild,
+    Quiet,Bashful,Rash,Calm,Gentle,Sassy,Careful,Quirky};
+
 enum class WantedShininess
   {
     notShiny,
@@ -330,28 +343,166 @@ u32 singleRoll(u32&seed,std::vector<int>m_criteria){
   return seed;
 }
 
+bool verifyu32(std::string formatted){
+  std::cout << "String to verify:" << formatted << std::endl;
+  for (int i = 0; i < formatted.length(); i++)
+  {
+    if (formatted.at(i) < '0' || formatted.at(i) > '9' && formatted.at(i) < 'A' || formatted.at(i) > 'F'){
+      std::cout << "ERROR, invalid character detected at: " << formatted.at(i) << ", please try again.";
+      
+      return false;
+    }
+  }
+  return true;
+}
+u32 getInputSeed(){
+  u32 userSeed;
+  std::string userInput = "";
+  std::stringstream hexConvert;
+  bool validInput = false;
+  while(!validInput){
+    std::cout << "Enter the seed produced by the seed finder: ";
+    getline(std::cin,userInput);
+    for (int i = 0; i < userInput.length(); i++){
+      userInput.at(i) = toupper(userInput.at(i));
+    }
+    validInput = verifyu32(userInput);
+    std::cout << std::endl;
+  }
+  hexConvert << std::hex << userInput;
+  hexConvert >> userSeed;
+  hexConvert.clear();
+  hexConvert.str("");
+  return userSeed;
+}
+
+PokemonRequirements setPokeReqs(){
+  PokemonRequirements inputReqs;
+  std::vector<std::string> strReqs = {"HP","ATK","DEF","SPA","SPD","SPE"};
+  std::vector<int>IVreqs;
+  unsigned int IV = 0;
+  std::string Nature;
+  std::string IVInput = "";
+  //save these to a config file for later access?
+  std::cout << "~~~~~~~~~~~SETUP REQUIREMENTS~~~~~~~~~~~\n\n";
+  //first, IVS
+  for (int i = 0; i < 6; i++)
+  {
+    std::cout << "Enter minimum " << strReqs.at(i) << " IV: ";
+    std::cin >> IV;
+    while (IV < 0 || IV > 31){
+      std::cout << "Invalid input, try again: ";
+      std::cin >> IV;
+    }
+    switch (i)
+    {
+    case 0:
+      inputReqs.hpIV = IV;
+      break;
+    case 1:
+      inputReqs.atkIV = IV;
+      break;
+    case 2:
+      inputReqs.defIV = IV;
+      break;
+    case 3:
+      inputReqs.spAtkIV= IV;
+      break;
+    case 4:
+      inputReqs.spDefIV = IV;
+      break;
+    case 5:
+      inputReqs.speedIV = IV;
+      break;
+    default:
+      break;
+    }
+  }
+  std::cin.get();
+  //next Nature
+  std::cout << "IVs set successfully!\n";
+  std::cout << inputReqs.hpIV << "/"
+  << inputReqs.atkIV << "/"
+  << inputReqs.defIV << "/"
+  << inputReqs.spAtkIV << "/"
+  << inputReqs.spDefIV << "/"
+  << inputReqs.speedIV << "\n";
+  std::cout << "Enter acceptable nature(s): \n";
+  bool allNaturesEntered = false;
+  std::string inputNature = "";
+  std::cout << "type the name of a nature, or enter 'any' to accept all natures: ";
+  while (!allNaturesEntered){
+    getline(std::cin,inputNature);
+    formatCase(inputNature,lower);
+    inputNature.at(0) = toupper(inputNature.at(0)); //capitalize
+    std::cout << "Nature entered: " << inputNature << std::endl;
+
+    //exit statements:
+    if (inputNature == "Done"){
+      allNaturesEntered = true;
+    } else if (inputNature == "Any"){
+      for (int i = 0; i < 25; i++)
+      {
+        inputReqs.validNatures[i] = true;
+        allNaturesEntered = true;
+      }
+    } else {
+      bool foundAny = false;
+      for (int i = 0; i < 25; i++)
+      {
+        if (inputNature == naturesList[i]){
+          std::cout <<"Added "<< naturesList[i] <<"!\n";
+          foundAny = true;
+          inputReqs.validNatures[i] = true;
+        }
+      }
+      if (!foundAny){
+        std::cout << "Nature not found - invalid input.";
+      }
+      std::cout << "Enter more natures or use commands 'Any' or 'Done': ";
+      int full = 0;
+      for (int i = 0; i < 25; i++)
+      {
+        if (inputReqs.validNatures[i] == true){
+          full++;
+        }
+      }
+      if (full == 25){
+        std::cout << "You really took the time to manually enter every nature...wow." 
+        <<"fine! all natures are enabled, moving on.";
+        allNaturesEntered = true;
+      }
+    }
+
+
+    
+        
+
+
+
+  }
+  //next Hidden Power Type and strength
+
+  //next gender
+
+  //finally shinystatus
+  
+  
+
+
+
+  return inputReqs;
+
+}
+
 int main(){
-    const std::string hpTypes[16] = {"Fighting", "Flying", "Poison", "Ground", "Rock", "Bug", "Ghost", 
-    "Steel", "Fire", "Water", "Grass", "Electric",  "Psychic", "Ice","Dragon","Dark"};
-    enum hpTypeID {Fighting, Flying, Poison, Ground, Rock, Bug, 
-     Ghost, Steel, Fire, Water, Grass, Electric, Psychic, Ice, 
-     Dragon, Dark}; //could remake this into a map lol.
-
-    const std::string naturesList[25] = {"Hardy","Lonely","Brave","Adamant","Naughty","Bold","Docile","Relaxed",
-    "Impish","Lax","Timid","Hasty","Serious","Jolly","Naive","Modest","Mild","Quiet","Bashful",
-    "Rash","Calm","Gentle","Sassy","Careful","Quirky"};
-    enum natureID {Hardy,Lonely,Brave,Adamant,Naughty,Bold,Docile,
-    Relaxed,Impish,Lax,Timid,Hasty,Serious,Jolly,Naive,Modest,Mild,
-    Quiet,Bashful,Rash,Calm,Gentle,Sassy,Careful,Quirky};
-
+    
     const int namingValue = 2;
     const int rumbleValue = 40; //note in colo this is 20 calls instead.
     const int memcardValue = 1009;
     std::vector<int> m_criteria = {-1, -1, -1, -1, -1, -1};
-    u32 userInputRerollSeed = 0x10EA571D;
-
-    u32 userInputTargetSeed = 0x0; //eventually, once I locally implement rerolling, will Only need this input.
-    u32 seed = userInputRerollSeed;
+    u32 userInputRerollSeed = 0x0;
+    u32 seed;
     u32 listingSeed = seed;
     u32 titleSeed = 0x0;
     u32 debugSeed = 0;
@@ -374,6 +525,18 @@ int main(){
     requirements.validNatures[Rash] = true;
     requirements.isShiny = false;
 
+
+    userInputRerollSeed = getInputSeed();
+    seed = userInputRerollSeed;
+    requirements = setPokeReqs();
+    // if (userInputRerollSeed == seed){
+    //   std::cout << "Passed input check!";
+    // } else {
+    //   std::cout << "Failed input check!\n" << "Original string is: " << std::hex << seed 
+    //   << "\nWhile inputted string is: " << std::hex << userInputRerollSeed;
+      
+    // }
+
     //search for runnable eevee.
     while(!foundRunnable(eevee,requirements)){
         listingSeed = LCG(seed);
@@ -385,7 +548,6 @@ int main(){
     titleSeed = seed;
     std::cout << "Target (seed at title screen): " << titleSeed << std::endl;
    
-
     //find calls to target.
     int callsToTarget = 0;
     callsToTarget = findGap(userInputRerollSeed,titleSeed,1);
@@ -510,6 +672,7 @@ while(rem > 0){
 
     //temp measure
     // system("pause");
+    std::cout << "\n\nEnter any key to exit...\n";
     getchar();
     return 0;
 }

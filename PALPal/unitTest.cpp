@@ -2,9 +2,9 @@
 
 
 int main(){
+    PokemonRequirements inputReqs;
+    inputReqs.atkIV = 10;
 
-    u32 seed = 0x555a147c;
-    LCGn_BACK(seed,1002);
-    std::cout << std::hex << seed;
+
     return 0;
 }

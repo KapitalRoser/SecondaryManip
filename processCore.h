@@ -26,6 +26,7 @@ enum region {USA,EUR,JPN};
 enum emuVer {STABLE,MODERN}; //Stable == 5.0, only matters for xd so far.
 enum coloSecondary {QUILAVA,CROCONAW,BAYLEEF}; //xd only has teddy
 //enum secondaryMon {TEDDIURSA, QUILAVA, CROCONAW, BAYLEEF};
+enum strCase {upper,lower};
 
 struct PokemonProperties
   {
@@ -77,6 +78,17 @@ int median(std::vector<int> &v)
     size_t n = v.size() / 2;
     nth_element(v.begin(), v.begin()+n, v.end());
     return v[n];
+}
+std::string formatCase(std::string &str, strCase ulCase){
+for (int i = 0; i < str.length(); i++)
+    {
+      if (ulCase){
+        toupper(str.at(i));
+      } else {
+        tolower(str.at(i));
+      }
+    }
+return str;
 }
 
 //RNG Block
