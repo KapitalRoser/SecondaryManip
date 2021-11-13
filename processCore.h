@@ -345,11 +345,19 @@ int findGap(u32 behind, u32 ahead, bool forward){
     while(behind != ahead){
       LCG(behind);
       counter++;
+      if (counter > 100000000){
+        std::cout <<"Error!";
+        break; 
+      }
     }
   } else { //do i need to swap the params here? I just want to prevent an infinite loop.
     while(behind != ahead){
       LCG_BACK(behind);
       counter++;
+      if (counter > 100000000){
+        std::cout <<"Error!";
+        break; 
+      }
     }
   }
   return counter;

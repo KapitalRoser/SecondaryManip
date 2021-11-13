@@ -243,7 +243,7 @@ u32 myRollRNGToBattleMenu(u32 &seed, bool fromBoot, bool validMemcard)
   return seed;
 }
 
-bool generateBattleTeam(u32 &seed, const std::vector<int> criteria,std::vector<int>m_criteria)
+bool generateBattleTeam(u32 &seed, const std::vector<int> criteria,std::vector<int>&m_criteria)
 {
   // Player trainer name generation
   LCG(seed);
@@ -447,13 +447,19 @@ std::vector<u32> autoRollN(u32&seed,int n,std::vector<int>m_criteria){
   return rerollSeeds;
 }
 
+std::string getBattleTeamInfo(u32 seed){
+  std::vector<int> m_criteria = {-1, -1, -1, -1, -1, -1};
+  generateBattleTeam(seed,m_criteria,m_criteria);
+  return getLastObtainedCriteriasString(m_criteria);
+}
+
 int main(){
   std::vector<int> m_criteria = {-1, -1, -1, -1, -1, -1};
   // std::vector<int> dummy_criteria = {-1, -1, -1, -1, -1, -1}; //ill be honest why are these even here?
   u32 initialSeed = 0x652ECBBD;
   u32 postMenuSeed = 0x0;
   //for some reason seed == 0 doesn't work from title screen? should be A0281F1C.
-  int rollsToRun = 108;
+  int rollsToRun = 10;
   u32 seed = initialSeed;
   bool fromBoot = false;
   bool validMemcard = true;
@@ -467,14 +473,13 @@ int main(){
 
 rerollSeeds = autoRollN(seed,rollsToRun,m_criteria);
 
-
+std::cout << "Generated team: " << getBattleTeamInfo(seed);
 //distance finder:
 seed = postMenuSeed;
 for (unsigned int i = 0; i < rerollSeeds.size(); i++)
 {
   rollsRaw.push_back(findGap(seed,rerollSeeds.at(i),true));
 }
-
 
 
 //debugPrintVec(rollsRaw);
@@ -509,7 +514,7 @@ for (unsigned int i = 0; i < rollsSorted.size(); i++)
 }
 mean = mean / rollsSorted.size();
 
-for (unsigned int i = 0; i < rollsRaw.size(); i++)
+for (unsigned int i = 1; i < rollsRaw.size(); i++)
 {
   if (rollsRaw.at(i) == min){
     minSeed = rerollSeeds.at(i-1);
@@ -518,8 +523,6 @@ for (unsigned int i = 0; i < rollsRaw.size(); i++)
     maxSeed = rerollSeeds.at(i-1);
   }
 }
-
-;
 
 
 
