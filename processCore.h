@@ -53,11 +53,10 @@ struct PokemonRequirements
     int spAtkIV = 0;
     int spDefIV = 0;
     int speedIV = 0;
-    int hpStartingStat = 0;
+    std::array<bool,25> validNatures;
     std::array<bool,16> validHPTypes;
     int hiddenPowerPower = 0;
     int genderIndex = 0;
-    std::array<bool,25> validNatures;
     int isShiny = 0;  
 };
 
@@ -84,9 +83,9 @@ std::string formatCase(std::string &str, strCase ulCase){
 for (int i = 0; i < str.length(); i++)
     {
       if (ulCase){
-        toupper(str.at(i));
+        str.at(i) = tolower(str.at(i));
       } else {
-        tolower(str.at(i));
+        str.at(i) = toupper(str.at(i));
       }
     }
 return str;

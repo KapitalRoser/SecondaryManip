@@ -350,7 +350,7 @@ u32 singleRoll(u32&seed,std::vector<int>m_criteria){
 }
 
 bool verifyu32(std::string formatted){
-  std::cout << "String to verify:" << formatted << std::endl;
+  //std::cout << "String to verify:" << formatted << std::endl;
   for (int i = 0; i < formatted.length(); i++)
   {
     if (formatted.at(i) < '0' || formatted.at(i) > '9' && formatted.at(i) < 'A' || formatted.at(i) > 'F'){
@@ -367,7 +367,7 @@ u32 getInputSeed(){
   std::stringstream hexConvert;
   bool validInput = false;
   while(!validInput){
-    std::cout << "Enter the seed produced by the seed finder: ";
+    std::cout << "\nEnter the seed produced by the seed finder: ";
     getline(std::cin,userInput);
     for (int i = 0; i < userInput.length(); i++){
       userInput.at(i) = toupper(userInput.at(i));
@@ -382,303 +382,468 @@ u32 getInputSeed(){
   return userSeed;
 }
 
-bool getReqString(int n){
-  bool workingItem[n];
-  std::string inputStr;
-  std::cout << "Enter acceptable terms(s): \n";
-  bool allStringsEntered = false;
-  int sizeOfLoop = 25;
-  std::cout << "type the name of the requirement, or enter 'any' to accept all natures: ";
-  while (!allStringsEntered){
-    getline(std::cin,inputStr);
-    formatCase(inputStr,lower);
-    inputStr.at(0) = toupper(inputStr.at(0)); //capitalize
-    std::cout << "item entered: " << inputStr << std::endl;
+// bool getReqString(int n){
+//   bool workingItem[n];
+//   std::string inputStr;
+//   std::cout << "Enter acceptable terms(s): \n";
+//   bool allStringsEntered = false;
+//   int sizeOfLoop = 25;
+//   std::cout << "type the name of the requirement, or enter 'any' to accept all natures: ";
+//   while (!allStringsEntered){
+//     getline(std::cin,inputStr);
+//     formatCase(inputStr,lower);
+//     inputStr.at(0) = toupper(inputStr.at(0)); //capitalize
+//     std::cout << "item entered: " << inputStr << std::endl;
 
-    //exit statements:
-    if (inputStr == "Done"){
-      allStringsEntered = true;
-    } else if (inputStr == "Any"){
-      for (int i = 0; i < n; i++)
+//     //exit statements:
+//     if (inputStr == "Done"){
+//       allStringsEntered = true;
+//     } else if (inputStr == "Any"){
+//       for (int i = 0; i < n; i++)
+//       {
+//         workingItem[i] = true;
+//         allStringsEntered = true;
+//       }
+//     } else {
+//       bool foundAny = false;
+//       for (int i = 0; i < n; i++)
+//       {
+//         if (inputStr == naturesList[i]){
+//           std::cout <<"Added "<< naturesList[i] <<"!\n";
+//           foundAny = true;
+//           workingItem[i] = true;
+//         }
+//       }
+//       if (!foundAny){
+//         std::cout << "Nature not found - invalid input.";
+//       }
+//       std::cout << "Enter more items or use commands 'Any' or 'Done': ";
+//       int full = 0;
+//       for (int i = 0; i < n; i++)
+//       {
+//         if (workingItem[i] == true){
+//           full++;
+//         }
+//       }
+//       if (full == n){
+//         std::cout << "You really took the time to manually enter every nature/hidden power...wow." 
+//         <<"fine! all natures/hidden powers are enabled, moving on.";
+//         allStringsEntered = true;
+//       }
+//     }
+//   }
+
+//   return workingItem;
+// }
+void readReqsConfig(PokemonRequirements &inputReqs, std::ifstream &config){
+int inputInt = 0;
+    for (int i = 0; i < 11; i++)
+    {
+      switch (i)
       {
-        workingItem[i] = true;
-        allStringsEntered = true;
-      }
-    } else {
-      bool foundAny = false;
-      for (int i = 0; i < n; i++)
-      {
-        if (inputStr == naturesList[i]){
-          std::cout <<"Added "<< naturesList[i] <<"!\n";
-          foundAny = true;
-          workingItem[i] = true;
+      case 0: //IVs
+        config >> inputInt;
+        inputReqs.hpIV = inputInt;
+        break;
+      case 1:
+        config >> inputInt;
+        inputReqs.atkIV = inputInt;
+        break;
+      case 2:
+        config >> inputInt;
+        inputReqs.defIV = inputInt;
+        break;
+      case 3:
+        config >> inputInt;
+        inputReqs.spAtkIV = inputInt;
+        break;
+      case 4:
+        config >> inputInt;
+        inputReqs.spDefIV = inputInt;
+        break;
+      case 5:
+        config >> inputInt;
+        inputReqs.speedIV = inputInt;
+        break;
+      case 6: //nature
+        {
+          config >> inputInt; //tells how many natures are valid
+          int n = inputInt;
+          for (int i = 0; i < n; i++)
+          {
+            config >> inputInt;
+            inputReqs.validNatures[inputInt] = true;
+          }
+          break;
         }
-      }
-      if (!foundAny){
-        std::cout << "Nature not found - invalid input.";
-      }
-      std::cout << "Enter more items or use commands 'Any' or 'Done': ";
-      int full = 0;
-      for (int i = 0; i < n; i++)
-      {
-        if (workingItem[i] == true){
-          full++;
+      case 7: //HPType
+        {
+          config >> inputInt;
+          int n = inputInt;
+          for (int i = 0; i < n; i++)
+          {
+            config >> inputInt;
+            inputReqs.validHPTypes[inputInt] = true;
+          }
+          break;
         }
-      }
-      if (full == n){
-        std::cout << "You really took the time to manually enter every nature/hidden power...wow." 
-        <<"fine! all natures/hidden powers are enabled, moving on.";
-        allStringsEntered = true;
+      case 8: //power
+        config >> inputInt;
+        inputReqs.hiddenPowerPower = inputInt;
+        break;
+      case 9: //gender
+        config >> inputInt;
+        inputReqs.genderIndex = inputInt;
+        break;
+      case 10: //shiny
+        config >> inputInt;
+        inputReqs.isShiny = inputInt;
+        break;
+      default:
+        break;
       }
     }
-  }
+}
+void writeReqsConfig(PokemonRequirements&inputReqs){
+    std::ofstream configW("palpalConfig.txt");
+    //time to write the file!
+    std::vector<std::string> strReqs = {"HP","ATK","DEF","SPA","SPD","SPE"};
+    std::vector<int>IVreqs;
+    unsigned int IV = 0;
+    //do I really need to cleanse non-numeric inputs...
+    std::string Nature;
+    std::string IVInput = "";
+    //save these to a config file for later access?
+    std::cout << "\n~~~~~~~~~~~SETUP REQUIREMENTS~~~~~~~~~~~\n\n";
+    //first, IVS
+    for (int i = 0; i < 6; i++)
+    //Add support for Any and Done commands
+    {
+      std::cout << "Enter minimum " << strReqs.at(i) << " IV: ";
+      std::cin >> IV;
+      while (IV < 0 || IV > 31 || std::cin.fail()){
+        std::cin.clear();
+        std::cout << "Invalid input, please try again: ";
+        std::cin >> IV;
+      }
+      switch (i)
+      {
+      case 0:
+        inputReqs.hpIV = IV;
+        break;
+      case 1:
+        inputReqs.atkIV = IV;
+        break;
+      case 2:
+        inputReqs.defIV = IV;
+        break;
+      case 3:
+        inputReqs.spAtkIV= IV;
+        break;
+      case 4:
+        inputReqs.spDefIV = IV;
+        break;
+      case 5:
+        inputReqs.speedIV = IV;
+        break;
+      default:
+        break;
+      }
+    }
+    std::cin.get();
+    //next Nature
+    std::cout << "IVs set successfully!\n";
+    std::cout << inputReqs.hpIV << "/"
+    << inputReqs.atkIV << "/"
+    << inputReqs.defIV << "/"
+    << inputReqs.spAtkIV << "/"
+    << inputReqs.spDefIV << "/"
+    << inputReqs.speedIV << "\n";
+    
+    
+    std::cout << "Enter acceptable nature(s): \n";
+  
+    bool allNaturesEntered = false;
+    std::string inputNature = "";
+    std::vector<int> natureIDXs;
+    std::cout << "type the name of a nature, or enter 'any' to accept all natures: ";
+    while (!allNaturesEntered){
+      getline(std::cin,inputNature);
+      formatCase(inputNature,lower);
+      inputNature.at(0) = toupper(inputNature.at(0)); //capitalize
+      std::cout << "Nature entered: " << inputNature << std::endl;
 
-  return workingItem;
+      //exit statements:
+      if (inputNature == "Done"){
+        allNaturesEntered = true;
+      } else if (inputNature == "Any"){
+        for (int i = 0; i < 25; i++)
+        {
+          inputReqs.validNatures[i] = true;
+          allNaturesEntered = true;
+        }
+      } else {
+        bool foundAny = false;
+        for (int i = 0; i < 25; i++)
+        {
+          if (inputNature == naturesList[i]){
+            foundAny = true;
+            if (inputReqs.validNatures[i] == false){
+              inputReqs.validNatures[i] = true;
+              natureIDXs.push_back(i);
+              std::cout <<"Added "<< naturesList[i] <<"!\n";
+            } else {
+              std::cout << "You have already added " << inputNature << ".\n";
+            }
+          }
+        }
+        if (!foundAny){
+          std::cout << "Nature not found - invalid input.\n";
+        }
+        std::cout << "Enter more natures or use commands 'Any' or 'Done': ";
+        int full = 0;
+        for (int i = 0; i < 25; i++)
+        {
+          if (inputReqs.validNatures[i] == true){
+            full++;
+          }
+        }
+        if (full == 25){
+          std::cout << "You really took the time to manually enter every nature...wow." 
+          <<"fine! all natures are enabled, moving on.";
+          allNaturesEntered = true;
+        }
+      }
+    }
+    //next Hidden Power Type and strength
+    //one day implement a way to filter for seperate HP strengths for different HPs. 
+    //i.e 68 for psychic and 65 for electric or something.
+    //would need to restructure pokereqs a bit.
+    std::cout << "Natures entered successfully!\n\n";
+    std::cout << "Enter acceptable Hidden Power(s): \n";
+    bool allHPTypesEntered = false;
+    std::string inputHPT = "";
+    std::vector<int> HPTIDXs;
+    std::cout << "type the name of a type, or enter 'any' to accept all types: ";
+    while (!allHPTypesEntered){
+      getline(std::cin,inputHPT);
+      formatCase(inputHPT,lower);
+      inputHPT.at(0) = toupper(inputHPT.at(0)); //capitalize
+      std::cout << "HPT entered: " << inputHPT << std::endl;
+
+      //exit statements:
+      if (inputHPT == "Done"){
+        allHPTypesEntered = true;
+      } else if (inputHPT == "Any"){
+        for (int i = 0; i < 25; i++)
+        {
+          inputReqs.validHPTypes[i] = true;
+          allHPTypesEntered = true;
+        }
+      } else {
+        bool foundAny = false;
+        for (int i = 0; i < 25; i++)
+        {
+          if (inputHPT == hpTypes[i]){
+            foundAny = true;
+            if(inputReqs.validHPTypes[i] == false){
+              std::cout <<"Added "<< hpTypes[i] <<"!\n";
+              inputReqs.validHPTypes[i] = true;
+              HPTIDXs.push_back(i);
+            } else {
+              std::cout << "You have already added " << hpTypes[i] << ".\n";
+            }
+          }
+        }
+        if (!foundAny){
+          std::cout << "Hidden Power Type not found - invalid input.\n";
+        }
+        std::cout << "Enter more types or use commands 'Any' or 'Done': ";
+        int full = 0;
+        for (int i = 0; i < 16; i++)
+        {
+          if (inputReqs.validHPTypes[i] == true){
+            full++;
+          }
+        }
+        if (full == 16){
+          std::cout << "You really took the time to manually enter every Hidden Power type...wow." 
+          <<"fine! all HPs are enabled, moving on.";
+          allHPTypesEntered = true;
+        }
+      }
+    }
+  //Now to select power
+    int inputPower = 0;
+    std::cout << "\nEnter minimum strength of Hidden Power: ";
+    std::cin >> inputPower;
+    while(inputPower < 0 || inputPower > 70){
+      std::cout << "\nInvalid input, please try again: ";
+      std::cin >> inputPower;
+    }
+    inputReqs.hiddenPowerPower = inputPower;
+    std::cout << "\nHPP entered: " << inputReqs.hiddenPowerPower << "\n";
+    std::cin.get();
+    //next gender
+    std::string inputGender = "";
+    std::cout << "Want to choose a specific gender? Type 'Male' or 'M', 'Female' or 'F', or 'Any': \n";
+    getline(std::cin,inputGender);
+    formatCase(inputGender,lower);
+    inputGender.at(0) = toupper(inputGender.at(0));
+    if (inputGender == "Male" || inputGender == "M"){
+      inputReqs.genderIndex = 0;
+    } else if (inputGender == "Female" || inputGender == "F"){
+      inputReqs.genderIndex = 1;
+    } else {
+      inputReqs.genderIndex = 2;
+    }
+    std::cout << "gender entered succesfully!\n";
+    //finally shinystatus
+    std::string inputShiny = "";
+    std::cout << "Want the target to be shiny? enter Yes, No, or Any:";
+    getline(std::cin,inputShiny);
+    formatCase(inputShiny,lower);
+    inputShiny.at(0) = toupper(inputShiny.at(0));
+    if (inputShiny == "No" || inputShiny == "N"){
+      inputReqs.isShiny = 0;
+    } else if (inputShiny == "Yes" || inputShiny == "Y"){
+      inputReqs.isShiny = 1;
+    } else {
+      inputReqs.isShiny = 2;
+    }
+    
+    std::cout << "All requirements recorded! Good luck!\n";
+
+    //config filewrite
+    configW 
+    << inputReqs.hpIV    <<"\n"<< inputReqs.atkIV   <<"\n"
+    << inputReqs.defIV   <<"\n"<< inputReqs.spAtkIV <<"\n"
+    << inputReqs.spDefIV <<"\n"<< inputReqs.speedIV <<"\n"
+    << natureIDXs.size()<<"\n";
+    for (unsigned int i = 0; i < natureIDXs.size(); i++)
+    {
+      configW << natureIDXs.at(i) << "\n";
+    }
+    configW << HPTIDXs.size()<<"\n";
+    for (unsigned int i = 0; i < HPTIDXs.size(); i++)
+    {
+      configW << HPTIDXs.at(i) << "\n";
+    }
+    configW << inputReqs.hiddenPowerPower <<"\n"
+    << inputReqs.genderIndex <<"\n"
+    << inputReqs.isShiny;
+    configW.close();
+}
+PokemonRequirements setPokeReqs(){
+  //intended for initial run
+  PokemonRequirements inputReqs;
+  inputReqs.validNatures.fill(0);
+  inputReqs.validHPTypes.fill(0);
+  //first open config file
+  std::ifstream configR("palpalConfig.txt");
+  if (configR.fail()){
+    std::cout << "Creating new Config file!\n";
+    configR.close();
+    writeReqsConfig(inputReqs);
+    return inputReqs;
+  } else {
+    std::cout << "Successfully read Config file!\n";
+    readReqsConfig(inputReqs,configR);
+    return inputReqs;
+  }
+  
 }
 
-PokemonRequirements setPokeReqs(){
-  PokemonRequirements inputReqs;
-  std::vector<std::string> strReqs = {"HP","ATK","DEF","SPA","SPD","SPE"};
-  std::vector<int>IVreqs;
-  unsigned int IV = 0;
-  //do I really need to cleanse non-numeric inputs...
-  std::string Nature;
-  std::string IVInput = "";
-  //save these to a config file for later access?
-  std::cout << "~~~~~~~~~~~SETUP REQUIREMENTS~~~~~~~~~~~\n\n";
-  //first, IVS
-  for (int i = 0; i < 6; i++)
-  //Add support for Any and Done commands
-  {
-    std::cout << "Enter minimum " << strReqs.at(i) << " IV: ";
-    std::cin >> IV;
-    while (IV < 0 || IV > 31){
-      std::cout << "Invalid input, please try again: ";
-      std::cin >> IV;
-    }
-    switch (i)
-    {
-    case 0:
-      inputReqs.hpIV = IV;
-      break;
-    case 1:
-      inputReqs.atkIV = IV;
-      break;
-    case 2:
-      inputReqs.defIV = IV;
-      break;
-    case 3:
-      inputReqs.spAtkIV= IV;
-      break;
-    case 4:
-      inputReqs.spDefIV = IV;
-      break;
-    case 5:
-      inputReqs.speedIV = IV;
-      break;
-    default:
-      break;
-    }
-  }
-  std::cin.get();
-  //next Nature
-  std::cout << "IVs set successfully!\n";
-  std::cout << inputReqs.hpIV << "/"
-  << inputReqs.atkIV << "/"
-  << inputReqs.defIV << "/"
-  << inputReqs.spAtkIV << "/"
-  << inputReqs.spDefIV << "/"
-  << inputReqs.speedIV << "\n";
-  
-  
-  std::cout << "Enter acceptable nature(s): \n";
-  bool allNaturesEntered = false;
-  std::string inputNature = "";
-  std::cout << "type the name of a nature, or enter 'any' to accept all natures: ";
-  while (!allNaturesEntered){
-    getline(std::cin,inputNature);
-    formatCase(inputNature,lower);
-    inputNature.at(0) = toupper(inputNature.at(0)); //capitalize
-    std::cout << "Nature entered: " << inputNature << std::endl;
+void printPokeInfo(){
 
-    //exit statements:
-    if (inputNature == "Done"){
-      allNaturesEntered = true;
-    } else if (inputNature == "Any"){
-      for (int i = 0; i < 25; i++)
-      {
-        inputReqs.validNatures[i] = true;
-        allNaturesEntered = true;
-      }
-    } else {
-      bool foundAny = false;
-      for (int i = 0; i < 25; i++)
-      {
-        if (inputNature == naturesList[i]){
-          std::cout <<"Added "<< naturesList[i] <<"!\n";
-          foundAny = true;
-          inputReqs.validNatures[i] = true;
-        }
-      }
-      if (!foundAny){
-        std::cout << "Nature not found - invalid input.";
-      }
-      std::cout << "Enter more natures or use commands 'Any' or 'Done': ";
-      int full = 0;
-      for (int i = 0; i < 25; i++)
-      {
-        if (inputReqs.validNatures[i] == true){
-          full++;
-        }
-      }
-      if (full == 25){
-        std::cout << "You really took the time to manually enter every nature...wow." 
-        <<"fine! all natures are enabled, moving on.";
-        allNaturesEntered = true;
-      }
-    }
-  }
-  //next Hidden Power Type and strength
-  //one day implement a way to filter for seperate HP strengths for different HPs. 
-  //i.e 68 for psychic and 65 for electric or something.
-  //would need to restructure pokereqs a bit.
-  std::cout << "Natures entered successfully!\n";
-  std::cout << "Enter acceptable nature(s): \n";
-  bool allHPTypesEntered = false;
-  std::string inputHPT = "";
-  std::cout << "type the name of a nature, or enter 'any' to accept all natures: ";
-  while (!allHPTypesEntered){
-    getline(std::cin,inputHPT);
-    formatCase(inputHPT,lower);
-    inputHPT.at(0) = toupper(inputHPT.at(0)); //capitalize
-    std::cout << "HPT entered: " << inputHPT << std::endl;
+}
+void printInstructions(int instructions[4]){
+    std::cout << "Instruction set: " << instructions[3] << "/" << instructions[0] 
+    << "/" << instructions[1] << "/" << instructions[2] << std::endl;
+    
 
-    //exit statements:
-    if (inputHPT == "Done"){
-      allHPTypesEntered = true;
-    } else if (inputHPT == "Any"){
-      for (int i = 0; i < 25; i++)
-      {
-        inputReqs.validHPTypes[i] = true;
-        allHPTypesEntered = true;
-      }
-    } else {
-      bool foundAny = false;
-      for (int i = 0; i < 25; i++)
-      {
-        if (inputHPT == hpTypes[i]){
-          std::cout <<"Added "<< hpTypes[i] <<"!\n";
-          foundAny = true;
-          inputReqs.validHPTypes[i] = true;
-        }
-      }
-      if (!foundAny){
-        std::cout << "Hidden Power Type not found - invalid input.";
-      }
-      std::cout << "Enter more types or use commands 'Any' or 'Done': ";
-      int full = 0;
-      for (int i = 0; i < 16; i++)
-      {
-        if (inputReqs.validHPTypes[i] == true){
-          full++;
-        }
-      }
-      if (full == 16){
-        std::cout << "You really took the time to manually enter every Hidden Power type...wow." 
-        <<"fine! all HPs are enabled, moving on.";
-        allHPTypesEntered = true;
-      }
-    }
-  }
-//Now to select power
-  int inputPower = 0;
-  std::cout << "Enter minimum strength of Hidden Power";
-  std::cin >> inputPower;
-  while(inputPower < 0 || inputPower > 70){
-    std::cout << "Invalid input, please try again: ";
-    std::cin >> inputPower;
-  }
-  inputReqs.hiddenPowerPower = inputPower;
-  std::cout << "HPP entered: " << inputReqs.hiddenPowerPower;
-  std::cin.get();
-  //next gender
-  std::string inputGender = "";
-  std::cout << "Want to choose a specific gender? Type Male or M, Female or F, or leave blank: ";
-  getline(std::cin,inputGender);
-  formatCase(inputGender,lower);
-  inputGender.at(0) = toupper(inputGender.at(0));
-  if (inputGender == "Male" || inputGender == "M"){
-    inputReqs.genderIndex = 0;
-  } else if (inputGender == "Female" || inputGender == "F"){
-    inputReqs.genderIndex = 1;
-  } else {
-    inputReqs.genderIndex = 2;
-  }
-  std::cout << "gender entered succesfully!\n";
-  //finally shinystatus
-  std::string inputShiny = "";
-  std::cout << "Want the target to be shiny? enter Yes, No, or Any:";
-  getline(std::cin,inputShiny);
-  formatCase(inputShiny,lower);
-  inputShiny.at(0) = toupper(inputShiny.at(0));
-  if (inputShiny == "No" || inputShiny == "N"){
-    inputReqs.isShiny = 0;
-  } else if (inputShiny == "Yes" || inputShiny == "Y"){
-    inputReqs.isShiny = 1;
-  } else {
-    inputReqs.isShiny = 2;
-  }
-  
-  std::cout << "All requirements recorded! Good luck!\n"
-  << "Returning to command entry.";
 
-  return inputReqs;
+    std::cout << "To reach target, peform: \n"
+    << instructions[3] << " reroll(s),\n"
+    << instructions[0] << " memory card reload(s),\n"
+    << instructions[1] << " rumble switch(es),\n"
+    << instructions[2] << " naming screen back-outs.\n";
 
+    // debugSeed = userInputRerollSeed;
+    // std::cout << std::hex << LCGn(debugSeed,memcardValue*instructions[0]);
+    // std::cout << "\n" << LCGn(debugSeed,rumbleValue*instructions[1]);
+    // std::cout << "\n" << LCGn(debugSeed,namingValue*instructions[2]);
 }
 
 int main(){
+    //an Oops I got lost - feature might be a nice addition to the main tool,
+    //which can find ur seed based on 1 or at most 2 rolls of input again.
+    //Also a forward and backwards tabber to move through the rolls (with the team members)
+    //unlike with seed alone like it is now.
     const int namingValue = 2;
     const int rumbleValue = 40; //note in colo this is 20 calls instead.
     const int memcardValue = 1009;
     std::vector<int> m_criteria = {-1, -1, -1, -1, -1, -1};
+    std::vector<u32> previousResults;
     u32 userInputRerollSeed = 0x0;
     u32 seed = 0x0;
-    u32 listingSeed = seed;
+    u32 listingSeed = 0x0;
     u32 titleSeed = 0x0;
     u32 debugSeed = 0;
     int instructions[4] = {0,0,0,0};
     const int eeveeGenderRatio = 0x1F;
-    std::string commands[255] = {"Reject","Restore","Reset","Settings","Skip"};
+    std::string commands[255] = {"Reject","Restore","Reset","Settings","Exit"};
     std::string currentCommand = "";
-
     PokemonProperties eevee;
     PokemonRequirements requirements;
-    requirements.validHPTypes.fill(0);
-    requirements.validNatures.fill(0);
+    requirements.validHPTypes.fill(false);
+    requirements.validNatures.fill(false);
+    
 
-    requirements.spAtkIV = 31;
-    requirements.speedIV = 22;
-    requirements.hiddenPowerPower = 68;
-    requirements.validHPTypes[Psychic] = true;
-    requirements.validHPTypes[Electric] = true;
-    requirements.validNatures[Mild] = true;
-    requirements.validNatures[Modest] = true;
-    requirements.validNatures[Rash] = true;
-    requirements.isShiny = false;
+    // requirements.spAtkIV = 31;
+    // requirements.speedIV = 22;
+    // requirements.hiddenPowerPower = 68;
+    // requirements.validHPTypes[Psychic] = true;
+    // requirements.validHPTypes[Electric] = true;
+    // requirements.validNatures[Mild] = true;
+    // requirements.validNatures[Modest] = true;
+    // requirements.validNatures[Rash] = true;
+    // requirements.isShiny = false;
 
 
     userInputRerollSeed = getInputSeed();
     seed = userInputRerollSeed;
+    listingSeed = seed;
+    
     requirements = setPokeReqs(); //What a chonky function.
-    bool searchActive = true;
-
-    // if (userInputRerollSeed == seed){
-    //   std::cout << "Passed input check!";
-    // } else {
-    //   std::cout << "Failed input check!\n" << "Original string is: " << std::hex << seed 
-    //   << "\nWhile inputted string is: " << std::hex << userInputRerollSeed;
-      
+    // std::cout <<"REQS: \n"
+    // << requirements.hpIV <<"\n"
+    // << requirements.atkIV <<"\n"
+    // << requirements.defIV<<"\n"
+    // << requirements.spAtkIV<<"\n"
+    // << requirements.spDefIV<<"\n"
+    // << requirements.speedIV<<"\n"
+    // <<"Valid Natures: ";
+    // for (unsigned int i = 0; i < 25; i++)
+    // {
+    //   if (requirements.validNatures[i] == true){
+    //     std::cout << naturesList[i] << "\n";
+    //   }
     // }
+    // std::cout <<"Valid HPs: ";
+    // for (unsigned int i = 0; i < 16; i++)
+    // {
+    //   if (requirements.validHPTypes[i] == true){
+    //     std::cout << hpTypes[i] << "\n";
+    //   }
+    // }
+    // std::cout
+    // << requirements.hiddenPowerPower <<"\n"
+    // << requirements.genderIndex <<"\n"
+    // << requirements.isShiny <<"\n";
+
+  bool searchActive = true;
+
   while(searchActive){
     //search for runnable eevee.
     while(!foundRunnable(eevee,requirements)){
@@ -686,16 +851,16 @@ int main(){
         condensedGenerateMon(eevee,seed,eeveeGenderRatio);
         seed = listingSeed;
     }
-    std::cout << "Reached: " << std::hex << listingSeed << std::endl;
+    //std::cout << "Reached: " << std::hex << listingSeed << std::endl;
     LCGn_BACK(seed,1002);
     titleSeed = seed;
-    std::cout << "Target (seed at title screen): " << titleSeed << std::endl;
+    //std::cout << "Target (seed at title screen): " << titleSeed << std::endl;
    
     //find calls to target.
     int callsToTarget = 0;
     callsToTarget = findGap(userInputRerollSeed,titleSeed,1);
-    
-    std::cout << "First valid eevee found at: " << std::hex << listingSeed << std::dec<< " which is " << callsToTarget << " calls away\n";
+    std::cout << "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n";
+    std::cout << "First runnable eevee found at: " << std::hex << listingSeed << std::dec<< " which is " << callsToTarget << " calls away\n";
     std::cout << "TID: " << eevee.trainerId 
     <<  "\n" << eevee.hpIV
     << " / " << eevee.atkIV
@@ -719,6 +884,7 @@ int main(){
       std::cout << "False";
     }
     std::cout << "\n";
+    std::cout << "\n+ + + + + + + + + + + + \n\n";
 
 //~~~~~~~~~~~~~~~~~~Target seeking is complete!~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -726,12 +892,6 @@ int main(){
 
 seed = userInputRerollSeed; //MUST RESET SEED BACK TO MENU SO THAT PATHFINDING WORKS.
 
-//Assume starting in reroll menu
-//Starting off with a reroll focused system, may eventually move to memcard focused.
-//lets just see what happens.
-
-//0.73s vs 3.73, memcard is worth 5x rerolls, ish in time, but less than that in calls, typically.
-//plus no benefit of seeing where you are exactly.
 //std::cout << "INITIAL CTT: " << callsToTarget << "\n";
 std::vector<u32> rerollSeeds = {seed};
 //goal, bring findGap(seed,titleSeed,1) to zero.
@@ -758,11 +918,11 @@ while(!maxedOut){
 }
 //error check
 //std::cout << "Approach error Check! " << std::hex << seed;
-if (findGap(seed,titleSeed,1) != callsToTarget){
-  std::cout << "ERROR! CTT: " << callsToTarget << " WHILE SEED IS: " << findGap(seed,titleSeed,1) << " CALLS AWAY!";
-} else {
-  std::cout <<"PASSED ERROR CHECK!\n";
-}
+// if (findGap(seed,titleSeed,1) != callsToTarget){
+//   std::cout << "ERROR! CTT: " << callsToTarget << " WHILE SEED IS: " << findGap(seed,titleSeed,1) << " CALLS AWAY!";
+// } else {
+//   std::cout <<"PASSED ERROR CHECK!\n";
+// }
 
 int rem = callsToTarget;
 //ex 6197
@@ -770,7 +930,7 @@ int rem = callsToTarget;
 //ex 3045
 
 while(rem > 0){
-  std::cout << "Post-Reroll ctt:" << rem << "\n";
+  //std::cout << "Post-Reroll ctt:" << rem << "\n";
   if (rem % 2 == 0){//if rem is even
     while (rem >= 2018){
       instructions[0] += 2; // will continue to stay even at this rate.
@@ -796,37 +956,87 @@ while(rem > 0){
 //specific counter isn't that important, except for debugging.
 //This manip identifies a target in the vast swirling ocean of RNG and hunts it down directly.
     
-    std::cout << "Instruction set: " << instructions[3] << "/" << instructions[0] 
-    << "/" << instructions[1] << "/" << instructions[2] << std::endl;
+
     
-
-
-    std::cout << "To reach target, peform: \n"
-    << instructions[3] << " reroll(s),\n"
-    << instructions[0] << " memory card reload(s),\n"
-    << instructions[1] << " rumble switch(es),\n"
-    << instructions[2] << " naming screen back-outs.\n";
-
-    debugSeed = userInputRerollSeed;
-    std::cout << std::hex << LCGn(debugSeed,memcardValue*instructions[0]);
-    std::cout << "\n" << LCGn(debugSeed,rumbleValue*instructions[1]);
-    std::cout << "\n" << LCGn(debugSeed,namingValue*instructions[2]);
+    
+    printInstructions(instructions);
+    std::cout << "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+    //WRAP UP BLOCK
+    eevee = {};
+    instructions[0] = 0;
+    instructions[1] = 0;
+    instructions[2] = 0;
+    instructions[3] = 0;
     std::cout << "\n\n";
-
-    std::cout <<"Search for another eevee? Type 'Reject' to continue searching.\nThe current result will be saved.";
+    std::cout <<"The current result has been saved.\nEnter a command to continue:\nCommand: ";
     getline(std::cin,currentCommand);
     formatCase(currentCommand,lower);
     currentCommand.at(0) = toupper(currentCommand.at(0));
-    if (currentCommand != "Reject"){
-      searchActive = false;
-    } else {
+    std::cout <<"RESULTS STORED: " << previousResults.size() << "\n";
+    bool validCommand = false;
+    while (!validCommand)
+    {
+      if (currentCommand == commands[3]){
+        //Settings
+        validCommand = true;
+        requirements = {};
+        writeReqsConfig(requirements);
+      } else if (currentCommand == commands[0]){
+        //Reject
+        validCommand = true;
+        searchActive = true;
+        seed = listingSeed;
+        previousResults.push_back(listingSeed);
+      } else if (currentCommand == commands[1]){
+        //Restore
+        validCommand = true;
+        searchActive = true;
+        for (unsigned int i = 0; i < previousResults.size(); i++)
+        {
+          std::cout << std::hex << previousResults.at(i) << std::endl;
+        }
+        
+        if (previousResults.size() > 0){
+          previousResults.pop_back();
+        }
+        seed = LCG_BACK(previousResults.back());
+        if (previousResults.size() == 0){
+          seed = userInputRerollSeed;
+        }
+      } else if(currentCommand == commands[2]){
+        //Reset
+        validCommand = true;
+        userInputRerollSeed = getInputSeed();
+        seed = userInputRerollSeed;
+        listingSeed = seed;
+      } else if (currentCommand == commands[4]){
+        //Exit
+        validCommand = true;
+        searchActive = false;
+      } else {
+        std::cout << "Invalid command. Please try again: ";
+        getline(std::cin,currentCommand);
+        formatCase(currentCommand,lower);
+        currentCommand.at(0) = toupper(currentCommand.at(0));
 
+      }
+    }
+    
+    
+    
+      //assuming most things don't need to be cleared, cuz theres a looooot of variables.
+
+      //reset instructions
+      // for (int i = 0; i < 3; i++)
+      // {
+      //   instructions[i] = 0;
+      // }
+      // currentCommand = "";
     }
     //process other commands.
     
-}
-    std::cout << "\n\nEnter any key to exit...\n";
-    getchar();
+    // std::cout << "\nEnter any key to exit...\n";
+    // getchar();
     return 0;
 }
 
@@ -855,6 +1065,18 @@ while(rem > 0){
     Frame 562.
 
     F9FD38FF on title screen.
+    Assume starting in reroll menu
+    Starting off with a reroll focused system, may eventually move to memcard focused.
+    lets just see what happens.
+    0.73s vs 3.73, memcard is worth 5x rerolls, ish in time, but less than that in calls, typically.
+    plus no benefit of seeing where you are exactly.
+
+    Reroll: 0.73
+    Semiroll: 2.00
+    Memcard: 3.73
+    Rumble: 6.36 6.2 if really fast lol)
+    NameScreen: 3.30
+
 
     
 */  
