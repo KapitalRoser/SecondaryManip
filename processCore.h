@@ -28,6 +28,7 @@ enum coloSecondary {QUILAVA,CROCONAW,BAYLEEF}; //xd only has teddy
 //enum secondaryMon {TEDDIURSA, QUILAVA, CROCONAW, BAYLEEF};
 enum strCase {upper,lower};
 
+
 struct PokemonProperties
   {
     int hpIV = 0;
@@ -41,7 +42,7 @@ struct PokemonProperties
     int hiddenPowerPower = 0;
     int genderIndex = 0;
     int natureIndex = 0;
-    bool isShiny = false;
+    int isShiny = 0;
     u32 trainerId = 0;
   };
 struct PokemonRequirements
@@ -57,7 +58,7 @@ struct PokemonRequirements
     int hiddenPowerPower = 0;
     int genderIndex = 0;
     std::array<bool,25> validNatures;
-    bool isShiny = false;  
+    int isShiny = 0;  
 };
 
 //extra functions block

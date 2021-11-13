@@ -1,16 +1,16 @@
 #include "../processCore.h"
 const std::string hpTypes[16] = {"Fighting", "Flying", "Poison", "Ground", "Rock", "Bug", "Ghost", 
     "Steel", "Fire", "Water", "Grass", "Electric",  "Psychic", "Ice","Dragon","Dark"};
-    enum hpTypeID {Fighting, Flying, Poison, Ground, Rock, Bug, 
-     Ghost, Steel, Fire, Water, Grass, Electric, Psychic, Ice, 
-     Dragon, Dark}; //could remake this into a map lol.
+enum hpTypeID {Fighting, Flying, Poison, Ground, Rock, Bug, 
+  Ghost, Steel, Fire, Water, Grass, Electric, Psychic, Ice, 
+  Dragon, Dark}; //could remake this into a map lol.
 
-    const std::string naturesList[25] = {"Hardy","Lonely","Brave","Adamant","Naughty","Bold","Docile","Relaxed",
-    "Impish","Lax","Timid","Hasty","Serious","Jolly","Naive","Modest","Mild","Quiet","Bashful",
-    "Rash","Calm","Gentle","Sassy","Careful","Quirky"};
-    enum natureID {Hardy,Lonely,Brave,Adamant,Naughty,Bold,Docile,
-    Relaxed,Impish,Lax,Timid,Hasty,Serious,Jolly,Naive,Modest,Mild,
-    Quiet,Bashful,Rash,Calm,Gentle,Sassy,Careful,Quirky};
+const std::string naturesList[25] = {"Hardy","Lonely","Brave","Adamant","Naughty","Bold","Docile","Relaxed",
+"Impish","Lax","Timid","Hasty","Serious","Jolly","Naive","Modest","Mild","Quiet","Bashful",
+"Rash","Calm","Gentle","Sassy","Careful","Quirky"};
+enum natureID {Hardy,Lonely,Brave,Adamant,Naughty,Bold,Docile,
+Relaxed,Impish,Lax,Timid,Hasty,Serious,Jolly,Naive,Modest,Mild,
+Quiet,Bashful,Rash,Calm,Gentle,Sassy,Careful,Quirky};
 
 enum class WantedShininess
   {
@@ -18,6 +18,12 @@ enum class WantedShininess
     shiny,
     any
   };
+enum gender
+{
+  Male = 0,
+  Female,
+  AnyGender
+};
 static const std::array<std::array<int, 2>, 10> s_quickBattleTeamMaxBaseHPStat = {{{{322, 340}},
                                                                                    {{310, 290}},
                                                                                    {{210, 620}},
@@ -102,18 +108,18 @@ void condensedGenerateMon (PokemonProperties &main, u32 &seed, int genderRatio){
     main.natureIndex = PID % 25;
 }
 bool foundRunnable(PokemonProperties candidate, PokemonRequirements reqs){
-    return (
-        candidate.hpIV >= reqs.hpIV &&
-        candidate.atkIV >= reqs.atkIV &&
-        candidate.defIV >= reqs.defIV &&
-        candidate.spAtkIV >= reqs.spAtkIV &&
-        candidate.spDefIV >= reqs.spDefIV &&
-        candidate.speedIV >= reqs.speedIV &&
-        candidate.hiddenPowerPower >= reqs.hiddenPowerPower &&
-        reqs.validHPTypes[candidate.hiddenPowerTypeIndex] &&
-        reqs.validNatures[candidate.natureIndex] && 
-        reqs.isShiny == candidate.isShiny
-    );
+  return (
+    candidate.hpIV >= reqs.hpIV &&
+    candidate.atkIV >= reqs.atkIV &&
+    candidate.defIV >= reqs.defIV &&
+    candidate.spAtkIV >= reqs.spAtkIV &&
+    candidate.spDefIV >= reqs.spDefIV &&
+    candidate.speedIV >= reqs.speedIV &&
+    candidate.hiddenPowerPower >= reqs.hiddenPowerPower &&
+    reqs.validHPTypes[candidate.hiddenPowerTypeIndex] &&
+    reqs.validNatures[candidate.natureIndex] && 
+    (reqs.isShiny == 2 || reqs.isShiny == candidate.isShiny)
+  );
 }
 void determineFinalInstructions(int instructions[4], int &remainingCalls){
   //ASSUMES EVEN
@@ -376,22 +382,78 @@ u32 getInputSeed(){
   return userSeed;
 }
 
+bool getReqString(int n){
+  bool workingItem[n];
+  std::string inputStr;
+  std::cout << "Enter acceptable terms(s): \n";
+  bool allStringsEntered = false;
+  int sizeOfLoop = 25;
+  std::cout << "type the name of the requirement, or enter 'any' to accept all natures: ";
+  while (!allStringsEntered){
+    getline(std::cin,inputStr);
+    formatCase(inputStr,lower);
+    inputStr.at(0) = toupper(inputStr.at(0)); //capitalize
+    std::cout << "item entered: " << inputStr << std::endl;
+
+    //exit statements:
+    if (inputStr == "Done"){
+      allStringsEntered = true;
+    } else if (inputStr == "Any"){
+      for (int i = 0; i < n; i++)
+      {
+        workingItem[i] = true;
+        allStringsEntered = true;
+      }
+    } else {
+      bool foundAny = false;
+      for (int i = 0; i < n; i++)
+      {
+        if (inputStr == naturesList[i]){
+          std::cout <<"Added "<< naturesList[i] <<"!\n";
+          foundAny = true;
+          workingItem[i] = true;
+        }
+      }
+      if (!foundAny){
+        std::cout << "Nature not found - invalid input.";
+      }
+      std::cout << "Enter more items or use commands 'Any' or 'Done': ";
+      int full = 0;
+      for (int i = 0; i < n; i++)
+      {
+        if (workingItem[i] == true){
+          full++;
+        }
+      }
+      if (full == n){
+        std::cout << "You really took the time to manually enter every nature/hidden power...wow." 
+        <<"fine! all natures/hidden powers are enabled, moving on.";
+        allStringsEntered = true;
+      }
+    }
+  }
+
+  return workingItem;
+}
+
 PokemonRequirements setPokeReqs(){
   PokemonRequirements inputReqs;
   std::vector<std::string> strReqs = {"HP","ATK","DEF","SPA","SPD","SPE"};
   std::vector<int>IVreqs;
   unsigned int IV = 0;
+  //do I really need to cleanse non-numeric inputs...
   std::string Nature;
   std::string IVInput = "";
   //save these to a config file for later access?
   std::cout << "~~~~~~~~~~~SETUP REQUIREMENTS~~~~~~~~~~~\n\n";
   //first, IVS
   for (int i = 0; i < 6; i++)
+  //Add support for Any and Done commands
   {
     std::cout << "Enter minimum " << strReqs.at(i) << " IV: ";
     std::cin >> IV;
     while (IV < 0 || IV > 31){
-      std::cout << "Invalid input, try again: ";
+      std::cout << "Invalid input, please try again: ";
       std::cin >> IV;
     }
     switch (i)
@@ -427,6 +489,8 @@ PokemonRequirements setPokeReqs(){
   << inputReqs.spAtkIV << "/"
   << inputReqs.spDefIV << "/"
   << inputReqs.speedIV << "\n";
+  
+  
   std::cout << "Enter acceptable nature(s): \n";
   bool allNaturesEntered = false;
   std::string inputNature = "";
@@ -473,42 +537,119 @@ PokemonRequirements setPokeReqs(){
         allNaturesEntered = true;
       }
     }
-
-
-    
-        
-
-
-
   }
   //next Hidden Power Type and strength
+  //one day implement a way to filter for seperate HP strengths for different HPs. 
+  //i.e 68 for psychic and 65 for electric or something.
+  //would need to restructure pokereqs a bit.
+  std::cout << "Natures entered successfully!\n";
+  std::cout << "Enter acceptable nature(s): \n";
+  bool allHPTypesEntered = false;
+  std::string inputHPT = "";
+  std::cout << "type the name of a nature, or enter 'any' to accept all natures: ";
+  while (!allHPTypesEntered){
+    getline(std::cin,inputHPT);
+    formatCase(inputHPT,lower);
+    inputHPT.at(0) = toupper(inputHPT.at(0)); //capitalize
+    std::cout << "HPT entered: " << inputHPT << std::endl;
 
+    //exit statements:
+    if (inputHPT == "Done"){
+      allHPTypesEntered = true;
+    } else if (inputHPT == "Any"){
+      for (int i = 0; i < 25; i++)
+      {
+        inputReqs.validHPTypes[i] = true;
+        allHPTypesEntered = true;
+      }
+    } else {
+      bool foundAny = false;
+      for (int i = 0; i < 25; i++)
+      {
+        if (inputHPT == hpTypes[i]){
+          std::cout <<"Added "<< hpTypes[i] <<"!\n";
+          foundAny = true;
+          inputReqs.validHPTypes[i] = true;
+        }
+      }
+      if (!foundAny){
+        std::cout << "Hidden Power Type not found - invalid input.";
+      }
+      std::cout << "Enter more types or use commands 'Any' or 'Done': ";
+      int full = 0;
+      for (int i = 0; i < 16; i++)
+      {
+        if (inputReqs.validHPTypes[i] == true){
+          full++;
+        }
+      }
+      if (full == 16){
+        std::cout << "You really took the time to manually enter every Hidden Power type...wow." 
+        <<"fine! all HPs are enabled, moving on.";
+        allHPTypesEntered = true;
+      }
+    }
+  }
+//Now to select power
+  int inputPower = 0;
+  std::cout << "Enter minimum strength of Hidden Power";
+  std::cin >> inputPower;
+  while(inputPower < 0 || inputPower > 70){
+    std::cout << "Invalid input, please try again: ";
+    std::cin >> inputPower;
+  }
+  inputReqs.hiddenPowerPower = inputPower;
+  std::cout << "HPP entered: " << inputReqs.hiddenPowerPower;
+  std::cin.get();
   //next gender
-
+  std::string inputGender = "";
+  std::cout << "Want to choose a specific gender? Type Male or M, Female or F, or leave blank: ";
+  getline(std::cin,inputGender);
+  formatCase(inputGender,lower);
+  inputGender.at(0) = toupper(inputGender.at(0));
+  if (inputGender == "Male" || inputGender == "M"){
+    inputReqs.genderIndex = 0;
+  } else if (inputGender == "Female" || inputGender == "F"){
+    inputReqs.genderIndex = 1;
+  } else {
+    inputReqs.genderIndex = 2;
+  }
+  std::cout << "gender entered succesfully!\n";
   //finally shinystatus
+  std::string inputShiny = "";
+  std::cout << "Want the target to be shiny? enter Yes, No, or Any:";
+  getline(std::cin,inputShiny);
+  formatCase(inputShiny,lower);
+  inputShiny.at(0) = toupper(inputShiny.at(0));
+  if (inputShiny == "No" || inputShiny == "N"){
+    inputReqs.isShiny = 0;
+  } else if (inputShiny == "Yes" || inputShiny == "Y"){
+    inputReqs.isShiny = 1;
+  } else {
+    inputReqs.isShiny = 2;
+  }
   
-  
-
-
+  std::cout << "All requirements recorded! Good luck!\n"
+  << "Returning to command entry.";
 
   return inputReqs;
 
 }
 
 int main(){
-    
     const int namingValue = 2;
     const int rumbleValue = 40; //note in colo this is 20 calls instead.
     const int memcardValue = 1009;
     std::vector<int> m_criteria = {-1, -1, -1, -1, -1, -1};
     u32 userInputRerollSeed = 0x0;
-    u32 seed;
+    u32 seed = 0x0;
     u32 listingSeed = seed;
     u32 titleSeed = 0x0;
     u32 debugSeed = 0;
     int instructions[4] = {0,0,0,0};
     const int eeveeGenderRatio = 0x1F;
     std::string commands[255] = {"Reject","Restore","Reset","Settings","Skip"};
+    std::string currentCommand = "";
 
     PokemonProperties eevee;
     PokemonRequirements requirements;
@@ -528,7 +669,9 @@ int main(){
 
     userInputRerollSeed = getInputSeed();
     seed = userInputRerollSeed;
-    requirements = setPokeReqs();
+    requirements = setPokeReqs(); //What a chonky function.
+    bool searchActive = true;
+
     // if (userInputRerollSeed == seed){
     //   std::cout << "Passed input check!";
     // } else {
@@ -536,7 +679,7 @@ int main(){
     //   << "\nWhile inputted string is: " << std::hex << userInputRerollSeed;
       
     // }
-
+  while(searchActive){
     //search for runnable eevee.
     while(!foundRunnable(eevee,requirements)){
         listingSeed = LCG(seed);
@@ -668,10 +811,20 @@ while(rem > 0){
     std::cout << std::hex << LCGn(debugSeed,memcardValue*instructions[0]);
     std::cout << "\n" << LCGn(debugSeed,rumbleValue*instructions[1]);
     std::cout << "\n" << LCGn(debugSeed,namingValue*instructions[2]);
-    
+    std::cout << "\n\n";
 
-    //temp measure
-    // system("pause");
+    std::cout <<"Search for another eevee? Type 'Reject' to continue searching.\nThe current result will be saved.";
+    getline(std::cin,currentCommand);
+    formatCase(currentCommand,lower);
+    currentCommand.at(0) = toupper(currentCommand.at(0));
+    if (currentCommand != "Reject"){
+      searchActive = false;
+    } else {
+
+    }
+    //process other commands.
+    
+}
     std::cout << "\n\nEnter any key to exit...\n";
     getchar();
     return 0;
