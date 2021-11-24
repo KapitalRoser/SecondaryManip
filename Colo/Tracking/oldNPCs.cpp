@@ -69,9 +69,9 @@ double computeAngle(float &intendedX, float &intendedY,double anchorX, double an
     //hopefully we don't need to track turn frames...
     const double absurdlySpecificNumber = 0.000000000000000122464679914735320717376402945839660462569212467758006379625612680683843791484832763671875;
     
-    double preAngle1 = anchorX - intendedX; //No proof on this, just a hunch
-    double preAngle2 = anchorY - intendedY; //need abs?
-    double workingAngle = atan(preAngle1/preAngle2);
+    double preAngle1 = abs(anchorX - intendedX); //No proof on this, just a hunch
+    double preAngle2 = abs(anchorY - intendedY); //need abs?
+    double workingAngle = atan(abs(preAngle1/preAngle2));
 
     //Some kind of angle adjustment - possibly running into wall fix?
     if (adjustmentNeeded){
@@ -113,21 +113,13 @@ void takeStep (float &nextXPos, float &nextYPos,double intervalValueX, double in
       }
       nextXPos = intervalValueX * factor + nextXPos;
       nextYPos = intervalValueY * factor + nextYPos;
-     
+      
       //debug:
+      std::cout << "INTERVAL X: "<< intervalValueX << "\nINTERVAL Y: " << intervalValueY;
       std::cout << std::endl << "Next X POS: " << std::setprecision(17) << nextXPos << std::endl;
       std::cout << "Next Y POS: " << nextYPos << std::endl;
 }
-bool checkArrived (double angleInput,float nextXPos, float nextYPos){
-    if (angleInput < 1.5 && angleInput >= 0){
-    return true; //South-East
-    }
 
-
-
-
-    return false;
-}
 
 int main(){
 
@@ -142,7 +134,7 @@ int main(){
     
       //~~~~~~~~~~~~~~ CONFIG ~~~~~~~~~~~~~~~
     int cycleCount = 1;
-    uint32_t seed = 0x20FF71DA; //INITIAL SEED 
+    uint32_t seed = 0x20FF71DA; //INITIAL SEED  -- KR Seed: 20ff71DA -- matches emu behaviour exactly.
     const double anchorX = 4; //Starting Location 
     const double anchorY = 24;
     bool adjustmentNeeded = 0;
@@ -170,35 +162,13 @@ int main(){
     angleInput = computeAngle(intendedX,intendedY,anchorX,anchorY,adjustmentNeeded,altPiApprox); //Walking angle
     
     computeInterval(angleInput,intervalValueX,intervalValueY);
-
-    //will always be at least one step right? surely the minimum distance is >= one step?
     takeStep(nextXPos,nextYPos,intervalValueX,intervalValueY,true);  //first step
 
    //Calculate the actual steps.
     int framesWalked = 0;
-
-    //the 4 situations
-    if (angleInput < 1.5 && angleInput >= 0){
-
-        while(nextXPos <= intendedX && nextYPos <= intendedY);
-
-    } else if (angleInput >= 1.5){
-
-    } else if (angleInput > -1.5 && angleInput < 0){
-
-    } else if (angleInput < -1.5){
-        
-    }
-
-
-    bool arrived = false;
-    //insert additional check here?
-
-
-    while(!arrived){
+    while(nextXPos <= intendedX && nextYPos <= intendedY){
       takeStep(nextXPos,nextYPos,intervalValueX,intervalValueY,false);
       framesWalked++;
-
       //movement occurs once per 30fps frame
     }
     

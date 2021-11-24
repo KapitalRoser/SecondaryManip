@@ -24,7 +24,7 @@ float stupidFloatRounding(float inputF12,float inputF10,float inputF9){
 
       return -(inputF12*factor1 - subtrahend);
 }
-void InitialXY(float &intendedX, float &intendedY, u32 &seed, int divisor, double loosePiApprox, double anchorX, double anchorY){
+void InitialXY(float &intendedX, float &intendedY, u32 &seed, int divisor, double loosePiApprox, double anchorX, double anchorY, float &distanceX,float &distanceY){
     float fworkingX = 0;
     double dworkingX = 0; //Stupid rounding smh, makes a difference.
     //Initial Arithmetic
@@ -34,12 +34,15 @@ void InitialXY(float &intendedX, float &intendedY, u32 &seed, int divisor, doubl
     dworkingX = fworkingX;  //F31 copy
 
     dworkingX = sin(dworkingX);
-    intendedX = dworkingX * 15; //Memaddr 0x8048e60c
+    intendedX = dworkingX * 15; 
     
     dworkingX = fworkingX; //Restore from copy
    
     dworkingX = cos(dworkingX);
-    intendedY = dworkingX*15;  //MemAddr 0x
+    intendedY = dworkingX*15; 
+
+    distanceX = intendedX; //in the code the anchor addition happens first.
+    distanceY = intendedY;
     
     intendedX += anchorX; //anchors are const.
     intendedY += anchorY;
@@ -47,6 +50,11 @@ void InitialXY(float &intendedX, float &intendedY, u32 &seed, int divisor, doubl
     //Done!
     std::cout << "NEW X POS: " << std::setprecision(17) << intendedX << std::endl;
     std::cout << "NEW Y POS: " << std::setprecision(17) << intendedY << std::endl;
+    
+    //some psvec subtraction equation here?
+    
+
+
 }
 void walkTimerCalculation(u32 &seed, int factorTime, int baseTimeS,float timer1,int divisor, int currentCycle){
     double firstCallX = 0;
@@ -67,18 +75,22 @@ void walkTimerCalculation(u32 &seed, int factorTime, int baseTimeS,float timer1,
 }
 double computeAngle(float &intendedX, float &intendedY,double anchorX, double anchorY,bool adjustmentNeeded,double altPiApprox){
     //hopefully we don't need to track turn frames...
-    const double absurdlySpecificNumber = 0.000000000000000122464679914735320717376402945839660462569212467758006379625612680683843791484832763671875;
-    
-    double preAngle1 = abs(anchorX - intendedX); //No proof on this, just a hunch
-    double preAngle2 = abs(anchorY - intendedY); //need abs?
-    double workingAngle = atan(abs(preAngle1/preAngle2));
+    const double sinPI = 0.000000000000000122464679914735320717376402945839660462569212467758006379625612680683843791484832763671875;
+    //THIS IS A CONSTANT???????? -- Are we absolutely sure this makes a difference, and that we cannot approximate this to 0?
+
+
+    double preAngle1 = anchorX - intendedX; //No proof on this, just a hunch
+    double preAngle2 = anchorY - intendedY; //need abs?
+    double workingAngle = atan(preAngle1/preAngle2); // -- has ABS before ATAN in the code.
+
 
     //Some kind of angle adjustment - possibly running into wall fix?
     if (adjustmentNeeded){
-    workingAngle -= absurdlySpecificNumber;
+    workingAngle -= sinPI;
     workingAngle = altPiApprox - workingAngle; 
     }
     //alt pi (double) is better than float pi here. seriously.
+
 
     float wAngleAsFloat = static_cast<float>(workingAngle);
     double returnAngle =  wAngleAsFloat; //3B6E C2CD
@@ -98,7 +110,8 @@ void computeInterval(double angleInput, double &intervalValueX, double &interval
     float factorA = sinResult; //C2C3 --- Variable. addr: 0x8048e568
     float factorB = cosResult; //FE4 --- Variable. addr:  0x8048E570
 
-    //Reference function: zz_800dfeec_, lot of math here boils down to just this:
+    //Reference function: zz_800dfeec_, findLinePolynomial -- This is finding the tangent line of a polynomial. 
+    //lot of math here boils down to just this:
     intervalValueX = 2*factorA*factorB*factorC; // I'll be damned
     intervalValueY = stupidFloatRounding(factorA,factorC,factorB);
 
@@ -113,10 +126,10 @@ void takeStep (float &nextXPos, float &nextYPos,double intervalValueX, double in
       }
       nextXPos = intervalValueX * factor + nextXPos;
       nextYPos = intervalValueY * factor + nextYPos;
-     
+      
       //debug:
-      std::cout << std::endl << "Next X POS: " << std::setprecision(17) << nextXPos << std::endl;
-      std::cout << "Next Y POS: " << nextYPos << std::endl;
+    //   std::cout << std::endl << "Next X POS: " << std::setprecision(17) << nextXPos << std::endl;
+    //   std::cout << "Next Y POS: " << nextYPos << std::endl;
 }
 
 
@@ -133,7 +146,7 @@ int main(){
     
       //~~~~~~~~~~~~~~ CONFIG ~~~~~~~~~~~~~~~
     int cycleCount = 1;
-    uint32_t seed = 0x20FF71DA; //INITIAL SEED 
+    uint32_t seed = 0x20FF71DA; //INITIAL SEED  -- KR Seed: 20ff71DA -- matches emu behaviour exactly.
     const double anchorX = 4; //Starting Location 
     const double anchorY = 24;
     bool adjustmentNeeded = 0;
@@ -149,6 +162,8 @@ int main(){
     double intervalValueX = 0; //Why are these set values?
     double intervalValueY = 0;
     double angleInput = 0;
+    float distanceX = 0;
+    float distanceY = 0;
 
     //phenac grandma pink = -140, -10
 
@@ -156,16 +171,18 @@ int main(){
 
     for (int i = 0; i<cycleCount;i++){
 
-    InitialXY(intendedX,intendedY,seed,divisor,loosePiApprox,anchorX,anchorY); //Rolls RNG to find a destination, affects intendedX and intendedY
-    
+    InitialXY(intendedX,intendedY,seed,divisor,loosePiApprox,anchorX,anchorY,distanceX,distanceY); //Rolls RNG to find a destination, affects intendedX and intendedY
     angleInput = computeAngle(intendedX,intendedY,anchorX,anchorY,adjustmentNeeded,altPiApprox); //Walking angle
-    
+    //This is where stop logic happens. BEFORE NPC Purple, where step is taken.
     computeInterval(angleInput,intervalValueX,intervalValueY);
     takeStep(nextXPos,nextYPos,intervalValueX,intervalValueY,true);  //first step
 
    //Calculate the actual steps.
     int framesWalked = 0;
-    while(nextXPos <= intendedX && nextYPos <= intendedY){
+    //This condition statement depends on the angle and the destination.
+    //How does the game code do it?
+    
+    while(abs(nextXPos) <= abs(intendedX) && abs(nextYPos) <= abs(intendedY)){
       takeStep(nextXPos,nextYPos,intervalValueX,intervalValueY,false);
       framesWalked++;
       //movement occurs once per 30fps frame
@@ -188,29 +205,125 @@ int main(){
 }
     /*
 
+NEW DOCUMENTATION:
+
+
+
+D'aww, GS decided to refer to NPC data as "People groups".
+
+
+PSVEC function loads the anchor positions, plus a value for x and a value for y.
+Second PSVEC does some subtraction to recover and store the DISTANCE from the anchor
+ie. 24, find distance +4. PSVEC Add finds 28, PSVEC Subtract finds +4.
+
+Adds angle + 2*Pi together and passes to FMOD.
+
+WALKING FUNCTION IS GOVERNED BY A FLAG
+This flag can be 0, 1 or 2.
+if == 0, not moving.
+if == 1, begin movement (calls rng, determines coords etc.)
+if == 2, is moving.
+see: 80184e5c -- r31 + 0x55
+
+
+80184dec -- THIS IS WHERE TIMER IS CHECKED. 
+Timer is reduced by some amount every frame until it is negative, at which point
+it becomes 0. At which point, the condition passes and walking process begins anew.
+
+Checking starts up again once the new timer has been set. 
+
+When ENDING WALK
+Checks for r3 == 1, NOT r3 == 2!!
+if R3 == 2, then NPC snaps to destination 
+
+Inside calc Interval function, the end walk stuff is checked and r3 is set.
+
+Seems like a A <= B, == 0, else == 1,
+and what A and B are is determined by some other functions in NPCRed2/NPCDetermineReached.
+
+
+both variables A and B are related to distance.
+if A is <= B, continue walking,
+else trigger stop.
+
+Subtracts interval from distance until some condition where roughly, distance on both axis == 0.
+How it knows to stop at 0 idk.
+
+Before NPC Purple, a quatSlerp() with a PSVec subtract occurs, returning a float of the destination x and y positions.
+f2 = X and f3 = Y, f1 is still angle. 
+f0 is 1,
+f4 = anchor X or Current Real Position X
+f5 = anchor Y or Current Real Position Y
+f6 = distance X 
+f7 = distance Y
+The rest is garbage data.
+
+
+
+
+800a3b38 -- func that determines A and B -- some form of vector math but not labelled by default so here we go.
+takes param at addr in r3, == distance X.
+muls f0 -- r3^2
+b = takes param r3+8, a float two words after first value - distance Y
+b = b^2 + A
+
+*note that because this is paired singles math, there exists some data on the right hand side from earlier
+
+PS MATH UGH
+
+P1(Left) = P1(left) + P0(right)
+P1(Right) = P0(right)
+
+in one example, after the fmul and fmadd this looks like
+A:
+-15^2 | -2500^2
+= 250 | 6250000
+B:
+-34 ^2 | -34^2
+= 1133 | 1133
+
+250+1133 = 1433
+6250000 + 1133 = 6250000 -- never used
+
+Then:
+1433 + 6250000 = 6251433
+P1(right) is overwritten with 6250000
+so final:
+6251433 | 6250000
+
+equation so far: 
+B(left) = A^2 + B^2 + A(right)
+B(right) = A(right).
+Next:
+num = 1 / sqrt(B(left)) -- small number of some kind.
+num^2
+num * 0.5
+
+Full equation:
+-((1/sqrt(A(left)^2 + B(left)^2 + C))^2 * (A(L)^2 + B(L)^2 + C) - 3) * (1/sqrt(A(L)^2+B(L)^2 + C))/2 * (A(L)^2 + B(L)^2 + C)
+
+
+PSVECSUB:
+Load destination X
+load 4 (probably CurrentX [or anchorx])
+destination X - 4 [does this create distance X?]
+
+
+
+THE IDEA:
+
+Take combined distance before and after taking a step.
+
+IF OUR STEP THAT WE TOOK DID NOT DECREASE OUR DISTANCE TO THE TARGET (in either x or y),
+THEN WE OVERSHOT AND MUST STOP.
+
+Yay figured it out, now gotta code the combination function for distance.
+
+~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+OLD DOCUMENTATION:
 
 Keep an eye out for 4081BFAD intended x pos
 and 421BFFE6 intended y pos
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -485,7 +598,7 @@ Places input B (FE4) in 0x8048E570
 
     f1 gets COS'ed and put back in f1,
     1 - F1 = F0
-    Load 15 again into F0
+    Load 15 again into F0 -- this a constant, verify at 0x80184e94
     preps some addresses in the parameter registers 3/4/5
 
     F0 = F0*X same as above

@@ -102,47 +102,7 @@ int main(){
     bool trackSteps = true;
     bool trackNPCs = true;
     int numCallsPerStep = 1;
-    /*
-    So in setupPrecursorToStep, a loop runs through up to 8 functions related to steps, including increment step.
-    It loads 8 ptr, and if it isn't empty, it jumps to the code that it points to. In some cases, 2 seperate addresses hold
-    a ptr to the roll step rng function, hence two calls. However in other cases the 2nd ptr is empty instead, creating 1 call instead.
-    Now the question is why doesn't this address get a copy of the pointer? And what exactly fills this memory in in the first place?
-    
-    DUDE ITS THE MEMORY CARD! THIS APPLIES TO XD AS WELL!
-    see function: 8012bde0
-    Basically this function handles an array of ptrs to functions relating to the step rng. 
-    It has a size of 8 floats but is designed to hold 8 words as ptrs. 
-    All this function does is check the array for the first available spot, then adds the pointer to call step rng.
-    This function in theory only gets called at new game, so it is intended to call rng once.
-    HOWEVER
-    if you do not have a valid save file (so either memory card has no save, or there is no memory card inserted)
-    then it will call the function at the main menu! When you select new game and hit that call, the function doesn't check 
-    what is IN the 8 function slots so it adds the step rng function again.
-    Meaning there are now 2 calls to rng when you take a step.
 
-    Moreover if you have removed your memory card, you can exit to the main menu and each time you say yes to "continue without saving",
-    you will ADD a ptr to this array! each time! It holds a maximum of 8 functions and 3 are used by other stuff so you end
-    up with a maximum of 5 rng calls per step. 
-    Note that if you do at least one of these additions, 
-    say by: having no memcard, continue without saving, re-insert memory card with valid save. Then back out to title
-    screen, and then press a to have the game find the memory card. 
-    You can now enter that save file and have your X rng calls per step, where you would normally have none.
-
-    While new game calls the push function, the continue screen in both games doesn't.
-
-    TO SUMMARIZE:
-    Continue with valid save on memory card: 0 calls per step.
-    New game with valid save on memory card: 1 call per step.
-
-      continue not possible from here unless re-inserting valid memcard save.
-    new game without valid save OR no memory card: 2 calls per step.
-    new game without memory card, + exiting and re-entering title screen X times: X calls (+1 if new game, +0 if continue) 
-      up to total of 5 calls per step.
-
-
-    
-    */
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     const int QUIL_GENDER_RATIO = 0x1F;
     
     const int MIN_FRAMES_BEFORE_A_PRESS = 440; //440 Assuming standard buffered movement. (down-right -> right).
@@ -363,3 +323,47 @@ int main(){
       //     }
       //   }
       // }
+
+          /*
+  
+
+    So in setupPrecursorToStep, a loop runs through up to 8 functions related to steps, including increment step.
+    It loads 8 ptr, and if it isn't empty, it jumps to the code that it points to. In some cases, 2 seperate addresses hold
+    a ptr to the roll step rng function, hence two calls. However in other cases the 2nd ptr is empty instead, creating 1 call instead.
+    Now the question is why doesn't this address get a copy of the pointer? And what exactly fills this memory in in the first place?
+    
+    DUDE ITS THE MEMORY CARD! THIS APPLIES TO XD AS WELL!
+    see function: 8012bde0
+    Basically this function handles an array of ptrs to functions relating to the step rng. 
+    It has a size of 8 floats but is designed to hold 8 words as ptrs. 
+    All this function does is check the array for the first available spot, then adds the pointer to call step rng.
+    This function in theory only gets called at new game, so it is intended to call rng once.
+    HOWEVER
+    if you do not have a valid save file (so either memory card has no save, or there is no memory card inserted)
+    then it will call the function at the main menu! When you select new game and hit that call, the function doesn't check 
+    what is IN the 8 function slots so it adds the step rng function again.
+    Meaning there are now 2 calls to rng when you take a step.
+
+    Moreover if you have removed your memory card, you can exit to the main menu and each time you say yes to "continue without saving",
+    you will ADD a ptr to this array! each time! It holds a maximum of 8 functions and 3 are used by other stuff so you end
+    up with a maximum of 5 rng calls per step. 
+    Note that if you do at least one of these additions, 
+    say by: having no memcard, continue without saving, re-insert memory card with valid save. Then back out to title
+    screen, and then press a to have the game find the memory card. 
+    You can now enter that save file and have your X rng calls per step, where you would normally have none.
+
+    While new game calls the push function, the continue screen in both games doesn't.
+
+    TO SUMMARIZE:
+    Continue with valid save on memory card: 0 calls per step.
+    New game with valid save on memory card: 1 call per step.
+
+      continue not possible from here unless re-inserting valid memcard save.
+    new game without valid save OR no memory card: 2 calls per step.
+    new game without memory card, + exiting and re-entering title screen X times: X calls (+1 if new game, +0 if continue) 
+      up to total of 5 calls per step.
+
+
+    
+    */
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
