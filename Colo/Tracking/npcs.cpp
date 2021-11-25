@@ -57,18 +57,15 @@ void InitialXY(float &intendedX, float &intendedY, u32 &seed, int divisor, doubl
 
 }
 void walkTimerCalculation(u32 &seed, int factorTime, int baseTimeS,float timer1,int divisor, int currentCycle){
-    double firstCallX = 0;
-    double secondCallX = 0;
-    double cycleVariance = 0;
-    const float fps30 = 1.0/30;
-    const float fps60 = 1.0/60;
     //Processing:
-    firstCallX = pullHi16(seed,divisor);
-    secondCallX = pullHi16(seed,divisor);
-    cycleVariance = firstCallX + secondCallX - 1;
+    double firstCallX = pullHi16(seed,divisor);
+    double secondCallX = pullHi16(seed,divisor);
+    double cycleVariance = firstCallX + secondCallX - 1;
     timer1 = cycleVariance * factorTime + baseTimeS;
 
     //Display
+    const float fps30 = 1.0/30;
+    const float fps60 = 1.0/60;
     std::cout << "Cycle: " << currentCycle << ": Timer1 is: " << std::setprecision(17) << timer1 << std::endl;
     std::cout << "At 60fps, this is: " << round(timer1/fps60) << " frames.\n";
     std::cout << "At 30fps, this is: " << round(timer1/fps30) << " frames.\n";
@@ -76,7 +73,7 @@ void walkTimerCalculation(u32 &seed, int factorTime, int baseTimeS,float timer1,
 double computeAngle(float &intendedX, float &intendedY,double anchorX, double anchorY,bool adjustmentNeeded,double altPiApprox){
     //hopefully we don't need to track turn frames...
     const double sinPI = 0.000000000000000122464679914735320717376402945839660462569212467758006379625612680683843791484832763671875;
-    //THIS IS A CONSTANT???????? -- Are we absolutely sure this makes a difference, and that we cannot approximate this to 0?
+    //THIS IS A CONSTANT???????? LOL -- Are we absolutely sure this makes a difference, and that we cannot approximate this to 0?
 
 
     double preAngle1 = anchorX - intendedX; //No proof on this, just a hunch
@@ -300,8 +297,10 @@ num^2
 num * 0.5
 
 Full equation:
--((1/sqrt(A(left)^2 + B(left)^2 + C))^2 * (A(L)^2 + B(L)^2 + C) - 3) * (1/sqrt(A(L)^2+B(L)^2 + C))/2 * (A(L)^2 + B(L)^2 + C)
+-((1/sqrt(A^2 + B^2))^2 * (A^2 + B^2) - 3) * (1/sqrt(A^2+B^2))/2 * (A^2 + B^2)
 
+-((1/sqrt(sumSq))^2 * (sumSq) - 3) * (1/sqrt(sumSq))/2 * (sumSq)
+-((fracSumSq)^2 * sumSq - 3) * (fracSumSq / 2) * sumSq
 
 PSVECSUB:
 Load destination X
