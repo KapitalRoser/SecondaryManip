@@ -3,11 +3,8 @@
 
 
 float combineDistance (float distanceX, float distanceY){
-
     //Decent function, can occasionally round a bit off, has something to do with the precision of 1/sqrt(sumSq),
-    //but not sure how to fix. Can result in exactly 1 byte being off
-    //ex: 41700001 vs 41700000
-    //does double vs float make things more or less accurate?
+    //but not sure how to fix. Can result in exactly 1 byte being off ex: 41700001 vs 41700000
     double sumSq = (distanceX*distanceX) + (distanceY*distanceY);
     double fractional = 1/sqrt(sumSq);
     double fractionalSq = fractional*fractional;
@@ -37,16 +34,17 @@ int main(){
         do
         {
         i++;
-        
         preStepDistance = combineDistance(distanceX,distanceY); 
         distanceX = abs(distanceX) - 0.27577400207519531; //factor x2 gets correct number of frames.
         distanceY = abs(distanceY) - 0.090751789510250092; //occasionally, step gets applied twice?
-        // if (i == 1){//Why are some steps skipped?
+        // currentPosX += -0.27577400207519531;
+        // currentPosY += 0.090751789510250092;
+        // if (i == 2){//Why are some steps skipped?
         //     distanceX = abs(distanceX) - 0.27577400207519531;
         //     distanceY = abs(distanceY) - 0.090751789510250092; 
         // }
         postStepDistance = combineDistance(distanceX,distanceY);
-        
+        //std::cout << "X: " << currentPosX << ". Y: " << currentPosY << std::endl;
         std::cout << "Step reduced distance, Continue!\n";
         } while (postStepDistance <= preStepDistance);
         std::cout << "Step did not reduce distance, Stop!\nSteps taken: " << i;

@@ -10,6 +10,7 @@
 #include <numeric>
 #include <cmath>
 #include <math.h>
+#include <stdio.h>
 
 
 //TODO: before launching, move this into the game specific folders and update the paths.
