@@ -1,6 +1,5 @@
 #include "../../processCore.h"
 
-
 double pullHi16 (uint32_t &seed, int divisor){
     double X = 0;
     LCG(seed);

@@ -106,14 +106,14 @@ void computeInterval(double angleInput, double &intervalValueX, double &interval
     intervalValueY = stupidFloatRounding(factorA,factorC,factorB);
 
     //Debug:
-    std::cout << "Computed interval X: " << std::setprecision(17)<<intervalValueX << std::endl;
-    std::cout << "Computed interval Y: " << intervalValueY << std::endl;
+    //std::cout << "Computed interval X: " << std::setprecision(17)<<intervalValueX << std::endl;
+    //std::cout << "Computed interval Y: " << intervalValueY << std::endl;
 }
 void takeStep (float &nextXPos, float &nextYPos,double intervalValueX, double intervalValueY, bool initialStep){
       int factor = 2;
       if (initialStep){
           factor = 1;
-          std::cout << "FIRST XYPOS\n";
+          //std::cout << "FIRST XYPOS\n";
       }
       nextXPos = intervalValueX * factor + nextXPos;
       nextYPos = intervalValueY * factor + nextYPos;
@@ -153,7 +153,7 @@ int main(){
     const float floatPi = 3.1415927410125732;
     
     //~~~~~~~~~~~~~~ CONFIG ~~~~~~~~~~~~~~~
-    int cycleCount = 10;
+    int cycleCount = 3;
     uint32_t seed = 0x20ff71DA; //INITIAL SEED  -- KR Seed: 20ff71DA -- matches emu behaviour exactly.
     const double anchorX = 4; //Starting Location 
     const double anchorY = 24;
