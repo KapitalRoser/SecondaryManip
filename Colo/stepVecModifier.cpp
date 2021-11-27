@@ -12,7 +12,7 @@ int main(){
     std::cout << "{";
     for (unsigned int i = 0; i < quilavaSteps.size(); i++)
     {
-        quilavaSteps.at(i) = fixedSteps.at(i) + stepsOffset;
+        quilavaSteps.at(i) = pow(quilavaSteps.at(i),2);
         std::cout << quilavaSteps.at(i);
         if (i < quilavaSteps.size()-1){
          std::cout << ",";

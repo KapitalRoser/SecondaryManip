@@ -1,3 +1,6 @@
+#ifndef PROCESSCORE_H
+#define PROCESSCORE_H
+
 #include <iostream>
 #include <iomanip>
 #include <array>
@@ -140,6 +143,14 @@ u32 LCGn_BACK(u32&seed, const u32 n){
     seed = (seed * modpow32(0xB9B33155, n)) + (sum + factor) * 0xA170F641;
     return seed;
 }
+double LCG_PullHi16 (uint32_t &seed){
+    const int divisor = 65536;
+    double X = 0;
+    LCG(seed);
+    X = seed >> 16;
+    X = X/divisor;
+    return X;
+}
 float LCGPercentage(u32& seed){
   float percentResult = 0;
   u32 hiSeed = 0;
@@ -153,7 +164,7 @@ u16 rollRNGwithHiSeed(u32 &seed)
   LCG(seed);
   u16 hiSeed = seed >> 16;
   if (static_cast<double>(hiSeed) / 65536.0 < 0.1){
-    LCGn(seed, 4);
+    LCGn(seed, 4); //10% rule - if the hi 16 bits are numerically in the bottom 10%, reroll.
   }
   return hiSeed; //debugging.
 }
@@ -381,3 +392,7 @@ void debugPrintVec(std::vector<int>set){
     }
     std::cout << std::endl;
 }
+
+
+
+#endif /*PROCESSCORE_H*/

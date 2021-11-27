@@ -45,6 +45,7 @@ float walkTimerCalculation(u32 &seed,float timer1,int divisor, int currentCycle)
 float computeAngle(float &intendedX, float &intendedY,double nextX, double nextY){
     double preAngle1 = intendedX - nextX; //replace with distance?
     double preAngle2 = intendedY - nextY;
+    std::cout << "PreAngle1: " << preAngle1 << ". PreAngle2: " << preAngle1 << "\n";
      return atan2(preAngle1,preAngle2)/2;
 }
 void computeInterval(double angleInput, double &intervalValueX, double &intervalValueY){
