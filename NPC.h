@@ -1,4 +1,5 @@
 #include "processCore.h"
+enum state {WALK,WAIT,BEGIN,FINISH};
 class d_coord {
     public:
     double x,y;
@@ -44,17 +45,43 @@ class NPC {
     duration m_waitTime = duration{0};
     duration m_walkTime = duration{0};
     d_coord m_CombinedDistances = {0,0};
-
+    int m_state = BEGIN;
+    std::string m_name = "";
+    int m_ID = 0;
     public:
     //constructor
     NPC(d_coord anchor){
         setAnchor(anchor);
-        f_coord temp; //intentional double to float conversion
+        f_coord temp;
         temp.x = anchor.x;
         temp.y = anchor.y;
         setNextPos(temp);
     }
-
+    NPC(d_coord anchor,int ID){
+        setAnchor(anchor);
+        f_coord temp;
+        temp.x = anchor.x;
+        temp.y = anchor.y;
+        setNextPos(temp);
+        setID(ID);
+    }
+    NPC(d_coord anchor,std::string name){
+        setAnchor(anchor);
+        f_coord temp;
+        temp.x = anchor.x;
+        temp.y = anchor.y;
+        setNextPos(temp);
+        setName(name);
+    }
+    NPC(d_coord anchor, std::string name, int ID){
+        setAnchor(anchor);
+        f_coord temp;
+        temp.x = anchor.x;
+        temp.y = anchor.y;
+        setNextPos(temp);
+        setName(name);
+        setID(ID);
+    }
     void InitialXY(u32 &seed){
     const double loosePiApprox = 3.1415927410125732421875; //40490FDB
     const int factor = 15;
@@ -108,9 +135,11 @@ class NPC {
         double postStep = combineDistance(getDistance());
         setCombinedDistance({preStep,postStep});
         if (postStep <= preStep){
+            setWalkTime(getWalkTime().getFrames30()+1);
             return true;
         } else {
-            return false;
+            setState(FINISH);
+            return false;      
         }
 }
     float waitTimerCalculation(u32 &seed){
@@ -121,19 +150,28 @@ class NPC {
         double cycleVariance = firstCall + secondCall - 1;
         return cycleVariance * factorTime + baseTimeS; //time in seconds.
     }
+    void decrementWaitTimer(){
+        setWaitTime(getWaitTime().getFrames30()-1);
+        if (getWaitTime().getFrames30() <= 0){
+            setState(BEGIN);
+        }
+        //alternatively decrement by a certain number of ms.
+    }
     float stupidFloatRounding(float inputF12,float inputF10,float inputF9){   
         return -(pow(inputF12,2)*inputF10 - pow(inputF9,2)*inputF10);
     }
     void beginCycle(u32 &seed){
+        setState(WALK);
         InitialXY(seed);
         setAngle(computeAngle());
         setIntervals(computeInterval());
+        setWaitTime(0);
+        setWalkTime(0);
     }
-    void finishCycle(u32 &seed,int framesWalked){
-        duration walkingFrames = duration(framesWalked);
-        setNextPos(getIntendedPos());
-        setWalkTime(walkingFrames);
+    void finishCycle(u32 &seed){
+        setState(WAIT);
         setWaitTime(waitTimerCalculation(seed));
+        setNextPos(getIntendedPos()); //account for overshoot
     }
     void printNPCData(int currentCycle){
     std::cout << "DEST X POS: " << std::setprecision(17) << getIntendedPos().x << std::endl;
@@ -168,14 +206,26 @@ class NPC {
     void setNextPos(f_coord input){
         m_nextPos = input;
     }
+    void setState (int input){
+        m_state = input;
+    }
     void setWaitTime(duration input){
         m_waitTime = input;
     }
     void setWalkTime(duration input){
         m_walkTime = input;
     }
+    void setName(std::string input){
+        m_name = input; //completely optional.
+    }
+    void setID(int input){
+        m_ID = input;
+    }
     
+    int getID(){return m_ID;}
+    int getState(){return m_state;}
     float getAngle(){return m_angle;}
+    std::string getName(){return m_name;}
     d_coord getAnchor(){return m_anchor;}
     d_coord getCombinedDistance(){return m_CombinedDistances;}
     d_coord getDistance(){
@@ -187,6 +237,6 @@ class NPC {
     duration getWaitTime(){return m_waitTime;}
     duration getWalkTime(){return m_walkTime;}
     
-
+ 
 
 };
