@@ -31,21 +31,29 @@ std::string npcAction(u32 &seed,NPC &npc, int i){
                 factor = 5;
             }
              npc.incrementPosition(factor);
+             if (npc.getState() == FINISH){
+                action = npc.getName() + " fin!";
+                npc.finishCycle(seed);
+             }
             break;
         case WAIT:
             action = "--";
             npc.decrementWaitTimer();
+            if (npc.getState()){
+                action = npc.getName() + " beg!";
+                npc.beginCycle(seed);
+            }
             break;
-        case BEGIN:
-            action = npc.getName() + " began cycle!";
-            npc.beginCycle(seed);
-          //  std::cout << npc.getName() << " began!";
-            break;
-        case FINISH:
-            action = npc.getName() + " finished cycle!";
-            npc.finishCycle(seed);
-          //  std::cout << "finished!";
-            break;
+        // case BEGIN:
+        //     action = npc.getName() + " began cycle!";
+        //     npc.beginCycle(seed);
+        //   //  std::cout << npc.getName() << " began!";
+        //     break;
+        // case FINISH:
+        //     action = npc.getName() + " finished cycle!";
+        //     npc.finishCycle(seed);
+        //   //  std::cout << "finished!";
+        //     break;
         default:
             std::cout << "STATE INVALID!";
             break;
@@ -93,7 +101,7 @@ int main(){
     u32 seed = inputSeed;
     //Define all NPCs.
     //int cycleCount = 3;
-    //NPC redGirl = NPC({4,24}); //Yes NPCs have Z value but not used for wandering, only xy matter.
+    NPC redGirl = NPC({4,24},"RedGirl"); //Yes NPCs have Z value but not used for wandering, only xy matter.
 
     //PHENAC NPCS LOAD IN THIS ORDER:
     NPC punk = NPC({85,-150},"Punk");
@@ -118,10 +126,16 @@ int main(){
     //NPCs:
 
     std::string action = "";
-    outF << std::setw(3) << 0 << ": ";
-    for(unsigned int j = 0; j < npcSet.size(); j++){
-        action += npcAction(seed,npcSet.at(j),0);
+    for (unsigned int i = 0; i < npcSet.size(); i++)
+    {
+        npcSet[i].beginCycle(seed);
+        outF << npcSet[i].getName() << " began cycle!";
     }
+    
+    // outF << std::setw(3) << 0 << ": ";
+    // for(unsigned int j = 0; j < npcSet.size(); j++){
+    //     action += npcAction(seed,npcSet.at(j),0);
+    // }
     //Output
     outF << action;
     outF << std::hex << " : " << seed << " : " << std::dec;
@@ -129,19 +143,19 @@ int main(){
 
     npcSet.erase(npcSet.begin()+1,npcSet.end());
 
-    for (int i = 1; i < frameWindow; i++)
+    for (int i = 0; i < frameWindow; i++)
     {   
         //hypothesis is correct --
         // Npcs resolve in order, and background happens first, then player, then NPCs.
         
         //background
-        rollBackground(seed,i-1,version);
+        rollBackground(seed,i,version);
 
 
         //Player's steps
         bool step = false;
         u32 outSeed = seed;
-        if (std::binary_search(quilavaSteps.begin(),quilavaSteps.end(),i+1)){
+        if (std::binary_search(quilavaSteps.begin(),quilavaSteps.end(),i+2)){
             LCGn(seed,callsPerPlayerStep);
             step = true;
         }
@@ -150,14 +164,14 @@ int main(){
         std::string action = "";
         outF << std::setw(3) << i << ": ";
         for(unsigned int j = 0; j < npcSet.size(); j++){
-            action += npcAction(seed,npcSet.at(j),i-1);
+            action += npcAction(seed,npcSet.at(j),i);
         }
-        // if (i < 35){
-        //     std::cout << npcSet[0].getWalkTime().getFrames30() << std::endl;
-        //     std::cout << std::setprecision(17) << "X: " << npcSet[0].getNextPos().x << " : " << npcSet[0].getInterval().x
-        //     << "\nY: " << npcSet[0].getNextPos().y << " : " << npcSet[0].getInterval().y <<  "\n";
-        //     std::cout << "Action: " << action << "\n";
-        // }
+        if (i < 35){
+            std::cout << npcSet[0].getWalkTime().getFrames30() << std::endl;
+            std::cout << std::setprecision(17) << "X: " << npcSet[0].getNextPos().x << " : " << npcSet[0].getInterval().x
+            << "\nY: " << npcSet[0].getNextPos().y << " : " << npcSet[0].getInterval().y <<  "\n";
+            std::cout << "Action: " << action << "\n";
+        }
 
         //Output
         outF << action;
@@ -171,6 +185,7 @@ int main(){
 
 
     //advanceCycle(inputSeed,punk,0);
+    advanceCycle(inputSeed,redGirl,0);
     //9E615FEB
     //EF671641
 
