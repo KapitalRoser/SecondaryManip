@@ -19,15 +19,18 @@ void advanceCycle (u32 &seed,NPC &npc, int currentCycle){
 }
 std::string npcAction(u32 &seed,NPC &npc, int i){
     std::string action = "";
+    int factor = 2;
     switch (npc.getState())
         { //Do we ever do multiple actions on a given frame?
         case WALK:
             action = "**";
             if (i == 0){
-                npc.incrementPosition(1);
-            } else {
-                npc.incrementPosition(2);
+               factor = 1;
             }
+            else if (i == 1){
+                factor = 5;
+            }
+             npc.incrementPosition(factor);
             break;
         case WAIT:
             action = "--";
@@ -50,6 +53,25 @@ std::string npcAction(u32 &seed,NPC &npc, int i){
         //std::cout << "NPC: " << npc.getName();
         return action;
 }
+int consultPattern(int i, region gameRegion){
+      const int loFrame = 76;
+      const int hiFrame = 116;
+
+      const int xframe = 114;
+      const int yframe = 154;
+      
+      int mainPattern[5] = {hiFrame,hiFrame,loFrame,hiFrame,loFrame}; //HHLHL
+      int* selector = mainPattern + ((i - 3) % 5);
+      if (i <= 2){
+        selector = mainPattern + (i % 3);
+      }
+      return *selector;
+}
+int rollBackground(u32 &seed,int i, region gameRegion){    
+      int fcount = consultPattern(i,gameRegion);
+      LCGn(seed,fcount); //application of rules.
+      return fcount;
+}
 
 int main(){
     //remember to try locking rng seed to 0 when doing phenac tests.
@@ -62,7 +84,8 @@ int main(){
 
     u32 inputSeed = 0x354FCCC3;
     int frameWindow = 400;
-    int callsPerPlayerStep = 1;
+    int callsPerPlayerStep = 2;
+    region version = USA;
     std::vector<int>quilavaSteps{5,10,15,20,25,30,35,39,44,49,54,67,88,100,111,119,
     126,132,138,143,148,153,158,163,168,173,177,182,187,192,197,202,210,217,
     227,237,252,268,284,292,297,302,307,312,316,321,326,331};
@@ -80,28 +103,45 @@ int main(){
     NPC shop = NPC({-90,110},"Shop");
     NPC reporter = NPC({30,300},"Reporter");
     std::vector<NPC>npcSet = {punk,gym,grandma,athlete,shop,reporter};    // LCGn(seed,2);
-    // grandma.beginCycle(seed);
-    // grandma.incrementPosition(1);
+    // punk.beginCycle(seed);
+    // punk.incrementPosition(1);
     // //remaining steps
     // bool distance_decreasing = true;
     // do
     // {
-    //     distance_decreasing = grandma.incrementPosition(2);
+    //     distance_decreasing = punk.incrementPosition(2);
     // } while (distance_decreasing);
     // //adjust for overshoot
-    // grandma.finishCycle(seed);
-    // grandma.printNPCData(0);
+    // punk.finishCycle(seed);
+    // punk.printNPCData(0);
 
-    
+    //NPCs:
 
-    
-    for (int i = 0; i < frameWindow; i++)
+    std::string action = "";
+    outF << std::setw(3) << 0 << ": ";
+    for(unsigned int j = 0; j < npcSet.size(); j++){
+        action += npcAction(seed,npcSet.at(j),0);
+    }
+    //Output
+    outF << action;
+    outF << std::hex << " : " << seed << " : " << std::dec;
+    outF << std::endl;
+
+    npcSet.erase(npcSet.begin()+1,npcSet.end());
+
+    for (int i = 1; i < frameWindow; i++)
     {   
-        //This is where background goes.
+        //hypothesis is correct --
+        // Npcs resolve in order, and background happens first, then player, then NPCs.
+        
+        //background
+        rollBackground(seed,i-1,version);
 
-        //if steps happen before npc:
+
+        //Player's steps
         bool step = false;
-        if (std::binary_search(quilavaSteps.begin(),quilavaSteps.end(),i)){
+        u32 outSeed = seed;
+        if (std::binary_search(quilavaSteps.begin(),quilavaSteps.end(),i+1)){
             LCGn(seed,callsPerPlayerStep);
             step = true;
         }
@@ -110,17 +150,31 @@ int main(){
         std::string action = "";
         outF << std::setw(3) << i << ": ";
         for(unsigned int j = 0; j < npcSet.size(); j++){
-            action += npcAction(seed,npcSet.at(j),i);
+            action += npcAction(seed,npcSet.at(j),i-1);
         }
-    
+        // if (i < 35){
+        //     std::cout << npcSet[0].getWalkTime().getFrames30() << std::endl;
+        //     std::cout << std::setprecision(17) << "X: " << npcSet[0].getNextPos().x << " : " << npcSet[0].getInterval().x
+        //     << "\nY: " << npcSet[0].getNextPos().y << " : " << npcSet[0].getInterval().y <<  "\n";
+        //     std::cout << "Action: " << action << "\n";
+        // }
+
         //Output
         outF << action;
+        outF << std::hex << " : " << outSeed << " : " << std::dec;
         if (step){
             outF << " ++ STEP!";
         }
         outF << std::endl;
     }
    
+
+
+    //advanceCycle(inputSeed,punk,0);
+    //9E615FEB
+    //EF671641
+
+
     // std::cout << "~~~~~PUNK~~~~~~~~~~~\n";
     // npcSet[0].printNPCData(0);
     // std::cout << "~~~~~GYM~~~~~~~~~~~~\n";

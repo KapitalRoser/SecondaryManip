@@ -84,11 +84,15 @@ class NPC {
     }
     void InitialXY(u32 &seed){
     const double loosePiApprox = 3.1415927410125732421875; //40490FDB
+    const double twoPi = 6.28318530717958623199592693708837032318115234375;
     const int factor = 15;
     f_coord destinationPos = getIntendedPos();
     //***sensitive conversion between float -> double and back.
     float f_working = LCG_PullHi16(seed);
     f_working = f_working * loosePiApprox * 2;
+
+    //array angle
+    setAngle(f_working - twoPi);
 
     double d_working = f_working;
     d_working = sin(d_working) * factor;
@@ -105,22 +109,26 @@ class NPC {
     setIntended(destinationPos);
     }
     float computeAngle(){
+        //This is the angle used for interval calculation, but isn't recorded in the array.
         d_coord preAngles = getDistance();
-        return atan2(preAngles.x,preAngles.y)/2;
+        double angle = atan2(preAngles.x,preAngles.y)/2;
+        return angle;
     }
     d_coord computeInterval(){
-        d_coord intervals = getInterval();
-        float sinResult = static_cast<float>(sin(getAngle())) * 0.9999999403953552;
-        float cosResult = static_cast<float>(cos(getAngle()));
+        d_coord intervals;
+        float intervalAngle = computeAngle();
+        float sinResult = static_cast<float>(sin(intervalAngle)) * 0.9999999403953552;
+        float cosResult = static_cast<float>(cos(intervalAngle));
         const float factorC = 0.29032257199287415;
         intervals.x = 2*sinResult*cosResult*factorC;
         intervals.y = stupidFloatRounding(sinResult,factorC,cosResult);
         return intervals;
+        //6.108694900070326
     }
     void applyStep(int factor){
         f_coord postStepPos = getNextPos();
         postStepPos.x += getInterval().x * factor;
-        postStepPos.y += getInterval().y * factor;
+        postStepPos.y += getInterval().y * factor;       
         setNextPos(postStepPos);
     }
     double combineDistance (d_coord distance){
@@ -163,7 +171,7 @@ class NPC {
     void beginCycle(u32 &seed){
         setState(WALK);
         InitialXY(seed);
-        setAngle(computeAngle());
+        // setAngle(computeAngle());
         setIntervals(computeInterval());
         setWaitTime(0);
         setWalkTime(0);
@@ -179,7 +187,7 @@ class NPC {
     std::cout << std::endl;
     std::cout << "It took " << getWalkTime().getFrames60() << " 60fps frames to arrive.\n"; 
     std::cout << "It took " << getWalkTime().getFrames30() << " 30fps frames to arrive.\n\n";
-    std::cout << "Returned angle: " << getAngle()*2 << std::endl;
+    std::cout << "Returned angle: " << getAngle() << std::endl;
     std::cout << "Cycle: " << currentCycle << ": Timer1 is: " << std::setprecision(17) << getWaitTime().getSeconds() << std::endl;
     std::cout << "At 60fps, this is: " << getWaitTime().getFrames60fromSeconds() << " frames.\n";
     std::cout << "At 30fps, this is: " << getWaitTime().getFrames30() << " frames.\n";

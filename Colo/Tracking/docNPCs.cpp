@@ -30,6 +30,12 @@ void InitialXY(float &intendedX, float &intendedY, u32 &seed, int divisor, doubl
     //Initial Arithmetic
     fworkingX = pullHi16(seed,divisor);
     fworkingX = (fworkingX * 2) * loosePiApprox;
+
+    //ANGLE IS ACTUALLY SET HERE!!!!!
+    //setAngle(f_working - twoPi); //--THIS IS ALL YOU NEED!!!
+    // -- After significant research, the complex compute angle func isn't typically used. 
+    //and is one of many backup methods if the angle produced is an error. Too many to keep track of for every purpose.
+
  
     dworkingX = fworkingX;  //F31 copy
 
@@ -154,9 +160,9 @@ int main(){
     
     //~~~~~~~~~~~~~~ CONFIG ~~~~~~~~~~~~~~~
     int cycleCount = 3;
-    uint32_t seed = 0x20ff71DA; //INITIAL SEED  -- KR Seed: 20ff71DA -- matches emu behaviour exactly.
-    const double anchorX = 4; //Starting Location 
-    const double anchorY = 24;
+    uint32_t seed = 0x354FCCC3; //INITIAL SEED  -- KR Seed: 20ff71DA -- matches emu behaviour exactly.
+    const double anchorX = 85; //Starting Location 
+    const double anchorY = -150;
     bool adjustmentNeeded = 0;
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
