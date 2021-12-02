@@ -39,7 +39,7 @@ std::string npcAction(u32 &seed,NPC &npc, int i){
         case WAIT:
             action = "--";
             npc.decrementWaitTimer();
-            if (npc.getState()){
+            if (npc.getState() == BEGIN){
                 action = npc.getName() + " beg!";
                 npc.beginCycle(seed);
             }
@@ -126,25 +126,32 @@ int main(){
     //NPCs:
 
     std::string action = "";
-    for (unsigned int i = 0; i < npcSet.size(); i++)
-    {
-        npcSet[i].beginCycle(seed);
-        outF << npcSet[i].getName() << " began cycle!";
-    }
     
+    //action += npcAction(seed,npcSet[0],0);
     // outF << std::setw(3) << 0 << ": ";
     // for(unsigned int j = 0; j < npcSet.size(); j++){
     //     action += npcAction(seed,npcSet.at(j),0);
     // }
-    //Output
-    outF << action;
-    outF << std::hex << " : " << seed << " : " << std::dec;
-    outF << std::endl;
+    // //Output
+    // outF << action;
+    // outF << std::hex << " : " << seed << " : " << std::dec;
+    // outF << std::endl;
 
-    npcSet.erase(npcSet.begin()+1,npcSet.end());
+    
 
     for (int i = 0; i < frameWindow; i++)
     {   
+        if (i == 0){
+            for (unsigned int i = 0; i < npcSet.size(); i++)
+            {
+                npcSet[i].beginCycle(seed);
+                outF << npcSet[i].getName() << " began cycle!";
+                action += npcAction(seed,npcSet[i],0); //first two steps happen on first frame
+                action += npcAction(seed,npcSet[i],1);
+            }
+            //npcSet.erase(npcSet.begin()+1,npcSet.end());
+            
+        }
         //hypothesis is correct --
         // Npcs resolve in order, and background happens first, then player, then NPCs.
         
@@ -160,18 +167,20 @@ int main(){
             step = true;
         }
 
+
         //NPCs:
         std::string action = "";
         outF << std::setw(3) << i << ": ";
         for(unsigned int j = 0; j < npcSet.size(); j++){
+           // std::cout << "\n";
             action += npcAction(seed,npcSet.at(j),i);
         }
-        if (i < 35){
-            std::cout << npcSet[0].getWalkTime().getFrames30() << std::endl;
-            std::cout << std::setprecision(17) << "X: " << npcSet[0].getNextPos().x << " : " << npcSet[0].getInterval().x
-            << "\nY: " << npcSet[0].getNextPos().y << " : " << npcSet[0].getInterval().y <<  "\n";
-            std::cout << "Action: " << action << "\n";
-        }
+        // if (i < 35){
+        //     std::cout << npcSet[0].getWalkTime().getFrames30() << std::endl;
+        //     std::cout << std::setprecision(17) << "X: " << npcSet[0].getNextPos().x << " : " << npcSet[0].getInterval().x
+        //     << "\nY: " << npcSet[0].getNextPos().y << " : " << npcSet[0].getInterval().y <<  "\n";
+        //     std::cout << "Action: " << action << "\n";
+        // }
 
         //Output
         outF << action;
@@ -179,13 +188,14 @@ int main(){
         if (step){
             outF << " ++ STEP!";
         }
+        //outF << npcSet[0].getName();
         outF << std::endl;
     }
    
 
 
     //advanceCycle(inputSeed,punk,0);
-    advanceCycle(inputSeed,redGirl,0);
+    //advanceCycle(inputSeed,redGirl,0);
     //9E615FEB
     //EF671641
 

@@ -142,6 +142,7 @@ class NPC {
         applyStep(factor);
         double postStep = combineDistance(getDistance());
         setCombinedDistance({preStep,postStep});
+        //setName("Post: "+std::to_string(postStep));
         if (postStep <= preStep){
             setWalkTime(getWalkTime().getFrames30()+1);
             return true;
