@@ -30,19 +30,36 @@ std::string npcAction(u32 &seed,NPC &npc, int i){
             else if (i == 1){
                 factor = 5;
             }
-             npc.incrementPosition(factor);
-             if (npc.getState() == FINISH){
-                action = npc.getName() + " fin!";
-                npc.finishCycle(seed);
-             }
+            npc.incrementPosition(factor);
+            // std::cout << "WAIT SEED: " << std::hex << seed << std::dec << "\n";
+            // if (npc.getState() == FINISH){
+            //     action = npc.getName() + " fin!";
+            //     npc.printNPCData(i);
+            //     npc.finishCycle(seed);
+            //  }
             break;
         case WAIT:
             action = "--";
             npc.decrementWaitTimer();
-            if (npc.getState() == BEGIN){
-                action = npc.getName() + " beg!";
-                npc.beginCycle(seed);
-            }
+            break;
+        case FINISH:
+            action = npc.getName() + "f";
+            npc.finishCycle(seed);
+           // npc.printNPCData(i);
+            //is this correct or a bandaid?
+            //npc.decrementWaitTimer();
+            break;
+        case BEGIN:
+            //std::cout << "BEGIN SEED: " << std::hex << seed << std::dec << std::endl;
+            action = npc.getName() + "b";
+            npc.beginCycle(seed);
+            // npc.printNPCData(i);
+            //std::cout << npc.getName() << std::endl;
+            //if (npc.getName() != "R"){
+                npc.incrementPosition(factor); //standard practice?
+                npc.incrementPosition(factor);
+            //}
+            
             break;
         // case BEGIN:
         //     action = npc.getName() + " began cycle!";
@@ -89,9 +106,11 @@ int main(){
     //Background happens before PlayerStep
     //Multiple on the same frame is rare but possible and happens.
     std::ofstream outF("npcSim.txt");
-
-    u32 inputSeed = 0x354FCCC3;
-    int frameWindow = 400;
+    u32 seedFromBlink = 0x3E543BDF;
+    LCGn(seedFromBlink,3);
+    std::cout << std::hex << seedFromBlink << std::endl;
+    u32 inputSeed = seedFromBlink; //9B965ED0
+    int frameWindow = 600;
     int callsPerPlayerStep = 2;
     region version = USA;
     std::vector<int>quilavaSteps{5,10,15,20,25,30,35,39,44,49,54,67,88,100,111,119,
@@ -101,27 +120,32 @@ int main(){
     u32 seed = inputSeed;
     //Define all NPCs.
     //int cycleCount = 3;
-    NPC redGirl = NPC({4,24},"RedGirl"); //Yes NPCs have Z value but not used for wandering, only xy matter.
+    NPC redGirl = NPC({4,24},STANDARD,"RedGirl"); //Yes NPCs have Z value but not used for wandering, only xy matter.
 
     //PHENAC NPCS LOAD IN THIS ORDER:
-    NPC punk = NPC({85,-150},"Punk");
-    NPC gym = NPC({15,-10},"Gym");
-    NPC grandma = NPC({-140,-10},"Grandma");
-    NPC athlete = NPC({90,90},"Athlete");
-    NPC shop = NPC({-90,110},"Shop");
-    NPC reporter = NPC({30,300},"Reporter");
-    std::vector<NPC>npcSet = {punk,gym,grandma,athlete,shop,reporter};    // LCGn(seed,2);
-    // punk.beginCycle(seed);
-    // punk.incrementPosition(1);
+    NPC kaib    = NPC({85,-150}, STANDARD,"K");
+    NPC jim     = NPC({15,-10},  STANDARD,"J"); // -- fuck you jim, costs 5s to open door for him.
+    NPC grandma = NPC({-140,-10},STANDARD,"G");
+    NPC boots   = NPC({90,90},   STANDARD,"B");
+    NPC randall = NPC({-90,110}, STANDARD,"R"); 
+    NPC lady    = NPC({30,300},  SLOWER,  "L"); 
+    //Castform gets initialized before Kaib lol, and his trainer gets initialized before Lady, no impact on RNG tho.
+    
+    std::vector<NPC>npcSet = {kaib,jim,grandma,boots,randall,lady};    // LCGn(seed,2);
+
+    //wtf is this weird 0.28125 value???
+
+    // kaib.beginCycle(seed);
+    // kaib.incrementPosition(1);
     // //remaining steps
     // bool distance_decreasing = true;
     // do
     // {
-    //     distance_decreasing = punk.incrementPosition(2);
+    //     distance_decreasing = kaib.incrementPosition(2);
     // } while (distance_decreasing);
     // //adjust for overshoot
-    // punk.finishCycle(seed);
-    // punk.printNPCData(0);
+    // kaib.finishCycle(seed);
+    // kaib.printNPCData(0);
 
     //NPCs:
 
@@ -149,14 +173,22 @@ int main(){
                 action += npcAction(seed,npcSet[i],0); //first two steps happen on first frame
                 action += npcAction(seed,npcSet[i],1);
             }
-            //npcSet.erase(npcSet.begin()+1,npcSet.end());
+            //npcSet.erase(npcSet.end()-1,npcSet.end());
             
         }
         //hypothesis is correct --
-        // Npcs resolve in order, and background happens first, then player, then NPCs.
+        // Npcs resolve in order, and background happens first, then NPCs, then player steps last.
         
         //background
         rollBackground(seed,i,version);
+
+        //NPCs:
+        std::string action = "";
+        outF << std::setw(3) << i << ": ";
+        for(unsigned int j = 0; j < npcSet.size(); j++){
+           // std::cout << "\n";
+            action += npcAction(seed,npcSet.at(j),i);
+        }
 
 
         //Player's steps
@@ -166,16 +198,7 @@ int main(){
             LCGn(seed,callsPerPlayerStep);
             step = true;
         }
-
-
-        //NPCs:
-        std::string action = "";
-        outF << std::setw(3) << i << ": ";
-        for(unsigned int j = 0; j < npcSet.size(); j++){
-           // std::cout << "\n";
-            action += npcAction(seed,npcSet.at(j),i);
-        }
-        // if (i < 35){
+        // if (i < 26){
         //     std::cout << npcSet[0].getWalkTime().getFrames30() << std::endl;
         //     std::cout << std::setprecision(17) << "X: " << npcSet[0].getNextPos().x << " : " << npcSet[0].getInterval().x
         //     << "\nY: " << npcSet[0].getNextPos().y << " : " << npcSet[0].getInterval().y <<  "\n";
@@ -188,14 +211,19 @@ int main(){
         if (step){
             outF << " ++ STEP!";
         }
-        //outF << npcSet[0].getName();
+        // if (npcSet[0].getState() == WAIT){
+        //     outF << std::setprecision(9) << npcSet[0].getWaitTime().getSeconds();
+        // }
+        // outF << npcSet[0].getName();
         outF << std::endl;
     }
    
 
 
-    //advanceCycle(inputSeed,punk,0);
+    //advanceCycle(inputSeed,kaib,0);
     //advanceCycle(inputSeed,redGirl,0);
+    // LCGn(inputSeed,5);
+    // advanceCycle(inputSeed,lady,0);
     //9E615FEB
     //EF671641
 

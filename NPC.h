@@ -1,5 +1,7 @@
 #include "processCore.h"
 enum state {WALK,WAIT,BEGIN,FINISH};
+const float common_speeds[3] = {0.29032257199287415,0.28125}; //add to this as more speeds are recorded.
+enum commonSpeed{STANDARD,SLOWER};
 class d_coord {
     public:
     double x,y;
@@ -13,8 +15,6 @@ class duration {
     public:
     //This is super important to get right, as the numbers produced here will directly impact rng manip in the future!
     duration(float m_seconds){
-        //Might need to actually re-visit the way the game converts ms to frames.
-        //probably some kind of loop that subtracts a value until it ==0.
         setFrames30(round(m_seconds/(1.0/30))); //This only seems to matter when it comes to 60fps?
         setSeconds(m_seconds); //The 60fps number would depend on whether on an even frame or odd frame, again shouldn't matter right?
     }
@@ -42,6 +42,7 @@ class NPC {
     f_coord m_nextPos = {0.0};
     f_coord m_intendedPos = {0,0};
     float m_angle = 0;
+    float m_speedFactor = 0;
     duration m_waitTime = duration{0};
     duration m_walkTime = duration{0};
     d_coord m_CombinedDistances = {0,0};
@@ -56,24 +57,35 @@ class NPC {
         temp.x = anchor.x;
         temp.y = anchor.y;
         setNextPos(temp);
+        setSpeed(common_speeds[STANDARD]);
     }
-    NPC(d_coord anchor,int ID){
+     NPC(d_coord anchor, int speedIdx){
+        setAnchor(anchor);
+        f_coord temp;
+        temp.x = anchor.x;
+        temp.y = anchor.y;
+        setNextPos(temp);
+        setSpeed(common_speeds[speedIdx]);
+    }
+    NPC(d_coord anchor,int speedIdx, int ID){
         setAnchor(anchor);
         f_coord temp;
         temp.x = anchor.x;
         temp.y = anchor.y;
         setNextPos(temp);
         setID(ID);
+        setSpeed(common_speeds[speedIdx]);
     }
-    NPC(d_coord anchor,std::string name){
+    NPC(d_coord anchor, int speedIdx, std::string name){
         setAnchor(anchor);
         f_coord temp;
         temp.x = anchor.x;
         temp.y = anchor.y;
         setNextPos(temp);
         setName(name);
+        setSpeed(common_speeds[speedIdx]);
     }
-    NPC(d_coord anchor, std::string name, int ID){
+    NPC(d_coord anchor, int speedIdx, std::string name, int ID){
         setAnchor(anchor);
         f_coord temp;
         temp.x = anchor.x;
@@ -81,20 +93,20 @@ class NPC {
         setNextPos(temp);
         setName(name);
         setID(ID);
+        setSpeed(common_speeds[speedIdx]);
     }
     void InitialXY(u32 &seed){
     const double loosePiApprox = 3.1415927410125732421875; //40490FDB
     const double twoPi = 6.28318530717958623199592693708837032318115234375;
     const int factor = 15;
     f_coord destinationPos = getIntendedPos();
-    //***sensitive conversion between float -> double and back.
     float f_working = LCG_PullHi16(seed);
     f_working = f_working * loosePiApprox * 2;
 
     //array angle
     setAngle(f_working - twoPi);
 
-    double d_working = f_working;
+    double d_working = f_working; //***sensitive conversion between float -> double and back.
     d_working = sin(d_working) * factor;
     destinationPos.x = d_working;
 
@@ -104,8 +116,6 @@ class NPC {
 
     destinationPos.x += getAnchor().x;
     destinationPos.y += getAnchor().y;
-    //would destinationPos += getAnchor() work?
-    //maybe need a addCoords() function?
     setIntended(destinationPos);
     }
     float computeAngle(){
@@ -119,11 +129,12 @@ class NPC {
         float intervalAngle = computeAngle();
         float sinResult = static_cast<float>(sin(intervalAngle)) * 0.9999999403953552;
         float cosResult = static_cast<float>(cos(intervalAngle));
-        const float factorC = 0.29032257199287415;
-        intervals.x = 2*sinResult*cosResult*factorC;
-        intervals.y = stupidFloatRounding(sinResult,factorC,cosResult);
+        const float speedFactor = getSpeedFactor(); //this is different for reporter for some reason??
+        intervals.x = 2*sinResult*cosResult*speedFactor;
+        intervals.y = -(pow(sinResult,2)*speedFactor - pow(cosResult,2)*speedFactor);
+        // std::cout << "INTERVAL ANGLE: " << std::setprecision(17) << intervalAngle << std::endl
+        // << "SINRESULT: " << sinResult << " COSRESULT: " << cosResult << std::endl;
         return intervals;
-        //6.108694900070326
     }
     void applyStep(int factor){
         f_coord postStepPos = getNextPos();
@@ -142,7 +153,7 @@ class NPC {
         applyStep(factor);
         double postStep = combineDistance(getDistance());
         setCombinedDistance({preStep,postStep});
-        //setName("Post: "+std::to_string(postStep));
+        //setName("Pre: " + std::to_string(preStep) + "Post: "+std::to_string(postStep));
         if (postStep <= preStep){
             setWalkTime(getWalkTime().getFrames30()+1);
             return true;
@@ -160,14 +171,15 @@ class NPC {
         return cycleVariance * factorTime + baseTimeS; //time in seconds.
     }
     void decrementWaitTimer(){
-        setWaitTime(getWaitTime().getFrames30()-1);
-        if (getWaitTime().getFrames30() <= 0){
+        float decrement = 0.0333333350718021392822265625; //float?
+        setWaitTime(getWaitTime().getSeconds() - decrement);
+        // if (getWaitTime().getFrames30() <= 0){
+        //     setState(BEGIN);
+        // }
+        if (getWaitTime().getSeconds() <= 0){
             setState(BEGIN);
         }
         //alternatively decrement by a certain number of ms.
-    }
-    float stupidFloatRounding(float inputF12,float inputF10,float inputF9){   
-        return -(pow(inputF12,2)*inputF10 - pow(inputF9,2)*inputF10);
     }
     void beginCycle(u32 &seed){
         setState(WALK);
@@ -230,10 +242,14 @@ class NPC {
     void setID(int input){
         m_ID = input;
     }
+    void setSpeed(float input){
+        m_speedFactor = input;
+    }
     
     int getID(){return m_ID;}
     int getState(){return m_state;}
     float getAngle(){return m_angle;}
+    float getSpeedFactor(){return m_speedFactor;}
     std::string getName(){return m_name;}
     d_coord getAnchor(){return m_anchor;}
     d_coord getCombinedDistance(){return m_CombinedDistances;}
