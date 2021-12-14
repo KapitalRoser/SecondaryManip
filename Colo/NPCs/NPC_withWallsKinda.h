@@ -1,7 +1,7 @@
 #ifndef NPC_H
 #define NPC_H
 
-#include "processCore.h"
+#include "../../processCore.h"
 enum state {WALK,WAIT,BEGIN,FINISH};
 const float common_speeds[3] = {0.29032257199287415,0.28125}; //add to this as more speeds are recorded.
 enum commonSpeed{STANDARD,SLOWER};
@@ -54,7 +54,15 @@ class NPC {
     std::string m_name = "";
     int m_ID = 0;
 
+    bool m_hasCorner = false;
+    bool m_alteredDestination = false;
+    f_coord m_alteredIntended = {0,0};
+
+
     public:
+    //constructor
+    //Probably don't need all these constructors,
+    //the people using this code will have all the important details anyway.
     NPC(d_coord anchor){
         setAnchor(anchor);
         f_coord temp;
@@ -89,6 +97,16 @@ class NPC {
         setName(name);
         setSpeed(common_speeds[speedIdx]);
     }
+    NPC(d_coord anchor, int speedIdx, std::string name, int ID){
+        setAnchor(anchor);
+        f_coord temp;
+        temp.x = anchor.x;
+        temp.y = anchor.y;
+        setNextPos(temp);
+        setName(name);
+        setID(ID);
+        setSpeed(common_speeds[speedIdx]);
+    }
     void InitialXY(u32 &seed){
     const double loosePiApprox = 3.1415927410125732421875; //40490FDB
     const double twoPi = 6.28318530717958623199592693708837032318115234375;
@@ -99,7 +117,7 @@ class NPC {
 
     //array angle
     //std::cout << "FWORKING: " << f_working;
-    if (f_working > loosePiApprox || f_working < -loosePiApprox){
+    if (f_working > loosePiApprox || f_working <-loosePiApprox){
         setAngle(f_working - twoPi);
     } else {
         setAngle(f_working); 
@@ -115,9 +133,15 @@ class NPC {
 
     destinationPos.x += getAnchor().x;
     destinationPos.y += getAnchor().y;
+    //std::cout << "ANGLE: " << getAngle() << ". AT SEED: " << std::hex << seed << std::dec << "\n";
+    setOriginalIntended(destinationPos); //for finishing the cycle
     setIntended(destinationPos); //for walking calculations
+
+    if (m_hasCorner){
+        validatePosition(m_alteredIntended);
+        setIntended(m_alteredIntended);
     }
-    
+    }
     float computeAngle(){
         //This is the angle used for interval calculation, but isn't recorded in the array.
         d_coord preAngles = getDistance();
@@ -130,13 +154,13 @@ class NPC {
         d_coord intervals;
         float intervalAngle = computeAngle();
         // std::cout << "CURRENT ANG"<< getAngle() << " NEW ANG: " << intervalAngle;
-        if (getAngle() > loosePiApprox || getAngle() < -loosePiApprox){
+        if (getAngle() > loosePiApprox || getAngle() < -loosePiApprox || m_hasCorner){
             setAngle(intervalAngle);
         }
         setAngle(intervalAngle*2);
         float sinResult = static_cast<float>(sin(intervalAngle)) * 0.9999999403953552;
         float cosResult = static_cast<float>(cos(intervalAngle));
-        const float speedFactor = getSpeedFactor(); //thanks heels.
+        const float speedFactor = getSpeedFactor(); //this is different for reporter for some reason??
         intervals.x = 2*sinResult*cosResult*speedFactor;
         intervals.y = -(pow(sinResult,2)*speedFactor - pow(cosResult,2)*speedFactor);
         //std::cout << "INTERVAL ANGLE: " << std::setprecision(17) << intervalAngle*2 << std::endl;
@@ -159,7 +183,9 @@ class NPC {
         double preStep = combineDistance(getDistance());
         applyStep(factor);
         double postStep = combineDistance(getDistance());
-    
+        if (m_hasCorner){
+            //std::cout << "PRE:" << preStep << ". POST: " << postStep << std::endl;
+        }
         setCombinedDistance({preStep,postStep});
         //setName("Pre: " + std::to_string(preStep) + "Post: "+std::to_string(postStep));
         if (postStep <= preStep){
@@ -170,10 +196,59 @@ class NPC {
             return false;      
         }
     }
+    void validatePosition (f_coord &inputPos){
 
+        //On destination version: (this seems to work)
+        float slope = 0.102;
+        float availableX = inputPos.x;
+        float availableY = slope*availableX - 12.959385871887207; //y=mx+b baby;
+        float coordsAngle = computeAngle()*2;
+        if (inputPos.y <= availableY && inputPos.x >= 10 && coordsAngle > 1.6 && coordsAngle < 3.1415){
+            std::cout << "ALTERED DESTINATION!!!!!!!!!!!!!!!\n";
+            setAltered(true);
+            inputPos.y = availableY;
+            inputPos.x = 9.859516143798828;
+        }
+    //This is used when an npc is in a tight corner and ends up cancelling their cycle early.
+    //A single edge on it's own doesn't cancel a movement, because "as long as distance is being reduced, continue"
+    //however when a 2nd edge (creating a corner/nook) interferes, this halts all walk progress so the cycle ends.
+    
+    //check each edge:
+    //To obtain boundaries for the door, which is a half circle, I'd need lots of points to work with, and may need a complex
+    //arc drawing tool for c++ to generate the points I need. From there i'd need to check whatever point jim is closest to and
+    //determine how far he can move. 
+    //I'd be incrementing X, evaluating how much Y distance this frees, and doing that, then continuing until I reach the other edge.
+    //From there the distances available get smaller and smaller until eventually the decrementing distance logic pops and we exit the cycle.
+    //Hopefully Jim doesn't get stuck on the right-hand side of the stairs, cuz there's nothing we can do about that.
+    //For now, open the damn door.
+    //Some kind of y = mx+b stuff?
+    // for (unsigned int i = 0; i < edges.size(); i++)
+    // {
+    //     float availableX = edges[i].x - getNextPos().x; //inclusive?
+    //     float availableY = edges[i].y - getNextPos().y;
+    
+    //     if (availableX == 0 || availableY == 0){
+
+    //     } //How to handle if both are 0? Surely we just minimize until past target right?
+    
+    // }
+        //OnPosition version:
+        //find available x or y:
+        //custom, need a better way to store and modify this, maybe a child corner class.
+        
+        // float availableX = currentStep.x;
+        // float availableY = slope*availableX - 12.58; //y=mx+b baby;
+        // if (availableX >= 9.9 && currentStep.y < availableY){
+        //     availableX = 9.9;//??Basically need to send signal to stop moving.
+        // }
+        // if (currentStep.y < availableY && (availableX >= 0 || availableX <=9.9 )){
+        //     currentStep.y = availableY; //snap to the wall. is this the right appraoch?
+        // } 
+    }
     float waitTimerCalculation(u32 &seed){
-        const int factorTime = 3;//these don't seem to vary by npc but who knows.
+        const int factorTime = 3;//these *might* vary by npc
         const int baseTimeS = 5; 
+        //std::cout << "SEED INTO WAIT: " <<std::hex<< seed<<std::dec << std::endl;
         double firstCall = LCG_PullHi16(seed);
         double secondCall = LCG_PullHi16(seed);
         double cycleVariance = firstCall + secondCall - 1;
@@ -200,7 +275,13 @@ class NPC {
     void finishCycle(u32 &seed){
         setState(WAIT);
         setWaitTime(waitTimerCalculation(seed));
-        setNextPos(getIntendedPos()); //snap to account for overshoot.
+        //std::cout << getName() <<  " - WAIT TIME: " << m_waitTime.getSeconds() << "\n";
+        //setNextPos(getOriginalIntendedPos()); //account for overshoot
+        setNextPos(getOriginalIntendedPos());
+        if (m_hasCorner && getAltered()){
+            setNextPos({9.859516143798828,-12.959385871887207});
+            setAltered(false);
+        }
     }
 
     //putting it all together
@@ -208,10 +289,9 @@ class NPC {
         beginCycle(seed);
         npcAction_Self(seed,0); //first two steps happen on first frame
         npcAction_Self(seed,1);
-        //Should I be adding a action parameter + return?
     }
     std::string npcAction_Self(u32 &seed, int i){
-        std::string action = ""; //optional -- exists only for debugging.
+        std::string action = ""; //optional
         int factor = 2;
         if (i == 0){
             factor = 1;
@@ -263,7 +343,8 @@ class NPC {
     void setAnchor(d_coord input) {m_anchor = input;} //uses double instead of float or int because idk maybe there's an npc with a very specific anchor location. I doubt it but why take the risk lol.
     void setAngle(float input){m_angle = input;}
     void setCombinedDistance(d_coord input){m_CombinedDistances = input;}
-    void setIntended(f_coord input){m_intendedPos = input;}
+    void setOriginalIntended(f_coord input){m_intendedPos = input;}
+    void setIntended(f_coord input){m_alteredIntended = input;}
     void setIntervals(d_coord input){m_intervalValues = input;}
     void setNextPos(f_coord input){m_nextPos = input;}
     void setState (int input){m_state = input;}
@@ -272,10 +353,14 @@ class NPC {
     void setName(std::string input){m_name = input;}
     void setID(int input){m_ID = input;}
     void setSpeed(float input){m_speedFactor = input;}
+    void setHasCorner(bool input){m_hasCorner = input;}
+    void setAltered (bool input){m_alteredDestination = input;}
     
     
     int getID(){return m_ID;}
     int getState(){return m_state;}
+    bool getHasCorner(){return m_hasCorner;}
+    bool getAltered(){return m_alteredDestination;}
     float getAngle(){return m_angle;}
     float getSpeedFactor(){return m_speedFactor;}
     std::string getName(){return m_name;}
@@ -286,10 +371,14 @@ class NPC {
                 getIntendedPos().y - getNextPos().y};
     }
     d_coord getInterval(){return m_intervalValues;}
-    f_coord getIntendedPos(){return m_intendedPos;}
+    f_coord getIntendedPos(){return m_alteredIntended;}
+    f_coord getOriginalIntendedPos(){return m_intendedPos;}
     f_coord getNextPos(){return m_nextPos;}
     duration getWaitTime(){return m_waitTime;}
     duration getWalkTime(){return m_walkTime;}
+
+
+
 };
 
 

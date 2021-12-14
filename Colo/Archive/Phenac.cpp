@@ -37,7 +37,7 @@ int main(){
 
     //~~~~~~~~~~~~ CONFIG INPUTS ~~~~~~~~~~~~~~~~~~~~
     uint32_t seed = 0x4D43A86F; //INITIAL_SEED
-    region gameRegion = USA; 
+    region gameRegion = NTSCU; 
     coloSecondary chosenSecondary = QUILAVA;
     int framesToTrack = 400;
     bool trackSteps = true;
@@ -88,7 +88,7 @@ int main(){
     // seed = LCGn(seed,2);
     // seed = LCGn(seed,loFrame);
 
-  if (gameRegion == USA){ //restructure this for many patterns by having loop on the outside?
+  if (gameRegion == NTSCU){ //restructure this for many patterns by having loop on the outside?
     cout << "NoAudioLagPattern - HHLHL" << endl;
     // cout << secondarySteps.at(1);
     for (int i = 1;i<framesToTrack;i++){

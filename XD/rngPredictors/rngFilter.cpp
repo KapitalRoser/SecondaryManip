@@ -204,7 +204,7 @@ int main(){
     string leadingPattern = "Eights";
     int backOffset = 1; //1,2,5 DOES NOT VARY W RNG, ONLY STATE AND PATTERN. 1 for eights, 5 for As, 0 for sevens.
     int lagOffset = 1; //any connection to the changes in initial offset for the mid and north fountains? negative 2 default, varies with rng seed at start.
-    const int REGION = 0; //0 NTSC, 1 EU, 2 JPN
+    const int REGION = 0; //0 NTSC, 1 EU, 2 NSTCJ
     
     
     int rolls = 0;

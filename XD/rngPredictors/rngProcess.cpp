@@ -101,7 +101,7 @@ int main(){
 
     int anomalies = 0;
     bool npcsON = 0;
-    int region = 0; //0 NTSC, 1 EU, 2 JPN
+    int region = 0; //0 NTSC, 1 EU, 2 NSTCJ
     string frameType = "";
     vector<int>stepFrames;
     //File IN

@@ -2,7 +2,7 @@
 
 int main(){
     u32 seed = 0; //INITIAL SEED IS THE SEED AFTER THE 6 NPC CALLS. THE ONE THAT REPEATS TWICE.
-    region gameRegion = USA;
+    region gameRegion = NTSCU;
     
     //File IN/OUT
     const std::string FILE_EXTENSION = ".txt";
@@ -63,7 +63,7 @@ int main(){
             }
         }
         //Actual Filtering
-        if (gameRegion == USA){
+        if (gameRegion == NTSCU){
             //PRE-PATTERN
             if (i<=2 && i % 3 == 2){
                 filterAmt = loFrame;

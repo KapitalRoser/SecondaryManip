@@ -26,7 +26,7 @@ typedef uint32_t u32;
 typedef uint64_t u64;
 typedef int64_t s64;
 
-enum region {USA,EUR,JPN}; //Switch to NTSC, PAL and JPN? NTSC-U, PAL, NTSC-J is most correct but LONG.
+enum region {NTSCU,PAL60,PAL50,NSTCJ}; //Switch to NTSC, PAL and JPN? NTSC-U, PAL, NTSC-J is most correct but LONG.
 enum emuVer {STABLE,MODERN}; //Stable == 5.0, only matters for xd so far.
 enum coloSecondary {QUILAVA,CROCONAW,BAYLEEF}; //xd only has teddy
 //enum secondaryMon {TEDDIURSA, QUILAVA, CROCONAW, BAYLEEF};
@@ -143,6 +143,8 @@ u32 LCGn_BACK(u32&seed, const u32 n){
     seed = (seed * modpow32(0xB9B33155, n)) + (sum + factor) * 0xA170F641;
     return seed;
 }
+
+//What is the difference between these two functions
 double LCG_PullHi16 (uint32_t &seed){
     const int divisor = 65536;
     double X = 0;

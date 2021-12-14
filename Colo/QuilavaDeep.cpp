@@ -1,8 +1,5 @@
-#include <iostream>
-#include <iomanip>
-#include <string>
-
 #include "../processCore.h"
+#include "coloCore.h"
 
 using namespace std;
 void printResults(uint32_t seed,int fcount, int i,bool stepFrame,bool stepCalls){
@@ -13,39 +10,6 @@ void printResults(uint32_t seed,int fcount, int i,bool stepFrame,bool stepCalls)
           std::cout << " : " << "STEP";
          } 
          std::cout << endl;
-}
-bool checkStepPath(vector<int>secondarySteps,uint32_t& seed,int i,int stepCalls){
-  if (binary_search(secondarySteps.begin(),secondarySteps.end(),i+1)){
-        LCGn(seed,stepCalls);
-        return true;
-  } else {
-        return false;
-  }
-}
-int consultPattern(int i, region gameRegion){
-      /*The reason this function exists is because some variance in the pokeball 
-      transition uses the same pattern as the background noise, at least in NTSC-U.
-
-      still need to implement pattern for pal and other regions, 
-      along with a tie-in to the region object I set up.
-      */
-      const int loFrame = 76;
-      const int hiFrame = 116;
-
-      const int xframe = 114;
-      const int yframe = 154;
-      
-      int mainPattern[5] = {hiFrame,hiFrame,loFrame,hiFrame,loFrame}; //HHLHL
-      int* selector = mainPattern + ((i - 3) % 5);
-      if (i <= 2){
-        selector = mainPattern + (i % 3);
-      }
-      return *selector;
-}
-int rollBackground(u32 &seed,int i, region gameRegion){    
-      int fcount = consultPattern(i,gameRegion);
-      LCGn(seed,fcount); //application of rules.
-      return fcount;
 }
 void advanceFrame(u32 &seed,int currentFrame, bool trackSteps, bool trackNPCs,vector<int>listOfSteps, 
 region gameRegion,int stepCalls){
@@ -61,10 +25,10 @@ region gameRegion,int stepCalls){
   }
   bool stepFrame = 0;
   if (trackSteps){
-    stepFrame = checkStepPath(listOfSteps,seed,currentFrame,stepCalls);   
+    stepFrame = col_CheckStepPath(listOfSteps,seed,currentFrame,stepCalls);   
   }
   
-  rollsApplied += rollBackground(seed,currentFrame,gameRegion);
+  rollsApplied += colo_RollBackground(seed,currentFrame,gameRegion);
   //printResults(seed,rollsApplied,currentFrame,stepFrame,stepCalls); //debug bg noise.
 }
 void rollTransition(u32 &seed,int target,vector<int>secondarySteps,region gameRegion){
@@ -95,7 +59,7 @@ int main(){
   //~~~~~~~~~~~~ CONFIG INPUTS ~~~~~~~~~~~~~~~~~~~~
     int target = 0; //+441.
     coloSecondary pokemon = QUILAVA;
-    region gameRegion = USA;
+    region gameRegion = NTSCU;
     const int VISUAL_START_FRAME = 99755; //99757 for weird Seed
     const uint32_t INITIAL_SEED = 0x7B016A28; //LONG, PRE-6 SEED.
     const int SEARCH_WINDOW = 95; //optional, default 10
@@ -148,8 +112,8 @@ int main(){
       visualTarget++;
       listSeed = seed;
       rollTransition(listSeed,target,secondarySteps,gameRegion);
-      int needToAdjust = consultPattern(i+4,gameRegion);
-      if (needToAdjust == 76 && gameRegion == USA){
+      int needToAdjust = col_consultPattern(i+4,gameRegion);
+      if (needToAdjust == 76 && gameRegion == NTSCU){
         //cout << "Hit: Low  - ";
         LCGn(listSeed,38); //No idea what this is but it FOLLOWS THE HHLHL pattern! Wacky!
         LCGn(listSeed,2);
@@ -307,7 +271,7 @@ int main(){
 */
 
 //Old arithmetic based method.
-      // if (gameRegion == USA){
+      // if (gameRegion == NTSCU){
       //   //PRE-PATTERN
       //   if (i<=2 && i % 3 == 2){
       //     fcount = loFrame;
