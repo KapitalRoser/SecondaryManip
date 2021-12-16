@@ -22,6 +22,7 @@ int main(){
     int stepsOffset = -1; //THIS ISN'T A REAL VARIABLE -- temporary adjustment to avoid re-typing all the step frames again.
     //Fix step frames at some point.
     int frames = 0;
+    int stepCalls = 1;
 
     bool trackNPCs = false;
     bool trackSteps = true;
@@ -83,14 +84,14 @@ int main(){
                 }
             }
             if (std::binary_search(quilavaSteps.begin(),quilavaSteps.end(),i)){
-                filterAmt += 2;
+                filterAmt += stepCalls;
             }
         }
         frames -= filterAmt;
         if (frames == 0){
             frameLabel = "";
         }
-    outputData << std::left << std::setw(10) << frameLabel << " - "<<std::setw(4) << frames << " - " << comment << std::endl;
+    outputData << std::left << i << ": " << std::setw(10) << frameLabel << " - "<<std::setw(4) << frames << " - " << comment << std::endl;
     }
 
 

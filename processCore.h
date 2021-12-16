@@ -62,6 +62,7 @@ struct PokemonRequirements
     int hiddenPowerPower = 0;
     int genderIndex = 0;
     int isShiny = 0;  
+    bool forceEven = 0;
 };
 
 //extra functions block
@@ -84,7 +85,7 @@ int median(std::vector<int> &v)
     return v[n];
 }
 std::string formatCase(std::string &str, strCase ulCase){
-for (int i = 0; i < str.length(); i++)
+for (unsigned int i = 0; i < str.length(); i++)
     {
       if (ulCase){
         str.at(i) = tolower(str.at(i));
@@ -144,7 +145,7 @@ u32 LCGn_BACK(u32&seed, const u32 n){
     return seed;
 }
 
-//What is the difference between these two functions
+//What is the difference between these two functions -- probably slight rounding differences only
 double LCG_PullHi16 (uint32_t &seed){
     const int divisor = 65536;
     double X = 0;
@@ -225,7 +226,6 @@ void generateMon(uint32_t inputSeed, int genderRatio){
   uint32_t outSeed = 0;
   std::string nature = " ";
   std::string hiddenPowerType = " ";
-  int hiddenPowerStrength = 0;
   //Gender ratio reference:  0x7F for teddy (50/50) and 0x1F for johto starters (87.5/12.5)
   const std::string naturesList[25] = {"Hardy","Lonely","Brave","Adamant","Naughty","Bold","Docile","Relaxed",
     "Impish","Lax","Timid","Hasty","Serious","Jolly","Naive","Modest","Mild","Quiet","Bashful",
@@ -288,7 +288,6 @@ void generateMon(uint32_t inputSeed, int genderRatio){
 //File Reading
 std::vector<int> decimalReadNumbersFromFile(std::string fileName)
 {
-    u32 value;
     int lineRead = 0;
     std::vector<int> data; //Setup
     std::ifstream file(fileName);
@@ -304,6 +303,7 @@ std::vector<int> decimalReadNumbersFromFile(std::string fileName)
         data.push_back(lineRead);
     }
     file.close();
+    std::cout << "Read: " << data.size() << " items.\n";
     return data;
 }
 std::vector<u32> hexReadNumbersFromFile(std::string fileName)
@@ -360,7 +360,7 @@ int findGap(u32 behind, u32 ahead, bool forward){
       LCG(behind);
       counter++;
       if (counter > 100000000){
-        std::cout <<"Error!";
+        std::cout <<"Error! findGap() got lost!";
         break; 
       }
     }

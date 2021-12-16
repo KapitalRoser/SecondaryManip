@@ -129,18 +129,17 @@ void takeStep (float &nextXPos, float &nextYPos,double intervalValueX, double in
     //   std::cout << "Next Y POS: " << nextYPos << std::endl;
 }
 double combineDistance (float distanceX, float distanceY){
+    return sqrt(distanceX*distanceX + distanceY*distanceY);
+    //original simplification:
+    // double sumSq = (distanceX*distanceX) + (distanceY*distanceY);
+    // double fractional = 1/sqrt(sumSq);
+    // double fractionalSq = fractional*fractional;
+    // double result = -(fractionalSq*sumSq-3) * (fractional/2) * sumSq;
+    // return result;
     //Decent function, can occasionally round a bit off, has something to do with the precision of 1/sqrt(sumSq),
     //but not sure how to fix. Can result in exactly 1 byte being off ex: 41700001 vs 41700000
-    double sumSq = (distanceX*distanceX) + (distanceY*distanceY);
-    double fractional = 1/sqrt(sumSq);
-    double fractionalSq = fractional*fractional;
-    double result = -(fractionalSq*sumSq-3) * (fractional/2) * sumSq;
-    return result;
 
-    //result = -((1/sqrt(A^2 + B^2))^2 * ((A^2 + B^2)  - 3) * ((1/sqrt(A^2 + B^2)) / 2) *(A^2 + B^2)
-    /*
-    
-    */
+    //full formula: -((1/sqrt(A^2 + B^2))^2 * (A^2 + B^2) - 3) * (1/sqrt(A^2+B^2))/2 * (A^2 + B^2)
 }
 void updateDistance(double &distX, double &distY, float intendedX,float intendedY, float nextX, float nextY){
     distX = intendedX - nextX;

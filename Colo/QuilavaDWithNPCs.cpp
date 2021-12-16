@@ -1,6 +1,7 @@
 #include "../processCore.h"
 #include "../NPC.h"
-#include "frame.h"
+#include "coloCore.h"
+//#include "frame.h" //As a wise man once said, you must do things manually before introducing oop.
 
 
 void printResults(u32 seed,int fcount, int i,bool stepFrame,bool stepCalls){
@@ -13,31 +14,32 @@ void printResults(u32 seed,int fcount, int i,bool stepFrame,bool stepCalls){
          std::cout << std::endl;
 }
 
-void advanceFrame(u32 &seed,int currentFrame, bool trackSteps, bool trackNPCs,std::vector<int>listOfSteps,region gameRegion,int stepCalls){
-  int rollsApplied = 0; 
-  //refers to all the logic involved in handling a visual frame, not an rng frame.
-  //Still not sure on the exact ordering of these things, wouldn't matter if not for the NPCs...
-  if (trackNPCs){ //probably gonna need a lot more params for the NPCs.
-    // handleNPCs();
-    if (currentFrame == 0){
-      LCGn(seed,6); //initial npc movements. 
-    rollsApplied += 6;
-    }
-  }
+void advanceFrame(u32 &seed,int currentFrame,std::vector<int>listOfSteps,region gameRegion,int stepCalls,std::vector<NPC>npcSet){
+  //int rollsApplied = 0; 
+
+  //rollsApplied += 
+  colo_RollBackground(seed,currentFrame,gameRegion);
+  
   bool stepFrame = 0;
-  if (trackSteps){
+  if (stepCalls > 0){
     stepFrame = col_CheckStepPath(listOfSteps,seed,currentFrame,stepCalls);   
   }
+
+  std::string action = "";
+  if (!npcSet.empty()){ 
+    for(unsigned int j = 0; j < npcSet.size(); j++){
+            action += npcSet[j].npcAction_Self(seed,currentFrame);
+        }
+  }
   
-  rollsApplied += colo_RollBackground(seed,currentFrame,gameRegion);
   //printResults(seed,rollsApplied,currentFrame,stepFrame,stepCalls); //debug bg noise.
 }
 
-void rollTransition(u32 &seed,int target,std::vector<int>secondarySteps,region gameRegion){
+void rollTransition(u32 &seed,int target,std::vector<int>secondarySteps,region gameRegion,std::vector<NPC>npcSet){
 //Post-A press
     for (int i = target-1; i < target+4; i++) //5 more frames worth of calls happen after a press?
     {
-      advanceFrame(seed,i,false,false,secondarySteps,gameRegion,false); //can npc movements happen during this? TBD.
+      advanceFrame(seed,i,{},gameRegion,0,npcSet); //can npc movements happen during this? TBD.
     }
 
     LCGn(seed,38); //what does this do?
@@ -57,11 +59,10 @@ int main(){
     int target = 0; //+441.
     coloSecondary pokemon = QUILAVA;
     region gameRegion = NTSCU;
-    const int VISUAL_START_FRAME = 99755; //99757 for weird Seed
-    const uint32_t INITIAL_SEED = 0x7B016A28; //LONG, PRE-6 SEED.
-    const int SEARCH_WINDOW = 95; //optional, default 10
-    // bool trackSteps = true;
-    // bool trackNPCs = true;
+    const int VISUAL_START_FRAME = 99755;
+    const uint32_t INITIAL_SEED = 0x7B016A28; 
+    const int SEARCH_WINDOW = 95; 
+
     int numCallsPerStep = 2;
 
     const int QUIL_GENDER_RATIO = 0x1F;
@@ -77,8 +78,8 @@ int main(){
     uint32_t seed = INITIAL_SEED;
 
 
-
-    //PHENAC NPCS LOAD IN THIS ORDER:
+    
+    //PHENAC NPCS LOAD IN THIS ORDER: 
     NPC kaib    = NPC({  85, -150} ,STANDARD,"K");
     NPC jim     = NPC({  15,  -10}, STANDARD,"J"); // -- fuck you jim, costs 5s to open door for him.
     NPC grandma = NPC({-140,  -10}, STANDARD,"G");
@@ -86,6 +87,8 @@ int main(){
     NPC randall = NPC({ -90,  110}, STANDARD,"R"); 
     NPC heels   = NPC({  30,  300},   SLOWER,"H");
     std::vector<NPC>npcSet = {kaib,jim,grandma,boots,randall,heels}; 
+    //if not wanting to track NPCs, uncomment this line: 
+    //npcSet.clear();
     
     //starting from same position as loop
     std::vector<int>quilavaSteps{5,10,15,20,25,30,35,39,44,49,54,67,88,100,111,119,
@@ -107,28 +110,32 @@ int main(){
     }
 
     //Set different frames if not wanting to track npcs?
-    frame instance = {npcSet,secondarySteps,gameRegion};
+    //frame instance = {npcSet,secondarySteps,gameRegion};
 
 
+    //Begin
+    for (unsigned int i = 0;i < npcSet.size(); i++){
+      npcSet[i].initializeNPC_Self(seed);
+    }
     
-    
+
     //Simulate up to target.
     for (int i = 0; i < target; i++)
     {
-      std::cout << i <<": MADE IT HERE!\n"; //crashing after 34 lines? what's happening?
-      //do we need to adjust how npcs are handled? like are they correctly being updated or is something getting re-copied?
-      instance.updateFrame(seed,i); //Wow, just one line.
+      //instance.updateFrame(seed,i); //Wow, just one line.
+      advanceFrame(seed,i,secondarySteps,gameRegion,numCallsPerStep,npcSet);
     }
-    // Do debug statements here. 
-    // Reached! blah blah blah.
-    
+
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     std::cout << "Reached: " << std::hex << seed << " - " << std::dec <<visualTarget << std::endl;
     for (unsigned int i = target-1; i < SEARCH_WINDOW+target; i++)
     {
       visualTarget++;
       listSeed = seed;
-      rollTransition(listSeed,target,secondarySteps,gameRegion);
+
+      rollTransition(listSeed,target,secondarySteps,gameRegion,npcSet);
+      
       int needToAdjust = col_consultPattern(i+4,gameRegion);
       if (needToAdjust == 76 && gameRegion == NTSCU){
         //cout << "Hit: Low  - ";
@@ -137,10 +144,13 @@ int main(){
       } else {
         //cout << "Hit: High - ";
       }
-      std::cout << visualTarget << " - Reached: " << std::hex << std::setw(8) << seed << " - "; 
+
+      std::cout << visualTarget << " - r: " << std::hex << std::setw(8) << seed << " - "; 
+      //replace with better generation function?
       generateMon(listSeed,QUIL_GENDER_RATIO);
-      
-      advanceFrame(seed,i,false,false,secondarySteps,gameRegion,numCallsPerStep);
+    
+      //next mon.
+      advanceFrame(seed,i,secondarySteps,gameRegion,numCallsPerStep,npcSet);
     }
     
 

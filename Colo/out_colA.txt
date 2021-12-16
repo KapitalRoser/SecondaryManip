@@ -1,0 +1,1375 @@
+5571f5b4 :          High : 116
+5ebc0ea8 :          High : 116
+c0bb42dc :           LOW :  76
+37b96d68 :          High : 116
+fc27cd9c : OTHER ------- : 117
+b95d6793 :           LOW :  76
+500845af :          High : 116
+aab74353 :           LOW :  76
+8ac2256f :          High : 116
+80c75f13 : OTHER ------- : 117
+6cf20dde :           LOW :  76
+2c567a4a :          High : 116
+a488069e :           LOW :  76
+94bfa70a :          High : 116
+990f3f5e : OTHER ------- : 117
+ ea34bed :           LOW :  76
+57916e69 :          High : 116
+18a87dad :           LOW :  76
+90e74429 :          High : 116
+5addef6d : OTHER ------- : 117
+11da01f0 :           LOW :  76
+c172af3c :          High : 116
+2fcbd8b0 :           LOW :  76
+c767d9fc : OTHER ------- : 126
+dbfcb472 : OTHER ------- : 119
+413aa2f3 :           LOW :  76
+ff722b0f :          High : 116
+b6961eb3 :           LOW :  76
+72b3aacf :          High : 116
+2a07da73 : OTHER ------- : 117
+a7d519be :           LOW :  76
+ db5a82a :          High : 116
+a638327e :           LOW :  76
+3439f4ea :          High : 116
+336c8b3e : OTHER ------- : 117
+57cc4e4d :           LOW :  76
+7119aac9 :          High : 116
+9794200d :           LOW :  76
+31a82089 : OTHER ------- : 117
+73037d5c :          High : 116
+d98f68d0 :           LOW :  76
+3201881c :          High : 116
+d1db5f90 :           LOW :  76
+f5ced2dc : OTHER ------- : 117
+d5041bd3 :          High : 116
+56b4d7b7 :           LOW :  76
+6097b793 :          High : 116
+62fe6f77 :           LOW :  76
+b9219353 : OTHER ------- : 117
+388f651e :          High : 116
+3d9d4ab2 :           LOW :  76
+99641dde :          High : 116
+693ccf72 :           LOW :  76
+b26a169e : OTHER ------- : 117
+b3752a2d :          High : 116
+144ab1b1 :           LOW :  76
+19ba1bed :          High : 116
+d0c4ff71 :           LOW :  76
+ea6f4dad :          High : 116
+96738d31 :          High : 116
+57d2c0f5 :           LOW :  76
+1f165af1 :          High : 116
+642caab5 :           LOW :  76
+646d68b1 :          High : 116
+2c3ed475 :          High : 116
+22f9b879 :           LOW :  76
+c5c93e35 : OTHER ------- : 117
+b08dc818 :           LOW :  76
+4dfefae4 :          High : 116
+ad0236d8 :          High : 116
+7809be0c :           LOW :  76
+75c1e598 :          High : 116
+1f0d98cc :           LOW :  76
+b58cd458 :          High : 116
+ea90b38c :          High : 116
+ee47d200 :           LOW :  76
+b1530e4c :          High : 116
+284d18c0 :           LOW :  76
+8a14a90c :          High : 116
+5d059f80 :          High : 116
+d02c0934 :           LOW :  76
+8f316640 :          High : 116
+72457bf4 :           LOW :  76
+ 1906d00 :          High : 116
+6c862eb4 :          High : 116
+f77ad7a8 :           LOW :  76
+adae2174 :          High : 116
+c3a73668 : OTHER ------- :  77
+19a87227 :          High : 116
+6e30bf4b :          High : 116
+cf6b3aaf :           LOW :  76
+73b3230b :          High : 116
+4ac81a6f :           LOW :  76
+4323c6cb :          High : 116
+68b73a2f :          High : 116
+50b0ffd3 :           LOW :  76
+14f899ef :          High : 116
+59409b93 :           LOW :  76
+7b4c39af :          High : 116
+52c67753 : OTHER ------- : 117
+c571f91e :           LOW :  76
+7968f18a :          High : 116
+4c12b1de :           LOW :  76
+f4f0de4a :          High : 116
+5ee4aa9e :          High : 116
+70f16832 :           LOW :  76
+12a7e35e :          High : 116
+bfe76cf2 :           LOW :  76
+bc1c5c1e :          High : 116
+b662b1b2 :          High : 116
+54694c86 : OTHER ------- :  77
+9e89436d :          High : 116
+ef8f1ef1 :           LOW :  76
+bdbaf52d : OTHER ------- : 117
+dd121cb0 :          High : 116
+81712964 :           LOW :  76
+d9433370 :          High : 116
+aa94ec24 :           LOW :  76
+19d78a30 : OTHER ------- : 117
+3f176217 :          High : 116
+6904be3b :           LOW :  76
+ d5b99d7 :          High : 116
+ fecb1fb :           LOW :  76
+421a1197 :          High : 116
+b2b2e5bb :          High : 116
+73df581f : OTHER ------- :  77
+8d163e52 : OTHER ------- : 117
+ 987ad51 :           LOW :  76
+2e45fd8d :          High : 116
+edd15b11 :          High : 116
+f4cb8cd5 :           LOW :  76
+a8ef48d1 : OTHER ------- : 117
+574d6f04 :           LOW :  76
+4973bf10 :          High : 116
+1d2691c4 :          High : 116
+23385bb8 :           LOW :  76
+89f6f484 :          High : 116
+63242a78 : OTHER ------- :  78
+76fe7fde :          High : 116
+755b5172 :          High : 116
+abe42846 :           LOW :  76
+ccee1632 :          High : 116
+af967906 : OTHER ------- :  77
+ 45295ed :          High : 116
+62ab1971 :          High : 116
+b5ded135 :           LOW :  76
+b3efa731 :          High : 116
+4b367af5 : OTHER ------- :  77
+179043f0 :          High : 116
+ff7284a4 :          High : 116
+affc9c98 :           LOW :  76
+e6b10764 :          High : 116
+97188b58 : OTHER ------- :  77
+b6afd057 :          High : 116
+46ddd07b :          High : 116
+53462edf :           LOW :  76
+ e31843b :          High : 116
+7e395e9f : OTHER ------- :  77
+6d0be2d2 :          High : 116
+75486fa6 :          High : 116
+be3975ba :           LOW :  76
+48906066 :          High : 116
+ b47b27a : OTHER ------- :  77
+aef20351 :          High : 116
+5ab67915 :          High : 116
+c1cb0719 :           LOW :  76
+ec5f42d5 : OTHER ------- : 118
+4e7fca1b : OTHER ------- :  77
+fcdfe39e :          High : 116
+78073132 : OTHER ------- : 118
+64ea62b0 :           LOW :  76
+b4d7c3fc :          High : 116
+fc257970 : OTHER ------- :  77
+447e028f :          High : 116
+7ab7ee33 :          High : 116
+7caf7017 :           LOW :  76
+eebe29f3 : OTHER ------- : 117
+da5fc33e :           LOW :  76
+54f339aa :          High : 116
+fc2d5bfe :          High : 116
+d54fcf92 :           LOW :  76
+8e4c34be : OTHER ------- : 117
+d5d009cd :           LOW :  76
+5cc12e49 :          High : 116
+27e05b8d :          High : 116
+af739911 :           LOW :  76
+d600ed4d : OTHER ------- : 119
+7b6b0f4a :           LOW :  76
+ba7570f6 :          High : 116
+ dd73c0a :          High : 116
+ 62b245e :           LOW :  76
+9a60a8ca : OTHER ------- : 117
+df78bf69 :           LOW :  76
+36274625 :          High : 116
+f1359529 :          High : 116
+bd60506d :           LOW :  76
+875eaae9 : OTHER ------- : 117
+e02a8c3c :           LOW :  76
+a73280c8 :          High : 116
+d49ab6fc : OTHER ------- : 117
+66f68973 :           LOW :  76
+9e22298f : OTHER ------- : 118
+c60bf545 :           LOW :  76
+204e1a41 :          High : 116
+8a830f05 : OTHER ------- : 118
+a960a2cb :           LOW :  76
+37b94567 :          High : 116
+2dc3868b :           LOW :  76
+15b3ad27 :          High : 116
+b794aa4b : OTHER ------- : 117
+beed99b6 :           LOW :  76
+1a4660a2 :          High : 116
+2e9efa76 :           LOW :  76
+f93c7562 :          High : 116
+ae999b36 :          High : 116
+96bbca4a : OTHER ------- :  77
+d61d82e1 : OTHER ------- : 117
+28584dd4 :           LOW :  76
+7cb900e0 :          High : 116
+50f02094 :          High : 116
+c09e0788 :           LOW :  76
+384f3354 :          High : 116
+f3538648 :           LOW :  76
+2d358614 :          High : 116
+4cc44508 :          High : 116
+a26c7f3c :           LOW :  76
+87b043c8 : OTHER ------- : 119
+1730bdc1 :           LOW :  76
+beeaf6fd :          High : 116
+2ca27b81 :          High : 116
+ fc44445 :           LOW :  76
+14587941 :          High : 116
+ 7345e05 :           LOW :  76
+f812b701 :          High : 116
+9eacb7c5 :          High : 116
+b24480c9 :           LOW :  76
+1bed5185 : OTHER ------- : 117
+d4d71f28 :           LOW :  76
+d75170f4 : OTHER ------- : 118
+420dbba2 :          High : 116
+57610576 :           LOW :  76
+d790d062 :          High : 116
+89b8a636 :           LOW :  76
+c3092522 :          High : 116
+ 41986f6 :          High : 116
+a166b20a :           LOW :  76
+4343a7b6 :          High : 116
+444a1eca :           LOW :  76
+ 3f70876 :          High : 116
+   acb8a :          High : 116
+6d382bde :           LOW :  76
+dd68b84a : OTHER ------- : 117
+bbfa28e9 :           LOW :  76
+c8af97a5 :          High : 116
+74617ea9 :          High : 116
+2ed151ed :           LOW :  76
+52b51469 :          High : 116
+c02083ad :           LOW :  76
+98b4ea29 :          High : 116
+6f9ff56d :          High : 116
+2c9ef0f1 :           LOW :  76
+1b0fa72d :          High : 116
+ce2ffeb1 :           LOW :  76
+e02f98ed :          High : 116
+dc354c71 :          High : 116
+e8b93435 :           LOW :  76
+d06eda31 :          High : 116
+7b55ddf5 : OTHER ------- :  77
+66bfaaf0 :          High : 116
+d1915ba4 :          High : 116
+da91e398 :           LOW :  76
+2300de64 :          High : 116
+3deed258 :           LOW :  76
+aa07a124 :          High : 116
+61170118 :          High : 116
+d348ec4c :           LOW :  76
+6eca6fd8 :          High : 116
+32bc870c :           LOW :  76
+d1c91e98 :          High : 116
+38ef61cc :          High : 116
+710b2440 :           LOW :  76
+7ca17c8c :          High : 116
+9f3c2b00 :           LOW :  76
+d492d74c : OTHER ------- : 118
+26c18e3a :          High : 116
+a276698e :           LOW :  76
+64134afa :          High : 116
+3bdf324e :           LOW :  76
+4d7247ba :          High : 116
+bce93b0e :          High : 116
+80e48fa2 :           LOW :  76
+4a5483ce : OTHER ------- : 117
+ 31bb99d :           LOW :  76
+12833119 :          High : 116
+cad1bb5d :          High : 116
+424d25e1 :           LOW :  76
+a767fd1d : OTHER ------- : 117
+b26717e0 :           LOW :  76
+c294d62c :          High : 116
+7faf7ea0 :          High : 116
+a728ba54 :           LOW :  76
+738b2560 : OTHER ------- : 119
+39246a39 :           LOW :  76
+426c93f5 :          High : 116
+ 173eff9 :          High : 116
+b53b883d :           LOW :  76
+f1ffb5b9 : OTHER ------- : 117
+5a0314cc :           LOW :  76
+cac69058 :          High : 116
+cb2a2f8c :          High : 116
+887d0e00 :           LOW :  76
+73908a4c : OTHER ------- : 117
+5db6a083 :           LOW :  76
+933f5f9f :          High : 116
+6bec0c43 :          High : 116
+c6615f27 : OTHER ------- :  78
+9fe23e95 :          High : 116
+badda499 :           LOW :  76
+99f98855 :          High : 116
+ 4f7ca59 :          High : 116
+92fea89d : OTHER ------- :  77
+962db278 :          High : 116
+3e5553ac :           LOW :  76
+c43cc138 :          High : 116
+4c3e8e6c :          High : 116
+e7a47ae0 : OTHER ------- :  77
+e745333f :          High : 116
+ff5f79e3 :           LOW :  76
+ce6902ff :          High : 116
+848885a3 :          High : 116
+6c880e87 : OTHER ------- :  77
+92c6769a :          High : 116
+167d77ee :           LOW :  76
+2844d35a :          High : 116
+e23ce0ae :          High : 116
+b1f0ef42 :           LOW :  76
+f1fd896e :          High : 116
+754b6402 :           LOW :  76
+ a7f722e :          High : 116
+143b18c2 :          High : 116
+ef5b1496 : OTHER ------- :  78
+5d1cd80c :          High : 116
+9cc1be80 :           LOW :  76
+3ab6b2cc : OTHER ------- : 117
+70880f03 :          High : 116
+3332cde7 :           LOW :  76
+b47afac3 :          High : 116
+8080b5a7 :           LOW :  76
+1f942683 :          High : 116
+6918dd67 :          High : 116
+2c849e8b :           LOW :  76
+60bb4527 :          High : 116
+c27dc24b :           LOW :  76
+1b27ece7 :          High : 116
+25a5260b :          High : 116
+ 6b74d6f :           LOW :  76
+c5bac9cb :          High : 116
+7a9b6d2f :           LOW :  76
+527ead8b :          High : 116
+1fd1ccef :          High : 116
+4359fe93 :           LOW :  76
+221a6caf :          High : 116
+c324da53 :           LOW :  76
+ed354c6f :          High : 116
+6ea5f613 : OTHER ------- : 117
+781af8de :           LOW :  76
+f683b54a :          High : 116
+bc2df19e :           LOW :  76
+3899e20a :          High : 116
+98322a5e : OTHER ------- : 117
+73fb7aed :           LOW :  76
+4e1dad69 :          High : 116
+4a19acad :           LOW :  76
+e2fc8329 :          High : 116
+b7681e6d :          High : 116
+3360a9f1 :           LOW :  76
+99a6d02d :          High : 116
+ 9b0b7b1 :           LOW :  76
+ e95c1ed :          High : 116
+55750571 :          High : 116
+8adb7d35 :           LOW :  76
+906d9331 :          High : 116
+712726f5 :           LOW :  76
+745a60f1 :          High : 116
+836b10b5 :          High : 116
+e49578b9 :           LOW :  76
+97673a75 : OTHER ------- : 117
+5b224758 :           LOW :  76
+fbd0c624 :          High : 116
+8a6d7618 :          High : 116
+e1b1b14c :           LOW :  76
+2943e4d8 :          High : 116
+a1784c0c :           LOW :  76
+a2659398 :          High : 116
+dcfe26cc :          High : 116
+ef613940 : OTHER ------- :  78
+e5b5bc66 :          High : 116
+eae6ce7a :           LOW :  76
+b0faed26 :          High : 116
+3a864b3a :          High : 116
+48e9f68e :           LOW :  76
+6a7307fa :          High : 116
+439dbf4e :           LOW :  76
+936d04ba :          High : 116
+42f2c80e :          High : 116
+cb19eca2 : OTHER ------- :  77
+d80c2459 :          High : 116
+653ea29d :           LOW :  76
+8e188a19 :          High : 116
+6303a45d :          High : 116
+ e549ee1 :           LOW :  76
+aea8e61d : OTHER ------- : 118
+b54b1823 :           LOW :  76
+c046fd3f : OTHER ------- : 118
+f7c2c975 :          High : 116
+b8e7fd79 :           LOW :  76
+e8f03335 :          High : 116
+495a4339 : OTHER ------- :  78
+771bdb17 :          High : 116
+a977c73b :          High : 116
+4c80d19f :           LOW :  76
+7d4ebafb :          High : 116
+10eb415f :           LOW :  76
+a603eebb :          High : 116
+c1d7f11f :          High : 116
+a3ec35c3 :           LOW :  76
+db06e0df :          High : 116
+84b26183 :           LOW :  76
+1838109f :          High : 116
+6f5ecd43 :          High : 116
+8fdf3027 :           LOW :  76
+5bb17903 :          High : 116
+43c8d7e7 :           LOW :  76
+816a64c3 :          High : 116
+893cbfa7 :          High : 116
+ecac64cb :           LOW :  76
+93fae767 :          High : 116
+c3bd488b :           LOW :  76
+d7c34f27 :          High : 116
+ 23c6c4b :          High : 116
+79a4b7af :           LOW :  76
+d7e9d00b :          High : 116
+7cdc976f :           LOW :  76
+b48573cb :          High : 116
+2fa6b72f :          High : 116
+2a3b4cd3 :           LOW :  76
+7dc316ef :          High : 116
+f755e893 :           LOW :  76
+92f1b6af :          High : 116
+9266c453 :          High : 116
+dd698837 :           LOW :  76
+632de013 :          High : 116
+fe9e9ff7 :           LOW :  76
+116b3bd3 :          High : 116
+866df7b7 :          High : 116
+1f530ddb :           LOW :  76
+18978f77 : OTHER ------- : 118
+352bf4ed :           LOW :  76
+88f08769 :          High : 116
+d18026ad :          High : 116
+8658f631 :           LOW :  76
+9f04986d :          High : 116
+ e8ac3f1 :           LOW :  76
+7b794a2d :          High : 116
+ c70d1b1 :          High : 116
+a3afcd75 :           LOW :  76
+b9cb1f71 :          High : 116
+98b93735 :           LOW :  76
+9059ad31 :          High : 116
+fdfae0f5 :          High : 116
+ cba0cf9 :           LOW :  76
+6934cab5 :          High : 116
+fb80d2b9 :           LOW :  76
+b026f475 :          High : 116
+3143d879 :          High : 116
+eff178bd :           LOW :  76
+5fc31e39 :          High : 116
+26775a7d :           LOW :  76
+78bea3f9 :          High : 116
+5afd7c3d :          High : 116
+99e014c1 :           LOW :  76
+1b43ddfd :          High : 116
+2502d281 :           LOW :  76
+350a7fbd :          High : 116
+8969d041 :          High : 116
+21642505 :           LOW :  76
+f0d50e01 :          High : 116
+669d7ec5 :           LOW :  76
+c5048bc1 :          High : 116
+ 89f1885 :          High : 116
+cc342d89 :           LOW :  76
+8d28f245 :          High : 116
+7f59e349 :           LOW :  76
+b9fb0c05 :          High : 116
+7f0bd909 :          High : 116
+efa2f24d :           LOW :  76
+6d0a0ec9 :          High : 116
+24a6c40d :           LOW :  76
+2b148489 :          High : 116
+ 63ad5cd :          High : 116
+51a37751 :           LOW :  76
+121f278d :          High : 116
+6a532511 :           LOW :  76
+ 613b94d :          High : 116
+43d712d1 :          High : 116
+4e0d0095 :           LOW :  76
+f7ef4091 :          High : 116
+83d24a55 : OTHER ------- :  77
+c45417d0 :          High : 116
+dbebb684 :          High : 116
+aae30c78 :           LOW :  76
+30215944 :          High : 116
+6b481b38 :           LOW :  76
+ ace3c04 :          High : 116
+6a5869f8 :          High : 116
+90a4032c :           LOW :  76
+f2d3f8b8 :          High : 116
+8341bdec :           LOW :  76
+8f7ac778 :          High : 116
+e97eb8ac :          High : 116
+ f650920 :           LOW :  76
+7a1af36c :          High : 116
+e3022fe0 :           LOW :  76
+2bd66e2c :          High : 116
+927296a0 :          High : 116
+ea055254 :           LOW :  76
+  763d60 :          High : 116
+7994a514 :           LOW :  76
+4fcd2420 :          High : 116
+f46b37d4 : OTHER ------- : 118
+80feb782 :           LOW :  76
+5bb50dae :          High : 116
+7bdeec42 :           LOW :  76
+8b20b66e :          High : 116
+8e946102 :          High : 116
+6d68a0d6 :           LOW :  76
+ 9df15c2 :          High : 116
+7e61e196 :           LOW :  76
+7e7f0a82 :          High : 116
+50c46256 :          High : 116
+1d5fe36a :           LOW :  76
+ 1502316 :          High : 116
+8a1ef02a :           LOW :  76
+ecc523d6 :          High : 116
+ff1b3cea :          High : 116
+201a533e :           LOW :  76
+2514c9aa :          High : 116
+b6d7ebfe :           LOW :  76
+e4cb966a :          High : 116
+4de6c4be : OTHER ------- : 118
+9f88055c :           LOW :  76
+c86887e8 :          High : 116
+ 7be101c :           LOW :  76
+56f2a6a8 :          High : 116
+7cc35adc :          High : 116
+b35f9e50 :           LOW :  76
+ 557e59c : OTHER ------- : 117
+54709f93 :           LOW :  76
+335ffdaf :          High : 116
+b6d27b53 :          High : 116
+1e39af37 :           LOW :  76
+b5ea9713 :          High : 116
+a1cfc6f7 :           LOW :  76
+f978f2d3 :          High : 116
+63001eb7 :          High : 116
+6a40a4db :           LOW :  76
+ 58ab677 :          High : 116
+3f74f89b :           LOW :  76
+6d2f8e37 :          High : 116
+b9278c5b : OTHER ------- : 117
+59830086 :           LOW :  76
+34b5aa72 :          High : 116
+1f2b1146 :           LOW :  76
+4b676f32 :          High : 116
+14ec6206 :          High : 116
+c1062e1a :           LOW :  76
+2786f2c6 :          High : 116
+33f10ada :           LOW :  76
+83bac386 : OTHER ------- : 118
+3ae882e4 :          High : 116
+3bfc3ed8 :           LOW :  76
+8146c5a4 :          High : 116
+ec73ed98 :           LOW :  76
+c87c4864 :          High : 116
+9bf6dc58 :          High : 116
+5a933b8c :           LOW :  76
+35450b18 :          High : 116
+dc8d964c :           LOW :  76
+e31e79d8 : OTHER ------- : 118
+7aa527e6 :          High : 116
+8a1171fa :           LOW :  76
+1b02d8a6 :          High : 116
+b7d16eba :           LOW :  76
+b0d9c966 :          High : 116
+c15eab7a :          High : 116
+63501ace :           LOW :  76
+3f79283a :          High : 116
+b94da38e :           LOW :  76
+ ae0e4fa :          High : 116
+6c2c6c4e :          High : 116
+7b3194e2 :           LOW :  76
+60ac750e : OTHER ------- : 118
+a976152c :           LOW :  76
+2006eab8 :          High : 116
+a9f1cfec :          High : 116
+ 3ba5460 :           LOW :  76
+d00ccaac :          High : 116
+3e023b20 :           LOW :  76
+d287056c : OTHER ------- : 118
+e4b2ff5a :          High : 116
+5ee1ccae :           LOW :  76
+30129c1a :          High : 116
+6556756e :           LOW :  76
+629f78da :          High : 116
+208c5e2e :          High : 116
+ddaac4c2 : OTHER ------- :  77
+c4fd41f9 :          High : 116
+dd47fa3d :           LOW :  76
+a22707b9 :          High : 116
+12a05bfd :          High : 116
+72693081 :           LOW :  76
+7f78fdbd :          High : 116
+89022e41 :           LOW :  76
+3191df7d :          High : 116
+609f6c01 :          High : 116
+d16fbcc5 :           LOW :  76
+6300e9c1 :          High : 116
+92c35685 :           LOW :  76
+39e6a781 :          High : 116
+d49f3045 :          High : 116
+dcb60149 :           LOW :  76
+5cc34a05 :          High : 116
+dad9f709 :           LOW :  76
+30efa3c5 :          High : 116
+454a2cc9 :          High : 116
+618ac20d :           LOW :  76
+fdc6a289 :          High : 116
+b2b0d3cd :           LOW :  76
+260f5849 :          High : 116
+8c27258d :          High : 116
+699d0311 :           LOW :  76
+abadb74d :          High : 116
+d5d2f0d1 :           LOW :  76
+ f04890d :          High : 116
+5a9d1e91 :          High : 116
+dc400855 :           LOW :  76
+51bb8c51 :          High : 116
+a72f9215 :           LOW :  76
+54ee3a11 :          High : 116
+13375bd5 :          High : 116
+27ef55d9 :           LOW :  76
+d6176595 :          High : 116
+369e3b99 :           LOW :  76
+e58faf55 :          High : 116
+2b296159 :          High : 116
+b812af9d :           LOW :  76
+d750c719 :          High : 116
+d2a2b15d :           LOW :  76
+4cd46cd9 : OTHER ------- : 118
+df21e27f :          High : 116
+8f1fdd23 :           LOW :  76
+9b6c723f :          High : 116
+ d1ba8e3 :           LOW :  76
+2b1941ff :          High : 116
+da5db4a3 :          High : 116
+aee12d87 :           LOW :  76
+8ea60063 :          High : 116
+d87a7547 :           LOW :  76
+ 1b48c23 :          High : 116
+ efdfd07 :          High : 116
+8c00182b :           LOW :  76
+262bc4c7 :          High : 116
+2ada9beb :           LOW :  76
+31c3cc87 :          High : 116
+42835fab :          High : 116
+ede3810f :           LOW :  76
+a2ba636b :          High : 116
+3e9f00cf :           LOW :  76
+5b3fa72b : OTHER ------- : 117
+d2135916 :          High : 116
+8b9f862a :           LOW :  76
+722259d6 :          High : 116
+a4d5d2ea :           LOW :  76
+ffda9a96 :          High : 116
+e5095faa :          High : 116
+a53fe1fe :           LOW :  76
+34fa2c6a :          High : 116
+d628babe : OTHER ------- :  78
+1d62a0f4 :          High : 116
+ 5542de8 :          High : 116
+457e161c :           LOW :  76
+98884ca8 :          High : 116
+9fcd60dc :           LOW :  76
+46d7ab68 :          High : 116
+f3abeb9c :          High : 116
+41787b10 :           LOW :  76
+87d9b65c :          High : 116
+ca3031d0 :           LOW :  76
+e316c11c :          High : 116
+43ab2890 : OTHER ------- : 117
+1a7f74f7 :           LOW :  76
+b96bc0d3 :          High : 116
+2e11ccb7 :           LOW :  76
+a7725c93 :          High : 116
+30fe6477 :          High : 116
+1935869b :           LOW :  76
+ 7053c37 :          High : 116
+c56a1a5b :           LOW :  76
+d3e653f7 :          High : 116
+a3dcee1b :          High : 116
+ee3d867f :           LOW :  76
+944e01db :          High : 116
+72c4163f :           LOW :  76
+b67d559b :          High : 116
+aeace5ff :          High : 116
+ e0798a3 :           LOW :  76
+3db7f5bf :          High : 116
+9a4be463 :           LOW :  76
+fba5457f :          High : 116
+ 9567023 :          High : 116
+215a2107 :           LOW :  76
+72e73be3 :          High : 116
+dc43e8c7 :           LOW :  76
+2ebe47a3 :          High : 116
+ef97f087 :          High : 116
+e3f5c3ab :           LOW :  76
+af163847 :          High : 116
+2fa8c76b :           LOW :  76
+ae7ec007 :          High : 116
+77aa0b2b :          High : 116
+c179648f :           LOW :  76
+ bb98eeb : OTHER ------- : 117
+6a786dd6 :           LOW :  76
+b75712c2 :          High : 116
+ee7cae96 :          High : 116
+1c38b3aa : OTHER ------- :  78
+b8462880 :          High : 116
+458c2234 :           LOW :  76
+3de0ef40 :          High : 116
+630494f4 :          High : 116
+cfa161e8 :           LOW :  76
+41a447b4 :          High : 116
+310180a8 :           LOW :  76
+d02b3a74 :          High : 116
+217cdf68 :          High : 116
+e7f05f9c :           LOW :  76
+fbd37e28 :          High : 116
+e90a2a5c :           LOW :  76
+5ac55ce8 : OTHER ------- : 117
+ 9fc6f6f :          High : 116
+c19c4913 :           LOW :  76
+a42e8f2f :          High : 116
+de68a4d3 :           LOW :  76
+31b2eeef :          High : 116
+796b4093 :          High : 116
+bc218877 :           LOW :  76
+ba641c53 :          High : 116
+f6e46037 :           LOW :  76
+ 9133813 :          High : 116
+8c8177f7 :          High : 116
+8586521b :           LOW :  76
+e0b8cfb7 :          High : 116
+327365db :           LOW :  76
+974a6777 :          High : 116
+b51eb99b :          High : 116
+588089ff :           LOW :  76
+6d484d5b :          High : 116
+37c799bf :           LOW :  76
+fab0211b :          High : 116
+29f0e97f :          High : 116
+db385423 :           LOW :  76
+4abc793f : OTHER ------- : 117
+4df88b1a :           LOW :  76
+34c87fc6 :          High : 116
+40de67da :          High : 116
+e02b3d2e :           LOW :  76
+72b1849a :          High : 116
+70cb65ee :           LOW :  76
+5c31e15a :          High : 116
+ eacceae :          High : 116
+8831bd42 :           LOW :  76
+3e8f776e :          High : 116
+8bce3202 : OTHER ------- :  78
+f750a018 :          High : 116
+addd7b4c :          High : 116
+3c3155c0 :           LOW :  76
+120a160c :          High : 116
+2804dc80 : OTHER ------- :  77
+929efc5f :          High : 116
+6660b503 :          High : 116
+ebafd3e7 :           LOW :  76
+99fda0c3 :          High : 116
+b947bba7 :           LOW :  76
+7ac0cc83 :          High : 116
+ 829e367 :          High : 116
+8560048b :           LOW :  76
+4c164b27 :          High : 116
+2243284b :           LOW :  76
+38ccf2e7 :          High : 116
+d2548c0b : OTHER ------- : 118
+10c05561 :           LOW :  76
+905bb49d :          High : 116
+b5857321 :           LOW :  76
+b8feb65d :          High : 116
+562ed0e1 :          High : 116
+8b7c8fa5 :           LOW :  76
+7c7c6ea1 :          High : 116
+775e4965 :           LOW :  76
+f22e4c61 :          High : 116
+2ca84325 :          High : 116
+d1e96229 :           LOW :  76
+911a7ce5 :          High : 116
+171d77e9 :           LOW :  76
+ca74f6a5 :          High : 116
+ff7dcda9 :          High : 116
+47c390ed :           LOW :  76
+8cca6369 :          High : 116
+1e9bc2ad :           LOW :  76
+  c33929 :          High : 116
+82a4346d :          High : 116
+ca081ff1 :           LOW :  76
+519ce62d :          High : 116
+deb22db1 :           LOW :  76
+a945d7ed : OTHER ------- : 120
+129e7f85 :          High : 116
+36230489 :           LOW :  76
+a0495945 :          High : 116
+ 379ba49 :           LOW :  76
+ed3c7305 :          High : 116
+a45cb009 :          High : 116
+ae8a394d : OTHER ------- :  77
+aae75168 :          High : 116
+26cff19c :           LOW :  76
+8fbbf028 :          High : 116
+1c47bc5c :          High : 116
+313897d0 :           LOW :  76
+becec71c :          High : 116
+5c9d8e90 :           LOW :  76
+d52511dc :          High : 116
+3185c550 :          High : 116
+507abc04 :           LOW :  76
+62b13c10 :          High : 116
+dfdedec4 :           LOW :  76
+e2dff2d0 :          High : 116
+f33a4184 :          High : 116
+626f4778 :           LOW :  76
+294ce444 : OTHER ------- : 118
+11da5672 :           LOW :  76
+527e2d9e :          High : 116
+11801b32 :          High : 116
+9b63ce06 :           LOW :  76
+faeb1ff2 :          High : 116
+de325ec6 :           LOW :  76
+aedb64b2 :          High : 116
+969a2f86 :          High : 116
+c9b3539a :           LOW :  76
+315b4046 :          High : 116
+b0acb05a :           LOW :  76
+5b359106 :          High : 116
+ 7134d1a :          High : 116
+d351366e :           LOW :  76
+c5a729da :          High : 116
+33fe1f2e :           LOW :  76
+2528469a :          High : 116
+df2c47ee :          High : 116
+b0378a82 :           LOW :  76
+199bb0ae :          High : 116
+926cbf42 : OTHER ------- :  77
+1c0cca79 :          High : 116
+d7978abd :          High : 116
+d19c8b41 :           LOW :  76
+a7fb6c7d : OTHER ------- : 118
+60a70783 :           LOW :  76
+a458569f :          High : 116
+3efd7343 :          High : 116
+b8823627 :           LOW :  76
+a4fa1f03 :          High : 116
+16b5dde7 :           LOW :  76
+ca5d0ac3 :          High : 116
+ec73c5a7 :          High : 116
+e60dcacb :           LOW :  76
+6d7bed67 :          High : 116
+8e08ae8b :           LOW :  76
+ d8e5527 :          High : 116
+e371d24b :          High : 116
+2e8a7daf :           LOW :  76
+1609360b :          High : 116
+b34c5d6f :           LOW :  76
+958ed9cb :          High : 116
+8da07d2f :          High : 116
+7fcb72d3 :           LOW :  76
+a946dcef :          High : 116
+a9100e93 :           LOW :  76
+31ff7caf :          High : 116
+a64aea53 :          High : 116
+392a0e37 :           LOW :  76
+df3c0613 :          High : 116
+5b2925f7 :           LOW :  76
+fba361d3 :          High : 116
+49c27db7 :          High : 116
+4d29f3db :           LOW :  76
+a8b61577 :          High : 116
+dc57479b :           LOW :  76
+5bc3ed37 :          High : 116
+8f02db5b :          High : 116
+515d07bf :           LOW :  76
+ 4ecaf1b :          High : 116
+7228577f :           LOW :  76
+1dd4c2db :          High : 116
+8f95e73f :          High : 116
+a0876de3 :           LOW :  76
+ 565b6ff :          High : 116
+731c79a3 :           LOW :  76
+6f57c6bf :          High : 116
+ 1b7c563 :          High : 116
+f3038a47 :           LOW :  76
+24195123 :          High : 116
+5b0a1207 :           LOW :  76
+f2011ce3 :          High : 116
+c8bad9c7 :          High : 116
+116600eb :           LOW :  76
+4fd5e187 :          High : 116
+b9c1c4ab :           LOW :  76
+441b2947 :          High : 116
+1fabc86b :          High : 116
+8561b5cf :           LOW :  76
+52e40c2b :          High : 116
+dff2758f :           LOW :  76
+a32a8feb :          High : 116
+4235754f :          High : 116
+6cebccf3 : OTHER ------- :  78
+d0ba0401 :          High : 116
+1f9bd4c5 :           LOW :  76
+19c381c1 :          High : 116
+ea176e85 :          High : 116
+889be389 :           LOW :  76
+cd1b4845 :          High : 116
+47db9949 :           LOW :  76
+8e676205 :          High : 116
+e9a78f09 : OTHER ------- : 117
+cb35f9dc :           LOW :  76
+ f87b468 :          High : 116
+6df3849c :           LOW :  76
+7ba15328 :          High : 116
+3a004f5c :          High : 116
+78c75ad0 :           LOW :  76
+b61c5a1c :          High : 116
+a2115190 :           LOW :  76
+a907a4dc :          High : 116
+a7de8850 :          High : 116
+a87caf04 :           LOW :  76
+3ceeff10 :          High : 116
+1515d1c4 :           LOW :  76
+5402b5d0 : OTHER ------- : 118
+2745071e :          High : 116
+994b0cb2 :           LOW :  76
+d9e7bfde :          High : 116
+25989172 :           LOW :  76
+86bbb89e :          High : 116
+25eb5632 :          High : 116
+2327b906 :           LOW :  76
+3b035af2 :          High : 116
+bf7349c6 :           LOW :  76
+45a09fb2 :          High : 116
+ac581a86 : OTHER ------- : 118
+361a81e4 :           LOW :  76
+f9eb83f0 :          High : 116
+f441c4a4 :           LOW :  76
+66cb5ab0 :          High : 116
+e2404764 :          High : 116
+845bcb58 :           LOW :  76
+bed60a24 :          High : 116
+2702fa18 : OTHER ------- :  77
+5bf60817 :          High : 116
+72e7c43b :          High : 116
+a0139e9f :           LOW :  76
+8419b7fb : OTHER ------- : 118
+8953a7d1 :           LOW :  76
+d578d00d :          High : 116
+bf6ed591 :          High : 116
+bdd62f55 :           LOW :  76
+cede4351 : OTHER ------- : 118
+ 5609837 :           LOW :  76
+4a43f013 :          High : 116
+9b05aff7 :          High : 116
+93160a1b :           LOW :  76
+a74507b7 :          High : 116
+708b1ddb :           LOW :  76
+cdde9f77 :          High : 116
+5bbe719b :          High : 116
+1463c1ff :           LOW :  76
+b470055b :          High : 116
+14b2d1bf :           LOW :  76
+1a5fd91b :          High : 116
+dfe4217f : OTHER ------- : 117
+9b53c65a :           LOW :  76
+29d14706 :          High : 116
+db74631a :           LOW :  76
+ 79ed7c6 :          High : 116
+79c23fda :          High : 116
+c274952e :           LOW :  76
+aefd5c9a :          High : 116
+24fcbdee :           LOW :  76
+f3e5b95a :          High : 116
+6cc626ae :          High : 116
+9d889542 :           LOW :  76
+1e90cf6e :          High : 116
+598d0a02 :           LOW :  76
+ff1cb82e :          High : 116
+7726bec2 :          High : 116
+b31b1a96 :           LOW :  76
+8715b382 :          High : 116
+e6bc9b56 :           LOW :  76
+5a19e842 :          High : 116
+81875c16 :          High : 116
+db30b92a :           LOW :  76
+e03b5cd6 :          High : 116
+185c05ea :           LOW :  76
+9f989d96 :          High : 116
+1f8492aa :          High : 116
+571b44fe :           LOW :  76
+d96a5f6a :          High : 116
+bc491dbe : OTHER ------- :  77
+88f78245 :          High : 116
+93817349 :          High : 116
+227ff08d :           LOW :  76
+73236909 :          High : 116
+d7a3824d :           LOW :  76
+d1119ec9 :          High : 116
+8b97540d :          High : 116
+6f719991 :           LOW :  76
+7c1b65cd :          High : 116
+aefd0751 :           LOW :  76
+26efb78d :          High : 116
+659cb511 :          High : 116
+603286d5 :           LOW :  76
+6d10a2d1 : OTHER ------- : 118
+d65c2bb7 :           LOW :  76
+127dcb93 :          High : 116
+cdb1c377 :          High : 116
+c01fd59b :           LOW :  76
+27219b37 :          High : 116
+5d4d695b :           LOW :  76
+ 66bb2f7 :          High : 116
+abb93d1b :          High : 116
+8fefc57f :           LOW :  76
+8b2350db :          High : 116
+99ff553f :           LOW :  76
+1b4ba49b :          High : 116
+ca7124ff :          High : 116
+8030c7a3 :           LOW :  76
+bd0534bf :          High : 116
+bf8e1363 : OTHER ------- :  77
+7462cd46 :          High : 116
+49c00d5a :          High : 116
+ae71baae :           LOW :  76
+3721aa1a :          High : 116
+b508636e :           LOW :  76
+79b086da :          High : 116
+be604c2e :          High : 116
+578f92c2 :           LOW :  76
+cf3974ee :          High : 116
+e50a8782 :           LOW :  76
+2c53ddae :          High : 116
+499abc42 :          High : 116
+e0c17016 :           LOW :  76
+96003102 :          High : 116
+31c170d6 : OTHER ------- :  78
+3b48724c : OTHER ------- : 117
+7c6b6883 :          High : 116
+97623f67 : OTHER ------- :  78
+ffb63cd5 :          High : 116
+131b46d9 :           LOW :  76
+8aed4695 :          High : 116
+78912c99 :          High : 116
+5873eedd :           LOW :  76
+84e35259 :          High : 116
+231ab09d : OTHER ------- :  77
+bfe31a78 :          High : 116
+56f93bac :          High : 116
+86e4bc20 :           LOW :  76
+ bba766c :          High : 116
+bbf6e2e0 :           LOW :  76
+d49af12c :          High : 116
+efdc49a0 :          High : 116
+8f373554 :           LOW :  76
+ 554f060 :          High : 116
+e88b8814 :           LOW :  76
+1f20d720 : OTHER ------- : 118
+df1d9fee :          High : 116
+ace66282 :           LOW :  76
+ 37508ae :          High : 116
+2f839742 :           LOW :  76
+13cdb16e :          High : 116
+64f60c02 :          High : 116
+d619fbd6 :           LOW :  76
+9dfdc0c2 :          High : 116
+e3a03c96 :           LOW :  76
+6b5ab582 :          High : 116
+fd8fbd56 :          High : 116
+9765ee6a :           LOW :  76
+40a87e16 :          High : 116
+5281fb2a :           LOW :  76
+ 9aa7ed6 :          High : 116
+10db47ea :          High : 116
+77b00e3e :           LOW :  76
+7b31d4aa :          High : 116
+5b9aa6fe :           LOW :  76
+7a45a16a :          High : 116
+ead67fbe :          High : 116
+9d7f6f52 :           LOW :  76
+1a23987e :          High : 116
+a2bd5412 :           LOW :  76
+1e41f13e :          High : 116
+  a078d2 :          High : 116
+d15065a6 :           LOW :  76
+b7e8dd92 :          High : 116
+9e725666 : OTHER ------- :  78
+ 1db735c :          High : 116
+1db0bed0 :          High : 116
+b5cbcd84 :           LOW :  76
+c376b590 :          High : 116
+78f27044 :           LOW :  76
+e9bfec50 :          High : 116
+89905304 :          High : 116
+b084f0f8 :           LOW :  76
+ 66575c4 :          High : 116
+b4017fb8 :           LOW :  76
+4e31d884 :          High : 116
+ 2a94e78 :          High : 116
+b46eafac :           LOW :  76
+673c5d38 :          High : 116
+5d1bea6c :           LOW :  76
+ec7aabf8 :          High : 116
+cde8652c :          High : 116
+ad0cfda0 :           LOW :  76
+3d941fec :          High : 116
+7131a460 :           LOW :  76
+22df1aac :          High : 116
+2da98b20 :          High : 116
+b3070ed4 :           LOW :  76
+4534b1e0 : OTHER ------- : 117
+ed8c4a07 :           LOW :  76
+4cd7d4e3 :          High : 116
+a54511c7 :          High : 116
+875bb8eb :           LOW :  76
+2e681987 :          High : 116
+4a3f7cab :           LOW :  76
+dcb56147 :          High : 116
+ 2b1806b :          High : 116
+9e0aedcf :           LOW :  76
+c071c42b : OTHER ------- : 117
+98029216 :           LOW :  76
+71413302 :          High : 116
+335092d6 :          High : 116
+af4e9bea :           LOW :  76
+4547d396 :          High : 116
+d8b128aa :           LOW :  76
+aaa85456 :          High : 116
+2ad0f56a :          High : 116
+214313be :           LOW :  76
+ce6e022a :          High : 116
+1c5c2c7e :           LOW :  76
+2c484eea : OTHER ------- : 118
+9dcb6da8 :          High : 116
+53c191dc :           LOW :  76
+be31cc68 :          High : 116
+84271c9c :           LOW :  76
+45736b28 :          High : 116
+f5dbe75c :          High : 116
+adc472d0 :           LOW :  76
+2f9ff21c :          High : 116
+c7366990 :           LOW :  76
+f8333cdc : OTHER ------- : 118
+7490b14a :          High : 116
+ 78ead9e :           LOW :  76
+68cade0a :          High : 116
+13f6e65e :           LOW :  76
+99224aca :          High : 116
+89105f1e :          High : 116
+7b73e4b2 :           LOW :  76
+fb9b17de :          High : 116
+de296972 :           LOW :  76
+4057109e :          High : 116
+ ce42e32 :          High : 116
+9fd61106 :           LOW :  76
+a86432f2 :          High : 116
+c109a1c6 :           LOW :  76
+916977b2 :          High : 116
+ ad67286 :          High : 116
+ca50c69a :           LOW :  76
+e9fc8346 :          High : 116
+f6ff235a :           LOW :  76
+ b3bd406 :          High : 116
+761ac01a :          High : 116
+5e3cd96e :           LOW :  76
+40639cda : OTHER ------- : 117
+df789039 :           LOW :  76
+567459f5 :          High : 116
+1ff215f9 :          High : 116
+6b360e3d :           LOW :  76
+8ea7dbb9 :          High : 116
+3eda6ffd :           LOW :  76
+9d59e179 :          High : 116
+9dff11bd :          High : 116
+8a558241 :           LOW :  76
+9663f37d :          High : 116
+40fec001 :           LOW :  76
+75c9153d :          High : 116
+b66c3dc1 :          High : 116
+ba0fea85 :           LOW :  76
+945dfb81 :          High : 116
+e7b7c445 :           LOW :  76
+c493f941 :          High : 116
+2fa7de05 :          High : 116
+ 7f3cb09 : OTHER ------- :  77
+6f654b74 :          High : 116
+dde70068 :           LOW :  76
+fc3a7e34 :          High : 116
+8b549f28 :          High : 116
+4d1c5b5c :           LOW :  76
+ae5d7de8 :          High : 116
+17cc661c :           LOW :  76
+21c19ca8 :          High : 116
+254bb0dc :          High : 116
+97d75450 : OTHER ------- :  78
+cf1b06f6 :          High : 116
+8b00320a :           LOW :  76
+60c527b6 :          High : 116
+28639eca :          High : 116
+9392f31e :           LOW :  76
+5ea44b8a :          High : 116
+8be9abde :           LOW :  76
+3682384a :          High : 116
+2a71a49e : OTHER ------- : 118
+2d77f23c :           LOW :  76
+21df86c8 :          High : 116
+a6d21cfc :           LOW :  76
+b26bc588 :          High : 116
+afdb87bc :          High : 116
+7fb9b930 :           LOW :  76
+6f54327c :          High : 116
+498a4ff0 :           LOW :  76
+4bfc1d3c :          High : 116
+9c3e26b0 :          High : 116
+e793d364 :           LOW :  76
+ca953d70 : OTHER ------- : 117
+20bb6c57 :           LOW :  76
+aa24a233 :          High : 116
+7ab36417 :          High : 116
+559ee03b :           LOW :  76
+59659bd7 :          High : 116
+65d4d3fb :           LOW :  76
+40921397 :          High : 116
+33e907bb :          High : 116
+d9959a1f :           LOW :  76
+ff9b7b7b :          High : 116
+e81389df :           LOW :  76
+48ac2f3b :          High : 116
+1393b99f :          High : 116
+7f6c0643 :           LOW :  76
+57d6295f :          High : 116
+d8fdb203 :           LOW :  76
+f09ad91f :          High : 116
+f4f59dc3 :          High : 116
+2ee288a7 :           LOW :  76
+4b13c983 :          High : 116
+cdcfb067 :           LOW :  76
+93183543 :          High : 116
+bec71827 :          High : 116
+4453c54b :           LOW :  76
+b588bfe7 :          High : 116
+7420290b :           LOW :  76
+a5d4a7a7 :          High : 116
+53dacccb :          High : 116
+6798a02f :           LOW :  76
+9343b08b :          High : 116
+64c3ffef :           LOW :  76
+221ad44b :          High : 116
+62019faf :          High : 116
+e52c3d53 :           LOW :  76
+cb117f6f :          High : 116
+38f25913 :           LOW :  76
+4bb39f2f :          High : 116
+332eb4d3 : OTHER ------- : 117
+79cc389e :           LOW :  76
+9862b90a :          High : 116
+c111715e :           LOW :  76
+4ac725ca :          High : 116
+ec07ea1e :          High : 116
+30391fb2 :           LOW :  76
+8f6fa2de :          High : 116
+149ba472 :           LOW :  76
+80089b9e :          High : 116
+f0036932 : OTHER ------- : 118
+f26fdab0 :           LOW :  76
+43bdbbfc :          High : 116
+ 672f170 :           LOW :  76
+65f026bc :          High : 116
+7cd94830 :          High : 116
+992f8ce4 : OTHER ------- :  77
+6705c1f3 :          High : 116
+961ebfd7 :           LOW :  76
+fa0a3db3 :          High : 116
+1c073797 :          High : 116
+cc0c6bbb :           LOW :  76
+d229ef57 :          High : 116
+8a3adf7b :           LOW :  76
+bc46e717 :          High : 116
+69c7933b :          High : 116
+cd815d9f :           LOW :  76
+2a7286fb :          High : 116
+f7ffcd5f :           LOW :  76
+cbfbbabb :          High : 116
+5b007d1f :          High : 116
+ea9181c3 :           LOW :  76
+72436cdf :          High : 116
+16abad83 :           LOW :  76
+f9889c9f : OTHER ------- : 117
+f8a11efa :          High : 116
+a3f6464e :           LOW :  76
+528c1bba : OTHER ------- : 118
+52bc05f8 :           LOW :  76
+73983ac4 :          High : 116
+e9bb94b8 :          High : 116
+3e8719ec :           LOW :  76
+f0e66378 :          High : 116
+b38814ac :           LOW :  76
+32fc7238 :          High : 116
+6ee84f6c :          High : 116
+ecc94be0 :           LOW :  76
+6767ca2c :          High : 116
+ b3db2a0 :           LOW :  76
+d3c684ec :          High : 116
+c4455960 :          High : 116
+18b98114 :           LOW :  76
+3aa04020 :          High : 116
+a6d413d4 : OTHER ------- :  78
+75f42c5a :          High : 116
+9428c9ae :          High : 116
+b9526842 :           LOW :  76
+ 8f8726e :          High : 116
+83abdd02 :           LOW :  76
+bf895b2e :          High : 116
+f29a91c2 :          High : 116
+c0d91d96 :           LOW :  76
+96de8682 :          High : 116
+991f9e56 :           LOW :  76
+4137bb42 :          High : 116
+4b8f5f16 : OTHER ------- : 117
+ 79e0245 :           LOW :  76
+3a645741 :          High : 116
+bae01c05 :           LOW :  76
+5ed09501 :          High : 116
+2c2a75c5 :          High : 116
+dea01ec9 :           LOW :  76
+a13d0f85 :          High : 116
+3a1a9489 :           LOW :  76
+9fd7e945 :          High : 116
+97614a49 :          High : 116
+79e6378d :           LOW :  76
+58344009 :          High : 116
+924ac94d :           LOW :  76
+1e5375c9 :          High : 116
+a07f9b0d :          High : 116
+15f75091 :           LOW :  76
+e244accd : OTHER ------- : 118
+dca62753 :           LOW :  76
+d586c96f :          High : 116
+5db24313 :          High : 116
+d5e632f7 :           LOW :  76
+8f349ed3 :          High : 116
+f04a8ab7 : OTHER ------- :   0
+Anomalies: 0.
+Step frames: .

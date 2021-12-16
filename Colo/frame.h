@@ -2,6 +2,8 @@
 #include "../NPC.h"
 #include "coloCore.h"
 
+//This needs serious work if it's even worth it.
+
 class frame{
     public:
     //constructor

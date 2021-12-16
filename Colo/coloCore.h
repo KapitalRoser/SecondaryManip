@@ -1,12 +1,6 @@
 #include "../processCore.h"
 enum bgFrames {H = 116, L = 76, A = 114, O = 154}; //High, Low, Alpha, Omega
 
-std::vector<int>quilavaSteps{5,10,15,20,25,30,35,39,44,49,54,67,88,100,111,119,
-    126,132,138,143,148,153,158,163,168,173,177,182,187,192,197,202,210,217,
-    227,237,252,268,284,292,297,302,307,312,316,321,326,331};
-std::vector<int>croconawSteps{};
-std::vector<int>bayleefSteps{};
-
 int col_consultPattern(int i, region gameRegion){
     std::vector<int>NTSCUPattern = {H,H,L,H,L}; //HHLHL
     std::vector<int>PAL60Pattern = {
@@ -56,7 +50,7 @@ int col_consultPattern(int i, region gameRegion){
     return *iter;
 }
 
-//slightly depreciated:
+//slightly depreciated (currently just used in npcs.cpp):
 bool col_CheckStepPath(std::vector<int>secondarySteps,u32& seed,int i,int stepCalls){
   if (binary_search(secondarySteps.begin(),secondarySteps.end(),i+1)){
         LCGn(seed,stepCalls);
@@ -66,8 +60,5 @@ bool col_CheckStepPath(std::vector<int>secondarySteps,u32& seed,int i,int stepCa
   }
 }
 int colo_RollBackground(u32 &seed,int i, region gameRegion){    
-    //   int fcount = col_consultPattern(i,gameRegion);
-    //   LCGn(seed,fcount); //application of rules.
-    //   return fcount;
       return LCGn(seed,col_consultPattern(i,gameRegion));
 }

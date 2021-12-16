@@ -45,6 +45,7 @@ int main(){
     vector<uint32_t> rawPattern = hexReadNumbersFromFile(FILE_NAME + FILE_EXTENSION);
     //File OUT
     ofstream refinedPattern("out" + FILE_NAME + FILE_EXTENSION); 
+    ofstream purePattern("outPure" + FILE_NAME + FILE_EXTENSION);
 
     if (rawPattern.empty()){
         cout << "File read unsuccessful";
@@ -84,6 +85,7 @@ int main(){
         }
         //write results
         refinedPattern << " : " << setw(13) << frameType << " : " << setw(3) <<  rolls << endl;
+        purePattern << rolls << endl;
     }
     printResults(anomalies,stepFrames,refinedPattern);
     return 0;

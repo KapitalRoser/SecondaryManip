@@ -1,6 +1,14 @@
 #include "../../processCore.h"
-#include "../../NPC.h"
+#include "NPC.h" //LOCAL COPY OF HEADER
 #include "../coloCore.h"
+
+
+/*
+TODO: Solve issue where Jim only burns 1 incrementStep() during beginCycle() instead of two.
+Solve issue where Jim gets completely stuck on phenac gym door.
+    This may require implementing some simulation of collision. 
+*/
+
 
 void advanceCycle (u32 &seed,NPC &npc, int currentCycle){
     int framesWalked = 0;
@@ -18,6 +26,7 @@ void advanceCycle (u32 &seed,NPC &npc, int currentCycle){
     npc.finishCycle(seed);
     npc.printNPCData(currentCycle);
 }
+//THIS IS THE FUNCTION USED IN THIS FILE. NOT THE ONE IN NPC.H - THAT FUNCTION IS FOR QUILAVADWITHNPCS.CPP
 std::string npcAction(u32 &seed,NPC &npc, int i){
     std::string action = "";
     int factor = 2;
@@ -53,7 +62,7 @@ std::string npcAction(u32 &seed,NPC &npc, int i){
         }
         return action;
 }
-void initializeNPCSet(u32 &seed,std::vector<NPC>&npcSet, int i,std::string &action,std::ofstream &outF){
+void initializeNPCSet(u32 &seed,std::vector<NPC>&npcSet,std::string &action,std::ofstream &outF){
     for (unsigned int i = 0; i < npcSet.size(); i++) //this version returns action.
     {
         npcSet[i].beginCycle(seed);
@@ -65,13 +74,24 @@ void initializeNPCSet(u32 &seed,std::vector<NPC>&npcSet, int i,std::string &acti
     }
 }
 
+void outputToFile(u32 seed, std::string action, std::ofstream &outF,std::ofstream &rawF, bool step){
+    outF << action;
+    outF << std::hex << " : " << seed << " : " << std::dec;
+    if (step){
+        outF << " ++ STEP!";
+    }
+    outF << std::endl;
+    rawF << std::hex << seed << std::endl;
+}
+
 int main(){
     std::ofstream outF("npcSim.txt");
+    std::ofstream outFRaw("npcSimRaw.txt");
 
     //~~~~~~~~~CONFIG~~~~~~~~~~~~
-    u32 inputSeed = 0x9B965ED0; //first seed hit from blink :D
-    int frameWindow = 600;
-    int callsPerPlayerStep = 2;
+    u32 inputSeed = 0x59B23146; //first seed hit from blink :D
+    int frameWindow = 1372;
+    int callsPerPlayerStep = 1;
     region version = NTSCU;
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~
     u32 seed = inputSeed;
@@ -85,13 +105,18 @@ int main(){
     NPC randall = NPC({-90,110}, STANDARD,"R"); 
     NPC heels   = NPC({30,300},  SLOWER,  "H");
     std::vector<NPC>npcSet = {kaib,jim,grandma,boots,randall,heels};
-    
+    std::vector<int>quilavaSteps{5,10,15,20,25,30,35,39,44,49,54,67,88,100,111,119,
+    126,132,138,143,148,153,158,163,168,173,177,182,187,192,197,202,210,217,
+    227,237,252,268,284,292,297,302,307,312,316,321,326,331};
+    std::vector<int>croconawSteps{};
+    std::vector<int>bayleefSteps{};
 
+
+
+    initializeNPCSet(seed,npcSet,action,outF);
+    outputToFile(seed,action,outF,outFRaw,0);
     for (int i = 0; i < frameWindow; i++)
-    {   
-        if (i == 0){
-            initializeNPCSet(seed,npcSet,i,action,outF);
-        }
+    {   //standard items:
         colo_RollBackground(seed,i,version);
         bool step = col_CheckStepPath(quilavaSteps,seed,i,callsPerPlayerStep);
         //NPCs:
@@ -101,14 +126,14 @@ int main(){
             action += npcAction(seed,npcSet.at(j),i);
         }
         //Output
-        outF << action;
-        outF << std::hex << " : " << seed << " : " << std::dec;
-        if (step){
-            outF << " ++ STEP!";
+        outputToFile(seed,action,outF,outFRaw,step);
+        if (i == 199){
+            std::cout << std::setprecision(17)<< npcSet[1].getIntendedPos().x << " : " << npcSet[1].getIntendedPos().y << std::endl;
         }
-        outF << std::endl;
+        if (i >= 198 && i < 205){
+            std::cout << "x pos: " << std::setw(18) << npcSet[1].getNextPos().x << " y pos: "<< npcSet[1].getNextPos().y << std::endl;
+        }
     }
-
 
     return 0;
 }
