@@ -145,9 +145,10 @@ u32 LCGn_BACK(u32&seed, const u32 n){
     return seed;
 }
 
-//What is the difference between these two functions -- probably slight rounding differences only
+//Only difference between LCGPullHi16 and LCGPercentage is one is stored as float the other as double.
+//Does this really matter or can all uses be stored as float? Currently used by npc and palPal.
 double LCG_PullHi16 (uint32_t &seed){
-    const int divisor = 65536;
+    const int divisor = 65536; //ever a need for this to be a double???
     double X = 0;
     LCG(seed);
     X = seed >> 16;
@@ -155,12 +156,12 @@ double LCG_PullHi16 (uint32_t &seed){
     return X;
 }
 float LCGPercentage(u32& seed){
-  float percentResult = 0;
-  u32 hiSeed = 0;
   LCG(seed);
-  hiSeed = seed >> 16;
-  percentResult = static_cast<float>(hiSeed)/65536;
+  u32 hiSeed = seed >> 16;
+  float percentResult = static_cast<float>(hiSeed)/65536;
   return percentResult;
+  // one liner - possibly cryptic if you've never seen this before: 
+  //return static_cast<float>(seed >> 16)/65536;
 }
 u16 rollRNGwithHiSeed(u32 &seed)
 { //mostly used in the NTSC naming screen, may have uses elsewhere, like blink.
@@ -170,6 +171,20 @@ u16 rollRNGwithHiSeed(u32 &seed)
     LCGn(seed, 4); //10% rule - if the hi 16 bits are numerically in the bottom 10%, reroll.
   }
   return hiSeed; //debugging.
+
+  /*
+  Roll rng
+  pull hi 16
+  divide hi16 / 65536
+  if result < 0.1 : lcgn 4
+  return hiseed for debug only.
+
+  could redesign as:
+  if (LCGPercentage(seed) < 0.1) {
+    LCGn(seed,4);
+  }
+  */
+
 }
 
 
@@ -388,11 +403,16 @@ void debugPrint2DVec(std::vector<std::vector<int>>set){
 void debugPrintVec(std::vector<int>set){
     for (unsigned int i = 0; i < set.size(); i++)
     {
-        if(i <set.size()-1){
-          std::cout << set.at(i) << ", ";
+        std::cout << set.at(i);
+        if (i != set.size()-1){
+          std::cout << ", ";
+        } else {
+          std::cout <<".\n";
+        }
+        if (i % 20 == 19){
+          std::cout << std::endl;
         }
     }
-    std::cout << std::endl;
 }
 
 

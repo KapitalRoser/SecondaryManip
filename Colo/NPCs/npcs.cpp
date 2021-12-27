@@ -53,8 +53,11 @@ std::string npcAction(u32 &seed,NPC &npc, int i){
         case BEGIN:
             action = npc.getName() + "b";
             npc.beginCycle(seed);
-            npc.incrementPosition(factor); //standard practice?
-            npc.incrementPosition(factor);
+            npc.incrementPosition(factor); //standard practice? -- WHEN WHERE AND HOW?
+            // if (!(npc.getName()[0] == 'J') || i != 199){
+            //     npc.incrementPosition(factor);
+            // }
+
             break;
         default:
             std::cout << "STATE INVALID!";
@@ -89,7 +92,7 @@ int main(){
     std::ofstream outFRaw("npcSimRaw.txt");
 
     //~~~~~~~~~CONFIG~~~~~~~~~~~~
-    u32 inputSeed = 0x59B23146; //first seed hit from blink :D
+    u32 inputSeed = 0xE845BD99; //first seed hit from blink :D
     int frameWindow = 1372;
     int callsPerPlayerStep = 1;
     region version = NTSCU;
@@ -127,13 +130,17 @@ int main(){
         }
         //Output
         outputToFile(seed,action,outF,outFRaw,step);
-        if (i == 199){
-            std::cout << std::setprecision(17)<< npcSet[1].getIntendedPos().x << " : " << npcSet[1].getIntendedPos().y << std::endl;
-        }
-        if (i >= 198 && i < 205){
-            std::cout << "x pos: " << std::setw(18) << npcSet[1].getNextPos().x << " y pos: "<< npcSet[1].getNextPos().y << std::endl;
+        if (npcSet.at(4).getState() == FINISH){
+            std::cout << "intended: " << std::setprecision(17)<< npcSet[4].getIntendedPos().x << " : " << npcSet[4].getIntendedPos().y << std::endl;
         }
     }
+    //     if (i == 199){
+    //         std::cout << std::setprecision(17)<< npcSet[1].getIntendedPos().x << " : " << npcSet[1].getIntendedPos().y << std::endl;
+    //     }
+    //     if (i >= 198 && i < 205){
+    //         std::cout << "x pos: " << std::setw(18) << npcSet[1].getNextPos().x << " y pos: "<< npcSet[1].getNextPos().y << std::endl;
+    //     }
+    // }
 
     return 0;
 }
