@@ -40,7 +40,7 @@ int col_consultPattern(int i, region gameRegion){
         //pattern
         //logic
         break;
-    case NSTCJ:
+    case NTSCJ:
         //pattern
         //logic
         break;

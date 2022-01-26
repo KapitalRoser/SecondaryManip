@@ -25,6 +25,7 @@ typedef uint16_t u16;
 typedef uint32_t u32;
 typedef uint64_t u64;
 typedef int64_t s64;
+typedef std::vector<int>::iterator iterInt;
 
 enum region {NTSCU,PAL60,PAL50,NTSCJ}; //Switch to NTSC, PAL and JPN? NTSC-U, PAL, NTSC-J is most correct but LONG.
 enum emuVer {STABLE,MODERN}; //Stable == 5.0, only matters for xd so far.
@@ -65,7 +66,7 @@ struct PokemonRequirements
     bool forceEven = 0;
 };
 
-//extra functions block
+//general functions block
 u32 modpow32(u32 base, u32 exp)
 {
   u32 result = 1;
@@ -95,6 +96,19 @@ for (unsigned int i = 0; i < str.length(); i++)
     }
 return str;
 }
+int consultPattern(int i, int offset, std::vector<int>pattern){
+  iterInt iter = pattern.begin(); //Call this implementation when you know what pattern you're using.
+  int range = pattern.size();
+  if (i < offset){ 
+    iter += (i % (offset)); //This has flaws
+  } else {
+    iter += (i-offset) % range; //Magic
+  }
+  return *iter;
+}
+int ultraUltraCondensedCP(int i, int off, std::vector<int>pat){
+  return (i<off)*(*(pat.begin()+(i % off)))+!(i<off)*(*(pat.begin()+((i-off)%pat.size()))); //This is for shits 'n giggles, don't use this.
+} //good luck reading this lol, probably not even faster cuz compilers are smart.
 
 //RNG Block
 u32 LCG(u32& seed){
@@ -188,7 +202,7 @@ u16 rollRNGwithHiSeed(u32 &seed)
 }
 
 
-
+//Pokemon Related
 u32 simplePID (u32 &seed){
     u32 hId = LCG(seed) >> 16;
     u32 lId = LCG(seed) >> 16;
@@ -414,7 +428,6 @@ void debugPrintVec(std::vector<int>set){
         }
     }
 }
-
 
 
 #endif /*PROCESSCORE_H*/
