@@ -127,7 +127,7 @@ int dummyCam(uint32_t& seed,int camAngle1,int camAngle2){
   int seedPercent = 0;
   int totalRNGCalls = 0;
   /*The order of the camera angles doesn't actually matter, just that there are two of them.
-  Under what condition is a angle of 10,11,or 12 possible? 
+  Under what condition is a angle of 10,11 possible? 
   When is rareFailure due to dpad sens possible?
   */
 
@@ -158,6 +158,54 @@ int dummyCam(uint32_t& seed,int camAngle1,int camAngle2){
     //Some physics stuff
     // LCG(seed);
     return count+1;
+}
+int debugDummyCam(uint32_t& seed,int camAngle1,int camAngle2){
+  
+  /*The order of the camera angles doesn't actually matter, just that there are two of them.
+  Under what condition is a angle of 10,or 11 considered?
+  When is rareFailure due to dpad sens possible?
+  */
+  uint32_t v1 = 0;
+  int count = 0;
+  do{
+    LCG(seed);
+    v1 = (seed >> 16) % 10;
+    count++;
+  } while (v1 == 3 || v1 >= 10 || v1 == camAngle1 || v1 == camAngle2);
+  LCG(seed); //direction choice
+  if (v1 >= 5){
+    LCG(seed); //opponent/player choice
+    if (v1 == 8){
+      LCGn(seed,3);
+    }
+    if (v1 >= 10){
+      LCGn(seed,2);
+    } 
+  }
+  return count+1;
+
+//debug
+  //int totalRNGCalls = 0;
+  // LCG(seed); //clockwise counterclockwise direction choice
+  // totalRNGCalls++;
+  // if (v1 == 5 || v1 == 7){
+  //   //This is dependent on wDpad sens being set to 1. Addr: 804eb8e0
+  //   //If 0, or if trainerperside is != 0, then skip.
+  //     LCG(seed);
+  //     totalRNGCalls++;
+  // } else if (v1 == 6 || v1 == 9){
+  //   LCG(seed);
+  //   totalRNGCalls++;
+  // } else if (v1 == 8){
+  //   LCGn(seed, 4);
+  //   totalRNGCalls += 4;
+  // } else if (v1 == 10 || v1 == 11){
+  //   LCGn(seed,3);
+  //   totalRNGCalls += 3;
+  // }
+    // cout << "Total RNG from dummycam: " << totalRNGCalls << endl;
+    // cout << "CAM: " << count << endl;
+    //return count+1;
 }
 void rollToGeneration(uint32_t&seed,int blurDuration, int camFrame,int cA1,int cA2){ 
   const int BLUR_CALLS = 9600;
@@ -282,7 +330,7 @@ int main(){
 
     
     const string FILE_EXTENSION = ".txt";
-    const string FILE_LOCATION = "Patterns\\leading";
+    const string FILE_LOCATION = "\\Patterns\\leading";
     int patternPosition = target;
     
 
@@ -309,7 +357,7 @@ int main(){
     }
 
     //preprocessing -- Important!
-    vector<int>noisePattern = readNumbersFromFile(FILE_LOCATION + patternLabel + FILE_EXTENSION);
+    vector<int>noisePattern = readNumbersFromFile("leading" + patternLabel + FILE_EXTENSION);
     uint32_t targetValue = seekTarget(seed,target,patternLabel,noisePattern);
     updatePreamble(VISUAL_START_FRAME,VISUAL_MIN_FRAMES,target,seed,noisePattern,targetValue);
 

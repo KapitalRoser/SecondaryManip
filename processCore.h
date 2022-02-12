@@ -245,6 +245,24 @@ void fillStarterGenHiddenPowerInfo(PokemonProperties& starter)
                    16 * ((starter.spAtkIV & 2) >> 1) + 32 * ((starter.spDefIV & 2) >> 1);
     starter.hiddenPowerPower = (powerSum * 40 / 63) + 30;
   }
+void coreDummyCam(uint32_t& seed,int camAngle1,int camAngle2,bool isFirst){
+ u32 v1 = 0;
+ int modulus = isFirst ? 10 : 12;
+  do{
+    LCG(seed);
+    v1 = (seed >> 16) % modulus;
+  } while ((isFirst && (v1 >= 10 || v1 == 3)) || v1 == camAngle1 || v1 == camAngle2);
+  LCG(seed);
+  if (v1 >= 5){
+    LCG(seed);
+    if (v1 == 8){
+      LCGn(seed,3);
+    }
+    if (v1 >= 10){
+      LCGn(seed,2);
+    } 
+  }
+}
 
 //basic generation -- only asks for gender ratio does not account for xd anti-shiny.
 //Still unsure if I should put this here in the header, might need to modify it too much.
