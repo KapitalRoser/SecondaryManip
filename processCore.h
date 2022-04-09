@@ -52,12 +52,13 @@ struct PokemonProperties
   };
 struct PokemonRequirements
 {
-    int hpIV = 0;
+  //Convert struct to class?
+    int hpIV = 0; 
     int atkIV = 0;
     int defIV = 0;
     int spAtkIV = 0;
     int spDefIV = 0;
-    int speedIV = 0;
+    int speedIV = 0; //compress to array?
     std::array<bool,25> validNatures;
     std::array<bool,16> validHPTypes;
     int hiddenPowerPower = 0;

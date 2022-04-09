@@ -291,6 +291,9 @@ void greenFunction(uint32_t &seed, vector<RNG_ObjData> cycleAddr, float param_1)
 }
 
 int main(){
+// UPDATE: TURNS OUT THIS IS ALL PARTICLE ENGINE CODE. FOUNTAINS HAVE PARTICLES. MYSTERY OBJECTS?
+
+
 
     //callerGreen and Green are set up with the exception of param_1
     //Purple needs to work out how lateblue is looped within purple
@@ -327,7 +330,7 @@ int main(){
 
 
 
-    //these two objects crash the game if their pointers are gone. Must be important.
+    //these two objects crash the game if their pointers are gone. Must be important. || PARTICLE ENGINE EMITTER NODE?
     //Entering Pkmn/PDA/Item menu causes these to be unloaded.  
     //After cutscene, these are no longer called?
     RNG_ObjData obj4;
