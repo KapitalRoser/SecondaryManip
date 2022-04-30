@@ -1,0 +1,78 @@
+8463d9e5 : OTHER ------- :  67
+a6d0346e : OTHER ------- : 107
+34b27043 : OTHER ------- : 107
+42f85aec : OTHER ------- :  67
+8c9e43b1 : OTHER ------- : 107
+8806a112 : OTHER ------- :  67
+ 62debaf : OTHER ------- : 107
+3d56e608 : OTHER ------- : 107
+dc904f45 : OTHER ------- :  67
+54b7b34e : OTHER ------- : 107
+58d63aa3 : OTHER ------- :  67
+c68f4664 : OTHER ------- : 107
+ a26bb11 : OTHER ------- : 107
+c24405f2 : OTHER ------- :  67
+d5dda80f : OTHER ------- : 107
+7e4023e8 : OTHER ------- :  67
+ccf41d1d : OTHER ------- : 107
+da36022e : OTHER ------- : 107
+a5241503 : OTHER ------- :  67
+85021e44 : OTHER ------- : 107
+4708c271 : OTHER ------- :  67
+d54909aa : OTHER ------- : 107
+7e9a746f : OTHER ------- : 107
+6002b1c8 : OTHER ------- :  67
+c35d867d : OTHER ------- : 107
+ec43210e : OTHER ------- :   0
+ec43210e : OTHER ------- : 173
+51722435 : OTHER ------- : 106
+bfe4b05f : OTHER ------- :  66
+924d2911 : OTHER ------- : 106
+b93bdf9b : OTHER ------- :  66
+fc2bde2d : OTHER ------- : 106
+4207c917 : OTHER ------- : 106
+ 1a14491 : OTHER ------- :  65
+6b77a750 : OTHER ------- : 105
+2bdfb85b : OTHER ------- :  66
+fa703ced : OTHER ------- : 106
+918775d7 : OTHER ------- : 106
+dc946f51 : OTHER ------- :  65
+94c9e710 : OTHER ------- : 105
+252bd11b : OTHER ------- :  65
+9d7303b2 : OTHER ------- :   0
+9d7303b2 : OTHER ------- : 211
+2ffbbe9f : OTHER ------- :  66
+b455e951 : OTHER ------- : 106
+a7e029db : OTHER ------- :  66
+2537ba6d : OTHER ------- : 106
+65138f57 : OTHER ------- : 106
+bd8584d1 : OTHER ------- :  66
+5fea6b13 : OTHER ------- : 106
+5d6d5ded : OTHER ------- :  66
+e0bf790f : OTHER ------- : 106
+bdd4c349 : OTHER ------- : 106
+ 4556293 : OTHER ------- :  67
+90ba4014 : OTHER ------- : 107
+c0642381 : OTHER ------- :  67
+f1b69cfa : OTHER ------- : 107
+872b4cff : OTHER ------- : 107
+aa6bc498 : OTHER ------- :  67
+d4f41a8d : OTHER ------- : 107
+39e21d5e : OTHER ------- :  67
+5759ebab : OTHER ------- : 107
+813edff4 : OTHER ------- : 107
+ba4b12e1 : OTHER ------- :  67
+ 6053dda : OTHER ------- : 107
+e005c15f : OTHER ------- :  67
+efeadc90 : OTHER ------- : 107
+fbcdebed : OTHER ------- : 107
+aebd443e : OTHER ------- :  67
+4da0320b : OTHER ------- :   0
+4da0320b : OTHER ------- : 172
+5d5a6c87 : OTHER ------- : 106
+e94b1181 : OTHER ------- : 106
+b5a1b98b : OTHER ------- :  66
+5771b79d : OTHER ------- : 106
+b9893c07 : OTHER ------- :   0
+Anomalies: 0.
+Step frames: .

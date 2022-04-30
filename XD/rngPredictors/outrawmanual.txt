@@ -1,0 +1,82 @@
+Modern SEVENS 
+       0 : OTHER ------- :   0
+       0 : OTHER ------- :  27 -- -1 frame because of this. 
+f0d1690d : OTHER ------- :  23 -- first visible frame
+c2aaafaa : OTHER ------- :  23
+
+924b03ab : OTHER ------- :  50
+bac6e9ed :            CC :  57
+c99857f4 :            CC :  57
+45250eff : OTHER ------- :  61
+7206caa2 :            CA :  68
+30e6ce46 :            CB :  78
+eff31c3c : OTHER ------- :   2 -- +4 calls split across 2 frames. --PeopleSetInfo Called. The first one loads the player???
+b83bec96 : OTHER ------- : 127 -- I *think* the second set of calls is for Jovi?? its two per person??
+ 162a48f :            CB :  78 -- 2nd animation for doors loads (left: partial open, right: sink in animation)
+43504cbd : OTHER ------- :   3
+6b56bf66 : OTHER ------- :   0 -- Michael and Jovi load in??? -- MODELS not actors.
+6b56bf66 : OTHER ------- : 204
+dbc0b3d2 : OTHER ------- :   4
+31dda636 :          ONES :  11 --michael is moved to position
+408eeb4b : OTHER ------- :   4
+3efa037f : OTHER ------- : 310 
+207a6f75 :            CC :  57 -- Camera is adjusted by now, NPC near door is loaded
+fd1f865c :            CA :  68
+3cca4620 :            CB :  78
+c42fd246 :            CC :  57
+f88711c9 :            CA :  68
+581ebc9d :            CB :  78
+
+b5b6db5b : OTHER ------- :   0 -- not sure what loads here, seems to hang for a while
+b5b6db5b : OTHER ------- : 126 -- something to do with people -- sets an animation frame for a person.
+fa8b3299 :            CB :  78
+
+6c33ff77 :            CC :  57
+46763216 :            CA :  68
+9e76adfa :            CB :  78
+31e5f850 :            CC :  57
+f59eaa6b :            CA :  68
+27dc61df :            CB :  78
+fc27478d :            CC :  57
+8d4e4b14 :            CA :  68
+
+ 56f5c58 : OTHER ------- :   0
+ 56f5c58 : OTHER ------- : 136
+
+227beea0 :            CA :  68
+16cef7a4 :            CB :  78
+e29a59aa :            CC :  57
+1d64871d :            CA :  68
+90536031 :            CB :  78
+ 2754c4f :            CC :  57
+
+b333808e : OTHER ------- :   0
+b333808e : OTHER ------- :  69
+a5f098ed : OTHER ------- : 135
+f4555a7a : OTHER ------- :   0
+f4555a7a : OTHER ------- :  69
+ e7539e9 : OTHER ------- : 135
+e14f19a6 : OTHER ------- :   0
+e14f19a6 : OTHER ------- :   1
+abfb69d1 : OTHER ------- : 217 -- 1 frame extra?
+139b1568 : OTHER ------- :  83 +4 only?
+
+ afea96d :           OFF :  89
+28891494 :        SEVENS :  77
+f912cbe3 :            BA :  79
+91719870 :           OFF :  89
+f05aceab :        SEVENS :  77
+4f81c0ee :            BA :  79
+bdd005d7 :           OFF :  89
+f340bb16 :        SEVENS :  77
+ de3c2bd :            BA :  79
+fe450952 :           OFF :  89
+b36fd4c5 :        SEVENS :  77
+d6da5d80 :            BA :  79
+4c371ad1 :           OFF :  89
+a1578de8 :        SEVENS :  77
+60b353a7 :            BA :  79
+61aec584 :           OFF :  89
+e036d6ef : OTHER ------- :   0
+Anomalies: 29.
+Step frames: .

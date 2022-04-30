@@ -1,0 +1,113 @@
+       0 : OTHER ------- :   0
+       0 : OTHER ------- :   4 sth
+ 98520c4 : OTHER ------- :  23
+f0d1690d : OTHER ------- :  23
+c2aaafaa : OTHER ------- :  27 nud
+
+ abbb9df : OTHER ------- :  46
+bac6e9ed :            CC :  57
+c99857f4 : OTHER ------- :  61 north
+91ef8f73 :            CC :  57
+7206caa2 :            CA :  68
+30e6ce46 :            CB :  78
+eff31c3c : OTHER ------- :  61 M + J
+55cc561b :            CA :  68
+ 162a48f :            CB :  78
+43504cbd : OTHER ------- :  61 Move
+76b44f88 :            CA :  68
+6acfe90c :            CB :  78
+dbc0b3d2 : OTHER ------- :  10 - cc
+7dde7524 : OTHER ------- :  73 - ca
+ef7a48bf : OTHER ------- : 146 - cb
+85da6981 : OTHER ------- :  14 - cc
+992c0ddf :            CC :  57 This block is wrong -ca
+cd66e9de :            CC :  57
+d0f82801 :            CB :  78 
+21083d9f :            CA :  68
+1208d953 :            CC :  57
+8587f102 : OTHER ------- :   0 -- timing is right
+8587f102 : OTHER ------- : 147
+aea985ef :            CC :  57
+f37a5fae :            CB :  78
+85671664 :            CA :  68
+ 7afc0a8 :            CC :  57
+d9a41663 :            CB :  78
+
+b6b639f1 : OTHER ------- :   0
+b6b639f1 : OTHER ------- : 126
+d40521ff :            CB :  78
+
+ab1f16ad :            CA :  68
+bd7e1cc1 :            CC :  57
+f8e07cf8 :            CB :  78
+43a57e5e :            CA :  68
+
+3681f8c2 : OTHER ------- :   0
+3681f8c2 : OTHER ------- : 136
+4f79eb4a :            CA :  68
+90b72b6e : OTHER ------- :   0
+90b72b6e : OTHER ------- :  58
+3f25eed0 : OTHER ------- : 146 
+2134f75a : OTHER ------- :   0
+2134f75a : OTHER ------- : 136 -- camera angle set
+281250e2 : OTHER ------- :  86 -- Shadows load -- final full black frame normally. --mysteryobj 1 loads
+
+791929c0 :            CA :  68 --mystery obj 2 loads here
+fc014cc4 :           OFF :  89
+8d88792f :        EIGHTS :  88
+ec32e2e7 :            CA :  68
+bdb04d1b :           OFF :  89
+22ffa6ca :        EIGHTS :  88
+89ad8f22 :            CA :  68
+97ed7ac6 :           OFF :  89
+d6a873e9 :        EIGHTS :  88
+f229c261 :            CA :  68
+8469d4b5 :           OFF :  89
+1a735dbc :        EIGHTS :  88
+b2d873d4 :            CA :  68
+d3440118 :           OFF :  89
+edbd23b3 :        EIGHTS :  88
+6fa814eb :            CA :  68
+50e7945f :           OFF :  89
+e759927e :        EIGHTS :  88
+2547fc56 :            CA :  68
+1640ec3a :           OFF :  89
+4200130d :        EIGHTS :  88
+fead1505 :            BA :  79
+e381bd3a :            CB :  78
+fc622d90 :        EIGHTS :  88
+487a0128 :           OFF :  89
+58154983 :            CA :  68
+743a7077 :        EIGHTS :  88
+d36b212f :           OFF :  89
+f22f5a0e :            CA :  68
+eca36b72 :        EIGHTS :  88
+a3402eca :           OFF :  89
+f00a615d :            CA :  68
+1406ae71 :        EIGHTS :  88
+d9155be9 :           OFF :  89
+ccce63a0 :            CA :  68
+ 826fca4 :        EIGHTS :  88
+1b6925bc :           OFF :  89
+bbb73b47 :            CA :  68
+ffd3237b :        EIGHTS :  88
+4f4e4bb3 :           OFF :  89
+1a895402 :            CA :  68
+a50425a6 :        EIGHTS :  88
+8e569a7e :           OFF :  89
+455369c1 :            CA :  68
+69cdaa15 :        EIGHTS :  88
+155f7b0d :           OFF :  89
+5e3c7bb4 :            CA :  68
+8f0edef8 :        EIGHTS :  88
+ab887590 :           OFF :  89
+ 4f7634b :            CA :  68
+fa2040bf :        EIGHTS :  88
+fea21877 :           OFF :  89
+f63abf36 :            CA :  68
+c963f51a :        EIGHTS :  88
+ 364f372 :           OFF :  89
+c3902265 :            CA :  68
+7726a9f9 : OTHER ------- :   0
+Anomalies: 29.
+Step frames: .

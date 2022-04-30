@@ -1,0 +1,79 @@
+8463d9e5 : OTHER ------- :  67
+a6d0346e : OTHER ------- : 107
+34b27043 : OTHER ------- : 107
+42f85aec : OTHER ------- :  74 +7
+5d13098e : OTHER ------- : 107
+48e049e3 : OTHER ------- :  67
+9be1eaa4 : OTHER ------- : 107
+83fa5051 : OTHER ------- : 107
+6105d032 : OTHER ------- :  67
+ a5e934f : OTHER ------- : 107
+c4659c28 : OTHER ------- :  67
+ec67ae5d : OTHER ------- : 107
+3111b86e : OTHER ------- : 107
+be400443 : OTHER ------- :  67
+67d22284 : OTHER ------- : 107
+205f37b1 : OTHER ------- :  67
+5ddaebea : OTHER ------- : 107
+9d873faf : OTHER ------- : 107
+3c138a08 : OTHER ------- :  67
+c8ddf7bd : OTHER ------- : 107
+34af374e : OTHER ------- :  67
+e4f65f5b : OTHER ------- : 107
+c4eaaa64 : OTHER ------- : 107
+5f05af11 : OTHER ------- :  67
+4d5e34ca : OTHER ------- : 107
+1564fc0f : OTHER ------- :  67
+312b9c00 : OTHER ------- : 107
+14e0d11d : OTHER ------- : 107
+ 8e3862e : OTHER ------- :  67
+e35d6dbb : OTHER ------- : 107
+ c638244 : OTHER ------- :  66
+ae892b1e : OTHER ------- : 106
+da92b1b0 : OTHER ------- : 106
+999d8b12 : OTHER ------- :  66
+ff59f05c : OTHER ------- : 106
+6977dc9e : OTHER ------- :  66
+6672ea48 : OTHER ------- : 106
+ 2d8ab6a : OTHER ------- : 109 +4 at most. -- 105 frame normally -- as expected, the special stuff is called last. 
+a9bbcd21 : OTHER ------- :  64 -- this frame?
+7abeac61 : OTHER ------- : 105 --this frame?
+cbc7a7c8 : OTHER ------- :  65
+b62248ab : OTHER ------- : 105
+9df1492a : OTHER ------- : 105
+2e82030d : OTHER ------- :  65
+ca51b7dc : OTHER ------- : 105
+4b3cce37 : OTHER ------- :  65
+436a785e : OTHER ------- : 106
+ 76390f0 : OTHER ------- : 106
+8618cc52 : OTHER ------- :  66
+ 97f7b9c : OTHER ------- : 106
+ddcaa9de : OTHER ------- :  66
+71486188 : OTHER ------- : 106
+d82044aa : OTHER ------- : 106
+30ca511c : OTHER ------- :  67
+d4f2bca1 : OTHER ------- : 107
+b59265c2 : OTHER ------- :  67
+ad9e1d1f : OTHER ------- : 107
+46820538 : OTHER ------- : 107
+5d86b335 : OTHER ------- :  67
+c89b58fe : OTHER ------- : 107
+f0b0ff13 : OTHER ------- :  67
+fadb3e94 : OTHER ------- : 107
+8906dc01 : OTHER ------- : 107
+da0612a2 : OTHER ------- :  67
+70bc417f : OTHER ------- : 107
+362f4b18 : OTHER ------- :  67
+c7e16b0d : OTHER ------- : 107
+eafd6fde : OTHER ------- : 107
+4b1dc173 : OTHER ------- :  67
+b1539e74 : OTHER ------- : 107
+ e508b61 : OTHER ------- :  67
+1ea8085a : OTHER ------- : 107
+6fe375df : OTHER ------- : 107
+2fa1e0f8 : OTHER ------- :  67
+28a1fc6d : OTHER ------- : 107
+1b7a56be : OTHER ------- :  67
+7097be8b : OTHER ------- :   0
+Anomalies: 0.
+Step frames: .

@@ -58,13 +58,17 @@ struct PokemonRequirements
     int defIV = 0;
     int spAtkIV = 0;
     int spDefIV = 0;
-    int speedIV = 0; //compress to array?
-    std::array<bool,25> validNatures;
+    int speedIV = 0; //even if compress to array, will need to update a lot of aldelaro's functions. 
+    std::array<int,6> minusIV; //order matters here.
+    std::array<int,6> neutralIV;
+    std::array<int,6> plusIV;
+    std::array<bool,25> validNatures; //convert from aldelaro's system to a straight set of nature ID's? 
     std::array<bool,16> validHPTypes;
     int hiddenPowerPower = 0;
     int genderIndex = 0;
     int isShiny = 0;  
-    bool forceEven = 0;
+    bool forceEven = 0; //depreciated.
+    bool ability = 0; //unused for my purposes, maybe others will want. 
 };
 
 //general functions block
@@ -162,6 +166,7 @@ u32 LCGn_BACK(u32&seed, const u32 n){
 
 //Only difference between LCGPullHi16 and LCGPercentage is one is stored as float the other as double.
 //Does this really matter or can all uses be stored as float? Currently used by npc and palPal.
+//In the game this is hsd rand float
 double LCG_PullHi16 (uint32_t &seed){
     const int divisor = 65536; //ever a need for this to be a double???
     double X = 0;
@@ -176,7 +181,7 @@ float LCGPercentage(u32& seed){
   float percentResult = static_cast<float>(hiSeed)/65536;
   return percentResult;
   // one liner - possibly cryptic if you've never seen this before: 
-  //return static_cast<float>(seed >> 16)/65536;
+  //return static_cast<float>(static_cast<u32>(LCG(seed) >> 16))/65536;
 }
 u16 rollRNGwithHiSeed(u32 &seed)
 { //mostly used in the NTSC naming screen, may have uses elsewhere, like blink.

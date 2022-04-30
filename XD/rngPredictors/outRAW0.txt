@@ -1,0 +1,88 @@
+       0 : OTHER ------- :   0
+       0 : OTHER ------- :   4
+ 98520c4 : OTHER ------- :  23
+f0d1690d : OTHER ------- :  23
+c2aaafaa : OTHER ------- :  27
+ abbb9df : OTHER ------- :  46
+bac6e9ed :            CC :  57
+c99857f4 : OTHER ------- :  61
+91ef8f73 :            CC :  57
+7206caa2 :            CA :  68
+30e6ce46 :            CB :  78
+eff31c3c : OTHER ------- :  61
+55cc561b :            CA :  68
+ 162a48f :            CB :  78
+43504cbd : OTHER ------- :  61
+76b44f88 :            CA :  68
+6acfe90c :            CB :  78
+dbc0b3d2 : OTHER ------- :  10
+7dde7524 : OTHER ------- :  73
+ef7a48bf : OTHER ------- : 265
+7be14a0e : OTHER ------- :  35
+1952847b :            CA :  68
+c15830ef :            CB :  78
+b35ea61d :            CC :  57
+22a23d64 :            CA :  68
+ cd217a8 : OTHER ------- :   0
+ cd217a8 : OTHER ------- : 136
+29e8abf0 :            CA :  68
+d108edf4 :            CB :  78
+fbb4457a :            CC :  57
+a940a9ad :            CA :  68
+2dc49fc1 :            CB :  78
+a102d75f : OTHER ------- :   0
+a102d75f : OTHER ------- : 126
+3cd18f7d :            CB :  78
+8dff873b :            CC :  57
+9b11da4a :            CA :  68
+b3dcca6e :            CB :  78
+55b98b24 :            CC :  57
+a745af6f : OTHER ------- :   0
+a745af6f : OTHER ------- : 147
+94205db0 :            CC :  57
+424a0e4b : OTHER ------- :   0
+424a0e4b : OTHER ------- :  69
+2dcc4786 : OTHER ------- : 135
+7e6fd367 : OTHER ------- :   0
+7e6fd367 : OTHER ------- : 147
+521cc088 : OTHER ------- :  75
+d106b225 :            BA :  79
+8fb170da :           OFF :  89
+20ad812d :        SEVENS :  77
+ 8bfd3c8 :            BA :  79
+fcbcc2b9 :           OFF :  89
+ f9e5d30 :        SEVENS :  77
+b23bcb4f :            BA :  79
+2d0dfa4c :           OFF :  89
+c64b9397 :        SEVENS :  77
+5f536a6a :            BA :  79
+b19e0303 :           OFF :  89
+60ef8c12 :        SEVENS :  77
+fb7b1b09 :            BA :  79
+9a6fe58e :           OFF :  89
+beb3ce91 :        SEVENS :  77
+6916325c :            BA :  79
+d9ae16dd :           OFF :  89
+e454b644 :        SEVENS :  77
+8db867d3 :            BA :  79
+914abb20 :           OFF :  89
+2abfc89b :        SEVENS :  77
+1f7a201e :            BA :  79
+7f5d4cc7 :           OFF :  89
+fdc76046 :        SEVENS :  77
+57407c2d :            BA :  79
+32895782 :           OFF :  89
+20ca9c35 :        SEVENS :  77
+55995c30 :            BA :  79
+5c8a3741 :           OFF :  89
+bf57c298 :        SEVENS :  77
+b3f1c697 :            BA :  79
+91c30b34 :           OFF :  89
+3d3d87df :        SEVENS :  77
+bc8e6312 :            BA :  79
+170c4ccb :           OFF :  89
+80c8e9ba :        SEVENS :  77
+b2cdf991 :            BA :  79
+573dbab6 : OTHER ------- :   0
+Anomalies: 29.
+Step frames: .

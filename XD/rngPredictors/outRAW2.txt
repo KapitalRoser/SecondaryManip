@@ -1,0 +1,64 @@
+       0 : OTHER ------- :   0
+       0 : OTHER ------- :   4
+ 98520c4 : OTHER ------- :  12
+3e314290 : OTHER ------- :  23
+30a87249 : OTHER ------- :  38
+ abbb9df : OTHER ------- :  46
+bac6e9ed :            CC :  57
+c99857f4 : OTHER ------- :  61
+91ef8f73 :            CC :  57
+7206caa2 :            CA :  68
+30e6ce46 :            CB :  78
+eff31c3c : OTHER ------- :  61
+55cc561b :            CA :  68
+ 162a48f :            CB :  78
+43504cbd : OTHER ------- :  61
+76b44f88 :            CA :  68
+6acfe90c :            CB :  78
+dbc0b3d2 : OTHER ------- :  10
+7dde7524 : OTHER ------- :  73
+ef7a48bf : OTHER ------- : 265
+7be14a0e : OTHER ------- :  35
+1952847b :            CA :  68
+c15830ef :            CB :  78
+b35ea61d :            CC :  57
+22a23d64 :            CA :  68
+ cd217a8 : OTHER ------- :   0
+ cd217a8 : OTHER ------- : 136
+29e8abf0 :            CA :  68
+d108edf4 :            CB :  78
+fbb4457a :            CC :  57
+a940a9ad :            CA :  68
+2dc49fc1 :            CB :  78
+a102d75f :            CC :  57
+66fe5d5e : OTHER ------- :   0
+66fe5d5e : OTHER ------- : 147
+8dff873b :            CC :  57
+9b11da4a :            CA :  68
+b3dcca6e :            CB :  78
+55b98b24 :            CC :  57
+a745af6f :            CA :  68
+b7be6c23 : OTHER ------- :   0
+b7be6c23 : OTHER ------- : 136
+424a0e4b :            CA :  68
+c8a75bbf : OTHER ------- :   0
+c8a75bbf :            BA :  79
+583b6b7c : OTHER ------- : 125
+1936e59b : OTHER ------- :   0
+1936e59b : OTHER ------- : 136
+85675ac3 : OTHER ------- :  86
+8072e5b9 :           OFF :  89
+5bef1430 :            CA :  68
+165f2a34 :        EIGHTS :  88
+edf0014c :           OFF :  89
+1dd61e97 :            CA :  68
+ eb91fcb :        EIGHTS :  88
+95059e03 :           OFF :  89
+66a8db12 :            CA :  68
+812ab1b6 :        EIGHTS :  88
+ddaf048e :           OFF :  89
+e3401191 :            CA :  68
+bb1152e5 :        EIGHTS :  88
+81e1e9dd : OTHER ------- :   0
+Anomalies: 116.
+Step frames: .

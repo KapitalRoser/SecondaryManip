@@ -1,0 +1,22 @@
+       0 : OTHER ------- :  27
+f0d1690d : OTHER ------- :  23
+c2aaafaa : OTHER ------- :  23
+924b03ab : OTHER ------- :  50
+bac6e9ed :            CC :  57
+c99857f4 :            CC :  57
+45250eff : OTHER ------- :  61
+7206caa2 :            CA :  68
+30e6ce46 :            CB :  78
+eff31c3c : OTHER ------- :   2
+b83bec96 : OTHER ------- : 127
+ 162a48f :            CB :  78
+43504cbd : OTHER ------- :   3
+6b56bf66 : OTHER ------- : 126
+6acfe90c :            CB :  78
+dbc0b3d2 : OTHER ------- :   4
+31dda636 :          ONES :  11
+408eeb4b : OTHER ------- :   4
+3efa037f : OTHER ------- : 310
+207a6f75 : OTHER ------- :   0
+Anomalies: 13.
+Step frames: .
