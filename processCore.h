@@ -165,10 +165,10 @@ u32 LCGn_BACK(u32&seed, const u32 n){
 }
 
 //Only difference between LCGPullHi16 and LCGPercentage is one is stored as float the other as double.
-//Does this really matter or can all uses be stored as float? Currently used by npc and palPal.
-//In the game this is hsd rand float
-double LCG_PullHi16 (uint32_t &seed){
-    const int divisor = 65536; //ever a need for this to be a double???
+//Does this really matter or can all uses be stored as float? Currently used by npc and palPal
+//rand_f for float, ingame name. not all that helpful. In my experience its used as a percentage so I don't see why I can't just use LCGPercentage.
+double LCG_PullHi16 (uint32_t &seed){ //Original function by Aldelaro5
+    const int divisor = 65536; 
     double X = 0;
     LCG(seed);
     X = seed >> 16;
@@ -180,8 +180,7 @@ float LCGPercentage(u32& seed){
   u32 hiSeed = seed >> 16;
   float percentResult = static_cast<float>(hiSeed)/65536;
   return percentResult;
-  // one liner - possibly cryptic if you've never seen this before: 
-  //return static_cast<float>(static_cast<u32>(LCG(seed) >> 16))/65536;
+  //return static_cast<float>(static_cast<u32>(LCG(seed) >> 16)/65536); // one liner - possibly cryptic
 }
 u16 rollRNGwithHiSeed(u32 &seed)
 { //mostly used in the NTSC naming screen, may have uses elsewhere, like blink.
@@ -191,20 +190,13 @@ u16 rollRNGwithHiSeed(u32 &seed)
     LCGn(seed, 4); //10% rule - if the hi 16 bits are numerically in the bottom 10%, reroll.
   }
   return hiSeed; //debugging.
+}
 
-  /*
-  Roll rng
-  pull hi 16
-  divide hi16 / 65536
-  if result < 0.1 : lcgn 4
-  return hiseed for debug only.
-
-  could redesign as:
-  if (LCGPercentage(seed) < 0.1) {
-    LCGn(seed,4);
+//Could redesign above as:
+void myRollRNGwithHiSeed(u32 &seed, float threshold, int numCalls){
+  if (LCGPercentage(seed) < threshold){ //0.1 on name screen
+    LCGn(seed,numCalls); //4 on name screen
   }
-  */
-
 }
 
 

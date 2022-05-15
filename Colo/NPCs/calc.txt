@@ -1,0 +1,33 @@
+If rounding to unit isn't enough, reevaluate.
+
+3 unit radius 6 unit diameter, circular collision around Player
+
+Main Circle
+103 -> 103 -- radius 103 diameter 206
+
+center of bridge outer is 
+x: -73 y: 105
+
+
+bridge left
+x: -78  -81
+y:113   117
+
+X: -73
+y: 125
+
+
+furthest down is:
+x: -92
+y: 134
+
+
+
+gym:
+x: 28 == radius, 56 diameter
+y: -41
+
+Door, about 3 units inset from the wall (y axis) coord y: -17
+door extends 20 units wide total on x axis.
+
+center of door is 0,~-16?

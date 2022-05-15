@@ -215,7 +215,7 @@ class NPC {
     
     //check each edge:
     //To obtain boundaries for the door, which is a half circle, I'd need lots of points to work with, and may need a complex
-    //arc drawing tool for c++ to generate the points I need. From there i'd need to check whatever point jim is closest to and
+    //arc drawing tool for c++ to generate the points I need. FRrom there i'd need to check whatever point jim is closest to and
     //determine how far he can move. 
     //I'd be incrementing X, evaluating how much Y distance this frees, and doing that, then continuing until I reach the other edge.
     //From there the distances available get smaller and smaller until eventually the decrementing distance logic pops and we exit the cycle.
