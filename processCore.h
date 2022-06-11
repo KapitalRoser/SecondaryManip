@@ -32,7 +32,7 @@ enum region {NTSCU,PAL60,PAL50,NTSCJ}; //Switch to NTSC, PAL and JPN? NTSC-U, PA
 enum emuVer {STABLE,MODERN}; //Stable == 5.0, only matters for xd so far.
 enum coloSecondary {QUILAVA,CROCONAW,BAYLEEF}; //xd only has teddy
 //enum secondaryMon {TEDDIURSA, QUILAVA, CROCONAW, BAYLEEF};
-enum strCase {upper,lower};
+enum strCase {upper,lower}; //deprecated?
 
 
 struct PokemonProperties
