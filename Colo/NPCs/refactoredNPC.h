@@ -43,43 +43,12 @@ class NPC {
     NPC(d_coord anchor, commonSpeed speed);
     NPC(d_coord anchor, commonSpeed speed, int ID);
     NPC(d_coord anchor, commonSpeed speed, std::string name);
-    NPC(d_coord anchor, commonSpeed speed, int ID, std::string name);
+    NPC(d_coord anchor, commonSpeed speed, int ID, std::string name); //declare optionals here?
     
-    void InitialXY(u32 &seed){
-    const double loosePiApprox = 3.1415927410125732421875; //40490FDB
-    const double twoPi = 6.28318530717958623199592693708837032318115234375;
-    const int factor = 15;
-    f_coord destinationPos = getIntendedPos();
-    float f_working = LCG_PullHi16(seed);
-    f_working = f_working * loosePiApprox * 2;
-
-    //array angle
-    //std::cout << "FWORKING: " << f_working;
-    if (f_working > loosePiApprox || f_working < -loosePiApprox){
-        setAngle(f_working - twoPi);
-    } else {
-        setAngle(f_working); 
-    }
-
-    double d_working = f_working; //***sensitive conversion between float -> double and back.
-    d_working = sin(d_working) * factor;
-    destinationPos.x = d_working;
-
-    d_working = f_working; //restore
-    d_working = cos(d_working)* factor;
-    destinationPos.y = d_working;
-
-    destinationPos.x += getAnchor().x;
-    destinationPos.y += getAnchor().y;
-    setIntended(destinationPos); //for walking calculations
-    }
-    
-    float computeAngle(){
-        //This is the angle used for interval calculation, but isn't recorded in the array.
-        d_coord preAngles = getDistance();
-        double angle = atan2(preAngles.x,preAngles.y)/2;
-        return angle;
-    }
+    void InitialXY(u32 &seed);
+    void chooseDestination(u32 &seed);
+    void angleLogic(float angle);
+    float computeAngle();
     d_coord computeInterval(){
         const double loosePiApprox = 3.1415927410125732421875; //40490FDB
         //Could declare a ** operator as a power shorthand.
@@ -123,25 +92,8 @@ class NPC {
             return false;      
         }
     }
-    float waitTimerCalculation(u32 &seed){
-        const int factorTime = 3;//these don't seem to vary by npc but who knows.
-        const int baseTimeS = 5; 
-        double firstCall = LCG_PullHi16(seed);
-        double secondCall = LCG_PullHi16(seed);
-        double cycleVariance = firstCall + secondCall - 1;
-        return cycleVariance * factorTime + baseTimeS; //time in seconds.
-    }
-    void decrementWaitTimer(){
-        float decrement = 0.0333333350718021392822265625; //float?
-        setWaitTime(getWaitTime().getSeconds() - decrement);
-        // if (getWaitTime().getFrames30() <= 0){
-        //     setState(BEGIN);
-        // }
-        if (getWaitTime().getSeconds() <= 0){
-            setState(BEGIN);
-        }
-        //alternatively decrement by a certain number of ms.
-    }
+    float waitTimerCalculation(u32 &seed);
+    void decrementWaitTimer();
     void beginCycle(u32 &seed){
         setState(WALK);
         InitialXY(seed);

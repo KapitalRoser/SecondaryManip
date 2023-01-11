@@ -168,7 +168,8 @@ u32 LCGn_BACK(u32&seed, const u32 n){
 
 //Only difference between LCGPullHi16 and LCGPercentage is one is stored as float the other as double.
 //Does this really matter or can all uses be stored as float? Currently used by npc and palPal
-//rand_f for float, ingame name. not all that helpful. In my experience its used as a percentage so I don't see why I can't just use LCGPercentage.
+//rand_f for float, ingame name. not all that helpful. In my experience its used as a percentage so I 
+//don't see why I can't just use LCGPercentage.
 double LCG_PullHi16 (uint32_t &seed){ //Original function by Aldelaro5
     const int divisor = 65536; 
     double X = 0;
