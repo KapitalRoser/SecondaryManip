@@ -15,13 +15,26 @@ std::map<commonSpeed,float> walkingSpeed {
 class d_coord {
     public:
     double x,y; //add a toFloat or toF_Coord function?
+    f_coord toFCoord(){
+        f_coord r;
+        r.x = float(x);
+        r.y = float(y);
+        return r;
+        // oneliner:
+        //return f_coord({float(x),float(y)});
+    };
 };
 class f_coord {
     public:
     float x,y;
+    d_coord toDCoord(){
+        d_coord r;
+        r.x = double(x);
+        r.y = double(y);
+        return r;
+    }
     //blame powerpc data type rounding.
 };
-
 class NPC {
     private:
     d_coord m_anchor = {0,0};
@@ -47,53 +60,18 @@ class NPC {
     
     void InitialXY(u32 &seed);
     void chooseDestination(u32 &seed);
+
     void angleLogic(float angle);
-    float computeAngle();
-    d_coord computeInterval(){
-        const double loosePiApprox = 3.1415927410125732421875; //40490FDB
-        //Could declare a ** operator as a power shorthand.
-        d_coord intervals;
-        float intervalAngle = computeAngle();
-        // std::cout << "CURRENT ANG"<< getAngle() << " NEW ANG: " << intervalAngle;
-        if (getAngle() > loosePiApprox || getAngle() < -loosePiApprox){
-            setAngle(intervalAngle);
-        }
-        setAngle(intervalAngle*2);
-        float sinResult = static_cast<float>(sin(intervalAngle)) * 0.9999999403953552;
-        float cosResult = static_cast<float>(cos(intervalAngle));
-        const float speedFactor = getSpeedFactor(); //thanks heels.
-        intervals.x = 2*sinResult*cosResult*speedFactor;
-        intervals.y = -(pow(sinResult,2)*speedFactor - pow(cosResult,2)*speedFactor);
-        //std::cout << "INTERVAL ANGLE: " << std::setprecision(17) << intervalAngle*2 << std::endl;
-        // << "SINRESULT: " << sinResult << " COSRESULT: " << cosResult << std::endl;
-        return intervals;
-    }
-    void applyStep(int factor){
-        f_coord postStepPos = getNextPos();
-        postStepPos.x += getInterval().x * factor;
-        postStepPos.y += getInterval().y * factor;          
-        setNextPos(postStepPos);
-    }
-    double combineDistance (d_coord distance){
-        return sqrt(distance.x*distance.x + distance.y*distance.y);
-    }
-    bool incrementPosition(int factor){
-        double preStep = combineDistance(getDistance());
-        applyStep(factor);
-        double postStep = combineDistance(getDistance());
+    float computeAngle(d_coord distance);
+
+    d_coord computeInterval();
+    void applyStep(int factor);
+    double combineDistance (d_coord distance);
+    bool incrementPosition(int factor);
     
-        setCombinedDistance({preStep,postStep});
-        //setName("Pre: " + std::to_string(preStep) + "Post: "+std::to_string(postStep));
-        if (postStep <= preStep){
-            setWalkTime(getWalkTime().getFrames30()+1);
-            return true;
-        } else {
-            setState(FINISH);
-            return false;      
-        }
-    }
     float waitTimerCalculation(u32 &seed);
     void decrementWaitTimer();
+
     void beginCycle(u32 &seed){
         setState(WALK);
         InitialXY(seed);

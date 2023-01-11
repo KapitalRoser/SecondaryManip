@@ -16,9 +16,6 @@
     4)
 */
 
-
-
-
 NPC::NPC(d_coord anchor){
     setAnchor(anchor);
     f_coord temp;
@@ -56,7 +53,7 @@ NPC::NPC(d_coord anchor, commonSpeed speed, std::string name){
 
 NPC::NPC(d_coord anchor, commonSpeed speed = STANDARD, int ID = 0, std::string name = "NAME_NOT_SET") :
     m_anchor(anchor),
-    m_nextPos({float(anchor.x),float(anchor.y)}), //returns valid f_coord?
+    m_nextPos(anchor.toFCoord()), //returns valid f_coord?
     m_ID(ID),
     m_name(name),
     m_speedFactor(walkingSpeed[speed])
@@ -103,15 +100,19 @@ void NPC::chooseDestination(u32 &seed){
     float f_result = LCG_PullHi16(seed);
     destinationPos.x = double(sin(f_result*importantPiApprox)*factor) + getAnchor().x;
     destinationPos.y = double(cos(f_result*importantPiApprox)*factor) + getAnchor().y;
+    setIntended(destinationPos);
     //OPTIONAL: -- does the angle and such have any impact on the overall result?
     angleLogic(f_result);
 }
 
+
+
+//~~~~~~~~~~~~~~~~INTERVAL STUFF~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 d_coord NPC::computeInterval(){
         const double loosePiApprox = 3.1415927410125732421875; //40490FDB
         //Could declare a ** operator as a power shorthand.
         d_coord intervals;
-        float intervalAngle = computeAngle();
+        float intervalAngle = computeAngle(getDistance());
         // std::cout << "CURRENT ANG"<< getAngle() << " NEW ANG: " << intervalAngle;
         //slightly different to Angle Logic
         if (getAngle() > loosePiApprox || getAngle() < -loosePiApprox){
@@ -121,13 +122,47 @@ d_coord NPC::computeInterval(){
         float sinResult = static_cast<float>(sin(intervalAngle)) * 0.9999999403953552;
         float cosResult = static_cast<float>(cos(intervalAngle));
         const float speedFactor = getSpeedFactor(); //thanks heels.
-        intervals.x = 2*sinResult*cosResult*speedFactor;
-        intervals.y = -(pow(sinResult,2)*speedFactor - pow(cosResult,2)*speedFactor);
+        //identities used:
+        //x = 2*sinx*cosx
+        //y = cosx^2-sinx^2
+
+        intervals.x = 2*sinResult*cosResult*speedFactor; // 2*sinx*cosx is a TRIGONOMETRY IDENTITY, Angle addition formula?
+        intervals.y = (pow(cosResult,2)-pow(sinResult,2))*speedFactor;//cos^2*X-sin^2*x, note that speedfactor is NOT the x here, the x is interval angle so it's already built in.
+        //should be fine now.
         //std::cout << "INTERVAL ANGLE: " << std::setprecision(17) << intervalAngle*2 << std::endl;
         // << "SINRESULT: " << sinResult << " COSRESULT: " << cosResult << std::endl;
         return intervals;
 }
 
+
+
+
+void NPC::applyStep(int factor){
+        f_coord postStepPos = getNextPos();
+        postStepPos.x += getInterval().x * factor;
+        postStepPos.y += getInterval().y * factor;          
+        setNextPos(postStepPos);
+    }
+double NPC::combineDistance (d_coord distance){
+    return sqrt(distance.x*distance.x + distance.y*distance.y); //A^2 + B^2 = C^2, nice pythagoras!
+}
+bool NPC::incrementPosition(int factor){
+        double preStep = combineDistance(getDistance());
+        applyStep(factor);
+        double postStep = combineDistance(getDistance());
+    
+        setCombinedDistance({preStep,postStep});
+        //setName("Pre: " + std::to_string(preStep) + "Post: "+std::to_string(postStep));
+        if (postStep <= preStep){
+            setWalkTime(getWalkTime().getFrames30()+1);
+            return true;
+        } else {
+            setState(FINISH);
+            return false;      
+        }
+    }
+
+//~~~~~~~~~~~~~~~~~~~~~~~~ANGLE STUFF~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 void NPC::angleLogic(float angle){
     const double loosePiApprox = 3.1415927410125732421875; //40490FDB
     const double twoPi = 6.28318530717958623199592693708837032318115234375;
@@ -139,12 +174,13 @@ void NPC::angleLogic(float angle){
     //Compute Intervals version is different and not sure if it's really needed or not.
 }
 
-float NPC::computeAngle(){
+float NPC::computeAngle(d_coord distance){
     //This is the angle used for interval calculation, but isn't recorded in the array.
-    d_coord preAngles = getDistance();
+    d_coord preAngles = distance;
     double angle = atan2(preAngles.x,preAngles.y)/2;
-    return angle;
+    return angle; //what if stored result as an f_coord instead? Or do we need the truncation from double to f AFTER the division by 2? Gets casted to F for return anyway???
     //return double(atan2(getDistance().x,getDistance().y)/2); //Does double into float conversion matter?
+    //return atan2(distance.x,distance.y)/2; //???
 }
 
 float NPC::waitTimerCalculation(u32 &seed){
