@@ -16,7 +16,7 @@
 #include <stdio.h>
 #include <map>
 
-
+#include <optional>
 
 //TODO: before launching, move this into the game specific folders and update the paths.
 

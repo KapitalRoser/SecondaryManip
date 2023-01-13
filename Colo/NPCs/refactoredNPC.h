@@ -61,84 +61,28 @@ class NPC {
     void InitialXY(u32 &seed);
     void chooseDestination(u32 &seed);
 
-    void angleLogic(float angle);
+    float angleLogic(float angle);
     float computeAngle(d_coord distance);
 
     d_coord computeInterval();
     void applyStep(int factor);
-    double combineDistance (d_coord distance);
+    double pythagorasDistance (d_coord distance);
     bool incrementPosition(int factor);
+    bool shouldStop(double pre, double post);
     
     float waitTimerCalculation(u32 &seed);
     void decrementWaitTimer();
 
-    void beginCycle(u32 &seed){
-        setState(WALK);
-        InitialXY(seed);
-        setIntervals(computeInterval());
-        setWaitTime(0);
-        setWalkTime(0);
-    }
-    void finishCycle(u32 &seed){
-        setState(WAIT);
-        setWaitTime(waitTimerCalculation(seed));
-        setNextPos(getIntendedPos()); //snap to account for overshoot.
-    }
-    //putting it all together
-    void initializeNPC_Self(u32 &seed){
-        beginCycle(seed);
-        npcAction_Self(seed,0); //first two steps happen on first frame
-        npcAction_Self(seed,1);
-        //Should I be adding a action parameter + return?
-    }
-    std::string npcAction_Self(u32 &seed, int i){
-        std::string action = ""; //optional -- exists only for debugging.
-        int intervalFactor = 2;
-        if (i == 0){
-            intervalFactor = 1;
-        }
-        else if (i == 1){
-            intervalFactor = 5;
-        }
-        switch (getState()) //these are seperate states so that the actions happen on unique frames.
-            { 
-            case WALK:
-                action = "**";
-                incrementPosition(intervalFactor);
-                break;
-            case WAIT:
-                action = "--";
-                decrementWaitTimer();
-                break;
-            case FINISH:
-                action = getName() + "f";
-                finishCycle(seed);
-                break;
-            case BEGIN:
-                action = getName() + "b";
-                beginCycle(seed);
-                incrementPosition(intervalFactor); //standard practice?
-                incrementPosition(intervalFactor);
-                break;
-            default:
-                std::cout << "STATE INVALID!";
-                break;
-            }
-            return action;
-    }
+    void printNPCData(int currentCycle);
 
-    void printNPCData(int currentCycle){
-    std::cout << "DEST X POS: " << std::setprecision(17) << getIntendedPos().x << std::endl;
-    std::cout << "DEST Y POS: " << std::setprecision(17) << getIntendedPos().y << std::endl;
-    std::cout << std::endl;
-    std::cout << "It took " << getWalkTime().getFrames60() << " 60fps frames to arrive.\n"; 
-    std::cout << "It took " << getWalkTime().getFrames30() << " 30fps frames to arrive.\n\n";
-    std::cout << "Returned angle: " << getAngle() << std::endl;
-    std::cout << "Cycle: " << currentCycle << ": Timer1 is: " << std::setprecision(17) << getWaitTime().getSeconds() << std::endl;
-    std::cout << "At 60fps, this is: " << getWaitTime().getFrames60fromSeconds() << " frames.\n";
-    std::cout << "At 30fps, this is: " << getWaitTime().getFrames30() << " frames.\n";
-    std::cout << "\n~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ \n\n";
-    }
+    void beginCycle(u32 &seed);
+    void finishCycle(u32 &seed);
+
+    //putting it all together
+    //These are what is currently called by QuilavaDWithNPCs.cpp
+    void initializeNPC_Self(u32 &seed);
+    std::string npcAction_Self(u32 &seed, int frameNum);
+    
 
     void setAnchor(d_coord input) {m_anchor = input;} //uses double instead of float or int because idk maybe there's an npc with a very specific anchor location. I doubt it but why take the risk lol.
     void setAngle(float input){m_angle = input;}
