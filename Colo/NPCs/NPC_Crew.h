@@ -6,18 +6,16 @@ private:
     /* data */
     std::vector<NPC> set = {};
     std::string status = "";
-    u32 userInputSeed;
-    bool seedWasSpecified = false;
-    bool firstFrame = false;
+    u32 userInputSeed; //probably don't need this but keeping it for now. Might be nice for debugging.
+    u32 *seedToUse; //BE CAREFUL WITH THIS.
     //Framecount here is frames since simulation began.
     //Will incremement until it is cleared with reset or redefined.
     //Only used for the very first frame. That said, might be nice for status?
 
-
     //Everything else goes here
 public:
     NPC_Crew(std::vector<NPC>in);
-    NPC_Crew(std::vector<NPC>in,u32 inSeed); //Since there aren't any good default values that fit u32, 
+    NPC_Crew(std::vector<NPC>in,u32 &inSeed); //Since there aren't any good default values that fit u32, 
     //a 2nd constructor is worth it. It also can include the flag to determine whether it was specified in the first place
     //Assignment
     //Copy

@@ -15,6 +15,8 @@
 
     4)Test ComputeInterval to see if that angle validity check is needed, since currently it gets
     immediately overwritten.
+
+    5)Make sure FIRST state performs the same as calling initializeNPCSelf()
 */
 
 NPC::NPC(d_coord anchor){
@@ -223,11 +225,11 @@ void NPC::printNPCData(int currentCycle){
 
 //ACTION FUNCTIONS.
 void NPC::beginCycle(u32 &seed){
-        setState(WALK);
-        chooseDestination(seed);
-        setIntervals(computeInterval());
-        setWaitTime(0); //reset for next cycle
-        setWalkTime(0);
+    setState(WALK);
+    chooseDestination(seed);
+    setIntervals(computeInterval());
+    setWaitTime(0); //reset for next cycle
+    setWalkTime(0);
 }
 void NPC::finishCycle(u32 &seed){
     setState(WAIT);
@@ -236,22 +238,16 @@ void NPC::finishCycle(u32 &seed){
 }
 
 void NPC::initializeNPC_Self(u32 &seed){
-    beginCycle(seed); //State is set to "Walk"
-    npcAction_Self(seed,0); //first two steps happen on first frame
-    npcAction_Self(seed,1);
+    npcAction_Self(seed,2);
+    // beginCycle(seed); //State is set to "Walk"
+    // npcAction_Self(seed,0); //first two steps happen on first frame
+    // npcAction_Self(seed,1);
     //Should I be adding a action parameter + return?
 }
 
 std::string NPC::npcAction_Self(u32 &seed, int frameNum){
         std::string action = ""; //optional -- exists only for debugging.
         int intervalFactor = 2;
-        //This frameNum stuff is only needed for the initial two steps at the start of a cycle.
-        if (frameNum == 0){ //Not repeated at beginning since BeginCycle sets state to Walk
-            intervalFactor = 1;
-        }
-        else if (frameNum == 1){
-            intervalFactor = 5;
-        }
         switch (getState()) //these are seperate states so that the actions happen on unique frames.
             { 
             case WALK:
@@ -269,8 +265,14 @@ std::string NPC::npcAction_Self(u32 &seed, int frameNum){
             case BEGIN:
                 action = getName() + "b";
                 beginCycle(seed);
-                incrementPosition(intervalFactor); //standard practice?
+                incrementPosition(2); //standard practice?
                 incrementPosition(intervalFactor); //if all npcs do this, then move this into beginCycle().
+                break;
+            case FIRST:
+                action = "**";
+                beginCycle(seed); //if user defined seed, this should be it. Otherwise use current seed
+                incrementPosition(intervalFactor = 1); //special cases
+                incrementPosition(intervalFactor = 5);
                 break;
             default:
                 std::cout << "STATE INVALID!";

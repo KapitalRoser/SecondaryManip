@@ -5,7 +5,7 @@ THIS IS A LOCAL COPY OF THE HEADER.
 */
 #include "../../processCore.h"
 #include "duration.h"
-enum state {WALK,WAIT,BEGIN,FINISH};
+enum state {WALK,WAIT,BEGIN,FINISH,FIRST};
 enum commonSpeed{STANDARD,SLOWER};
 std::map<commonSpeed,float> walkingSpeed {
     {STANDARD,0.29032257199287415},
@@ -47,7 +47,7 @@ class NPC {
     duration m_waitTime = duration{0};
     duration m_walkTime = duration{0};
     d_coord m_CombinedDistances = {0,0};
-    int m_state = BEGIN;
+    int m_state = FIRST;
     std::string m_name = "";
     int m_ID = 0;
 
