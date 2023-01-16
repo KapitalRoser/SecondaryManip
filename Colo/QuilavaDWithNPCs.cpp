@@ -1,8 +1,6 @@
 #include "../processCore.h"
-#include "../NPC.h"
-//#include "NPCs/refactoredNPC.cpp"
+#include "NPCs/NPC.cpp"
 #include "coloCore.h"
-//#include "frame.h" //As a wise man once said, you must do things manually before introducing oop.
 
 
 void printResults(u32 seed,int fcount, int i,bool stepFrame,bool stepCalls){
@@ -16,9 +14,9 @@ void printResults(u32 seed,int fcount, int i,bool stepFrame,bool stepCalls){
 }
 
 void advanceFrame(u32 &seed,int currentFrame,std::vector<int>listOfSteps,region gameRegion,int stepCalls,std::vector<NPC>npcSet){
-  int rollsApplied = 0; 
+  //int rollsApplied = 0; 
 
-  rollsApplied += 
+  //rollsApplied += 
   colo_RollBackground(seed,currentFrame,gameRegion);
   
   bool stepFrame = 0;
@@ -33,7 +31,7 @@ void advanceFrame(u32 &seed,int currentFrame,std::vector<int>listOfSteps,region 
         }
   }
   
-  printResults(seed,rollsApplied,currentFrame,stepFrame,stepCalls); //debug bg noise.
+  //printResults(seed,rollsApplied,currentFrame,stepFrame,stepCalls); //debug bg noise.
 }
 
 void rollTransition(u32 &seed,int target,std::vector<int>secondarySteps,region gameRegion,std::vector<NPC>npcSet){
@@ -81,12 +79,12 @@ int main(){
 
     
     //PHENAC NPCS LOAD IN THIS ORDER: 
-    NPC kaib    = NPC({  85, -150}, STANDARD,"K");
-    NPC jim     = NPC({  15,  -10}, STANDARD,"J"); // -- fuck you jim, costs 5s to open door for him.
-    NPC grandma = NPC({-140,  -10}, STANDARD,"G");
-    NPC boots   = NPC({  90,   90}, STANDARD,"B");
-    NPC randall = NPC({ -90,  110}, STANDARD,"R"); // -- fuck you randall, stop doing weird things on the curve.
-    NPC heels   = NPC({  30,  300},   SLOWER,"H"); // -- fuck you heels, for having a slightly slower speed.
+    NPC kaib    = NPC({  85, -150},"K");
+    NPC jim     = NPC({  15,  -10},"J"); // -- fuck you jim, costs 5s to open door for him.
+    NPC grandma = NPC({-140,  -10},"G");
+    NPC boots   = NPC({  90,   90},"B");
+    NPC randall = NPC({ -90,  110},"R"); // -- fuck you randall, stop doing weird things on the curve.
+    NPC heels   = NPC({  30,  300},"H",SLOWER); // -- fuck you heels, for having a slightly slower speed.
     std::vector<NPC>npcSet = {kaib,jim,grandma,boots,randall,heels}; 
     //if not wanting to track NPCs, uncomment this line: 
     //npcSet.clear();

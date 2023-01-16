@@ -4,7 +4,7 @@
 THIS IS A LOCAL COPY OF THE HEADER.
 */
 #include "../../processCore.h"
-#include "duration.cpp"
+#include "duration.h"
 enum state {WALK,WAIT,BEGIN,FINISH,FIRST};
 enum commonSpeed{STANDARD,SLOWER};
 std::map<commonSpeed,float> walkingSpeed {
@@ -50,15 +50,17 @@ class NPC {
     d_coord m_CombinedDistances = {0,0};
     int m_state = FIRST;
     std::string m_name = "";
-    int m_ID = 0;
 
     public:
-    NPC(d_coord anchor);
-    NPC(d_coord anchor, commonSpeed speed);
-    NPC(d_coord anchor, commonSpeed speed, int ID);
-    NPC(d_coord anchor, commonSpeed speed, std::string name);
-    NPC(d_coord anchor, commonSpeed speed, int ID, std::string name); //declare optionals here?
-    
+
+    //NPC(d_coord anchor, std::string name = "", commonSpeed speed = STANDARD); //id is covered by NPC crew class
+    NPC(d_coord anchor, std::string name = "", commonSpeed speed = STANDARD)
+    {
+        m_anchor = anchor,
+        m_nextPos = {float(anchor.x),float(anchor.y)}, //returns valid f_coord?
+        m_name = name,
+        m_speedFactor = walkingSpeed[speed];
+    }
     void InitialXY(u32 &seed);
     void chooseDestination(u32 &seed);
 
@@ -95,10 +97,8 @@ class NPC {
     void setWaitTime(duration input){m_waitTime = input;}
     void setWalkTime(duration input){m_walkTime = input;}
     void setName(std::string input){m_name = input;}
-    void setID(int input){m_ID = input;}
     void setSpeed(float input){m_speedFactor = input;}
-    
-    int getID(){return m_ID;}
+
     int getState(){return m_state;}
     float getAngle(){return m_angle;}
     float getSpeedFactor(){return m_speedFactor;}

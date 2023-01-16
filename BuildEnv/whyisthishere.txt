@@ -1,0 +1,39 @@
+TO USE THIS, COPY AND PASTE ALL FILES NEEDED FOR TESTING INTO THIS FOLDER.
+
+This is so that we can customize the vscode tasks to handle multiple .cpp files
+
+When building with gcc you might use a command like:
+g++ somefile.cpp -o build1
+which takes somefile.cpp and outputs build1.exe
+
+However if we include a extraFunctions.h file, and it's definitions are in a extraFunctions.cpp file, we need to include that .cpp in our build step.
+
+Therefore the command is g++ somefile.cpp extraFunctions.cpp -o build2
+
+QT and Visual Studio handle all this with CMake and stuff but in vs code we have to do it ourselves.
+
+
+In the tasks.json you should change:
+"-g",
+  "${file}",
+  "-o",
+  "${fileDirname}\\${fileBasenameNoExtension}.exe"
+
+into:
+
+"-g",
+"${workspaceFolder}\\*.cpp",
+"-o",
+"${fileDirname}\\${fileBasenameNoExtension}.exe"
+
+
+And things will work. That compiles all .cpp files in the working directory so make sure you only add the files you are currently working on.
+This is also why we are doing this in a seperate folder.
+
+
+For example, you may need to compile with processCore.cpp and NPC.cpp in addition to whatever you are working with.
+
+If you hve any definitions in any .h file and you attempt to do this, you will get really weird multiple definition errors, and possible no definition errors depending
+on how badly you do this.
+
+All headers must have stuff in .cpp files, and use header guards.

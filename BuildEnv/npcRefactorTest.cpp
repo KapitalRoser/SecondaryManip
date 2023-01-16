@@ -1,14 +1,19 @@
-#include "../processCore.h"
-#include "NPCs/refactoredNPC.cpp"
-//#include "../NPC.h"
-
+#include "NPC.h"
 int main(){
 
-    NPC kaib = NPC({85,-150},"K");
+
+
+    //NPC kaib = NPC(anchor,"K");
+    std::cout << "YEET";
+
+
+
+    NPC kaib = NPC({85,-150},"K",STANDARD);
     NPC Beatrice = NPC({85,-150},"B");
 
     u32 seed = 0x7B016A28;
     kaib.InitialXY(seed);
+
     std::cout << kaib.getName() << ": " << kaib.getAnchor().x << "," << kaib.getAnchor().y << "\n"
     << "Speed: " << kaib.getSpeedFactor() << ", State:" << kaib.getState() << "\n"
     << "Intended: (" << kaib.getIntendedPos().x << ", " << kaib.getIntendedPos().y << ")\n\n";
