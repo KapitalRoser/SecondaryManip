@@ -3,7 +3,7 @@
 /*
 THIS IS A LOCAL COPY OF THE HEADER.
 */
-#include "../../processCore.h"
+#include "../../../processCore.h"
 enum state {WALK,WAIT,BEGIN,FINISH};
 const float common_speeds[3] = {0.29032257199287415,0.28125}; //add to this as more speeds are recorded.
 enum commonSpeed{STANDARD,SLOWER};

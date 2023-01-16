@@ -1,5 +1,4 @@
 #include "../../processCore.h"
-#include "duration.h"
 #include "refactoredNPC.h"
 
 /*
@@ -17,6 +16,8 @@
     immediately overwritten.
 
     5)Make sure FIRST state performs the same as calling initializeNPCSelf()
+
+    //RAN 1 TEST, NO DIFFS SO FAR.
 */
 
 NPC::NPC(d_coord anchor){
@@ -56,11 +57,12 @@ NPC::NPC(d_coord anchor, commonSpeed speed, std::string name){
 
 NPC::NPC(d_coord anchor, commonSpeed speed = STANDARD, int ID = 0, std::string name = "NAME_NOT_SET") :
     m_anchor(anchor),
-    m_nextPos(anchor.toFCoord()), //returns valid f_coord?
+    m_nextPos({float(anchor.x),float(anchor.y)}), //returns valid f_coord?
     m_ID(ID),
     m_name(name),
     m_speedFactor(walkingSpeed[speed])
-    {} //empty body! nice!
+    {}
+     //empty body! nice!
     //Only anchor should be mandatory, everything else is set to default values if not specified,
     //and all initialization is done in the list.
     //Once again, does the optional parameter need to be specified in the cpp or in the .h?
@@ -79,10 +81,13 @@ void NPC::InitialXY(u32 &seed){
 
     //array angle
     //std::cout << "FWORKING: " << f_working;
+    //std::cout << "F WORKING:" << f_working << "\n";
     if (f_working > loosePiApprox || f_working < -loosePiApprox){
         setAngle(f_working - twoPi);
+        //std::cout << "ANGLE SET CASE 1:" << f_working - twoPi;
     } else {
         setAngle(f_working); 
+        //std::cout << "ANGLE SET CASE 2:" << f_working;
     }
 
     double d_working = f_working; //***sensitive conversion between float -> double and back.
@@ -103,11 +108,10 @@ void NPC::chooseDestination(u32 &seed){
     const double importantPiApprox = 3.1415927410125732421875; //40490FDB
     const int factor = 15;
     f_coord destinationPos;
-    float f_result = LCG_PullHi16(seed);
-    destinationPos.x = double(sin(f_result*importantPiApprox)*factor) + getAnchor().x;
-    destinationPos.y = double(cos(f_result*importantPiApprox)*factor) + getAnchor().y;
+    float f_result = LCG_PullHi16(seed) * importantPiApprox * 2;
+    destinationPos.x = double(sin(f_result)*factor) + getAnchor().x;
+    destinationPos.y = double(cos(f_result)*factor) + getAnchor().y;
     setIntended(destinationPos);
-    //OPTIONAL: -- does the angle and such have any impact on the overall result?
     setAngle(angleLogic(f_result));
 }
 
@@ -173,8 +177,10 @@ float NPC::angleLogic(float angle){
     const double loosePiApprox = 3.1415927410125732421875; //40490FDB
     const double twoPi = 6.28318530717958623199592693708837032318115234375;
     if (angle > loosePiApprox || angle < -loosePiApprox){
+        //std::cout << "ANGLE SET CASE 1: " << angle-twoPi << "\n";
         return angle - twoPi;
     } else {
+        //std::cout << "Angle SET CASE 2: " << angle << "\n";
         return angle; 
     }
     //Compute Intervals version is different and not sure if it's really needed or not.

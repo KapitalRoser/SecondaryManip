@@ -4,7 +4,7 @@
 THIS IS A LOCAL COPY OF THE HEADER.
 */
 #include "../../processCore.h"
-#include "duration.h"
+#include "duration.cpp"
 enum state {WALK,WAIT,BEGIN,FINISH,FIRST};
 enum commonSpeed{STANDARD,SLOWER};
 std::map<commonSpeed,float> walkingSpeed {
@@ -12,27 +12,28 @@ std::map<commonSpeed,float> walkingSpeed {
     {SLOWER,0.28125}
     }; //add as more speeds are found.
 
+//figure out circular dependency
 class d_coord {
     public:
     double x,y; //add a toFloat or toF_Coord function?
-    f_coord toFCoord(){
-        f_coord r;
-        r.x = float(x);
-        r.y = float(y);
-        return r;
-        // oneliner:
-        //return f_coord({float(x),float(y)});
-    };
+    // f_coord toFCoord(){
+    //     f_coord r;
+    //     r.x = float(x);
+    //     r.y = float(y);
+    //     return r;
+    //     // oneliner:
+    //     //return f_coord({float(x),float(y)});
+    // };
 };
 class f_coord {
     public:
     float x,y;
-    d_coord toDCoord(){
-        d_coord r;
-        r.x = double(x);
-        r.y = double(y);
-        return r;
-    }
+    // d_coord toDCoord(){
+    //     d_coord r;
+    //     r.x = double(x);
+    //     r.y = double(y);
+    //     return r;
+    // }
     //blame powerpc data type rounding.
 };
 class NPC {

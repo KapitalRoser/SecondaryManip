@@ -1,5 +1,6 @@
 #include "../processCore.h"
 #include "../NPC.h"
+//#include "NPCs/refactoredNPC.cpp"
 #include "coloCore.h"
 //#include "frame.h" //As a wise man once said, you must do things manually before introducing oop.
 
@@ -15,9 +16,9 @@ void printResults(u32 seed,int fcount, int i,bool stepFrame,bool stepCalls){
 }
 
 void advanceFrame(u32 &seed,int currentFrame,std::vector<int>listOfSteps,region gameRegion,int stepCalls,std::vector<NPC>npcSet){
-  //int rollsApplied = 0; 
+  int rollsApplied = 0; 
 
-  //rollsApplied += 
+  rollsApplied += 
   colo_RollBackground(seed,currentFrame,gameRegion);
   
   bool stepFrame = 0;
@@ -32,7 +33,7 @@ void advanceFrame(u32 &seed,int currentFrame,std::vector<int>listOfSteps,region 
         }
   }
   
-  //printResults(seed,rollsApplied,currentFrame,stepFrame,stepCalls); //debug bg noise.
+  printResults(seed,rollsApplied,currentFrame,stepFrame,stepCalls); //debug bg noise.
 }
 
 void rollTransition(u32 &seed,int target,std::vector<int>secondarySteps,region gameRegion,std::vector<NPC>npcSet){

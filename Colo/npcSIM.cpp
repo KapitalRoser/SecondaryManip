@@ -1,6 +1,7 @@
-#include "../../../processCore.h"
-#include "NPC.h" //LOCAL COPY OF HEADER
-#include "../../coloCore.h"
+#include "../processCore.h"
+//#include "NPCs/refactoredNPC.cpp" //LOCAL COPY OF HEADER
+#include "../NPC.h"
+#include "coloCore.h"
 
 
 /*
@@ -68,12 +69,15 @@ std::string npcAction(u32 &seed,NPC &npc, int i){
 void initializeNPCSet(u32 &seed,std::vector<NPC>&npcSet,std::string &action,std::ofstream &outF){
     for (unsigned int i = 0; i < npcSet.size(); i++) //this version returns action.
     {
-        npcSet[i].beginCycle(seed);
-        outF << npcSet[i].getName() << " began cycle!";
-        action += npcAction(seed,npcSet[i],0); //first two steps happen on first frame
-        action += npcAction(seed,npcSet[i],1);
-        // action += npcSet[i].initializeNPC_Self(seed); //This is two line version, doesn't use action.
+        // npcSet[i].beginCycle(seed);
         // outF << npcSet[i].getName() << " began cycle!";
+        // action += npcAction(seed,npcSet[i],0); //first two steps happen on first frame
+        // action += npcAction(seed,npcSet[i],1);
+        npcSet[i].initializeNPC_Self(seed); //This is two line version, doesn't use action.
+        outF << npcSet[i].getName() << " began cycle!";
+    }
+    for(unsigned int i = 0; i < npcSet.size(); i++){
+        outF << "****";
     }
 }
 
