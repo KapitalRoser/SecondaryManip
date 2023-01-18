@@ -1,5 +1,7 @@
 #include "../processCore.h"
-#include "NPCs/NPC.cpp"
+#include "NPCs/NPC.h"
+//#include "../OLD_ProcessCore.h"
+//#include "../OLD_NPC.h"
 
 enum bgFrames {H = 116, L = 76, A = 114, O = 154}; //High, Low, Alpha, Omega
 
@@ -89,8 +91,8 @@ void advanceFrame(u32 &seed,int currentFrame,std::vector<int>listOfSteps,region 
   std::string action = "";
   if (!npcSet.empty()){ 
     for(unsigned int j = 0; j < npcSet.size(); j++){
-            action += npcSet[j].npcAction_Self(seed,currentFrame);
-        }
+      action += npcSet[j].npcAction_Self(seed,currentFrame);
+    }
   }
   
   //printResults(seed,rollsApplied,currentFrame,stepFrame,stepCalls); //debug bg noise.
@@ -116,6 +118,10 @@ void rollTransition(u32 &seed,int target,std::vector<int>secondarySteps,region g
 
 
 int main(){
+  //BUILD CMD NEW: 
+  //g++ C:\Users\greni\OneDrive\Documents\GitHub\SecondaryManip\Colo\QuilavaDWithNPCs.cpp C:\Users\greni\OneDrive\Documents\GitHub\SecondaryManip\processCore.cpp C:\Users\greni\OneDrive\Documents\GitHub\SecondaryManip\Colo\NPCs\NPC.cpp C:\Users\greni\OneDrive\Documents\GitHub\SecondaryManip\Colo\NPCs\duration.cpp -o QuilavaDWithNPCsNew
+
+
   //~~~~~~~~~~~~ CONFIG INPUTS ~~~~~~~~~~~~~~~~~~~~
     int target = 0; //+441.
     coloSecondary pokemon = QUILAVA;
@@ -147,6 +153,12 @@ int main(){
     NPC boots   = NPC({  90,   90},"B");
     NPC randall = NPC({ -90,  110},"R"); // -- fuck you randall, stop doing weird things on the curve.
     NPC heels   = NPC({  30,  300},"H",SLOWER); // -- fuck you heels, for having a slightly slower speed.
+    // NPC kaib    = NPC({  85, -150},STANDARD,"K");
+    // NPC jim     = NPC({  15,  -10},STANDARD,"J"); // -- fuck you jim, costs 5s to open door for him.
+    // NPC grandma = NPC({-140,  -10},STANDARD,"G");
+    // NPC boots   = NPC({  90,   90},STANDARD,"B");
+    // NPC randall = NPC({ -90,  110},STANDARD,"R"); // -- fuck you randall, stop doing weird things on the curve.
+    // NPC heels   = NPC({  30,  300},SLOWER,"H"); // -- fuck you heels, for having a slightly slower speed.
     std::vector<NPC>npcSet = {kaib,jim,grandma,boots,randall,heels}; 
     //if not wanting to track NPCs, uncomment this line: 
     //npcSet.clear();
