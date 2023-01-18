@@ -199,14 +199,14 @@ void NPC::finishCycle(u32 &seed){
 }
 
 void NPC::initializeNPC_Self(u32 &seed){
-    npcAction_Self(seed,2);
+    npcAction_Self(seed);
     // beginCycle(seed); //State is set to "Walk"
     // npcAction_Self(seed,0); //first two steps happen on first frame
     // npcAction_Self(seed,1);
     //Should I be adding a action parameter + return?
 }
 
-std::string NPC::npcAction_Self(u32 &seed, int frameNum){
+std::string NPC::npcAction_Self(u32 &seed){
         std::string action = ""; //optional -- exists only for debugging.
         int intervalFactor = 2;
         switch (getState()) //these are seperate states so that the actions happen on unique frames.

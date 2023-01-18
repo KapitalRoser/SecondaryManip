@@ -1,8 +1,70 @@
+//#include "../OLD_ProcessCore.h"
+//#include "../OLD_NPC.h"
 #include "../processCore.h"
-//#include "NPCs/refactoredNPC.cpp" //LOCAL COPY OF HEADER
-#include "../NPC.h"
-#include "coloCore.h"
+#include "NPCs/NPC.h"
+enum bgFrames {H = 116, L = 76, A = 114, O = 154}; //High, Low, Alpha, Omega
 
+int col_consultPattern(int i, region gameRegion){
+    std::vector<int>NTSCUPattern = {H,H,L,H,L}; //HHLHL
+    std::vector<int>PAL60Pattern = {
+    A,H,
+    H,L,H, O,L,
+    H,H,L, O,H,
+    L,H,L, O,H,
+    H,L,H, O,L,
+    H,L,H, O,H,
+    L,H,L, O,H,
+    L,H,H, O,L,
+    H,L,H, O,L,
+    H,H,L, O,H,
+    L,H,H, A,H //Last A,H necessary?
+    };
+    std::vector<int>::iterator iter;
+    int offset = 3; //const?
+    int range = 0;
+    switch (gameRegion)
+    {
+    case NTSCU:
+        iter = NTSCUPattern.begin();
+        range = NTSCUPattern.size();
+        //Does this logic work for all patterns now?
+        if (i < offset){
+            iter += (i % offset);
+        } else {
+            iter += (i-offset) % range;
+        }
+        break;
+    case PAL60:
+        iter = PAL60Pattern.begin();
+        range = PAL60Pattern.size();
+        //logic
+        break;
+    case PAL50:
+        //pattern
+        //logic
+        break;
+    case NTSCJ:
+        //pattern
+        //logic
+        break;
+    default:
+        break;
+    }
+    return *iter;
+}
+
+//slightly depreciated (currently just used in npcs.cpp):
+bool col_CheckStepPath(std::vector<int>secondarySteps,u32& seed,int i,int stepCalls){
+  if (binary_search(secondarySteps.begin(),secondarySteps.end(),i+1)){
+        LCGn(seed,stepCalls);
+        return true;
+  } else {
+        return false;
+  }
+}
+int colo_RollBackground(u32 &seed,int i, region gameRegion){    
+      return LCGn(seed,col_consultPattern(i,gameRegion));
+}
 
 /*
 TODO: Solve issue where Jim only burns 1 incrementStep() during beginCycle() instead of two.
@@ -92,6 +154,8 @@ void outputToFile(u32 seed, std::string action, std::ofstream &outF,std::ofstrea
 }
 
 int main(){
+
+    //New build command: g++ C:\Users\greni\OneDrive\Documents\GitHub\SecondaryManip\Colo\npcSIM.cpp C:\Users\greni\OneDrive\Documents\GitHub\SecondaryManip\processCore.cpp C:\Users\greni\OneDrive\Documents\GitHub\SecondaryManip\Colo\NPCs\NPC.cpp C:\Users\greni\OneDrive\Documents\GitHub\SecondaryManip\Colo\NPCs\duration.cpp -o npcSIM_NEW
     std::ofstream outF("npcSim.txt");
     std::ofstream outFRaw("npcSimRaw.txt");
 
@@ -105,12 +169,18 @@ int main(){
     std::string action = "";
 
     //PHENAC NPCS LOAD IN THIS ORDER:
-    NPC kaib    = NPC({85,-150}, STANDARD,"K");
-    NPC jim     = NPC({15,-10},  STANDARD,"J");
-    NPC grandma = NPC({-140,-10},STANDARD,"G");
-    NPC boots   = NPC({90,90},   STANDARD,"B");
-    NPC randall = NPC({-90,110}, STANDARD,"R"); 
-    NPC heels   = NPC({30,300},  SLOWER,  "H");
+    // NPC kaib    = NPC({85,-150}, STANDARD,"K");
+    // NPC jim     = NPC({15,-10},  STANDARD,"J");
+    // NPC grandma = NPC({-140,-10},STANDARD,"G");
+    // NPC boots   = NPC({90,90},   STANDARD,"B");
+    // NPC randall = NPC({-90,110}, STANDARD,"R"); 
+    // NPC heels   = NPC({30,300},  SLOWER,  "H");
+    NPC kaib    = NPC({85,-150},"K");
+    NPC jim     = NPC({15,-10},"J");
+    NPC grandma = NPC({-140,-10},"G");
+    NPC boots   = NPC({90,90},"B");
+    NPC randall = NPC({-90,110},"R"); 
+    NPC heels   = NPC({30,300},"H",SLOWER);
     std::vector<NPC>npcSet = {kaib,jim,grandma,boots,randall,heels};
     std::vector<int>quilavaSteps{5,10,15,20,25,30,35,39,44,49,54,67,88,100,111,119,
     126,132,138,143,148,153,158,163,168,173,177,182,187,192,197,202,210,217,
@@ -145,6 +215,6 @@ int main(){
     //         std::cout << "x pos: " << std::setw(18) << npcSet[1].getNextPos().x << " y pos: "<< npcSet[1].getNextPos().y << std::endl;
     //     }
     // }
-
+    std::cout << "COMPLETE!";
     return 0;
 }

@@ -85,7 +85,7 @@ class NPC {
     //putting it all together
     //These are what is currently called by QuilavaDWithNPCs.cpp
     void initializeNPC_Self(u32 &seed);
-    std::string npcAction_Self(u32 &seed, int frameNum);
+    std::string npcAction_Self(u32 &seed);
     
 
     void setAnchor(d_coord input) {m_anchor = input;} //uses double instead of float or int because idk maybe there's an npc with a very specific anchor location. I doubt it but why take the risk lol.

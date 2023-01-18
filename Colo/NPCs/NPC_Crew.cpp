@@ -37,7 +37,7 @@ unsigned int NPC_Crew::size()
 void NPC_Crew::advance(u32 &seed)
 {   
     for(NPC npc : set){
-        status += npc.npcAction_Self(seed,2); //2nd arg is here for testing purposes. 
+        status += npc.npcAction_Self(seed); //2nd arg is here for testing purposes. 
     } 
 }   
     //Once done, remove 2nd arg. 
