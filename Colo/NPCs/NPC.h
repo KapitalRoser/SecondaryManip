@@ -7,10 +7,7 @@ THIS IS A LOCAL COPY OF THE HEADER.
 #include "duration.h"
 enum state {WALK,WAIT,BEGIN,FINISH,FIRST};
 enum commonSpeed{STANDARD,SLOWER};
-std::map<commonSpeed,float> walkingSpeed {
-    {STANDARD,0.29032257199287415},
-    {SLOWER,0.28125}
-    }; //add as more speeds are found.
+
 
 //figure out circular dependency
 class d_coord {
@@ -50,6 +47,10 @@ class NPC {
     d_coord m_CombinedDistances = {0,0};
     int m_state = FIRST;
     std::string m_name = "";
+    std::map<commonSpeed,float> walkingSpeed {
+    {STANDARD,0.29032257199287415},
+    {SLOWER,0.28125}
+    }; //add as more speeds are found.
 
     public:
 

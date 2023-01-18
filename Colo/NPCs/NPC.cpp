@@ -226,11 +226,11 @@ std::string NPC::npcAction_Self(u32 &seed, int frameNum){
             case BEGIN:
                 action = getName() + "b";
                 beginCycle(seed);
-                incrementPosition(2); //standard practice?
+                incrementPosition(intervalFactor); //standard practice?
                 incrementPosition(intervalFactor); //if all npcs do this, then move this into beginCycle().
                 break;
             case FIRST:
-                action = "**";
+                action = "!!";
                 beginCycle(seed); //if user defined seed, this should be it. Otherwise use current seed
                 incrementPosition(intervalFactor = 1); //special cases
                 incrementPosition(intervalFactor = 5);
