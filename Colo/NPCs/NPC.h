@@ -1,13 +1,10 @@
 #ifndef NPC_H
 #define NPC_H
-/*
-THIS IS A LOCAL COPY OF THE HEADER.
-*/
-#include "../../processCore.h"
-#include "duration.h"
+
+#include "processCoreLocal.h"
+
 enum state {WALK,WAIT,BEGIN,FINISH,FIRST};
 enum commonSpeed{STANDARD,SLOWER};
-
 
 //figure out circular dependency
 class d_coord {
@@ -33,6 +30,27 @@ class f_coord {
     // }
     //blame powerpc data type rounding.
 };
+
+
+class duration {
+    public:
+    //This is super important to get right, as the numbers produced here will directly impact rng manip in the future!
+    duration(float m_seconds);
+    duration(int inputframes30);
+    //Shouldn't ever call duration with a 60fps number, right? if so then add a /2 in the parameter.
+    //both XD and Colo have 30fps overworlds and there shouldn't be a reason in XD to ever track npcs in the pause menu.
+    float getFrames60fromSeconds();
+    
+    int getFrames30();
+    int getFrames60();
+    float getSeconds();
+    void setFrames30(int input);
+    void setSeconds(float input);
+    private:
+    float m_seconds = 0;
+    int m_frames30 = 0;
+};
+
 class NPC {
     private:
     d_coord m_anchor = {0,0};
@@ -47,9 +65,9 @@ class NPC {
     d_coord m_CombinedDistances = {0,0};
     int m_state = FIRST;
     std::string m_name = "";
-    std::map<commonSpeed,float> walkingSpeed {
-    {STANDARD,0.29032257199287415},
-    {SLOWER,0.28125}
+    std::map <commonSpeed,float> walkingSpeed = {
+        {STANDARD,0.29032257199287415},
+        {SLOWER,0.28125}
     }; //add as more speeds are found.
 
     public:
@@ -83,8 +101,6 @@ class NPC {
     void finishCycle(u32 &seed);
 
     //putting it all together
-    //These are what is currently called by QuilavaDWithNPCs.cpp
-    void initializeNPC_Self(u32 &seed);
     std::string npcAction_Self(u32 &seed);
     
 

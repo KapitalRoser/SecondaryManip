@@ -91,16 +91,29 @@ void NPC::chooseDestination(u32 &seed){
 
 //~~~~~~~~~~~~~~~~INTERVAL STUFF~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 d_coord NPC::computeInterval(){
-        setAngle(computeAngle(getDistance())*2);
-        float sinResult = static_cast<float>(sin(getAngle())) * 0.9999999403953552;
-        float cosResult = static_cast<float>(cos(getAngle()));
+        
+        float intervalAngle = computeAngle(getDistance());
+        // std::cout << "CURRENT ANG"<< getAngle() << " NEW ANG: " << intervalAngle;
+
+        //slightly different to Angle Logic
+        // const double loosePiApprox = 3.1415927410125732421875; //40490FDB
+        // if (getAngle() > loosePiApprox || getAngle() < -loosePiApprox){
+        //     setAngle(intervalAngle);
+        // } //Currently, this if block gets overwritten by the next line anyway so what's the point.
+        setAngle(intervalAngle*2);
+
+        float sinResult = static_cast<float>(sin(intervalAngle)) * 0.9999999403953552;
+        float cosResult = static_cast<float>(cos(intervalAngle));
         const float speedFactor = getSpeedFactor(); //thanks heels.
         //identities used:
         //x = 2*sinx*cosx
         //y = cosx^2-sinx^2
         d_coord intervals;
         intervals.x = 2*sinResult*cosResult*speedFactor; // 2*sinx*cosx is a TRIGONOMETRY IDENTITY, Angle addition formula?
-        intervals.y = (pow(cosResult,2)-pow(sinResult,2))*speedFactor; //cos^2*X-sin^2*x, note that speedfactor is NOT the x here, the x is interval angle so it's already built in.
+        intervals.y = (pow(cosResult,2)-pow(sinResult,2))*speedFactor;//cos^2*X-sin^2*x, note that speedfactor is NOT the x here, the x is interval angle so it's already built in.
+        //should be fine now.
+        //std::cout << "INTERVAL ANGLE: " << std::setprecision(17) << intervalAngle*2 << std::endl;
+        // << "SINRESULT: " << sinResult << " COSRESULT: " << cosResult << std::endl;
         return intervals;
         //Now that we have interval and its a fixed number for all steps, can we simply divide distance by interval to get # frames?
 }
@@ -120,6 +133,8 @@ bool NPC::incrementPosition(int factor){
         double postStep = pythagorasDistance(getDistance());
     
         setCombinedDistance({preStep,postStep}); //saves as d_coord, DOES THIS EVER GET READ??
+        //
+
         //setName("Pre: " + std::to_string(preStep) + "Post: "+std::to_string(postStep));
 
         return shouldStop(preStep,postStep); //Walk Time gets incremented here!
@@ -144,9 +159,12 @@ float NPC::angleLogic(float angle){
 }
 
 float NPC::computeAngle(d_coord distance){
+    //This is the angle used for interval calculation, but isn't recorded in the array.
     d_coord preAngles = distance;
     double angle = atan2(preAngles.x,preAngles.y)/2;
-    return angle;
+    return angle; //what if stored result as an f_coord instead? Or do we need the truncation from double to f AFTER the division by 2? Gets casted to F for return anyway???
+    //return double(atan2(getDistance().x,getDistance().y)/2); //Does double into float conversion matter?
+    //return atan2(distance.x,distance.y)/2; //???
 }
 
 float NPC::waitTimerCalculation(u32 &seed){
@@ -198,8 +216,15 @@ void NPC::printNPCData(int currentCycle){
     std::cout << "At 30fps, this is: " << getWaitTime().getFrames30() << " frames.\n";
     std::cout << "\n~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ \n\n";
 }
+void NPC::initializeNPC_Self(u32 &seed){
+    npcAction_Self(seed,2);
+    // beginCycle(seed); //State is set to "Walk"
+    // npcAction_Self(seed,0); //first two steps happen on first frame
+    // npcAction_Self(seed,1);
+    //Should I be adding a action parameter + return?
+}
 
-std::string NPC::npcAction_Self(u32 &seed){
+std::string NPC::npcAction_Self(u32 &seed, int frameNum){
         std::string action = ""; //optional -- exists only for debugging.
         int intervalFactor = 2;
         switch (getState()) //these are seperate states so that the actions happen on unique frames.
@@ -219,11 +244,11 @@ std::string NPC::npcAction_Self(u32 &seed){
             case BEGIN:
                 action = getName() + "b";
                 beginCycle(seed);
-                incrementPosition(intervalFactor); //standard practice?
+                incrementPosition(2); //standard practice?
                 incrementPosition(intervalFactor); //if all npcs do this, then move this into beginCycle().
                 break;
             case FIRST:
-                action = "!!";
+                action = "**";
                 beginCycle(seed); //if user defined seed, this should be it. Otherwise use current seed
                 incrementPosition(intervalFactor = 1); //special cases
                 incrementPosition(intervalFactor = 5);
