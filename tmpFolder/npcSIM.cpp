@@ -182,6 +182,7 @@ std::string npcAction(u32 &seed,NPC &npc, int i){
             action = npc.getName() + "b";
             npc.beginCycle(seed);
             npc.incrementPosition(factor); //standard practice? -- WHEN WHERE AND HOW?
+            npc.incrementPosition(factor);
             // if (!(npc.getName()[0] == 'J') || i != 199){
             //     npc.incrementPosition(factor);
             // }
