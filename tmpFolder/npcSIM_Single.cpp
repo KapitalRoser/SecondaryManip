@@ -228,14 +228,7 @@ int main(){
     u32 seed = inputSeed;
     std::string action = "";
 
-    NPC kaib    = NPC({85,-150}, "K");
-    NPC jim     = NPC({15,-10},  "J");
-    NPC grandma = NPC({-140,-10},"G");
-    NPC boots   = NPC({90,90},   "B");
-    //NPC randall = NPC({-90,110}, "R",STANDARD,&randallAdjust);
-    NPC randall = NPC({-90,110}, "R",STANDARD); 
-    NPC heels   = NPC({30,300},  "H",SLOWER);
-    std::vector<NPC>npcSet = {kaib,jim,grandma,boots,randall,heels};
+    NPC Girly    = NPC({85,-150}, "G");
     std::vector<int>quilavaSteps{5,10,15,20,25,30,35,39,44,49,54,67,88,100,111,119,
     126,132,138,143,148,153,158,163,168,173,177,182,187,192,197,202,210,217,
     227,237,252,268,284,292,297,302,307,312,316,321,326,331};

@@ -1,0 +1,4 @@
+0xE8043E11 - problem:: 
+0xBA93C44 - problem: Jim gets collision on bottom edge
+0x4c4ac355 -- problem: Randall is delayed one frame at very beginning. Clips corner of bridge. West -> East.
+0xD3439443 - problem: Grandma ends her step early?

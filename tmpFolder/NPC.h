@@ -7,6 +7,12 @@ enum state {WALK,WAIT,BEGIN,FINISH,FIRST};
 enum commonSpeed{STANDARD,SLOWER};
 
 //figure out circular dependency
+
+class proto_coord {
+    public:
+    double x,y;
+};
+
 class d_coord {
     public:
     double x,y; //add a toFloat or toF_Coord function?
@@ -22,12 +28,12 @@ class d_coord {
 class f_coord {
     public:
     float x,y;
-    // d_coord toDCoord(){
-    //     d_coord r;
-    //     r.x = double(x);
-    //     r.y = double(y);
-    //     return r;
-    // }
+    d_coord toDCoord(){
+        d_coord r;
+        r.x = double(x);
+        r.y = double(y);
+        return r;
+    }
     //blame powerpc data type rounding.
 };
 
@@ -51,10 +57,11 @@ class duration {
     int m_frames30 = 0;
 };
 
+
 class NPC {
     private:
     d_coord m_anchor = {0,0};
-    d_coord m_intervalValues = {0,0};
+    d_coord m_intervalValues = {0,0}; //More like a tuple
     f_coord m_nextPos = {0.0};
     f_coord m_intendedPos = {0,0};
     
@@ -62,23 +69,25 @@ class NPC {
     float m_speedFactor = 0;
     duration m_waitTime = duration{0};
     duration m_walkTime = duration{0};
-    d_coord m_CombinedDistances = {0,0};
+    d_coord m_CombinedDistances = {0,0}; //tuple
     int m_state = FIRST;
     std::string m_name = "";
     std::map <commonSpeed,float> walkingSpeed = {
         {STANDARD,0.29032257199287415},
         {SLOWER,0.28125}
     }; //add as more speeds are found.
+    d_coord (*validationFunctionPtr)(d_coord pos, bool XorY) = nullptr;
 
     public:
 
     //NPC(d_coord anchor, std::string name = "", commonSpeed speed = STANDARD); //id is covered by NPC crew class
-    NPC(d_coord anchor, std::string name = "", commonSpeed speed = STANDARD)
+    NPC(d_coord anchor, std::string name = "", commonSpeed speed = STANDARD, d_coord(*f)(d_coord pos, bool XorY) = nullptr)
     {
         m_anchor = anchor,
         m_nextPos = {float(anchor.x),float(anchor.y)}, //returns valid f_coord?
         m_name = name,
         m_speedFactor = walkingSpeed[speed];
+        validationFunctionPtr = f;
     }
     void InitialXY(u32 &seed);
     void chooseDestination(u32 &seed);
@@ -86,11 +95,15 @@ class NPC {
     float angleLogic(float angle);
     float computeAngle(d_coord distance);
 
+    // bool circleDistanceCheck(d_coord pos, d_coord circleCentre, double radius);
+    // double snapToCircleEdge(d_coord pos,d_coord circleCentre, double r, int modeSelection);
+    f_coord validatePosition(f_coord inputPos, bool XorY);
+
     d_coord computeInterval();
     void applyStep(int factor);
     double pythagorasDistance (d_coord distance);
     bool incrementPosition(int factor);
-    bool shouldStop(double pre, double post);
+    bool evaluateStop(double pre, double post);
     
     float waitTimerCalculation(u32 &seed);
     void decrementWaitTimer();
@@ -121,16 +134,17 @@ class NPC {
     float getSpeedFactor(){return m_speedFactor;}
     std::string getName(){return m_name;}
     d_coord getAnchor(){return m_anchor;}
-    d_coord getCombinedDistance(){return m_CombinedDistances;}
-    d_coord getDistance(){
+    d_coord getCombinedDistance(){return m_CombinedDistances;} //Not a true coordinate, since its distance, its more like a tuple and should eventually be reclassed as such.
+    d_coord getDistance(){ //Same, tuple, this is a bit reckless tbh
         return {getIntendedPos().x - getNextPos().x, 
                 getIntendedPos().y - getNextPos().y};
     }
-    d_coord getInterval(){return m_intervalValues;}
+    d_coord getInterval(){return m_intervalValues;} //same, tuple
     f_coord getIntendedPos(){return m_intendedPos;}
     f_coord getNextPos(){return m_nextPos;}
     duration getWaitTime(){return m_waitTime;}
     duration getWalkTime(){return m_walkTime;}
 };
+
 
 #endif /*NPC_H*/

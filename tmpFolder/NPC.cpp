@@ -1,26 +1,22 @@
 #include "NPC.h"
 /*
-    LIST OF THINGS TO VERIFY:
-    1) Make sure new constructor produces the same results as the old constructors. 
-    If so, use the new single constructor for everything
+    Dear reader, you will notice a lot of weird conversions between Float and Double objects. This is intentional.
+    Dolphin/GC often rounds intermediate calculations and I've done my best to preserve them while also condensing the math.
 
-    2) Check that chooseDestination produces the same results as InitialXY(),
-    especially given the sensitive double and float conversions that happen ingame.
+    JIM STUCK COORDS: (8.51607227,-13.769783), ALSO (8.4991436,-13.7876158)
+    JIM INTENDED WHEN STUCK: (7.88849592,-23.2070618)
+    JIM ANGLE*2 WHEN STUCK: (-2.9532485)
+    JIM TIMER: 0
 
-    3) See if the angle matters at all to the end result. If not, then discard or make optional.
-    If must keep them then can simplify greatly. Also make sure results are the same as old stuff.
-
-    4)Test ComputeInterval to see if that angle validity check is needed, since currently it gets
-    immediately overwritten.
-
-    5)Make sure FIRST state performs the same as calling initializeNPCSelf()
-
-    //RAN 1 TEST, NO DIFFS SO FAR.
-    //Removing InitializeNPC as a seperate func is ok, just call the action self since state is now automatically handled.
-    //Eventually other programmers will need to seed their npc set object, whatever I decide to call it and however it ends up being written.
+    Will need to settle on an implementation for a multiple npc handler object. Not sure what to call it?
+    Pack? Group? Set? Crew? Suite?
+    That object would be seeded and would ideally be easier to add into whatever code the programmer is building for their sim.
+    Frame-by-frame or waterfall calculation versions?
 */
 
 
+
+//~~~~~~~~~~~~ Duration implementation ~~~~~~~~~~~~~~~~~~~~ THIS COULD GO IN PROCESS CORE.
 
 duration::duration(float m_seconds){
         setFrames30(round(m_seconds/(1.0/30))); //This only seems to matter when it comes to 60fps?
@@ -44,76 +40,61 @@ void duration::setSeconds(float input){m_seconds = input;}
 
 //~~~~~~~~~~~~ COMPONENT FUNCTIONS ~~~~~~~~~~~~~~~~~~~~
 
-
-void NPC::InitialXY(u32 &seed){
-    const double loosePiApprox = 3.1415927410125732421875; //40490FDB
-    const double twoPi = 6.28318530717958623199592693708837032318115234375;
-    const int factor = 15;
-    f_coord destinationPos = getIntendedPos();
-    float f_working = LCG_PullHi16(seed);
-    f_working = f_working * loosePiApprox * 2;
-
-    //array angle
-    //std::cout << "FWORKING: " << f_working;
-    //std::cout << "F WORKING:" << f_working << "\n";
-    if (f_working > loosePiApprox || f_working < -loosePiApprox){
-        setAngle(f_working - twoPi);
-        //std::cout << "ANGLE SET CASE 1:" << f_working - twoPi;
-    } else {
-        setAngle(f_working); 
-        //std::cout << "ANGLE SET CASE 2:" << f_working;
-    }
-
-    double d_working = f_working; //***sensitive conversion between float -> double and back.
-    d_working = sin(d_working) * factor;
-    destinationPos.x = d_working;
-
-    d_working = f_working; //restore
-    d_working = cos(d_working)* factor;
-    destinationPos.y = d_working;
-
-    destinationPos.x += getAnchor().x;
-    destinationPos.y += getAnchor().y;
-    setIntended(destinationPos); //for walking calculations
-}
-
 void NPC::chooseDestination(u32 &seed){
     //Should work but need to test that the float and double conversions work out the same.
     const double importantPiApprox = 3.1415927410125732421875; //40490FDB
     const int factor = 15;
     f_coord destinationPos;
-    float f_result = LCG_PullHi16(seed) * importantPiApprox * 2;
+    float f_result = LCG_PullHi16(seed) * importantPiApprox * 2; //Can we swap this for LCG_Percentage?
     destinationPos.x = double(sin(f_result)*factor) + getAnchor().x;
     destinationPos.y = double(cos(f_result)*factor) + getAnchor().y;
     setIntended(destinationPos);
-    setAngle(angleLogic(f_result));
+    setAngle(angleLogic(f_result)); //unsure if necessary?
 }
 
-
+f_coord NPC::validatePosition(f_coord inputPos, bool XorY){
+    //This is a function owned by the npc. 
+    //This function returns a "corrected" coordinate pair as f_coord (if a correction is needed), 
+    //If no correction is needed, then return input pair.
+    //Programmer/user provides custom function, tailored to the npc and situation you're in.
+    //Somewhat presuming that better calculation is done with doubles, not floats. However the rounding may wreck us in the end?
+    if (validationFunctionPtr == nullptr){
+        return inputPos;
+    }
+    d_coord result = (*validationFunctionPtr)(inputPos.toDCoord(),XorY);
+    //BE REALLY CAREFUL WITH THIS ROUNDING IF COMING OFF OF A D_COORD.
+    f_coord resF;
+    resF.x = result.x;
+    resF.y = result.y;
+    return resF;
+}
 
 //~~~~~~~~~~~~~~~~INTERVAL STUFF~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 d_coord NPC::computeInterval(){
     float intervalAngle = computeAngle(getDistance());
-        
-        setAngle(intervalAngle*2);
+    setAngle(intervalAngle*2); //This is what shows up in the array, not strictly needed for calculation.
 
-        float sinResult = static_cast<float>(sin(intervalAngle)) * 0.9999999403953552;
-        float cosResult = static_cast<float>(cos(intervalAngle));
-        const float speedFactor = getSpeedFactor(); //thanks heels.
-        //identities used:
-        //x = 2*sinx*cosx
-        //y = cosx^2-sinx^2
-        d_coord intervals;
-        intervals.x = 2*sinResult*cosResult*speedFactor; // 2*sinx*cosx is a TRIGONOMETRY IDENTITY, Angle addition formula?
-        intervals.y = (pow(cosResult,2)-pow(sinResult,2))*speedFactor; //cos^2*X-sin^2*x, note that speedfactor is NOT the x here, the x is interval angle so it's already built in.
-        return intervals;
-        //Now that we have interval and its a fixed number for all steps, can we simply divide distance by interval to get # frames?
+    const float adjustment = 0.9999999403953552;//Constant  -- this is apparently 1 - 1/2^24, an extremely minor adjustment.
+    float sinResult = static_cast<float>(sin(intervalAngle)) * adjustment; //Note this is angle, not angle*2 which is what set(angle) sets.
+    float cosResult = static_cast<float>(cos(intervalAngle));
+    const float speedFactor = getSpeedFactor(); //thanks heels.
+    //Trigonometry identities (Angle Addition Formulas I think) used:
+    //x = 2*sinx*cosx
+    //y = cosx^2-sinx^2
+    //note that speedfactor is NOT the x here, the x is interval angle so it's already built in.
+    d_coord intervals;
+    intervals.x = 2*sinResult*cosResult*speedFactor;
+    intervals.y = (pow(cosResult,2)-pow(sinResult,2))*speedFactor;    
+    return intervals;
+    //Now that we have interval and its a fixed number for all steps, can we simply divide distance by interval to get # frames?
 }
 
 void NPC::applyStep(int factor){
         f_coord postStepPos = getNextPos();
         postStepPos.x += getInterval().x * factor;
-        postStepPos.y += getInterval().y * factor;          
+        postStepPos = validatePosition(postStepPos, 1);
+        postStepPos.y += getInterval().y * factor;
+        postStepPos = validatePosition(postStepPos, 0);       
         setNextPos(postStepPos);
     }
 double NPC::pythagorasDistance (d_coord distance){
@@ -126,12 +107,11 @@ bool NPC::incrementPosition(int factor){
     
         setCombinedDistance({preStep,postStep}); //saves as d_coord, DOES THIS EVER GET READ??
         //setName("Pre: " + std::to_string(preStep) + "Post: "+std::to_string(postStep));
-
-        return shouldStop(preStep,postStep); //Walk Time gets incremented here!
+        return evaluateStop(preStep,postStep); //Walk Time can get incremented here!
     }
-bool NPC::shouldStop(double pre, double post){
+bool NPC::evaluateStop(double pre, double post){
         post <= pre ? setWalkTime(getWalkTime().getFrames30()+1) : setState(FINISH);
-        return post <= pre;
+        return post <= pre; //Evaluates stop condition. Only continue moving if distance is decreasing.
 }
 
 //~~~~~~~~~~~~~~~~~~~~~~~~ANGLE STUFF~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -172,9 +152,6 @@ void NPC::decrementWaitTimer(){
     }
     //alternatively decrement by a certain number of ms.
 }
-
-
-
 
 
 //ACTION FUNCTIONS.

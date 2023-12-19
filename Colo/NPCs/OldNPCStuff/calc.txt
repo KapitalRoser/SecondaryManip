@@ -3,13 +3,17 @@ If rounding to unit isn't enough, reevaluate.
 3 unit radius 6 unit diameter, circular collision around Player
 
 Main Circle
-103 -> 103 -- radius 103 diameter 206
+-103 -> 103 -- radius 100 diameter 200
+85 -> 285 north south. Roughly 100 unit radius
+centre point is likely (0,185)
+
+
 
 center of bridge outer is 
 x: -73 y: 105
 
 
-bridge left
+bridge left 
 x: -78  -81
 y:113   117
 
