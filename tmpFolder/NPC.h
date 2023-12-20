@@ -3,27 +3,13 @@
 
 #include "processCoreLocal.h"
 
-enum state {WALK,WAIT,BEGIN,FINISH,FIRST,FIRST_WALK,SECOND_WALK}; // last two states may not apply for every map?
-enum commonSpeed{STANDARD,SLOWER};
+enum state {FIRST,FIRST_WALK,SECOND_WALK,WALK,WAIT,FINISH,BEGIN}; // First 3 states may not apply to every room?
+enum commonSpeed{STANDARD,SLOWER}; //How many speeds exist?
 
 //figure out circular dependency
-
-class proto_coord {
-    public:
-    double x,y;
-};
-
 class d_coord {
     public:
     double x,y; //add a toFloat or toF_Coord function?
-    // f_coord toFCoord(){
-    //     f_coord r;
-    //     r.x = float(x);
-    //     r.y = float(y);
-    //     return r;
-    //     // oneliner:
-    //     //return f_coord({float(x),float(y)});
-    // };
 };
 class f_coord {
     public:
@@ -46,7 +32,6 @@ class duration {
     //Shouldn't ever call duration with a 60fps number, right? if so then add a /2 in the parameter.
     //both XD and Colo have 30fps overworlds and there shouldn't be a reason in XD to ever track npcs in the pause menu.
     float getFrames60fromSeconds();
-    
     int getFrames30();
     int getFrames60();
     float getSeconds();

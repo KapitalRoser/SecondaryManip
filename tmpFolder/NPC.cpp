@@ -186,6 +186,23 @@ std::string NPC::npcAction_Self(u32 &seed){
         int intervalFactor = 2; //Standard?
         switch (getState()) //these are seperate states so that the actions happen on unique frames.
             { 
+            case FIRST:
+                action = "!!";
+                beginCycle(seed);
+                incrementPosition(intervalFactor = 1); //special cases -- sometimes a particular npc will ignore?
+                incrementPosition(intervalFactor = 5);
+                setState(FIRST_WALK); //overrides beginCycle()
+                break;
+            case FIRST_WALK: //Surely there's a better way to combine this into the WALK state...
+                action = "**"; //If not applicable to all maps, how can the user customize this?
+                incrementPosition(intervalFactor = 1);
+                setState(SECOND_WALK);
+                break;
+            case SECOND_WALK:
+                action = "**";
+                incrementPosition(intervalFactor = 5);
+                setState(WALK); // This is unscientific, really should be mirroring the game better.s
+                break;
             case WALK:
                 action = "**";
                 incrementPosition(intervalFactor);
@@ -203,23 +220,6 @@ std::string NPC::npcAction_Self(u32 &seed){
                 beginCycle(seed);
                 incrementPosition(intervalFactor); //standard practice?
                 incrementPosition(intervalFactor); //if all npcs do this, then move this into beginCycle().
-                break;
-            case FIRST:
-                action = "!!";
-                beginCycle(seed);
-                incrementPosition(intervalFactor = 1); //special cases -- sometimes a particular npc will ignore?
-                incrementPosition(intervalFactor = 5);
-                setState(FIRST_WALK); //overrides beginCycle()
-                break;
-            case FIRST_WALK:
-                action = "**"; //If not applicable to all maps, how can the user customize this?
-                incrementPosition(intervalFactor = 1);
-                setState(SECOND_WALK);
-                break;
-            case SECOND_WALK:
-                action = "**";
-                incrementPosition(intervalFactor = 5);
-                setState(WALK); // This is unscientific, really should be mirroring the game better.s
                 break;
             default:
                 std::cout << "STATE INVALID!";
