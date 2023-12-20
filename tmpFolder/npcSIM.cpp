@@ -33,12 +33,10 @@ double snapToCircleEdge(double givenCoord,double circleGiven, double circleSolve
    }
    return circleSolved - solvedCoord;
 }
-
 bool bridgeCheck(d_coord pos){
     //raycast the bridge.
     return 0;
 }
-
 d_coord randallAdjust(d_coord inputPos, bool XorY){
     //data
     d_coord circleCentre;
@@ -66,8 +64,6 @@ d_coord randallAdjust(d_coord inputPos, bool XorY){
     }
     return result;
 }
-
-
 
 
 int col_consultPattern(int i, region gameRegion){
@@ -118,7 +114,6 @@ int col_consultPattern(int i, region gameRegion){
     }
     return *iter;
 }
-
 bool col_CheckStepPath(std::vector<int>secondarySteps,u32& seed,int i,int stepCalls){
   if (binary_search(secondarySteps.begin(),secondarySteps.end(),i+1)){
         LCGn(seed,stepCalls);
@@ -138,15 +133,10 @@ Solve issue where Jim gets completely stuck on phenac gym door.
 */
 
 void initializeNPCSet(u32 &seed,std::vector<NPC>&npcSet,std::string &action,std::ofstream &outF){
-    for (unsigned int i = 0; i < npcSet.size(); i++) //this version returns action.
-    {
-        std::cout << "DEBUG STATE: " << npcSet[i].getName() << ": " << npcSet[i].getState() << ". ";
-        action += npcSet[i].npcAction_Self(seed);
-        
+    for (NPC &npc : npcSet){
+        action += npc.npcAction_Self(seed);
     }
-    std::cout << "\n";
-    outF << "Initial cycles begin!\n";
-    outF << "\n";
+    outF << "Initial cycles begin!\n\n";
 }
 
 void outputToFile(u32 seed, std::string action, std::ofstream &outF,std::ofstream &rawF, bool step){
@@ -203,17 +193,17 @@ int main(){
         //NPCs:
         std::string action = "";
         outF << std::setw(3) << i << ": ";
-        for(unsigned int j = 0; j < npcSet.size(); j++){
-            if (i < 2) {
-                std::cout << "DEBUG STATE: " << npcSet[j].getName() << ": " << npcSet[j].getState() << ". ";
-            }
-            action += npcSet.at(j).npcAction_Self(seed);
-            //DEBUG
-            // if (npcSet.at(j).getState() == FINISH){
-            //     std::cout << npcSet.at(j).getName() << ": Intend: " << std::setprecision(17)<< npcSet[j].getIntendedPos().x << ": " << npcSet[j].getIntendedPos().y << std::endl;
-            // }
-        }
+        // for(unsigned int j = 0; j < npcSet.size(); j++){ //This loop may be easier to debug than the foreach loop.
+        //     action += npcSet.at(j).npcAction_Self(seed);
+        //     //DEBUG
+        //     // if (npcSet.at(j).getState() == FINISH){
+        //     //     std::cout << npcSet.at(j).getName() << ": Intend: " << std::setprecision(17)<< npcSet[j].getIntendedPos().x << ": " << npcSet[j].getIntendedPos().y << std::endl;
+        //     // }
+        // }
         //Output
+        for (NPC &npc : npcSet){
+            action += npc.npcAction_Self(seed);
+        }
         outputToFile(seed,action,outF,outFRaw,step);  
     }
     std::cout << "COMPLETE!";
