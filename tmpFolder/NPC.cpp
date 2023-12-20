@@ -72,10 +72,10 @@ f_coord NPC::validatePosition(f_coord inputPos, bool XorY){
 //~~~~~~~~~~~~~~~~INTERVAL STUFF~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 d_coord NPC::computeInterval(){
     float intervalAngle = computeAngle(getDistance());
-    setAngle(intervalAngle*2); //This is what shows up in the array, not strictly needed for calculation.
+    setAngle(intervalAngle*2); //This is what shows up in the array, not strictly needed for calculation. Still need base angle next. 
 
     const float adjustment = 0.9999999403953552;//Constant  -- this is apparently 1 - 1/2^24, an extremely minor adjustment.
-    float sinResult = static_cast<float>(sin(intervalAngle)) * adjustment; //Note this is angle, not angle*2 which is what set(angle) sets.
+    float sinResult = static_cast<float>(sin(intervalAngle)) * adjustment; //Note this is angle, not to be confused with angle*2 which is what set(angle) sets.
     float cosResult = static_cast<float>(cos(intervalAngle));
     const float speedFactor = getSpeedFactor(); //thanks heels.
     //Trigonometry identities (Angle Addition Formulas I think) used:
@@ -90,7 +90,7 @@ d_coord NPC::computeInterval(){
 }
 
 void NPC::applyStep(int factor){
-        f_coord postStepPos = getNextPos();
+        f_coord postStepPos = getNextPos();//collision check occurs before either pos is set I think...
         postStepPos.x += getInterval().x * factor;
         postStepPos = validatePosition(postStepPos, 1);
         postStepPos.y += getInterval().y * factor;
@@ -183,7 +183,7 @@ void NPC::printNPCData(int currentCycle){
 
 std::string NPC::npcAction_Self(u32 &seed){
         std::string action = ""; //optional -- exists only for debugging.
-        int intervalFactor = 2;
+        int intervalFactor = 2; //Standard?
         switch (getState()) //these are seperate states so that the actions happen on unique frames.
             { 
             case WALK:
@@ -209,7 +209,7 @@ std::string NPC::npcAction_Self(u32 &seed){
                 beginCycle(seed);
                 incrementPosition(intervalFactor = 1); //special cases -- sometimes a particular npc will ignore?
                 incrementPosition(intervalFactor = 5);
-                setState(FIRST_WALK);
+                setState(FIRST_WALK); //overrides beginCycle()
                 break;
             case FIRST_WALK:
                 action = "**"; //If not applicable to all maps, how can the user customize this?

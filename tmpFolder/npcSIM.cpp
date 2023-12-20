@@ -2,7 +2,7 @@
 #include "NPC.h"
 #include "processCoreLocal.h"
 //#include "NPC.h"
-enum bgFrames {H = 116, L = 76, A = 114, O = 154}; //High, Low, Alpha, Omega
+
 
 //begin (-b) is defined as the first frame in which the npc's cur position has changed.
 //f is defined as the first frame in which the npc's wait timer is visible.
@@ -67,6 +67,7 @@ d_coord randallAdjust(d_coord inputPos, bool XorY){
 
 
 int col_consultPattern(int i, region gameRegion){
+    enum bgFrames {H = 116, L = 76, A = 114, O = 154}; //High, Low, Alpha, Omega
     std::vector<int>NTSCUPattern = {H,H,L,H,L}; //HHLHL
     std::vector<int>PAL60Pattern = {
     A,H,
@@ -182,7 +183,7 @@ int main(){
 
     outF << "SEED USED: " << std::hex << inputSeed << std::dec << "\n";
     initializeNPCSet(seed,npcSet,action,outF);
-    outputToFile(seed,action,outF,outFRaw,0);
+    outputToFile(seed,action,outF,outFRaw,0); //for init above.
     for (int i = 0; i < frameWindow; i++)
     {   //standard items:
         colo_RollBackground(seed,i,version);
@@ -193,15 +194,7 @@ int main(){
         //NPCs:
         std::string action = "";
         outF << std::setw(3) << i << ": ";
-        // for(unsigned int j = 0; j < npcSet.size(); j++){ //This loop may be easier to debug than the foreach loop.
-        //     action += npcSet.at(j).npcAction_Self(seed);
-        //     //DEBUG
-        //     // if (npcSet.at(j).getState() == FINISH){
-        //     //     std::cout << npcSet.at(j).getName() << ": Intend: " << std::setprecision(17)<< npcSet[j].getIntendedPos().x << ": " << npcSet[j].getIntendedPos().y << std::endl;
-        //     // }
-        // }
-        //Output
-        for (NPC &npc : npcSet){
+        for (NPC &npc : npcSet){ //could roll this into its own function but keeping it open for now to allow for modification.
             action += npc.npcAction_Self(seed);
         }
         outputToFile(seed,action,outF,outFRaw,step);  
@@ -209,3 +202,12 @@ int main(){
     std::cout << "COMPLETE!";
     return 0;
 }
+
+
+// for(unsigned int j = 0; j < npcSet.size(); j++){ //This loop may be easier to debug than the foreach loop.
+        //     action += npcSet.at(j).npcAction_Self(seed);
+        //     //DEBUG
+        //     // if (npcSet.at(j).getState() == FINISH){
+        //     //     std::cout << npcSet.at(j).getName() << ": Intend: " << std::setprecision(17)<< npcSet[j].getIntendedPos().x << ": " << npcSet[j].getIntendedPos().y << std::endl;
+        //     // }
+        // }

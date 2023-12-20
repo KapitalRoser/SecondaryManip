@@ -81,17 +81,14 @@ class NPC {
     public:
 
     //NPC(d_coord anchor, std::string name = "", commonSpeed speed = STANDARD); //id is covered by NPC crew class
-    NPC(d_coord anchor, std::string name = "", commonSpeed speed = STANDARD, d_coord(*f)(d_coord pos, bool XorY) = nullptr)
+    NPC(d_coord anchor, std::string name = "", commonSpeed speed = STANDARD, d_coord(*f)(d_coord pos, bool XorY) = nullptr) 
+    : m_anchor(anchor), m_name(name),validationFunctionPtr(f) 
     {
-        m_anchor = anchor,
         m_nextPos = {float(anchor.x),float(anchor.y)}, //returns valid f_coord?
-        m_name = name,
         m_speedFactor = walkingSpeed[speed];
-        validationFunctionPtr = f;
     }
-    void InitialXY(u32 &seed);
+    
     void chooseDestination(u32 &seed);
-
     float angleLogic(float angle);
     float computeAngle(d_coord distance);
 
