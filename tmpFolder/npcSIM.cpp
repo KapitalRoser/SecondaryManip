@@ -138,22 +138,6 @@ Solve issue where Jim gets completely stuck on phenac gym door.
 */
 
 
-void advanceCycle (u32 &seed,NPC &npc, int currentCycle){
-    int framesWalked = 0;
-    npc.beginCycle(seed);
-    //First step:
-    npc.incrementPosition(1);
-    //remaining steps
-    bool distance_decreasing = true;
-    do
-    {
-        distance_decreasing = npc.incrementPosition(2);
-        framesWalked++;
-    } while (distance_decreasing);
-    //adjust for overshoot
-    npc.finishCycle(seed);
-    npc.printNPCData(currentCycle);
-}
 //THIS IS THE FUNCTION USED IN THIS FILE. NOT THE ONE IN NPC.H - THAT FUNCTION IS FOR QUILAVADWITHNPCS.CPP
 std::string npcAction(u32 &seed,NPC &npc, int i){
     std::string action = "";
@@ -197,8 +181,11 @@ std::string npcAction(u32 &seed,NPC &npc, int i){
 void initializeNPCSet(u32 &seed,std::vector<NPC>&npcSet,std::string &action,std::ofstream &outF){
     for (unsigned int i = 0; i < npcSet.size(); i++) //this version returns action.
     {
+        std::cout << "DEBUG STATE: " << npcSet[i].getName() << ": " << npcSet[i].getState() << ". ";
         action += npcSet[i].npcAction_Self(seed);
+        
     }
+    std::cout << "\n";
     outF << "Initial cycles begin!\n";
     outF << "\n";
 }
@@ -258,7 +245,12 @@ int main(){
         std::string action = "";
         outF << std::setw(3) << i << ": ";
         for(unsigned int j = 0; j < npcSet.size(); j++){
+            if (i < 2) {
+                std::cout << "DEBUG STATE: " << npcSet[j].getName() << ": " << npcSet[j].getState() << ". ";
+            }
             action += npcAction(seed,npcSet.at(j),i);
+            
+            //action += npcSet.at(j).npcAction_Self(seed);
             //DEBUG
             if (npcSet.at(j).getState() == FINISH){
                 std::cout << npcSet.at(j).getName() << ": Intend: " << std::setprecision(17)<< npcSet[j].getIntendedPos().x << ": " << npcSet[j].getIntendedPos().y << std::endl;
@@ -266,6 +258,10 @@ int main(){
 
             }
             
+        }
+        if (i < 2){
+        std::cout << "\n";//reset state to first?? after actual first???
+
         }
         // if (i >= 170 && i <= 190){
         //         std::cout << "DEBUG KAIB:" << npcSet.at(0).getWaitTime().getSeconds() << "\n";
