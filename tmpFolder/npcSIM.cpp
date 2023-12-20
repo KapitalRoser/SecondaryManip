@@ -137,47 +137,6 @@ Solve issue where Jim gets completely stuck on phenac gym door.
     This may require implementing some simulation of collision. 
 */
 
-
-//THIS IS THE FUNCTION USED IN THIS FILE. NOT THE ONE IN NPC.H - THAT FUNCTION IS FOR QUILAVADWITHNPCS.CPP
-std::string npcAction(u32 &seed,NPC &npc, int i){
-    std::string action = "";
-    int factor = 2;
-    switch (npc.getState())
-        {
-        case WALK:
-            action = "**";
-            if (i == 0){ //This initial rate is dependent on the specific map, and entrance.
-               factor = 1;
-            }
-            else if (i == 1){
-                factor = 5;
-            }
-            npc.incrementPosition(factor);
-            break;
-        case WAIT:
-            action = "--";
-            npc.decrementWaitTimer();
-            break;
-        case FINISH:
-            action = npc.getName() + "f";
-            npc.finishCycle(seed);
-            break;
-        case BEGIN:
-            action = npc.getName() + "b";
-            npc.beginCycle(seed);
-            npc.incrementPosition(factor); //standard practice? -- WHEN WHERE AND HOW?
-            npc.incrementPosition(factor);
-            // if (!(npc.getName()[0] == 'J') || i != 199){
-            //     npc.incrementPosition(factor);
-            // }
-
-            break;
-        default:
-            std::cout << "STATE INVALID!";
-            break;
-        }
-        return action;
-}
 void initializeNPCSet(u32 &seed,std::vector<NPC>&npcSet,std::string &action,std::ofstream &outF){
     for (unsigned int i = 0; i < npcSet.size(); i++) //this version returns action.
     {
@@ -248,39 +207,15 @@ int main(){
             if (i < 2) {
                 std::cout << "DEBUG STATE: " << npcSet[j].getName() << ": " << npcSet[j].getState() << ". ";
             }
-            action += npcAction(seed,npcSet.at(j),i);
-            
-            //action += npcSet.at(j).npcAction_Self(seed);
+            action += npcSet.at(j).npcAction_Self(seed);
             //DEBUG
-            if (npcSet.at(j).getState() == FINISH){
-                std::cout << npcSet.at(j).getName() << ": Intend: " << std::setprecision(17)<< npcSet[j].getIntendedPos().x << ": " << npcSet[j].getIntendedPos().y << std::endl;
-            //std::cout << "G Wait: " << npcSet.at(2).getWaitTime().getSeconds() << "\n";
-
-            }
-            
+            // if (npcSet.at(j).getState() == FINISH){
+            //     std::cout << npcSet.at(j).getName() << ": Intend: " << std::setprecision(17)<< npcSet[j].getIntendedPos().x << ": " << npcSet[j].getIntendedPos().y << std::endl;
+            // }
         }
-        if (i < 2){
-        std::cout << "\n";//reset state to first?? after actual first???
-
-        }
-        // if (i >= 170 && i <= 190){
-        //         std::cout << "DEBUG KAIB:" << npcSet.at(0).getWaitTime().getSeconds() << "\n";
-        //     }
         //Output
-        outputToFile(seed,action,outF,outFRaw,step);
-        //outF << "(G wait: " << npcSet.at(2).getWaitTime().getSeconds() << ")\n";
-        // if (npcSet.at(4).getState() == FINISH){ //This tracks randall I guess?
-        //     std::cout << "intended: " << std::setprecision(17)<< npcSet[4].getIntendedPos().x << " : " << npcSet[4].getIntendedPos().y << std::endl;
-        // }
-        
+        outputToFile(seed,action,outF,outFRaw,step);  
     }
-    //     if (i == 199){
-    //         std::cout << std::setprecision(17)<< npcSet[1].getIntendedPos().x << " : " << npcSet[1].getIntendedPos().y << std::endl;
-    //     }
-    //     if (i >= 198 && i < 205){
-    //         std::cout << "x pos: " << std::setw(18) << npcSet[1].getNextPos().x << " y pos: "<< npcSet[1].getNextPos().y << std::endl;
-    //     }
-    // }
     std::cout << "COMPLETE!";
     return 0;
 }

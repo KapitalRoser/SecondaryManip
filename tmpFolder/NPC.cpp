@@ -206,9 +206,20 @@ std::string NPC::npcAction_Self(u32 &seed){
                 break;
             case FIRST:
                 action = "!!";
-                beginCycle(seed); //if user defined seed, this should be it. Otherwise use current seed
-                incrementPosition(intervalFactor = 1); //special cases
+                beginCycle(seed);
+                incrementPosition(intervalFactor = 1); //special cases -- sometimes a particular npc will ignore?
                 incrementPosition(intervalFactor = 5);
+                setState(FIRST_WALK);
+                break;
+            case FIRST_WALK:
+                action = "**"; //If not applicable to all maps, how can the user customize this?
+                incrementPosition(intervalFactor = 1);
+                setState(SECOND_WALK);
+                break;
+            case SECOND_WALK:
+                action = "**";
+                incrementPosition(intervalFactor = 5);
+                setState(WALK); // This is unscientific, really should be mirroring the game better.s
                 break;
             default:
                 std::cout << "STATE INVALID!";

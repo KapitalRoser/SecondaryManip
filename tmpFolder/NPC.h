@@ -3,7 +3,7 @@
 
 #include "processCoreLocal.h"
 
-enum state {WALK,WAIT,BEGIN,FINISH,FIRST};
+enum state {WALK,WAIT,BEGIN,FINISH,FIRST,FIRST_WALK,SECOND_WALK}; // last two states may not apply for every map?
 enum commonSpeed{STANDARD,SLOWER};
 
 //figure out circular dependency
