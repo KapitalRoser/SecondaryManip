@@ -115,7 +115,28 @@ int col_consultPattern(int i, region gameRegion){
     }
     return *iter;
 }
-bool col_CheckStepPath(std::vector<int>secondarySteps,u32& seed,int i,int stepCalls){
+bool col_CheckStepPath(coloSecondary snd, u32& seed,int i,int stepCalls){
+    std::vector<int>quilavaSteps{5,10,15,20,25,30,35,39,44,49,54,67,88,100,111,119,
+    126,132,138,143,148,153,158,163,168,173,177,182,187,192,197,202,210,217,
+    227,237,252,268,284,292,297,302,307,312,316,321,326,331};
+    std::vector<int>croconawSteps{};
+    std::vector<int>bayleefSteps{};
+    std::vector<int> secondarySteps{};
+    switch (snd)
+    {
+    case QUILAVA:
+        secondarySteps = quilavaSteps;
+        break;
+    case CROCONAW:
+        secondarySteps = croconawSteps;
+        break;
+    case BAYLEEF:
+        secondarySteps = bayleefSteps;
+        break;
+    default:
+        std::cout << "\nERROR! INVALID SECONDARY! STEPS NOT FOUND!\n";
+        return false;
+    }
   if (binary_search(secondarySteps.begin(),secondarySteps.end(),i+1)){
         LCGn(seed,stepCalls);
         return true;
@@ -161,6 +182,7 @@ int main(){
     int frameWindow = 1000;
     int callsPerPlayerStep = 1;
     region version = NTSCU;
+    coloSecondary targetPoke = QUILAVA;
     bool trackSteps = false;
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~
     u32 seed = inputSeed;
@@ -171,25 +193,20 @@ int main(){
     NPC grandma = NPC({-140,-10},"G");
     NPC boots   = NPC({90,90},   "B");
     //NPC randall = NPC({-90,110}, "R",STANDARD,&randallAdjust);
-    NPC randall = NPC({-90,110}, "R",STANDARD); 
+    NPC randall = NPC({-90,110}, "R"); 
     NPC heels   = NPC({30,300},  "H",SLOWER);
-    std::vector<NPC>npcSet = {kaib,jim,grandma,boots,randall,heels};
-    std::vector<int>quilavaSteps{5,10,15,20,25,30,35,39,44,49,54,67,88,100,111,119,
-    126,132,138,143,148,153,158,163,168,173,177,182,187,192,197,202,210,217,
-    227,237,252,268,284,292,297,302,307,312,316,321,326,331};
-    std::vector<int>croconawSteps{};
-    std::vector<int>bayleefSteps{};
+    std::vector<NPC>npcSet = {kaib,jim,grandma,boots,randall,heels}; //Order is key, will vary across maps
 
 
     outF << "SEED USED: " << std::hex << inputSeed << std::dec << "\n";
-    initializeNPCSet(seed,npcSet,action,outF);
+    initializeNPCSet(seed,npcSet,action,outF); //Forget not about the phenac accomodations made in NPC.h
     outputToFile(seed,action,outF,outFRaw,0); //for init above.
     for (int i = 0; i < frameWindow; i++)
     {   //standard items:
         colo_RollBackground(seed,i,version);
         bool step = false;
         if (trackSteps){
-        step = col_CheckStepPath(quilavaSteps,seed,i,callsPerPlayerStep);     
+        step = col_CheckStepPath(targetPoke,seed,i,callsPerPlayerStep);     
         }
         //NPCs:
         std::string action = "";
