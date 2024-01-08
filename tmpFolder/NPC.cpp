@@ -92,9 +92,9 @@ d_coord NPC::computeInterval(){
 void NPC::applyStep(int factor){
         f_coord postStepPos = getNextPos();//collision check occurs before either pos is set I think...
         postStepPos.x += getInterval().x * factor;
-        postStepPos = validatePosition(postStepPos, 1);
+        //postStepPos = validatePosition(postStepPos, 1);
         postStepPos.y += getInterval().y * factor;
-        postStepPos = validatePosition(postStepPos, 0);       
+        //postStepPos = validatePosition(postStepPos, 0);       
         setNextPos(postStepPos);
     }
 double NPC::pythagorasDistance (d_coord distance){

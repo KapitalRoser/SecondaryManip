@@ -10,6 +10,20 @@
 //THIS FILE REALLY SHOULD BE CALLED PHENAC_SIM
 //Includes a lot of stuff that is phenac specific.
 
+
+//Interesting bitmask function, recorded here incase I forget:
+int bitmask(int data,int mask)
+{ //Unsigned into signed? Into 32bit unsigned? maybe?
+  mask = data & mask;
+  return (-mask | mask) >> 0x1f;
+}
+
+
+
+
+
+
+
 //THESE ARE EXAMPLE FUNCTIONS FOR COLLISION CHECKING. HOWEVER THE END USER WILL LIKELY NEED/WANT TO WRITE THEIR OWN.
 bool circleDistanceCheck(d_coord pos, d_coord circleCentre, double radius){
     d_coord pDist;
@@ -197,7 +211,19 @@ int main(){
     NPC heels   = NPC({30,300},  "H",SLOWER);
     std::vector<NPC>npcSet = {kaib,jim,grandma,boots,randall,heels}; //Order is key, will vary across maps
 
+//  d_coord xd;
+//   xd.x = 100;
+//   xd.y = 150;
 
+//   d_coord nxd;
+//   nxd.x = 120;
+//   nxd.y = 170;
+
+//   d_coord dist;
+//   dist.x = nxd.x - xd.x;
+//   dist.y = nxd.y - xd.y;
+//     double res = kaib.pythagorasDistance(dist);
+//     std::cout << "NPC RES: " << res << "\n";
     outF << "SEED USED: " << std::hex << inputSeed << std::dec << "\n";
     initializeNPCSet(seed,npcSet,action,outF); //Forget not about the phenac accomodations made in NPC.h
     outputToFile(seed,action,outF,outFRaw,0); //for init above.
@@ -213,12 +239,35 @@ int main(){
         outF << std::setw(3) << i << ": ";
         for (NPC &npc : npcSet){ //could roll this into its own function but keeping it open for now to allow for modification.
             action += npc.npcAction_Self(seed);
+             if (npc.getName() == "H" && npc.getState() == FINISH){
+                //wall collision occurs at 562
+                std::cout << "i:" << i << " H: Intend: " << std::setprecision(17)<< npc.getIntendedPos().x << ": " << npc.getIntendedPos().y << std::endl;
+                //std::cout << "H: Interval: " << std::setprecision(17) << npc.getInterval().x << ": " << npc.getInterval().y << std::endl;
+            }
+            if (npc.getName() == "H" && npc.getState() == WALK && i >= 542 && i < 800){
+                std::cout <<"i: "<< i <<" H: NEXT: " << std::setprecision(17)<< npc.getNextPos().x << ": " << npc.getNextPos().y << std::endl;
+            }
+            
+
+
+            //Jim debug
+            // if (npc.getName() == "J" && npc.getState() == FINISH && i == 580){
+            //     //wall collision occurs at 562
+            //     std::cout << "i:" << i << " J: Intend: " << std::setprecision(17)<< npc.getIntendedPos().x << ": " << npc.getIntendedPos().y << std::endl;
+            //     std::cout << "J: Interval: " << std::setprecision(17) << npc.getInterval().x << ": " << npc.getInterval().y << std::endl;
+            // }
+            // if (npc.getName() == "J" && npc.getState() == WALK && i >= 542 && i < 583){
+            //     std::cout <<"i: "<< i <<" J: NEXT: " << std::setprecision(17)<< npc.getNextPos().x << ": " << npc.getNextPos().y << std::endl;
+            // }
         }
         outputToFile(seed,action,outF,outFRaw,step);  
     }
     std::cout << "COMPLETE!";
     return 0;
 }
+
+//https://baseconvert.com/ieee-754-floating-point Can't believe I never wrote this down lol so useful.
+
 
 
 // for(unsigned int j = 0; j < npcSet.size(); j++){ //This loop may be easier to debug than the foreach loop.
