@@ -244,7 +244,7 @@ int main(){
                 std::cout << "i:" << i << " H: Intend: " << std::setprecision(17)<< npc.getIntendedPos().x << ": " << npc.getIntendedPos().y << std::endl;
                 //std::cout << "H: Interval: " << std::setprecision(17) << npc.getInterval().x << ": " << npc.getInterval().y << std::endl;
             }
-            if (npc.getName() == "H" && npc.getState() == WALK && i >= 542 && i < 800){
+            if (npc.getName() == "H" && npc.getState() == WALK && i >= 300 && i < 500){
                 std::cout <<"i: "<< i <<" H: NEXT: " << std::setprecision(17)<< npc.getNextPos().x << ": " << npc.getNextPos().y << std::endl;
             }
             
