@@ -4,7 +4,7 @@
 #include "processCoreLocal.h"
 
 enum state {FIRST,FIRST_WALK,SECOND_WALK,WALK,WAIT,FINISH,BEGIN}; // First 3 states may not apply to every room?
-enum commonSpeed{STANDARD,SLOWER}; //How many speeds exist?
+enum commonSpeed{STANDARD,SLOWER}; //How many speeds exist? -- can't enum a float... so its used in a map.
 
 //figure out circular dependency
 class d_coord {

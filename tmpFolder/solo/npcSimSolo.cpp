@@ -1,6 +1,8 @@
 #include "../NPC.h"
 #include "../processCoreLocal.h"
 
+//HOORAY SOLO TEST WORKS FLAWLESSLY! -- At least rated up to 35 complete cycles, or 71 lines.
+
 
 void outputToFile(u32 seed, std::string action, std::ofstream &outF,std::ofstream &rawF){
     outF << action << std::hex << " : " << seed << " : " << std::dec << std::endl;
@@ -14,13 +16,13 @@ int main(){
     std::ofstream outFRaw("npcSimRaw.txt");
 
     //~~~~~~~~~CONFIG~~~~~~~~~~~~
-    const u32 inputSeed = 0xDEADBEEF;//0xE8043E11 --D3439443 becomes: BA93C44 :
+    const u32 inputSeed = 0x481FEC3E;//0xE8043E11 --D3439443 becomes: BA93C44 :
     const int frameWindow = 1000;
     //This file tracks no steps, assumes noiseless.
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~
     u32 seed = inputSeed;
     std::string action = "";
-    NPC Girlie = NPC({85,-150}, "G"); //Example
+    NPC Girlie = NPC({-16.290000915527344,11.260000228881836}, "G"); //Example
     // std::vector<NPC>npcSet = {Girlie}; //This technically allows you to add more npcs as needed.
     
     //Init

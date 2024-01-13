@@ -245,7 +245,9 @@ int main(){
                 //std::cout << "H: Interval: " << std::setprecision(17) << npc.getInterval().x << ": " << npc.getInterval().y << std::endl;
             }
             if (npc.getName() == "H" && npc.getState() == WALK && i >= 300 && i < 500){
-                std::cout <<"i: "<< i <<" H: NEXT: " << std::setprecision(17)<< npc.getNextPos().x << ": " << npc.getNextPos().y << std::endl;
+                std::cout <<"i: "<< i <<" H: NEXT: " << std::setprecision(17)<< npc.getNextPos().x << ": " << npc.getNextPos().y << 
+                "DIST TO DEST: " << 
+                std::endl;
             }
             
 
