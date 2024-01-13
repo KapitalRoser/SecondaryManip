@@ -14,7 +14,7 @@ int main(){
     std::ofstream outFRaw("npcSimRaw.txt");
 
     //~~~~~~~~~CONFIG~~~~~~~~~~~~
-    const u32 inputSeed = 0xD3439443;//0xE8043E11 --D3439443 becomes: BA93C44 :
+    const u32 inputSeed = 0xDEADBEEF;//0xE8043E11 --D3439443 becomes: BA93C44 :
     const int frameWindow = 1000;
     //This file tracks no steps, assumes noiseless.
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~
