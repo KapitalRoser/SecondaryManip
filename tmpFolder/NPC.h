@@ -45,6 +45,7 @@ class duration {
 
 class NPC {
     private:
+    game m_game = COLO;
     d_coord m_anchor = {0,0};
     d_coord m_intervalValues = {0,0}; //More like a tuple
     f_coord m_nextPos = {0.0};
@@ -57,7 +58,7 @@ class NPC {
     d_coord m_CombinedDistances = {0,0}; //tuple
     int m_state = FIRST;
     std::string m_name = "";
-    std::map <commonSpeed,float> walkingSpeed = {
+    std::map <commonSpeed,float> walkingSpeed = { //This map association could be a global but its not an enum 
         {STANDARD,0.29032257199287415},
         {SLOWER,0.28125}
     }; //add as more speeds are found.
@@ -110,6 +111,7 @@ class NPC {
     void setWalkTime(duration input){m_walkTime = input;}
     void setName(std::string input){m_name = input;}
     void setSpeed(float input){m_speedFactor = input;}
+    void setGame(game g){m_game = g;}
 
     int getState(){return m_state;}
     float getAngle(){return m_angle;}
@@ -126,6 +128,7 @@ class NPC {
     f_coord getNextPos(){return m_nextPos;}
     duration getWaitTime(){return m_waitTime;}
     duration getWalkTime(){return m_walkTime;}
+    game getGame(){return m_game;}
 };
 
 

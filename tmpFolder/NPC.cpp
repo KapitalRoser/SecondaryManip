@@ -138,7 +138,10 @@ float NPC::waitTimerCalculation(u32 &seed){
     const int factorTime = 3;//these don't seem to vary by npc but who knows.
     const int baseTimeS = 5; 
     double firstCall = LCG_PullHi16(seed);
-    double secondCall = LCG_PullHi16(seed);
+    double secondCall = firstCall;
+    if (m_game == COLO){
+        secondCall = LCG_PullHi16(seed);   
+    }
     double cycleVariance = firstCall + secondCall - 1;
     return cycleVariance * factorTime + baseTimeS; //time in seconds.
     //one liner, assuming it works:
@@ -193,7 +196,7 @@ std::string NPC::npcAction_Self(u32 &seed){
                 incrementPosition(intervalFactor = 5);
                 setState(FIRST_WALK); //overrides beginCycle()
                 break;
-            case FIRST_WALK: //Surely there's a better way to combine this into the WALK state...
+            case FIRST_WALK: //Surely there's a better way to combine this into the WALK state... Not all of this can be exported to initializeNPCSet unfortunately... need to pay closer attn to ingame behaviour.
                 action = "**"; //If not applicable to all maps, how can the user customize this?
                 incrementPosition(intervalFactor = 1);
                 setState(SECOND_WALK);

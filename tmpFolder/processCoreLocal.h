@@ -28,6 +28,7 @@ typedef uint64_t u64;
 typedef int64_t s64;
 typedef std::vector<int>::iterator iterInt;
 
+enum game {COLO,XD};
 enum region {NTSCU,PAL60,PAL50,NTSCJ}; //Switch to NTSC, PAL and JPN? NTSC-U, PAL, NTSC-J is most correct but LONG.
 enum emuVer {STABLE,MODERN}; //Stable == 5.0, only matters for xd so far.
 enum coloSecondary {QUILAVA,CROCONAW,BAYLEEF}; //xd only has teddy

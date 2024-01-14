@@ -82,7 +82,7 @@ d_coord randallAdjust(d_coord inputPos, bool XorY){
 
 int col_consultPattern(int i, region gameRegion){
     enum bgFrames {H = 116, L = 76, A = 114, O = 154}; //High, Low, Alpha, Omega
-    std::vector<int>NTSCUPattern = {H,H,L,H,L}; //HHLHL
+    std::vector<int>NTSCUPattern = {H,H,L,H,L}; //HHLHL -- Could define this as a Doubly-linked-list cycle class. Has a next() and peek() functions which get the next value in the vector, cycling back to the front when the end is reached.
     std::vector<int>PAL60Pattern = {
     A,H,
     H,L,H, O,L,
@@ -168,14 +168,14 @@ Solve issue where Jim gets completely stuck on phenac gym door.
     This may require implementing some simulation of collision. 
 */
 
-void initializeNPCSet(u32 &seed,std::vector<NPC>&npcSet,std::string &action,std::ofstream &outF){
+void initializeNPCSet(u32 &seed,std::vector<NPC>&npcSet,std::string &action,std::ofstream &outF){ //Contain phenac stuff here?
     for (NPC &npc : npcSet){
         action += npc.npcAction_Self(seed);
     }
     outF << "Initial cycles begin!\n\n";
 }
 
-void outputToFile(u32 seed, std::string action, std::ofstream &outF,std::ofstream &rawF, bool step){
+void outputToFile(u32 seed, std::string action, std::ofstream &outF,std::ofstream &rawF, bool step = false){
     outF << action;
     outF << std::hex << " : " << seed << " : " << std::dec;
     if (step){
@@ -192,16 +192,18 @@ int main(){
     std::ofstream outFRaw("npcSimRaw.txt");
 
     //~~~~~~~~~CONFIG~~~~~~~~~~~~
-    u32 inputSeed = 0xD3439443;//0xE8043E11 --D3439443 becomes: BA93C44 :
+    u32 inputSeed = 0x481FEC3E;//0xE8043E11 --D3439443 becomes: BA93C44 :
+    game game = XD; //or XD
     int frameWindow = 1000;
     int callsPerPlayerStep = 1;
     region version = NTSCU;
     coloSecondary targetPoke = QUILAVA;
     bool trackSteps = false;
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    u32 seed = inputSeed;
-    std::string action = "";
-
+    bool trackBackgroundNoise = false;
+    bool solo_mode = true;
+    //~~~~~~SOLO NPC (If enabled)~~~~~~~~~~~~~
+    NPC Girlie = NPC({-16.290000915527344,11.260000228881836}, "G");
+    //~~~~~~NPC GROUP~~~~~~~~~~~~~~~~~~~~~ AKA "People"
     NPC kaib    = NPC({85,-150}, "K");
     NPC jim     = NPC({15,-10},  "J");
     NPC grandma = NPC({-140,-10},"G");
@@ -210,6 +212,19 @@ int main(){
     NPC randall = NPC({-90,110}, "R"); 
     NPC heels   = NPC({30,300},  "H",SLOWER);
     std::vector<NPC>npcSet = {kaib,jim,grandma,boots,randall,heels}; //Order is key, will vary across maps
+    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    if (solo_mode){
+        npcSet = {Girlie};
+    }
+    if (game == XD){
+        for (NPC &npc : npcSet){
+            npc.setGame(XD);
+        }
+    }
+    u32 seed = inputSeed;
+    std::string action = "";
+
+
 
 //  d_coord xd;
 //   xd.x = 100;
@@ -229,17 +244,22 @@ int main(){
     outputToFile(seed,action,outF,outFRaw,0); //for init above.
     for (int i = 0; i < frameWindow; i++)
     {   //standard items:
-        colo_RollBackground(seed,i,version);
+        if (trackBackgroundNoise){
+            colo_RollBackground(seed,i,version); //Phenac
+        }
+
         bool step = false;
         if (trackSteps){
-        step = col_CheckStepPath(targetPoke,seed,i,callsPerPlayerStep);     
+            step = col_CheckStepPath(targetPoke,seed,i,callsPerPlayerStep); //Phenac    
         }
         //NPCs:
         std::string action = "";
         outF << std::setw(3) << i << ": ";
         for (NPC &npc : npcSet){ //could roll this into its own function but keeping it open for now to allow for modification.
             action += npc.npcAction_Self(seed);
-             if (npc.getName() == "H" && npc.getState() == FINISH){
+
+            //DEBUG PRINTS
+            if (npc.getName() == "H" && npc.getState() == FINISH){
                 //wall collision occurs at 562
                 std::cout << "i:" << i << " H: Intend: " << std::setprecision(17)<< npc.getIntendedPos().x << ": " << npc.getIntendedPos().y << std::endl;
                 //std::cout << "H: Interval: " << std::setprecision(17) << npc.getInterval().x << ": " << npc.getInterval().y << std::endl;
