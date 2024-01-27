@@ -42,12 +42,12 @@ void duration::setSeconds(float input){m_seconds = input;}
 
 void NPC::chooseDestination(u32 &seed){
     //Should work but need to test that the float and double conversions work out the same.
-    const double importantPiApprox = 3.1415927410125732421875; //40490FDB
-    const int factor = 15;
+    const double PI_APPROX = 3.1415927410125732421875; //40490FDB
+    const int SCALE_FACTOR = 15;
     f_coord destinationPos;
-    float f_result = LCG_PullHi16(seed) * importantPiApprox * 2; //Can we swap this for LCG_Percentage?
-    destinationPos.x = double(sin(f_result)*factor) + getAnchor().x;
-    destinationPos.y = double(cos(f_result)*factor) + getAnchor().y;
+    float f_result = LCG_PullHi16(seed) * PI_APPROX * 2; //Can we swap this for LCG_Percentage?
+    destinationPos.x = double(sin(f_result)*SCALE_FACTOR) + getAnchor().x;
+    destinationPos.y = double(cos(f_result)*SCALE_FACTOR) + getAnchor().y;
     setIntended(destinationPos);
     setAngle(angleLogic(f_result)); //unsure if necessary?
 }
@@ -86,7 +86,6 @@ d_coord NPC::computeInterval(){
     intervals.x = 2*sinResult*cosResult*speedFactor;
     intervals.y = (pow(cosResult,2)-pow(sinResult,2))*speedFactor;    
     return intervals;
-    //Now that we have interval and its a fixed number for all steps, can we simply divide distance by interval to get # frames?
 }
 
 void NPC::applyStep(int factor){
@@ -102,16 +101,23 @@ double NPC::pythagorasDistance (d_coord distance){
 }
 bool NPC::incrementPosition(int factor){
         double preStep = pythagorasDistance(getDistance());
-        applyStep(factor);
+        applyStep(factor); //maybe proposeStep would be a better system here?
         double postStep = pythagorasDistance(getDistance());
     
-        setCombinedDistance({preStep,postStep}); //saves as d_coord, DOES THIS EVER GET READ??
+        //setCombinedDistance({preStep,postStep}); //saves as d_coord, DOES THIS EVER GET READ?? -- Not as far as I can see. This could be for debug purposes?
         //setName("Pre: " + std::to_string(preStep) + "Post: "+std::to_string(postStep));
         return evaluateStop(preStep,postStep); //Walk Time can get incremented here!
     }
 bool NPC::evaluateStop(double pre, double post){
         post <= pre ? setWalkTime(getWalkTime().getFrames30()+1) : setState(FINISH);
         return post <= pre; //Evaluates stop condition. Only continue moving if distance is decreasing.
+        /*XD does not use this logic. Instead it checks between a extremely narrow range of two constants.
+        These are: 0.000009999999747378752 and -0.000009999999747378752. 
+        The only question I have is what happens/prevents a npc from overshooting this bound?
+        Two ideas: 
+        1) The npc slows down gradually as it approches
+        2) The npc swings around 180 and returns to approach the target.
+        */
 }
 
 //~~~~~~~~~~~~~~~~~~~~~~~~ANGLE STUFF~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -135,7 +141,7 @@ float NPC::computeAngle(d_coord distance){
 }
 
 float NPC::waitTimerCalculation(u32 &seed){
-    const int factorTime = 3;//these don't seem to vary by npc but who knows.
+    const int factorTime = 3;//these don't seem to vary by npc or by game.
     const int baseTimeS = 5; 
     double firstCall = LCG_PullHi16(seed);
     double secondCall = firstCall;
@@ -240,6 +246,19 @@ std::string NPC::npcAction_Self(u32 &seed){
         use distance / speedfactor or something. 
     NPC THEN USES ACTION FUNCTIONS TO DESCRIBE IT'S POSITION EACH FRAME.
         Still need a solution for the Jim getting stuck and Randall getting pushed out by the curve.
+
+    Hilariously, at 0x804EFD84 in XD NTSC, basically immediately during boot, a DEADBABE is printed in memory. Lmao.
+    While most of the debug symbols from GS are perfect english, there are occasional typos hahaha.
+
+    Ball sizes colo: 
+    Kaib: 3
+    Jim: 3
+    Grandma: 4
+    Boots: 4
+    Randall: 4
+    Heels: 3
+
+    Notable mention: Castform: 1.
 
 
 

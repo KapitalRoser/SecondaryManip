@@ -1,0 +1,204 @@
+void NPCGreen_peopleMoveTypeRandomWalk(int npc_Arr*)
+
+{
+  float fVar1;
+  undefined4 uVar2;
+  int iVar3;
+  int iVar4;
+  char *ptr_npcActiveFlag;
+  int iVar5;
+  int localIncrement;
+  int localIncrement2;
+  int (i_1);
+  double working_Float;
+  double dVar6;
+  double working_Double;
+  undefined auStack_68 [4];
+  float local_64;
+  undefined auStack_5c [4];
+  float local_58;
+  float local_50 [2];
+  float local_48;
+  float result_Intended_X;
+  undefined4 local_40;
+  float result_Intended_Y;
+  undefined4 local_38;
+  uint uStack_34;
+  double local_30;
+  byte stateFlag;
+  
+                    /* In XD, this function is called "_peopleMoveTypeRandomWalk" */
+  if (false) {
+    ldexpf(0);
+  }
+  result_Intended_X = DAT_80273fc0;
+  local_40 = DAT_80273fc4;
+  result_Intended_Y = DAT_80273fc8;
+  stateFlag = *(byte *)(npc_Arr* + 0x55);
+  if (stateFlag == 1) {
+BeginStepFind:
+    working_Float = (double)singleRNGCall();
+                    /* FIND X WALK DESTINATION */
+    working_Double = (double)(FLOAT_PI * (float)((double)FLOAT_2 * working_Float));
+    working_Float = sin(working_Double);
+    result_Intended_X = (float)((double)*(float *)(npc_Arr* + 0x80) * working_Float);
+                    /* FIND Y WALK DESTINATION */
+    working_Float = (double)call_COS(working_Double);
+    result_Intended_Y = (float)((double)*(float *)(npc_Arr* + 0x80) * working_Float);
+                    /* PAIRED SINGLES MATH */
+    &,::nlQuatSlerp(nlQuaternion(npc_Arr* + 0x5c,npc_Arr* + 0x74,&result_Intended_X);
+    uVar2 = cFielder::UpdatePlay(float)(npc_Arr*);
+    &,::nlQuatSlerp(nlQuaternion(local_50,npc_Arr* + 0x5c,uVar2);
+                    /* FIND WALKING ANGLE */
+    working_Float = (double)findNPCAngle((double)local_50[0],(double)local_48);
+    working_Float = (double)getFMOD(D_PI*2 + (double)((float)working_Float - f_Zero));
+    working_Float = (double)(float)working_Float;
+                    /* CHECK BOUNDS ANGLE */
+    if (working_Float <= D_PI) {
+      if (working_Float < D_NegativePI) {
+        working_Float = (double)(float)(D_PI*2 + working_Float);
+      }
+    }
+    else {
+                    /* create angle modifier */
+      working_Float = (double)(float)(working_Float - D_PI*2);
+    }
+                    /* ERROR CHECK LOOP 1 */
+    iVar4 = *(int *)(npc_Arr* + 0x2c);
+    iVar5 = *(int *)(npc_Arr* + 0x28);
+    for ((i_1) = 0; iVar3 = ipc::IPCGetBufferLo(), (i_1) < iVar3; (i_1) = (i_1) + 1) {
+      ptr_npcActiveFlag = (char *)ptrGetter((i_1));
+      if (((*ptr_npcActiveFlag != '\0') && (*(int *)(ptr_npcActiveFlag + 0x28) == iVar5)) &&
+         (*(int *)(ptr_npcActiveFlag + 0x2c) == iVar4)) {
+        iVar4 = *(int *)(ptr_npcActiveFlag + 4);
+        goto findPtr_checkState;
+      }
+    }
+    for ((i_1) = 0; iVar3 = ipc::IPCGetBufferLo(), (i_1) < iVar3; (i_1) = (i_1) + 1) {
+      ptr_npcActiveFlag = (char *)ptrGetter((i_1));
+      if ((*ptr_npcActiveFlag != '\0') && (*(int *)(ptr_npcActiveFlag + 0x2c) == iVar4)) {
+        zz_800dd970_(s_Warining:_people[%d,%d]_group_is_80273fd8,iVar5,iVar4);
+        iVar4 = *(int *)(ptr_npcActiveFlag + 4);
+        goto findPtr_checkState;
+      }
+    }
+    iVar4 = 0;
+findPtr_checkState:
+                    /* ERROR CHECK LOOP 2 */
+    for (localIncrement = 0; iVar5 = ipc::IPCGetBufferLo(), localIncrement < iVar5;
+        localIncrement = localIncrement + 1) {
+      ptr_npcActiveFlag = (char *)ptrGetter(localIncrement);
+      if ((*ptr_npcActiveFlag != '\0') && (*(int *)(ptr_npcActiveFlag + 4) == iVar4))
+      goto flags_and_angle1;
+    }
+    ptr_npcActiveFlag = (char *)0x0;
+flags_and_angle1:
+                    /* FINISHED ERROR CHECKING! Now set some flags */
+    if (ptr_npcActiveFlag != (char *)0x0) {
+      cFielder::UpdatePlay(float)(ptr_npcActiveFlag,auStack_5c);
+      working_Double = DOUBLE_8047d7c8;
+      dVar6 = (double)FLOAT_PI_also;
+      local_38 = 0x43300000;
+                    /* Some kind of int to float conversion */
+      ptr_npcActiveFlag[0x22] = '\x01';
+      fVar1 = MAGIC_DOUBLE_SignIntToFloat;
+      uStack_34 = (uint)((double)local_58 / dVar6);
+      local_30 = (double)(longlong)(int)uStack_34;
+      uStack_34 = uStack_34 ^ 0x80000000;
+                    /* Finally store angle, no changes from earlier */
+      *(float *)(ptr_npcActiveFlag + 0x40) =
+           (float)(dVar6 * (double)(float)((double)CONCAT44(0x43300000,uStack_34) - working_Double)
+                  + working_Float);
+      *(float *)(ptr_npcActiveFlag + 0x44) = fVar1;
+    }
+    *(undefined *)(npc_Arr* + 0x55) = 2;
+  }
+  else {
+    if (stateFlag == 0) {
+      if (false) goto RETURN;
+                    /* evaluate TIMER for next cycle */
+      if (f_Zero < *(float *)(npc_Arr* + 0x84)) {
+        uStack_34 = ipc::IPCGetBufferLo();
+        uStack_34 = uStack_34 ^ 0x80000000;
+        local_38 = 0x43300000;
+        working_Float = (double)(float)((double)CONCAT44(0x43300000,uStack_34) - DOUBLE_8047d7c8);
+        uVar2 = getSpeedFactor();
+        fVar1 = f_Zero;
+        local_30 = (double)CONCAT44(0x43300000,uVar2);
+                    /* Decrement cycle Timer */
+        *(float *)(npc_Arr* + 0x84) =
+             *(float *)(npc_Arr* + 0x84) -
+             (float)((double)(float)(local_30 - DOUBLE_8047d7d0) / working_Float);
+        if (*(float *)(npc_Arr* + 0x84) < fVar1) {
+          *(float *)(npc_Arr* + 0x84) = fVar1;
+        }
+        goto RETURN;
+      }
+                    /* SET FLAG TO START WALK */
+      *(undefined *)(npc_Arr* + 0x55) = 1;
+      goto BeginStepFind;
+    }
+                    /* check flag upper bound */
+    if (2 < stateFlag) goto RETURN;
+  }
+  iVar4 = NPC_StepLogic(npc_Arr*);
+  if (iVar4 == 2) {
+    iVar5 = *(int *)(npc_Arr* + 0x2c);
+    iVar4 = *(int *)(npc_Arr* + 0x28);
+    working_Float = (double)(float)(D_PI + (double)*(float *)(npc_Arr* + 0x40));
+    for ((i_1) = 0; iVar3 = ipc::IPCGetBufferLo(), (i_1) < iVar3; (i_1) = (i_1) + 1) {
+      ptr_npcActiveFlag = (char *)ptrGetter((i_1));
+      if (((*ptr_npcActiveFlag != '\0') && (*(int *)(ptr_npcActiveFlag + 0x28) == iVar4)) &&
+         (*(int *)(ptr_npcActiveFlag + 0x2c) == iVar5)) {
+        iVar4 = *(int *)(ptr_npcActiveFlag + 4);
+        goto findPtr_check_state2;
+      }
+    }
+    for ((i_1) = 0; iVar3 = ipc::IPCGetBufferLo(), (i_1) < iVar3; (i_1) = (i_1) + 1) {
+      ptr_npcActiveFlag = (char *)ptrGetter((i_1));
+      if ((*ptr_npcActiveFlag != '\0') && (*(int *)(ptr_npcActiveFlag + 0x2c) == iVar5)) {
+        zz_800dd970_(s_Warining:_people[%d,%d]_group_is_80273fd8,iVar4,iVar5);
+        iVar4 = *(int *)(ptr_npcActiveFlag + 4);
+        goto findPtr_check_state2;
+      }
+    }
+    iVar4 = 0;
+findPtr_check_state2:
+    for (localIncrement2 = 0; iVar5 = ipc::IPCGetBufferLo(), localIncrement2 < iVar5;
+        localIncrement2 = localIncrement2 + 1) {
+      ptr_npcActiveFlag = (char *)ptrGetter(localIncrement2);
+      if ((*ptr_npcActiveFlag != '\0') && (*(int *)(ptr_npcActiveFlag + 4) == iVar4))
+      goto flags_and_angle2;
+    }
+    ptr_npcActiveFlag = (char *)0x0;
+flags_and_angle2:
+    if (ptr_npcActiveFlag != (char *)0x0) {
+      cFielder::UpdatePlay(float)(ptr_npcActiveFlag,auStack_68);
+      working_Double = DOUBLE_8047d7c8;
+      dVar6 = (double)FLOAT_PI_also;
+      ptr_npcActiveFlag[0x22] = '\x01';
+      fVar1 = MAGIC_DOUBLE_SignIntToFloat;
+      *(float *)(ptr_npcActiveFlag + 0x40) =
+           (float)(dVar6 * (double)(float)((double)CONCAT44(0x43300000,
+                                                            (int)((double)local_64 / dVar6) ^
+                                                            0x80000000) - working_Double) +
+                  working_Float);
+      *(float *)(ptr_npcActiveFlag + 0x44) = fVar1;
+    }
+    *(undefined *)(npc_Arr* + 0x55) = 2;
+  }
+  else if (iVar4 == 1) {
+                    /* FINISH CYCLE */
+
+
+    working_Float = (double)NPC2RNGCalls();
+    *(float *)(npc_Arr* + 0x84) =
+         (float)((double)*(float *)(npc_Arr* + 0x8c) * working_Float +
+                (double)*(float *)(npc_Arr* + 0x88));
+    *(undefined *)(npc_Arr* + 0x55) = 0;
+  }
+
+  
+RETURN:
+  return;
+}
