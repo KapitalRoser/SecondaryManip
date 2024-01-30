@@ -135,7 +135,7 @@ void printAllRegions(const std::vector<std::byte>&data, const std::vector<int>&o
 }
 
 int main() {
-    std::vector<std::byte> data = readFile("C:\\Users\\Carter\\Documents\\ROMS\\Pokemon Colosseum (USA)\\Pokemon Colosseum (USA) CM Tool\\Game Files\\M1_shop_2F\\M1_shop_2F.ccd"); 
+    std::vector<std::byte> data = readFile("M1_out.ccd"); 
     //manualTest(data);
 
 
@@ -144,22 +144,25 @@ int main() {
     // int entry_count = getWord(data,0x4);
     // int entry_size = 0x40;
 
-    std::cout << "LIST OF OBJECT OFFSETS: \n";
-    printBytes(data,0x10,0x200,4);
+    
     
 
     //read region
     int file_start = getWord(data,0x0);
     int entry_count = getWord(data,0x4);
     int entry_size = 0x40;
-    
+    std::cout << "NUM SECTIONS: " << std::dec << entry_count << "\n";
     //note that these objects are not necessarily ordered by offset.
     int first_entry = 0x38;
+
+
+    std::cout << "LIST OF OBJECT OFFSETS: \n";
+    printBytes(data,0x10,entry_count*entry_size,4);
 
     std::vector<std::vector<int>>sections;
     std::vector<int> offsetList;
     std::vector<int> offsets = {};
-    for (int i = file_start; i < 0x200; i+= 0x4){
+    for (int i = file_start; i < entry_size*entry_count; i+= 0x4){
         int datum = getWord(data,i);
         if (datum != 0 && datum != 0x3F800000){ //3F800000 == 1 in float but im too lazy to do the float conversion just for this routine check.
             offsets.push_back(datum); //tmp
@@ -182,10 +185,10 @@ int main() {
         }
         
     }
-    //std::sort(offsetList.begin(),offsetList.end()); //make sure the num is fairly small.
-    //std::cout << "NUM_OBJECTS: " << offsetList.size() << " SORTED!\n"; //Disable this and the prev line if wanting to preserve original sections
+    std::sort(offsetList.begin(),offsetList.end()); //make sure the num is fairly small.
+    std::cout << "NUM_OBJECTS: " << offsetList.size() << " SORTED!\n"; //Disable this and the prev line if wanting to preserve original sections
     //printAllRegions(data,offsetList);
-    printRegion(data,offsetList[0],false);
+    //printRegion(data,offsetList[0],false);
     
     
     
