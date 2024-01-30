@@ -109,7 +109,8 @@ void printRegion(const std::vector<std::byte>&data, int custom_offset,bool fullM
     int num_tris = getWord(data,object_offset+0x4); 
     int ptrA = getWord(data,object_offset+0x8);
     int next_tri = ptrA + (getWord(data,ptrA+0x4)*4) + 0x8;
-    //std::cout << "NEXT TRI: " << std::hex << next_tri << "\n"; 
+    //std::cout << "NEXT TRI: " << std::hex << next_tri << "\n";
+    std::cout << "\nNUM TRIS: " << num_tris << "\n"; 
     printTriSet(data,tri_offset,num_tris,fullMode);
     //return next_tri;
 }
@@ -181,10 +182,10 @@ int main() {
         }
         
     }
-    std::sort(offsetList.begin(),offsetList.end()); //make sure the num is fairly small.
-    std::cout << "NUM_OBJECTS: " << offsetList.size() << " SORTED!\n"; //Disable this and the prev line if wanting to preserve original sections
+    //std::sort(offsetList.begin(),offsetList.end()); //make sure the num is fairly small.
+    //std::cout << "NUM_OBJECTS: " << offsetList.size() << " SORTED!\n"; //Disable this and the prev line if wanting to preserve original sections
     //printAllRegions(data,offsetList);
-    printRegion(data,offsetList[0]);
+    printRegion(data,offsetList[0],false);
     
     
     
