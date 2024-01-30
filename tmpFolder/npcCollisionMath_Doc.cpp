@@ -309,14 +309,10 @@
 //             int ptrA_bracket1 = 0;
 //             while(i < ptrA_bracket1 && (!weirdBool)){
 //                 float tri_ptr = roomRegion + (ptrB * 0x34); //0x34 is the size of a tri, so this probably iterates through the tris.
-//                 std::vector<float>tri_ptr_plus_x24_floats;
-//                 std::vector<float>tri_ptr_floats;
-//                 std::vector<float>AdjX_floats;
-//                 double planePoint_result = getSidePlanePoint(tri_ptr_plus_x24_floats,tri_ptr_floats,AdjX_floats); //shockingly simple. Circumstantial parameters, need to confirm that these are what I think they are.
+//                 double planePoint_result = getSidePlanePoint(tri_ptr+0x24,tri_ptr,AdjX); //shockingly simple. Circumstantial parameters, need to confirm that these are what I think they are.
 //                 if (0 <= planePoint_result){
 //                     d_coord cpPlaneResult;
-//                     d_coord resultLoc;
-//                     getCpPlanePoint(resultLoc,tri_ptr+0x24,tri_ptr,AdjX); //CP IS INFLUENCED BY adjX -- does not return anything normally, but I may choose to alter this to be better style.
+//                     getCpPlanePoint(d_coord result_location,tri_ptr+0x24,tri_ptr,AdjX); //CP IS INFLUENCED BY adjX -- does not return anything normally, but I may choose to alter this to be better style.
 //                     double distanceSquared = vectorSquareDistance(cpPlaneResult,AdjX);
 //                     if (distanceSquared < ballSizeSquared) { //if the distance squared from the proposed to the CP is less than the squared ball size then begin detailed tri checking.
 //                         int ChkInTri_result = chkIntri(float(0),tri_ptr,tri_ptr+0x24);//first param is adjX stuff I believe
@@ -542,7 +538,6 @@
 
 
 // int GS_collision(int ballSize, d_coord& adjustedPositions_probably){
-//     //Needs to not only return a 
 //     //default ballSize = 3
 //     d_coord old; //As in the actual current position saved in memory.
 //     int returnVal = 0;
@@ -591,18 +586,18 @@
 
 
 
-// int peopleAdjustPosition(int ballsize,d_coord &proposed){ //IF TRU, MODIFIES PROPOSED HERE.(?) May break up the functions and adjust hierarchy.
+// int peopleAdjustPosition(){
 //     //what is different between the two scenarios it is called in?
 //     //Called in MoveAlongAngle [as part of the normal step check done ever frame] and directly in MoveSub [when distance to target did not decrease]. What gives?
 //     d_coord proposed;
 //     d_coord collisionAdjPos;
 //     //all the stuff before our collision call is ptr setup, lookup and allocation.
-//     int collFlag = GS_collision(ballsize,collisionAdjPos); //should only ever return 1 or 0.
+//     int collFlag = GS_collision(3,collisionAdjPos); //should only ever return 1 or 0.
 //     if (collFlag != 0){
 //         d_coord intermediateSub = vectorSub(collisionAdjPos,proposed);
 //         proposed = vectorAdd(proposed,intermediateSub); //Update proposed with collisionAdjPos.
 //     }
-//     //Do get Walk Height block. Is this needed? -- Doesn't seem so.
+//     //Do get Walk Height block. Is this needed?
 //     return 1; //Always returns 1, and thus is the bug in the OG code. For our purposes, cannot return anything other than 1.
 // }
 
@@ -624,9 +619,8 @@
 
 
 
-//     d_coord proposed; //To be modified if applicable.
-//     int NPC_BALLSIZE = 3; //not const? I think it gets added to with TinyAdjustment later...
-//     peopleAdjustPosition(3,proposed); //Only returns 1 due to bug in Colo. XD can return 0...
+
+//     peopleAdjustPosition();
 
 //     return 0;
 // }

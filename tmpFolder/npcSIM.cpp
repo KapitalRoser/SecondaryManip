@@ -11,75 +11,6 @@
 //Includes a lot of stuff that is phenac specific.
 
 
-//Interesting bitmask function, recorded here incase I forget:
-int bitmask(int data,int mask)
-{ //Unsigned into signed? Into 32bit unsigned? maybe?
-  mask = data & mask;
-  return (-mask | mask) >> 0x1f;
-}
-
-
-
-
-
-
-
-//THESE ARE EXAMPLE FUNCTIONS FOR COLLISION CHECKING. HOWEVER THE END USER WILL LIKELY NEED/WANT TO WRITE THEIR OWN.
-bool circleDistanceCheck(d_coord pos, d_coord circleCentre, double radius){
-    d_coord pDist;
-    pDist.x = pos.x - circleCentre.x;
-    pDist.y = pos.y - circleCentre.y;
-    double distToCentre = sqrt(pow(pDist.x,2) + pow(pDist.y,2));
-    return distToCentre < radius;
-}
-double snapToCircleEdge(double givenCoord,double circleGiven, double circleSolved, double r, bool circleSideChosen){
-    /*sets a given x or y to its correct point on the edge of the circle.
-    x = h +- sqrt(r^2 - (y-k)^2)
-    y = k +- sqrt(r^2 - (x-h)^2)
-    (x-h)^2 + (y-k)^2 = r^2
-    */
-   //if given y, solve for x and vice versa. applies for circle centre coords as well.
-   double solvedCoord = sqrt(pow(r,2) - pow(givenCoord - circleGiven,2));
-    //reduces the choice of x or y to whatever coord is given.
-    //still needs user to choose side arbitrarily.
-   if (circleSideChosen){ //pos
-    return circleSolved + solvedCoord;
-   }
-   return circleSolved - solvedCoord;
-}
-bool bridgeCheck(d_coord pos){
-    //raycast the bridge.
-    return 0;
-}
-d_coord randallAdjust(d_coord inputPos, bool XorY){
-    //data
-    d_coord circleCentre;
-    circleCentre.x = 0;
-    circleCentre.y = 185;
-    double radius = 100;
-    if (!circleDistanceCheck(inputPos,circleCentre,radius)){
-        return inputPos;
-    }
-    
-    //now bridge check
-    if (bridgeCheck(inputPos)){
-        return inputPos; //Safe I think, sometimes weird clipping around the bridge corner.
-        //If cause problems, look here.
-    }
-    //so in circle, not in bridge == reject.
-    //for x
-    d_coord result;
-    if (XorY){ //TRUE == X
-         result.x = snapToCircleEdge(inputPos.y,circleCentre.y,circleCentre.x,radius,0); //should be left side.
-         result.y = inputPos.y;
-    } else {
-        result.x = inputPos.x;
-        result.y = snapToCircleEdge(inputPos.x,circleCentre.x,circleCentre.y,radius,1); //should be upper side
-    }
-    return result;
-}
-
-
 int col_consultPattern(int i, region gameRegion){
     enum bgFrames {H = 116, L = 76, A = 114, O = 154}; //High, Low, Alpha, Omega
     std::vector<int>NTSCUPattern = {H,H,L,H,L}; //HHLHL -- Could define this as a Doubly-linked-list cycle class. Has a next() and peek() functions which get the next value in the vector, cycling back to the front when the end is reached.
@@ -175,6 +106,7 @@ void initializeNPCSet(u32 &seed,std::vector<NPC>&npcSet,std::string &action,std:
     outF << "Initial cycles begin!\n\n";
 }
 
+
 void outputToFile(u32 seed, std::string action, std::ofstream &outF,std::ofstream &rawF, bool step = false){
     outF << action;
     outF << std::hex << " : " << seed << " : " << std::dec;
@@ -199,18 +131,17 @@ int main(){
     region version = NTSCU;
     coloSecondary targetPoke = QUILAVA;
     bool trackSteps = false;
-    bool trackBackgroundNoise = false;
-    bool solo_mode = true;
+    bool trackBackgroundNoise = true;
+    bool solo_mode = false;
     //~~~~~~SOLO NPC (If enabled)~~~~~~~~~~~~~
-    NPC Girlie = NPC({-16.290000915527344,11.260000228881836}, "G");
+    NPC Girlie = NPC({-16.290000915527344,0.0,11.260000228881836}, "G");
     //~~~~~~NPC GROUP~~~~~~~~~~~~~~~~~~~~~ AKA "People"
-    NPC kaib    = NPC({85,-150}, "K");
-    NPC jim     = NPC({15,-10},  "J");
-    NPC grandma = NPC({-140,-10},"G");
-    NPC boots   = NPC({90,90},   "B");
-    //NPC randall = NPC({-90,110}, "R",STANDARD,&randallAdjust);
-    NPC randall = NPC({-90,110}, "R"); 
-    NPC heels   = NPC({30,300},  "H",SLOWER);
+    NPC kaib    = NPC({85,33,-150}, "K");
+    NPC jim     = NPC({15,20,-10},  "J");
+    NPC grandma = NPC({-140,33,-10},"G");
+    NPC boots   = NPC({90,0,90},   "B");
+    NPC randall = NPC({-90,0,110}, "R"); 
+    NPC heels   = NPC({30,0,300},  "H",SLOWER);
     std::vector<NPC>npcSet = {kaib,jim,grandma,boots,randall,heels}; //Order is key, will vary across maps
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     if (solo_mode){

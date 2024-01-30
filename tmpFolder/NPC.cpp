@@ -52,23 +52,6 @@ void NPC::chooseDestination(u32 &seed){
     setAngle(angleLogic(f_result)); //unsure if necessary?
 }
 
-f_coord NPC::validatePosition(f_coord inputPos, bool XorY){
-    //This is a function owned by the npc. 
-    //This function returns a "corrected" coordinate pair as f_coord (if a correction is needed), 
-    //If no correction is needed, then return input pair.
-    //Programmer/user provides custom function, tailored to the npc and situation you're in.
-    //Somewhat presuming that better calculation is done with doubles, not floats. However the rounding may wreck us in the end?
-    if (validationFunctionPtr == nullptr){
-        return inputPos;
-    }
-    d_coord result = (*validationFunctionPtr)(inputPos.toDCoord(),XorY);
-    //BE REALLY CAREFUL WITH THIS ROUNDING IF COMING OFF OF A D_COORD.
-    f_coord resF;
-    resF.x = result.x;
-    resF.y = result.y;
-    return resF;
-}
-
 //~~~~~~~~~~~~~~~~INTERVAL STUFF~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 d_coord NPC::computeInterval(){
     float intervalAngle = computeAngle(getDistance());
@@ -89,19 +72,17 @@ d_coord NPC::computeInterval(){
 }
 
 void NPC::applyStep(int factor){
-        f_coord postStepPos = getNextPos();//collision check occurs before either pos is set I think...
+        f_coord postStepPos = getNextPos();
         postStepPos.x += getInterval().x * factor;
-        //postStepPos = validatePosition(postStepPos, 1);
-        postStepPos.y += getInterval().y * factor;
-        //postStepPos = validatePosition(postStepPos, 0);       
+        postStepPos.y += getInterval().y * factor;    
         setNextPos(postStepPos);
     }
 double NPC::pythagorasDistance (d_coord distance){
     return sqrt(pow(distance.x,2) + pow(distance.y,2)); //A^2 + B^2 = C^2, nice pythagoras!
 }
 bool NPC::incrementPosition(int factor){
-        double preStep = pythagorasDistance(getDistance());
-        applyStep(factor); //maybe proposeStep would be a better system here?
+        double preStep = pythagorasDistance(getDistance()); //Don't use distance as a d_coord for the distance check u dummy.
+        applyStep(factor); //maybe proposeStep would be a better system here? Collision check is done on proposed and then may be adjusted. Then gets applied.
         double postStep = pythagorasDistance(getDistance());
     
         //setCombinedDistance({preStep,postStep}); //saves as d_coord, DOES THIS EVER GET READ?? -- Not as far as I can see. This could be for debug purposes?

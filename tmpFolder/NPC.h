@@ -17,20 +17,29 @@ enum commonBallSize{SMALL = 1, MEDIUM = 3, LARGE = 4}; //More probably exist.
 //figure out circular dependency
 class d_coord {
     public:
-    double x,y; //add a toFloat or toF_Coord function? -- OOPS MAY HAVE TO ADD Z AFTER ALL (:
+    double x,z,y; //How to add a to f_coord function?
+    d_coord(){
+        x = 0;
+        z = 0;
+        y = 0;
+    }
+    d_coord(double a,double b, double c): x(a), z(b), y(c){}
 };
 class f_coord {
     public:
-    float x,y;
+    float x,z,y;
+    f_coord(){
+        x = 0;
+        z = 0;
+        y = 0;
+    }
+    f_coord(float a, float b, float c): x(a), z(b), y(c){}
     d_coord toDCoord(){
-        d_coord r;
-        r.x = double(x);
-        r.y = double(y);
-        return r;
+        return d_coord(double(x),double(z),double(y));
     }
     //blame powerpc data type rounding.
 };
-
+// Template function? Auto?
 
 class duration {
     public:
@@ -55,10 +64,10 @@ class NPC {
     private:
     //maybe organize this by stuff that gets input by the constructor.
     game m_game = COLO;
-    d_coord m_anchor = {0,0};
-    d_coord m_intervalValues = {0,0}; //More like a tuple
-    f_coord m_nextPos = {0.0};
-    f_coord m_intendedPos = {0,0};
+    d_coord m_anchor;
+    d_coord m_intervalValues; //More like a tuple
+    f_coord m_nextPos;
+    f_coord m_intendedPos;
     
     commonBallSize m_collisionBallSize = MEDIUM; //Default value.
 
@@ -66,33 +75,27 @@ class NPC {
     float m_speedFactor = 0;
     duration m_waitTime = duration{0};
     duration m_walkTime = duration{0};
-    d_coord m_CombinedDistances = {0,0}; //tuple
+    d_coord m_CombinedDistances; //tuple
     int m_state = FIRST;
     std::string m_name = "";
     std::map <commonSpeed,float> walkingSpeed = { //This map association could be a global but its not an enum 
         {STANDARD,0.29032257199287415},
         {SLOWER,0.28125}
     }; //add as more speeds are found.
-    d_coord (*validationFunctionPtr)(d_coord pos, bool XorY) = nullptr;
 
     public:
 
     //NPC(d_coord anchor, std::string name = "", commonSpeed speed = STANDARD); //id is covered by NPC crew class
-    //NPC(d_coord anchor, std::string name = "", commonSpeed speed = STANDARD, d_coord(*f)(d_coord pos, bool XorY) = nullptr) //get rid of this hacky function ptr, and add ballsize.
     NPC(d_coord anchor, std::string name = "", commonSpeed speed = STANDARD, commonBallSize ballSize = MEDIUM)
     : m_anchor(anchor), m_name(name),m_collisionBallSize(ballSize) 
     {
-        m_nextPos = {float(anchor.x),float(anchor.y)}, //returns valid f_coord?
+        m_nextPos = {float(anchor.x),0,float(anchor.y)}, //returns valid f_coord?
         m_speedFactor = walkingSpeed[speed];
     }
     
     void chooseDestination(u32 &seed);
     float angleLogic(float angle);
     float computeAngle(d_coord distance);
-
-    // bool circleDistanceCheck(d_coord pos, d_coord circleCentre, double radius);
-    // double snapToCircleEdge(d_coord pos,d_coord circleCentre, double r, int modeSelection);
-    f_coord validatePosition(f_coord inputPos, bool XorY);
 
     d_coord computeInterval();
     void applyStep(int factor);
@@ -133,7 +136,8 @@ class NPC {
     d_coord getAnchor(){return m_anchor;}
     d_coord getCombinedDistance(){return m_CombinedDistances;} //Not a true coordinate, since its distance, its more like a tuple and should eventually be reclassed as such.
     d_coord getDistance(){ //Same, tuple, this is a bit reckless tbh
-        return {getIntendedPos().x - getNextPos().x, 
+        return {getIntendedPos().x - getNextPos().x,
+                getIntendedPos().z - getNextPos().z, 
                 getIntendedPos().y - getNextPos().y};
     }
     d_coord getInterval(){return m_intervalValues;} //same, tuple
