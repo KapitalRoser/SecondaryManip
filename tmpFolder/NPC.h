@@ -15,6 +15,7 @@ enum commonBallSize{SMALL = 1, MEDIUM = 3, LARGE = 4}; //More probably exist.
 //maybe there's a better way to name enums...
 
 //figure out circular dependency
+//Assignment operators? Copy constructors?
 class d_coord {
     public:
     double x,z,y; //How to add a to f_coord function?
@@ -39,7 +40,74 @@ class f_coord {
     }
     //blame powerpc data type rounding.
 };
-// Template function? Auto?
+// Template function? Auto? For independent conversion function?
+
+
+
+//VECTOR MATH FUNCTIONS. ONLY NECESSARY FOR COLLISION CALCS.
+
+
+
+//all of these "vector" operations are just functions handling coordinates. These are for vectors in the math sense, not std::vectors lol.
+d_coord vectorSub(d_coord minuend, d_coord subtrahend){
+    return {minuend.x - subtrahend.x,minuend.y-subtrahend.y}; //named because the order of the parameters matters here.
+} //also make f_coord version?
+
+d_coord vectorAdd(d_coord a, d_coord b){
+    return {a.x+b.x,a.z,a.y+b.y}; //Not an idiot, in the code this function does not consider z!
+    //Takes a.z by default, not sure if this is the correct behaviour.
+}
+
+d_coord vectorSquare(d_coord a){ // my creation NEED Z AAAAAAAAAAAAH
+    return {a.x*a.x,a.z*a.z,a.y*a.y}; 
+    //alt: return {pow(a.x,2),pow(a.z,2),pow(a.y,2)};
+}
+double vectorCombine(d_coord a){ //my creation SHOULD INCL Z AND NON INCL Z VERSIONS
+    return {a.x+a.z+a.y};
+}
+double vectorCombine_No_Z(d_coord a){
+    return {a.x + a.y};
+}
+
+double vectorDistance(d_coord a, d_coord b){ //same as pythag distance but this makes no assumptions about the input data -_- DOES NOT CONSIDER Z
+    //return sqrt(vectorCombine(vectorSquare(vectorSub(a,b)))); CONSIDER Z?????????? -- 
+    return sqrt(pow((a.x-b.x),2) + pow((a.y-b.y),2)); //Will never be a negative result.
+    //alt: return sqrt(vectorSquareDistance(a,b));
+}
+
+double vectorSquareDistance(d_coord a, d_coord b){ //DOES NOT CONSIDER Z
+         return pow((a.x-b.x),2) + pow(a.y-b.y,2);
+}
+
+double vectorMagnitude(d_coord in){ //CONSIDERS Z
+    return sqrt((in.x*in.x) + (in.z*in.z) + (in.y*in.y)); //sum of squared elements, followed by a sqrt.
+    //return sqrt(pow(in.x,2) + pow(in.z,2) + pow(in.y,2));
+    //alt: return sqrt(vectorCombine(vectorSquare(in)));
+}
+
+double vectorSquareMag(d_coord in){ //CONSIDERS Z
+    return (in.x*in.x) + (in.z * in.z) + (in.y*in.y);
+//  return (vectorCombine(vectorSquare(in)));
+
+}
+
+d_coord vectorScale(double factor, d_coord a){ //Does not consider Z.
+    return {a.x*factor,a.z,a.y*factor}; //Note not the same as vectorMultiply as that would imply I take two vecs and multiply them together.
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 class duration {
     public:
