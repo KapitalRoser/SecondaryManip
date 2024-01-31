@@ -24,59 +24,66 @@
 // }
 
 
-double getSidePlanePoint(std::vector<float>tri_orientation,std::vector<float>tri_pos_ptr,std::vector<float>adjX_ptr){
 
-      return (double)(tri_orientation[2] * (adjX_ptr[2] - tri_pos_ptr[2]) +
-                      tri_orientation[0] * (adjX_ptr[0] - tri_pos_ptr[0]) +
-                      tri_orientation[1] * (adjX_ptr[1] - tri_pos_ptr[1]));
+//What is this tmpOrient here for?? Otherwise its pretty much good.
+d_coord getCpPlanePoint(d_coord tri_orientation,d_coord tri_pos_ptr,d_coord adjX_ptr_maybe){ //this assumes the params mean what I think they mean, still testing.
+    d_coord tmpOrient; //DAFUQ IS THIS DOIN HERE????
+
+    float orientation_A = tri_orientation.x; //should these be floats or doubles? This is technically narrowing.
+    float orientation_B = tri_orientation.z;
+    float orientation_C = tri_orientation.y;
+
+    d_coord subRes = vectorSub(tri_pos_ptr,adjX_ptr_maybe);
+    double factor = (orientation_A * subRes.x) + (orientation_B*subRes.z) + (orientation_C*subRes.y);
+    double divisor = (pow(orientation_C,2)+ pow(orientation_A,2) + pow(orientation_B,2));  //can add a square vector for the divisor, need to keep this multiplication as is because scale uses a common term.
+
+    //Here we have the important question of is d_coord a position or is d_coord any tuple of size three. It isn't really. but it would be so clean to use here...
+    d_coord scaleResult = vectorScale((double)(factor / divisor), tmpOrient); //Need this double convert?
+    return vectorAdd(scaleResult,adjX_ptr_maybe); //Save first
 }
-d_coord getCpPlanePoint(d_coord& result_location, std::vector<float>tri_orientation,float*tri_pos_ptr,float* adjX_ptr_maybe){ //this assumes the params mean what I think they mean, still testing.
-    d_coord tmpAdjX;
-    d_coord tmpOrient;
-
-    float orientation_A = tri_orientation[0];
-    float orientation_B = tri_orientation[1];
-    float orientation_C = tri_orientation[2];
-    auto sub0 = tri_pos_ptr[0] - adjX_ptr_maybe[0];
-    auto sub1 = tri_pos_ptr[1] - adjX_ptr_maybe[1];
-    auto sub2 = tri_pos_ptr[2] - adjX_ptr_maybe[2];
-    
-    //can add a square vector for the divisor, need to keep this multiplication as is because scale uses a common term.
-    d_coord scaleResult = vectorScale(
-            (double)((orientation_C * (sub2) +
-                       orientation_A * (sub0) +
-                       orientation_B * (sub1)) /
-                      (pow(orientation_C,2)+
-                      pow(orientation_A,2) + pow(orientation_B,2))),
-
-              tmpOrient
-              );
-  result_location = vectorAdd(scaleResult,tmpAdjX);
-  return result_location;
-//   return result_location; our version will render resultLocation useless.
-}
-double getCpLinePoint(d_coord result_location, d_coord tri_pos_ptr,d_coord funkyOffset, d_coord adjX){ //unlike the other one, this can return a separate value.
+//dafuq is funkyOffset? What is triPtr doing here?
+double getCpLinePoint(d_coord& result_location, d_coord tri_pos_ptr,d_coord funkyOffset, d_coord adjX){ //unlike the other one, this can return a separate value.
+   //HOW DOES TRI POINTER MAKE SENSE HERE???? REVIEW! Is this a particular point within the tri?
+    //WHAT IS FUNKY OFFSET?!?! REVIEW
     d_coord subResult = vectorSub(funkyOffset,tri_pos_ptr);
     double intermediateResult = 0.0;
-    double sqResult = vectorSquareMag(subResult);
-    if (intermediateResult == sqResult){
+    if (vectorSquareMag(subResult) == intermediateResult){
         //meaning sq result is 0
-        result_location.x = tri_pos_ptr.x;
-        //result_location.z = tri_pos_ptr.z;
-        result_location.y = tri_pos_ptr.y;
+        // result_location.x = tri_pos_ptr.x;
+        // result_location.z = tri_pos_ptr.z;
+        // result_location.y = tri_pos_ptr.y;
+        result_location = tri_pos_ptr;
     } else {
-        intermediateResult = (subResult.y * (adjX.y - tri_pos_ptr.y)) + (subResult.x * (adjX.x - tri_pos_ptr.x)); //include +().... for Z as well.
+        // working = vectorSub(adjX,tri_pos_ptr);
+        // intermediateResult = (subresult.y * working.y) + ... 
+        intermediateResult = 
+        (subResult.y * (adjX.y - tri_pos_ptr.y)) + 
+        (subResult.z * (adjX.z - tri_pos_ptr.z)) + 
+        (subResult.x * (adjX.x - tri_pos_ptr.x));
+
         d_coord scaleResult = vectorScale(intermediateResult,subResult);
         result_location = vectorAdd(scaleResult,tri_pos_ptr);
     }
-    return intermediateResult;
+    return intermediateResult; //Do I really need to return this??? Is this useful?? Otherwise keep result_location.
 
 }
+
+//This one is good. Nice and simple.
 void getPointExtensionLine(const double adjustedBallSize,d_coord &finalResultLocation,d_coord position_at_collision,d_coord adjX){
     d_coord intermediate = vectorSub(adjX,position_at_collision);
     double mag = vectorMagnitude(intermediate);
     intermediate = vectorScale((adjustedBallSize / mag), intermediate);
     finalResultLocation = vectorAdd(intermediate,position_at_collision); //return this instead of void return.
+}
+//This is good, would only change if I decide to allow orientation to be a d_coord. 
+double getSidePlanePoint(std::vector<float>tri_orientation,d_coord tri_pos_ptr,d_coord adjX_ptr){
+
+    return (double)(tri_orientation[0] * (adjX_ptr.x - tri_pos_ptr.x) +
+                    tri_orientation[1] * (adjX_ptr.z - tri_pos_ptr.z) +
+                    tri_orientation[2] * (adjX_ptr.y - tri_pos_ptr.y));
+    //d_coord sub = vectorSub(adjX_ptr,tri_pos_ptr);
+    //return double(tri_orientation[0] * sub.x, tri_orientation[1] * sub.z, tri_orientation[2] * sub.y)
+    //So close to just vectorMultiply(tri_orientation, vectorSub(adjX,tri));...
 }
 
 
@@ -263,9 +270,7 @@ int checkHitFixedMdl(int ballSize, d_coord AdjX, int roomRegion, d_coord& result
                 std::vector<float>AdjX_floats;
                 double planePoint_result = getSidePlanePoint(tri_ptr_plus_x24_floats,tri_ptr_floats,AdjX_floats); //shockingly simple. Circumstantial parameters, need to confirm that these are what I think they are.
                 if (0 <= planePoint_result){
-                    d_coord cpPlaneResult;
-                    d_coord resultLoc;
-                    getCpPlanePoint(resultLoc,tri_ptr+0x24,tri_ptr,AdjX); //CP IS INFLUENCED BY adjX -- does not return anything normally, but I may choose to alter this to be better style.
+                    d_coord cpPlaneResult = getCpPlanePoint(tri_ptr+0x24,tri_ptr,AdjX); //CP IS INFLUENCED BY adjX -- does not return anything normally, but I may choose to alter this to be better style.
                     double distanceSquared = vectorSquareDistance(cpPlaneResult,AdjX);
                     if (distanceSquared < ballSizeSquared) { //if the distance squared from the proposed to the CP is less than the squared ball size then begin detailed tri checking.
                         int ChkInTri_result = chkIntri(float(0),tri_ptr,tri_ptr+0x24);//first param is adjX stuff I believe
@@ -335,7 +340,9 @@ int checkHitFixedMdl(int ballSize, d_coord AdjX, int roomRegion, d_coord& result
                                         iVar2 = 0;
                                     }
                                     d_coord cpLineResult;
-                                    double cpLineIntermediate = getCpLinePoint(cpLineResult,); //--------------UNFINISHED!
+                                    //I REALLY NEED FUNKY OFFSET....DAFUQ IS THAT.
+                                    d_coord funkyOffset;
+                                    double cpLineIntermediate = getCpLinePoint(cpLineResult,,funkyOffset,AdjX); //--------------UNFINISHED!
                                     double distanceSquared_2 = vectorSquareDistance(cpLineResult,AdjX);
                                     if (0.0 <= cpLineIntermediate && 1.0 <= cpLineIntermediate && distanceSquared_2 < ballSizeSquared){
                                         //MEANINGFUL DIFFERENCES END
