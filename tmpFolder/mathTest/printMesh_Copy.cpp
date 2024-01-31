@@ -29,7 +29,7 @@ u32 getWord(const std::vector<std::byte>&data,int offset){
     return swapEndiannessForWord(slice); 
     
 }
-float getFloatFromWord(u32 word){
+float getFloatFromWord(u32 word){ //This doesn't need to exist.
     return convertToFloat(word);
 }
 std::vector<std::byte> readFile(const std::string& filename) {

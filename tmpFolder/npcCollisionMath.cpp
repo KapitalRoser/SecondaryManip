@@ -55,8 +55,6 @@ d_coord getCpPlanePoint(d_coord& result_location, std::vector<float>tri_orientat
   return result_location;
 //   return result_location; our version will render resultLocation useless.
 }
-
-
 double getCpLinePoint(d_coord result_location, d_coord tri_pos_ptr,d_coord funkyOffset, d_coord adjX){ //unlike the other one, this can return a separate value.
     d_coord subResult = vectorSub(funkyOffset,tri_pos_ptr);
     double intermediateResult = 0.0;
@@ -74,88 +72,33 @@ double getCpLinePoint(d_coord result_location, d_coord tri_pos_ptr,d_coord funky
     return intermediateResult;
 
 }
-
-
-void getPointExtensionLine(double adjustedBallSize,d_coord &finalResultLocation,d_coord position_at_collision,d_coord adjX){
-    d_coord result = vectorSub(adjX,position_at_collision);
-    double mag = vectorMagnitude(result);
-    result = vectorScale((adjustedBallSize / mag), result);
-    finalResultLocation = vectorAdd(result,position_at_collision);
+void getPointExtensionLine(const double adjustedBallSize,d_coord &finalResultLocation,d_coord position_at_collision,d_coord adjX){
+    d_coord intermediate = vectorSub(adjX,position_at_collision);
+    double mag = vectorMagnitude(intermediate);
+    intermediate = vectorScale((adjustedBallSize / mag), intermediate);
+    finalResultLocation = vectorAdd(intermediate,position_at_collision); //return this instead of void return.
 }
 
-//all of these "vector" operations are just functions handling coordinates. These are for vectors in the math sense, not std::vectors lol.
-d_coord vectorSub(d_coord minuend, d_coord subtrahend){
-    return {minuend.x - subtrahend.x,minuend.z-subtrahend.z,minuend.y-subtrahend.y}; //named because the order of the parameters matters here.
-} //also make f_coord version?
 
-d_coord vectorAdd(d_coord a, d_coord b){
-    return {a.x+b.x,a.z+b.z,a.y+b.y}; //Def an idiot, ofc it considers Z. Paired singles dummy.
-}
 
-d_coord vectorSquare(d_coord a){ // my creation NEED Z AAAAAAAAAAAAH
-    return {a.x*a.x,a.y*a.y}; 
-    //alt: return {pow(a.x,2),pow(a.y,2)};
-}
-double vectorCombine(d_coord a){ //my creation SHOULD INCL Z AND NON INCL Z VERSIONS
-    return {a.x+a.y};
-}
-
-double vectorDistance(d_coord a, d_coord b){ //same as pythag distance but this makes no assumptions about the input data -_- <--- IS THIS THE SAME AS vec Magnitude???
-    //return sqrt(vectorCombine(vectorSquare(vectorSub(a,b)))); CONSIDER Z?????????? -- 
-    return sqrt(pow((a.x-b.x),2) + pow((a.y-b.y),2)); //Will never be a negative result.
-    //alt: return sqrt(vectorSquareDistance(a,b));
-}
-
-double vectorSquareDistance(d_coord a, d_coord b){
-    double a_z = 0; //IMPLEMENT Z YOU LAZY ASS. MIGHT NEED IT WHO KNOWWWWS.
-    double b_z = 0;
-         return pow((a.x-b.x),2) + pow((a_z-b_z),2) + pow(a.y-b.y,2);
-}
-
-double vectorMagnitude(d_coord in){ //CONSIDERS Z
-    return sqrt((in.x*in.x)+(in.y*in.y)); //sum of squared elements, followed by a sqrt.
-    //alt: pow instead of a*a
-    //+pow(in.z,2));
-    //alt: return sqrt(vectorCombine(vectorSquare(in)));
-}
-
-double vectorSquareMag(d_coord in){ //CONSIDERS Z
-    return (in.x*in.x) + (in.y*in.y);
-//  return (vectorCombine(vectorSquare(in)));
-
-}
-
-d_coord vectorScale(double factor, d_coord a){
-    return {a.x*factor,a.y*factor}; //Note not the same as vectorMultiply as that would imply I take two vecs and multiply them together.
-} //might be able to one-line these:
-
-//vector divide?
-
-int chkIntri (float adjX_Data_ptr, float tri_data_ptr,float orientationFlags_ptr){
+int chkIntri (d_coord adjX_Data_ptr, std::vector<float> tri_pointer,std::vector<float>orientationFlags){
 
     float adjX_val_A = 0;
     float adjX_val_B = 0;
+
     int returnVal = 0;
     const float FLOAT_0 = 0;
     int flag_0_2 = 0; //or 2
     int flag_0_1 = 0; //or 1
-    std::vector<float> tri_pointer = {37.1033,  -3.35513,  -11.0449, 24.9879,  -3.35513,  -11.0449, 24.9879,   24.5948,  -11.0449 };
-    std::vector<float> arranged_data = tri_pointer; //per given orientation.
-    std::vector<float> orientationFlags = {1,0,-0.0,-1}; // possible values: -1, -0, 0, 1 -- what actually are the 3 orientations???? REMAP THIS, C++ AND MODERN SYSTEMS INTUITIVELY MAKE 0 == -0 TRUE! -- This is really the orientation of the normal, not the tri. converted later.
-    std::vector<int> interactionFlags = {3,0};
+//    std::vector<float> tri_pointer = {37.1033,  -3.35513,  -11.0449, 24.9879,  -3.35513,  -11.0449, 24.9879,   24.5948,  -11.0449 };
+    tri_pointer = {37.1033,  -3.35513,  -11.0449, 24.9879,  -3.35513,  -11.0449, 24.9879,   24.5948,  -11.0449};
+    std::vector<float> arranged_data;
+//    std::vector<float> orientationFlags = {1,0,-0.0,-1}; // normals, Can be any number between 1 and -1 including 0 and -0.
+    orientationFlags = {1,0,-0.0,-1}; // normals, Can be any number between 1 and -1 including 0 and -0.
+    //std::vector<int> interactionFlags = {3,0}; //don't seem to have an impact on collision for our purposes.
     float a = orientationFlags[0];
     float b = orientationFlags[1];
     float c = orientationFlags[2];
-
-    /*OH SHIT SOME CORRECTIONS HERE
-
-        -1 -> 1
-        -0 -> 0
-        0 -> -0 create a negative zero GOD DAMNIT
-        1 stays 1.
-        Bigger stays positive.
-        This is a very confusing way of converting between the orientation of the NORMAL and the orientation of the tri. After conversion, the axis behaves as you would expect.
-    */
     
    //Due to the many types of data possible in phenac and other maps, may not be able to abstract this out as much as i'd like.
 
@@ -175,6 +118,7 @@ int chkIntri (float adjX_Data_ptr, float tri_data_ptr,float orientationFlags_ptr
     /*
     for (float flag : orientationFlags){
         flag = flag <= 0 ? -(flag) : flag; //include way to make 0 into neg(0) or redo the whole thing with enums or from bottom up.
+        //Use std::signbit(-0) from math.h for the neg zero check. returns true if NEGATIVE.
     }
     */
     //logic is done on the COPIES, ADJUST TO C IS DONE ON THE ACTUAL. Picks axis of tri.
@@ -197,11 +141,19 @@ int chkIntri (float adjX_Data_ptr, float tri_data_ptr,float orientationFlags_ptr
     } //Most of this if else block can be taken away by a getAllX's function on some array of 3 int coord objects like position.x .z and .y
     //GetAllY's or GetAllZ's too. As well as reversers for the negative C value where applicable. Probably easiest to use two sep vecs than this interlocking single vec format. tiny bit more memory but super readable.
 
-    int ptr = flag_0_2 * 4; //in the code this is inside the following if statement.
-    int ptr2 = flag_0_1 * 4;
+    // int ptr = flag_0_2 * 4; //in the code this is inside the following if statement.
+    // int ptr2 = flag_0_1 * 4;//not needed anymore
 
-    adjX_val_A = adjX_Data_ptr + flag_0_2 * 4; //CHANGE TO FLAT INSTEAD OF *4 WHEN GET RID OF PTR AND REPLACE WITH VECTOR.
-    adjX_val_B = adjX_Data_ptr + flag_0_1 * 4; //same xyz selection as before.
+
+    //Convert this to d_coord stuff.
+    std::vector<double> adjX_Floats = {adjX_Data_ptr.x,adjX_Data_ptr.z,adjX_Data_ptr.y}; //temp, come up with a more direct d_coord to value setup with the other.
+    adjX_val_A = adjX_Floats[flag_0_2];
+    adjX_val_B = adjX_Floats[flag_0_1];
+
+    //original
+    //adjX_val_A = adjX_Data_ptr + flag_0_2 * 4; //CHANGE TO FLAT INSTEAD OF *4 WHEN GET RID OF PTR AND REPLACE WITH VECTOR.
+    //adjX_val_B = adjX_Data_ptr + flag_0_1 * 4; //same xyz selection as before.
+
     if (0 <= orientationFlags[2]){ //i.e value is positive
         //this only makes sense on the context of pointers. 
         //values_vec().reverse()
@@ -222,7 +174,7 @@ int chkIntri (float adjX_Data_ptr, float tri_data_ptr,float orientationFlags_ptr
         //2 and 5 are skipped.
     }
 
-    std::vector<float> A_Values= {arranged_data[0],arranged_data[3],arranged_data[6]};
+    std::vector<float> A_Values = {arranged_data[0],arranged_data[3],arranged_data[6]};
     std::vector<float> B_Values = {arranged_data[1],arranged_data[4],arranged_data[7]};
     float tri_min_bound_A = *std::min_element(A_Values.begin(),B_Values.end()); //default 1 million ingame if this min/max fails. 
     float tri_min_bound_B = *std::min_element(B_Values.begin(),B_Values.end());
@@ -260,7 +212,7 @@ int chkIntri (float adjX_Data_ptr, float tri_data_ptr,float orientationFlags_ptr
 }
 
 
-int GetObjEnable(int j){return 1;} //don't think I actually care about this one...
+//int GetObjEnable(int j){return 1;} //don't think I actually care about this one...
 int checkHitFixedMdl(int ballSize, d_coord AdjX, int roomRegion, d_coord& result_storage){
     //MATH TIME
 
@@ -494,7 +446,7 @@ badStyle2:
     }
     return resultFlag;
 }
-
+}
 
 
 bool checkHitCollision(int ballSize, d_coord store_A, d_coord store_B, d_coord& result_storage,const bool hardCoded_0 = 0){
@@ -516,8 +468,8 @@ bool checkHitCollision(int ballSize, d_coord store_A, d_coord store_B, d_coord& 
         int room_Copy = room;
         //Also copies roomDataPtr
         for (int j = 0; j < 8; j++){
-            int ObjEnableResult = GetObjEnable(j);
-            if (ObjEnableResult != 0){
+            //int ObjEnableResult = GetObjEnable(j); //Don't think I need this, reevaluate if its possible to get something else. 
+            //if (ObjEnableResult != 0){
                 int collisionResultFlag = checkHitFixedMdl(ballSize,adjustedSubWithDivResult,region,localResultStorage);
                 if (collisionResultFlag != 0){
                     if (result_storage.x == 0){//in the code it's if this is nullptr. Should not need this in my code.
@@ -525,7 +477,7 @@ bool checkHitCollision(int ballSize, d_coord store_A, d_coord store_B, d_coord& 
                     }
                     thirdLim++;
                 }
-            }
+            //}
             room_Copy += 0x40; //scanning rooms? regions?
         }
     } while ((firstLim > 0) && (i = i + 1, i < 10));

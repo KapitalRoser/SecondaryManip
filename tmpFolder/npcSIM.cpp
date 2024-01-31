@@ -11,6 +11,27 @@
 //Includes a lot of stuff that is phenac specific.
 
 
+std::vector<std::byte> readFile(const std::string& filename) {
+    std::ifstream inputFile(filename, std::ios_base::binary);
+    inputFile.seekg(0, std::ios_base::end);
+    auto length = inputFile.tellg();
+    inputFile.seekg(0, std::ios_base::beg);
+    std::vector<std::byte> buffer(length);
+    inputFile.read(reinterpret_cast<char*>(buffer.data()), length);
+    inputFile.close();
+    return buffer;
+}
+
+
+
+
+
+
+
+
+
+
+
 int col_consultPattern(int i, region gameRegion){
     enum bgFrames {H = 116, L = 76, A = 114, O = 154}; //High, Low, Alpha, Omega
     std::vector<int>NTSCUPattern = {H,H,L,H,L}; //HHLHL -- Could define this as a Doubly-linked-list cycle class. Has a next() and peek() functions which get the next value in the vector, cycling back to the front when the end is reached.
