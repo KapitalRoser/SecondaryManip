@@ -268,7 +268,10 @@ int GScolsys2GetObjEnable
 
 {
 
-    //What happens if 
+    //The deal here is it consults a list of Enabled Objects before doing collision check on them. However this list of enabled objects is not included with the .ccd directly. 
+            //While it could hypotheitcally have an impact this would take a lot more digging to see where and how its written. Almost certainly not worth time. Risk I'm willing to accept.
+            //If I get problems down the line of false positives, then this would be somewhere to check.
+            
   int iVar1;
   int datC68 = 0x80404C68;
   int datC6C = 0x80404C6C;

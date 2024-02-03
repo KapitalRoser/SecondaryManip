@@ -467,70 +467,13 @@ bool checkHitCollision(int ballSize, d_coord store_A, d_coord store_B, d_coord& 
         return false; //do not commit results to result_storage.
     }
 }
-int GScolsys2GetObjEnable
-              (uint entry_j,undefined4 *objEnableResultLoc,
-              undefined *param_5) //params 3 and 4 aren't used. Is param 5 used? implies modifiable.
 
-{
-
-    //What happens if 
-  int iVar1;
-  int datC68 = 0x80404C68;
-  int datC6C = 0x80404C6C;
-  int dat36C = 0x8040836C;
-  if (datC68 == 0) {
-    iVar1 = 1;
-  }
-  else if ((entry_j < 0) || (*(unsigned int *)(datC68 + 4) <= entry_j)) {
-    iVar1 = 2;
-  }
-  else {
-    iVar1 = 0;
-    param_5 = &datC6C + entry_j * 0x28 + dat36C * 0xdc0; //value is Set here. Isn't done if earlier if checks pass.
-  }
-  if (iVar1 != 0) {
-    return iVar1;
-  }
-  if ((*(ushort *)(param_5 + 0x24) & 1) == 0) {
-    *objEnableResultLoc = 1;
-  }
-  else {
-    *objEnableResultLoc = 0;
-  }
-  return 0;
-
-
-//my interpretation
-//Is param 5 modified and used in the larger function? What happens if the return is hit before objEnableREsult is modified? Is there a default value?
-    if (datC68 == 0){
-        return 1;
-    } else if (*(unsigned int *)(datC68 + 4) <= entry_j){
-        return 2;
-    }
-    param_5 = &datC6C + entry_j * 0x28 + dat36C * 0xdc0;
-    if ((*(ushort *)(param_5 + 0x24) & 1) == 0){
-        *objEnableResultLoc = 1;
-    } else {
-        *objEnableResultLoc = 0;
-    }
-    return 0;
-
-} 
-int getObjEnabled(int entry_j, int objEnableDefault){
-    int datC68 = 0x80404C68;
-    int datC6C = 0x80404C6C;
-    int dat36C = 0x8040836C;
-    
-    if (datC68 == 0 || (*(unsigned int *)(datC68 + 4) <= entry_j)){
-        return -1; //IS THERE A DEFAULT VALUE?????????
-    }
-    int param_5 = &datC6C + entry_j * 0x28 + dat36C * 0xdc0; //This line is kinda a mystery.
-    if ((*(ushort *)(param_5 + 0x24) & 1) == 0){ //
-        return 1;
-    } else {
-        return 0;
-    }
-
+int getObjEnabled(int entry_j){ //UNUSED...
+    // int datC68 = 0x80404C68; //Value AT: C68: ends up containing the pointer to the .ccd data.
+    int datC6C = 0x80404C6C; //Start of list of enabled objects... not part of the normal ..ccd data.
+    int dat36C = 0x8040836C; //NO IDEA
+    //If file_start doesn't exist (==0) or the entry_j >= num_entries, return 0;
+    return (dat36C * 0xDC0) + 0x80404C6C + (entry_j * 0x28); //RETURNS VALUE AT THE POINTER WHICH RESULTS FROM THIS EQUATION.
 }
 
 //0101010111010101
@@ -562,25 +505,21 @@ bool npc_collision_deep_dive_1_checkHitCollision(int collisionBallSize,d_coord s
         val_at_listStart = *list_start; //literal data at file_start. Ex. 0x10 Typically the beginning of the block of sections which contain the offsets to the objects.
         firstLim = 0;
         unsigned int entry_count = list_start[1]; //same as in our parser.
-        for (unsigned int entry_j = 0; entry_j < entry_count; entry_j++) {
-            GScolsys2GetObjEnable(entry_j,objEnableResult); //param 5 not mentioned/used?
-            //RETURN VALUE NOT USED LOOOOL.
-            if (objEnableResult != 0) {
-                room_data_REGION_maybe = *(int **)(val_at_listStart + 0x28);
-                if (room_data_REGION_maybe != (int *)0x0) {
-                    int collisionResult;
-                    if ((*(ushort *)(val_at_listStart + 0x3c) & 1) == 0) {
-                        collisionResult = checkHitFixedMdl(collisionBallSize,AdjX,room_data_REGION_maybe, collision_calc_result_location_ptr);
-                    }
-                    else {
-                        zz_GScolsys2GetObjMatrix(objMatrixPtr,entry_j);
-                        zz_GScolsys2GetObjRotMatrix(objRotMatrixPtr,entry_j);
-                        collisionResult = zz_checkHitMdl(collisionBallSize,AdjX,room_data_REGION_maybe,objMatrixPtr,objRotMatrixPtr,collision_calc_result_location_ptr);
-                    }
-                    if (collisionResult != 0) {
-                        firstLim = firstLim + 1;
-                        AdjX = collision_calc_result_location_ptr;
-                    }
+        for (unsigned int section_j = 0; section_j < entry_count; section_j++) {
+            room_data_REGION_maybe = *(int **)(val_at_listStart + 0x28);
+            if (room_data_REGION_maybe != (int *)0x0) {
+                int collisionResult;
+                if ((*(ushort *)(val_at_listStart + 0x3c) & 1) == 0) {
+                    collisionResult = checkHitFixedMdl(collisionBallSize,AdjX,room_data_REGION_maybe, collision_calc_result_location_ptr);
+                }
+                else {
+                    zz_GScolsys2GetObjMatrix(objMatrixPtr,section_j);
+                    zz_GScolsys2GetObjRotMatrix(objRotMatrixPtr,section_j);
+                    collisionResult = zz_checkHitMdl(collisionBallSize,AdjX,room_data_REGION_maybe,objMatrixPtr,objRotMatrixPtr,collision_calc_result_location_ptr);
+                }
+                if (collisionResult != 0) {
+                    firstLim = firstLim + 1;
+                    AdjX = collision_calc_result_location_ptr;
                 }
             }
             val_at_listStart += 0x40;
