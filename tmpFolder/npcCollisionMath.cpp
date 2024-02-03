@@ -496,74 +496,94 @@ bool checkHitCollision(int ballSize, d_coord store_A, d_coord store_B, d_coord& 
     }
 }
 
+// int GS_collision(int ballSize, d_coord& adjustedPositions_probably){
+//     //Needs to not only return a 
+//     //default ballSize = 3
+//     d_coord old; //As in the actual current position saved in memory.
+//     int returnVal = 0;
+//     old.x = 0;
+//     old.y = 0;
 
-int GS_collision(int ballSize, d_coord& adjustedPositions_probably){
-    //Needs to not only return a 
-    //default ballSize = 3
-    d_coord old; //As in the actual current position saved in memory.
-    int returnVal = 0;
-    old.x = 0;
-    old.y = 0;
-
-    d_coord proposed; //Aka newCurPos, has not been saved to memory yet and char hasn't physically been moved there yet.
-    proposed.x = 0;
-    proposed.y = 0;
+//     d_coord proposed; //Aka newCurPos, has not been saved to memory yet and char hasn't physically been moved there yet.
+//     proposed.x = 0;
+//     proposed.y = 0;
 
 
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Actual code begins below~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Actual code begins below~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    //NPC martBoy({17,-21},"G");
-    double stepDistance = vectorDistance(proposed,old); //correct direction? -- difference to psVecDist?
+//     //NPC martBoy({17,-21},"G");
+//     double stepDistance = vectorDistance(proposed,old); //correct direction? -- difference to psVecDist?
 
-    //ball over dist
-    double divResult = stepDistance > 0 ? ballSize / stepDistance : 0; //Should always be positive.
-    divResult = divResult >= 1 ? 1 : divResult; //Forces div result to be between 0 and 1 inclusive.
+//     //ball over dist
+//     double divResult = stepDistance > 0 ? ballSize / stepDistance : 0; //Should always be positive.
+//     divResult = divResult >= 1 ? 1 : divResult; //Forces div result to be between 0 and 1 inclusive.
 
-    d_coord subResult = vectorSub(proposed,old);
+//     d_coord subResult = vectorSub(proposed,old);
 
-    for (int i = 0; i < 1; i+= divResult){
-        double local_D = (i+divResult) > 1 ? 1 : i+divResult;
-        d_coord dataStore_A;        
-        dataStore_A = vectorScale(i,subResult);
-        dataStore_A = vectorAdd(dataStore_A,old);
+//     for (int i = 0; i < 1; i+= divResult){
+//         double local_D = (i+divResult) > 1 ? 1 : i+divResult;
+//         d_coord dataStore_A;        
+//         dataStore_A = vectorScale(i,subResult);
+//         dataStore_A = vectorAdd(dataStore_A,old);
         
-        d_coord dataStore_B;
-        dataStore_B = vectorScale(local_D,subResult); //What does local_d really represent here? Is there some math that I can do to simplify this?
-        dataStore_B = vectorAdd(dataStore_B,old);
+//         d_coord dataStore_B;
+//         dataStore_B = vectorScale(local_D,subResult); //What does local_d really represent here? Is there some math that I can do to simplify this?
+//         dataStore_B = vectorAdd(dataStore_B,old);
 
        
-        bool collisionResultFlag = checkHitCollision(ballSize,dataStore_A,dataStore_B,adjustedPositions_probably,0);
-        if(collisionResultFlag != false){
-            return 1;
+//         bool collisionResultFlag = checkHitCollision(ballSize,dataStore_A,dataStore_B,adjustedPositions_probably,0);
+//         if(collisionResultFlag != false){
+//             return 1;
+//         }
+//         if (divResult <= 0){
+//             break; //INTERESTING LINE. Sorta like a do while since this implies the above loop runs at least once even while divResult is <=0.
+//         }
+//     }
+//     return 0;
+// }
+
+int my_Collision(int ballSize, d_coord& adjPosLoc, d_coord old){ //might not need to return a bool
+
+    int returnVal = 0;
+
+    d_coord proposed = adjPosLoc;
+
+    d_coord dataStore_A = old;
+    d_coord dataStore_B = vectorSub(proposed,old); //Can compress further if needed.
+       
+        bool collisionResultFlag = checkHitCollision(ballSize,dataStore_A,dataStore_B,adjPosLoc,0);
+        if(collisionResultFlag){
+            return 1;//This boils down to prepping dataStoreA and dataStoreB and returning the adjPosition again, just like last func.
         }
-        if (divResult <= 0){
-            break; //INTERESTING LINE. Sorta like a do while since this implies the above loop runs at least once even while divResult is <=0.
-        }
-    }
+    
     return 0;
 }
 
 
+// int peopleAdjustPosition(int ballsize,d_coord &proposed){ //IF TRU, MODIFIES PROPOSED HERE.(?) May break up the functions and adjust hierarchy.
+//     //what is different between the two scenarios it is called in?
+//     //Called in MoveAlongAngle [as part of the normal step check done ever frame] and directly in MoveSub [when distance to target did not decrease]. What gives?
+//     d_coord proposed;
+//     d_coord collisionAdjPos;
+//     //all the stuff before our collision call is ptr setup, lookup and allocation.
+//     int collFlag = GS_collision(ballsize,collisionAdjPos); //should only ever return 1 or 0.
+//     if (collFlag != 0){
+//         d_coord intermediateSub = vectorSub(collisionAdjPos,proposed);
+//         proposed = vectorAdd(proposed,intermediateSub); //Update proposed with collisionAdjPos.
+//     }
+//     //Do get Walk Height block. Is this needed? -- Doesn't seem so.
+//     return 1; //Always returns 1, and thus is the bug in the OG code. For our purposes, cannot return anything other than 1.
+// }
 
 
-
-int peopleAdjustPosition(int ballsize,d_coord &proposed){ //IF TRU, MODIFIES PROPOSED HERE.(?) May break up the functions and adjust hierarchy.
-    //what is different between the two scenarios it is called in?
-    //Called in MoveAlongAngle [as part of the normal step check done ever frame] and directly in MoveSub [when distance to target did not decrease]. What gives?
-    d_coord proposed;
-    d_coord collisionAdjPos;
-    //all the stuff before our collision call is ptr setup, lookup and allocation.
-    int collFlag = GS_collision(ballsize,collisionAdjPos); //should only ever return 1 or 0.
-    if (collFlag != 0){
-        d_coord intermediateSub = vectorSub(collisionAdjPos,proposed);
-        proposed = vectorAdd(proposed,intermediateSub); //Update proposed with collisionAdjPos.
-    }
-    //Do get Walk Height block. Is this needed? -- Doesn't seem so.
-    return 1; //Always returns 1, and thus is the bug in the OG code. For our purposes, cannot return anything other than 1.
+//my ver of peopleAdjPosition
+d_coord AdjustIfCollide(int ballSize, d_coord proposed, d_coord old){
+    d_coord adjusted = proposed;
+    if (my_Collision(ballSize,adjusted, d_coord old)){
+        return adjusted; //This format plays slightly safer, only making the modification if GS_Collision returns 1.
+    } //Need to see if GS_Collision modifies position if there is no collision. Otherwise just return the adjusted paramet of GS Collision.
+    //Can then redo GS_Collision to return a position instead of a bool. Can then redo this function to get rid of unnecessary call.
 }
-
-
-
 
 int main(){
     //pretend this is coming from the existing code.
@@ -582,7 +602,7 @@ int main(){
 
     d_coord proposed; //To be modified if applicable.
     int NPC_BALLSIZE = 3; //not const? I think it gets added to with TinyAdjustment later...
-    peopleAdjustPosition(3,proposed); //Only returns 1 due to bug in Colo. XD can return 0...
+    //peopleAdjustPosition(3,proposed); //Only returns 1 due to bug in Colo. XD can return 0...
 
     return 0;
 }
