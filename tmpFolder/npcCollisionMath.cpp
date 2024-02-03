@@ -1,30 +1,6 @@
 #include "processCoreLocal.h"
 #include "NPC.h"
 
-// class tri_data
-// {
-// private:
-//     std::vector<float> points; // 9 values, 3 data pts each.
-//     int orientation_A;
-//     int orientation_B;
-//     int orientation_C;
-//     int interactFlag_A;
-//     int interactFlag_B;
-// public:
-//     tri_data(/* args */);
-//     ~tri_data();
-// };
-
-// tri_data::tri_data(/* args */)
-// {
-// }
-
-// tri_data::~tri_data()
-// {
-// }
-
-
-
 //Fixed, good.
 d_coord getCpPlanePoint(d_coord tri_orientation,d_coord tri_pos_ptr,d_coord adjX_ptr_maybe){ //this assumes the params mean what I think they mean, still testing.
 
@@ -224,7 +200,7 @@ d_coord nudgePos(int ballSize, d_coord position_at_collision, d_coord AdjX){
     return getPointExtensionLine(ballAdjustment,position_at_collision,AdjX);
 }
 
-int checkHitFixedMdl(int ballSize, d_coord AdjX, int roomRegion, d_coord& result_storage){
+int checkHitFixedMdl(int ballSize, d_coord& AdjX, int roomRegion, d_coord& result_storage){ //NOTE THAT BOTH AdjX and ResultStorage may be modified and used later.......
     //MATH TIME
 
     int resultFlag;
@@ -453,7 +429,7 @@ badStyle2:
 
 
 //STRONGLY SUGGEST REVISIT THIS FUNCTION. BUNCH OF WEIRD STUFF.
-bool checkHitCollision(int ballSize, d_coord store_A, d_coord store_B, d_coord& result_storage,const bool hardCoded_0 = 0){
+bool checkHitCollision(int ballSize, d_coord store_A, d_coord store_B, d_coord& result_storage){
     //Lots of ptr setup and data fetching.
 
     //THIS WHOLE THING RESEMBLES THE FILE PARSE THAT I DO FOR THE .CCD FILE.
@@ -491,6 +467,104 @@ bool checkHitCollision(int ballSize, d_coord store_A, d_coord store_B, d_coord& 
         return false; //do not commit results to result_storage.
     }
 }
+int GScolsys2GetObjEnable
+              (uint param_1,undefined4 *param_2,undefined4 param_3,undefined4 param_4,
+              undefined *param_5)
+
+{
+  int iVar1;
+  
+  if (DAT_80404c68 == 0) {
+    iVar1 = 1;
+  }
+  else if (((int)param_1 < 0) || (*(uint *)(DAT_80404c68 + 4) <= param_1)) {
+    iVar1 = 2;
+  }
+  else {
+    iVar1 = 0;
+    param_5 = &DAT_80404c6c + param_1 * 0x28 + DAT_8040836c * 0xdc0;
+  }
+  if (iVar1 != 0) {
+    return iVar1;
+  }
+  if ((*(ushort *)(param_5 + 0x24) & 1) == 0) {
+    *param_2 = 1;
+  }
+  else {
+    *param_2 = 0;
+  }
+  return 0;
+}
+
+
+
+bool npc_collision_deep_dive_1_checkHitCollision(int collisionBallSize,d_coord store_A, d_coord store_B,d_coord result_storage_location)
+{
+    //This func will be the first to read the collision data.
+    // std::vector<std::byte> ccd_DATA; //from .ccd file.
+
+    d_coord collision_calc_result_location_ptr;
+    int *room_data_REGION_maybe;
+    int list_start_plus_0x10; //Start of the section data. 
+    int objEnableResult;
+
+    undefined objRotMatrixPtr [48];
+    undefined objMatrixPtr [64];
+
+                /* Where is store_A even used????? It seems like store_B is
+                    the only thing that is called/passed in this function. */
+    d_coord AdjX = store_B;
+
+    int* list_start = 0; //GETS START OF CCD DATA
+    //int file_start = getWord(data,0x0);
+
+    int firstLim = 0;
+    int i = 0;
+    do {
+        list_start_plus_0x10 = *list_start; //literal data at file_start. Typically the beginning of the block of sections which contain the offsets to the objects.
+        firstLim = 0;
+        unsigned int entry_count = list_start[1]; //same as in our parser.
+        for (unsigned int entry_j = 0; entry_j < entry_count; entry_j++) {
+            GScolsys2GetObjEnable(entry_j,&objEnableResult);
+            if (objEnableResult != 0) {
+                room_data_REGION_maybe = *(int **)(list_start_plus_0x10 + 0x28);
+                if (room_data_REGION_maybe != (int *)0x0) {
+                    int collisionResult;
+                    if ((*(ushort *)(list_start_plus_0x10 + 0x3c) & 1) == 0) {
+                        collisionResult = checkHitFixedMdl(collisionBallSize,AdjX,room_data_REGION_maybe, collision_calc_result_location_ptr);
+                    }
+                    else {
+                        zz_GScolsys2GetObjMatrix(objMatrixPtr,entry_j);
+                        zz_GScolsys2GetObjRotMatrix(objRotMatrixPtr,entry_j);
+                        collisionResult = zz_checkHitMdl(collisionBallSize,AdjX,room_data_REGION_maybe,objMatrixPtr,objRotMatrixPtr,collision_calc_result_location_ptr);
+                    }
+                    if (collisionResult != 0) {
+                        firstLim = firstLim + 1;
+                        AdjX = collision_calc_result_location_ptr;
+                    }
+                }
+            }
+            list_start_plus_0x10 += 0x40;
+        }
+                        /* By the time we get to here, 2/3 entries in memory to our adjusted collision y
+                            are present */
+        } while ((0 < firstLim) && (i++, i < 10));
+        if (0 < i) {
+            result_storage_location = AdjX;
+        }
+    return 0 < i;
+}
+
+        //FILE: 
+        // REGIONS (OFTEN 1 OR 1 BIG ONE)
+        // SECTIONS
+        // OBJECTS
+        // TRIS
+        // POINTS
+        // COORDS
+
+
+
 
 // int GS_collision(int ballSize, d_coord& adjustedPositions_probably){
 //     //Needs to not only return a 
