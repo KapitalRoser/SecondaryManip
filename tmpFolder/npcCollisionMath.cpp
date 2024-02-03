@@ -25,33 +25,29 @@
 
 
 
-//What is this tmpOrient here for?? Otherwise its pretty much good.
+//Fixed, good.
 d_coord getCpPlanePoint(d_coord tri_orientation,d_coord tri_pos_ptr,d_coord adjX_ptr_maybe){ //this assumes the params mean what I think they mean, still testing.
-    d_coord tmpOrient; //DAFUQ IS THIS DOIN HERE????
 
-    float orientation_A = tri_orientation.x; //should these be floats or doubles? This is technically narrowing.
+    //Technically these are imported as an f_coord so this shouldn't be an issue. Deal with it earlier in the line? Or just use d_coords all the way thru here. 
+    float orientation_A = tri_orientation.x; //Once again feel the need to make this a tuple of size 3 for easier manipulation, but it isn't a position so d_coord isn't proper.
     float orientation_B = tri_orientation.z;
     float orientation_C = tri_orientation.y;
 
     d_coord subRes = vectorSub(tri_pos_ptr,adjX_ptr_maybe);
     double factor = (orientation_A * subRes.x) + (orientation_B*subRes.z) + (orientation_C*subRes.y);
     double divisor = (pow(orientation_C,2)+ pow(orientation_A,2) + pow(orientation_B,2));  //can add a square vector for the divisor, need to keep this multiplication as is because scale uses a common term.
+    //double divisor = vectorSquareMag(orientation_Set);
 
-    //Here we have the important question of is d_coord a position or is d_coord any tuple of size three. It isn't really. but it would be so clean to use here...
-    d_coord scaleResult = vectorScale((double)(factor / divisor), tmpOrient); //Need this double convert?
+    d_coord scaleResult = vectorScale((factor / divisor), tri_orientation); //Need this double convert?
     return vectorAdd(scaleResult,adjX_ptr_maybe); //Save first
 }
-//dafuq is funkyOffset? What is triPtr doing here?
+
+//Fixed, can update funkyOffset label later when I understand more.
 double getCpLinePoint(d_coord& result_location, d_coord tri_pos_ptr,d_coord funkyOffset, d_coord adjX){ //unlike the other one, this can return a separate value.
-   //HOW DOES TRI POINTER MAKE SENSE HERE???? REVIEW! Is this a particular point within the tri?
-    //WHAT IS FUNKY OFFSET?!?! REVIEW
     d_coord subResult = vectorSub(funkyOffset,tri_pos_ptr);
     double intermediateResult = 0.0;
     if (vectorSquareMag(subResult) == intermediateResult){
         //meaning sq result is 0
-        // result_location.x = tri_pos_ptr.x;
-        // result_location.z = tri_pos_ptr.z;
-        // result_location.y = tri_pos_ptr.y;
         result_location = tri_pos_ptr;
     } else {
         // working = vectorSub(adjX,tri_pos_ptr);
@@ -65,16 +61,18 @@ double getCpLinePoint(d_coord& result_location, d_coord tri_pos_ptr,d_coord funk
         result_location = vectorAdd(scaleResult,tri_pos_ptr);
     }
     return intermediateResult; //Do I really need to return this??? Is this useful?? Otherwise keep result_location.
+    //looks like I do need this intermediate result to be returned as well as restul storing in result_location.
 
 }
 
 //This one is good. Nice and simple.
-void getPointExtensionLine(const double adjustedBallSize,d_coord &finalResultLocation,d_coord position_at_collision,d_coord adjX){
+d_coord getPointExtensionLine(const double adjustedBallSize,d_coord position_at_collision,d_coord adjX){
     d_coord intermediate = vectorSub(adjX,position_at_collision);
     double mag = vectorMagnitude(intermediate);
     intermediate = vectorScale((adjustedBallSize / mag), intermediate);
-    finalResultLocation = vectorAdd(intermediate,position_at_collision); //return this instead of void return.
+    return vectorAdd(intermediate,position_at_collision); //return this instead of void return.
 }
+
 //This is good, would only change if I decide to allow orientation to be a d_coord. 
 double getSidePlanePoint(std::vector<float>tri_orientation,d_coord tri_pos_ptr,d_coord adjX_ptr){
 
@@ -122,29 +120,26 @@ int chkIntri (d_coord adjX_Data_ptr, std::vector<float> tri_pointer,std::vector<
         c_copy = -c;
     }
 
-    /*
-    for (float flag : orientationFlags){
-        flag = flag <= 0 ? -(flag) : flag; //include way to make 0 into neg(0) or redo the whole thing with enums or from bottom up.
-        //Use std::signbit(-0) from math.h for the neg zero check. returns true if NEGATIVE.
-    }
-    */
+    //Use std::signbit(-0) from math.h for the neg zero check. returns true if NEGATIVE.
+
     //logic is done on the COPIES, ADJUST TO C IS DONE ON THE ACTUAL. Picks axis of tri.
+    enum DIMENSION {X = 0, Z = 1, Y = 2};
     if (b_copy <= a_copy){
         if (a_copy <= c_copy){
-            flag_0_2 = 0; //xz
-            flag_0_1 = 1;
+            flag_0_2 = X; //xz
+            flag_0_1 = Z;
         } else {
-            flag_0_2 = 2; //yz
-            flag_0_1 = 1;
+            flag_0_2 = Y; //yz
+            flag_0_1 = Z;
             orientationFlags[2] = -orientationFlags[0]; //real!
         }
     } else if (c_copy <= b_copy){
-        flag_0_2 = 2; //yx
-        flag_0_1 = 0;
+        flag_0_2 = Y; //yx
+        flag_0_1 = X;
         orientationFlags[2] = orientationFlags[1];
     } else {
-        flag_0_2 = 0; //x
-        flag_0_1 = 1; //z
+        flag_0_2 = X; //x
+        flag_0_1 = Z; //z
     } //Most of this if else block can be taken away by a getAllX's function on some array of 3 int coord objects like position.x .z and .y
     //GetAllY's or GetAllZ's too. As well as reversers for the negative C value where applicable. Probably easiest to use two sep vecs than this interlocking single vec format. tiny bit more memory but super readable.
 
@@ -161,6 +156,9 @@ int chkIntri (d_coord adjX_Data_ptr, std::vector<float> tri_pointer,std::vector<
     //adjX_val_A = adjX_Data_ptr + flag_0_2 * 4; //CHANGE TO FLAT INSTEAD OF *4 WHEN GET RID OF PTR AND REPLACE WITH VECTOR.
     //adjX_val_B = adjX_Data_ptr + flag_0_1 * 4; //same xyz selection as before.
 
+
+//CHECK AGAINST POINTERS, MAKE SURE FLAGS ARE ACTUALLY IN THE RIGHT ORDER.
+//WANT TO MAKE SURE IT IS SAFE TO REVERSE OR IF NEED TO KEEP THIS ARRANGEMENT AS IS, OR CUSTOM.
     if (0 <= orientationFlags[2]){ //i.e value is positive
         //this only makes sense on the context of pointers. 
         //values_vec().reverse()
@@ -168,12 +166,12 @@ int chkIntri (d_coord adjX_Data_ptr, std::vector<float> tri_pointer,std::vector<
         arranged_data[1] = tri_pointer[flag_0_1 + 6];
         arranged_data[3] = tri_pointer[flag_0_2 + 3];
         arranged_data[4] = tri_pointer[flag_0_1 + 3];
-        arranged_data[6] = tri_pointer[flag_0_1];
-        arranged_data[7] = tri_pointer[flag_0_2];
+        arranged_data[6] = tri_pointer[flag_0_2];
+        arranged_data[7] = tri_pointer[flag_0_1];
         //2 and 5 are skipped.
     } else { // value_C is negative.
-        arranged_data[0] = tri_pointer[flag_0_1];
-        arranged_data[1] = tri_pointer[flag_0_2];
+        arranged_data[0] = tri_pointer[flag_0_2];
+        arranged_data[1] = tri_pointer[flag_0_1];
         arranged_data[3] = tri_pointer[flag_0_2 + 3];
         arranged_data[4] = tri_pointer[flag_0_1 + 3];
         arranged_data[6] = tri_pointer[flag_0_2 + 6]; // or +3 
@@ -197,36 +195,42 @@ int chkIntri (d_coord adjX_Data_ptr, std::vector<float> tri_pointer,std::vector<
     }
     
     //using 2 vecs might make this simpler and take out some of the above rearranging that we do.
-    if ((arranged_data[3] - arranged_data[0]) * (adjX_val_B - arranged_data[1]) -
-            (arranged_data[4] - arranged_data[1]) * (adjX_val_A - arranged_data[0]) <= 0) {
-       
-        flag_0_2 = 2;
-        
-        if ((arranged_data[flag_0_2 * 3] - arranged_data[3]) * (adjX_val_B - arranged_data[4]) -
-            (arranged_data[flag_0_2 * 3 + 1] - arranged_data[4]) * (adjX_val_A - arranged_data[3]) <= 0) { //ooh some dynamic indexing with this flag_0_2 stuff here....
-            
-            flag_0_2 = 0;
-            
-            if ((arranged_data[flag_0_2 * 3] - arranged_data[6]) * (adjX_val_B - arranged_data[7]) -
-                (arranged_data[flag_0_2 * 3 + 1] - arranged_data[7]) * (adjX_val_A - arranged_data[6]) <=
-                FLOAT_0) {
-             //THIS IS THE ONLY ONE THAT RETURNS TRUE.
-                return 1;
-            }
-        }
+
+
+    if(    
+        (
+            (arranged_data[3] - arranged_data[0]) * (adjX_val_B - arranged_data[1]) -
+            (arranged_data[4] - arranged_data[1]) * (adjX_val_A - arranged_data[0]) <= 0.0
+        ) 
+            &&
+        (
+            (arranged_data[6] - arranged_data[3]) * (adjX_val_B - arranged_data[4]) -
+            (arranged_data[7] - arranged_data[4]) * (adjX_val_A - arranged_data[3]) <= 0.0
+        )
+            &&
+        (
+            (arranged_data[0] - arranged_data[6]) * (adjX_val_B - arranged_data[7]) -
+            (arranged_data[1] - arranged_data[7]) * (adjX_val_A - arranged_data[6]) <= 0.0
+        )
+    ){
+        return 1;
     }
+
     return 0; //all other cases.
 }
 
+d_coord nudgePos(int ballSize, d_coord position_at_collision, d_coord AdjX){
+    double ballAdjustment = ballSize + 0.00009999999747378752; // in the code: value: 0x38d1b717
+    return getPointExtensionLine(ballAdjustment,position_at_collision,AdjX);
+}
 
-//int GetObjEnable(int j){return 1;} //don't think I actually care about this one...
 int checkHitFixedMdl(int ballSize, d_coord AdjX, int roomRegion, d_coord& result_storage){
     //MATH TIME
 
     int resultFlag;
     d_coord position_at_collision;
     //what do these correspond to?
-    float intermediateRegion7 = 0;
+    float intermediateRegion7 = 0; //roomRegion[7] etc.
     float intermediateRegion8 = 0;
     float intermediateRegion5 = 0;
     float intermediateRegion6 = 0;
@@ -253,40 +257,38 @@ int checkHitFixedMdl(int ballSize, d_coord AdjX, int roomRegion, d_coord& result
 
 
     int yMinusBall_Copy = yMinusBall;
-    bool weirdBool = false; //This is probably "did collision occur"
-    while ((yMinusBall_Copy <= yPlusBall) && (!weirdBool)){
+    bool didCollisionOccur = false; //This is probably "did collision occur"
+    while ((yMinusBall_Copy <= yPlusBall) && (!didCollisionOccur)){
         int roomRegion_bracket2 = 0;
         int ptrA = roomRegion_bracket2 + (xMinusBall + yMinusBall_Copy * regionPtr_plus4) * 8;
         int xMinusBall_copy = xMinusBall;
-        while (xMinusBall_copy <= xPlusBall && (!weirdBool)){
+        while (xMinusBall_copy <= xPlusBall && (!didCollisionOccur)){
             int i = 0;
             int regionPtr_bracket3 = 0;
             int ptrB = regionPtr_bracket3 + ptrA * 4; //not a ptr? the values??
             int ptrA_bracket1 = 0;
-            while(i < ptrA_bracket1 && (!weirdBool)){
+            while(i < ptrA_bracket1 && (!didCollisionOccur)){
                 float tri_ptr = roomRegion + (ptrB * 0x34); //0x34 is the size of a tri, so this probably iterates through the tris.
-                std::vector<float>tri_ptr_plus_x24_floats;
-                std::vector<float>tri_ptr_floats;
+                std::vector<float>tri_Normals;
+                std::vector<float>tri_ptr_floats; //9 d_coords total.
                 std::vector<float>AdjX_floats;
-                double planePoint_result = getSidePlanePoint(tri_ptr_plus_x24_floats,tri_ptr_floats,AdjX_floats); //shockingly simple. Circumstantial parameters, need to confirm that these are what I think they are.
-                if (0 <= planePoint_result){
+                double planePoint_result = getSidePlanePoint(tri_Normals,tri_ptr_floats,AdjX_floats); //shockingly simple. Circumstantial parameters, need to confirm that these are what I think they are.
+                if (planePoint_result >= 0){
                     d_coord cpPlaneResult = getCpPlanePoint(tri_ptr+0x24,tri_ptr,AdjX); //CP IS INFLUENCED BY adjX -- does not return anything normally, but I may choose to alter this to be better style.
                     double distanceSquared = vectorSquareDistance(cpPlaneResult,AdjX);
                     if (distanceSquared < ballSizeSquared) { //if the distance squared from the proposed to the CP is less than the squared ball size then begin detailed tri checking.
-                        int ChkInTri_result = chkIntri(float(0),tri_ptr,tri_ptr+0x24);//first param is adjX stuff I believe
+                        int ChkInTri_result = chkIntri(0.0,tri_ptr,tri_ptr+0x24);//first param is adjX stuff I believe
                         if (ChkInTri_result == 0){
-                            weirdBool = false;
+                            didCollisionOccur = false;
                         } else {
-                            weirdBool = true;
-                            position_at_collision.x = cpPlaneResult.x;
-                            //position_at_collision.z = cpPlaneResult.z;
-                            position_at_collision.y = cpPlaneResult.y;
+                            didCollisionOccur = true;
+                            position_at_collision = cpPlaneResult;
                         }
                     } else {
-                        weirdBool = false;
+                        didCollisionOccur = false;
                     }
                 } else {
-                    weirdBool = false;
+                    didCollisionOccur = false;
                 }
                 i++;
                 ptrB++;
@@ -296,31 +298,29 @@ int checkHitFixedMdl(int ballSize, d_coord AdjX, int roomRegion, d_coord& result
         }
         yMinusBall_Copy++;
     }
-    if (weirdBool){
-        //if collisionLocPtr is nullptr, then return 1. Move this whole block into the one if block where weirdbool is true. then the rest of the blocks can be eliminated into a single return false statement.
-        double ballAdjustment = ballSize + 0.00009999999747378752; // in the code: value: 0x38d1b717
-        getPointExtensionLine(ballAdjustment,result_storage,position_at_collision,AdjX);
+    if (didCollisionOccur){
+        result_storage = nudgePos(ballSize,position_at_collision,AdjX);
         resultFlag = 1;
     } else {
         //many more while loops.Some similarities with above. ICK FORGOT ABOUT THESE....
-        //Two more main loops wherein there is a possibility of weirdBool becoming true. 
+        //Two more main loops wherein there is a possibility of didCollisionOccur becoming true. 
         //What are the differences????
         //2nd big loop:
 
 
         //all of this is identical to the loop above until the differences comment;
-        weirdBool = false;
+        didCollisionOccur = false;
         int yMinusBall_Copy_2 = yMinusBall;
-        while ((yMinusBall_Copy_2 <= yPlusBall) && (!weirdBool)){
+        while ((yMinusBall_Copy_2 <= yPlusBall) && (!didCollisionOccur)){
             int roomRegion_bracket2 = 0;
             int ptrA = roomRegion_bracket2 + (xMinusBall + yMinusBall_Copy * regionPtr_plus4) * 8;
             int xMinusBall_copy_2 = xMinusBall;
-            while((xMinusBall_copy_2 <= xPlusBall) && (!weirdBool)){
+            while((xMinusBall_copy_2 <= xPlusBall) && (!didCollisionOccur)){
                 int i = 0;
                 int regionPtr_bracket3 = 0;
                 int ptrB = regionPtr_bracket3 + ptrA * 4; //not a ptr? the values??
                 int ptrA_bracket1 = 0;
-                while(i < ptrA_bracket1 && (!weirdBool)){
+                while(i < ptrA_bracket1 && (!didCollisionOccur)){
                     float tri_ptr = roomRegion + (ptrB * 0x34);
                     //NOW THE DIFFERENCES BEGIN
                     int val_at_tri_ptr_plus30 = 0;
@@ -341,15 +341,13 @@ int checkHitFixedMdl(int ballSize, d_coord AdjX, int roomRegion, d_coord& result
                                     }
                                     d_coord cpLineResult;
                                     //I REALLY NEED FUNKY OFFSET....DAFUQ IS THAT.
-                                    d_coord funkyOffset;
-                                    double cpLineIntermediate = getCpLinePoint(cpLineResult,,funkyOffset,AdjX); //--------------UNFINISHED!
+                                    float funkyOffset = tri_ptr + iVar2 * 0xC;
+                                    double cpLineIntermediate = getCpLinePoint(cpLineResult,tri_ptr_copy,funkyOffset,AdjX); //--------------UNFINISHED!
                                     double distanceSquared_2 = vectorSquareDistance(cpLineResult,AdjX);
                                     if (0.0 <= cpLineIntermediate && 1.0 <= cpLineIntermediate && distanceSquared_2 < ballSizeSquared){
                                         //MEANINGFUL DIFFERENCES END
-                                        weirdBool = true;
-                                        position_at_collision.x = cpLineResult.x;
-                                        //position_at_collision.z = cpPlaneResult.z;
-                                        position_at_collision.y = cpLineResult.y;
+                                        didCollisionOccur = true;
+                                        position_at_collision = cpLineResult;
                                         //Icky gross gross gross
                                         goto badStyle;
                                     }
@@ -358,9 +356,9 @@ int checkHitFixedMdl(int ballSize, d_coord AdjX, int roomRegion, d_coord& result
                                 tri_ptr_copy+=0xC;
                                 ptrC+=2;
                             }while (j < 3);
-                            weirdBool = false;
+                            didCollisionOccur = false;
                         } else {
-                            weirdBool = false;
+                            didCollisionOccur = false;
                         }
                         //ACTUAL DIFFERENCES END.
                     }
@@ -373,27 +371,25 @@ badStyle:
         }
         yMinusBall_Copy_2++;
     }
-    if (weirdBool){
-        //identical to above
-        double ballAdjustment = ballSize + 0.00009999999747378752; // in the code: value: 0x38d1b717
-        getPointExtensionLine(ballAdjustment,result_storage,position_at_collision,AdjX);
+    if (didCollisionOccur){
+        result_storage = nudgePos(ballSize,position_at_collision,AdjX);
         resultFlag = 1;
     } else {
         //third and final loop.
-        weirdBool = false;
+        didCollisionOccur = false;
         //no copy done -- use straight up value.
-        while ((yMinusBall <= yPlusBall) && (!weirdBool))
+        while ((yMinusBall <= yPlusBall) && (!didCollisionOccur))
         {
             int roomRegion_bracket2 = 0;
             int ptrA = roomRegion_bracket2 + (xMinusBall + yMinusBall_Copy * regionPtr_plus4) * 8;
             int xMinusBall_copy_3 = xMinusBall;
-            while ((xMinusBall_copy_3 <= xPlusBall) && (!weirdBool)){
+            while ((xMinusBall_copy_3 <= xPlusBall) && (!didCollisionOccur)){
                 int i = 0;
                 int regionPtr_bracket3 = 0;
                 int ptrB = regionPtr_bracket3 + ptrA * 4; //not a ptr? the values??
                 int ptrA_bracket1 = 0;
                 //up until this loop below, all three sets use the same setup.
-                while((i < ptrA_bracket1) && (!weirdBool)){
+                while((i < ptrA_bracket1) && (!didCollisionOccur)){
                     float tri_ptr = roomRegion + (ptrB * 0x34);
                     int val_at_tri_ptr_plus30 = 0;
                     if ((val_at_tri_ptr_plus30 & 7)!= 0){
@@ -413,10 +409,11 @@ badStyle:
                                 //NO CP GETTING HERE....
                                 double distanceSquared_3 = vectorSquareDistance(tri_ptr_3_copy,AdjX);
                                 if (((val_at_tri_ptr_plus30 & ptrC) != 0) && ((val_at_tri_ptr_plus30 & local_d8) != 0) && (distanceSquared_3 < ballSizeSquared) ){
-                                    weirdBool = true;
+                                    didCollisionOccur = true;
+                                    //convert this to d_coord stuff.
                                     int posAtCol_ptr = tri_ptr + j_2 * 0xC;
                                     position_at_collision.x = posAtCol_ptr;
-                                    //position_at_collision.z = posAtCol_ptr[1];
+                                    position_at_collision.z = posAtCol_ptr[1];
                                     position_at_collision.y = posAtCol_ptr+0x8; //[2]
                                     //ICK A GOTO.... How dare you ghidra.
                                     goto badStyle2;
@@ -426,10 +423,10 @@ badStyle:
                                 ptrC += 2;
                                 /* code */
                             } while (j_2 < 3);
-                            weirdBool = false;
+                            didCollisionOccur = false;
                         } 
                         else {
-                            weirdBool = false;
+                            didCollisionOccur = false;
                         }
                     }
 //ICK ICK ICK ICK ICK REDO THIS FOR THE LOVE OF GOD                            
@@ -442,10 +439,8 @@ badStyle2:
             }
             yMinusBall++;
         }
-        if (weirdBool){
-            //identical to above
-            double ballAdjustment = ballSize + 0.00009999999747378752; // in the code: value: 0x38d1b717
-            getPointExtensionLine(ballAdjustment,result_storage,position_at_collision,AdjX);
+        if (didCollisionOccur){
+            result_storage = nudgePos(ballSize,position_at_collision,AdjX);
             resultFlag = 1;
         } else {
             resultFlag = 0;
@@ -456,17 +451,21 @@ badStyle2:
 }
 
 
+
+//STRONGLY SUGGEST REVISIT THIS FUNCTION. BUNCH OF WEIRD STUFF.
 bool checkHitCollision(int ballSize, d_coord store_A, d_coord store_B, d_coord& result_storage,const bool hardCoded_0 = 0){
     //Lots of ptr setup and data fetching.
+
+    //THIS WHOLE THING RESEMBLES THE FILE PARSE THAT I DO FOR THE .CCD FILE.
     //Result is the location of the room data and the region of the room?
-    int room = 0;
-    int region = 0;
+    int room = 0; //MAYBE THIS IS OBJECT, NOT ROOM LOL.
+    int region = 0; //DOES THIS GET CHANGED?
     
-    d_coord adjustedSubWithDivResult = store_B;
+    d_coord point_Diffs = store_B;
     d_coord localResultStorage;
-    int firstLim = 0;
-    //int secondLim = 8;//Wtf is this actually representing? its roomPtr[1]... maybe num regions?
-    int thirdLim = 0;
+    int firstLim = 0; //DOES THIS GET UPDATED?
+    int secondLim = 8;//Wtf is this actually representing? its roomPtr[1]... maybe num sections?
+    int thirdLim = 0; //DOES THIS MATTER?
     //Why have all these limits and checks?
     int i = 0;
     do
@@ -474,19 +473,16 @@ bool checkHitCollision(int ballSize, d_coord store_A, d_coord store_B, d_coord& 
         firstLim = 0;
         int room_Copy = room;
         //Also copies roomDataPtr
-        for (int j = 0; j < 8; j++){
+        for (int j = 0; j < secondLim; j++){
             //int ObjEnableResult = GetObjEnable(j); //Don't think I need this, reevaluate if its possible to get something else. 
             //if (ObjEnableResult != 0){
-                int collisionResultFlag = checkHitFixedMdl(ballSize,adjustedSubWithDivResult,region,localResultStorage);
+                int collisionResultFlag = checkHitFixedMdl(ballSize,point_Diffs,region,localResultStorage);
                 if (collisionResultFlag != 0){
-                    if (result_storage.x == 0){//in the code it's if this is nullptr. Should not need this in my code.
-                        return true;
-                    }
                     thirdLim++;
                 }
             //}
             room_Copy += 0x40; //scanning rooms? regions?
-        }
+        }//This i increment prob doesn't happen if firstLim isn't updated, since it will fail the AND check.
     } while ((firstLim > 0) && (i = i + 1, i < 10));
     if (i > 0){
         result_storage = localResultStorage; //commit results.
@@ -548,15 +544,10 @@ int my_Collision(int ballSize, d_coord& adjPosLoc, d_coord old){ //might not nee
 
     d_coord proposed = adjPosLoc;
 
-    d_coord dataStore_A = old;
-    d_coord dataStore_B = vectorSub(proposed,old); //Can compress further if needed.
+    d_coord point_diffs = vectorSub(proposed,old); //Can compress further if needed.
        
-        bool collisionResultFlag = checkHitCollision(ballSize,dataStore_A,dataStore_B,adjPosLoc,0);
-        if(collisionResultFlag){
-            return 1;//This boils down to prepping dataStoreA and dataStoreB and returning the adjPosition again, just like last func.
-        }
-    
-    return 0;
+    bool collisionResultFlag = checkHitCollision(ballSize,old,point_diffs,adjPosLoc,0);
+    return collisionResultFlag;
 }
 
 
