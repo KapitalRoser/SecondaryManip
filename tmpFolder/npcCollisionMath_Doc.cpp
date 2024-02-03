@@ -262,8 +262,38 @@ int chkIntri (float adjX_Data_ptr, float tri_data_ptr,float orientationFlags_ptr
     return 0; //all other cases.
 }
 
+int GScolsys2GetObjEnable
+              (uint entry_j,undefined4 *objEnableResultLoc, undefined4 param_3, undefined4 param_4,
+              undefined *param_5) //params 3 and 4 aren't used.
 
-int GetObjEnable(int j){return 1;} //don't think I actually care about this one...
+{
+
+    //What happens if 
+  int iVar1;
+  int datC68 = 0x80404C68;
+  int datC6C = 0x80404C6C;
+  int dat36C = 0x8040836C;
+  if (datC68 == 0) {
+    iVar1 = 1;
+  }
+  else if ((entry_j < 0) || (*(unsigned int *)(datC68 + 4) <= entry_j)) {
+    iVar1 = 2;
+  }
+  else {
+    iVar1 = 0;
+    param_5 = &datC6C + entry_j * 0x28 + dat36C * 0xdc0;
+  }
+  if (iVar1 != 0) {
+    return iVar1;
+  }
+  if ((*(ushort *)(param_5 + 0x24) & 1) == 0) {
+    *objEnableResultLoc = 1;
+  }
+  else {
+    *objEnableResultLoc = 0;
+  }
+  return 0;
+}
 int checkHitFixedMdl(int ballSize, d_coord AdjX, int roomRegion, d_coord& result_storage){
     //MATH TIME
 
