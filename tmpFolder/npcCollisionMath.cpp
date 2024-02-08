@@ -346,6 +346,8 @@ int yMinusBall_Copy = yMinusBall;
     //Did collision occur bool check
     //Can just return early.
 
+
+
     didCollisionOccur = false;
         int yMinusBall_Copy_2 = yMinusBall;
         while ((yMinusBall_Copy_2 <= yPlusBall) && (!didCollisionOccur)){
@@ -408,6 +410,64 @@ badStyle:
         }
 
 
+for (int ymbc2 = 0; ymbc2 < yPlusBall; ymbc2++)
+{
+    int ptrA = end_offset + (xMinusBall + yMinusBall_Copy_2 * xUpperLim) * 8;
+    for (int xmbc2 = 0; xmbc2 < xPlusBall; xmbc2++)
+    {
+        int i = 0;
+        int ptrB = buffer_start + ptrA * 4; //not a ptr? the values??
+        int ptrA_bracket1 = 0;
+        while(i < ptrA_bracket1 && (!didCollisionOccur)){
+            float tri_ptr = object_pointer + (ptrB * 0x34);
+            //NOW THE DIFFERENCES BEGIN
+            int val_at_tri_ptr_plus30 = 0;
+            if ((val_at_tri_ptr_plus30 & 7)!= 0){
+                //save some data, very weird.. investigate.
+                int local_d0 = 0; //used once?
+                int local_cc = 0; //never used?
+                double planePoint_result = getSidePlanePoint(tri_ptr+0x24,tri_ptr,AdjX);
+                if (0 <= planePoint_result){
+                    int ptrC = local_d0;
+                    int j = 0;
+                    float tri_ptr_copy = tri_ptr;
+                    do {
+                        if ((val_at_tri_ptr_plus30 & ptrC) != 0){
+                            int iVar2 = j+1;
+                            if (2 < iVar2){
+                                iVar2 = 0;
+                            }
+                            d_coord cpLineResult;
+                            //I REALLY NEED FUNKY OFFSET....DAFUQ IS THAT.
+                            float funkyOffset = tri_ptr + iVar2 * 0xC;
+                            double cpLineIntermediate = getCpLinePoint(cpLineResult,tri_ptr_copy,funkyOffset,AdjX); //--------------UNFINISHED!
+                            double distanceSquared_2 = vectorSquareDistance(cpLineResult,AdjX);
+                            if (0.0 <= cpLineIntermediate && 1.0 <= cpLineIntermediate && distanceSquared_2 < ballSizeSquared){
+                                //MEANINGFUL DIFFERENCES END
+                                didCollisionOccur = true;
+                                position_at_collision = cpLineResult;
+                                //Icky gross gross gross
+                                goto badStyle;
+                            }
+                        }
+                        j++;
+                        tri_ptr_copy+=0xC;
+                        ptrC+=2;
+                    }while (j < 3);
+                    didCollisionOccur = false;
+                } else {
+                    didCollisionOccur = false;
+                }
+                //ACTUAL DIFFERENCES END.
+            }
+badStyle:
+            i++;
+            ptrB++;
+        }
+        ptrA+=2;
+    }
+    
+}
 
 
 
