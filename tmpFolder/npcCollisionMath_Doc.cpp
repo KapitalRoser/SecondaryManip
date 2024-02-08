@@ -299,7 +299,17 @@ int GScolsys2GetObjEnable
 }
 int checkHitFixedMdl(int ballSize, d_coord AdjX, int roomRegion, d_coord& result_storage){
     //MATH TIME
-
+    //[0] = offset to the actual tri points data.
+    //[1] = num_tris in the object.
+    //[2] = offset to end of list. (after the 0300 or 0600 bit.)
+    //[3] = start of the "buffer space" before the following list. shouldn't matter for us.
+    //[4].A = Upper limit for xPlusBall
+    //[4].B = Upper limit for yPlusBall
+    //These four values are whole numbers which will m
+    //[5] = Scale? Seems always set to 40
+    //[6] = Scale? Seems always set to 40
+    //[7] = Object Origin X
+    //[8] = Object Origin Y.
     int resultFlag;
     d_coord position_at_collision;
     //what do these correspond to?
@@ -348,7 +358,7 @@ int checkHitFixedMdl(int ballSize, d_coord AdjX, int roomRegion, d_coord& result
                     getCpPlanePoint(d_coord result_location,tri_ptr+0x24,tri_ptr,AdjX); //CP IS INFLUENCED BY adjX -- does not return anything normally, but I may choose to alter this to be better style.
                     double distanceSquared = vectorSquareDistance(cpPlaneResult,AdjX);
                     if (distanceSquared < ballSizeSquared) { //if the distance squared from the proposed to the CP is less than the squared ball size then begin detailed tri checking.
-                        int ChkInTri_result = chkIntri(float(0),tri_ptr,tri_ptr+0x24);//first param is adjX stuff I believe
+                        int ChkInTri_result = chkIntri(AdjX,tri_ptr,tri_ptr+0x24);//first param is adjX stuff I believe
                         if (ChkInTri_result == 0){
                             weirdBool = false;
                         } else {
@@ -527,48 +537,60 @@ badStyle2:
     return resultFlag;
 }
 
+bool npc_collision_deep_dive_1_checkHitCollision(int collisionBallSize,d_coord store_A, d_coord store_B,d_coord result_storage_location)
+{
+    //This func will be the first to read the collision data.
+    // std::vector<std::byte> ccd_DATA; //from .ccd file.
 
+    d_coord collision_calc_result_location_ptr;
+    int *object_ptr;
+    int section_ptr; //Start of the section data. 
+    int objEnableResult;
 
-bool checkHitCollision(int ballSize, d_coord store_A, d_coord store_B, d_coord& result_storage,const bool hardCoded_0 = 0){
-    //Lots of ptr setup and data fetching.
-    //Result is the location of the room data and the region of the room?
-    int room = 0;
-    int region = 0;
-    
-    d_coord adjustedSubWithDivResult = store_B;
-    d_coord localResultStorage;
+    undefined objRotMatrixPtr [48];
+    undefined objMatrixPtr [64];
+
+                /* Where is store_A even used????? It seems like store_B is
+                    the only thing that is called/passed in this function. */
+    d_coord AdjX = store_B;
+
+    int* list_start = 0; //GETS START OF CCD DATA
+    //int file_start = getWord(data,0x0);
+
     int firstLim = 0;
-    //int secondLim = 8;//Wtf is this actually representing? its roomPtr[1]... maybe num regions?
-    int thirdLim = 0;
-    //Why have all these limits and checks?
     int i = 0;
-    do
-    {
+    do {
+        section_ptr = *list_start; //literal data at file_start. Ex. 0x10 Typically the beginning of the block of sections which contain the offsets to the objects.
         firstLim = 0;
-        int room_Copy = room;
-        //Also copies roomDataPtr
-        for (int j = 0; j < 8; j++){
-            int ObjEnableResult = GetObjEnable(j);
-            if (ObjEnableResult != 0){
-                int collisionResultFlag = checkHitFixedMdl(ballSize,adjustedSubWithDivResult,region,localResultStorage);
-                if (collisionResultFlag != 0){
-                    if (result_storage.x == 0){//in the code it's if this is nullptr. Should not need this in my code.
-                        return true;
-                    }
-                    thirdLim++;
+        unsigned int entry_count = list_start[1]; //same as in our parser.
+        for (unsigned int section_j = 0; section_j < entry_count; section_j++) {
+            object_ptr = *(int **)(section_ptr + 0x28);
+            if (object_ptr != (int *)0x0) { 
+                int collisionResult;
+                if ((*(ushort *)(section_ptr + 0x3c) & 1) == 0) { //I checked the m1_out and m1_shop_2f files and didn't ever see where this condition would be false (i.e where there would be an odd value or the flag 0x1 present.)
+                    collisionResult = checkHitFixedMdl(collisionBallSize,AdjX,object_ptr, collision_calc_result_location_ptr);
+                }
+                else {
+                    //NEVER SEEM TO HIT THIS IN PRACTICE, EVEN WHEN RUN INTO NPC WITH HERO.
+                    zz_GScolsys2GetObjMatrix(objMatrixPtr,section_j);
+                    zz_GScolsys2GetObjRotMatrix(objRotMatrixPtr,section_j);
+                    collisionResult = zz_checkHitMdl(collisionBallSize,AdjX,object_ptr,objMatrixPtr,objRotMatrixPtr,collision_calc_result_location_ptr);
+                }
+                if (collisionResult != 0) {
+                    firstLim = firstLim + 1;
+                    AdjX = collision_calc_result_location_ptr;
                 }
             }
-            room_Copy += 0x40; //scanning rooms? regions?
+            section_ptr += 0x40;
         }
-    } while ((firstLim > 0) && (i = i + 1, i < 10));
-    if (i > 0){
-        result_storage = localResultStorage; //commit results.
-        return true;
-    } else {
-        return false; //do not commit results to result_storage.
-    }
+                        /* By the time we get to here, 2/3 entries in memory to our adjusted collision y
+                            are present */
+        } while ((0 < firstLim) && (i++, i < 10));
+        if (0 < i) {
+            result_storage_location = AdjX;
+        }
+    return 0 < i;
 }
-
 
 int GS_collision(int ballSize, d_coord& adjustedPositions_probably){
     //default ballSize = 3
