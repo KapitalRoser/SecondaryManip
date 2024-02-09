@@ -277,6 +277,55 @@ d_coord nudgePos(int ballSize, d_coord position_at_collision, d_coord AdjX){
 //however we gotta keep this organized or I'll lose it somewhere in all the function calls.
 
 
+//my fn -- returns posAtCol and a bool which becomes didCollisionOccur
+bool innerFoo0(d_coord &posAtCol, const tri &currentTri, const int ballSizeSquared, d_coord AdjX){ //no changes to adjX here.
+    if (getSidePlanePoint(currentTri.normals,currentTri.points[0],AdjX) >= 0){ //shockingly simple. This signature and the next one are fine as is. Only shorten the chkInTri signature to take the whole tri. The other two fns make it clearer what data they're using by having separate parameters.
+        d_coord cpPlaneResult = getCpPlanePoint(currentTri.normals,currentTri.points[0],AdjX); //CP IS INFLUENCED BY adjX -- does not return anything normally, but I may choose to alter this to be better style.
+        if ((vectorSquareDistance(cpPlaneResult,AdjX) < ballSizeSquared) && chkIntri(AdjX,currentTri.points,currentTri.normals) != 0) { //if the distance squared from the proposed to the CP is less than the squared ball size then begin detailed tri checking.
+                posAtCol = cpPlaneResult; //save
+                return true;
+        }
+    }
+    return false;
+} //Seems to check the first point in detail?
+
+//Investigate val(triPtr+30) as well as local_d0 and such. May help with the structure of the logic.
+bool innerFoo1(d_coord &posAtCol, const tri& currentTri, const int ballSizeSquared, d_coord AdjX ){
+    int val_at_tri_ptr_plus30 = 0; //What does this mean lmao investigate. value(triPtr+30)
+    if ((val_at_tri_ptr_plus30 & 7)!= 0){
+        int local_d0 = 0; //used once?
+        // int local_cc = 0; //never used?
+        double planePoint_result = getSidePlanePoint(currentTri.normals,currentTri.points[0],AdjX); //oo reused from foo0
+        if (0 <= planePoint_result){
+            int ptrC = local_d0;
+                //Maybe this is iterating through the 3 points on a tri. Doesn't exist in innerfoo1
+            for (int j = 0; j < 3; j++) //J IS EQUIVALENT TO tri_point_idx. However not sure if that makes sense in the way that ivar2/funkyoffset is used.
+            {
+                if ((val_at_tri_ptr_plus30 & ptrC) != 0){ //The only place that local_d0 gets used?
+                    int successivePoint = j > 1 ? 0 : j+1; //I SUSPECT THAT FUNKY OFFSET REFERS TO ANOTHER POINT IN THE SAME TRI.
+                    d_coord cpLineResult; //There is way too much code to try and consolidate these into one return value.
+                    double cpLineIntermediate = getCpLinePoint(cpLineResult,currentTri.points[j],currentTri.points[successivePoint],AdjX);
+                    double distanceSquared = vectorSquareDistance(cpLineResult,AdjX);
+                    //Thoughts on function calls inside if statements?
+                    if (0.0 <= cpLineIntermediate && 
+                        1.0 <= cpLineIntermediate && //Is this in the ghidra code?? kinda weird.
+                        distanceSquared < ballSizeSquared){
+
+                        posAtCol = cpLineResult;
+                        return true;
+                    }
+                    //if (cpLineIntermediate >= 1.0 && distanceSquared_2 < ballSizeSquared){
+                        //posAtCol = cpLineResult;
+                        //return true;
+                    //}
+                }
+                ptrC+=2;
+            }
+        }
+    }
+    return false;
+} //seems to check all points?
+
 int myCheckFixMdl(int ballSize, d_coord& AdjX, int* object_pointer, d_coord& result_storage){
     int resultFlag;
     d_coord position_at_collision;
@@ -311,164 +360,118 @@ int myCheckFixMdl(int ballSize, d_coord& AdjX, int* object_pointer, d_coord& res
 
     int ballSizeSquared = pow(ballSize,2);
 
-int yMinusBall_Copy = yMinusBall;
     bool didCollisionOccur = false; //This is probably "did collision occur"
     //remember to add !collide to the condition statements
     for (int ymbc = yMinusBall; (ymbc < yPlusBall) && (!didCollisionOccur); ymbc++){
         int ptrA = objptr.end_offset + (xMinusBall + ymbc * objptr.xUpperLim) * 8;
         for (int xmbc = xMinusBall; (xmbc < xPlusBall) && (!didCollisionOccur); xmbc++){
-            int i = 0;
             int ptrB = objptr.buffer_start + ptrA * 4; //not a ptr? the values??
             int ptrA_bracket1 = 0;
             for (int i = 0; (i < ptrA_bracket1) && (!didCollisionOccur); i++){
                 
                 int currentTri_idx = objptr.fileOffset + (ptrB * 0x34); //0x34 is the size of a tri, so this probably iterates through the tris. -- IS THIS JUST 1 POINT OR THE START OF THE TRI?????
-                tri currentTri = objptr.tris[currentTri_idx]; //In the game this is a pointer. I'm hoping I won't regret the structure I'm setting up here. 
-               
-                if (getSidePlanePoint(currentTri.normals,currentTri.points[0],AdjX) >= 0){ //shockingly simple. This signature and the next one are fine as is. Only shorten the chkInTri signature to take the whole tri. The other two fns make it clearer what data they're using by having separate parameters.
-                    d_coord cpPlaneResult = getCpPlanePoint(currentTri.normals,currentTri.points[0],AdjX); //CP IS INFLUENCED BY adjX -- does not return anything normally, but I may choose to alter this to be better style.
-                    if ((vectorSquareDistance(cpPlaneResult,AdjX) < ballSizeSquared) && chkIntri(AdjX,currentTri.points,currentTri.normals) != 0) { //if the distance squared from the proposed to the CP is less than the squared ball size then begin detailed tri checking.
-                            didCollisionOccur = true;
-                            position_at_collision = cpPlaneResult;
-                    } else {
-                        didCollisionOccur = false;
-                    }
-                } else {
-                    didCollisionOccur = false;
-                }
-                ptrB++;
+                tri currentTri = objptr.tris[currentTri_idx]; //In the game this is a pointer. I'm hoping I won't regret the structure I'm setting up here.            
+                //Could oneline this. Would be nice to understand ptrB a bit better.
+                //There's probably a way to abstract this out to not even need all this extra loop stuff. 
+
+                didCollisionOccur = innerFoo0(position_at_collision,currentTri,ballSizeSquared,AdjX);//note if tru, then loop exits.
+                ptrB++;//ptr +1 or value  +1?
             }
             ptrA+=2;
         }
     }
 
+    if (didCollisionOccur){
+        result_storage = nudgePos(ballSize,position_at_collision,AdjX);
+        return 1;
+    }
 
-    //Did collision occur bool check
-    //Can just return early.
+    //Double check that J isn't modified in ghidra.
+    for (int ymbc2 = 0; ymbc2 < yPlusBall; ymbc2++)
+    {
+        int ptrA = objptr.end_offset + (xMinusBall + ymbc2 * objptr.xUpperLim) * 8;
+        for (int xmbc2 = 0; xmbc2 < xPlusBall; xmbc2++)
+        {
+            int ptrB = objptr.buffer_start + ptrA * 4; //not a ptr? the values??
+            int ptrA_bracket1 = 0;
+            for (int i = 0; (i < ptrA_bracket1) && (!didCollisionOccur); i++)
+            {
+                int currentTri_idx = objptr.fileOffset + (ptrB * 0x34); //0x34 is the size of a tri, so this probably iterates through the tris. -- IS THIS JUST 1 POINT OR THE START OF THE TRI?????
+                tri currentTri = objptr.tris[currentTri_idx]; //In the game this is a pointer. I'm hoping I won't regret the structure I'm setting up here.            
+                
+                didCollisionOccur = innerFoo1(position_at_collision,currentTri,ballSizeSquared,AdjX);
+                ptrB++;
+            }
+            ptrA+=2;
+        }
+        
+    }
 
-
-
-    didCollisionOccur = false;
-        int yMinusBall_Copy_2 = yMinusBall;
-        while ((yMinusBall_Copy_2 <= yPlusBall) && (!didCollisionOccur)){
-            int ptrA = end_offset + (xMinusBall + yMinusBall_Copy_2 * xUpperLim) * 8;
-            int xMinusBall_copy_2 = xMinusBall;
-            while((xMinusBall_copy_2 <= xPlusBall) && (!didCollisionOccur)){
-                int i = 0;
-                int ptrB = buffer_start + ptrA * 4; //not a ptr? the values??
-                int ptrA_bracket1 = 0;
-                while(i < ptrA_bracket1 && (!didCollisionOccur)){
-                    float tri_ptr = object_pointer + (ptrB * 0x34);
-                    //NOW THE DIFFERENCES BEGIN
-                    int val_at_tri_ptr_plus30 = 0;
-                    if ((val_at_tri_ptr_plus30 & 7)!= 0){
-                        //save some data, very weird.. investigate.
-                        int local_d0 = 0; //used once?
-                        int local_cc = 0; //never used?
-                        double planePoint_result = getSidePlanePoint(tri_ptr+0x24,tri_ptr,AdjX);
-                        if (0 <= planePoint_result){
-                            int ptrC = local_d0;
-                            int j = 0;
-                            float tri_ptr_copy = tri_ptr;
-                            do {
-                                if ((val_at_tri_ptr_plus30 & ptrC) != 0){
-                                    int iVar2 = j+1;
-                                    if (2 < iVar2){
-                                        iVar2 = 0;
+    //third and final loop.
+            didCollisionOccur = false;
+            //no copy done -- use straight up value.
+            while ((yMinusBall <= yPlusBall) && (!didCollisionOccur))
+            {
+                int ptrA = end_offset + (xMinusBall + yMinusBall * xUpperLim) * 8;
+                int xMinusBall_copy_3 = xMinusBall;
+                while ((xMinusBall_copy_3 <= xPlusBall) && (!didCollisionOccur)){
+                    int i = 0;
+                    int ptrB = buffer_start + ptrA * 4; //not a ptr? the values??
+                    int ptrA_bracket1 = 0;
+                    //up until this loop below, all three sets use the same setup.
+                    while((i < ptrA_bracket1) && (!didCollisionOccur)){
+                        float tri_ptr = object_pointer + (ptrB * 0x34);
+                        int val_at_tri_ptr_plus30 = 0;
+                        if ((val_at_tri_ptr_plus30 & 7)!= 0){
+                            int local_d8 = 0;
+                            int local_d4 = 0;
+                            double planePoint_result = getSidePlanePoint();
+                            if (0 <= planePoint_result){
+                                int j_2 = 0;
+                                d_coord tri_ptr_3_copy = tri_ptr;
+                                int ptrC = local_d8;
+                                do
+                                {
+                                    int iVar8 = j_2 + 2;
+                                    if (2 < iVar8){
+                                        iVar8 = j_2 + -1;
                                     }
-                                    d_coord cpLineResult;
-                                    //I REALLY NEED FUNKY OFFSET....DAFUQ IS THAT.
-                                    float funkyOffset = tri_ptr + iVar2 * 0xC;
-                                    double cpLineIntermediate = getCpLinePoint(cpLineResult,tri_ptr_copy,funkyOffset,AdjX); //--------------UNFINISHED!
-                                    double distanceSquared_2 = vectorSquareDistance(cpLineResult,AdjX);
-                                    if (0.0 <= cpLineIntermediate && 1.0 <= cpLineIntermediate && distanceSquared_2 < ballSizeSquared){
-                                        //MEANINGFUL DIFFERENCES END
+                                    //NO CP GETTING HERE....
+                                    double distanceSquared_3 = vectorSquareDistance(tri_ptr_3_copy,AdjX);
+                                    if (((val_at_tri_ptr_plus30 & ptrC) != 0) && ((val_at_tri_ptr_plus30 & local_d8) != 0) && (distanceSquared_3 < ballSizeSquared) ){
                                         didCollisionOccur = true;
-                                        position_at_collision = cpLineResult;
-                                        //Icky gross gross gross
-                                        goto badStyle;
+                                        d_coord posAtCol_ptr = tri_ptr + j_2 * 0xC;
+                                        position_at_collision = posAtCol_ptr;
+                                        //ICK A GOTO.... How dare you ghidra.
+                                        goto badStyle2;
                                     }
-                                }
-                                j++;
-                                tri_ptr_copy+=0xC;
-                                ptrC+=2;
-                            }while (j < 3);
-                            didCollisionOccur = false;
-                        } else {
-                            didCollisionOccur = false;
+                                    j_2++;
+                                    tri_ptr_3_copy.x += 0xC; //applies to ptr
+                                    ptrC += 2;
+                                    /* code */
+                                } while (j_2 < 3);
+                                didCollisionOccur = false;
+                            } 
+                            else {
+                                didCollisionOccur = false;
+                            }
                         }
-                        //ACTUAL DIFFERENCES END.
-                    }
-badStyle:
+//ICK ICK ICK ICK ICK REDO THIS FOR THE LOVE OF GOD                            
+badStyle2:
                     i++;
                     ptrB++;
-                }
-                xMinusBall_copy_2++;
+                    }
+                xMinusBall_copy_3++;
                 ptrA+=2;
-            }
-            yMinusBall_Copy_2++;
-        }
-
-
-for (int ymbc2 = 0; ymbc2 < yPlusBall; ymbc2++)
-{
-    int ptrA = end_offset + (xMinusBall + yMinusBall_Copy_2 * xUpperLim) * 8;
-    for (int xmbc2 = 0; xmbc2 < xPlusBall; xmbc2++)
-    {
-        int i = 0;
-        int ptrB = buffer_start + ptrA * 4; //not a ptr? the values??
-        int ptrA_bracket1 = 0;
-        while(i < ptrA_bracket1 && (!didCollisionOccur)){
-            float tri_ptr = object_pointer + (ptrB * 0x34);
-            //NOW THE DIFFERENCES BEGIN
-            int val_at_tri_ptr_plus30 = 0;
-            if ((val_at_tri_ptr_plus30 & 7)!= 0){
-                //save some data, very weird.. investigate.
-                int local_d0 = 0; //used once?
-                int local_cc = 0; //never used?
-                double planePoint_result = getSidePlanePoint(tri_ptr+0x24,tri_ptr,AdjX);
-                if (0 <= planePoint_result){
-                    int ptrC = local_d0;
-                    int j = 0;
-                    float tri_ptr_copy = tri_ptr;
-                    do {
-                        if ((val_at_tri_ptr_plus30 & ptrC) != 0){
-                            int iVar2 = j+1;
-                            if (2 < iVar2){
-                                iVar2 = 0;
-                            }
-                            d_coord cpLineResult;
-                            //I REALLY NEED FUNKY OFFSET....DAFUQ IS THAT.
-                            float funkyOffset = tri_ptr + iVar2 * 0xC;
-                            double cpLineIntermediate = getCpLinePoint(cpLineResult,tri_ptr_copy,funkyOffset,AdjX); //--------------UNFINISHED!
-                            double distanceSquared_2 = vectorSquareDistance(cpLineResult,AdjX);
-                            if (0.0 <= cpLineIntermediate && 1.0 <= cpLineIntermediate && distanceSquared_2 < ballSizeSquared){
-                                //MEANINGFUL DIFFERENCES END
-                                didCollisionOccur = true;
-                                position_at_collision = cpLineResult;
-                                //Icky gross gross gross
-                                goto badStyle;
-                            }
-                        }
-                        j++;
-                        tri_ptr_copy+=0xC;
-                        ptrC+=2;
-                    }while (j < 3);
-                    didCollisionOccur = false;
-                } else {
-                    didCollisionOccur = false;
                 }
-                //ACTUAL DIFFERENCES END.
+                yMinusBall++;
             }
-badStyle:
-            i++;
-            ptrB++;
-        }
-        ptrA+=2;
-    }
-    
-}
-
+            if (didCollisionOccur){
+                result_storage = nudgePos(ballSize,position_at_collision,AdjX);
+                resultFlag = 1;
+            } else {
+                resultFlag = 0;
+            }
 
 
 
