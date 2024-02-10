@@ -293,13 +293,12 @@ bool innerFoo0(d_coord &posAtCol, const tri &currentTri, const int ballSizeSquar
 //Investigate val(triPtr+30) as well as local_d0 and such. May help with the structure of the logic.
 bool innerFoo1(d_coord &posAtCol, const tri& currentTri, const int ballSizeSquared, d_coord AdjX ){
     if ((currentTri.interactionFlag & 7)!= 0){
-        int local_d0 = 0; //used once?
         double planePoint_result = getSidePlanePoint(currentTri.normals,currentTri.points[0],AdjX); //oo reused from foo0
         if (planePoint_result >= 0){
-            int ptrC = local_d0;
+            const std::vector<int> ptrC_vals = {1,2,4}; //hardcoded in the game. 
             for (int j = 0; j < 3; j++) //J IS EQUIVALENT TO tri_point_idx. However not sure if that makes sense in the way that ivar2/funkyoffset is used.
             {
-                if ((currentTri.interactionFlag & ptrC) != 0){ //The only place that local_d0 gets used?
+                if ((currentTri.interactionFlag & ptrC_vals[j]) != 0){ //The only place that local_d0 gets used?
                     int successivePoint = j > 1 ? 0 : j+1; //I SUSPECT THAT FUNKY OFFSET REFERS TO ANOTHER POINT IN THE SAME TRI.
                     d_coord cpLineResult; //There is way too much code to try and consolidate these into one return value.
                     double cpLineIntermediate = getCpLinePoint(cpLineResult,currentTri.points[j],currentTri.points[successivePoint],AdjX);
@@ -310,7 +309,6 @@ bool innerFoo1(d_coord &posAtCol, const tri& currentTri, const int ballSizeSquar
                         return true;
                     }
                 }
-                ptrC+=2;
             }
         }
     }
@@ -321,28 +319,26 @@ bool innerFoo1(d_coord &posAtCol, const tri& currentTri, const int ballSizeSquar
 //REMARKABLY SIMILAR TO INNERFOO1 WITH TINY DIFFERENCE IN THE FINAL CHECK
 bool innerFoo2(d_coord& posAtCol, const tri& currentTri, const int ballSizeSquared, d_coord AdjX){
     if ((currentTri.interactionFlag & 7)!= 0){ //same condition check as innerFoo1. Could abstract out of the function. This typically returns true I think... Its the first interaction flag checked.
-        int local_d8 = 0;//used once, like innerFoo1
         double planePoint_result = getSidePlanePoint(currentTri.normals,currentTri.points[0],AdjX); //verify that it really is just the first point used here.
         if (planePoint_result>= 0){
-            int ptrC = local_d8;
+            const std::vector<int> ptrC_vals = {1,2,4}; //hardcoded 
             for (int j_2 = 0; j_2 < 3; j_2++)
             {
                 //The contents of this loop are the main diff between this and the prev function so there's potential to avoid duplicating the outside logic but cmon there's no need to be that pedantic.
-                int antecedentPoint = j_2 < 1 ? 2 : j_2 - 1;
-                //NO CP GETTING HERE....
-                if (((currentTri.interactionFlag & ptrC) != 0) && 
-                    ((currentTri.interactionFlag & ((int)&local_d8 + antecedentPoint * 2)) != 0) && 
+                int antecedentPoint = j_2 < 1 ? 2 : j_2 - 1;  //NO CP GETTING HERE....
+                if (((currentTri.interactionFlag & ptrC_vals[j_2]) != 0) && 
+                    ((currentTri.interactionFlag & (ptrC_vals[j_2] + antecedentPoint * 2)) != 0) && //really trusting the decomp on this
                     (vectorSquareDistance(currentTri.points[j_2],AdjX) < ballSizeSquared)){
                     posAtCol = currentTri.points[j_2];
                     return true;
                 }
-                ptrC += 2;
             }
         }
     }
     return false;
 }
 
+//This could use a llittle bit of work. It would be cool to have a better system for ptrA and ptrB than doing weird pointer math on a std::vec of bytes.
 bool searchTriSample(d_coord&position_at_collision, int xMinusBall, int yMinusBall, int xPlusBall, int yPlusBall, collision_obj objptr, const int ballSizeSquared, d_coord AdjX, collEvalFn evaluationPredicate){
     for (int ymbc = yMinusBall; ymbc < yPlusBall; ymbc++){
         int ptrA = objptr.end_offset + (xMinusBall + ymbc * objptr.xUpperLim) * 8; //Dips into part of the "buffer" data at the end of the object data.
@@ -354,7 +350,7 @@ bool searchTriSample(d_coord&position_at_collision, int xMinusBall, int yMinusBa
                 int currentTri_idx = ptrB; //Value AT ptrB... originally ptr start + value at ptrB * 0x34 which is size of a tri.
                 tri currentTri = objptr.tris[currentTri_idx]; //Assuming that I will fill up objptr.tris in the order in which the tris are recorded to file.            
 
-                bool didCollisionOccur = evaluationPredicate(position_at_collision,currentTri,ballSizeSquared,AdjX);//note if tru, then loop exits.
+                bool didCollisionOccur = evaluationPredicate(position_at_collision,currentTri,ballSizeSquared,AdjX);
                 if (didCollisionOccur){
                     return true;
                 }
@@ -363,7 +359,6 @@ bool searchTriSample(d_coord&position_at_collision, int xMinusBall, int yMinusBa
             ptrA+=2;
         }
     }
-
     return false;
 }
 
@@ -472,12 +467,10 @@ bool myCheckFixMdl(int ballSize, d_coord& AdjX, int* object_pointer, d_coord& re
     //         int ptrB = objptr.buffer_start + ptrA *4; //Really care about the value at this pointer.
     //         int ptrA_bracket1 = ptrA * 0x4;
     //         for (int i = 0; (i < ptrA_bracket1) && (!didCollisionOccur); i++){
-                
     //             int currentTri_idx = ptrB; //Value AT ptrB... originally ptr start + value at ptrB * 0x34 which is size of a tri.
     //             tri currentTri = objptr.tris[currentTri_idx]; //Assuming that I will fill up objptr.tris in the order in which the tris are recorded to file.            
     //             //Could oneline this. Would be nice to understand ptrB a bit better.
     //             //There's probably a way to abstract this out to not even need all this extra loop stuff. 
-
     //             didCollisionOccur = innerFoo0(position_at_collision,currentTri,ballSizeSquared,AdjX);//note if tru, then loop exits.
     //             ptrB++;//ptr +1 or value  +1?
     //         }
