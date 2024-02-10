@@ -1,18 +1,16 @@
 #include "processCoreLocal.h"
 #include "NPC.h"
+#include <functional>
 
 
 
-
-
-
-//No fancy shit, just basics.
+//Yeah a little bit of fancy shit with the function pointers in checkFixedMdl.
 
 
 struct tri {
     std::vector<d_coord> points;
     std::vector<float> normals;
-    //Add interaction fields 0300 or 0600 etc. after???
+    int interactionFlag; //looks like we need the first short? Idk if there's a good example of the 2nd short ever being not 0
 };
 
 struct collision_obj {
@@ -28,8 +26,10 @@ struct collision_obj {
     int yUpperLim;
     float scaleX;
     float scaleY;
-};
 
+    //Maybe include buffer zone data too... for point ordering..
+};
+typedef std::function<bool(d_coord&,const tri&,const int,d_coord)> collEvalFn;
 
 
 
@@ -121,7 +121,7 @@ double getSidePlanePoint(std::vector<float>tri_orientation,d_coord tri_pos_ptr,d
 
 
 
-int chkIntri (d_coord adjX_Data_ptr, std::vector<d_coord> tri_pointer,std::vector<float>orientationFlags){
+int chkIntri (d_coord adjX_Data_ptr, tri tri_pointer,std::vector<float>orientationFlags){
 
     float adjX_val_A = 0;
     float adjX_val_B = 0;
@@ -130,6 +130,7 @@ int chkIntri (d_coord adjX_Data_ptr, std::vector<d_coord> tri_pointer,std::vecto
     const float FLOAT_0 = 0;
     int flag_0_2 = 0; //or 2
     int flag_0_1 = 0; //or 1
+    //This should take in a tri object. This fn picks two of the 3 values from the points (Either all 3 X's all 3 Y's or all 3 Z's).
 //    std::vector<float> tri_pointer = {37.1033,  -3.35513,  -11.0449, 24.9879,  -3.35513,  -11.0449, 24.9879,   24.5948,  -11.0449 };
     tri_pointer = 
     {37.1033,  -3.35513,  -11.0449, 
@@ -291,33 +292,23 @@ bool innerFoo0(d_coord &posAtCol, const tri &currentTri, const int ballSizeSquar
 
 //Investigate val(triPtr+30) as well as local_d0 and such. May help with the structure of the logic.
 bool innerFoo1(d_coord &posAtCol, const tri& currentTri, const int ballSizeSquared, d_coord AdjX ){
-    int val_at_tri_ptr_plus30 = 0; //What does this mean lmao investigate. value(triPtr+30)
-    if ((val_at_tri_ptr_plus30 & 7)!= 0){
+    if ((currentTri.interactionFlag & 7)!= 0){
         int local_d0 = 0; //used once?
-        // int local_cc = 0; //never used?
         double planePoint_result = getSidePlanePoint(currentTri.normals,currentTri.points[0],AdjX); //oo reused from foo0
         if (planePoint_result >= 0){
             int ptrC = local_d0;
-                //Maybe this is iterating through the 3 points on a tri. Doesn't exist in innerfoo1
             for (int j = 0; j < 3; j++) //J IS EQUIVALENT TO tri_point_idx. However not sure if that makes sense in the way that ivar2/funkyoffset is used.
             {
-                if ((val_at_tri_ptr_plus30 & ptrC) != 0){ //The only place that local_d0 gets used?
+                if ((currentTri.interactionFlag & ptrC) != 0){ //The only place that local_d0 gets used?
                     int successivePoint = j > 1 ? 0 : j+1; //I SUSPECT THAT FUNKY OFFSET REFERS TO ANOTHER POINT IN THE SAME TRI.
                     d_coord cpLineResult; //There is way too much code to try and consolidate these into one return value.
                     double cpLineIntermediate = getCpLinePoint(cpLineResult,currentTri.points[j],currentTri.points[successivePoint],AdjX);
-                    double distanceSquared = vectorSquareDistance(cpLineResult,AdjX);
-                    //Thoughts on function calls inside if statements?
-                    if (0.0 <= cpLineIntermediate && 
-                        1.0 <= cpLineIntermediate && //Is this in the ghidra code?? kinda weird.
-                        distanceSquared < ballSizeSquared){
-
+                    if (cpLineIntermediate >= 0.0 && 
+                        cpLineIntermediate <= 1.0 && //Is this in the ghidra code?? kinda weird.
+                        vectorSquareDistance(cpLineResult,AdjX) < ballSizeSquared){
                         posAtCol = cpLineResult;
                         return true;
                     }
-                    //if (cpLineIntermediate >= 1.0 && distanceSquared_2 < ballSizeSquared){
-                        //posAtCol = cpLineResult;
-                        //return true;
-                    //}
                 }
                 ptrC+=2;
             }
@@ -329,25 +320,19 @@ bool innerFoo1(d_coord &posAtCol, const tri& currentTri, const int ballSizeSquar
 
 //REMARKABLY SIMILAR TO INNERFOO1 WITH TINY DIFFERENCE IN THE FINAL CHECK
 bool innerFoo2(d_coord& posAtCol, const tri& currentTri, const int ballSizeSquared, d_coord AdjX){
-    int val_at_tri_ptr_plus30 = 0;
-    if ((val_at_tri_ptr_plus30 & 7)!= 0){ //same condition check as innerFoo1. Could abstract out of the function. 
+    if ((currentTri.interactionFlag & 7)!= 0){ //same condition check as innerFoo1. Could abstract out of the function. This typically returns true I think... Its the first interaction flag checked.
         int local_d8 = 0;//used once, like innerFoo1
         double planePoint_result = getSidePlanePoint(currentTri.normals,currentTri.points[0],AdjX); //verify that it really is just the first point used here.
         if (planePoint_result>= 0){
             int ptrC = local_d8;
-
             for (int j_2 = 0; j_2 < 3; j_2++)
             {
-                int iVar8 = j_2 + 2; //IVAR8 WHERE U IS??????????????
-                if (iVar8 > 2){
-                    iVar8 = j_2 + -1;
-                } //NOT USED??????????????????????????????????????
-                //NO CP GETTING HERE.... just use currentTriPt instead?
-                double distanceSquared_3 = vectorSquareDistance(currentTri.points[j_2],AdjX);
-                if (((val_at_tri_ptr_plus30 & ptrC) != 0) && 
-                    ((val_at_tri_ptr_plus30 & local_d8) != 0) && 
-                    (distanceSquared_3 < ballSizeSquared)){
-
+                //The contents of this loop are the main diff between this and the prev function so there's potential to avoid duplicating the outside logic but cmon there's no need to be that pedantic.
+                int antecedentPoint = j_2 < 1 ? 2 : j_2 - 1;
+                //NO CP GETTING HERE....
+                if (((currentTri.interactionFlag & ptrC) != 0) && 
+                    ((currentTri.interactionFlag & ((int)&local_d8 + antecedentPoint * 2)) != 0) && 
+                    (vectorSquareDistance(currentTri.points[j_2],AdjX) < ballSizeSquared)){
                     posAtCol = currentTri.points[j_2];
                     return true;
                 }
@@ -358,18 +343,75 @@ bool innerFoo2(d_coord& posAtCol, const tri& currentTri, const int ballSizeSquar
     return false;
 }
 
+bool searchTriSample(d_coord&position_at_collision, int xMinusBall, int yMinusBall, int xPlusBall, int yPlusBall, collision_obj objptr, const int ballSizeSquared, d_coord AdjX, collEvalFn evaluationPredicate){
+    for (int ymbc = yMinusBall; ymbc < yPlusBall; ymbc++){
+        int ptrA = objptr.end_offset + (xMinusBall + ymbc * objptr.xUpperLim) * 8; //Dips into part of the "buffer" data at the end of the object data.
+        for (int xmbc = xMinusBall; xmbc < xPlusBall; xmbc++){
+            int ptrB = objptr.buffer_start + ptrA *4; //Really care about the value at this pointer.
+            int triSampleSize = ptrA * 0x4; //max number of tris to sample. ptrA[1]
+            for (int i = 0; i < triSampleSize; i++){
+                
+                int currentTri_idx = ptrB; //Value AT ptrB... originally ptr start + value at ptrB * 0x34 which is size of a tri.
+                tri currentTri = objptr.tris[currentTri_idx]; //Assuming that I will fill up objptr.tris in the order in which the tris are recorded to file.            
+
+                bool didCollisionOccur = evaluationPredicate(position_at_collision,currentTri,ballSizeSquared,AdjX);//note if tru, then loop exits.
+                if (didCollisionOccur){
+                    return true;
+                }
+                ptrB++;//ptr +1 or value  +1?
+            }
+            ptrA+=2;
+        }
+    }
+
+    return false;
+}
 
 
-int myCheckFixMdl(int ballSize, d_coord& AdjX, int* object_pointer, d_coord& result_storage){
-    int resultFlag;
+bool myCheckFixMdl(int ballSize, d_coord& AdjX, int* object_pointer, d_coord& result_storage){
+    bool resultFlag;
     d_coord position_at_collision;
 
+    /*
+        I'm hypothesising that the "BUFFER" area is actually the order in which tris are to be evaluated.
+        It appears that the order in which the tris are written is not the order in which they are evaluated by the loops.
+        Even the "order" that is written in ptrB's section of the buffer isn't correct. The list seems to start with the 6th tri...
 
+
+        Ptr A comes as 2 values. The first one is used to form Ptr B which in turn forms an offset/ptr to a tri.
+        The 2nd word acts as a limit of some kind for the super inner loop. 
+        When ptrA is incremented, it is incremented in 2 word amts. 
+
+
+        Ex.
+        First get end_offset which is objptr[2]. Then do math which in our test ended up at +0x8 which gave us:
+        0x17B8 == 0x12, where [1] for that is 0x17BC == 0xA.
+        Then when iterate, ptrA is incremented to 0x17C0 == 1C and 17C4 == 0E
+
+
+
+        So what about ptrB?
+        ptrB is gained from a different section of the "buffer". 
+        From there we would take the 0x12 from before, multiply by the word size (4) to get the adjustment needed. 0x48 in this case.
+        Add to the begin_buffer ptr (which comes from objptr[3]). Congrats, have your ptrB. This is incremented in wordsize +4, not like +8 as with ptrA.
+        If begin_buffer is 0x1810, then +48 becomes 0x1858 == 0x6
+
+        ptrA and B aren't limited by themselves as such, they're limited by xminusball and yminusball.
+
+        the 0x6 from ptrB is multiplied by the size of a tri object (0x34) to get an offset to a specific tri.
+        overall a weird system of like references with sizes to references to tris.
+
+        unfortunately the order seems to be influenced by xminusball and yminusball which in turn are influenced by adjX. 
+        Cannot do much pre-ordering that is.
+        Maybe its like a pre-sampling system?
+    */
+
+    //This could really be done on .ccd file read, where a vector of objects is prepared with all this data populated and organized.
     collision_obj objptr;
     objptr.fileOffset = (int)object_pointer;
     objptr.num_tris = object_pointer[1];
-    objptr.end_offset = object_pointer[2]; //possibly used?
-    objptr.buffer_start = object_pointer[3]; //Not used
+    objptr.end_offset = object_pointer[2]; //forms ptrA
+    objptr.buffer_start = object_pointer[3]; //forms ptrB?
     objptr.xUpperLim = *(object_pointer+0x10); //Halfword
     objptr.yUpperLim = *(object_pointer+0x12);//Halfword
     
@@ -378,14 +420,16 @@ int myCheckFixMdl(int ballSize, d_coord& AdjX, int* object_pointer, d_coord& res
     objptr.originX = object_pointer[7]; //object_pointer[7] etc. -- OBJECT'S PERSONAL ORIGIN X
     objptr.originY = object_pointer[8]; //OBJECT ORIGIN Y. UPPER LEFT CORNER.
     
+
+    //This needs to be done on the fly
     //In the game these are narrowed down intentionally into int.
-    int xMinusBall = (AdjX.x - ballSize -  objptr.originX)/objptr.scaleX;
+    int xMinusBall = (AdjX.x - ballSize - objptr.originX)/objptr.scaleX;
     int yMinusBall = (AdjX.y - ballSize - objptr.originY)/objptr.scaleY;
-    int xPlusBall = (AdjX.x + ballSize - objptr.originX)/objptr.scaleX;
-    int yPlusBall = (AdjX.y + ballSize - objptr.originY)/objptr.scaleX;
+    int xPlusBall  = (AdjX.x + ballSize - objptr.originX)/objptr.scaleX;
+    int yPlusBall  = (AdjX.y + ballSize - objptr.originY)/objptr.scaleX;
 
     // min and max limits.
-    xMinusBall = xMinusBall < 0 ? 0 : xMinusBall;
+    xMinusBall = xMinusBall < 0 ? 0 : xMinusBall; //Since scaleX and scaleY are so big (40, 50 etc.) this should always be a small number, and since its an int its pretty much always gonna be between 0, 1 or 2. 3 or higher should be exceedingly rare.
     yMinusBall = yMinusBall < 0 ? 0 : yMinusBall;
 
     xPlusBall = xPlusBall > (objptr.xUpperLim - 1) ? objptr.xUpperLim-1 : xPlusBall;
@@ -393,84 +437,111 @@ int myCheckFixMdl(int ballSize, d_coord& AdjX, int* object_pointer, d_coord& res
 
 
     int ballSizeSquared = pow(ballSize,2);
-
-    bool didCollisionOccur = false; //This is probably "did collision occur"
-    //remember to add !collide to the condition statements
-    for (int ymbc = yMinusBall; (ymbc < yPlusBall) && (!didCollisionOccur); ymbc++){
-        int ptrA = objptr.end_offset + (xMinusBall + ymbc * objptr.xUpperLim) * 8;
-        for (int xmbc = xMinusBall; (xmbc < xPlusBall) && (!didCollisionOccur); xmbc++){
-            int ptrB = objptr.buffer_start + ptrA * 4; //not a ptr? the values??
-            int ptrA_bracket1 = 0;
-            for (int i = 0; (i < ptrA_bracket1) && (!didCollisionOccur); i++){
-                
-                int currentTri_idx = objptr.fileOffset + (ptrB * 0x34); //0x34 is the size of a tri, so this probably iterates through the tris. -- IS THIS JUST 1 POINT OR THE START OF THE TRI?????
-                tri currentTri = objptr.tris[currentTri_idx]; //In the game this is a pointer. I'm hoping I won't regret the structure I'm setting up here.            
-                //Could oneline this. Would be nice to understand ptrB a bit better.
-                //There's probably a way to abstract this out to not even need all this extra loop stuff. 
-
-                didCollisionOccur = innerFoo0(position_at_collision,currentTri,ballSizeSquared,AdjX);//note if tru, then loop exits.
-                ptrB++;//ptr +1 or value  +1?
-            }
-            ptrA+=2;
-        }
+    
+    
+    std::vector<collEvalFn> evaluationFns = {innerFoo0,innerFoo1,innerFoo2};
+    for (collEvalFn fn : evaluationFns){
+        if (searchTriSample(position_at_collision,xMinusBall,yMinusBall,xPlusBall,yPlusBall,objptr,ballSizeSquared,AdjX,fn)){
+            result_storage = nudgePos(ballSize,position_at_collision,AdjX);
+            return true;
+        }  
     }
+    return false;
+    //phuck yes
 
-    if (didCollisionOccur){
-        result_storage = nudgePos(ballSize,position_at_collision,AdjX);
-        return 1;
-    }
 
-    //Double check that J isn't modified in ghidra.
-    for (int ymbc2 = yMinusBall; (ymbc2 < yPlusBall) && (!didCollisionOccur); ymbc2++)
-    {
-        int ptrA = objptr.end_offset + (xMinusBall + ymbc2 * objptr.xUpperLim) * 8;
-        for (int xmbc2 = xMinusBall; (xmbc2 < xPlusBall)  && (!didCollisionOccur); xmbc2++)
-        {
-            int ptrB = objptr.buffer_start + ptrA * 4; //not a ptr? the values??
-            int ptrA_bracket1 = 0;
-            for (int i = 0; (i < ptrA_bracket1) && (!didCollisionOccur); i++)
-            {
-                int currentTri_idx = objptr.fileOffset + (ptrB * 0x34); //0x34 is the size of a tri, so this probably iterates through the tris. -- IS THIS JUST 1 POINT OR THE START OF THE TRI?????
-                tri currentTri = objptr.tris[currentTri_idx]; //In the game this is a pointer. I'm hoping I won't regret the structure I'm setting up here.            
+    // if (searchTriSample(position_at_collision,xMinusBall,yMinusBall,xPlusBall,yPlusBall,objptr,ballSizeSquared,AdjX,innerFoo0)){
+    //     result_storage = nudgePos(ballSize,position_at_collision,AdjX);
+    //     return true;
+    // }
+
+    // if (searchTriSample(position_at_collision,xMinusBall,yMinusBall,xPlusBall,yPlusBall,objptr,ballSizeSquared,AdjX,innerFoo1)){
+    //     result_storage = nudgePos(ballSize,position_at_collision,AdjX);
+    //     return true;
+    // }
+
+    // if (searchTriSample(position_at_collision,xMinusBall,yMinusBall,xPlusBall,yPlusBall,objptr,ballSizeSquared,AdjX,innerFoo2)){
+    //     result_storage = nudgePos(ballSize,position_at_collision,AdjX);
+    //     return true;
+    // }
+    // return false;
+    
+    // for (int ymbc = yMinusBall; (ymbc < yPlusBall) && (!didCollisionOccur); ymbc++){
+    //     int ptrA = objptr.end_offset + (xMinusBall + ymbc * objptr.xUpperLim) * 8; //Dips into part of the "buffer" data at the end of the object data.
+    //     for (int xmbc = xMinusBall; (xmbc < xPlusBall) && (!didCollisionOccur); xmbc++){
+    //         int ptrB = objptr.buffer_start + ptrA *4; //Really care about the value at this pointer.
+    //         int ptrA_bracket1 = ptrA * 0x4;
+    //         for (int i = 0; (i < ptrA_bracket1) && (!didCollisionOccur); i++){
                 
-                didCollisionOccur = innerFoo1(position_at_collision,currentTri,ballSizeSquared,AdjX);
-                ptrB++;
-            }
-            ptrA+=2;
-        }
+    //             int currentTri_idx = ptrB; //Value AT ptrB... originally ptr start + value at ptrB * 0x34 which is size of a tri.
+    //             tri currentTri = objptr.tris[currentTri_idx]; //Assuming that I will fill up objptr.tris in the order in which the tris are recorded to file.            
+    //             //Could oneline this. Would be nice to understand ptrB a bit better.
+    //             //There's probably a way to abstract this out to not even need all this extra loop stuff. 
+
+    //             didCollisionOccur = innerFoo0(position_at_collision,currentTri,ballSizeSquared,AdjX);//note if tru, then loop exits.
+    //             ptrB++;//ptr +1 or value  +1?
+    //         }
+    //         ptrA+=2;
+    //     }
+    // }
+
+    // if (didCollisionOccur){
+    //     result_storage = nudgePos(ballSize,position_at_collision,AdjX);
+    //     return 1;
+    // }
+
+    // //Double check that J isn't modified in ghidra.
+    // for (int ymbc2 = yMinusBall; (ymbc2 < yPlusBall) && (!didCollisionOccur); ymbc2++)
+    // {
+    //     int ptrA = objptr.end_offset + (xMinusBall + ymbc2 * objptr.xUpperLim) * 8;
+    //     for (int xmbc2 = xMinusBall; (xmbc2 < xPlusBall)  && (!didCollisionOccur); xmbc2++)
+    //     {
+    //         int ptrB = objptr.buffer_start + ptrA * 4;
+    //         int ptrA_bracket1 = ptrA * 0x4;
+    //         for (int i = 0; (i < ptrA_bracket1) && (!didCollisionOccur); i++)
+    //         {
+    //             int currentTri_idx = ptrB; //value AT ptrB
+    //             tri currentTri = objptr.tris[currentTri_idx]; //In the game this is a pointer. I'm hoping I won't regret the structure I'm setting up here.            
+                
+    //             didCollisionOccur = innerFoo1(position_at_collision,currentTri,ballSizeSquared,AdjX);
+    //             ptrB++;
+    //         }
+    //         ptrA+=2;
+    //     }
         
-    }
+    // }
 
-    if (didCollisionOccur){
-        result_storage = nudgePos(ballSize,position_at_collision,AdjX);
-        return 1;
-    }
+    // if (didCollisionOccur){
+    //     result_storage = nudgePos(ballSize,position_at_collision,AdjX);
+    //     return 1;
+    // }
 
-    //third and final loop.
+    // //third and final loop.
 
-    for (int ymbc3 = yMinusBall; (ymbc3 < yPlusBall) && (!didCollisionOccur); ymbc3++)
-    {
-        int ptrA = objptr.end_offset + (xMinusBall + ymbc3 * objptr.xUpperLim) * 8;
-        for (int xmbc3 = xMinusBall; (xmbc3 < xPlusBall)  && (!didCollisionOccur); xmbc3++)
-        {
-            int ptrB = objptr.buffer_start + ptrA * 4; //not a ptr? the values??
-            int ptrA_bracket1 = 0;
-            for (int i = 0; (i < ptrA_bracket1) && (!didCollisionOccur); i++)
-            {
-                int currentTri_idx = objptr.fileOffset + (ptrB * 0x34); //0x34 is the size of a tri, so this probably iterates through the tris. -- IS THIS JUST 1 POINT OR THE START OF THE TRI?????
-                tri currentTri = objptr.tris[currentTri_idx]; //In the game this is a pointer. I'm hoping I won't regret the structure I'm setting up here.            
+    // for (int ymbc3 = yMinusBall; (ymbc3 < yPlusBall) && (!didCollisionOccur); ymbc3++)
+    // {
+    //     int ptrA = objptr.end_offset + (xMinusBall + ymbc3 * objptr.xUpperLim) * 8;
+    //     for (int xmbc3 = xMinusBall; (xmbc3 < xPlusBall)  && (!didCollisionOccur); xmbc3++)
+    //     {
+    //         int ptrB = objptr.buffer_start + ptrA * 4; //not a ptr? the values??
+    //         int ptrA_bracket1 = ptrA * 0x4;
+    //         for (int i = 0; (i < ptrA_bracket1) && (!didCollisionOccur); i++)
+    //         {
+    //             int currentTri_idx = ptrB; //0x34 is the size of a tri, so this probably iterates through the tris. -- IS THIS JUST 1 POINT OR THE START OF THE TRI?????
+    //             tri currentTri = objptr.tris[currentTri_idx]; //In the game this is a pointer. I'm hoping I won't regret the structure I'm setting up here.            
                 
-                didCollisionOccur = innerFoo2(result_storage,currentTri,ballSizeSquared,AdjX);
-                ptrB++; //Could increment this after the curTri thing is sorted..
-            }
-            ptrA+=2;
-        }
+    //             didCollisionOccur = innerFoo2(position_at_collision,currentTri,ballSizeSquared,AdjX);
+    //             ptrB++; //Could increment this after the curTri thing is sorted..
+    //         }
+    //         ptrA+=2;
+    //     }
+    // }
 
-    if (didCollisionOccur){
-        result_storage = nudgePos(ballSize,position_at_collision,AdjX);
-        return 1;
-    }
-    return 0;
+    // if (didCollisionOccur){
+    //     result_storage = nudgePos(ballSize,position_at_collision,AdjX);
+    //     return 1;
+    // }
+    //return 0;
 }
 
 //Apply this same process to the other two loops.
@@ -694,7 +765,7 @@ badStyle:
                                     }
                                     //NO CP GETTING HERE....
                                     double distanceSquared_3 = vectorSquareDistance(tri_ptr_3_copy,AdjX);
-                                    if (((val_at_tri_ptr_plus30 & ptrC) != 0) && ((val_at_tri_ptr_plus30 & local_d8) != 0) && (distanceSquared_3 < ballSizeSquared) ){
+                                    if (((val_at_tri_ptr_plus30 & ptrC) != 0) && ((val_at_tri_ptr_plus30 & (int)&local_d8 + iVar8 * 2) != 0) && (distanceSquared_3 < ballSizeSquared) ){
                                         didCollisionOccur = true;
                                         d_coord posAtCol_ptr = tri_ptr + j_2 * 0xC;
                                         position_at_collision = posAtCol_ptr;
