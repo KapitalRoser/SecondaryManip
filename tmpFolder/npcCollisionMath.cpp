@@ -913,7 +913,7 @@ int my_Collision(int ballSize, d_coord& adjPosLoc, d_coord old){ //might not nee
 
     d_coord point_diffs = vectorSub(proposed,old); //Can compress further if needed.
        
-    bool collisionResultFlag = checkHitCollision(ballSize,old,point_diffs,adjPosLoc,0);
+    bool collisionResultFlag = checkHitCollision(ballSize,old,point_diffs,adjPosLoc);
     return collisionResultFlag;
 }
 
@@ -937,7 +937,7 @@ int my_Collision(int ballSize, d_coord& adjPosLoc, d_coord old){ //might not nee
 //my ver of peopleAdjPosition
 d_coord AdjustIfCollide(int ballSize, d_coord proposed, d_coord old){
     d_coord adjusted = proposed;
-    if (my_Collision(ballSize,adjusted, d_coord old)){
+    if (my_Collision(ballSize,adjusted,old)){
         return adjusted; //This format plays slightly safer, only making the modification if GS_Collision returns 1.
     } //Need to see if GS_Collision modifies position if there is no collision. Otherwise just return the adjusted paramet of GS Collision.
     //Can then redo GS_Collision to return a position instead of a bool. Can then redo this function to get rid of unnecessary call.
