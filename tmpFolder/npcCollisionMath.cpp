@@ -1,7 +1,7 @@
 #include "processCoreLocal.h"
 #include "NPC.h"
 #include <functional>
-
+enum DIMENSION {X = 0, Z = 1, Y = 2};
 
 
 //Yeah a little bit of fancy shit with the function pointers in checkFixedMdl.
@@ -12,6 +12,34 @@ struct tri {
     std::vector<float> normals;
     int interactionFlag; //looks like we need the first short? Idk if there's a good example of the 2nd short ever being not 0
 };
+//incorporate these into class later if possible.
+
+std::vector<double> tri_GetAllByDimension (const tri& tri, DIMENSION D){
+    //X = 0, Z = 1, Y = 2
+    //little inefficient with lines but honestly saves having multiple functions.
+    std::vector<double> res;
+    for (auto &&i : tri.points)
+    {
+        double resD;
+        switch (D)
+        {
+        case X:
+            resD = i.x;
+            break;
+        case Z:
+            resD = i.z;
+            break;
+        case Y:
+            resD = i.y;
+            break;
+        default:
+            resD = i.x;
+            break;
+        }
+        res.push_back(resD);
+    }
+    return res;
+}
 
 struct collision_obj {
     int fileOffset;
@@ -54,7 +82,6 @@ d_coord getCpPlanePoint(std::vector<float> tri_orientation,d_coord tri_pos_ptr,d
     // d_coord scaleResult = vectorScale((factor / divisor), tri_orientation); //Need this double convert?
     // return vectorAdd(scaleResult,adjX_ptr_maybe); //Save first
 
-
     float orientation_A = tri_orientation[0]; //Once again feel the need to make this a tuple of size 3 for easier manipulation, but it isn't a position so d_coord isn't proper.
     float orientation_B = tri_orientation[1];
     float orientation_C = tri_orientation[2];
@@ -70,11 +97,6 @@ d_coord getCpPlanePoint(std::vector<float> tri_orientation,d_coord tri_pos_ptr,d
     scaleResult.z = scaleFactor * tri_orientation[1];
     scaleResult.y = scaleFactor * tri_orientation[2];
     return vectorAdd(scaleResult,adjX_ptr_maybe); //Save first
-
-
-
-
-
 }
 
 //Fixed, can update funkyOffset label later when I understand more.
@@ -119,7 +141,83 @@ double getSidePlanePoint(std::vector<float>tri_orientation,d_coord tri_pos_ptr,d
     //So close to just vectorMultiply(tri_orientation, vectorSub(adjX,tri));...
 }
 
+int myChkInTri(d_coord adjX_Data_ptr, const tri& tri_pointer){
 
+    //most of the doubles in this function are floats. Need to convert from a d_coord to a vector of floats. 
+    //This should take in a tri object. This fn picks two of the 3 values from the points (Either all 3 X's all 3 Y's or all 3 Z's).
+    //Use std::signbit(-0) from math.h for the neg zero check. returns true if NEGATIVE.
+    std::vector<float> logicVec = tri_pointer.normals;
+    for (auto &&i : logicVec)
+    {
+        //if i is negative, std::signbit returns true.
+        i = std::signbit(i) ? -i : i;
+    }
+    float a = logicVec[0];
+    float b = logicVec[1];
+    float c = logicVec[2];
+    //luckily this means neg zero isn't a concern for the next logic block.
+
+    //logic is done on the COPIES, ADJUST TO C IS DONE ON THE ACTUAL. Changes are not saved to tri, just local :) Picks axis of tri.
+    DIMENSION flag_0_2 = X; //or 2
+    DIMENSION flag_0_1 = Z; //or 1
+    float reverseFlag = tri_pointer.normals[2];
+
+    if ((b <= a) && (a > c)){
+        flag_0_2 = Y;
+        flag_0_1 = Z;
+        reverseFlag = -tri_pointer.normals[0];
+    } else if (c <= b){
+        flag_0_2 = Y;
+        flag_0_1 = X;
+        reverseFlag = tri_pointer.normals[1];
+    }
+
+    std::vector<double> adjX_Floats = {adjX_Data_ptr.x,adjX_Data_ptr.z,adjX_Data_ptr.y}; //temp, come up with a more direct d_coord to value setup with the other.
+    double adjX_val_A = adjX_Floats[flag_0_2];
+    double adjX_val_B = adjX_Floats[flag_0_1];
+
+
+    std::vector<double> A_Values = tri_GetAllByDimension(tri_pointer,flag_0_2);
+    std::vector<double> B_Values = tri_GetAllByDimension(tri_pointer,flag_0_1);
+
+    if (!std::signbit(reverseFlag)){ //check positive
+        std::reverse(A_Values.begin(),A_Values.end());
+        std::reverse(B_Values.begin(),B_Values.end());
+    }
+
+    double tri_min_bound_A = *std::min_element(A_Values.begin(),B_Values.end()); //default 1 million ingame if this min/max fails.
+    double tri_max_bound_A = *std::max_element(A_Values.begin(),A_Values.end());
+    double tri_min_bound_B = *std::min_element(B_Values.begin(),B_Values.end());
+    double tri_max_bound_B = *std::max_element(B_Values.begin(),B_Values.end());
+
+
+    if  (!(adjX_val_A > tri_min_bound_A) && (adjX_val_A < tri_max_bound_A) &&
+          (adjX_val_B > tri_min_bound_B) && (adjX_val_B < tri_max_bound_B)) {
+        return 0;
+    }
+
+
+    //could split this up into variable names or a function but may be less readable than this.
+    if(    
+        (   (A_Values[1] - A_Values[0]) * (adjX_val_B - B_Values[0]) -
+            (B_Values[1] - B_Values[0]) * (adjX_val_A - A_Values[0]) <= 0.0
+        ) 
+            &&
+        (
+            (A_Values[2] - A_Values[1]) * (adjX_val_B - B_Values[1]) -
+            (B_Values[2] - B_Values[1]) * (adjX_val_A - A_Values[1]) <= 0.0
+        )
+            &&
+        (
+            (A_Values[0] - A_Values[2]) * (adjX_val_B - B_Values[2]) -
+            (B_Values[0] - B_Values[2]) * (adjX_val_A - A_Values[2]) <= 0.0
+        )
+    ){
+        return 1;
+    }
+
+    return 0; //all other cases.
+}
 
 int chkIntri (d_coord adjX_Data_ptr, tri tri_pointer,std::vector<float>orientationFlags){
 
@@ -967,4 +1065,4 @@ int main(){
 
 
 
-
+2
