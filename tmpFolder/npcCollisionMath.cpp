@@ -77,14 +77,21 @@ std::vector<double> tri_GetAllByDimension (const tri& tri, DIMENSION D){
 }
 
 
-struct sample
+class sample
 { //This obj is what ptrA represents
+    private:
     int idx; //offset used for ptrB. 
     int n; //number of tris as part of the sample run.
+    public:
+    sample(const std::vector<std::byte>&data,int addr){
+        idx = getWord(data, addr);
+        n = getWord(data,addr+0x4);
+    }
 };
 
 
-struct collision_obj {
+class collision_obj { //refactor to "Collider"?
+    private:
     int fileOffset;
     int num_tris;
     std::vector<tri>tris;
@@ -102,7 +109,28 @@ struct collision_obj {
     int yUpperLim;
     float scaleX;
     float scaleY;
+    public:
+    collision_obj(const std::vector<std::byte>&data,int addr){
+        fileOffset = getWord(data,addr);
+        num_tris = getWord(data,addr+0x4);
+        end_offset = getWord(data,addr+0x8); //forms ptrA
+        buffer_start = getWord(data,addr+0xC); //forms ptrB
+        xUpperLim = swapEndiannessForWord(getXBytesAtX(data,2,addr+0x10),2);
+        yUpperLim = swapEndiannessForWord(getXBytesAtX(data,2,addr+0x12),2);//Halfword
+        
+        scaleX = getWord(data,addr+0x14); //Scale? In both files, every object has this set to 40.
+        scaleY = getWord(data,addr+0x18); //Scale? Same, 40.
+        originX = getWord(data,addr+0x1C); //object_pointer[7] etc. -- OBJECT'S PERSONAL ORIGIN X
+        originY = getWord(data, addr+0x20); //OBJECT ORIGIN Y. UPPER LEFT CORNER.
 
+        for (int currentSet = end_offset; currentSet < buffer_start; currentSet+=0x8){
+            sampleStarts.push_back(sample(data, currentSet));
+        }
+        //only way to build sample order without knowing the next offset is to run each sample in ptrA. 
+        //if I build all possible samples, that could get messy and ram intensive across many many objects. 
+        //Might just be more convienient if we read the data by feeding in the next offset and dealing with EOF stuff for the final object. 
+
+    }
     //Maybe include buffer zone data too... for point ordering..
 };
 
@@ -382,8 +410,50 @@ bool myCheckFixMdl(int ballSize, d_coord& AdjX, int* object_pointer, d_coord& re
     //phuck yes
 }
 
+std::vector<collision_obj> setupMapData(std::string filename){
+    //call this at the start of the application start. 
+
+    std::vector<std::byte> data = readFile(filename); //include .ccd
+    std::vector<collision_obj> res;
+    int file_start = getWord(data,0x0); //returns 0x10 for our shop2f example..
+    int entry_count = getWord(data,0x4);
+    std::vector<int> offsetList;
+    int workingSectionPtr = file_start;
+    //this is a better system than us hardcoding 0x38 and counting byte by byte. Correctly skips some of the duplicate objects I think
+    for (int j = 0; j < entry_count; j++)
+    {
+        int datum = getWord(data,workingSectionPtr + 0x28);
+        if (datum != 0){
+            offsetList.push_back(datum); //objects are pointed to in the order they're written. thank god. 
+            collision_obj colObj = collision_obj(data,datum);
+            res.push_back(colObj);
+        }
+        workingSectionPtr+=0x40;
+    }
+    
+    return res;
+}
+
+
+
+bool myCheckHitCollision(int collisionBallSize, d_coord pointDiffs, d_coord &result_storage_location){
+    //This ignores the 10x redundancy check on collisions. Assuming that my understanding of the loop is correct. 
+    std::vector<collision_obj> mapCollisionData = setupMapData("M1_shop_2F.ccd"); //can maybe be included in a greater map object which has background noise and npc stuff in there too?
+    d_coord resultPosTmp;
+    for (collision_obj collider : mapCollisionData) //should be === the entry_count or less.
+    {
+        if (myCheckFixMdl(collisionBallSize,pointDiffs,collider,resultPosTmp)){
+            result_storage_location = resultPosTmp; //save to resultStorageLocation only if collision occurs.
+            return true;
+        }
+    }
+}
+
 bool checkHitCollision(int collisionBallSize,d_coord store_A, d_coord store_B,d_coord &result_storage_location)
 {
+        //if there's a collision, double check up to 10x.
+    //If no collision, exit and don't save anything.
+    //Honestly, why check 10x? Is that really going to change the result?
     //This func will be the first to read the collision data.
     // std::vector<std::byte> ccd_DATA; //from .ccd file.
 
@@ -399,7 +469,7 @@ bool checkHitCollision(int collisionBallSize,d_coord store_A, d_coord store_B,d_
     int* list_start = 0; //GETS START OF CCD DATA
     //int file_start = getWord(data,0x0);
 
-    int firstLim = 0;
+    int firstLim = 0; //num collisions?
     int i = 0;
     do {
         section_ptr = *list_start; //literal data at file_start. Ex. 0x10 Typically the beginning of the block of sections which contain the offsets to the objects.
@@ -422,13 +492,12 @@ bool checkHitCollision(int collisionBallSize,d_coord store_A, d_coord store_B,d_
     return 0 < i;
 }
 
+
 int my_Collision(int ballSize, d_coord& adjPosLoc, d_coord old){ 
     d_coord proposed = adjPosLoc;
     d_coord point_diffs = vectorSub(proposed,old); //Can compress further if needed.
-    bool collisionResultFlag = checkHitCollision(ballSize,old,point_diffs,adjPosLoc);
-    return collisionResultFlag;
+    return myCheckHitCollision(ballSize,point_diffs,adjPosLoc);
 }
-
 
 //my ver of peopleAdjPosition
 d_coord AdjustIfCollide(int ballSize, d_coord proposed, d_coord old){
@@ -438,7 +507,19 @@ d_coord AdjustIfCollide(int ballSize, d_coord proposed, d_coord old){
     } //Need to see if GS_Collision modifies position if there is no collision. Otherwise just return the adjusted paramet of GS Collision.
 }
 
+
 int main(){
+
+    //BUILD ALL THE COLLISION OBJECTS:
+
+    
+
+
+
+
+
+
+
 
     d_coord old;
     d_coord proposed; //To be modified if applicable.

@@ -215,8 +215,8 @@ int main() {
     //printAllRegions(data,offsetList);
     // printTriSet(data,offsetList[0],false);
     // printSampleOrder(data,offsetList[0],offsetList[1]);
-    printPtrASection(data,offsetList[0]);
-
+    //printPtrASection(data,offsetList[0]);
+    std::cout << "LIMS: " << swapEndiannessForWord(getXBytesAtX(data,2,offsetList[0]+0x12),2); //nice
 
     // for (int i = 0; i < offsetList.size()-1; i++)
     // {
