@@ -23,14 +23,14 @@ u32 swapEndiannessForWord(const std::vector<std::byte>& bytes, int result_Size =
     return swappedValue;
 }
 
-
 u32 getWord(const std::vector<std::byte>&data,int offset){
     std::vector<std::byte> slice = getXBytesAtX(data,4,offset);
     return swapEndiannessForWord(slice); 
-    
 }
 float getFloatFromWord(u32 word){ //This doesn't need to exist.
-    return convertToFloat(word);
+    float result;
+    memcpy(&result,&word,sizeof(float));
+    return result;
 }
 std::vector<std::byte> readFile(const std::string& filename) {
     std::ifstream inputFile(filename, std::ios_base::binary);
@@ -88,32 +88,52 @@ void printTri(const std::vector<std::byte>&data, int data_start){
     std::cout << std::endl;
 }
 
-int printTriSet(const std::vector<std::byte>&data, int offset, int triCount = 0xC, bool fullMode = true){
+void printTriSet(const std::vector<std::byte>&data, int tri_offset, bool fullMode = true){
+    int num_tris = getWord(data,tri_offset+0x4); 
     int tri_size = 0x34;
-    int num_tris = triCount; //needs to get read from somewhere I think?
-    int workingOffset = offset; //updated by functions.
+    std::cout << "\nNUM TRIS: " << num_tris << "\n"; 
     for (int currentTri = 0; currentTri < num_tris; currentTri++){
-        std::cout << "TRI: " << std::dec << currentTri << ". At: " << std::hex << workingOffset << ".\n";
+        std::cout << "TRI: " << std::dec << currentTri << ". At: " << std::hex << tri_offset << ".\n";
         if (fullMode){
-            printTri(data, workingOffset);
+            printTri(data, tri_offset);
         }
-        workingOffset += tri_size;
+        tri_offset += tri_size;
     }
-    return workingOffset;
 }
 
-void printRegion(const std::vector<std::byte>&data, int custom_offset,bool fullMode = true){
-    int object_offset = custom_offset;
-    int tri_size = 0x34;
-    int tri_offset = getWord(data,object_offset);
-    int num_tris = getWord(data,object_offset+0x4); 
-    int ptrA = getWord(data,object_offset+0x8);
-    int next_tri = ptrA + (getWord(data,ptrA+0x4)*4) + 0x8;
-    //std::cout << "NEXT TRI: " << std::hex << next_tri << "\n";
-    std::cout << "\nNUM TRIS: " << num_tris << "\n"; 
-    printTriSet(data,tri_offset,num_tris,fullMode);
-    //return next_tri;
+int printSampleOrder(const std::vector<std::byte>&data, int object_offset, int stopOffset){
+    //convert to void for print only.
+    //often the number of sample == the num tris in the object, but not always. In some cases, quite a few have significantly more. None have less.
+
+    int buffer_start = getWord(data,object_offset+0xC);
+    int currentTri = buffer_start; //ptr
+    //std::cout << "SAMPLE ORDER ~~~\n" << "Offset: 0x" << std::hex << buffer_start << ". End: 0x" << stopOffset << "\n" << std::dec; 
+    
+    std::vector<u32> smpOrder;
+    while (currentTri < stopOffset){ //normally restricted by the number of tris to sample as specified by ptrA.
+        smpOrder.push_back(getWord(data,currentTri));
+        currentTri +=0x4;
+    }
+    // std::sort(smpOrder.begin(),smpOrder.end());
+    // for (auto &&i : smpOrder)
+    // {
+    //     std::cout << i << "\n";
+    // }
+    return smpOrder.size();
 }
+
+void printPtrASection(const std::vector<std::byte>&data, int object_offset){
+    int end_offset = getWord(data,object_offset+0x8);
+    int buffer_start = getWord(data,object_offset+0xC);
+    
+    for (int currentSet = end_offset; currentSet < buffer_start; currentSet+=0x8)
+    {
+        std::cout << std::dec << "Offset: " << getWord(data,currentSet) << " .  Size:" << getWord(data,currentSet+0x4) << "\n";
+    }
+    
+    
+}
+
 // void manualTest(const std::vector<std::byte>&data){
 //     u32 custom_offset = 0x1F38;//0x2094 -- should be 1F54 but is
 //     custom_offset = 0x210;
@@ -121,7 +141,7 @@ void printRegion(const std::vector<std::byte>&data, int custom_offset,bool fullM
 //     for (size_t i = 0; i < 1; i++)
 //     {
 //         std::cout << "SET: " << i << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
-//         offset = printRegion(data,offset,false);
+//         offset = printTriSet(data,offset,false);
 //     } 
 // }
 
@@ -129,16 +149,18 @@ void printAllRegions(const std::vector<std::byte>&data, const std::vector<int>&o
     for (int i = 0; i < offsetList.size(); i++)
     {
         std::cout << "REGION: " << std::dec << i << " AT: " << std::hex <<  offsetList[i] << std::dec <<"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"<< std::endl;
-        printRegion(data,offsetList[i],false);
+        printTriSet(data,offsetList[i],false);
     }
     
 }
 
 int main() {
-    std::vector<std::byte> data = readFile("M1_out.ccd"); 
+    std::vector<std::byte> data = readFile("M1_shop_2F.ccd");
+    //M1_shop_2F.ccd 
+    //M1_out.ccd
     //manualTest(data);
 
-
+    //reserving printRegion for maps with actual regions.
 
     // int list_start = getWord(data,0x0);
     // int entry_count = getWord(data,0x4);
@@ -177,6 +199,9 @@ int main() {
     //offsets.push
     //sections.push.
     //offsets = {}
+
+
+
     for (int i = 0; i < sections.size(); i++){
         std::cout << "SECTION: " << i << "\n";
         for (auto &&i : sections[i])
@@ -188,7 +213,16 @@ int main() {
     std::sort(offsetList.begin(),offsetList.end()); //make sure the num is fairly small.
     std::cout << "NUM_OBJECTS: " << offsetList.size() << " SORTED!\n"; //Disable this and the prev line if wanting to preserve original sections
     //printAllRegions(data,offsetList);
-    //printRegion(data,offsetList[0],false);
+    // printTriSet(data,offsetList[0],false);
+    // printSampleOrder(data,offsetList[0],offsetList[1]);
+    printPtrASection(data,offsetList[0]);
+
+
+    // for (int i = 0; i < offsetList.size()-1; i++)
+    // {
+    //     std::cout << "Obj: 0x" << std::hex << getWord(data,offsetList[i]) << " - " << std::dec << getWord(data,offsetList[i]+0x4) << " : " << printSampleOrder(data,offsetList[i],offsetList[i+1]) << "\n";
+    // }
+    //printSampleOrder(data,offsetList[4],offsetList[5]);
     
     
     
