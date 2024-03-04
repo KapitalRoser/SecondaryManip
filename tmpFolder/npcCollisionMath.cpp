@@ -44,10 +44,31 @@ u32 getWord(const std::vector<std::byte>&data,int offset){
 
 enum DIMENSION {X = 0, Z = 1, Y = 2};
 
-struct tri {
+class tri {
+    public:
     std::vector<d_coord> points;
     std::vector<float> normals;
     int interactionFlag; //looks like we need the first short? Idk if there's a good example of the 2nd short ever being not 0
+
+    tri(const std::vector<std::byte>&data, int tri_offset){
+            for (int i = 0; i < 3; i++)
+            {
+                d_coord pt;
+                pt.x = getFloatFromWord(getWord(data,tri_offset+(i*0xC)));
+                pt.z = getFloatFromWord(getWord(data,tri_offset+0x4+(i*0xC)));
+                pt.y = getFloatFromWord(getWord(data,tri_offset+0x8+(i*0xC)));
+                points.push_back(pt);
+            }
+            //now for normals
+            normals = {
+                getFloatFromWord(getWord(data,tri_offset+0x24)),
+                getFloatFromWord(getWord(data,tri_offset+0x28)),
+                getFloatFromWord(getWord(data,tri_offset+0x2C))};
+
+            interactionFlag = swapEndiannessForWord(getXBytesAtX(data,2,tri_offset+0x30),2);//I call this an interaction_flag because that's what Stars has these labeled as. 
+            //t.interactionFlag_2 = swapEndiannessForWord(getXBytesAtX(data,2,tri_offset+0x32),2); //not sure if this is needed. Doesn't show up in my collision stuff.
+    }
+
 };
 std::vector<double> tri_GetAllByDimension (const tri& tri, DIMENSION D){
     //X = 0, Z = 1, Y = 2
@@ -82,21 +103,27 @@ class sample
     private:
     int offset; //offset used for ptrB. 
     int n; //number of tris as part of the sample run.
-    std::vector<int> sampleTris;
+    
     public:
+    std::vector<int> sampleTris;
+    sample(const std::vector<std::byte>&data,int offsetSelf, int buffer_start){
+        offset = getWord(data, offsetSelf);
+        n = getWord(data,offsetSelf+0x4); //technically don't need offset or N after the loop, since this sample object is just a glorified std::vector<int>
+        for (int i = 0; i < n; i++){
+            int tri = getWord(data,buffer_start+offset+(i*0x4)); //contains an index for the tri in the .tris vector of collision obj. meaningless without that. 
+            sampleTris.push_back(tri); 
+        }
+    }
     int getN(){return n;}
     int getOffset(){return offset;}
-    sample(const std::vector<std::byte>&data,int addr){
-        offset = getWord(data, addr);
-        n = getWord(data,addr+0x4);
-    }
-    //runSample()?
+    
 };
 
 
 class collision_obj { //refactor to "Collider"?
     private:
-    int fileOffset;
+    int offsetSelf;
+    int firstTri;
     int num_tris;
     std::vector<tri>tris; //only used once, in runSample()
     double originX;
@@ -106,7 +133,7 @@ class collision_obj { //refactor to "Collider"?
     int end_offset; //only used in building the vectors
     int buffer_start;
 
-    std::vector<int>sampleOrder; //The buffer_start all the way to the next object. 
+    //std::vector<int>sampleOrder; //The buffer_start all the way to the next object. 
     std::vector<sample> sampleStarts; //need to implement construction for these vectors.
 
     /*
@@ -137,7 +164,8 @@ class collision_obj { //refactor to "Collider"?
     float scaleY;
     public:
     collision_obj(const std::vector<std::byte>&data,int addr){
-        fileOffset = getWord(data,addr);
+        offsetSelf = addr;
+        firstTri = getWord(data,addr);
         num_tris = getWord(data,addr+0x4);
         end_offset = getWord(data,addr+0x8); //forms ptrA
         buffer_start = getWord(data,addr+0xC); //forms ptrB
@@ -149,24 +177,28 @@ class collision_obj { //refactor to "Collider"?
         originX = getWord(data,addr+0x1C); //object_pointer[7] etc. -- OBJECT'S PERSONAL ORIGIN X
         originY = getWord(data, addr+0x20); //OBJECT ORIGIN Y. UPPER LEFT CORNER.
 
-        for (int currentSet = end_offset; currentSet < buffer_start; currentSet+=0x8){
-            sampleStarts.push_back(sample(data, currentSet));
-        }
-        int stopAddr = buffer_start + (sampleStarts.back().getOffset() + sampleStarts.back().getN())*4; // + 0x4 + bufferStart? == our limiting pointer?       
-        for (int currentTri = buffer_start; currentTri < stopAddr; currentTri+=0x4)
+        const int triSize = 0x34;
+        for (int i = 0; i < num_tris; i++)
         {
-            sampleOrder.push_back(getWord(data,currentTri));
+            int tri_offset = firstTri+(i*triSize);
+            tri t = tri(data,tri_offset);
+            tris.push_back(t);
         }
 
+        for (int currentSet = end_offset; currentSet < buffer_start; currentSet+=0x8){
+            sample x = sample(data,currentSet,buffer_start);
+            sampleStarts.push_back(x);
+        }
+       
+       
+        // //this gets all the sampleOrder data into one vector.
+        // int stopAddr = buffer_start + (sampleStarts.back().getOffset() + sampleStarts.back().getN())*4; // + 0x4 + bufferStart? == our limiting pointer?       
+        // for (int currentTri = buffer_start; currentTri < stopAddr; currentTri+=0x4)
+        // {
+        //     sampleOrder.push_back(getWord(data,currentTri));
+        // }
 
         //also populate tris vector?
-
-        //fascinatingly, there is a pattern. The offset for each sample is just the previous sample offset + it's size.
-        //We can just use the last sample to get the end of the sampleOrder data. 
-        //Now the question is, given that the values are not repeated in the samples, we may be able to do the simple vector of vectors after all.
-        //I was worried about an exponential growth problem but it seems to be more linear. 
-        //Will the iteration through samples still work under the new system?
-
     }
     //Maybe include buffer zone data too... for point ordering..
 };
@@ -364,53 +396,63 @@ bool innerFoo2(d_coord& posAtCol, const tri& currentTri, const int ballSizeSquar
 }
 
 
-bool runSample(d_coord&position_at_collision,sample smp,collision_obj objptr,const int ballSizeSquared, d_coord AdjX, collEvalFn evaluationPredicate){
-    for (int i = 0; i < smp.n; i++){ //Run a given sample series of length N. This is a chain of tris in a predetermined order in sampleOrder.
-        int currentTri_idx = objptr.sampleOrder[smp.idx]; //smp.idx is actually offset. 
-        tri currentTri = objptr.tris[currentTri_idx]; //Assuming that I will fill up objptr.tris in the order in which the tris are recorded to file.            
-        bool didCollisionOccur = evaluationPredicate(position_at_collision,currentTri,ballSizeSquared,AdjX); //using the evaluation predicate, evaluate the tri for collision. If not, continue to the next tri in sampleOrder, until the limit of the sample is reached (as defined by N)
+bool runSampleSimpler(d_coord&posAtCol,sample smp,const std::vector<tri> &tris,const int ballSizeSquared, d_coord AdjX, collEvalFn evaluationPredicate){
+    for (auto &&i : smp.sampleTris){
+        tri currentTri = tris[i]; //comes from the collision object in question
+        bool didCollisionOccur = evaluationPredicate(posAtCol,currentTri,ballSizeSquared,AdjX);
         if (didCollisionOccur){
             return true;
         }
-        smp.idx++;
-    }
-    return false;
+    } 
 }
+
+// bool runSample(d_coord&position_at_collision,sample smp,collision_obj objptr,const int ballSizeSquared, d_coord AdjX, collEvalFn evaluationPredicate){
+//     for (int i = 0; i < smp.n; i++){ //Run a given sample series of length N. This is a chain of tris in a predetermined order in sampleOrder.
+//         int currentTri_idx = objptr.sampleOrder[smp.idx]; //smp.idx is actually offset. 
+//         tri currentTri = objptr.tris[currentTri_idx]; //Assuming that I will fill up objptr.tris in the order in which the tris are recorded to file.            
+//         bool didCollisionOccur = evaluationPredicate(position_at_collision,currentTri,ballSizeSquared,AdjX); //using the evaluation predicate, evaluate the tri for collision. If not, continue to the next tri in sampleOrder, until the limit of the sample is reached (as defined by N)
+//         if (didCollisionOccur){
+//             return true;
+//         }
+//         smp.idx++;
+//     }
+//     return false;
+// }
 //This could use a llittle bit of work. It would be cool to have a better system for ptrA and ptrB than doing weird pointer math on a std::vec of bytes.
 bool searchTriSample(d_coord&position_at_collision, int xMinusBall, int yMinusBall, int xPlusBall, int yPlusBall, collision_obj objptr, const int ballSizeSquared, d_coord AdjX, collEvalFn evaluationPredicate){
     //While technically this can work as a single function, it would make things cognitively easier to understand if it is broken up. Might be able to recombine things in the future to have less vectors if I'm smart.
     //ptrA refers to a idx and a size within an array of sampleOrder. The values in sampleOrder refers to an idx within the array of Tris for a given Object. The Size is the number of values to be sampled. 
-    for (int ymbc = yMinusBall; ymbc < yPlusBall; ymbc++){ //for each ymbc, calculate a new start for a set of samples, each one is xUpperLim apart, offset by xMinusBall. 
-        int sampleSelectionIdx = objptr.xUpperLim * ymbc + xMinusBall; //starting point for a set of samples.
-        for (int xmbc = xMinusBall; xmbc < xPlusBall; xmbc++){ //using that starting point, run a series of samples. 
-            sample currentSample = objptr.sampleStarts[sampleSelectionIdx];
-            if (runSample(position_at_collision,currentSample,objptr,ballSizeSquared,AdjX,evaluationPredicate)){ //Run a given sample series of length N. This is a chain of tris in a predetermined order in sampleOrder.
+    for (int ymbc = yMinusBall; ymbc < yPlusBall; ymbc++){ //each iteration is a sample group, each sample group being an amount xUpperLim samples apart, offset by xmb. Ypb-ymb number of groups are examined. 
+        int sampleSelectionIdx = objptr.xUpperLim * ymbc + xMinusBall; //starting point for a group of samples.
+        for (int xmbc = xMinusBall; xmbc < xPlusBall; xmbc++){ //Run some of (but not necessarily all) samples within the sample group. Xpb - xmb number of samples are run. 
+            sample currentSample = objptr.sampleStarts[sampleSelectionIdx]; //lookup sample from the whole sample data (rn this is all in one array, could simplify with codified sample groups)
+            if (runSampleSimpler(position_at_collision,currentSample,objptr.tris,ballSizeSquared,AdjX,evaluationPredicate)){ //Run a given sample series of length N. This is a chain of tris in a predetermined order in sampleOrder.
                 return true;
             }
-            sampleSelectionIdx++;
+            sampleSelectionIdx++; //onto the next sample within the sample group
         }
     }
     return false;
 }
 
 
-bool myCheckFixMdl(int ballSize, d_coord& AdjX, int* object_pointer, d_coord& result_storage){
+bool myCheckFixMdl(int ballSize, d_coord& AdjX, collision_obj objptr, d_coord& result_storage){
     bool resultFlag;
     d_coord position_at_collision;
 
-    //This could really be done on .ccd file read, where a vector of objects is prepared with all this data populated and organized.
-    collision_obj objptr;
-    objptr.fileOffset = (int)object_pointer;
-    objptr.num_tris = object_pointer[1];
-    objptr.end_offset = object_pointer[2]; //forms ptrA
-    objptr.buffer_start = object_pointer[3]; //forms ptrB?
-    objptr.xUpperLim = *(object_pointer+0x10); //Halfword -- Number of samples in a sample group.
-    objptr.yUpperLim = *(object_pointer+0x12);//Halfword -- Unused??????
+    // //This could really be done on .ccd file read, where a vector of objects is prepared with all this data populated and organized.
+    // collision_obj objptr;
+    // objptr.fileOffset = (int)object_pointer;
+    // objptr.num_tris = object_pointer[1];
+    // objptr.end_offset = object_pointer[2]; //forms ptrA
+    // objptr.buffer_start = object_pointer[3]; //forms ptrB?
+    // objptr.xUpperLim = *(object_pointer+0x10); //Halfword -- Number of samples in a sample group.
+    // objptr.yUpperLim = *(object_pointer+0x12);//Halfword -- Unused??????
     
-    objptr.scaleX = object_pointer[5]; //Scale? In both files, every object has this set to 40.
-    objptr.scaleY = object_pointer[6]; //Scale? Same, 40.
-    objptr.originX = object_pointer[7]; //object_pointer[7] etc. -- OBJECT'S PERSONAL ORIGIN X
-    objptr.originY = object_pointer[8]; //OBJECT ORIGIN Y. UPPER LEFT CORNER.
+    // objptr.scaleX = object_pointer[5]; //Scale? In both files, every object has this set to 40.
+    // objptr.scaleY = object_pointer[6]; //Scale? Same, 40.
+    // objptr.originX = object_pointer[7]; //object_pointer[7] etc. -- OBJECT'S PERSONAL ORIGIN X
+    // objptr.originY = object_pointer[8]; //OBJECT ORIGIN Y. UPPER LEFT CORNER.
     
     //PUT VECTOR BUILDS HERE. 
 
@@ -431,7 +473,7 @@ bool myCheckFixMdl(int ballSize, d_coord& AdjX, int* object_pointer, d_coord& re
     yPlusBall = yPlusBall > (objptr.yUpperLim - 1) ? objptr.yUpperLim-1 : yPlusBall;
 
 
-    int ballSizeSquared = pow(ballSize,2);
+    int ballSizeSquared = pow(ballSize,2); //could delete this line and send this squaring thing down to the runSample function, as it only is used in the three predicate functions. HOWEVER still need to send ballsize down then...
     
     
     std::vector<collEvalFn> evaluationFns = {innerFoo0,innerFoo1,innerFoo2};
@@ -445,25 +487,19 @@ bool myCheckFixMdl(int ballSize, d_coord& AdjX, int* object_pointer, d_coord& re
     //phuck yes
 }
 
-std::vector<collision_obj> setupMapData(std::string filename){
-    //call this at the start of the application start. 
-
+std::vector<collision_obj> setupMapData(std::string filename){ //call this at the application start. 
     std::vector<std::byte> data = readFile(filename); //include .ccd
     std::vector<collision_obj> res;
     int file_start = getWord(data,0x0); //returns 0x10 for our shop2f example..
     int entry_count = getWord(data,0x4);
-    std::vector<int> offsetList;
-    int workingSectionPtr = file_start;
-    //this is a better system than us hardcoding 0x38 and counting byte by byte. Correctly skips some of the duplicate objects I think
+    int sectionPtr = file_start;//this is a better system than us hardcoding 0x38 and counting byte by byte. Correctly skips some of the duplicate objects I think
     for (int j = 0; j < entry_count; j++)
     {
-        int datum = getWord(data,workingSectionPtr + 0x28);
+        int datum = getWord(data,sectionPtr + 0x28);
         if (datum != 0){
-            offsetList.push_back(datum); //objects are pointed to in the order they're written. thank god. 
-            collision_obj colObj = collision_obj(data,datum);
-            res.push_back(colObj);
+            res.push_back(collision_obj(data,datum));
         }
-        workingSectionPtr+=0x40;
+        sectionPtr+=0x40;
     }
     
     return res;
