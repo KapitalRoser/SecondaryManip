@@ -80,13 +80,17 @@ std::vector<double> tri_GetAllByDimension (const tri& tri, DIMENSION D){
 class sample
 { //This obj is what ptrA represents
     private:
-    int idx; //offset used for ptrB. 
+    int offset; //offset used for ptrB. 
     int n; //number of tris as part of the sample run.
+    std::vector<int> sampleTris;
     public:
+    int getN(){return n;}
+    int getOffset(){return offset;}
     sample(const std::vector<std::byte>&data,int addr){
-        idx = getWord(data, addr);
+        offset = getWord(data, addr);
         n = getWord(data,addr+0x4);
     }
+    //runSample()?
 };
 
 
@@ -94,7 +98,7 @@ class collision_obj { //refactor to "Collider"?
     private:
     int fileOffset;
     int num_tris;
-    std::vector<tri>tris;
+    std::vector<tri>tris; //only used once, in runSample()
     double originX;
     double originY; //no z needed.
 
@@ -105,7 +109,29 @@ class collision_obj { //refactor to "Collider"?
     std::vector<int>sampleOrder; //The buffer_start all the way to the next object. 
     std::vector<sample> sampleStarts; //need to implement construction for these vectors.
 
-    int xUpperLim;
+    /*
+    
+    System:
+
+    std::vector<sample> sampleGroup
+    std::vector<std::vector<sample>> sampleSet // contains sampleGroups.
+
+    have some sort of fn to organize the array of samples into these sample groups. may help make the iteration easier later.
+
+    std::vector<sample> buildSampleGroup(data){
+        for (int i = 0; i < xUpperLim; i++){
+            sampleGroup.push_back(sample)
+        }
+        return sampleGroup;
+    }
+    
+    for (int i = 0; i < some kind of limit; i++){
+        sampleSet.push_back(sampleGroup);
+    }
+    
+
+    */
+    int xUpperLim; //Num samples per sample group.
     int yUpperLim;
     float scaleX;
     float scaleY;
@@ -126,9 +152,20 @@ class collision_obj { //refactor to "Collider"?
         for (int currentSet = end_offset; currentSet < buffer_start; currentSet+=0x8){
             sampleStarts.push_back(sample(data, currentSet));
         }
-        //only way to build sample order without knowing the next offset is to run each sample in ptrA. 
-        //if I build all possible samples, that could get messy and ram intensive across many many objects. 
-        //Might just be more convienient if we read the data by feeding in the next offset and dealing with EOF stuff for the final object. 
+        int stopAddr = buffer_start + (sampleStarts.back().getOffset() + sampleStarts.back().getN())*4; // + 0x4 + bufferStart? == our limiting pointer?       
+        for (int currentTri = buffer_start; currentTri < stopAddr; currentTri+=0x4)
+        {
+            sampleOrder.push_back(getWord(data,currentTri));
+        }
+
+
+        //also populate tris vector?
+
+        //fascinatingly, there is a pattern. The offset for each sample is just the previous sample offset + it's size.
+        //We can just use the last sample to get the end of the sampleOrder data. 
+        //Now the question is, given that the values are not repeated in the samples, we may be able to do the simple vector of vectors after all.
+        //I was worried about an exponential growth problem but it seems to be more linear. 
+        //Will the iteration through samples still work under the new system?
 
     }
     //Maybe include buffer zone data too... for point ordering..
@@ -280,7 +317,6 @@ bool innerFoo0(d_coord &posAtCol, const tri &currentTri, const int ballSizeSquar
     return false;
 } //Seems to check the first point in detail?
 
-//Investigate val(triPtr+30) as well as local_d0 and such. May help with the structure of the logic.
 bool innerFoo1(d_coord &posAtCol, const tri& currentTri, const int ballSizeSquared, d_coord AdjX ){
     if ((currentTri.interactionFlag & 7)!= 0){
         double planePoint_result = getSidePlanePoint(currentTri.normals,currentTri.points[0],AdjX); //oo reused from foo0
@@ -304,7 +340,6 @@ bool innerFoo1(d_coord &posAtCol, const tri& currentTri, const int ballSizeSquar
     }
     return false;
 } //seems to check all points?
-
 
 //REMARKABLY SIMILAR TO INNERFOO1 WITH TINY DIFFERENCE IN THE FINAL CHECK
 bool innerFoo2(d_coord& posAtCol, const tri& currentTri, const int ballSizeSquared, d_coord AdjX){
@@ -331,7 +366,7 @@ bool innerFoo2(d_coord& posAtCol, const tri& currentTri, const int ballSizeSquar
 
 bool runSample(d_coord&position_at_collision,sample smp,collision_obj objptr,const int ballSizeSquared, d_coord AdjX, collEvalFn evaluationPredicate){
     for (int i = 0; i < smp.n; i++){ //Run a given sample series of length N. This is a chain of tris in a predetermined order in sampleOrder.
-        int currentTri_idx = objptr.sampleOrder[smp.idx]; //Lookup the index of a tri. Could oneline this but my brain hurts.
+        int currentTri_idx = objptr.sampleOrder[smp.idx]; //smp.idx is actually offset. 
         tri currentTri = objptr.tris[currentTri_idx]; //Assuming that I will fill up objptr.tris in the order in which the tris are recorded to file.            
         bool didCollisionOccur = evaluationPredicate(position_at_collision,currentTri,ballSizeSquared,AdjX); //using the evaluation predicate, evaluate the tri for collision. If not, continue to the next tri in sampleOrder, until the limit of the sample is reached (as defined by N)
         if (didCollisionOccur){
@@ -369,8 +404,8 @@ bool myCheckFixMdl(int ballSize, d_coord& AdjX, int* object_pointer, d_coord& re
     objptr.num_tris = object_pointer[1];
     objptr.end_offset = object_pointer[2]; //forms ptrA
     objptr.buffer_start = object_pointer[3]; //forms ptrB?
-    objptr.xUpperLim = *(object_pointer+0x10); //Halfword
-    objptr.yUpperLim = *(object_pointer+0x12);//Halfword
+    objptr.xUpperLim = *(object_pointer+0x10); //Halfword -- Number of samples in a sample group.
+    objptr.yUpperLim = *(object_pointer+0x12);//Halfword -- Unused??????
     
     objptr.scaleX = object_pointer[5]; //Scale? In both files, every object has this set to 40.
     objptr.scaleY = object_pointer[6]; //Scale? Same, 40.
@@ -383,7 +418,7 @@ bool myCheckFixMdl(int ballSize, d_coord& AdjX, int* object_pointer, d_coord& re
     //This needs to be done on the fly
     //In the game these are narrowed down intentionally into int.
     //We can probably put most of this into search tri sample and remove the extra parameters!
-    int xMinusBall = (AdjX.x - ballSize - objptr.originX)/objptr.scaleX;
+    int xMinusBall = (AdjX.x - ballSize - objptr.originX)/objptr.scaleX; //these have many roles. For xmb ic is the offset for the sampling section, and it is also the limit of how many of the samples to run within a section of possible samples. 
     int yMinusBall = (AdjX.y - ballSize - objptr.originY)/objptr.scaleY;
     int xPlusBall  = (AdjX.x + ballSize - objptr.originX)/objptr.scaleX;
     int yPlusBall  = (AdjX.y + ballSize - objptr.originY)/objptr.scaleX;
@@ -392,7 +427,7 @@ bool myCheckFixMdl(int ballSize, d_coord& AdjX, int* object_pointer, d_coord& re
     xMinusBall = xMinusBall < 0 ? 0 : xMinusBall; //Since scaleX and scaleY are so big (40, 50 etc.) this should always be a small number, and since its an int its pretty much always gonna be between 0, 1 or 2. 3 or higher should be exceedingly rare.
     yMinusBall = yMinusBall < 0 ? 0 : yMinusBall;
 
-    xPlusBall = xPlusBall > (objptr.xUpperLim - 1) ? objptr.xUpperLim-1 : xPlusBall;
+    xPlusBall = xPlusBall > (objptr.xUpperLim - 1) ? objptr.xUpperLim-1 : xPlusBall; //Do not consolidate this into the lim itself, as this value is used raw later on.
     yPlusBall = yPlusBall > (objptr.yUpperLim - 1) ? objptr.yUpperLim-1 : yPlusBall;
 
 

@@ -106,19 +106,20 @@ int printSampleOrder(const std::vector<std::byte>&data, int object_offset, int s
     //often the number of sample == the num tris in the object, but not always. In some cases, quite a few have significantly more. None have less.
 
     int buffer_start = getWord(data,object_offset+0xC);
-    int currentTri = buffer_start; //ptr
-    //std::cout << "SAMPLE ORDER ~~~\n" << "Offset: 0x" << std::hex << buffer_start << ". End: 0x" << stopOffset << "\n" << std::dec; 
-    
+    std::cout << "SAMPLE ORDER ~~~\n" << "Offset: 0x" << std::hex << buffer_start << ". End: 0x" << stopOffset << "\n" << std::dec; 
     std::vector<u32> smpOrder;
-    while (currentTri < stopOffset){ //normally restricted by the number of tris to sample as specified by ptrA.
+    for (int currentTri = buffer_start; currentTri < stopOffset; currentTri+=0x4)
+    {
         smpOrder.push_back(getWord(data,currentTri));
-        currentTri +=0x4;
     }
-    // std::sort(smpOrder.begin(),smpOrder.end());
+    
+    //std::sort(smpOrder.begin(),smpOrder.end());
     // for (auto &&i : smpOrder)
     // {
     //     std::cout << i << "\n";
     // }
+
+    std::cout << std::hex << "END CALC: " << buffer_start + (78*4);
     return smpOrder.size();
 }
 
@@ -128,7 +129,9 @@ void printPtrASection(const std::vector<std::byte>&data, int object_offset){
     
     for (int currentSet = end_offset; currentSet < buffer_start; currentSet+=0x8)
     {
-        std::cout << std::dec << "Offset: " << getWord(data,currentSet) << " .  Size:" << getWord(data,currentSet+0x4) << "\n";
+        int offset = getWord(data,currentSet);
+        int size = getWord(data,currentSet+0x4);
+        std::cout << "Location: 0x" << std::hex << buffer_start + (offset*0x4) << ". Offset: " << std::dec <<  offset << ".  Size:" << size << ". offset + size: " << offset + size << "\n";
     }
     
     
@@ -214,17 +217,16 @@ int main() {
     std::cout << "NUM_OBJECTS: " << offsetList.size() << " SORTED!\n"; //Disable this and the prev line if wanting to preserve original sections
     //printAllRegions(data,offsetList);
     // printTriSet(data,offsetList[0],false);
-    // printSampleOrder(data,offsetList[0],offsetList[1]);
-    //printPtrASection(data,offsetList[0]);
-    std::cout << "LIMS: " << swapEndiannessForWord(getXBytesAtX(data,2,offsetList[0]+0x12),2); //nice
+    printPtrASection(data,offsetList[0]);
+    printSampleOrder(data,offsetList[0],offsetList[1]);
+    // std::cout << "LIMS: " << swapEndiannessForWord(getXBytesAtX(data,2,offsetList[0]+0x12),2); //nice
 
     // for (int i = 0; i < offsetList.size()-1; i++)
     // {
     //     std::cout << "Obj: 0x" << std::hex << getWord(data,offsetList[i]) << " - " << std::dec << getWord(data,offsetList[i]+0x4) << " : " << printSampleOrder(data,offsetList[i],offsetList[i+1]) << "\n";
     // }
     //printSampleOrder(data,offsetList[4],offsetList[5]);
-    
-    
+
     
     return 0;
 }
