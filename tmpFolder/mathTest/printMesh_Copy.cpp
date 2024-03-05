@@ -57,7 +57,6 @@ void printBytes(const std::vector<std::byte>&data, int offset, int n, int breakA
 }
 
 void printTri(const std::vector<std::byte>&data, int data_start){
-    int word_size = 4;
     printBytes(data,data_start,0x24);
     std::cout << "| ";
     printBytes(data,data_start+0x24,12);
