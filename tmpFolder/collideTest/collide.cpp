@@ -6,6 +6,11 @@
 
 std::vector<std::byte> readFile(const std::string& filename) {
     std::ifstream inputFile(filename, std::ios_base::binary);
+    if (inputFile.fail())
+    {
+        std::cout << "File inaccessible";
+        exit(EXIT_FAILURE);
+    }
     inputFile.seekg(0, std::ios_base::end);
     auto length = inputFile.tellg();
     inputFile.seekg(0, std::ios_base::beg);
@@ -80,7 +85,7 @@ class sample
         offset = getWord(data, offsetSelf);
         n = getWord(data,offsetSelf+0x4); //technically don't need offset or N after the loop, since this sample object is just a glorified std::vector<int>
         for (int i = 0; i < n; i++){
-            int tri = getWord(data,buffer_start+offset+(i*0x4)); //contains an index for the tri in the .tris vector of collision obj. meaningless without that. 
+            int tri = getWord(data,buffer_start+(offset*0x4)+(i*0x4)); //contains an index for the tri in the .tris vector of collision obj. meaningless without that. 
             sampleTris.push_back(tri); 
         }
     }
@@ -91,7 +96,7 @@ class sample
 
 class collider { //refactor to "Collider"?
     private:
-    int offsetSelf;
+    
     int firstTri;
     int num_tris;
     std::vector<tri>tris; //only used once, in runSample()
@@ -109,19 +114,20 @@ class collider { //refactor to "Collider"?
     float scaleX;
     float scaleY;
     public:
+    int offsetSelf;
     collider(const std::vector<std::byte>&data,int addr){
         offsetSelf = addr;
         firstTri = getWord(data,addr);
         num_tris = getWord(data,addr+0x4);
         end_offset = getWord(data,addr+0x8); //forms ptrA
         buffer_start = getWord(data,addr+0xC); //forms ptrB
-        xUpperLim = swapEndiannessForWord(getXBytesAtX(data,2,addr+0x10),2);
-        yUpperLim = swapEndiannessForWord(getXBytesAtX(data,2,addr+0x12),2);//Halfword
+        xUpperLim = swapEndiannessForWord(getXBytesAtX(data,2,addr+0x10),2);//Halfwords
+        yUpperLim = swapEndiannessForWord(getXBytesAtX(data,2,addr+0x12),2);
         
-        scaleX = getWord(data,addr+0x14); //Scale? In both files, every object has this set to 40.
-        scaleY = getWord(data,addr+0x18); //Scale? Same, 40.
-        originX = getWord(data,addr+0x1C); //object_pointer[7] etc. -- OBJECT'S PERSONAL ORIGIN X
-        originY = getWord(data, addr+0x20); //OBJECT ORIGIN Y. UPPER LEFT CORNER.
+        scaleX = getFloatFromWord(getWord(data,addr+0x14)); //Scale? In both files, every object has this set to 40.
+        scaleY = getFloatFromWord(getWord(data,addr+0x18)); //Scale? Same, 40.
+        originX = getFloatFromWord(getWord(data,addr+0x1C)); //object_pointer[7] etc. -- OBJECT'S PERSONAL ORIGIN X
+        originY = getFloatFromWord(getWord(data, addr+0x20)); //OBJECT ORIGIN Y. UPPER LEFT CORNER.
 
         const int triSize = 0x34;
         for (int i = 0; i < num_tris; i++)
@@ -149,6 +155,7 @@ class collider { //refactor to "Collider"?
 //assimilate this into collision object later...
 std::vector<collider> setupMapData(std::string filename){ //call this at the application start. 
     std::vector<std::byte> data = readFile(filename); //include .ccd
+    std::cout << "READ INTO BYTE DATA";
     std::vector<collider> res;
     int file_start = getWord(data,0x0); //returns 0x10 for our shop2f example..
     int entry_count = getWord(data,0x4);
@@ -161,7 +168,6 @@ std::vector<collider> setupMapData(std::string filename){ //call this at the app
         }
         sectionPtr+=0x40;
     }
-    
     return res;
 }
 
@@ -182,19 +188,27 @@ d_coord getCpPlanePoint(std::vector<float> tri_orientation,d_coord tri_pos_ptr,d
     scaleResult.y = scaleFactor * tri_orientation[2];
     return vectorAdd(scaleResult,adjX_ptr_maybe); //Save first
 }
-double getCpLinePoint(d_coord& result_location, d_coord tri_pos_ptr,d_coord successivePoint, d_coord adjX){ //unlike the other one, this can return a separate value.
-    d_coord subResult = vectorSub(successivePoint,tri_pos_ptr);
+double getCpLinePoint(d_coord& result_location, d_coord triPoint,d_coord successivePoint, d_coord adjX){ //unlike the other one, this can return a separate value.
+    d_coord subResult = vectorSub(successivePoint,triPoint);
+    subResult.x = static_cast<float>(subResult.x);
+    subResult.z = static_cast<float>(subResult.z);
+    subResult.y = static_cast<float>(subResult.y); //not sure if this correction needs to happen to vectorSub, but the perfectionist in me likes this workaround to get the correct value. Can also try removing this since it may not be necessary to solve my problems.
+
     double intermediateResult = 0.0;
-    if (vectorSquareMag(subResult) == intermediateResult){
-        result_location = tri_pos_ptr;
-    } else {
-        intermediateResult = 
-        (subResult.y * (adjX.y - tri_pos_ptr.y)) + 
-        (subResult.z * (adjX.z - tri_pos_ptr.z)) + 
-        (subResult.x * (adjX.x - tri_pos_ptr.x));
+    double subMag = vectorSquareMag(subResult);
+    if (subMag == intermediateResult){
+        result_location = triPoint;
+    } else { //While it seems like it comes from sub result, not sure that it actually is???????
+    //here comes perfectionism:
+    double b4 = (subResult.y * (adjX.y - triPoint.y)) + (subResult.z * (adjX.z - triPoint.z)) + (subResult.x * (adjX.x - triPoint.x));
+    intermediateResult = b4/subMag;
+        // intermediateResult = 
+        // ((subResult.y * (adjX.y - triPoint.y)) + 
+        // (subResult.z * (adjX.z - triPoint.z)) + 
+        // (subResult.x * (adjX.x - triPoint.x))) / subMag;
 
         d_coord scaleResult = vectorScale(intermediateResult,subResult);
-        result_location = vectorAdd(scaleResult,tri_pos_ptr);
+        result_location = vectorAdd(scaleResult,triPoint);
     }
     return intermediateResult;
 }
@@ -318,9 +332,11 @@ bool innerFoo0(d_coord &posAtCol, const tri &currentTri, const int ballSizeSquar
         d_coord cpPlaneResult = getCpPlanePoint(currentTri.normals,currentTri.points[0],AdjX); //CP IS INFLUENCED BY adjX -- does not return anything normally, but I may choose to alter this to be better style.
         if ((vectorSquareDistance(cpPlaneResult,AdjX) < ballSizeSquared) && myChkInTri(AdjX,currentTri) != 0) { //if the distance squared from the proposed to the CP is less than the squared ball size then begin detailed tri checking.
                 posAtCol = cpPlaneResult; //save
+                std::cout << "FOUND FOO 0\n";
                 return true;
         }
     }
+    std::cout << "NOT FOO 0\n";
     return false;
 } //Seems to check the first point in detail?
 
@@ -334,17 +350,17 @@ bool innerFoo1(d_coord &posAtCol, const tri& currentTri, const int ballSizeSquar
                 if ((currentTri.interactionFlag & ptrC_vals[j]) != 0){ //The only place that local_d0 gets used?
                     int successivePoint = j > 1 ? 0 : j+1; //I SUSPECT THAT FUNKY OFFSET REFERS TO ANOTHER POINT IN THE SAME TRI.
                     d_coord cpLineResult; //There is way too much code to try and consolidate these into one return value.
-                    double cpLineIntermediate = getCpLinePoint(cpLineResult,currentTri.points[j],currentTri.points[successivePoint],AdjX);
-                    if (cpLineIntermediate >= 0.0 && 
-                        cpLineIntermediate <= 1.0 && //Is this in the ghidra code?? kinda weird.
-                        vectorSquareDistance(cpLineResult,AdjX) < ballSizeSquared){
+                    double cpLineIntermediate = getCpLinePoint(cpLineResult,currentTri.points[j],currentTri.points[successivePoint],AdjX); ///LOOKS LIKE WE NEED YET ANOTHER SIGNED BIT CHECK!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                    if ((cpLineIntermediate >= 0.0) && (cpLineIntermediate <= 1.0) && (vectorSquareDistance(cpLineResult,AdjX) < ballSizeSquared)){
                         posAtCol = cpLineResult;
+                        std::cout << "FOUND FOO 1\n";
                         return true;
                     }
                 }
             }
         }
     }
+    std::cout << "NOT FOO 1\n";
     return false;
 } //seems to check all points?
 
@@ -361,11 +377,13 @@ bool innerFoo2(d_coord& posAtCol, const tri& currentTri, const int ballSizeSquar
                     ((currentTri.interactionFlag & (ptrC_vals[j_2] + antecedentPoint * 2)) != 0) && //really trusting the decomp on this
                     (vectorSquareDistance(currentTri.points[j_2],AdjX) < ballSizeSquared)){
                     posAtCol = currentTri.points[j_2];
+                    std::cout << "FOUND FOO 2\n";
                     return true;
                 }
             }
         }
     }
+    std::cout << "NOT FOO 2\n";
     return false;
 }
 
@@ -377,12 +395,13 @@ bool runSample(d_coord&posAtCol,sample smp,const std::vector<tri> &tris,const in
             return true; //collision occurred
         }
     } 
+    return false;
 }
 
 bool samplePointCloud(d_coord&position_at_collision, int xMinusBall, int yMinusBall, int xPlusBall, int yPlusBall, collider objptr, const int ballSizeSquared, d_coord AdjX, collEvalFn evaluationPredicate){
-    for (int ymbc = yMinusBall; ymbc < yPlusBall; ymbc++){ //each iteration is a sample group, each sample group being an amount xUpperLim samples apart, offset by xmb. Ypb-ymb number of groups are examined. 
+    for (int ymbc = yMinusBall; ymbc <= yPlusBall; ymbc++){ //each iteration is a sample group, each sample group being an amount xUpperLim samples apart, offset by xmb. Ypb-ymb number of groups are examined. 
         int sampleSelectionIdx = objptr.getXUpperLim() * ymbc + xMinusBall; //starting point for a group of samples.
-        for (int xmbc = xMinusBall; xmbc < xPlusBall; xmbc++){ //Run some of (but not necessarily all) samples within the sample group. Xpb - xmb number of samples are run. 
+        for (int xmbc = xMinusBall; xmbc <= xPlusBall; xmbc++){ //Run some of (but not necessarily all) samples within the sample group. Xpb - xmb number of samples are run. 
             sample currentSample = objptr.getSamples()[sampleSelectionIdx]; //lookup sample from the whole sample data (rn this is all in one array, could simplify with codified sample groups)
             if (runSample(position_at_collision,currentSample,objptr.getTris(),ballSizeSquared,AdjX,evaluationPredicate)){ //Run a given sample series of length N. This is a chain of tris in a predetermined order in sampleOrder.
                 return true;
@@ -395,7 +414,7 @@ bool samplePointCloud(d_coord&position_at_collision, int xMinusBall, int yMinusB
 
 bool checkHit(int ballSize, d_coord AdjX, collider objptr, d_coord& result_storage){
     int xMinusBall = (AdjX.x - ballSize - objptr.getOriginX())/objptr.getScaleX(); //these have many roles. For xmb ic is the offset for the sampling section, and it is also the limit of how many of the samples to run within a section of possible samples. 
-    int yMinusBall = (AdjX.y - ballSize - objptr.getOriginY())/objptr.getScaleY();
+    int yMinusBall = (AdjX.y - ballSize - objptr.getOriginY())/objptr.getScaleY(); //Intentional data loss with truncation to int.
     int xPlusBall  = (AdjX.x + ballSize - objptr.getOriginX())/objptr.getScaleX();
     int yPlusBall  = (AdjX.y + ballSize - objptr.getOriginY())/objptr.getScaleY();
 
@@ -409,8 +428,9 @@ bool checkHit(int ballSize, d_coord AdjX, collider objptr, d_coord& result_stora
     int ballSizeSquared = pow(ballSize,2); //could delete this line and send this squaring thing down to the runSample function, as it only is used in the three predicate functions. HOWEVER still need to send ballsize down then...
     
     d_coord position_at_collision;
-    std::vector<collEvalFn> evaluationFns = {innerFoo0,innerFoo1,innerFoo2};
+    std::vector<collEvalFn> evaluationFns = {innerFoo0,innerFoo1,innerFoo2}; //Can skip the last two functions if the interaction flag & 7 == 0...
     for (collEvalFn fn : evaluationFns){
+        std::cout << "EVAL FUNCTION\n";
         if (samplePointCloud(position_at_collision,xMinusBall,yMinusBall,xPlusBall,yPlusBall,objptr,ballSizeSquared,AdjX,fn)){ //TLDR: If there is a hit, then this records the position that the hit was detected. Then a static Nudge is applied to put the actor back inbounds.
             result_storage = nudgePos(ballSize,position_at_collision,AdjX);//could pull this back out to adjustIfCollide, and then just return true; OR could keep here.
             return true;
@@ -421,31 +441,55 @@ bool checkHit(int ballSize, d_coord AdjX, collider objptr, d_coord& result_stora
 
 d_coord adjustIfCollide (int ballSize, d_coord proposed, d_coord old, const std::vector<collider>&mapColDat){
     d_coord adjusted = proposed;
-    d_coord pointDiffs = vectorSub(proposed,old);
+    const double PLAYER_HEIGHT = 8.5;
+    proposed.z += PLAYER_HEIGHT;
+    // d_coord pointDiffs = vectorSub(proposed,old);
+    // d_coord zeros;
+    // zeros.x = 0;
+    // zeros.z = 0;
+    // zeros.y = 0;
+    //std::cout << "POINT DIFFS: (" << pointDiffs.x << "," << pointDiffs.z << "," << pointDiffs.y << ")";
     for (collider colliderObj : mapColDat){
-        if (checkHit(ballSize,pointDiffs,colliderObj,adjusted)){ 
+        if (colliderObj.offsetSelf == 7992){
+            int a = 0; //debug
+        }
+        std::cout << "CHECKED COLLIDER\n";
+        if (checkHit(ballSize,proposed,colliderObj,adjusted)){ 
+            std::cout << "HIT FOUND\n";
             return adjusted;
         }
     }
+    std::cout << "NO HITS FOUND\n";
     return proposed;
 }
 
 
 int main(){
-    const std::vector<collider> mapCollisionData = setupMapData("M1_shop_2F.ccd"); //can maybe be included in a greater map object which has background noise and npc stuff in there too?
-    
+    const std::vector<collider> mapCollisionData = setupMapData("C:\\Users\\Carter\\Documents\\GitHub\\SecondaryManip\\SecondaryManip\\tmpFolder\\collideTest\\M1_shop_2F.ccd"); //can maybe be included in a greater map object which has background noise and npc stuff in there too?
+    std::cout << "\nLoaded Collision Data!\n";
 
 
-    //Plug in some example points in here. 
-    //TEST CASES: 
-    d_coord old;
-    d_coord proposed; //To be modified if applicable.
-    
+    //FOUND A COLLISION SUCCESSFULLY!!!!!!!!
+
+    d_coord current; //actual, current x as written in standard ramsearch block.
+    current.x = 21.9913330078125;
+    current.z = 0;
+    current.y = -12.551513671875;
+    d_coord suppose; //To be modified if applicable.
+    suppose.x = 22.392818450927734;
+    suppose.z = 0;
+    suppose.y = -12.132040023803711;
     
     int NPC_BALLSIZE = 3; //not const? I think it gets added to with TinyAdjustment later...
 
-    proposed = adjustIfCollide(NPC_BALLSIZE,proposed,old,mapCollisionData); //If collision occurs, returns corrected position.
-
-
+    std::cout << std::setprecision(16) << "OLD POS: (" << current.x << "," << current.z << "," << current.y << ")\n";
+    d_coord proposed = adjustIfCollide(NPC_BALLSIZE,suppose,current,mapCollisionData); //If collision occurs, returns corrected position.
+    std::cout << "NEW POS: (" << proposed.x << "," << proposed.z << "," << proposed.y << ")\n";
+    if (suppose.x == proposed.x && suppose.z == proposed.z && suppose.y == proposed.y){
+        std::cout << "UNCHANGED!";
+    } else {
+        std::cout << "ADJUSTED!";
+    }
+    system("pause");
     return 0;
 }
