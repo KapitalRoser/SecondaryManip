@@ -253,6 +253,7 @@ std::vector<double> tri_GetAllByDimension (const tri& tri, DIMENSION D){
 
 bool myChkInTri(d_coord adjX_Data_ptr, const tri& tri_pointer){
     //Use std::signbit(-0) from math.h for the neg zero check. returns true if NEGATIVE.
+    
     std::vector<float> logicVec = tri_pointer.normals;
     for (auto &&i : logicVec){  
         i = std::signbit(i) ? -i : i; //if i is negative, std::signbit returns true.
@@ -290,11 +291,35 @@ bool myChkInTri(d_coord adjX_Data_ptr, const tri& tri_pointer){
         std::reverse(B_Values.begin(),B_Values.end());
     }
 
-    double tri_min_bound_A = *std::min_element(A_Values.begin(),B_Values.end()); //default 1 million ingame if this min/max fails.
-    double tri_max_bound_A = *std::max_element(A_Values.begin(),A_Values.end());
-    double tri_min_bound_B = *std::min_element(B_Values.begin(),B_Values.end());
-    double tri_max_bound_B = *std::max_element(B_Values.begin(),B_Values.end());
 
+    // double tri_min_bound_A;
+    // double tri_max_bound_A;
+    // double tri_min_bound_B;
+    // double tri_max_bound_B;
+    //HERE IT IS.
+    // double tri_min_bound_A = *std::min_element(A_Values.begin(),B_Values.end()); //default 1 million ingame if this min/max fails.
+    // double tri_max_bound_A = *std::max_element(A_Values.begin(),A_Values.end());
+    // double tri_min_bound_B = *std::min_element(B_Values.begin(),B_Values.end());
+    // double tri_max_bound_B = *std::max_element(B_Values.begin(),B_Values.end());
+    
+    double tri_min_bound_A;
+    double tri_max_bound_A;
+    double tri_min_bound_B;
+    double tri_max_bound_B;
+
+    try {
+        tri_min_bound_A = *std::min_element(A_Values.begin(), A_Values.end());
+        tri_max_bound_A = *std::max_element(A_Values.begin(), A_Values.end());
+        tri_min_bound_B = *std::min_element(B_Values.begin(), B_Values.end());
+        tri_max_bound_B = *std::max_element(B_Values.begin(), B_Values.end());
+    } catch (const std::exception& e) {
+        std::cerr << "tri_max_bound exception (ChkInTri) caught: " << e.what() << std::endl << "Congratulations, you got the weird error to show up. Let Kapital know.\n";
+        // Handle the exception here, for example set default values
+        tri_min_bound_A = -1000000.0; // Default value as mentioned in the comment
+        tri_max_bound_A = 1000000.0; // Default value as mentioned in the comment
+        tri_min_bound_B = -1000000.0; // Default value as mentioned in the comment
+        tri_max_bound_B = 1000000.0; // Default value as mentioned in the comment
+    }
 
     if  (!(adjX_val_A > tri_min_bound_A) && (adjX_val_A < tri_max_bound_A) &&
           (adjX_val_B > tri_min_bound_B) && (adjX_val_B < tri_max_bound_B)) {
@@ -317,6 +342,7 @@ bool myChkInTri(d_coord adjX_Data_ptr, const tri& tri_pointer){
             (B_Values[0] - B_Values[2]) * (adjX_val_A - A_Values[2]) <= 0.0
         )
     );
+    
 }
 
 d_coord nudgePos(int ballSize, d_coord position_at_collision, d_coord AdjX){
@@ -332,11 +358,11 @@ bool innerFoo0(d_coord &posAtCol, const tri &currentTri, const int ballSizeSquar
         d_coord cpPlaneResult = getCpPlanePoint(currentTri.normals,currentTri.points[0],AdjX); //CP IS INFLUENCED BY adjX -- does not return anything normally, but I may choose to alter this to be better style.
         if ((vectorSquareDistance(cpPlaneResult,AdjX) < ballSizeSquared) && myChkInTri(AdjX,currentTri) != 0) { //if the distance squared from the proposed to the CP is less than the squared ball size then begin detailed tri checking.
                 posAtCol = cpPlaneResult; //save
-                std::cout << "FOUND FOO 0\n";
+                std::cout << "!!0\n";
                 return true;
         }
     }
-    std::cout << "NOT FOO 0\n";
+    std::cout << "-0\n";
     return false;
 } //Seems to check the first point in detail?
 
@@ -353,14 +379,14 @@ bool innerFoo1(d_coord &posAtCol, const tri& currentTri, const int ballSizeSquar
                     double cpLineIntermediate = getCpLinePoint(cpLineResult,currentTri.points[j],currentTri.points[successivePoint],AdjX); ///LOOKS LIKE WE NEED YET ANOTHER SIGNED BIT CHECK!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                     if ((cpLineIntermediate >= 0.0) && (cpLineIntermediate <= 1.0) && (vectorSquareDistance(cpLineResult,AdjX) < ballSizeSquared)){
                         posAtCol = cpLineResult;
-                        std::cout << "FOUND FOO 1\n";
+                        std::cout << "!!1\n";
                         return true;
                     }
                 }
             }
         }
     }
-    std::cout << "NOT FOO 1\n";
+    std::cout << "-1\n";
     return false;
 } //seems to check all points?
 
@@ -377,13 +403,13 @@ bool innerFoo2(d_coord& posAtCol, const tri& currentTri, const int ballSizeSquar
                     ((currentTri.interactionFlag & (ptrC_vals[j_2] + antecedentPoint * 2)) != 0) && //really trusting the decomp on this
                     (vectorSquareDistance(currentTri.points[j_2],AdjX) < ballSizeSquared)){
                     posAtCol = currentTri.points[j_2];
-                    std::cout << "FOUND FOO 2\n";
+                    std::cout << "!!2\n";
                     return true;
                 }
             }
         }
     }
-    std::cout << "NOT FOO 2\n";
+    std::cout << "-2\n";
     return false;
 }
 
@@ -456,10 +482,12 @@ d_coord adjustIfCollide (int ballSize, d_coord proposed, d_coord old, const std:
         std::cout << "CHECKED COLLIDER\n";
         if (checkHit(ballSize,proposed,colliderObj,adjusted)){ 
             std::cout << "HIT FOUND\n";
+            adjusted.z -= 8.5;
             return adjusted;
         }
     }
     std::cout << "NO HITS FOUND\n";
+    proposed.z -= 8.5;
     return proposed;
 }
 
@@ -470,6 +498,16 @@ int main(){
 
 
     //FOUND A COLLISION SUCCESSFULLY!!!!!!!!
+
+
+    // d_coord current; //actual, current x as written in standard ramsearch block.
+    // current.x = 16.37053680419922;
+    // current.z = 0;
+    // current.y = -18.424144744873047;
+    // d_coord suppose; //To be modified if applicable.
+    // suppose.x = 16.772022247314453;
+    // suppose.z = 0;
+    // suppose.y = -18.004671096801758;
 
     d_coord current; //actual, current x as written in standard ramsearch block.
     current.x = 21.9913330078125;
@@ -488,8 +526,7 @@ int main(){
     if (suppose.x == proposed.x && suppose.z == proposed.z && suppose.y == proposed.y){
         std::cout << "UNCHANGED!";
     } else {
-        std::cout << "ADJUSTED!";
+        std::cout << "ADJUSTED!\n";
     }
-    system("pause");
     return 0;
 }
